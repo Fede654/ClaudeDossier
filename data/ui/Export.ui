@@ -176,6 +176,23 @@
                                       </object>
                                     </child>
                                     <child>
+                                      <object class="AdwPreferencesGroup" id="slide_options">
+                                        <property name="visible" bind-source="AdvancedExportDialog" bind-property="show_slide_size_options"/>
+                                        <property name="margin-top">18</property>
+                                        <property name="title" translatable="1">Page Size</property>
+                                        <child>
+                                          <object class="AdwComboRow" id="cmb_slide_size">
+                                            <property name="can-focus">True</property>
+                                            <property name="activatable">False</property>
+                                            <property name="title" translatable="1">Page Size</property>
+                                            <property name="expression">
+                                              <lookup name="string" type="GtkStringObject"/>
+                                            </property>
+                                          </object>
+                                        </child>
+                                      </object>
+                                    </child>
+                                    <child>
                                       <object class="AdwPreferencesGroup" id="html_options">
                                         <property name="visible" bind-source="AdvancedExportDialog" bind-property="show_html_options"/>
                                         <property name="margin-top">18</property>
