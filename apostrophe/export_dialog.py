@@ -47,7 +47,7 @@ class Format(GObject.Object):
 
     @property
     def has_pages(self):
-        return self.to in {"pdf", "odt", "docx"}
+        return self.to in {"pdf", "odt", "docx", "latex"}
 
     @property
     def is_html(self):
