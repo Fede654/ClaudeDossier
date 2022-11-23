@@ -11,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2022-09-18 12:23+0000\n"
-"PO-Revision-Date: 2022-09-19 10:06+0300\n"
-"Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
+"POT-Creation-Date: 2022-11-04 03:09+0000\n"
+"PO-Revision-Date: 2022-11-11 14:47+0300\n"
+"Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Türkçe <gnome-turk@gnome.org>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
@@ -231,15 +231,15 @@ msgstr ""
 msgid "_Close"
 msgstr "_Kapat"
 
-#: data/ui/Export.ui:33 apostrophe/export_dialog.py:132
-#: apostrophe/export_dialog.py:333 apostrophe/export_dialog.py:338
-#: apostrophe/main_window.py:390 apostrophe/main_window.py:458
-#: apostrophe/main_window.py:531
+#: data/ui/Export.ui:33 apostrophe/export_dialog.py:128
+#: apostrophe/export_dialog.py:329 apostrophe/export_dialog.py:334
+#: apostrophe/main_window.py:400 apostrophe/main_window.py:471
+#: apostrophe/main_window.py:563
 msgid "Cancel"
 msgstr "İptal et"
 
-#: data/ui/Export.ui:44 apostrophe/export_dialog.py:127
-#: apostrophe/export_dialog.py:332 apostrophe/export_dialog.py:336
+#: data/ui/Export.ui:44 apostrophe/export_dialog.py:123
+#: apostrophe/export_dialog.py:328 apostrophe/export_dialog.py:332
 msgid "Export"
 msgstr "Dışa aktar"
 
@@ -303,12 +303,12 @@ msgstr "Slayt gösterisinde madde imlerini birbiri ardına gösterme"
 msgid "New"
 msgstr "Yeni"
 
-#: data/ui/Headerbar.ui:18 apostrophe/main_window.py:457
+#: data/ui/Headerbar.ui:18 apostrophe/main_window.py:470
 msgid "Open"
 msgstr "Aç"
 
-#: data/ui/Headerbar.ui:24 apostrophe/main_window.py:389
-#: apostrophe/main_window.py:533
+#: data/ui/Headerbar.ui:24 apostrophe/main_window.py:399
+#: apostrophe/main_window.py:565
 msgid "Save"
 msgstr "Kaydet"
 
@@ -375,8 +375,8 @@ msgstr "Daha büyük metin kullan"
 #: data/ui/Preferences.ui:43
 msgid "Reduce the margins width and increase the text size when possible"
 msgstr ""
-"Kenar boşluklarının genişliğini azaltın ve metin boyutunu "
-"olabildiğinceartırın"
+"Kenar boşluklarının genişliğini azaltın ve metin boyutunu olabildiğince "
+"artırın"
 
 #: data/ui/Preferences.ui:56
 msgid "Restore session"
@@ -521,65 +521,70 @@ msgstr "Ayırıcı"
 
 #: data/ui/Shortcuts.ui:125
 msgctxt "shortcut window"
+msgid "Header"
+msgstr "Başlık"
+
+#: data/ui/Shortcuts.ui:132
+msgctxt "shortcut window"
 msgid "List item"
 msgstr "Liste ögesi"
 
-#: data/ui/Shortcuts.ui:132
+#: data/ui/Shortcuts.ui:139
 msgctxt "shortcut window"
 msgid "Italic"
 msgstr "Eğik"
 
-#: data/ui/Shortcuts.ui:139
+#: data/ui/Shortcuts.ui:146
 msgctxt "shortcut window"
 msgid "Bold"
 msgstr "Kalın"
 
-#: data/ui/Shortcuts.ui:146
+#: data/ui/Shortcuts.ui:153
 msgctxt "shortcut window"
 msgid "Strikeout"
 msgstr "Üstünü çiz"
 
-#: data/ui/Shortcuts.ui:155
+#: data/ui/Shortcuts.ui:162
 msgctxt "shortcut window"
 msgid "Copy and paste"
 msgstr "Kopyala ve yapıştır"
 
-#: data/ui/Shortcuts.ui:159
+#: data/ui/Shortcuts.ui:166
 msgctxt "shortcut window"
 msgid "Copy selected text to clipboard"
 msgstr "Seçili metni panoya kopyala"
 
-#: data/ui/Shortcuts.ui:166
+#: data/ui/Shortcuts.ui:173
 msgctxt "shortcut window"
 msgid "Cut selected text to clipboard"
 msgstr "Seçili metni panoya kes"
 
-#: data/ui/Shortcuts.ui:173
+#: data/ui/Shortcuts.ui:180
 msgctxt "shortcut window"
 msgid "Paste selected text from clipboard"
 msgstr "Panodan seçilen metni yapıştır"
 
-#: data/ui/Shortcuts.ui:182
+#: data/ui/Shortcuts.ui:189
 msgctxt "shortcut window"
 msgid "Undo and redo"
 msgstr "Geri al ve yinele"
 
-#: data/ui/Shortcuts.ui:186
+#: data/ui/Shortcuts.ui:193
 msgctxt "shortcut window"
 msgid "Undo previous command"
 msgstr "Önceki komutu geri al"
 
-#: data/ui/Shortcuts.ui:193
+#: data/ui/Shortcuts.ui:200
 msgctxt "shortcut window"
 msgid "Redo previous command"
 msgstr "Önceki komutu yinele"
 
-#: data/ui/Shortcuts.ui:202
+#: data/ui/Shortcuts.ui:209
 msgctxt "shortcut window"
 msgid "Selection"
 msgstr "Seçim"
 
-#: data/ui/Shortcuts.ui:206
+#: data/ui/Shortcuts.ui:213
 msgctxt "shortcut window"
 msgid "Select all text"
 msgstr "Tüm metni seç"
@@ -608,20 +613,37 @@ msgstr "İstatistikleri Göster"
 msgid "0 Words"
 msgstr "0 Sözcük"
 
-#: apostrophe/application.py:234
+#: data/ui/Window.ui:129
+msgid "File Has Changed on Disk"
+msgstr "Dosya Diskte Değiştirildi"
+
+#: data/ui/Window.ui:139
+msgid "The file has been changed by another program."
+msgstr "Dosya başka yazılımca değiştirildi."
+
+#: data/ui/Window.ui:147
+msgid "_Discard Changes and Reload"
+msgstr "Değişiklikleri _Gözden Çıkar ve Yeniden Yükle"
+
+#: apostrophe/application.py:242
 msgid "Donate"
 msgstr "Bağış Yap"
 
-#: apostrophe/application.py:235
+#: apostrophe/application.py:243
 msgid "Translations"
 msgstr "Çeviriler"
 
-#: apostrophe/export_dialog.py:130 apostrophe/export_dialog.py:337
+#: apostrophe/export_dialog.py:118 apostrophe/helpers.py:84
+msgid "Close"
+msgstr "Kapat"
+
+# %s burada Dosya türü (PDF, HTML, ODT vs)
+#: apostrophe/export_dialog.py:126 apostrophe/export_dialog.py:333
 #, python-format
 msgid "Export to %s"
-msgstr "%s konumuna dışa aktar"
+msgstr "%s olarak dışa aktar"
 
-#: apostrophe/export_dialog.py:156 apostrophe/export_dialog.py:326
+#: apostrophe/export_dialog.py:152 apostrophe/export_dialog.py:322
 #, python-brace-format
 msgid ""
 "An error happened while trying to export:\n"
@@ -632,21 +654,18 @@ msgstr ""
 "\n"
 "{err_msg}"
 
-#: apostrophe/export_dialog.py:229
+# {} burada PDF, HTML ve pek çok dosya türü ile değiştirilmektedir.
+#: apostrophe/export_dialog.py:225
 msgid "Export to {}"
-msgstr "Şuraya aktar: {}"
+msgstr "{} olarak dışa aktar"
 
-#: apostrophe/export_dialog.py:333
+#: apostrophe/export_dialog.py:329
 msgid "Select folder"
 msgstr "Klasör seç"
 
 #: apostrophe/helpers.py:83
 msgid "Error"
 msgstr "Hata"
-
-#: apostrophe/helpers.py:84
-msgid "Close"
-msgstr "Kapat"
 
 #: apostrophe/inhibitor.py:36
 msgid "Unsaved documents"
@@ -677,35 +696,35 @@ msgid "adverb"
 msgstr "zarf"
 
 #. Hemingway Toast
-#: apostrophe/main_window.py:130
+#: apostrophe/main_window.py:132
 msgid "Text can't be deleted while on Hemingway mode"
 msgstr "Hemingway kipindeyken metin silinemez"
 
-#: apostrophe/main_window.py:133
+#: apostrophe/main_window.py:135
 msgid "Tell me more"
 msgstr "Daha çoğunu söyle"
 
-#: apostrophe/main_window.py:386
+#: apostrophe/main_window.py:396
 msgid "Save your File"
 msgstr "Dosyanızı kaydedin"
 
-#: apostrophe/main_window.py:447
+#: apostrophe/main_window.py:460
 msgid "Markdown Files"
 msgstr "Markdown Dosyaları"
 
-#: apostrophe/main_window.py:451
+#: apostrophe/main_window.py:464
 msgid "Plain Text Files"
 msgstr "Düz Metin Dosyaları"
 
-#: apostrophe/main_window.py:454
+#: apostrophe/main_window.py:467
 msgid "Open a .md file"
 msgstr "Bir .md dosyası aç"
 
-#: apostrophe/main_window.py:525
+#: apostrophe/main_window.py:557
 msgid "Save changes?"
 msgstr "Değişiklikleri kaydedilsin mi?"
 
-#: apostrophe/main_window.py:526
+#: apostrophe/main_window.py:558
 #, python-format
 msgid ""
 "“%s” contains unsaved changes. If you don’t save, all your changes will be "
@@ -714,11 +733,11 @@ msgstr ""
 "“%s” kaydedilmemiş değişiklikler içeriyor. Kaydetmezseniz, tüm "
 "değişiklikleriniz tümüyle yitecek."
 
-#: apostrophe/main_window.py:532
+#: apostrophe/main_window.py:564
 msgid "Discard"
-msgstr "_Çıkar"
+msgstr "_Gözden Çıkar"
 
-#: apostrophe/main_window.py:701 apostrophe/main_window.py:725
+#: apostrophe/main_window.py:734 apostrophe/main_window.py:758
 msgid "New File"
 msgstr "Yeni Dosya"
 
@@ -798,11 +817,11 @@ msgstr "üstü çizili metin"
 msgid "Item"
 msgstr "Öge"
 
-#: apostrophe/text_view_format_inserter.py:98
+#: apostrophe/text_view_format_inserter.py:97
 msgid "Header"
 msgstr "Başlık"
 
-#: apostrophe/text_view.py:169 apostrophe/text_view.py:171
+#: apostrophe/text_view.py:177 apostrophe/text_view.py:179
 msgid "web page"
 msgstr "web sayfası"
 
