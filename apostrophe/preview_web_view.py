@@ -17,11 +17,11 @@ import webbrowser
 
 import gi
 
-gi.require_version('WebKit2', '5.0')
-from gi.repository import WebKit2, GLib, GObject
+gi.require_version('WebKit', '6.0')
+from gi.repository import WebKit, GLib, GObject
 
 
-class PreviewWebView(WebKit2.WebView):
+class PreviewWebView(WebKit.WebView):
     """A WebView that provides read/write access to scroll.
 
     It does so using JavaScript, by continuously monitoring it while loaded.
@@ -111,7 +111,7 @@ if (canScroll && isRendered) {{
         self.set_scroll_scale(self.scroll_scale)
 
     def on_decide_policy(self, _web_view, decision, decision_type):
-        if decision_type == WebKit2.PolicyDecisionType.NAVIGATION_ACTION and \
+        if decision_type == WebKit.PolicyDecisionType.NAVIGATION_ACTION and \
                 decision.get_navigation_action().is_user_gesture():
             webbrowser.open(decision.get_request().get_uri())
             decision.ignore()       # Do not follow the link in the WebView
@@ -119,9 +119,9 @@ if (canScroll && isRendered) {{
         return False
 
     def on_load_changed(self, _web_view, event):
-        self.state_loaded = event >= WebKit2.LoadEvent.COMMITTED and not self.state_load_failed
+        self.state_loaded = event >= WebKit.LoadEvent.COMMITTED and not self.state_load_failed
         self.state_load_failed = False
-        self.state_discard_read = event == WebKit2.LoadEvent.STARTED and self.state_waiting
+        self.state_discard_read = event == WebKit.LoadEvent.STARTED and self.state_waiting
         self.state_dirty = True
         self.state_loop()
 

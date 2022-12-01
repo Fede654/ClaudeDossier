@@ -22,8 +22,9 @@ import gi
 from apostrophe.preview_renderer import PreviewRenderer
 from apostrophe.settings import Settings
 
-gi.require_version('WebKit2', '5.0')
-from gi.repository import WebKit2, GLib, Gtk, GObject
+gi.require_version('WebKit', '6.0')
+gi.require_version('Gtk', '4.0')
+from gi.repository import WebKit, GLib, Gtk, GObject
 
 from apostrophe.preview_converter import PreviewConverter
 from apostrophe.preview_web_view import PreviewWebView
@@ -152,7 +153,7 @@ class PreviewHandler:
         self.preview_renderer.update_mode(self.web_view)
 
     def on_load_changed(self, _web_view, event):
-        if event == WebKit2.LoadEvent.FINISHED:
+        if event == WebKit.LoadEvent.FINISHED:
             self.loading = False
             if self.web_view_pending_html:
                 self.__show(html=self.web_view_pending_html, step=Step.LOAD_WEBVIEW)
@@ -186,8 +187,8 @@ class PreviewHandler:
     def on_right_click(web_view, context_menu, _event, _hit_test):
         # disable some context menu option
         for item in context_menu.get_items():
-            if item.get_stock_action() in [WebKit2.ContextMenuAction.RELOAD,
-                                           WebKit2.ContextMenuAction.GO_BACK,
-                                           WebKit2.ContextMenuAction.GO_FORWARD,
-                                           WebKit2.ContextMenuAction.STOP]:
+            if item.get_stock_action() in [WebKit.ContextMenuAction.RELOAD,
+                                           WebKit.ContextMenuAction.GO_BACK,
+                                           WebKit.ContextMenuAction.GO_FORWARD,
+                                           WebKit.ContextMenuAction.STOP]:
                 context_menu.remove(item)
