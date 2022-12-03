@@ -46,6 +46,13 @@
               </object>
             </child>
             <child>
+              <object class="GtkShortcutsShortcut" id="s1-5d">
+                <property name="visible">True</property>
+                <property name="title" translatable="yes" context="shortcut window">Show preferences</property>
+                <property name="action-name">app.preferences</property>
+              </object>
+            </child>
+            <child>
               <object class="GtkShortcutsShortcut" id="s1-5b">
                 <property name="visible">True</property>
                 <property name="title" translatable="yes" context="shortcut window">Quit application</property>

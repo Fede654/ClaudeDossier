@@ -111,6 +111,7 @@ class Application(Adw.Application):
         self.set_accels_for_action("app.spellcheck", ["F7"])
 
         self.set_accels_for_action("app.new_window", ["<Ctl>n"])
+        self.set_accels_for_action("app.preferences", ["<Ctl>comma"])
         self.set_accels_for_action("win.open", ["<Ctl>o"])
         self.set_accels_for_action("win.save", ["<Ctl>s"])
         self.set_accels_for_action("win.save_as", ["<Ctl><shift>s"])
