@@ -53,6 +53,13 @@
               </object>
             </child>
             <child>
+              <object class="GtkShortcutsShortcut" id="s1-5c">
+                <property name="visible">True</property>
+                <property name="title" translatable="yes" context="shortcut window">Keyboard shortcuts</property>
+                <property name="action-name">win.show-help-overlay</property>
+              </object>
+            </child>
+            <child>
               <object class="GtkShortcutsShortcut" id="s1-5b">
                 <property name="visible">True</property>
                 <property name="title" translatable="yes" context="shortcut window">Quit application</property>
