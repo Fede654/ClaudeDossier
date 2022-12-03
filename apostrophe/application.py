@@ -82,10 +82,6 @@ class Application(Adw.Application):
         action.connect("activate", self.on_preferences)
         self.add_action(action)
 
-        action = Gio.SimpleAction.new("shortcuts", None)
-        action.connect("activate", self.on_shortcuts)
-        self.add_action(action)
-
         action = Gio.SimpleAction.new("about", None)
         action.connect("activate", self.on_about)
         self.add_action(action)
@@ -222,13 +218,6 @@ class Application(Adw.Application):
         preferences_dialog = ApostrophePreferencesDialog()
         preferences_dialog.set_transient_for(self.get_active_window())
         preferences_dialog.show()
-
-    def on_shortcuts(self, _action, _param):
-        builder = Gtk.Builder()
-        builder.add_from_resource(
-            "/org/gnome/gitlab/somas/Apostrophe/ui/Shortcuts.ui")
-        builder.get_object("shortcuts").set_transient_for(self.get_active_window())
-        builder.get_object("shortcuts").show()
 
     def on_about(self, _action, _param):
         # TODO: what about non-csd

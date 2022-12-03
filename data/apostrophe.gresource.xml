@@ -17,7 +17,7 @@
     <file compressed="true" preprocess="xml-stripblanks">ui/PreviewWindow.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/Recents.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/SearchBar.ui</file>
-    <file compressed="true" preprocess="xml-stripblanks">ui/Shortcuts.ui</file>
+    <file compressed="true" preprocess="xml-stripblanks" alias="gtk/help-overlay.ui">ui/Shortcuts.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/TexliveWarning.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/TextView.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/ThemeSwitcher.ui</file>
