@@ -38,6 +38,7 @@ class MarkupHandler:
     TAG_NAME_WRAP_NONE = 'wrap_none'
     TAG_NAME_PLAIN_TEXT = 'plain_text'
     TAG_NAME_GRAY_TEXT = 'gray_text'
+    TAG_NAME_LINK_COLOR_TEXT = 'link_color_text'
     TAG_NAME_CODE_TEXT = 'code_text'
     TAG_NAME_CODE_BLOCK = 'code_block'
     TAG_NAME_UNFOCUSED_TEXT = 'unfocused_text'
@@ -85,6 +86,11 @@ class MarkupHandler:
                                                weight=Pango.Weight.NORMAL,
                                                style=Pango.Style.NORMAL)
 
+        self.tag_link_color_text = buffer.create_tag(self.TAG_NAME_LINK_COLOR_TEXT,
+                                               foreground='lightblue',
+                                               weight=Pango.Weight.NORMAL,
+                                               style=Pango.Style.ITALIC)
+
         self.tag_code_text = buffer.create_tag(self.TAG_NAME_CODE_TEXT,
                                                weight=Pango.Weight.NORMAL,
                                                style=Pango.Style.NORMAL,
@@ -105,6 +111,7 @@ class MarkupHandler:
             self.TAG_NAME_WRAP_NONE: lambda args: self.tag_wrap_none,
             self.TAG_NAME_PLAIN_TEXT: lambda args: self.tag_plain_text,
             self.TAG_NAME_GRAY_TEXT: lambda args: self.tag_gray_text,
+            self.TAG_NAME_LINK_COLOR_TEXT: lambda args: self.tag_link_color_text,
             self.TAG_NAME_CODE_TEXT: lambda args: self.tag_code_text,
             self.TAG_NAME_CODE_BLOCK: lambda args: self.tag_code_block,
             self.TAG_NAME_MARGIN_INDENT: lambda args: self.get_margin_indent_tag(
@@ -147,6 +154,10 @@ class MarkupHandler:
         self.tag_code_text.set_property("background", color.to_string())
         self.tag_code_block.set_property(
             "paragraph-background", color.to_string())
+        (found, color) = style_context.lookup_color('link_fg_color')
+        if not found:
+            (_, color) = style_context.lookup_color('lightblue')
+        self.tag_link_color_text.set_property("foreground", color.to_string())
 
     def apply(self):
         """Applies markup, parsing it in a worker process
@@ -215,7 +226,7 @@ class MarkupHandler:
             # - "[description](url)" (gray out)
             # - "![description](image_url)" (gray out)
             regexps = (
-                (LINK, self.TAG_NAME_GRAY_TEXT),
+                (LINK, self.TAG_NAME_LINK_COLOR_TEXT),
                 (IMAGE, self.TAG_NAME_GRAY_TEXT)
             )
             for regexp, tag_name in regexps:
