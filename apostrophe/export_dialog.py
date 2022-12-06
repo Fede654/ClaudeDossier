@@ -50,6 +50,10 @@ class Format(GObject.Object):
         return self.to in {"pdf", "odt", "docx", "latex"}
 
     @property
+    def has_slides(self):
+        return self.to == "beamer"
+
+    @property
     def is_html(self):
         return self.to == "html5"
 
@@ -178,6 +182,8 @@ class AdvancedExportDialog(Adw.Window):
 
     cmb_page_size = Gtk.Template.Child()
 
+    cmb_slide_size = Gtk.Template.Child()
+
     sw_self_contained = Gtk.Template.Child()
 
     sw_syntax_highlighting = Gtk.Template.Child()
@@ -189,6 +195,7 @@ class AdvancedExportDialog(Adw.Window):
     formats = Gio.ListStore.new(Format)
 
     page_sizes = ['A4', 'Letter']
+    slide_sizes = ['4:3', '16:9']
     syntax_styles = ['pygments',
                      'kate',
                      'monochrome',
@@ -217,6 +224,9 @@ class AdvancedExportDialog(Adw.Window):
         page_sizes_list = helpers.liststore_from_list(self.page_sizes)
         self.cmb_page_size.set_model(page_sizes_list)
 
+        slide_sizes_list = helpers.liststore_from_list(self.slide_sizes)
+        self.cmb_slide_size.set_model(slide_sizes_list)
+
         syntax_styles_list = helpers.liststore_from_list(self.syntax_styles)
         self.cmb_syntax_highlighting.set_model(syntax_styles_list)
 
@@ -227,6 +237,10 @@ class AdvancedExportDialog(Adw.Window):
     @GObject.Property(type=bool, default=False)
     def show_page_size_options(self):
         return self.formats_list.get_selected_row().item.has_pages
+
+    @GObject.Property(type=bool, default=False)
+    def show_slide_size_options(self):
+        return self.formats_list.get_selected_row().item.has_slides
 
     @GObject.Property(type=bool, default=False)
     def show_html_options(self):
@@ -284,6 +298,7 @@ class AdvancedExportDialog(Adw.Window):
         self.leaflet.set_visible_child(self.options_page)
 
         self.notify("show_page_size_options")
+        self.notify("show_slide_size_options")
         self.notify("show_html_options")
         self.notify("show_syntax_options")
         self.notify("show_presentation_options")
@@ -362,6 +377,11 @@ class AdvancedExportDialog(Adw.Window):
             elif fmt in ("odt", "docx"):
                 args.append("--reference-doc=" + helpers.get_media_path(
                     "/reference_files/reference-a4." + fmt))
+
+        if (self.show_slide_size_options and
+            self.cmb_slide_size.get_selected() == 1):
+            if ((fmt := self.formats_list.get_selected_row().item.to) == "beamer"):
+                args.append("--variable=classoption:aspectratio=169")
 
         if self.show_html_options:
             args.append("--css=%s" % Theme.get_current().web_css)
