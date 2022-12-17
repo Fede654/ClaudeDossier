@@ -1,4 +1,4 @@
-#
+# German translation for Apostrophe.
 # Milo Ivir <mail@milotype.de>, 2021.
 # Marko Semet <marko10_000@gmx.de>, 2021.
 # Christian Kirbach <christian.kirbach@gmail.com>, 2021.
@@ -10,10 +10,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apostrophe\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2022-10-10 20:34+0000\n"
-"PO-Revision-Date: 2022-10-11 12:01+0200\n"
+"POT-Creation-Date: 2022-12-17 00:19+0000\n"
+"PO-Revision-Date: 2022-12-17 11:06+0100\n"
 "Last-Translator: Jürgen Benvenuti <gastornis@posteo.org>\n"
-"Language-Team: Germany <gnome-de@gnome.org>\n"
+"Language-Team: German <gnome-de@gnome.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -237,15 +237,15 @@ msgstr ""
 msgid "_Close"
 msgstr "S_chließen"
 
-#: data/ui/Export.ui:33 apostrophe/export_dialog.py:128
-#: apostrophe/export_dialog.py:329 apostrophe/export_dialog.py:334
-#: apostrophe/main_window.py:398 apostrophe/main_window.py:469
-#: apostrophe/main_window.py:561
+#: data/ui/Export.ui:33 apostrophe/export_dialog.py:132
+#: apostrophe/export_dialog.py:344 apostrophe/export_dialog.py:349
+#: apostrophe/main_window.py:400 apostrophe/main_window.py:471
+#: apostrophe/main_window.py:563
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: data/ui/Export.ui:44 apostrophe/export_dialog.py:123
-#: apostrophe/export_dialog.py:328 apostrophe/export_dialog.py:332
+#: data/ui/Export.ui:44 apostrophe/export_dialog.py:127
+#: apostrophe/export_dialog.py:343 apostrophe/export_dialog.py:347
 msgid "Export"
 msgstr "Exportieren"
 
@@ -269,39 +269,40 @@ msgstr "Inhaltsverzeichnis"
 msgid "Number Sections"
 msgstr "Abschnitte nummerieren"
 
-#: data/ui/Export.ui:165 data/ui/Export.ui:170
+#: data/ui/Export.ui:165 data/ui/Export.ui:170 data/ui/Export.ui:182
+#: data/ui/Export.ui:187
 msgid "Page Size"
 msgstr "Seitengröße"
 
-#: data/ui/Export.ui:182
+#: data/ui/Export.ui:199
 msgid "HTML Options"
 msgstr "HTML-Optionen"
 
-#: data/ui/Export.ui:187
+#: data/ui/Export.ui:204
 msgid "Self-contained"
 msgstr "Abgeschlossen"
 
-#: data/ui/Export.ui:189
+#: data/ui/Export.ui:206
 msgid "Produces an HTML file with no external dependencies"
 msgstr "Erzeugt eine HTML-Datei ohne externe Abhängigkeiten"
 
-#: data/ui/Export.ui:205
+#: data/ui/Export.ui:222
 msgid "Syntax Highlighting"
 msgstr "Syntaxhervorhebung"
 
-#: data/ui/Export.ui:218
+#: data/ui/Export.ui:235
 msgid "Highlight style"
 msgstr "Hervorhebungsstil"
 
-#: data/ui/Export.ui:232
+#: data/ui/Export.ui:249
 msgid "Presentation"
 msgstr "Präsentation"
 
-#: data/ui/Export.ui:237
+#: data/ui/Export.ui:254
 msgid "Incremental bullets"
 msgstr "Schrittweise Auflistung"
 
-#: data/ui/Export.ui:239
+#: data/ui/Export.ui:256
 msgid "Show one bullet point after another in a slideshow"
 msgstr "Listenpunkte nacheinander in einer Dia-Show anzeigen"
 
@@ -309,12 +310,12 @@ msgstr "Listenpunkte nacheinander in einer Dia-Show anzeigen"
 msgid "New"
 msgstr "Neu"
 
-#: data/ui/Headerbar.ui:18 apostrophe/main_window.py:468
+#: data/ui/Headerbar.ui:18 apostrophe/main_window.py:470
 msgid "Open"
 msgstr "Öffnen"
 
-#: data/ui/Headerbar.ui:24 apostrophe/main_window.py:397
-#: apostrophe/main_window.py:563
+#: data/ui/Headerbar.ui:24 apostrophe/main_window.py:399
+#: apostrophe/main_window.py:565
 msgid "Save"
 msgstr "Speichern"
 
@@ -443,152 +444,162 @@ msgstr "Ersetzen"
 msgid "Replace All"
 msgstr "Alle ersetzen"
 
-#: data/ui/Shortcuts.ui:12
+#: data/ui/Shortcuts.ui:11
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Allgemein"
 
-#: data/ui/Shortcuts.ui:16
+#: data/ui/Shortcuts.ui:14
 msgctxt "shortcut window"
 msgid "New"
 msgstr "Neu"
 
-#: data/ui/Shortcuts.ui:23
+#: data/ui/Shortcuts.ui:20
 msgctxt "shortcut window"
 msgid "Open"
 msgstr "Öffnen"
 
-#: data/ui/Shortcuts.ui:30
+#: data/ui/Shortcuts.ui:26
 msgctxt "shortcut window"
 msgid "Save"
 msgstr "Speichern"
 
-#: data/ui/Shortcuts.ui:37
+#: data/ui/Shortcuts.ui:32
 msgctxt "shortcut window"
 msgid "Save as"
 msgstr "Speichern unter"
 
-#: data/ui/Shortcuts.ui:44
+#: data/ui/Shortcuts.ui:38
 msgctxt "shortcut window"
 msgid "Close document"
 msgstr "Dokument schließen"
 
-#: data/ui/Shortcuts.ui:51
+#: data/ui/Shortcuts.ui:44
+msgctxt "shortcut window"
+msgid "Show preferences"
+msgstr "Einstellungen anzeigen"
+
+#: data/ui/Shortcuts.ui:50
+msgctxt "shortcut window"
+msgid "Keyboard shortcuts"
+msgstr "Tastenkombinationen"
+
+#: data/ui/Shortcuts.ui:56
 msgctxt "shortcut window"
 msgid "Quit application"
 msgstr "Anwendung beenden"
 
-#: data/ui/Shortcuts.ui:60
+#: data/ui/Shortcuts.ui:64
 msgctxt "shortcut window"
 msgid "Modes"
 msgstr "Modi"
 
-#: data/ui/Shortcuts.ui:64
+#: data/ui/Shortcuts.ui:67
 msgctxt "shortcut window"
 msgid "Focus mode"
 msgstr "Fokusmodus"
 
-#: data/ui/Shortcuts.ui:71
+#: data/ui/Shortcuts.ui:73
 msgctxt "shortcut window"
 msgid "Hemingway mode"
 msgstr "Hemingway-Modus"
 
-#: data/ui/Shortcuts.ui:78
+#: data/ui/Shortcuts.ui:80
 msgctxt "shortcut window"
 msgid "Preview"
 msgstr "Vorschau"
 
-#: data/ui/Shortcuts.ui:85
+#: data/ui/Shortcuts.ui:86
 msgctxt "shortcut window"
 msgid "Fullscreen"
 msgstr "Vollbildmodus"
 
-#: data/ui/Shortcuts.ui:94 data/ui/Shortcuts.ui:98
+#: data/ui/Shortcuts.ui:94 data/ui/Shortcuts.ui:97
 msgctxt "shortcut window"
 msgid "Find"
 msgstr "Suchen"
 
-#: data/ui/Shortcuts.ui:105
+#: data/ui/Shortcuts.ui:103
 msgctxt "shortcut window"
 msgid "Find and replace"
 msgstr "Suchen und Ersetzen"
 
-#: data/ui/Shortcuts.ui:114
+#: data/ui/Shortcuts.ui:111
 msgctxt "shortcut window"
 msgid "Markdown"
 msgstr "Markdown"
 
-#: data/ui/Shortcuts.ui:118
+#: data/ui/Shortcuts.ui:114
 msgctxt "shortcut window"
 msgid "Separator"
 msgstr "Trennzeichen"
 
-#: data/ui/Shortcuts.ui:125
+#: data/ui/Shortcuts.ui:120
 msgctxt "shortcut window"
 msgid "Header"
 msgstr "Überschrift"
 
-#: data/ui/Shortcuts.ui:132
+#: data/ui/Shortcuts.ui:126
 msgctxt "shortcut window"
 msgid "List item"
 msgstr "Listenelement"
 
-#: data/ui/Shortcuts.ui:139
+#: data/ui/Shortcuts.ui:133
 msgctxt "shortcut window"
 msgid "Italic"
 msgstr "Kursiv"
 
-#: data/ui/Shortcuts.ui:146
+#: data/ui/Shortcuts.ui:139
 msgctxt "shortcut window"
 msgid "Bold"
 msgstr "Fett"
 
-#: data/ui/Shortcuts.ui:153
+#: data/ui/Shortcuts.ui:145
 msgctxt "shortcut window"
 msgid "Strikeout"
 msgstr "Durchgestrichen"
 
-#: data/ui/Shortcuts.ui:162
+#: data/ui/Shortcuts.ui:153
 msgctxt "shortcut window"
 msgid "Copy and paste"
 msgstr "Kopieren und Einfügen"
 
-#: data/ui/Shortcuts.ui:166
+#: data/ui/Shortcuts.ui:156
 msgctxt "shortcut window"
 msgid "Copy selected text to clipboard"
 msgstr "Ausgewählten Text in die Zwischenablage kopieren"
 
-#: data/ui/Shortcuts.ui:173
+#: data/ui/Shortcuts.ui:162
 msgctxt "shortcut window"
 msgid "Cut selected text to clipboard"
 msgstr "Ausgewählten Text in die Zwischenablage ausschneiden"
 
-#: data/ui/Shortcuts.ui:180
+#: data/ui/Shortcuts.ui:168
 msgctxt "shortcut window"
 msgid "Paste selected text from clipboard"
 msgstr "Ausgewählten Text aus der Zwischenablage einfügen"
 
-#: data/ui/Shortcuts.ui:189
+#: data/ui/Shortcuts.ui:176
 msgctxt "shortcut window"
 msgid "Undo and redo"
 msgstr "Rückgängig und Wiederherstellen"
 
-#: data/ui/Shortcuts.ui:193
+#: data/ui/Shortcuts.ui:179
 msgctxt "shortcut window"
 msgid "Undo previous command"
 msgstr "Den letzten Befehl rückgängig machen"
 
-#: data/ui/Shortcuts.ui:200
+#: data/ui/Shortcuts.ui:185
 msgctxt "shortcut window"
 msgid "Redo previous command"
 msgstr "Den letzten Befehl wiederholen"
 
-#: data/ui/Shortcuts.ui:209
+#: data/ui/Shortcuts.ui:193
 msgctxt "shortcut window"
 msgid "Selection"
 msgstr "Auswahl"
 
-#: data/ui/Shortcuts.ui:213
+#: data/ui/Shortcuts.ui:196
 msgctxt "shortcut window"
 msgid "Select all text"
 msgstr "Gesamten Text auswählen"
@@ -629,24 +640,24 @@ msgstr "Die Datei wurde durch ein anderes Programm geändert."
 msgid "_Discard Changes and Reload"
 msgstr "Änderungen verwerfen und _neu laden"
 
-#: apostrophe/application.py:242
+#: apostrophe/application.py:232
 msgid "Donate"
 msgstr "Spenden"
 
-#: apostrophe/application.py:243
+#: apostrophe/application.py:233
 msgid "Translations"
 msgstr "Übersetzungen"
 
-#: apostrophe/export_dialog.py:118 apostrophe/helpers.py:84
+#: apostrophe/export_dialog.py:122 apostrophe/helpers.py:84
 msgid "Close"
 msgstr "Schließen"
 
-#: apostrophe/export_dialog.py:126 apostrophe/export_dialog.py:333
+#: apostrophe/export_dialog.py:130 apostrophe/export_dialog.py:348
 #, python-format
 msgid "Export to %s"
 msgstr "Exportiere nach %s"
 
-#: apostrophe/export_dialog.py:152 apostrophe/export_dialog.py:322
+#: apostrophe/export_dialog.py:156 apostrophe/export_dialog.py:337
 #, python-brace-format
 msgid ""
 "An error happened while trying to export:\n"
@@ -657,11 +668,11 @@ msgstr ""
 "\n"
 "{err_msg}"
 
-#: apostrophe/export_dialog.py:225
+#: apostrophe/export_dialog.py:235
 msgid "Export to {}"
 msgstr "Exportiere nach {}"
 
-#: apostrophe/export_dialog.py:329
+#: apostrophe/export_dialog.py:344
 msgid "Select folder"
 msgstr "Ordner auswählen"
 
@@ -698,36 +709,36 @@ msgid "adverb"
 msgstr "Adverb"
 
 #. Hemingway Toast
-#: apostrophe/main_window.py:131
+#: apostrophe/main_window.py:132
 msgid "Text can't be deleted while on Hemingway mode"
 msgstr ""
 "Während Sie sich im Hemingway-Modus befinden, kann Text nicht gelöscht werden"
 
-#: apostrophe/main_window.py:134
+#: apostrophe/main_window.py:135
 msgid "Tell me more"
 msgstr "Mehr erfahren"
 
-#: apostrophe/main_window.py:394
+#: apostrophe/main_window.py:396
 msgid "Save your File"
 msgstr "Datei speichern"
 
-#: apostrophe/main_window.py:458
+#: apostrophe/main_window.py:460
 msgid "Markdown Files"
 msgstr "Markdown-Dateien"
 
-#: apostrophe/main_window.py:462
+#: apostrophe/main_window.py:464
 msgid "Plain Text Files"
 msgstr "Einfache Textdateien"
 
-#: apostrophe/main_window.py:465
+#: apostrophe/main_window.py:467
 msgid "Open a .md file"
 msgstr "Eine ».md«-Datei öffnen"
 
-#: apostrophe/main_window.py:555
+#: apostrophe/main_window.py:557
 msgid "Save changes?"
 msgstr "Änderungen speichern?"
 
-#: apostrophe/main_window.py:556
+#: apostrophe/main_window.py:558
 #, python-format
 msgid ""
 "“%s” contains unsaved changes. If you don’t save, all your changes will be "
@@ -736,11 +747,11 @@ msgstr ""
 "»%s« enthält ungespeicherte Änderungen. Wenn Sie nicht speichern, gehen alle "
 "Änderungen unwiderruflich verloren."
 
-#: apostrophe/main_window.py:562
+#: apostrophe/main_window.py:564
 msgid "Discard"
 msgstr "Verwerfen"
 
-#: apostrophe/main_window.py:732 apostrophe/main_window.py:756
+#: apostrophe/main_window.py:734 apostrophe/main_window.py:758
 msgid "New File"
 msgstr "Neue Datei"
 
