@@ -429,7 +429,9 @@ class MainWindow(Adw.ApplicationWindow):
 
             self.update_headerbar_title()
             self.did_change = False
-            self._set_file_monitor()
+            # We add a 1ms delay to the call to avoid race conditions
+            # see #456
+            GLib.timeout_add(1, self._set_file_monitor, None, 0)
         else:
             self.progressbar_fade_out.play()
             self.did_change = True
