@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: apostrophe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
 "POT-Creation-Date: 2023-01-08 20:40+0000\n"
-"PO-Revision-Date: 2023-02-20 14:09+0000\n"
+"PO-Revision-Date: 2023-02-20 14:21+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic\n"
 "Language: is\n"
@@ -197,7 +197,7 @@ msgstr "Manuel G., Wolf V."
 
 #: data/ui/About.ui.in:9
 msgid "Copyright (C) 2022, Manuel G., Wolf V."
-msgstr "Útgáfuréttur (C) 2022, Manuel G., Wolf V."
+msgstr "Höfundarréttur (C) 2022, Manuel G., Wolf V."
 
 #. Put your name in here, like this:
 #. Manuel Genovés <manuel.genoves@gmail.com>
@@ -336,7 +336,7 @@ msgstr "Opna _kennsluefni"
 
 #: data/ui/Headerbar.ui:101
 msgid "_Keyboard Shortcuts"
-msgstr "_Flýtilyklar"
+msgstr "Flýtily_klar"
 
 #: data/ui/Headerbar.ui:105
 msgid "_About Apostrophe"
