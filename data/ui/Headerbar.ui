@@ -69,7 +69,7 @@
 
   <!-- Main Menu-->
 
-  <menu id="Menu">
+  <menu id="Main Menu">
     <section>
       <item>
         <attribute name="custom">themeswitcher</attribute>
