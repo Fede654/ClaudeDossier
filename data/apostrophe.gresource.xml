@@ -6,9 +6,14 @@
     <file compressed="true" alias="icons/scalable/actions/preview-layout-windowed-symbolic.svg">media/icons/preview-layout-windowed-symbolic.svg</file>
     <file compressed="true" alias="icons/scalable/actions/preview-layout-half-height-symbolic.svg">media/icons/preview-layout-half-height-symbolic.svg</file>
     <file compressed="true" alias="icons/scalable/actions/checkmark-symbolic.svg">media/icons/checkmark-symbolic.svg</file>
+    <file compressed="true" alias="icons/scalable/actions/code-symbolic.svg">media/icons/code-symbolic.svg</file>
+    <file compressed="true" alias="icons/scalable/actions/quotation-symbolic.svg">media/icons/quotation-symbolic.svg</file>
+    <file compressed="true" alias="icons/scalable/actions/table-symbolic.svg">media/icons/table-symbolic.svg</file>
+    <file compressed="true" alias="icons/scalable/actions/format-text-heading-symbolic.svg">media/icons/format-text-heading-symbolic.svg</file>
     <file compressed="true" alias="style.css">media/css/gtk/style.css</file>
     <file compressed="true" alias="style-dark.css">media/css/gtk/style-dark.css</file>
     <file compressed="true" alias="style-sepia.css">media/css/gtk/style-sepia.css</file>
+    <file compressed="true" preprocess="xml-stripblanks">ui/Editor.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/Export.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/Headerbar.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/Preferences.ui</file>
@@ -18,8 +23,11 @@
     <file compressed="true" preprocess="xml-stripblanks">ui/Recents.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/SearchBar.ui</file>
     <file compressed="true" preprocess="xml-stripblanks" alias="gtk/help-overlay.ui">ui/Shortcuts.ui</file>
+    <file compressed="true" preprocess="xml-stripblanks">ui/Statsbar.ui</file>
+    <file compressed="true" preprocess="xml-stripblanks">ui/TableInput.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/TexliveWarning.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/TextView.ui</file>
+    <file compressed="true" preprocess="xml-stripblanks">ui/Toolbar.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/ThemeSwitcher.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/Window.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/AboutHemingway.ui</file>

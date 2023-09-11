@@ -115,6 +115,13 @@
         Preferred relative size for the text.
       </description>
     </key>
+    <key name='toolbar-active' type='b'>
+      <default>false</default>
+      <summary>Toolbar</summary>
+      <description>
+        Whether the toolbar is shown or not.
+      </description>
+    </key>
 
   </schema>
 

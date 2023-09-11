@@ -291,6 +291,7 @@ class MarkupHandler:
         and triggers any pending apply."""
 
         if self.apply_pending:
+            self.parsing = False # self.apply will reenable it right away.
             self.apply()  # self.apply clears the apply pending flag.
 
         try:

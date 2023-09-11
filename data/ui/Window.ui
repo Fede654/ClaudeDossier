@@ -23,53 +23,10 @@
               <class name="preview-flap" />
             </style>
             <child type="content">
-              <object class="GtkOverlay" id="editor">
-                <property name="child">
-                  <object class="AdwToastOverlay" id="toast_overlay">
-                    <property name="child">
-                      <object class="GtkScrolledWindow" id="editor_scrolledwindow">
-                        <property name="focusable">1</property>
-                        <property name="receives-default">1</property>
-                        <property name="hexpand">1</property>
-                        <property name="vexpand">1</property>
-                        <child>
-                          <object class="ApostropheTextView" id="textview">
-                            <child>
-                              <object class="GtkEventControllerFocus">
-                                <signal name="leave" handler="reveal_headerbar_bottombar" swapped="no" />
-                              </object>
-                            </child>
-                          </object>
-                        </child>
-                      </object>
-                    </property>
-                  </object>
-                </property>
-                <child type="overlay">
-                  <object class="GtkRevealer" id="stats_revealer">
-                    <property name="valign">end</property>
-                    <property name="halign">end</property>
-                    <property name="transition-type">crossfade</property>
-                    <property name="transition-duration">750</property>
-                    <property name="reveal-child">1</property>
-                    <property name="child">
-                      <object class="GtkMenuButton" id="stats_button">
-                        <property name="always-show-arrow">True</property>
-                        <property name="tooltip-text" translatable="yes">Show Statistics</property>
-                        <property name="label" translatable="true">0 Words</property>
-                        <property name="halign">end</property>
-                        <property name="margin-end">6</property>
-                        <property name="margin-bottom">6</property>
-                        <style>
-                          <class name="stats-button" />
-                        </style>
-                      </object>
-                    </property>
-                    <child>
-                      <object class="GtkEventControllerMotion">
-                        <signal name="enter" handler="reveal_bottombar" swapped="no" />
-                      </object>
-                    </child>
+              <object class="Editor" id="editor">
+                <child>
+                  <object class="GtkEventControllerFocus">
+                    <signal name="leave" handler="reveal_headerbar_bottombar" swapped="no" />
                   </object>
                 </child>
               </object>

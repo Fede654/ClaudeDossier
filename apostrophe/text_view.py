@@ -58,12 +58,8 @@ class ApostropheTextView(Gtk.TextView):
 
     __gsignals__ = {
         'unindent': (GObject.SignalFlags.ACTION, None, ()),
-        'insert-italic': (GObject.SignalFlags.ACTION, None, ()),
-        'insert-bold': (GObject.SignalFlags.ACTION, None, ()),
         'insert-hrule': (GObject.SignalFlags.ACTION, None, ()),
-        'insert-listitem': (GObject.SignalFlags.ACTION, None, ()),
         'insert-header': (GObject.SignalFlags.ACTION, None, (int,)),
-        'insert-strikethrough': (GObject.SignalFlags.ACTION, None, ()),
         'scroll-scale-changed': (GObject.SIGNAL_RUN_LAST, None, (float,)),
     }
 
@@ -104,11 +100,7 @@ class ApostropheTextView(Gtk.TextView):
         # Format shortcuts
         self.shortcut = FormatInserter()
         self.connect('unindent', self.buffer._unindent)
-        self.connect('insert-italic', self.shortcut.insert_italic)
-        self.connect('insert-bold', self.shortcut.insert_bold)
-        self.connect('insert-strikethrough', self.shortcut.insert_strikethrough)
         self.connect('insert-hrule', self.shortcut.insert_horizontal_rule)
-        self.connect('insert-listitem', self.shortcut.insert_list_item)
         self.connect('insert-header', self.shortcut.insert_header)
 
         # Hemingway

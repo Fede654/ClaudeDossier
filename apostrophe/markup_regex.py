@@ -16,14 +16,18 @@ LINK = re.compile(
     r"\[(?P<text>.*?)\]\((?P<url>.+?)(?: \"(?P<title>.+)\")?\)")
 LINK_ALT = re.compile(
     r"<(?P<text>(?P<url>[A-Za-z][A-Za-z0-9.+-]{1,31}:[^<>\x00-\x20]*|(?:[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*)))>")
+URL = re.compile(
+    r"[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)", re.I)
 IMAGE = re.compile(
     r"!\[(?P<text>.*)\]\((?P<url>.+?)(?: \"(?P<title>.+)\")?\)")
 HORIZONTAL_RULE = re.compile(
     r"(?:^|\n{2,})(?P<symbols> {0,3}[*\-_]{3,} *)(?:\n{2,}|$)")
 LIST = re.compile(
-    r"(?:^|\n)(?P<content>(?P<indent>(?:\t| {4})*)(?P<symbol>(?:[\-*+])) (?:\t| {4})*(?P<text>.+(?:\n+ \2.+)*)?)")
+    r"(?:^|\n)(?P<content>(?P<indent>(?:\t| {4})*)(?P<symbol>(?:[\-*+])) (?!\[[xX ]\])(?:\t| {4})*(?P<text>.+(?:\n+ \2.+)*)?)")
+CHECKLIST = re.compile(
+    r"(?:^|\n)(?P<content>(?P<indent>(?:\t| {4})*)(?P<symbol>(?:[\-*+])) \[(?P<check>(?:[xX ]))\] (?:\t| {4})*(?P<text>.+(?:\n+ \2.+)*)?)")
 ORDERED_LIST = re.compile(
-    r"(?:^|\n)(?P<content>(?P<indent>(?:\t| {4})*)(?P<prefix>(?:(?P<number>\d)|(?:[a-z]))+(?P<delimiter>[.)]))(?:\t| {4}| )(?P<text>.+(?:\n+ {2}\2.+)*)?)")
+    r"(?:^|\n)(?P<content>(?P<indent>(?:\t| {4})*)(?P<prefix>(?:(?P<number>\d+)|(?:[a-z]))+(?P<delimiter>[.)]))(?:\t| {4}| )(?P<text>.+(?:\n+ {2}\2.+)*)?)")
 BLOCK_QUOTE = re.compile(
     r"^ {0,3}(?:> ?)+(?P<text>.+)", re.M)
 HEADER = re.compile(

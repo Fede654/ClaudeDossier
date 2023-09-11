@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0" />
+  <requires lib="adw" version="1.0" />
+  <template class="Toolbar" parent="GtkRevealer">
+    <property name="valign">end</property>
+    <property name="halign">start</property>
+    <property name="transition-type">crossfade</property>
+    <property name="reveal-child">1</property>
+    <property name="child">
+      <object class="GtkBox">
+        <property name="margin-bottom">6</property>
+        <property name="margin-top">6</property>
+        <property name="spacing">6</property>
+        <child>
+          <object class="GtkRevealer" id="toolbar_extra_revealer">
+            <property name="valign">end</property>
+            <property name="halign">start</property>
+            <property name="transition-type">slide-right</property>
+            <property name="reveal-child" bind-source="Toolbar" bind-property="extra_toolbar_revealed" />
+            <property name="child">
+              <object class="GtkBox">
+                <property name="margin-start">6</property>
+                <property name="spacing">6</property>
+                <child>
+                  <object class="GtkButton">
+                    <property name="tooltip-text" translatable="1">Bold</property>
+                    <property name="icon-name">format-text-bold-symbolic</property>
+                    <property name="action-name">win.insert-bold</property>
+                    <style>
+                      <class name="flat" />
+                    </style>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton">
+                    <property name="tooltip-text" translatable="1">Italic</property>
+                    <property name="icon-name">format-text-italic-symbolic</property>
+                    <property name="action-name">win.insert-italic</property>
+                    <style>
+                      <class name="flat" />
+                    </style>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton">
+                    <property name="tooltip-text" translatable="1">Strikethrough</property>
+                    <property name="icon-name">format-text-strikethrough-symbolic</property>
+                    <property name="action-name">win.insert-strikethrough</property>
+                    <style>
+                      <class name="flat" />
+                    </style>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton">
+                    <property name="tooltip-text" translatable="1">Heading</property>
+                    <property name="icon-name">format-text-heading-symbolic</property>
+                    <property name="action-name">win.insert-header</property>
+                    <property name='action-target'>-1</property>
+                    <style>
+                      <class name="flat" />
+                    </style>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton">
+                    <property name="tooltip-text" translatable="1">Unordered list</property>
+                    <property name="icon-name">view-list-bullet-symbolic</property>
+                    <property name="action-name">win.insert-listitem</property>
+                    <style>
+                      <class name="flat" />
+                    </style>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton">
+                    <property name="tooltip-text" translatable="1">Ordered list</property>
+                    <property name="icon-name">view-list-ordered-symbolic</property>
+                    <property name="action-name">win.insert-ordered-listitem</property>
+                    <style>
+                      <class name="flat" />
+                    </style>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton">
+                    <property name="tooltip-text" translatable="1">Check list</property>
+                    <property name="icon-name">checkbox-checked-symbolic</property>
+                    <property name="action-name">win.insert-checklist-listitem</property>
+                    <style>
+                      <class name="flat" />
+                    </style>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton">
+                    <property name="tooltip-text" translatable="1">Blockquote</property>
+                    <property name="icon-name">quotation-symbolic</property>
+                    <property name="action-name">win.insert-blockquote</property>
+                    <style>
+                      <class name="flat" />
+                    </style>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton">
+                    <property name="tooltip-text" translatable="1">Code</property>
+                    <property name="icon-name">code-symbolic</property>
+                    <property name="action-name">win.insert-codeblock</property>
+                    <style>
+                      <class name="flat" />
+                    </style>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton">
+                    <property name="tooltip-text" translatable="1">Link</property>
+                    <property name="icon-name">web-browser-symbolic</property>
+                    <property name="action-name">win.insert-link</property>
+                    <style>
+                      <class name="flat" />
+                    </style>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton">
+                    <property name="tooltip-text" translatable="1">Image</property>
+                    <property name="icon-name">image-x-generic-symbolic</property>
+                    <property name="action-name">win.insert-image</property>
+                    <style>
+                      <class name="flat" />
+                    </style>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkMenuButton">
+                    <property name="tooltip-text" translatable="1">Table</property>
+                    <property name="icon-name">table-symbolic</property>
+                    <property name="popover">insert_table_popover</property>
+                    <property name="direction">up</property>
+                    <style>
+                      <class name="flat" />
+                    </style>
+                  </object>
+                </child>
+              </object>
+            </property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkToggleButton" id="show_extra_controls_button">
+            <property name="tooltip-text" translatable="1">Show more controls</property>
+            <property name="icon-name">go-next</property>
+            <property name="active" bind-source="Toolbar" bind-property="extra_toolbar_revealed" bind-flags="bidirectional"/>
+            <style>
+              <class name="flat" />
+              <class name="show_extra_controls_button" />
+            </style>
+          </object>
+        </child>
+      </object>
+    </property>
+  </template>
+  <object class="GtkPopover" id="insert_table_popover">
+    <property name="child">
+      <object class="TableInput">
+        <property name="rows">4</property>
+        <property name="columns">6</property>
+      </object>
+    </property>
+  </object>
+</interface>
