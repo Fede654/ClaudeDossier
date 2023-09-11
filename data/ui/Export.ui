@@ -30,7 +30,7 @@
             </child>
             <child type="start">
               <object class="GtkButton">
-                <property name="label" translatable="1">Cancel</property>
+                <property name="label" translatable="yes">Cancel</property>
                 <property name="focusable">1</property>
                 <property name="receives-default">1</property>
                 <signal name="clicked" handler="on_destroy" swapped="no"/>
@@ -41,7 +41,7 @@
             </child>
             <child type="end">
               <object class="GtkButton" id="export_button">
-                <property name="label" translatable="1">Export</property>
+                <property name="label" translatable="yes">Export</property>
                 <property name="sensitive" bind-source="AdvancedExportDialog" bind-property="show_texlive_warning" bind-flags="invert-boolean"/>
                 <property name="focusable">1</property>
                 <property name="receives-default">1</property>
@@ -115,9 +115,9 @@
                                             <child>
                                               <object class="AdwActionRow">
                                                 <property name="can-focus">True</property>
-                                                <property name="title" translatable="1">Standalone</property>
+                                                <property name="title" translatable="yes">Standalone</property>
                                                 <property name="activatable-widget">sw_standalone</property>
-                                                <property name="subtitle" translatable="1">Use a header and footer to include things like stylesheets and meta information</property>
+                                                <property name="subtitle" translatable="yes">Use a header and footer to include things like stylesheets and meta information</property>
                                                 <child>
                                                   <object class="GtkSwitch" id="sw_standalone">
                                                     <property name="focusable">1</property>
@@ -130,7 +130,7 @@
                                             <child>
                                               <object class="AdwActionRow">
                                                 <property name="can-focus">True</property>
-                                                <property name="title" translatable="1">Table of Contents</property>
+                                                <property name="title" translatable="yes">Table of Contents</property>
                                                 <property name="activatable-widget">sw_toc</property>
                                                 <child>
                                                   <object class="GtkSwitch" id="sw_toc">
@@ -144,7 +144,7 @@
                                             <child>
                                               <object class="AdwActionRow">
                                                 <property name="can-focus">True</property>
-                                                <property name="title" translatable="1">Number Sections</property>
+                                                <property name="title" translatable="yes">Number Sections</property>
                                                 <property name="activatable-widget">sw_numbers</property>
                                                 <child>
                                                   <object class="GtkSwitch" id="sw_numbers">
@@ -162,12 +162,12 @@
                                       <object class="AdwPreferencesGroup" id="page_options">
                                         <property name="visible" bind-source="AdvancedExportDialog" bind-property="show_page_size_options"/>
                                         <property name="margin-top">18</property>
-                                        <property name="title" translatable="1">Page Size</property>
+                                        <property name="title" translatable="yes">Page Size</property>
                                         <child>
                                           <object class="AdwComboRow" id="cmb_page_size">
                                             <property name="can-focus">True</property>
                                             <property name="activatable">False</property>
-                                            <property name="title" translatable="1">Page Size</property>
+                                            <property name="title" translatable="yes">Page Size</property>
                                             <property name="expression">
                                               <lookup name="string" type="GtkStringObject"/>
                                             </property>
@@ -179,12 +179,12 @@
                                       <object class="AdwPreferencesGroup" id="slide_options">
                                         <property name="visible" bind-source="AdvancedExportDialog" bind-property="show_slide_size_options"/>
                                         <property name="margin-top">18</property>
-                                        <property name="title" translatable="1">Page Size</property>
+                                        <property name="title" translatable="yes">Page Size</property>
                                         <child>
                                           <object class="AdwComboRow" id="cmb_slide_size">
                                             <property name="can-focus">True</property>
                                             <property name="activatable">False</property>
-                                            <property name="title" translatable="1">Page Size</property>
+                                            <property name="title" translatable="yes">Page Size</property>
                                             <property name="expression">
                                               <lookup name="string" type="GtkStringObject"/>
                                             </property>
@@ -196,14 +196,14 @@
                                       <object class="AdwPreferencesGroup" id="html_options">
                                         <property name="visible" bind-source="AdvancedExportDialog" bind-property="show_html_options"/>
                                         <property name="margin-top">18</property>
-                                        <property name="title" translatable="1">HTML Options</property>
+                                        <property name="title" translatable="yes">HTML Options</property>
                                         <child>
                                           <object class="AdwActionRow">
                                             <property name="width-request">100</property>
                                             <property name="can-focus">True</property>
-                                            <property name="title" translatable="1">Self-contained</property>
+                                            <property name="title" translatable="yes">Self-contained</property>
                                             <property name="activatable-widget">sw_self_contained</property>
-                                            <property name="subtitle" translatable="1">Produces an HTML file with no external dependencies</property>
+                                            <property name="subtitle" translatable="yes">Produces an HTML file with no external dependencies</property>
                                             <child>
                                               <object class="GtkSwitch" id="sw_self_contained">
                                                 <property name="focusable">1</property>
@@ -219,7 +219,7 @@
                                       <object class="AdwPreferencesGroup" id="syntax_options">
                                         <property name="visible" bind-source="AdvancedExportDialog" bind-property="show_syntax_options"/>
                                         <property name="margin-top">18</property>
-                                        <property name="title" translatable="1">Syntax Highlighting</property>
+                                        <property name="title" translatable="yes">Syntax Highlighting</property>
                                         <child>
                                           <object class="AdwExpanderRow" id="sw_syntax_highlighting">
                                             <property name="width-request">100</property>
@@ -232,7 +232,7 @@
                                               <object class="AdwComboRow" id="cmb_syntax_highlighting">
                                                 <property name="can-focus">True</property>
                                                 <property name="activatable">False</property>
-                                                <property name="title" translatable="1">Highlight style</property>
+                                                <property name="title" translatable="yes">Highlight style</property>
                                                 <property name="expression">
                                                   <lookup name="string" type="GtkStringObject"/>
                                                 </property>
@@ -246,14 +246,14 @@
                                       <object class="AdwPreferencesGroup" id="beamer_options">
                                         <property name="visible" bind-source="AdvancedExportDialog" bind-property="show_presentation_options"/>
                                         <property name="margin-top">18</property>
-                                        <property name="title" translatable="1">Presentation</property>
+                                        <property name="title" translatable="yes">Presentation</property>
                                         <child>
                                           <object class="AdwActionRow">
                                             <property name="width-request">100</property>
                                             <property name="can-focus">True</property>
-                                            <property name="title" translatable="1">Incremental bullets</property>
+                                            <property name="title" translatable="yes">Incremental bullets</property>
                                             <property name="activatable-widget">sw_incremental_bullets</property>
-                                            <property name="subtitle" translatable="1">Show one bullet point after another in a slideshow</property>
+                                            <property name="subtitle" translatable="yes">Show one bullet point after another in a slideshow</property>
                                             <child>
                                               <object class="GtkSwitch" id="sw_incremental_bullets">
                                                 <property name="focusable">1</property>

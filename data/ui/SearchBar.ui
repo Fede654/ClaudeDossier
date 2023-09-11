@@ -25,7 +25,7 @@
                       <object class="GtkButton" id="previous_result">
                         <property name="focusable">1</property>
                         <property name="receives-default">1</property>
-                        <property name="tooltip-text" translatable="1">Previous Match</property>
+                        <property name="tooltip-text" translatable="yes">Previous Match</property>
                         <property name="icon-name">go-up-symbolic</property>
                         <signal name="clicked" handler="scrolltoprev" swapped="no"/>
                       </object>
@@ -34,7 +34,7 @@
                       <object class="GtkButton" id="next_result">
                         <property name="focusable">1</property>
                         <property name="receives-default">1</property>
-                        <property name="tooltip-text" translatable="1">Next Match</property>
+                        <property name="tooltip-text" translatable="yes">Next Match</property>
                         <property name="icon-name">go-down-symbolic</property>
                         <signal name="clicked" handler="scrolltonext" swapped="no"/>
                       </object>
@@ -49,10 +49,10 @@
                     <property name="homogeneous">1</property>
                     <child>
                       <object class="GtkToggleButton" id="case_sensitive">
-                        <property name="label" translatable="1" comments="Translators: This indicates case sensitivity, so it should be the first vowel of the language in lowercase and uppercase">aA</property>
+                        <property name="label" translatable="yes" comments="Translators: This indicates case sensitivity, so it should be the first vowel of the language in lowercase and uppercase">aA</property>
                         <property name="focusable">1</property>
                         <property name="receives-default">1</property>
-                        <property name="tooltip-text" translatable="1">Case Sensitive</property>
+                        <property name="tooltip-text" translatable="yes">Case Sensitive</property>
                         <signal name="clicked" handler="search" swapped="no"/>
                       </object>
                     </child>
@@ -61,7 +61,7 @@
                         <property name="label" translatable="0">(.*)</property>
                         <property name="focusable">1</property>
                         <property name="receives-default">1</property>
-                        <property name="tooltip-text" translatable="1">Regular Expression</property>
+                        <property name="tooltip-text" translatable="yes">Regular Expression</property>
                         <signal name="clicked" handler="search" swapped="no"/>
                       </object>
                     </child>
@@ -69,7 +69,7 @@
                       <object class="GtkToggleButton" id="replace">
                         <property name="focusable">1</property>
                         <property name="receives-default">1</property>
-                        <property name="tooltip-text" translatable="1">Replace</property>
+                        <property name="tooltip-text" translatable="yes">Replace</property>
                         <property name="active" bind-source="ApostropheSearchBar" bind-property="replace_mode_enabled" bind-flags="bidirectional"/>
                         <property name="icon-name">edit-find-replace-symbolic</property>
                       </object>
@@ -107,7 +107,7 @@
                       <object class="GtkBox" id="replacetools_box">
                         <child>
                           <object class="GtkButton" id="replace_one">
-                            <property name="label" translatable="1">Replace</property>
+                            <property name="label" translatable="yes">Replace</property>
                             <property name="focusable">1</property>
                             <property name="receives-default">1</property>
                             <signal name="clicked" handler="replace_clicked" swapped="no"/>
@@ -115,7 +115,7 @@
                         </child>
                         <child>
                           <object class="GtkButton" id="replace_all">
-                            <property name="label" translatable="1">Replace All</property>
+                            <property name="label" translatable="yes">Replace All</property>
                             <property name="focusable">1</property>
                             <property name="receives-default">1</property>
                             <signal name="clicked" handler="replace_all" swapped="no"/>
