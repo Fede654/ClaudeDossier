@@ -15,13 +15,17 @@
         </child>
         <child type="start">
           <object class="GtkMenuButton">
-            <property name="label" translatable="yes">Open</property>
+            <property name="label" translatable="yes">_Open</property>
+            <property name="use-underline">True</property>
+            <property name="tooltip-text" translatable="yes">Open a markdown file</property>
             <property name="popover">open_menu</property>
           </object>
         </child>
         <child type="start">
           <object class="AdwSplitButton">
-            <property name="label" translatable="yes">Save</property>
+            <property name="label" translatable="yes">_Save</property>
+            <property name="use-underline">True</property>
+            <property name="tooltip-text" translatable="yes">Save the markdown file</property>
             <property name="action-name">win.save</property>
             <property name="menu-model">export_menu</property>
           </object>
@@ -35,9 +39,9 @@
         </child>
         <child type="end">
           <object class="GtkMenuButton" id="menu_button">
-            <property name="menu-model">Menu</property>
+            <property name="menu-model">Main Menu</property>
             <property name="icon-name">open-menu-symbolic</property>
-            <property name="tooltip-text" translatable="yes">Menu</property>
+            <property name="tooltip-text" translatable="yes">Open the Main Menu</property>
             <style>
               <class name="image-button"/>
             </style>
@@ -48,7 +52,9 @@
         </child>
         <child type="end">
           <object class="GtkToggleButton">
-            <property name="tooltip-text" translatable="yes">Find</property>
+            <property name="tooltip-text" translatable="yes">_Find</property>
+            <property name="use-underline">True</property>
+            <property name="tooltip-text" translatable="yes">Search in the File</property>
             <property name="action-name">win.find</property>
             <property name="icon-name">system-search-symbolic</property>
           </object>
