@@ -25,14 +25,16 @@ gi.require_version('Gtk', '4.0')
 from gi.repository import Adw, Gdk, Gio, GLib, GObject, Gtk
 
 from apostrophe import helpers
-from apostrophe.export_dialog import ExportDialog, AdvancedExportDialog
+from apostrophe.editor import Editor
+from apostrophe.export_dialog import AdvancedExportDialog, ExportDialog
 from apostrophe.headerbars import BaseHeaderbar
 from apostrophe.helpers import App
+from apostrophe.preview_handler import PreviewHandler
 from apostrophe.search_and_replace import ApostropheSearchBar
 from apostrophe.settings import Settings
-from apostrophe.preview_handler import PreviewHandler
 from apostrophe.stats_handler import StatsHandler
 from apostrophe.text_view import ApostropheTextView
+from apostrophe.text_view_format_inserter import FormatInserter
 
 LOGGER = logging.getLogger('apostrophe')
 
@@ -43,16 +45,12 @@ class MainWindow(Adw.ApplicationWindow):
     __gtype_name__ = "ApostropheWindow"
 
 
-    editor_scrolledwindow = Gtk.Template.Child()
+    editor = Gtk.Template.Child()
     save_progressbar = Gtk.Template.Child()
     headerbar = Gtk.Template.Child()
     searchbar = Gtk.Template.Child()
-    stats_revealer = Gtk.Template.Child()
-    stats_button = Gtk.Template.Child()
     flap = Gtk.Template.Child()
     preview_stack = Gtk.Template.Child()
-    toast_overlay = Gtk.Template.Child()
-    textview = Gtk.Template.Child()
     discard_infobar = Gtk.Template.Child()
 
     subtitle = GObject.Property(type=str)
@@ -85,6 +83,7 @@ class MainWindow(Adw.ApplicationWindow):
         self.current = File()
 
         # Setup text editor
+        self.textview = self.editor.textview
         self.textview.get_buffer().connect('changed', self.on_text_changed)
 
         # Setup save progressbar an its animator
@@ -107,9 +106,6 @@ class MainWindow(Adw.ApplicationWindow):
         self.progressbar_animation = Adw.TimedAnimation.new(self.save_progressbar, 0, 1, 300, fraction_target)
         self.progressbar_animation.connect("notify::value", on_progressbar_value)
         self.progressbar_animation.connect("done", fade_out_progressbar)
-
-        # Setup stats counter
-        self.stats_handler = StatsHandler(self.stats_button, self.textview)
 
         # Setup preview
         self.preview_handler = PreviewHandler(self, self.textview, self.flap)
@@ -200,11 +196,59 @@ class MainWindow(Adw.ApplicationWindow):
         action.connect("activate", self.do_close_request)
         self.add_action(action)
 
-        scrollbar = self.editor_scrolledwindow.get_vscrollbar()
+        action = Gio.SimpleAction.new("insert-bold")
+        action.connect_after("activate", FormatInserter().insert_bold, self.textview)
+        self.add_action(action)
+
+        action = Gio.SimpleAction.new("insert-italic")
+        action.connect_after("activate", FormatInserter().insert_italic, self.textview)
+        self.add_action(action)
+
+        action = Gio.SimpleAction.new("insert-strikethrough",)
+        action.connect_after("activate", FormatInserter().insert_strikethrough, self.textview)
+        self.add_action(action)
+
+        action = Gio.SimpleAction.new("insert-header", GLib.VariantType("i"))
+        action.connect_after("activate", FormatInserter().insert_header, self.textview)
+        self.add_action(action)
+
+        action = Gio.SimpleAction.new("insert-listitem")
+        action.connect_after("activate", FormatInserter().insert_list_item, self.textview)
+        self.add_action(action)
+
+        action = Gio.SimpleAction.new("insert-checklist-listitem")
+        action.connect_after("activate", FormatInserter().insert_checklist_item, self.textview)
+        self.add_action(action)
+
+        action = Gio.SimpleAction.new("insert-ordered-listitem")
+        action.connect_after("activate", FormatInserter().insert_ordered_list_item, self.textview)
+        self.add_action(action)
+
+        action = Gio.SimpleAction.new("insert-blockquote")
+        action.connect_after("activate", FormatInserter().insert_blockquote, self.textview)
+        self.add_action(action)
+
+        action = Gio.SimpleAction.new("insert-codeblock")
+        action.connect_after("activate", FormatInserter().insert_codeblock, self.textview)
+        self.add_action(action)
+
+        action = Gio.SimpleAction.new("insert-link")
+        action.connect_after("activate", FormatInserter().insert_link, self.textview)
+        self.add_action(action)
+
+        action = Gio.SimpleAction.new("insert-image")
+        action.connect_after("activate", FormatInserter().insert_image, self.textview)
+        self.add_action(action)
+
+        action = Gio.SimpleAction.new("insert-table", GLib.VariantType("ai"))
+        action.connect_after("activate", FormatInserter().insert_table, self.textview)
+        self.add_action(action)
+
+        scrollbar = self.editor.scrolledwindow.get_vscrollbar()
         scrollbar.set_margin_top(54)
         scrollbar.set_margin_bottom(48)
 
-        vadjustment = self.editor_scrolledwindow.get_vadjustment()
+        vadjustment = self.editor.scrolledwindow.get_vadjustment()
         vadjustment.connect("notify::value", self._on_scroll)
 
 
@@ -241,7 +285,7 @@ class MainWindow(Adw.ApplicationWindow):
         """called when there's scroll. If value is 0 there's no scrolling and
            we add an inset shadow
         """
-        if self.editor_scrolledwindow.get_vadjustment().get_value() != 0:
+        if self.editor.scrolledwindow.get_vadjustment().get_value() != 0:
             self.add_css_class("scrolled")
         else:
             self.remove_css_class("scrolled")
@@ -600,9 +644,6 @@ class MainWindow(Adw.ApplicationWindow):
 
         self.check_change(callback)
 
-    def update_default_stat(self):
-        self.stats_handler.update_default_stat()
-
     def reload_preview(self, reshow=False):
         self.preview_handler.reload(reshow=reshow)
 
@@ -635,7 +676,7 @@ class MainWindow(Adw.ApplicationWindow):
             count += 1
             self.settings.set_int("hemingway-toast-count", count)
 
-            self.toast_overlay.add_toast(self.hemingway_toast)
+            self.editor.toast_overlay.add_toast(self.hemingway_toast)
 
     def show_hemingway_help(self, *args):
         hemingway_dialog = Gtk.Builder.new_from_resource("/org/gnome/gitlab/somas/Apostrophe/ui/AboutHemingway.ui")\
@@ -645,19 +686,11 @@ class MainWindow(Adw.ApplicationWindow):
 
     @Gtk.Template.Callback()
     def reveal_headerbar_bottombar(self, *args):
-
-        self.reveal_bottombar()
+        self.editor.reveal_bottombar()
 
         if not self.headerbar.get_reveal_child():
             self.headerbar.set_reveal_child(True)
             self.remove_css_class("no-headerbar")
-
-    @Gtk.Template.Callback()
-    def reveal_bottombar(self, *args):
-        if not self.stats_revealer.get_reveal_child():
-            self.stats_revealer.set_reveal_child(True)
-            self.stats_revealer.set_halign(Gtk.Align.END)
-            self.stats_revealer.queue_resize()
 
     def hide_headerbar_bottombar(self):
         if self.searchbar.search_mode_enabled or\
@@ -668,9 +701,7 @@ class MainWindow(Adw.ApplicationWindow):
             self.headerbar.set_reveal_child(False)
             self.add_css_class("no-headerbar")
 
-        if self.stats_revealer.get_reveal_child():
-            self.stats_revealer.set_reveal_child(False)
-            self.stats_revealer.set_halign(Gtk.Align.FILL)
+        self.editor.hide_bottombar()
 
     # TODO: this has to go
     def update_headerbar_title(self,
@@ -702,6 +733,7 @@ class MainWindow(Adw.ApplicationWindow):
         self.settings.set_enum("preview-mode", self.preview_layout)
         self.settings.set_boolean("preview-active", self.preview)
         self.settings.set_boolean("hemingway-mode", self.textview.buffer.hemingway_mode)
+        self.settings.set_boolean("toolbar-active", self.editor.toolbar_revealer.extra_toolbar_revealed)
 
     def do_close_request(self, *args):
         LOGGER.info('close request called')

@@ -28,13 +28,13 @@
         <child>
           <object class='GtkShortcut'>
             <property name='trigger'>&lt;Control&gt;i</property>
-            <property name='action'>signal(insert-italic)</property>
+            <property name='action'>action(win.insert-italic)</property>
           </object>
         </child>
         <child>
           <object class='GtkShortcut'>
             <property name='trigger'>&lt;Control&gt;b</property>
-            <property name='action'>signal(insert-bold)</property>
+            <property name='action'>action(win.insert-bold)</property>
           </object>
         </child>
         <child>
@@ -46,41 +46,41 @@
         <child>
           <object class='GtkShortcut'>
             <property name='trigger'>&lt;Control&gt;u</property>
-            <property name='action'>signal(insert-listitem)</property>
+            <property name='action'>action(win.insert-listitem)</property>
           </object>
         </child>
         <child>
           <object class='GtkShortcut'>
             <property name='trigger'>&lt;Control&gt;&lt;Shift&gt;d</property>
-            <property name='action'>signal(insert-strikethrough)</property>
+            <property name='action'>action(win.insert-strikethrough)</property>
           </object>
         </child>
         <child>
           <object class='GtkShortcut'>
             <property name='trigger'>&lt;Control&gt;1</property>
-            <property name='action'>signal(insert-header)</property>
-            <property name='arguments'>(1,)</property>
+            <property name='action'>action(win.insert-header)</property>
+            <property name='arguments'>1</property>
           </object>
         </child>
         <child>
           <object class='GtkShortcut'>
             <property name='trigger'>&lt;Control&gt;2</property>
-            <property name='action'>signal(insert-header)</property>
-            <property name='arguments'>(2,)</property>
+            <property name='action'>action(win.insert-header)</property>
+            <property name='arguments'>2</property>
           </object>
         </child>
         <child>
           <object class='GtkShortcut'>
             <property name='trigger'>&lt;Control&gt;3</property>
-            <property name='action'>signal(insert-header)</property>
-            <property name='arguments'>(3,)</property>
+            <property name='action'>action(win.insert-header)</property>
+            <property name='arguments'>3</property>
           </object>
         </child>
         <child>
           <object class='GtkShortcut'>
             <property name='trigger'>&lt;Control&gt;4</property>
-            <property name='action'>signal(insert-header)</property>
-            <property name='arguments'>(4,)</property>
+            <property name='action'>action(win.insert-header)</property>
+            <property name='arguments'>4</property>
           </object>
         </child>
       </object>

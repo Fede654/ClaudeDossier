@@ -72,20 +72,36 @@
   font-size: 1.636em;
 }
 
-
-.stats-button button{
-  color: alpha(@theme_fg_color, 0.7);
-  background-color: alpha(@view_bg_color, 0.8);
-  transition: 100ms ease-in;
-
-  border-radius: 6px;
+.bottombar_background box{
+  transition: 250ms ease-in;
+  background-color: alpha(@view_bg_color, 0);
 }
 
-.stats-button button:hover,
-.stats-button button:checked {
-  color: @theme_text_color;
-  background-color: mix(@theme_fg_color, @view_bg_color, 0.7);
-} 
+.bottombar_background.shown box{
+  background-color: alpha(@view_bg_color, 0.95);
+}
+
+.bottombar button {
+  color: alpha(@theme_fg_color, 0.7);
+}
+
+.bottombar button:hover {
+  color: @theme_fg_color;
+}
+
+.bottombar .show_extra_controls_button image{
+  transition: 250ms ease-in;
+  transform: scale(1,1);
+}
+
+.bottombar .show_extra_controls_button image{
+  transition: 250ms ease-in;
+  transform: scale(1,1);
+}
+
+.bottombar .show_extra_controls_button.active image{
+  transform: scale(-1,1);
+}
 
 .lexikon {
   font-family: serif;
@@ -261,4 +277,45 @@
 .apostrophe-window.scrolled:not(.no-headerbar) .preview-stack{
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
+}
+
+.tableinput button {
+  border-radius: 0;
+  box-shadow: inset 0 0 0 1px alpha(currentColor, .05);
+}
+
+.tableinput button:first-child:dir(ltr) {
+  border-top-left-radius: 6px;
+}
+.tableinput button:last-child:dir(ltr) {
+  border-bottom-right-radius: 6px;
+}
+.tableinput button.top-end:dir(ltr) {
+  border-top-right-radius: 6px;
+}
+.tableinput button.bottom-start:dir(ltr) {
+  border-bottom-left-radius: 6px;
+}
+
+.tableinput button:first-child:dir(rtl) {
+  border-top-right-radius: 6px;
+}
+.tableinput button:last-child:dir(rtl) {
+  border-bottom-left-radius: 6px;
+}
+.tableinput button.top-end:dir(rtl) {
+  border-top-left-radius: 6px;
+}
+.tableinput button.bottom-start:dir(rtl) {
+  border-bottom-right-radius: 6px;
+}
+
+.tableinput .hovered {
+  background: alpha(@accent_color, .30);
+}
+
+.tableinput label{
+  font-size: 2em;
+  font-variant-numeric: tabular-nums;
+  font-weight: bold;
 }

@@ -7,7 +7,7 @@ from apostrophe.helpers import user_action
 gi.require_version('Gtk', '4.0')
 
 from gi.repository import GObject, Gtk
-from apostrophe.markup_regex import LIST, ORDERED_LIST
+from apostrophe.markup_regex import LIST, CHECKLIST, ORDERED_LIST
 
 class ApostropheTextBuffer(Gtk.TextBuffer):
     __gtype_name__ = "ApostropheTextBuffer"
@@ -49,7 +49,7 @@ class ApostropheTextBuffer(Gtk.TextBuffer):
         cursor_iter = self.get_iter_at_mark(self.get_insert())
         end_line = cursor_iter.copy()
         if not end_line.ends_line():
-            end_line.forward_line()
+            end_line.forward_to_line_end()
         start_line = end_line.copy()
         start_line.backward_chars(end_line.get_line_offset())
 
@@ -141,6 +141,18 @@ class ApostropheTextBuffer(Gtk.TextBuffer):
                                 match.group("delimiter") +\
                                 " "
                     text += next_prefix
+            # if there's no text when the user hits enter we exit the list mode
+            else:
+                with self._temp_disable_hemingway():
+                    self.delete(start_line, end_line)
+                position = self.get_iter_at_mark(self.get_insert())
+
+        # CHECKLIST
+        match = re.match(CHECKLIST, current_sentence)
+        if match:
+            if match.group("text"):
+                next_prefix = match.group("indent") + match.group("symbol") + " [ ] "
+                text += next_prefix
             # if there's no text when the user hits enter we exit the list mode
             else:
                 with self._temp_disable_hemingway():

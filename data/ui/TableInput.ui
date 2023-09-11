@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0" />
+  <requires lib="adw" version="1.0" />
+  <template class="TableInput" parent="GtkOverlay">
+    <style>
+      <class name="tableinput" />
+    </style>
+    <property name="child">
+      <object class="GtkGrid" id="grid">
+        <property name="column-spacing">2</property>
+        <property name="row-spacing">2</property>
+      </object>
+    </property>
+    <child type="overlay">
+      <object class="GtkLabel" id="label">
+        <property name="sensitive">False</property>
+      </object>
+    </child>
+  </template>
+</interface>

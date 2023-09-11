@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0" />
+  <requires lib="adw" version="1.0" />
+  <template class="Statsbar" parent="GtkRevealer">
+    <property name="valign">end</property>
+    <property name="halign">end</property>
+    <property name="transition-type">crossfade</property>
+    <property name="transition-duration">750</property>
+    <property name="reveal-child">1</property>
+    <property name="child">
+      <object class="GtkMenuButton" id="stats_button">
+        <property name="always-show-arrow">True</property>
+        <property name="tooltip-text" translatable="yes">Show Statistics</property>
+        <property name="label" translatable="true">0 Words</property>
+        <property name="halign">end</property>
+        <property name="valign">end</property>
+        <property name="margin-end">6</property>
+        <property name="margin-bottom">6</property>
+        <style>
+          <class name="stats-button" />
+          <class name="flat" />
+        </style>
+      </object>
+    </property>
+  </template>
+</interface>

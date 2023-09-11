@@ -206,7 +206,7 @@ class Application(Adw.Application):
             for group in self.windows:
                 for window in group.list_windows():
                     if isinstance(window, MainWindow):
-                        window.update_default_stat()
+                        window.editor.update_default_stat()
 
     def on_new_window(self, _action, _value):
         window = MainWindow(self)
