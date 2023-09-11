@@ -29,7 +29,7 @@ from .settings import Settings
 
 
 @Gtk.Template(resource_path='/org/gnome/gitlab/somas/Apostrophe/ui/Editor.ui')
-class Editor(Gtk.Overlay):
+class Editor(Adw.Bin):
 
     __gtype_name__ = "Editor"
 
