@@ -111,7 +111,7 @@
                                             <property name="width-request">100</property>
                                             <property name="can-focus">True</property>
                                             <property name="activatable">False</property>
-                                            <property name="title">Options</property>
+                                            <property name="title" translatable="1">Options</property>
                                             <child>
                                               <object class="AdwActionRow">
                                                 <property name="can-focus">True</property>
@@ -225,7 +225,7 @@
                                             <property name="width-request">100</property>
                                             <property name="can-focus">True</property>
                                             <property name="selectable">False</property>
-                                            <property name="title">Use Syntax Highlighting</property>
+                                            <property name="title" translatable="1">Use Syntax Highlighting</property>
                                             <property name="enable-expansion">False</property>
                                             <property name="show-enable-switch">True</property>
                                             <child>
