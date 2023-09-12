@@ -444,13 +444,20 @@ class FormatInserter:
 
         def filechooser_cb(dialog, result):
             try:
-                gfile_path = dialog.open_finish(result)
+                image = dialog.open_finish(result)
             except GLib.GError as error:
                 # we don't care much about what happened, just that we didn't
                 # get an uri
                 text_view.grab_focus()
                 return
-            path = urllib.parse.quote(gfile_path)
+            self.settings = Settings.new()
+            basepath = self.settings.get_string("open-file-path")
+            if basepath != "/":
+                basepath = Gio.File.new_for_path()
+                path = urllib.parse.quote(basepath.get_relative_path(image))
+            else:
+                path = urllib.parse.quote(image.get_path())
+
             helptext = _("image caption")
 
             cursor_mark = text_buffer.get_insert()
