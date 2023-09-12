@@ -6,8 +6,8 @@
 msgid ""
 msgstr "Project-Id-Version: Apostrophe\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2022-12-17 00:19+0000\n"
-"PO-Revision-Date: 2023-02-04 17:00+0100\n"
+"POT-Creation-Date: 2023-09-11 15:13+0000\n"
+"PO-Revision-Date: 2023-09-12 17:00+0100\n"
 "Last-Translator: Asier Sarasua Garmendia <asiersarasua@ni.eus>\n"
 "Language-Team: Basque <librezale@librezale.eus>\n"
 "Language: eu\n"
@@ -137,6 +137,14 @@ msgstr "Testu-tamaina"
 msgid "Preferred relative size for the text."
 msgstr "Testuaren tamaina erlatibo hobetsia."
 
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:120
+msgid "Toolbar"
+msgstr "Tresna-barra"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:121
+msgid "Whether the toolbar is shown or not."
+msgstr "Tresna-barra erakutsiko den ala ez."
+
 #: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:6
 msgid "Edit Markdown in style"
 msgstr "Editatu markdown formatuko testua estiloarekin"
@@ -211,8 +219,8 @@ msgstr "It_xi"
 
 #: data/ui/Export.ui:33 apostrophe/export_dialog.py:132
 #: apostrophe/export_dialog.py:344 apostrophe/export_dialog.py:349
-#: apostrophe/main_window.py:400 apostrophe/main_window.py:471
-#: apostrophe/main_window.py:563
+#: apostrophe/main_window.py:444 apostrophe/main_window.py:517
+#: apostrophe/main_window.py:609
 msgid "Cancel"
 msgstr "Utzi"
 
@@ -220,6 +228,10 @@ msgstr "Utzi"
 #: apostrophe/export_dialog.py:343 apostrophe/export_dialog.py:347
 msgid "Export"
 msgstr "Esportatu"
+
+#: data/ui/Export.ui:114
+msgid "Options"
+msgstr "Aukerak"
 
 #: data/ui/Export.ui:118
 msgid "Standalone"
@@ -260,6 +272,10 @@ msgstr "Kanpoko mendekotasunik ez duen HTML fitxategia sortzen du"
 msgid "Syntax Highlighting"
 msgstr "Sintaxiaren nabarmentzea"
 
+#: data/ui/Export.ui:228
+msgid "Use Syntax Highlighting"
+msgstr "Erabili sintaxiaren nabarmentzea"
+
 #: data/ui/Export.ui:235
 msgid "Highlight style"
 msgstr "Nabarmentze-estiloa"
@@ -280,60 +296,71 @@ msgstr "Erakutsi buleta bat bestearen atzetik diapositiba-aurkezpenetan"
 msgid "New"
 msgstr "Berria"
 
-#: data/ui/Headerbar.ui:18 apostrophe/main_window.py:470
-msgid "Open"
-msgstr "Ireki"
+#: data/ui/Headerbar.ui:18
+msgid "_Open"
+msgstr "_Ireki"
 
-#: data/ui/Headerbar.ui:24 apostrophe/main_window.py:399
-#: apostrophe/main_window.py:565
-msgid "Save"
-msgstr "Gorde"
+#: data/ui/Headerbar.ui:20
+msgid "Open a markdown file"
+msgstr "Ireki markdown-fitxategi bat"
 
-#: data/ui/Headerbar.ui:40
-msgid "Menu"
-msgstr "Menua"
+#: data/ui/Headerbar.ui:26
+msgid "_Save"
+msgstr "_Gorde"
 
-#: data/ui/Headerbar.ui:51
-msgid "Find"
-msgstr "Aurkitu"
+#: data/ui/Headerbar.ui:28
+msgid "Save the markdown file"
+msgstr "Gorde markdown fitxategia"
 
-#: data/ui/Headerbar.ui:74
+#: data/ui/Headerbar.ui:44
+msgid "Open the Main Menu"
+msgstr "Ireki menu nagusia"
+
+#: data/ui/Headerbar.ui:55
+msgid "_Find"
+msgstr "A_urkitu"
+
+#: data/ui/Headerbar.ui:57
+msgid "Search in the File"
+msgstr "Bilatu fitxategian"
+
+#: data/ui/Headerbar.ui:80
 msgid "_Hemingway Mode"
 msgstr "He_mingway modua"
 
-#: data/ui/Headerbar.ui:78
+#: data/ui/Headerbar.ui:84
 msgid "_Focus Mode"
 msgstr "_Fokuratze modua"
 
-#: data/ui/Headerbar.ui:84
+#: data/ui/Headerbar.ui:90
 msgid "Find and _Replace"
 msgstr "Bilatu eta _ordeztu"
 
-#: data/ui/Headerbar.ui:90
+#: data/ui/Headerbar.ui:96
 msgid "_Preferences"
 msgstr "_Hobespenak"
 
-#: data/ui/Headerbar.ui:96
+#: data/ui/Headerbar.ui:102
 msgid "Open _Tutorial"
 msgstr "Ireki t_utoriala"
 
-#: data/ui/Headerbar.ui:101
+#: data/ui/Headerbar.ui:107
 msgid "_Keyboard Shortcuts"
 msgstr "Las_ter-teklak"
 
-#: data/ui/Headerbar.ui:105
+#: data/ui/Headerbar.ui:111
 msgid "_About Apostrophe"
 msgstr "Apostrophe aplikazioari _buruz"
 
-#: data/ui/Headerbar.ui:116
+#: data/ui/Headerbar.ui:122
 msgid "_Save As..."
 msgstr "_Gorde honela..."
 
-#: data/ui/Headerbar.ui:139
+#: data/ui/Headerbar.ui:145
 msgid "Advanced _Export…"
 msgstr "_Esportazio aurreratua…"
 
-#: data/ui/Headerbar.ui:145
+#: data/ui/Headerbar.ui:151
 msgid "_Copy HTML"
 msgstr "_Kopiatu HTMLa"
 
@@ -574,6 +601,38 @@ msgctxt "shortcut window"
 msgid "Select all text"
 msgstr "Hautatu testu guztia"
 
+#: data/ui/TexliveWarning.ui:25 data/ui/TexliveWarning.ui:79
+msgid "TexLive Required"
+msgstr "TeXLive behar da"
+
+#: data/ui/TexliveWarning.ui:33
+msgid ""
+"Apostrophe needs the TeXLive extension\n"
+"in order to export PDF or LaTeX files.\n"
+"\n"
+"Install it from Apostrophe's page in Software\n"
+"or by running the following command in a terminal:"
+msgstr "Apostrophe aplikazioak TeXLive hedapena behar\n"
+"du PDF edo LaTeX fitxategiak esportatzeko.\n"
+"\n"
+"Instalatu ezasu Software aplikazioa erabiliz edo\n"
+"terminal batean honako komandoa exekutatuz:"
+
+#: data/ui/TexliveWarning.ui:53
+msgid "Copy to clipboard"
+msgstr "Kopiatu arbelean"
+
+#: data/ui/TexliveWarning.ui:87
+msgid ""
+"Apostrophe needs TeXLive\n"
+"in order to export PDF or LaTeX files.\n"
+"\n"
+"Install it from your distribution repositories"
+msgstr "Apostrophe aplikazioak TeXLive behar du\n"
+"PDF edo LaTeX fitxategiak esportatzeko.\n"
+"\n"
+"Instalatu ezazu banaketaren biltegietatik."
+
 #: data/ui/ThemeSwitcher.ui:17
 msgid "Use System Colors"
 msgstr "Erabili sistemaren koloreak"
@@ -590,23 +649,15 @@ msgstr "Erabili sepia koloreak"
 msgid "Use Dark Colors"
 msgstr "Erabili kolore ilunak"
 
-#: data/ui/Window.ui:58
-msgid "Show Statistics"
-msgstr "Erakutsi estatistikak"
-
-#: data/ui/Window.ui:59
-msgid "0 Words"
-msgstr "0 hitz"
-
-#: data/ui/Window.ui:129
+#: data/ui/Window.ui:86
 msgid "File Has Changed on Disk"
 msgstr "Fitxategia diskoan aldatu da"
 
-#: data/ui/Window.ui:139
+#: data/ui/Window.ui:96
 msgid "The file has been changed by another program."
 msgstr "Fitxategia beste programa batek aldatu du."
 
-#: data/ui/Window.ui:147
+#: data/ui/Window.ui:104
 msgid "_Discard Changes and Reload"
 msgstr "_Baztertu aldaketak eta birkargatu"
 
@@ -678,46 +729,54 @@ msgid "adverb"
 msgstr "adberbioa"
 
 #. Hemingway Toast
-#: apostrophe/main_window.py:132
+#: apostrophe/main_window.py:128
 msgid "Text can't be deleted while on Hemingway mode"
 msgstr "Testua ezin da aldatu Hemingway moduan"
 
-#: apostrophe/main_window.py:135
+#: apostrophe/main_window.py:131
 msgid "Tell me more"
 msgstr "Zergatik?"
 
-#: apostrophe/main_window.py:396
+#: apostrophe/main_window.py:440
 msgid "Save your File"
 msgstr "Gorde zure fitxategia"
 
-#: apostrophe/main_window.py:460
+#: apostrophe/main_window.py:443 apostrophe/main_window.py:611
+msgid "Save"
+msgstr "Gorde"
+
+#: apostrophe/main_window.py:506
 msgid "Markdown Files"
 msgstr "Markdown fitxategiak"
 
-#: apostrophe/main_window.py:464
+#: apostrophe/main_window.py:510
 msgid "Plain Text Files"
 msgstr "Testu soileko fitxategiak"
 
-#: apostrophe/main_window.py:467
+#: apostrophe/main_window.py:513
 msgid "Open a .md file"
 msgstr "Ireki .md fitxategia"
 
-#: apostrophe/main_window.py:557
+#: apostrophe/main_window.py:516
+msgid "Open"
+msgstr "Ireki"
+
+#: apostrophe/main_window.py:603
 msgid "Save changes?"
 msgstr "Gorde aldaketak?"
 
-#: apostrophe/main_window.py:558
+#: apostrophe/main_window.py:604
 #, python-format
 msgid ""
 "“%s” contains unsaved changes. If you don’t save, all your changes will be "
 "permanently lost."
 msgstr "“%s” dokumentuak gorde gabeko aldaketak ditu. Gordetzen ez baduzu, aldaketa guztiak betiko galduko dira."
 
-#: apostrophe/main_window.py:564
+#: apostrophe/main_window.py:610
 msgid "Discard"
 msgstr "Baztertu"
 
-#: apostrophe/main_window.py:734 apostrophe/main_window.py:758
+#: apostrophe/main_window.py:768 apostrophe/main_window.py:792
 msgid "New File"
 msgstr "Fitxategi berria"
 
@@ -785,29 +844,76 @@ msgstr "{:d}:{:02d}:{:02d} of {:d}:{:02d}:{:02d} irakurtzeko denbora"
 msgid "{:d}:{:02d}:{:02d} Read Time"
 msgstr "{:d}:{:02d}:{:02d} irakurtzeko denbora"
 
-#: apostrophe/text_view_format_inserter.py:14
+#: apostrophe/text_view_format_inserter.py:24
 msgid "italic text"
 msgstr "testu etzana"
 
-#: apostrophe/text_view_format_inserter.py:19
+#: apostrophe/text_view_format_inserter.py:29
 msgid "bold text"
 msgstr "testu lodia"
 
-#: apostrophe/text_view_format_inserter.py:24
+#: apostrophe/text_view_format_inserter.py:34
 msgid "strikethrough text"
 msgstr "testu marratua"
 
-#: apostrophe/text_view_format_inserter.py:50
+#: apostrophe/text_view_format_inserter.py:49
+#: apostrophe/text_view_format_inserter.py:117
+#: apostrophe/text_view_format_inserter.py:187
 msgid "Item"
 msgstr "Elementua"
 
-#: apostrophe/text_view_format_inserter.py:97
+#: apostrophe/text_view_format_inserter.py:258
 msgid "Header"
 msgstr "Goiburua"
 
-#: apostrophe/text_view.py:177 apostrophe/text_view.py:179
+#: apostrophe/text_view_format_inserter.py:329
+msgid "Quote"
+msgstr "Komatxoa"
+
+#: apostrophe/text_view_format_inserter.py:371
+msgid "code"
+msgstr "kodea"
+
+#: apostrophe/text_view_format_inserter.py:394
+msgid "https://www.example.com"
+msgstr "https://www.adibidea.com"
+
+#: apostrophe/text_view_format_inserter.py:395
+msgid "link text"
+msgstr "esteka-testua"
+
+#: apostrophe/text_view_format_inserter.py:429
+#: apostrophe/text_view_format_inserter.py:454
+msgid "image caption"
+msgstr "irudi-epigrafea"
+
+#: apostrophe/text_view_format_inserter.py:435
+msgid "Image"
+msgstr "Irudia"
+
+#: apostrophe/text_view_format_inserter.py:441
+msgid "Select an image"
+msgstr "Hautatu irudi bat"
+
+#: apostrophe/text_view_format_inserter.py:543
+msgid ""
+"\n"
+"code\n"
+msgstr "\n"
+"kodea\n"
+
+#: apostrophe/text_view.py:169 apostrophe/text_view.py:171
 msgid "web page"
 msgstr "web-orria"
+
+#~ msgid "Menu"
+#~ msgstr "Menua"
+
+#~ msgid "Show Statistics"
+#~ msgstr "Erakutsi estatistikak"
+
+#~ msgid "0 Words"
+#~ msgstr "0 hitz"
 
 #~ msgid "Apostrophe website"
 #~ msgstr "Apostrophe aplikazioaren webgunea"
@@ -823,9 +929,6 @@ msgstr "web-orria"
 
 #~ msgid "CSS File"
 #~ msgstr "CSS fitxategia"
-
-#~ msgid "Select CSS file"
-#~ msgstr "Hautatu CSS fitxategia"
 
 #~ msgid "Save as…"
 #~ msgstr "Gorde honela…"
