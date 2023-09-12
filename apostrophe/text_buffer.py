@@ -186,13 +186,12 @@ class ApostropheTextBuffer(Gtk.TextBuffer):
             case "\t":
                 self._indent()
                 return
-            case ("(" | "[" | "{" | '"' | "'" | "<") as x:
+            case ("(" | "[" | "{" | '"' | "<") as x:
                 pairs = {
                     "(" : ")",
                     "[" : "]",
                     "{" : "}",
                     '"' : '"',
-                    "'" : "'",
                     "<" : ">"
                 }
 
