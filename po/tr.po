@@ -1,26 +1,26 @@
 # Turkish translation for Apostrophe.
-# Copyright (C) 2022 Apostrophe's COPYRIGHT HOLDER
+# Copyright (C) 2022-2023 Apostrophe's COPYRIGHT HOLDER
 # This file is distributed under the same license as the Apostrophe package.
 #
 # Çağatay Yiğit Şahin <cyigitsahin@outlook.com>
 # Bünyamin Kırmızı <bunyamin.kirmizi@outlook.com>, 2022.
 # Emin Tufan Çetin <etcetin@gmail.com>, 2022.
-# Sabri Ünal <libreajans@gmail.com>, 2022.
+# Sabri Ünal <libreajans@gmail.com>, 2022, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2023-01-08 20:40+0000\n"
-"PO-Revision-Date: 2022-12-19 19:30+0300\n"
+"POT-Creation-Date: 2023-09-17 10:04+0000\n"
+"PO-Revision-Date: 2023-09-18 17:33+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
-"Language-Team: Türkçe <takim@gnome.org>\n"
+"Language-Team: Türkçe <takim@gnome.org.tr>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:3
 #: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:5
@@ -36,7 +36,7 @@ msgstr ""
 
 #: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:6
 msgid "Apostrophe, an elegant, distraction-free markdown editor"
-msgstr "Apostrophe, zarif, dikkat dağıtmayan bir markdown düzenleyici"
+msgstr "Apostrophe; güzel , ilgi dağıtmayan bir markdown düzenleyici"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:29
 msgid "Color scheme"
@@ -53,7 +53,7 @@ msgstr "Yazarken yazım denetimi yap"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:37
 msgid "Enable or disable spellchecking."
-msgstr "Yazım denetimini etkinleştirin veya devre dışı bırakın."
+msgstr "Yazım denetimini etkinleştir veya devre dışı bırakın."
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:43
 msgid "Synchronize editor/preview scrolling"
@@ -61,7 +61,7 @@ msgstr "Düzenleyici/ön izleme kaydırmayı eşzamanla"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:44
 msgid "Keep the editor and preview scroll positions in sync."
-msgstr "Düzenleyici ve ön izleme kaydırma konumlarını senkronize tutun."
+msgstr "Düzenleyici ve ön izleme kaydırma konumlarını eşzamanlı tutun."
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:50
 #: data/ui/Preferences.ui:70
@@ -104,7 +104,7 @@ msgstr "Satır başına karakter sayısı"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:79
 msgid "Maximum number of characters per line within the editor."
-msgstr "Düzenleyici içinde satır başına maksimum karakter sayısı."
+msgstr "Düzenleyici içinde satır başına en çok karakter sayısı."
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:85
 #: data/ui/AboutHemingway.ui:6
@@ -147,14 +147,21 @@ msgstr "Metin boyutu"
 msgid "Preferred relative size for the text."
 msgstr "Metin için yeğlenen göreli boyut."
 
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:120
+msgid "Toolbar"
+msgstr "Araç çubuğu"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:121
+msgid "Whether the toolbar is shown or not."
+msgstr "Araç çubuğunun gösterilme durumu."
+
 #: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:6
 msgid "Edit Markdown in style"
-msgstr "Markdown’ın tarzını düzenleyin"
+msgstr "Markdown’ın şıkça düzenle"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:8
 msgid "Focus on your writing with a clean, distraction-free markdown editor."
-msgstr ""
-"Temiz, dikkat dağıtmayan bir markdown düzenleyiciyle yazınıza odaklanın."
+msgstr "Temiz, ilgi dağıtmayan bir markdown düzenleyiciyle yazınıza odaklanın."
 
 #: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:9
 msgid "Features:"
@@ -166,7 +173,7 @@ msgstr "Rahat yazmaya uygun kullanıcı arayüzü"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:12
 msgid "A distraction-free mode"
-msgstr "Dikkat dağıtmayan kip"
+msgstr "İlgi dağıtmayan kip"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:13
 msgid "Dark, light and sepia themes"
@@ -224,8 +231,9 @@ msgstr ""
 "silmenize veya düzenlemenize izin vermez.\n"
 "\n"
 "Yalnızca ilerlemek sinir bozucu olabilir; ancak yazma becerilerinizi "
-"geliştirmek, odaklanmak veya eldeki görevle başka bir anlayışla yüzleşmek "
-"için ilginç bir alıştırma olabilir."
+"geliştirmek, odaklanmak ya da eldeki görevle başka bir anlayışla yüzleşmek "
+"için ilginç bir alıştırma olabilir.\n"
+"  "
 
 #: data/ui/AboutHemingway.ui:13
 msgid "_Close"
@@ -233,8 +241,8 @@ msgstr "_Kapat"
 
 #: data/ui/Export.ui:33 apostrophe/export_dialog.py:132
 #: apostrophe/export_dialog.py:344 apostrophe/export_dialog.py:349
-#: apostrophe/main_window.py:400 apostrophe/main_window.py:473
-#: apostrophe/main_window.py:565
+#: apostrophe/main_window.py:444 apostrophe/main_window.py:517
+#: apostrophe/main_window.py:609
 msgid "Cancel"
 msgstr "İptal et"
 
@@ -242,6 +250,10 @@ msgstr "İptal et"
 #: apostrophe/export_dialog.py:343 apostrophe/export_dialog.py:347
 msgid "Export"
 msgstr "Dışa aktar"
+
+#: data/ui/Export.ui:114
+msgid "Options"
+msgstr "Seçenekler"
 
 #: data/ui/Export.ui:118
 msgid "Standalone"
@@ -252,8 +264,7 @@ msgid ""
 "Use a header and footer to include things like stylesheets and meta "
 "information"
 msgstr ""
-"Stil sayfası ve meta bilgi gibi şeyleri eklemek için üst bilgi ve alt bilgi "
-"kullan"
+"Biçem sayfası ve üst bilgi gibi şeyleri eklemek için başlık ve altlık kullan"
 
 #: data/ui/Export.ui:133
 msgid "Table of Contents"
@@ -284,6 +295,10 @@ msgstr "Dış bağımlılıkları olmayan HTML dosyası üretir"
 msgid "Syntax Highlighting"
 msgstr "Söz Dizimi Vurgulaması"
 
+#: data/ui/Export.ui:228
+msgid "Use Syntax Highlighting"
+msgstr "Söz Dizimi Vurgulaması Kullan"
+
 #: data/ui/Export.ui:235
 msgid "Highlight style"
 msgstr "Vurgu biçimi"
@@ -294,70 +309,81 @@ msgstr "Sunum"
 
 #: data/ui/Export.ui:254
 msgid "Incremental bullets"
-msgstr "Artan sayılı madde işaretleri"
+msgstr "Artan sayılı madde imleri"
 
 #: data/ui/Export.ui:256
 msgid "Show one bullet point after another in a slideshow"
-msgstr "Slayt gösterisinde madde imlerini birbiri ardına gösterme"
+msgstr "Slayt gösterisinde madde imlerini birbiri ardına göster"
 
 #: data/ui/Headerbar.ui:11
 msgid "New"
 msgstr "Yeni"
 
-#: data/ui/Headerbar.ui:18 apostrophe/main_window.py:472
-msgid "Open"
-msgstr "Aç"
+#: data/ui/Headerbar.ui:18
+msgid "_Open"
+msgstr "_Aç"
 
-#: data/ui/Headerbar.ui:24 apostrophe/main_window.py:399
-#: apostrophe/main_window.py:567
-msgid "Save"
-msgstr "Kaydet"
+#: data/ui/Headerbar.ui:20
+msgid "Open a markdown file"
+msgstr "Markdown dosyası aç"
 
-#: data/ui/Headerbar.ui:40
-msgid "Menu"
-msgstr "Menü"
+#: data/ui/Headerbar.ui:26
+msgid "_Save"
+msgstr "_Kaydet"
 
-#: data/ui/Headerbar.ui:51
-msgid "Find"
-msgstr "Bul"
+#: data/ui/Headerbar.ui:28
+msgid "Save the markdown file"
+msgstr "Markdown dosyasını kaydet"
 
-#: data/ui/Headerbar.ui:74
+#: data/ui/Headerbar.ui:44
+msgid "Open the Main Menu"
+msgstr "Ana Menüyü Aç"
+
+#: data/ui/Headerbar.ui:55
+msgid "_Find"
+msgstr "_Bul"
+
+#: data/ui/Headerbar.ui:57
+msgid "Search in the File"
+msgstr "Dosyada Ara"
+
+#: data/ui/Headerbar.ui:80
 msgid "_Hemingway Mode"
 msgstr "_Hemingway Kipi"
 
-#: data/ui/Headerbar.ui:78
+#: data/ui/Headerbar.ui:84
 msgid "_Focus Mode"
 msgstr "_Odaklanma Kipi"
 
-#: data/ui/Headerbar.ui:84
+#: data/ui/Headerbar.ui:90
 msgid "Find and _Replace"
 msgstr "Bul ve _Değiştir"
 
-#: data/ui/Headerbar.ui:90
+#: data/ui/Headerbar.ui:96
 msgid "_Preferences"
 msgstr "_Tercihler"
 
-#: data/ui/Headerbar.ui:96
+#: data/ui/Headerbar.ui:102
 msgid "Open _Tutorial"
 msgstr "_Eğitimi Aç"
 
-#: data/ui/Headerbar.ui:101
+#: data/ui/Headerbar.ui:107
 msgid "_Keyboard Shortcuts"
 msgstr "Klavye _Kısayolları"
 
-#: data/ui/Headerbar.ui:105
+#: data/ui/Headerbar.ui:111
 msgid "_About Apostrophe"
 msgstr "Apostrophe _Hakkında"
 
-#: data/ui/Headerbar.ui:116
+#: data/ui/Headerbar.ui:122
 msgid "_Save As..."
 msgstr "Farklı _Kaydet…"
 
-#: data/ui/Headerbar.ui:139
+#: data/ui/Headerbar.ui:145
 msgid "Advanced _Export…"
 msgstr "Gelişmiş _Dışa Aktarma…"
 
-#: data/ui/Headerbar.ui:145
+#: data/ui/Headerbar.ui:151
 msgid "_Copy HTML"
 msgstr "HTML’yi _Kopyala"
 
@@ -389,7 +415,7 @@ msgstr "Apostrophe başlatıldığında önceki oturumunuza dönün"
 
 #: data/ui/Preferences.ui:71
 msgid "Flavor of markdown Apostrophe will use"
-msgstr "Apostrophe’un kullanacağı markdown çeşidi"
+msgstr "Apostrophe’un kullanacağı markdown türü"
 
 #: data/ui/Preferences.ui:80
 msgid "Markdown flavor documentation"
@@ -397,7 +423,7 @@ msgstr "Markdown çeşidi belgeleri"
 
 #: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_renderer.py:208
 msgid "Preview"
-msgstr "Ön izleme"
+msgstr "Ön İzleme"
 
 #: data/ui/PreviewLayoutSwitcher.ui:24
 msgid "Screen Layout"
@@ -411,32 +437,32 @@ msgstr "Son Belge Yok"
 msgid "No Results Found"
 msgstr "Sonuç Bulunamadı"
 
-#: data/ui/SearchBar.ui:28
+#: data/ui/SearchBar.ui:29
 msgid "Previous Match"
 msgstr "Önceki Eşleşen"
 
-#: data/ui/SearchBar.ui:37
+#: data/ui/SearchBar.ui:38
 msgid "Next Match"
 msgstr "Sonraki Eşleşen"
 
 #. Translators: This indicates case sensitivity, so it should be the first vowel of the language in lowercase and uppercase
-#: data/ui/SearchBar.ui:52
+#: data/ui/SearchBar.ui:53
 msgid "aA"
 msgstr "aA"
 
-#: data/ui/SearchBar.ui:55
+#: data/ui/SearchBar.ui:56
 msgid "Case Sensitive"
 msgstr "Büyük veya Küçük Harfe Duyarlı"
 
-#: data/ui/SearchBar.ui:64
+#: data/ui/SearchBar.ui:65
 msgid "Regular Expression"
 msgstr "Kurallı İfade"
 
-#: data/ui/SearchBar.ui:72 data/ui/SearchBar.ui:110
+#: data/ui/SearchBar.ui:73 data/ui/SearchBar.ui:111
 msgid "Replace"
 msgstr "Değiştir"
 
-#: data/ui/SearchBar.ui:118
+#: data/ui/SearchBar.ui:119
 msgid "Replace All"
 msgstr "Tümünü Değiştir"
 
@@ -600,6 +626,40 @@ msgctxt "shortcut window"
 msgid "Select all text"
 msgstr "Tüm metni seç"
 
+#: data/ui/TexliveWarning.ui:25 data/ui/TexliveWarning.ui:79
+msgid "TexLive Required"
+msgstr "TexLive Gerekli"
+
+#: data/ui/TexliveWarning.ui:33
+msgid ""
+"Apostrophe needs the TeXLive extension\n"
+"in order to export PDF or LaTeX files.\n"
+"\n"
+"Install it from Apostrophe's page in Software\n"
+"or by running the following command in a terminal:"
+msgstr ""
+"Apostrophe, PDF ya da LaTeX dosyalarını\n"
+"dışa aktarmak için TeXLive uzantısına gereksiniyor.\n"
+"\n"
+"Yazılımlar’da Apostrophe’un sayfasından ya da\n"
+"uçbirimde şu komutu çalıştırarak kurunuz:"
+
+#: data/ui/TexliveWarning.ui:53
+msgid "Copy to clipboard"
+msgstr "Panoya kopyala"
+
+#: data/ui/TexliveWarning.ui:87
+msgid ""
+"Apostrophe needs TeXLive\n"
+"in order to export PDF or LaTeX files.\n"
+"\n"
+"Install it from your distribution repositories"
+msgstr ""
+"Apostrophe, PDF ya da LaTeX dosyalarını\n"
+"dışa aktarmak için TeXLive’a gereksiniyor.\n"
+"\n"
+"Dağıtımınızın depolarından kurunuz"
+
 #: data/ui/ThemeSwitcher.ui:17
 msgid "Use System Colors"
 msgstr "Sistem Renklerini Kullan"
@@ -616,23 +676,15 @@ msgstr "Sepya Renkler Kullan"
 msgid "Use Dark Colors"
 msgstr "Koyu Renkler Kullanın"
 
-#: data/ui/Window.ui:58
-msgid "Show Statistics"
-msgstr "İstatistikleri Göster"
-
-#: data/ui/Window.ui:59
-msgid "0 Words"
-msgstr "0 Sözcük"
-
-#: data/ui/Window.ui:129
+#: data/ui/Window.ui:86
 msgid "File Has Changed on Disk"
 msgstr "Dosya Diskte Değiştirildi"
 
-#: data/ui/Window.ui:139
+#: data/ui/Window.ui:96
 msgid "The file has been changed by another program."
 msgstr "Dosya başka yazılımca değiştirildi."
 
-#: data/ui/Window.ui:147
+#: data/ui/Window.ui:104
 msgid "_Discard Changes and Reload"
 msgstr "Değişiklikleri _Gözden Çıkar ve Yeniden Yükle"
 
@@ -692,50 +744,58 @@ msgstr "Eşleşen dipnot bulunamadı"
 
 #: apostrophe/inline_preview.py:261
 msgid "noun"
-msgstr "isim"
+msgstr "ad"
 
 #: apostrophe/inline_preview.py:263
 msgid "verb"
-msgstr "fiil"
+msgstr "eylem"
 
 #: apostrophe/inline_preview.py:265
 msgid "adjective"
-msgstr "sıfat"
+msgstr "ön ad"
 
 #: apostrophe/inline_preview.py:267
 msgid "adverb"
-msgstr "zarf"
+msgstr "belirteç"
 
 #. Hemingway Toast
-#: apostrophe/main_window.py:132
+#: apostrophe/main_window.py:128
 msgid "Text can't be deleted while on Hemingway mode"
 msgstr "Hemingway kipindeyken metin silinemez"
 
-#: apostrophe/main_window.py:135
+#: apostrophe/main_window.py:131
 msgid "Tell me more"
 msgstr "Daha çoğunu söyle"
 
-#: apostrophe/main_window.py:396
+#: apostrophe/main_window.py:440
 msgid "Save your File"
 msgstr "Dosyanızı kaydedin"
 
-#: apostrophe/main_window.py:462
+#: apostrophe/main_window.py:443 apostrophe/main_window.py:611
+msgid "Save"
+msgstr "Kaydet"
+
+#: apostrophe/main_window.py:506
 msgid "Markdown Files"
 msgstr "Markdown Dosyaları"
 
-#: apostrophe/main_window.py:466
+#: apostrophe/main_window.py:510
 msgid "Plain Text Files"
 msgstr "Düz Metin Dosyaları"
 
-#: apostrophe/main_window.py:469
+#: apostrophe/main_window.py:513
 msgid "Open a .md file"
 msgstr "Bir .md dosyası aç"
 
-#: apostrophe/main_window.py:559
-msgid "Save changes?"
-msgstr "Değişiklikleri kaydedilsin mi?"
+#: apostrophe/main_window.py:516
+msgid "Open"
+msgstr "Aç"
 
-#: apostrophe/main_window.py:560
+#: apostrophe/main_window.py:603
+msgid "Save changes?"
+msgstr "Değişiklikler kaydedilsin mi?"
+
+#: apostrophe/main_window.py:604
 #, python-format
 msgid ""
 "“%s” contains unsaved changes. If you don’t save, all your changes will be "
@@ -744,11 +804,11 @@ msgstr ""
 "“%s” kaydedilmemiş değişiklikler içeriyor. Kaydetmezseniz, tüm "
 "değişiklikleriniz tümüyle yitecek."
 
-#: apostrophe/main_window.py:566
+#: apostrophe/main_window.py:610
 msgid "Discard"
 msgstr "_Gözden Çıkar"
 
-#: apostrophe/main_window.py:736 apostrophe/main_window.py:760
+#: apostrophe/main_window.py:768 apostrophe/main_window.py:792
 msgid "New File"
 msgstr "Yeni Dosya"
 
@@ -812,26 +872,65 @@ msgstr "{:d}:{:02d}:{:02d} / {:d}:{:02d}:{:02d} Okuma Süresi"
 msgid "{:d}:{:02d}:{:02d} Read Time"
 msgstr "{:d}:{:02d}:{:02d} Okuma Süresi"
 
-#: apostrophe/text_view_format_inserter.py:14
+#: apostrophe/text_view_format_inserter.py:24
 msgid "italic text"
 msgstr "eğik metin"
 
-#: apostrophe/text_view_format_inserter.py:19
+#: apostrophe/text_view_format_inserter.py:29
 msgid "bold text"
 msgstr "kalın yazı"
 
-#: apostrophe/text_view_format_inserter.py:24
+#: apostrophe/text_view_format_inserter.py:34
 msgid "strikethrough text"
 msgstr "üstü çizili metin"
 
-#: apostrophe/text_view_format_inserter.py:50
+#: apostrophe/text_view_format_inserter.py:49
+#: apostrophe/text_view_format_inserter.py:117
+#: apostrophe/text_view_format_inserter.py:187
 msgid "Item"
 msgstr "Öge"
 
-#: apostrophe/text_view_format_inserter.py:97
+#: apostrophe/text_view_format_inserter.py:258
 msgid "Header"
 msgstr "Başlık"
 
-#: apostrophe/text_view.py:177 apostrophe/text_view.py:179
+#: apostrophe/text_view_format_inserter.py:329
+msgid "Quote"
+msgstr "Alıntı"
+
+#: apostrophe/text_view_format_inserter.py:371
+msgid "code"
+msgstr "kod"
+
+#: apostrophe/text_view_format_inserter.py:394
+msgid "https://www.example.com"
+msgstr "https://www.ornek.com"
+
+#: apostrophe/text_view_format_inserter.py:395
+msgid "link text"
+msgstr "bağlantı metni"
+
+#: apostrophe/text_view_format_inserter.py:429
+#: apostrophe/text_view_format_inserter.py:454
+msgid "image caption"
+msgstr "resim açıklaması"
+
+#: apostrophe/text_view_format_inserter.py:435
+msgid "Image"
+msgstr "Resim"
+
+#: apostrophe/text_view_format_inserter.py:441
+msgid "Select an image"
+msgstr "Resim seç"
+
+#: apostrophe/text_view_format_inserter.py:543
+msgid ""
+"\n"
+"code\n"
+msgstr ""
+"\n"
+"kod\n"
+
+#: apostrophe/text_view.py:169 apostrophe/text_view.py:171
 msgid "web page"
 msgstr "web sayfası"
