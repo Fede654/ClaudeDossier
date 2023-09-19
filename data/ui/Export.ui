@@ -70,6 +70,9 @@
                     <property name="child">
                       <object class="GtkListBox" id="formats_list">
                         <signal name="row-selected" handler="on_format_selected" swapped="no"/>
+                        <style>
+                          <class name="navigation-sidebar"/>
+                        </style>
                       </object>
                     </property>
                   </object>
