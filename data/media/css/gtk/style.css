@@ -8,66 +8,34 @@
 
 @define-color link_fg_color mix(@window_bg_color, @view_fg_color, 0.45);
 
-  /*first-child/last-child for buttons in rtl*/
 /* Main window and text colors */
-
-.apostrophe-window headerbar {
-  background: @view_bg_color;
-  color: @window_fg_color;
-  box-shadow: none;
-  transition: box-shadow 0.3s ease-in-out;
-}
-
-.apostrophe-window.scrolled headerbar {
-  box-shadow: 0 1px @borders;
-}
-
-.apostrophe-window searchbar > revealer > box{
-  background: @view_bg_color;
-  color: @window_fg_color;
-}
-
-#titlebar-revealer {
-  padding: 0;
-}
 
 .apostrophe-editor {
   font-family: 'Fira Mono', monospace;
   font-size: 1.091em;
-  /*text-decoration-color: @error_color;
-  background: @base_color;
-  color: @theme_selected_fg_color; 
-  caret-color: @theme_selected_fg_color;*/
 }
 
 .apostrophe-editor.size14 {
   font-size: 0.955em;
 }
-
 .apostrophe-editor.size15 {
   font-size: 1.023em;
 }
-
 .apostrophe-editor.size16 {
   font-size: 1.091em;
 }
-
 .apostrophe-editor.size17 {
   font-size: 1.159em;
 }
-
 .apostrophe-editor.size18 {
   font-size: 1.227em;
 }
-
 .apostrophe-editor.size20 {
   font-size: 1.364em;
 }
-
 .apostrophe-editor.size22 {
   font-size: 1.5em;
 }
-
 .apostrophe-editor.size24 {
   font-size: 1.636em;
 }
@@ -213,35 +181,30 @@
 }
 
 /* Recents */
+
 .open-popover contents {
   padding: 0;
 }
-
 .open-popover list {
   background: none;
   margin-bottom: 3px;
 }
-
 .open-popover list label.placeholder {
   min-height: 57px;
 }
-
 .open-popover list row {
   border-radius: 9px;
   margin: 3px 6px;
 }
-
 .open-popover list row:first-child {
   margin-top: 6px;
 }
-
 .open-popover list row button {
   padding: 3px;
   margin: 0;
   min-height: 24px;
   min-width: 24px;
 }
-
 .open-popover separator {
   margin-bottom: 0;
 }
@@ -251,33 +214,14 @@
 .preview-flap {
   background-color: @view_bg_color;
 }
-
 .preview-stack{
   border-color: @borders;
   border-width: 1px;
-  border-top-style:solid;
-  transition: border-top-left-radius 0.3s ease-in-out, border-top-right-radius 0.3s ease-in-out;
+  border-left-style:solid;
+  border-right-style:solid;
 }
 
-.preview-stack.half-width,
-.preview-stack.full-width{
-  margin-top: 47px;
-}
-
-.preview-stack.half-width:dir(ltr){
-  border-left-style: solid;
-  border-top-left-radius: 16px;
-}
-
-.preview-stack.half-width:dir(rtl){
-  border-right-style: solid;
-  border-top-right-radius: 16px;
-}
-
-.apostrophe-window.scrolled:not(.no-headerbar) .preview-stack{
-  border-top-left-radius: 0px;
-  border-top-right-radius: 0px;
-}
+/* Table insertion toolbar widget */
 
 .tableinput button {
   border-radius: 0;

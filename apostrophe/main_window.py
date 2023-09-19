@@ -248,9 +248,6 @@ class MainWindow(Adw.ApplicationWindow):
         scrollbar.set_margin_top(54)
         scrollbar.set_margin_bottom(48)
 
-        vadjustment = self.editor.scrolledwindow.get_vadjustment()
-        vadjustment.connect("notify::value", self._on_scroll)
-
 
         self.preview = self.settings.get_boolean("preview-active")
 
@@ -280,15 +277,6 @@ class MainWindow(Adw.ApplicationWindow):
         self.update_headerbar_title(True, True)
         if self.settings.get_value("autohide-headerbar"):
             self.hide_headerbar_bottombar()
-
-    def _on_scroll(self, *args):
-        """called when there's scroll. If value is 0 there's no scrolling and
-           we add an inset shadow
-        """
-        if self.editor.scrolledwindow.get_vadjustment().get_value() != 0:
-            self.add_css_class("scrolled")
-        else:
-            self.remove_css_class("scrolled")
 
     def _on_fullscreen(self, *args, **kwargs):
         """Puts the application in fullscreen mode and show/hides
