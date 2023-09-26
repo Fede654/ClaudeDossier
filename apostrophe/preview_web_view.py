@@ -36,34 +36,17 @@ class PreviewWebView(WebKit.WebView):
 scale = {:.16f};
 write = {};
 
-// Configure MathJax.
-if (typeof hasMathJax === "undefined") {{
-
-    hasMathJax = false;
-    if (typeof MathJax !== "undefined") {{
-        hasMathJax = typeof MathJax.Hub !== "undefined";
-    }}
-    
-    if (hasMathJax) {{
-        MathJax.Hub.Config({{ messageStyle: "none" }});
-    }}
-}}
-
-// Figure out if scrollable and rendered.
+// Figure out if scrollable.
 e = document.documentElement;
 canScroll = e.scrollHeight > e.clientHeight;
-wasRendered = typeof isRendered !== "undefined" && isRendered;
-isRendered = wasRendered ||
-        !hasMathJax ||
-        MathJax.Hub.queue.running == 0 && MathJax.Hub.queue.pending == 0;
 
-// Write the current scroll if instructed or if it was just rendered.
-if (canScroll && (write || isRendered && !wasRendered)) {{
+// Write the current scroll if instructed.
+if (canScroll && write) {{
     e.scrollTop = (e.scrollHeight - e.clientHeight) * scale;
 }}
 
-// Return the current scroll if scrollable and rendered, or -1.
-if (canScroll && isRendered) {{
+// Return the current scroll if scrollable, or -1.
+if (canScroll) {{
     e.scrollTop / (e.scrollHeight - e.clientHeight);
 }} else {{
     -1;

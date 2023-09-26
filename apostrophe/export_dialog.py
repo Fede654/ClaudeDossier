@@ -94,7 +94,7 @@ class ExportDialog:
             "args": ["--embed-resources",
                      "--standalone",
                      "--css=%s" % Theme.get_current().web_css,
-                     "--mathjax",
+                     "--mathml",
                      "--lua-filter=%s"
                      % helpers.get_media_path('/lua/relative_to_absolute.lua'),
                      "--lua-filter=%s"
@@ -385,7 +385,7 @@ class AdvancedExportDialog(Adw.Window):
 
         if self.show_html_options:
             args.append("--css=%s" % Theme.get_current().web_css)
-            args.append("--mathjax")
+            args.append("--mathml")
             args.append("--lua-filter=%s" % helpers.get_media_path(
                 '/lua/relative_to_absolute.lua'))
             args.append("--lua-filter=%s" % helpers.get_media_path(
