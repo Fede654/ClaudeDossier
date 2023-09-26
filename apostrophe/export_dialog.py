@@ -23,6 +23,7 @@
 import logging
 import os
 from gettext import gettext as _
+import shutil
 
 from zipfile import ZipFile
 import json
@@ -317,9 +318,8 @@ class AdvancedExportDialog(Adw.Window):
         def on_response(dialog, response):
             if self.exports_multiple_files:
                 folder = export_dialog.get_file()
-                with ZipFile(helpers.get_media_path("/media/reveal.js.zip"),
-                            "r") as zipObj:
-                    zipObj.extractall(folder.get_path())
+                shutil.copytree(helpers.get_media_path('/libs/reveal.js'),
+                                os.path.join(folder.get_path(), 'reveal.js'), dirs_exist_ok=True)
                 export_file = folder.get_child(self.file.name + '.' +
                                 self.formats_list.get_selected_row().item.ext)
             else:
