@@ -60,14 +60,10 @@ if (canScroll) {{
     def __init__(self):
         super().__init__()
 
-        # TODO
-        #self.connect("size-allocate", self.on_size_allocate)
         self.connect("decide-policy", self.on_decide_policy)
         self.connect("load-changed", self.on_load_changed)
         self.connect("load-failed", self.on_load_failed)
         self.connect("destroy", self.on_destroy)
-
-        #self.props.expand = True
 
         self.scroll_scale = -1
 
@@ -90,8 +86,6 @@ if (canScroll) {{
         self.scroll_scale = scale
         self.state_loop()
 
-    def on_size_allocate(self, *_):
-        self.set_scroll_scale(self.scroll_scale)
 
     def on_decide_policy(self, _web_view, decision, decision_type):
         if decision_type == WebKit.PolicyDecisionType.NAVIGATION_ACTION and \
@@ -119,15 +113,14 @@ if (canScroll) {{
 
     def sync_scroll_scale(self, scroll_scale, write):
         self.state_waiting = True
-        self.run_javascript(
-            self.SYNC_SCROLL_SCALE_JS.format(
-                scroll_scale, "true" if write else "false"),
-            None, self.finish_sync_scroll_scale)
+        script = self.SYNC_SCROLL_SCALE_JS.format(
+                scroll_scale, "true" if write else "false")
+        self.evaluate_javascript(script, -1, None, None, None, self.finish_sync_scroll_scale)
 
     def finish_sync_scroll_scale(self, _web_view, result):
         self.state_waiting = False
-        result = self.run_javascript_finish(result)
-        self.state_loop(result.get_js_value().to_double())
+        result = self.evaluate_javascript_finish(result)
+        self.state_loop(result.to_double())
 
     def state_loop(self, scroll_scale=None, delay=16):  # 16ms ~ 60hz
         # Remove any pending callbacks
