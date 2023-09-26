@@ -28,7 +28,7 @@ from gi.repository import WebKit, GLib, Gtk, GObject
 
 from apostrophe.preview_converter import PreviewConverter
 from apostrophe.preview_web_view import PreviewWebView
-
+from apostrophe import config
 
 class Step(IntEnum):
     CONVERT_HTML = auto()
@@ -82,8 +82,8 @@ class PreviewHandler:
             if not self.web_view:
                 self.web_view = PreviewWebView()
                 self.web_view.get_settings().set_allow_universal_access_from_file_urls(True)
-                #TODO: enable devtools on Devel profile
-                self.web_view.get_settings().set_enable_developer_extras(True)
+                self.web_view.get_settings().set_enable_developer_extras(config.PROFILE == '.Devel')
+                self.web_view.get_settings().set_enable_javascript_markup(False)
 
                 # Show preview once the load is finished
                 self.web_view.connect("load-changed", self.on_load_changed)
