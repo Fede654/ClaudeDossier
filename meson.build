@@ -1,10 +1,11 @@
 project(
   'apostrophe',
   version: '2.6.3',
-  meson_version: '>= 0.50.0'
+  meson_version: '>= 0.53.0'
 )
 
 # Importing modules
+fs = import('fs')
 
 gnome  = import('gnome')
 i18n   = import('i18n')
@@ -59,6 +60,9 @@ pkgdatadir = datadir / meson.project_name()
 #bindir = join_paths(get_option('prefix'), get_option('bindir'))
 podir = meson.source_root() / 'po'
 
+if not fs.exists(join_paths(pkgdatadir, 'libs/reveal.js'))
+  error('No valid reveal.js installation found')
+endif
 
 subdir('data')
 #subdir('help')

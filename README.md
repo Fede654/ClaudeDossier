@@ -35,13 +35,13 @@ To build Apostrophe from source you need to have the following dependencies inst
 
 - Build system: `meson ninja-build`
 - Pandoc, the program used to convert Markdown to basically anything else: `pandoc`
-- GTK3 and GLib development packages: `libgtk-3-dev libglib2.0-dev`
+- GTK4 and GLib development packages: `libgtk-4-dev libglib2.0-dev`
 - Rendering the preview panel: `libwebkit2gtk`
-- Spell checking libraries: `gobject-introspection libgirepository1.0-dev gir1.2-gspell1 gettext`
+
 - Python dependencies: `python3 python3-regex python3-setuptools python3-levenshtein python3-enchant python3-gi python3-cairo python3-pypandoc`
+- A copy of reveal.js in the apropriate directory. Flatpak takes care of it for you, packagers should put it into prefix/share/apostrophe/libs/reveal.js, fully unzipped
 - *optional:* AppStream utility: `appstream-util`
 - *optional:* pdftex module: `texlive texlive-latex-extra`
-- *optional:* formula preview: `libjs-mathjax`
 
 Depending on your setup you may need to install these schemas before building:
 
