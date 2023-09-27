@@ -96,9 +96,7 @@ class ExportDialog:
                      "--css=%s" % Theme.get_current().web_css,
                      "--mathjax",
                      "--lua-filter=%s"
-                     % helpers.get_media_path('/lua/relative_to_absolute.lua'),
-                     "--lua-filter=%s"
-                     % helpers.get_media_path('/lua/task-list.lua')]
+                     % helpers.get_media_path('/lua/relative_to_absolute.lua')]
         },
         "odt":
         {
@@ -388,8 +386,6 @@ class AdvancedExportDialog(Adw.Window):
             args.append("--mathjax")
             args.append("--lua-filter=%s" % helpers.get_media_path(
                 '/lua/relative_to_absolute.lua'))
-            args.append("--lua-filter=%s" % helpers.get_media_path(
-                '/lua/task-list.lua'))
             if self.sw_self_contained.get_active():
                 args.append("--embed-resources")
                 args.append("--standalone")
