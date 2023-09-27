@@ -42,7 +42,7 @@ class PreviewConverter:
 
             args = ['--metadata=pagetitle:""',
                     '--standalone',
-                    '--mathml',
+                    '--mathjax',
                     '--css=' + Theme.get_current().web_css,
                     '--lua-filter=' +
                     helpers.get_media_path('/lua/relative_to_absolute.lua'),
