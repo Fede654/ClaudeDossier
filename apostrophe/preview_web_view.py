@@ -107,7 +107,7 @@ if (canScroll && isRendered) {{
     def on_decide_policy(self, _web_view, decision, decision_type):
         if decision_type == WebKit.PolicyDecisionType.NAVIGATION_ACTION and \
                 decision.get_navigation_action().is_user_gesture():
-            webbrowser.open(decision.get_request().get_uri())
+            webbrowser.open(decision.get_navigation_action().get_request().get_uri())
             decision.ignore()       # Do not follow the link in the WebView
             return True
         return False
@@ -119,7 +119,7 @@ if (canScroll && isRendered) {{
         self.state_dirty = True
         self.state_loop()
 
-    def on_load_failed(self, _web_view, _event):
+    def on_load_failed(self, _web_view, _event, _uri, _error):
         self.state_loaded = False
         self.state_load_failed = True
         self.state_loop()

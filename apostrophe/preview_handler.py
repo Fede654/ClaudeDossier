@@ -83,7 +83,6 @@ class PreviewHandler:
                 self.web_view = PreviewWebView()
                 self.web_view.get_settings().set_allow_universal_access_from_file_urls(True)
                 self.web_view.get_settings().set_enable_developer_extras(config.PROFILE == '.Devel')
-                self.web_view.get_settings().set_enable_javascript_markup(False)
 
                 # Show preview once the load is finished
                 self.web_view.connect("load-changed", self.on_load_changed)
