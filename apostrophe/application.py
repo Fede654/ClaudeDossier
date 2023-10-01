@@ -41,7 +41,6 @@ class Application(Adw.Application):
         self.set_resource_base_path("/org/gnome/gitlab/somas/Apostrophe")
         # gtk_settings = Gtk.Settings.get_default()
 
-        self.windows = []
         self.settings = Settings.new()
         self.inhibitor = None
         self._application_id = application_id
@@ -123,21 +122,19 @@ class Application(Adw.Application):
 
     def do_activate(self, *args, **kwargs):
 
-        if not self.windows:
+        if not self.get_windows():
             self.settings.connect("changed", self.on_settings_changed)
 
             group = Gtk.WindowGroup.new()
             group.add_window(MainWindow(self))
 
-            self.windows.append(group)
-
         if self._application_id == 'org.gnome.gitlab.somas.Apostrophe.Devel':
-            for window_group in self.windows:
-                for window in window_group.list_windows():
-                    window.get_style_context().add_class('devel')
+            for window in self.get_windows():
+                window.get_style_context().add_class('devel')
 
         self._set_color_scheme()
-        self.windows[-1].list_windows()[-1].present()
+
+        self.get_windows()[-1].present()
 
     def do_handle_local_options(self, options):
         if options.contains("verbose") or self._application_id \
@@ -147,26 +144,28 @@ class Application(Adw.Application):
 
     def do_open(self, files, _n_files, _hint):
         self.activate()
-        empty_window_groups = list(filter(lambda window_group: 
-                                          window_group.list_windows()[0].textview.get_text() == "" and\
-                                          not window_group.list_windows()[0].did_change, self.windows))
+        empty_windows = list(filter(lambda window: 
+                                        window.textview.get_text() == "" and\
+                                        not window.did_change, self.get_main_windows()))
         for i, file in enumerate(files):
-            if i < len(empty_window_groups):
-                window = empty_window_groups[i].list_windows()[0]
+            if i < len(empty_windows):
+                window = empty_windows[i]
             else:
                 window = MainWindow(self)
 
                 group = Gtk.WindowGroup.new()
                 group.add_window(window)
-                self.windows.append(group)
 
             window.load_file(file)
             window.present()
 
+    def get_main_windows(self):
+        return [window for window in self.get_windows() if isinstance(window, MainWindow)]
+
     def _set_color_scheme(self, *args, **kwargs):
         sepia = Theme.get_current().name == "sepia"
 
-        if not self.windows:
+        if not self.get_windows():
             return
 
         if sepia:
@@ -179,41 +178,33 @@ class Application(Adw.Application):
             )
 
         # refresh markup colors
-        for group in self.windows:
-            group.list_windows()[0].textview.markup.on_style_updated()
+        for window in self.get_main_windows():
+            window.textview.markup.on_style_updated()
 
     def on_settings_changed(self, settings, key):
         # TODO: change this ffs
-        if not self.windows:
+        if not self.get_windows():
             return
-        if key == "color-scheme":
-            self._set_color_scheme()
-            for group in self.windows:
-                for window in group.list_windows():
-                    if isinstance(window, MainWindow):
-                        window.reload_preview()
-        elif key == "input-format":
-            for group in self.windows:
-                for window in group.list_windows():
-                    if isinstance(window, MainWindow):
-                        window.reload_preview()
-        elif key == "sync-scroll":
-            for group in self.windows:
-                for window in group.list_windows():
-                    if isinstance(window, MainWindow):
-                        window.reload_preview(reshow=True)
-        elif key == "stat-default":
-            for group in self.windows:
-                for window in group.list_windows():
-                    if isinstance(window, MainWindow):
-                        window.editor.update_default_stat()
+        match key:
+            case "color-scheme":
+                self._set_color_scheme()
+                for window in self.get_main_windows():
+                    window.reload_preview()
+            case "input-format":
+                for window in self.get_main_windows():
+                    window.reload_preview()
+            case "sync-scroll":
+                for window in self.get_main_windows():
+                    window.reload_preview(reshow=True)
+            case "stat-default":
+                for window in self.get_main_windows():
+                    window.editor.update_default_stat()
 
     def on_new_window(self, _action, _value):
         window = MainWindow(self)
         window.present()
         group = Gtk.WindowGroup.new()
         group.add_window(window)
-        self.windows.append(group)
 
     def on_preferences(self, _action, _value):
         preferences_dialog = ApostrophePreferencesDialog()
@@ -236,8 +227,8 @@ class Application(Adw.Application):
 
     def on_quit(self, _action, _param):
         quit = True
-        for group in self.windows:
-            if group.list_windows()[0].do_close_request():
+        for window in self.get_windows():
+            if window.do_close_request():
                 quit = False
         if quit:
             self.quit()

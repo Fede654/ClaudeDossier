@@ -727,14 +727,13 @@ class MainWindow(Adw.ApplicationWindow):
         LOGGER.info('close request called')
 
         if self.close_anyway:
-            self.get_application().windows.remove(self.get_group())
             self.destroy()
             return False
 
         # called if check_change decides we can throw away the contents of the textview
         def callback(window):
             # save state if we're the last window group left
-            n_windows = len(window.get_application().windows)
+            n_windows = len(window.get_application().get_main_windows())
 
             if n_windows == 1:
                 window.save_state()
