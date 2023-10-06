@@ -2,21 +2,22 @@
 # Copyright (C) 2022 apostrophe's COPYRIGHT HOLDER
 # This file is distributed under the same license as the apostrophe package.
 # MohammadSaleh Kamyab <mskf1383@protonmail.com>, 2022.
+# Danial Behzadi <dani.behzi@ubuntu.com>, 2022-2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: apostrophe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2022-12-17 00:19+0000\n"
-"PO-Revision-Date: 2023-02-27 19:32+0330\n"
-"Last-Translator: MohammadSaleh Kamyab <mskf1383@envs.net>\n"
+"POT-Creation-Date: 2023-09-11 15:13+0000\n"
+"PO-Revision-Date: 2023-10-06 16:30+0330\n"
+"Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:3
 #: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:5
@@ -27,8 +28,8 @@ msgstr "آپاستروف"
 #: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:5
 msgid "uberwriter;UberWriter;apostrophe;markdown;editor;text;write;"
 msgstr ""
-"uberwriter;UberWriter;apostrophe;markdown;editor;text;write;اوبررایتر;اوبر رایتر;"
-"آپاستروف;آپوستروف;مارک‌دان;مارک‌داون;مارک‌دون;ویرایشگر;ادیتور;متن;نوشتن;"
+"uberwriter;UberWriter;apostrophe;markdown;editor;text;write;اوبررایتر;اوبر "
+"رایتر;آپاستروف;آپوستروف;مارک‌دان;مارک‌داون;مارک‌دون;ویرایشگر;ادیتور;متن;نوشتن;"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:6
 msgid "Apostrophe, an elegant, distraction-free markdown editor"
@@ -99,7 +100,8 @@ msgstr "نویسه در خط"
 msgid "Maximum number of characters per line within the editor."
 msgstr "بیشینهٔ تعداد نویسه‌ها در هر خط در ویرایشگر."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:85 data/ui/AboutHemingway.ui:6
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:85
+#: data/ui/AboutHemingway.ui:6
 msgid "Hemingway Mode"
 msgstr "حالت همینگوی"
 
@@ -139,6 +141,14 @@ msgstr "اندازهٔ متن"
 msgid "Preferred relative size for the text."
 msgstr "اندازهٔ نسبی ترجیحی برای متن."
 
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:120
+msgid "Toolbar"
+msgstr "نوار ابزار"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:121
+msgid "Whether the toolbar is shown or not."
+msgstr "این که نوار ابزار نشان داده شود یا نه."
+
 #: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:6
 msgid "Edit Markdown in style"
 msgstr "ویرایش مارک‌دون در سبک"
@@ -167,7 +177,8 @@ msgstr "پوسته‌های تاریک، روشن و سوبیایی"
 msgid ""
 "Everything you expect from a text editor, such as spellchecking or document "
 "statistics"
-msgstr "هر آن‌چه از یک ویرایشگر متن انتظار دارید، همچون بررسی املایی یا آمارهای سند"
+msgstr ""
+"هر آن‌چه از یک ویرایشگر متن انتظار دارید، همچون بررسی املایی یا آمارهای سند"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:15
 msgid "Live preview of what you write"
@@ -198,8 +209,8 @@ msgstr ""
 
 #: data/ui/AboutHemingway.ui:7
 msgid ""
-"The Hemingway Mode mimics the experience of writing on a typewriter, not allowing "
-"you to delete any text or doing any kind of editing. \n"
+"The Hemingway Mode mimics the experience of writing on a typewriter, not "
+"allowing you to delete any text or doing any kind of editing. \n"
 "\n"
 "Only being able to move forward may be frustrating, but can be an interesting "
 "exercise for improving your writing skills, gaining focus or facing the task on "
@@ -220,8 +231,8 @@ msgstr "_بستن"
 
 #: data/ui/Export.ui:33 apostrophe/export_dialog.py:132
 #: apostrophe/export_dialog.py:344 apostrophe/export_dialog.py:349
-#: apostrophe/main_window.py:400 apostrophe/main_window.py:471
-#: apostrophe/main_window.py:563
+#: apostrophe/main_window.py:444 apostrophe/main_window.py:517
+#: apostrophe/main_window.py:609
 msgid "Cancel"
 msgstr "لغو"
 
@@ -229,6 +240,10 @@ msgstr "لغو"
 #: apostrophe/export_dialog.py:343 apostrophe/export_dialog.py:347
 msgid "Export"
 msgstr "برون‌ریزی"
+
+#: data/ui/Export.ui:114
+msgid "Options"
+msgstr "گزینه‌ها"
 
 #: data/ui/Export.ui:118
 msgid "Standalone"
@@ -268,6 +283,10 @@ msgstr "ایجاد یک پروندهٔ HTML بدون وابستگی‌های خ�
 msgid "Syntax Highlighting"
 msgstr "برجسته‌سازی نحو"
 
+#: data/ui/Export.ui:228
+msgid "Use Syntax Highlighting"
+msgstr "استفاده از برجسته‌سازی نحوی"
+
 #: data/ui/Export.ui:235
 msgid "Highlight style"
 msgstr "برجسته کردن سبک"
@@ -288,60 +307,71 @@ msgstr "نمایش گلوله‌ای پس از دیگری در نمایش اسل
 msgid "New"
 msgstr "جدید"
 
-#: data/ui/Headerbar.ui:18 apostrophe/main_window.py:470
-msgid "Open"
-msgstr "گشودن"
+#: data/ui/Headerbar.ui:18
+msgid "_Open"
+msgstr "_باز کردن"
 
-#: data/ui/Headerbar.ui:24 apostrophe/main_window.py:399
-#: apostrophe/main_window.py:565
-msgid "Save"
-msgstr "ذخیره"
+#: data/ui/Headerbar.ui:20
+msgid "Open a markdown file"
+msgstr "گشودن یک پروندهٔ مارک‌دون"
 
-#: data/ui/Headerbar.ui:40
-msgid "Menu"
-msgstr "فهرست"
+#: data/ui/Headerbar.ui:26
+msgid "_Save"
+msgstr "_ذخیره"
 
-#: data/ui/Headerbar.ui:51
-msgid "Find"
-msgstr "یافتن"
+#: data/ui/Headerbar.ui:28
+msgid "Save the markdown file"
+msgstr "ذخیرهٔ پروندهٔ مارک‌دون"
 
-#: data/ui/Headerbar.ui:74
+#: data/ui/Headerbar.ui:44
+msgid "Open the Main Menu"
+msgstr "گشودن فهرست اصلی"
+
+#: data/ui/Headerbar.ui:55
+msgid "_Find"
+msgstr "_یافتن"
+
+#: data/ui/Headerbar.ui:57
+msgid "Search in the File"
+msgstr "جست‌وجو در پرونده"
+
+#: data/ui/Headerbar.ui:80
 msgid "_Hemingway Mode"
 msgstr "حالت _همینگوی"
 
-#: data/ui/Headerbar.ui:78
+#: data/ui/Headerbar.ui:84
 msgid "_Focus Mode"
 msgstr "حالت _تمرکز"
 
-#: data/ui/Headerbar.ui:84
+#: data/ui/Headerbar.ui:90
 msgid "Find and _Replace"
 msgstr "یافتن و _جایگزینی"
 
-#: data/ui/Headerbar.ui:90
+#: data/ui/Headerbar.ui:96
 msgid "_Preferences"
 msgstr "_ترجیحات"
 
-#: data/ui/Headerbar.ui:96
+#: data/ui/Headerbar.ui:102
 msgid "Open _Tutorial"
 msgstr "گشودن _خودآموز"
 
-#: data/ui/Headerbar.ui:101
+#: data/ui/Headerbar.ui:107
 msgid "_Keyboard Shortcuts"
 msgstr "_میان‌برهای صفحه‌کلید"
 
-#: data/ui/Headerbar.ui:105
+#: data/ui/Headerbar.ui:111
 msgid "_About Apostrophe"
 msgstr "_دربارهٔ آپاستروف"
 
-#: data/ui/Headerbar.ui:116
+#: data/ui/Headerbar.ui:122
 msgid "_Save As..."
 msgstr "_ذخیره به شکل…"
 
-#: data/ui/Headerbar.ui:139
+#: data/ui/Headerbar.ui:145
 msgid "Advanced _Export…"
 msgstr "_برون‌ریزی پیش‌رفته…"
 
-#: data/ui/Headerbar.ui:145
+#: data/ui/Headerbar.ui:151
 msgid "_Copy HTML"
 msgstr "_رونوشت HTML"
 
@@ -582,6 +612,40 @@ msgctxt "shortcut window"
 msgid "Select all text"
 msgstr "گزینش تمام متن"
 
+#: data/ui/TexliveWarning.ui:25 data/ui/TexliveWarning.ui:79
+msgid "TexLive Required"
+msgstr "نیازمند TexLive"
+
+#: data/ui/TexliveWarning.ui:33
+msgid ""
+"Apostrophe needs the TeXLive extension\n"
+"in order to export PDF or LaTeX files.\n"
+"\n"
+"Install it from Apostrophe's page in Software\n"
+"or by running the following command in a terminal:"
+msgstr ""
+"آپاستروف برای برون‌ریزی به پرونده‌های لاتک\n"
+"یا پی‌دی‌اف به افزونهٔ TeXLive نیاز دارد.\n"
+"\n"
+"از صفحهٔ آپاستروف در نرم‌افزارها یا با اجرای\n"
+"دستور زیر در پایانه نصبش کنید:"
+
+#: data/ui/TexliveWarning.ui:53
+msgid "Copy to clipboard"
+msgstr "رونوشت در تخته‌گیره"
+
+#: data/ui/TexliveWarning.ui:87
+msgid ""
+"Apostrophe needs TeXLive\n"
+"in order to export PDF or LaTeX files.\n"
+"\n"
+"Install it from your distribution repositories"
+msgstr ""
+"آپاستروف برای برون‌ریزی به پرونده‌های\n"
+"لاتک یا پی‌دی‌اف به TeXLive نیاز دارد.\n"
+"\n"
+"از مخازن توزیعتان نصبش کنید"
+
 #: data/ui/ThemeSwitcher.ui:17
 msgid "Use System Colors"
 msgstr "استفاده از رنگ‌های سامانه"
@@ -598,23 +662,15 @@ msgstr "استفاده از رنگ‌های سوبیایی"
 msgid "Use Dark Colors"
 msgstr "استفاده از رنگ‌های تاریک"
 
-#: data/ui/Window.ui:58
-msgid "Show Statistics"
-msgstr "نمایش آمار"
-
-#: data/ui/Window.ui:59
-msgid "0 Words"
-msgstr "۰ واژه"
-
-#: data/ui/Window.ui:129
+#: data/ui/Window.ui:86
 msgid "File Has Changed on Disk"
 msgstr "پرونده روی دیسک تغییر کرده"
 
-#: data/ui/Window.ui:139
+#: data/ui/Window.ui:96
 msgid "The file has been changed by another program."
 msgstr "پرونده به دست برنامه‌ای دیگر تغییر کرده."
 
-#: data/ui/Window.ui:147
+#: data/ui/Window.ui:104
 msgid "_Discard Changes and Reload"
 msgstr "_دور ریختن تغییرات و بار کردن دوباره"
 
@@ -687,35 +743,43 @@ msgid "adverb"
 msgstr "قید"
 
 #. Hemingway Toast
-#: apostrophe/main_window.py:132
+#: apostrophe/main_window.py:128
 msgid "Text can't be deleted while on Hemingway mode"
 msgstr "در حالت همینگوی نمی‌تواند متن را حذف کرد"
 
-#: apostrophe/main_window.py:135
+#: apostrophe/main_window.py:131
 msgid "Tell me more"
 msgstr "بیش‌تر بگو"
 
-#: apostrophe/main_window.py:396
+#: apostrophe/main_window.py:440
 msgid "Save your File"
 msgstr "ذخیرهٔ پرونده‌تان"
 
-#: apostrophe/main_window.py:460
+#: apostrophe/main_window.py:443 apostrophe/main_window.py:611
+msgid "Save"
+msgstr "ذخیره"
+
+#: apostrophe/main_window.py:506
 msgid "Markdown Files"
 msgstr "پرونده‌های مارک‌دون"
 
-#: apostrophe/main_window.py:464
+#: apostrophe/main_window.py:510
 msgid "Plain Text Files"
 msgstr "پرونده‌های متنی ساده"
 
-#: apostrophe/main_window.py:467
+#: apostrophe/main_window.py:513
 msgid "Open a .md file"
 msgstr "گشودن یک پروندهٔ ‎.md"
 
-#: apostrophe/main_window.py:557
+#: apostrophe/main_window.py:516
+msgid "Open"
+msgstr "گشودن"
+
+#: apostrophe/main_window.py:603
 msgid "Save changes?"
 msgstr "ذخیرهٔ تغییرات؟"
 
-#: apostrophe/main_window.py:558
+#: apostrophe/main_window.py:604
 #, python-format
 msgid ""
 "“%s” contains unsaved changes. If you don’t save, all your changes will be "
@@ -724,11 +788,11 @@ msgstr ""
 "«%s» تغییراتی ذخیره نشده دارد. اگر ذخیره نکنید، تمامی تغییراتتان برای همیشه از "
 "دست خواهند رفت."
 
-#: apostrophe/main_window.py:564
+#: apostrophe/main_window.py:610
 msgid "Discard"
 msgstr "دور ریختن"
 
-#: apostrophe/main_window.py:734 apostrophe/main_window.py:758
+#: apostrophe/main_window.py:768 apostrophe/main_window.py:792
 msgid "New File"
 msgstr "پروندهٔ جدید"
 
@@ -792,29 +856,77 @@ msgstr "{:d}:{:02d}:{:02d} از {:d}:{:02d}:{:02d} زمان خواندن"
 msgid "{:d}:{:02d}:{:02d} Read Time"
 msgstr "{:d}:{:02d}:{:02d} زمان خواندن"
 
-#: apostrophe/text_view_format_inserter.py:14
+#: apostrophe/text_view_format_inserter.py:24
 msgid "italic text"
 msgstr "متن مورب"
 
-#: apostrophe/text_view_format_inserter.py:19
+#: apostrophe/text_view_format_inserter.py:29
 msgid "bold text"
 msgstr "متن کلفت"
 
-#: apostrophe/text_view_format_inserter.py:24
+#: apostrophe/text_view_format_inserter.py:34
 msgid "strikethrough text"
 msgstr "متن باطل شده"
 
-#: apostrophe/text_view_format_inserter.py:50
+#: apostrophe/text_view_format_inserter.py:49
+#: apostrophe/text_view_format_inserter.py:117
+#: apostrophe/text_view_format_inserter.py:187
 msgid "Item"
 msgstr "مورد"
 
-#: apostrophe/text_view_format_inserter.py:97
+#: apostrophe/text_view_format_inserter.py:258
 msgid "Header"
 msgstr "سرایند"
 
-#: apostrophe/text_view.py:177 apostrophe/text_view.py:179
+#: apostrophe/text_view_format_inserter.py:329
+msgid "Quote"
+msgstr "نقل‌قول"
+
+#: apostrophe/text_view_format_inserter.py:371
+msgid "code"
+msgstr "کد"
+
+#: apostrophe/text_view_format_inserter.py:394
+msgid "https://www.example.com"
+msgstr "https://www.example.com"
+
+#: apostrophe/text_view_format_inserter.py:395
+msgid "link text"
+msgstr "متن پیوند"
+
+#: apostrophe/text_view_format_inserter.py:429
+#: apostrophe/text_view_format_inserter.py:454
+msgid "image caption"
+msgstr "عنوان تصویر"
+
+#: apostrophe/text_view_format_inserter.py:435
+msgid "Image"
+msgstr "تصویر"
+
+#: apostrophe/text_view_format_inserter.py:441
+msgid "Select an image"
+msgstr "گزینش تصویر"
+
+#: apostrophe/text_view_format_inserter.py:543
+msgid ""
+"\n"
+"code\n"
+msgstr ""
+"\n"
+"کد\n"
+
+#: apostrophe/text_view.py:169 apostrophe/text_view.py:171
 msgid "web page"
 msgstr "صفحهٔ وب"
+
+#~ msgid "Menu"
+#~ msgstr "فهرست"
+
+#~ msgid "Show Statistics"
+#~ msgstr "نمایش آمار"
+
+#~ msgid "0 Words"
+#~ msgstr "۰ واژه"
 
 #~ msgid "Apostrophe website"
 #~ msgstr "وبگاه آپوستروف"
@@ -830,9 +942,6 @@ msgstr "صفحهٔ وب"
 
 #~ msgid "CSS File"
 #~ msgstr "پروندهٔ CSS"
-
-#~ msgid "Select CSS file"
-#~ msgstr "گزینش پروندهٔ CSS"
 
 #~ msgid "Save as…"
 #~ msgstr "ذخیره به عنوان…"
