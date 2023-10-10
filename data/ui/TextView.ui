@@ -6,7 +6,7 @@
     <signal name="paste-done" handler="_on_paste_done" />
     <signal name="changed" handler="_on_text_changed" />
   </object>
-  <template class="ApostropheTextView" parent="GtkTextView">
+  <template class="ApostropheTextView" parent="GtkSourceView">
     <property name="wrap-mode">word-char</property>
     <property name="pixels-above-lines">4</property>
     <property name="pixels-below-lines">4</property>

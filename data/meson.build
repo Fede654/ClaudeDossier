@@ -81,6 +81,7 @@ endforeach
 message('datadir')
 message(datadir)
 subdir('icons')
+subdir('styles')
 
 install_subdir(
 	'lua',

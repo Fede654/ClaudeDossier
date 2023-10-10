@@ -5,11 +5,12 @@ import gi
 
 from apostrophe.helpers import user_action
 gi.require_version('Gtk', '4.0')
+gi.require_version('GtkSource', '5')
 
-from gi.repository import GObject, Gtk
+from gi.repository import GObject, Gtk, GtkSource
 from apostrophe.markup_regex import LIST, CHECKLIST, ORDERED_LIST
 
-class ApostropheTextBuffer(Gtk.TextBuffer):
+class ApostropheTextBuffer(GtkSource.Buffer):
     __gtype_name__ = "ApostropheTextBuffer"
 
     __gsignals__ = {

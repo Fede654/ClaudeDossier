@@ -30,16 +30,18 @@ from apostrophe.text_buffer import ApostropheTextBuffer
 
 gi.require_version('Gtk', '4.0')
 #gi.require_version('Gspell', '1')
+gi.require_version('GtkSource', '5')
+
 import logging
 
-from gi.repository import Adw, Gdk, Gio, GLib, GObject, Gtk
+from gi.repository import Adw, Gdk, Gio, GLib, GObject, Gtk, GtkSource
 
 LOGGER = logging.getLogger('apostrophe')
 
 DEFAULT_DPI = 98304
 
 @Gtk.Template(resource_path='/org/gnome/gitlab/somas/Apostrophe/ui/TextView.ui')
-class ApostropheTextView(Gtk.TextView):
+class ApostropheTextView(GtkSource.View):
     """ApostropheTextView encapsulates all the features around the editor.
 
     It combines the following:
