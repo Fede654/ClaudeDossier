@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2023-09-17 10:04+0000\n"
-"PO-Revision-Date: 2023-09-18 17:33+0300\n"
+"POT-Creation-Date: 2023-09-18 14:34+0000\n"
+"PO-Revision-Date: 2023-10-13 14:57+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Türkçe <takim@gnome.org.tr>\n"
 "Language: tr\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.4\n"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:3
 #: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:5
@@ -244,7 +244,7 @@ msgstr "_Kapat"
 #: apostrophe/main_window.py:444 apostrophe/main_window.py:517
 #: apostrophe/main_window.py:609
 msgid "Cancel"
-msgstr "İptal et"
+msgstr "İptal"
 
 #: data/ui/Export.ui:44 apostrophe/export_dialog.py:127
 #: apostrophe/export_dialog.py:343 apostrophe/export_dialog.py:347
