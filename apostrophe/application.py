@@ -208,6 +208,7 @@ class Application(Adw.Application):
 
     def on_new_window(self, _action, _value):
         window = MainWindow(self)
+        self._set_color_scheme()
         window.present()
         group = Gtk.WindowGroup.new()
         group.add_window(window)

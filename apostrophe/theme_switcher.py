@@ -29,6 +29,7 @@ class Theme:
     resources'''
 
     settings = Settings.new()
+    style_manager = Adw.StyleManager.get_default()
 
     def __init__(self, name, web_css):
         self.name    = name
@@ -39,6 +40,8 @@ class Theme:
         current_theme = defaultThemes[0]
         color_scheme = cls.settings.get_string("color-scheme")
         for theme in defaultThemes:
+            if color_scheme == "system":
+                color_scheme = "dark" if cls.style_manager.get_dark() else "light"
             if color_scheme == theme.name:
                 current_theme = theme
         return current_theme
@@ -76,7 +79,7 @@ class ThemeSwitcher(Gtk.Box):
     def selected_color_scheme(self, color_scheme):
         self.color_scheme = color_scheme
 
-        if color_scheme == "auto":
+        if color_scheme == "system":
             self.system_selector.set_active(True)
             self.style_manager.set_color_scheme(Adw.ColorScheme.PREFER_LIGHT)
         if color_scheme == "light":
@@ -110,7 +113,7 @@ class ThemeSwitcher(Gtk.Box):
     @Gtk.Template.Callback()
     def _on_color_scheme_changed(self, widget, paramspec):
         if self.system_selector.get_active():
-            self.selected_color_scheme = "auto"
+            self.selected_color_scheme = "system"
         if self.light_selector.get_active():
             self.selected_color_scheme = "light"
         if self.sepia_selector.get_active():

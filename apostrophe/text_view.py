@@ -29,12 +29,12 @@ from apostrophe.text_view_scroller import TextViewScroller
 from apostrophe.text_buffer import ApostropheTextBuffer
 
 gi.require_version('Gtk', '4.0')
-#gi.require_version('Gspell', '1')
 gi.require_version('GtkSource', '5')
+gi.require_version('Spelling', '1')
 
 import logging
 
-from gi.repository import Adw, Gdk, Gio, GLib, GObject, Gtk, GtkSource
+from gi.repository import Adw, Gdk, Gio, GLib, GObject, Gtk, GtkSource, Spelling
 
 LOGGER = logging.getLogger('apostrophe')
 
@@ -91,8 +91,15 @@ class ApostropheTextView(GtkSource.View):
 
         self.buffer = self.get_buffer()
         # Spell checking
-        # self.gspell_view = Gspell.TextView.get_from_gtk_text_view(self)
-        # self.gspell_view.basic_setup()
+        checker = Spelling.Checker.get_default()
+        self.adapter = Spelling.TextBufferAdapter.new(self.buffer, checker)
+        extra_menu = self.adapter.get_menu_model()
+
+        self.set_extra_menu(extra_menu)
+        self.insert_action_group('spelling', self.adapter)
+
+        #self.adapter.set_enabled(True)
+
 
         # Format shortcuts
         self.shortcut = FormatInserter()
@@ -274,9 +281,9 @@ class ApostropheTextView(GtkSource.View):
 
     @Gtk.Template.Callback()
     def _on_spellcheck_update(self, *args, **kwargs):
+        # TODO: whenever we have https://gitlab.gnome.org/GNOME/gtk/-/issues/6133
         pass
-        # self.gspell_view.set_inline_spell_checking(
-        #     self.spellcheck and not self.focus_mode)
+        self.adapter.set_enabled(self.spellcheck and not self.focus_mode)
 
     @Gtk.Template.Callback()
     def _on_text_changed(self, *_):
