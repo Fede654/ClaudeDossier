@@ -32,27 +32,27 @@ class PreviewRenderer(GObject.Object):
     def __init__(
             self, main_window, text_view, flap):
         super().__init__()
-        self.main_window = main_window
-        self.main_window.connect("close-request", self.on_window_closed)
-        self.main_window.connect("notify::title", self.on_window_title_changed)
-        self.text_view = text_view
+
+        self.main_window = main_window.weak_ref(self.on_main_window_closed)
+        self.main_window().connect("notify::title", self.on_window_title_changed)
+        self.text_view = text_view.weak_ref()
 
         self.window_size_cache = 0
 
         self.settings = Settings.new()
         self.window = None
-        self.preview_stack = self.main_window.preview_stack
+        self.preview_stack = self.main_window().preview_stack.weak_ref()
 
         # we may get the preview layout changed underneath us, so we store
         # a cache for proper hidding the previous layout
         self.preview_layout_cache = None
 
-        self.flap = flap
+        self.flap = flap.weak_ref()
 
-        request_width_target = Adw.PropertyAnimationTarget.new(self.flap, "width-request")
-        self.requested_width_tw = Adw.TimedAnimation.new(self.flap, 
-                                                         self.text_view.get_min_width(),
-                                                         self.text_view.get_min_width() * 2 + 2,
+        request_width_target = Adw.PropertyAnimationTarget.new(self.flap(), "width-request")
+        self.requested_width_tw = Adw.TimedAnimation.new(self.flap(), 
+                                                         self.text_view().get_min_width(),
+                                                         self.text_view().get_min_width() * 2 + 2,
                                                          250, request_width_target)
 
 
@@ -60,28 +60,26 @@ class PreviewRenderer(GObject.Object):
 
     def update_mode(self, *args, web_view=None):
         """Update preview mode"""
-        if not self.main_window.preview:
+        if not self.main_window().preview:
             return
         self.show()
 
     def load_webview(self, webview):
         webview.show()
-        self.main_window.preview_stack.add_child(webview)
-        self.main_window.preview_stack.set_visible_child(webview)
+        self.main_window().preview_stack.add_child(webview)
+        self.main_window().preview_stack.set_visible_child(webview)
 
     def hide(self):
         """Hide the preview, depending on the currently selected mode."""
-        self.flap.set_reveal_flap(False)
+        self.flap().set_reveal_flap(False)
 
-        self.preview_stack.remove_css_class("half-width")
-        self.preview_stack.remove_css_class("full-width")
+        self.preview_stack().remove_css_class("half-width")
+        self.preview_stack().remove_css_class("full-width")
 
         # Windowed preview: remove preview and destroy window.
         if self.preview_layout_cache == PreviewLayout.WINDOWED:
-            self.main_window.present()
-            self.window.preview_box.remove(self.preview_stack)
-            self.window.destroy()
-            self.window = None
+            self.main_window().present()
+            self.destroy_preview_window()
         else:
             # Half-width/height previews: remove preview and reset size
             # requirements.
@@ -91,17 +89,17 @@ class PreviewRenderer(GObject.Object):
         self.preview_layout_cache = None
 
     def shrink_window(self):
-        self.flap.set_size_request(self.text_view.get_min_width(), -1)
+        self.flap().set_size_request(self.text_view().get_min_width(), -1)
 
-        resize_tw_target = Adw.PropertyAnimationTarget.new(self.main_window, "default-width")
-        resize_tw = Adw.TimedAnimation.new(self.main_window,
-                                                self.main_window.get_width(),
+        resize_tw_target = Adw.PropertyAnimationTarget.new(self.main_window(), "default-width")
+        resize_tw = Adw.TimedAnimation.new(self.main_window(),
+                                                self.main_window().get_width(),
                                                 self.window_size_cache,
                                                 250, resize_tw_target)
         resize_tw.play()
 
     def grow_window(self):
-        self.window_size_cache = self.main_window.get_width()
+        self.window_size_cache = self.main_window().get_width()
         self.requested_width_tw.play()
 
     def resize_window(self):
@@ -116,19 +114,24 @@ class PreviewRenderer(GObject.Object):
     def show_preview_window(self):
         if not self.window:
             self.window = PreviewWindow()
-            self.window.connect("close-request", self.on_window_closed)
+            self.window.connect("close-request", self.on_preview_window_closed)
 
-            self.main_window.flap.set_flap(None)
-            self.window.preview_box.append(self.preview_stack)
+            self.main_window().flap.set_flap(None)
+            self.window.preview_box.append(self.preview_stack())
 
             self.bind_property("preview_window_title", self.window, "title")
 
-            width, height = self.main_window.get_default_size()
+            width, height = self.main_window().get_default_size()
             self.window.set_default_size(width, height)
 
             self.window.show()
 
             self.preview_layout_cache = PreviewLayout.WINDOWED
+
+    def destroy_preview_window(self):
+        self.window.preview_box.remove(self.preview_stack())
+        self.window.destroy()
+        self.window = None
 
     def show(self):
         """Show the preview, depending on the currently selected mode."""
@@ -137,32 +140,32 @@ class PreviewRenderer(GObject.Object):
             # when other flaps hide, we gotta do it here. That's why it's important
             # this nevers gets called if the preview is not shown
 
-            if c and self.flap.get_reveal_progress() != 0:
+            if c and self.flap().get_reveal_progress() != 0:
                 return
 
             if c:
-                self.main_window.flap.disconnect(c)
+                self.main_window().flap.disconnect(c)
 
-            self.preview_stack.remove_css_class("half-width")
-            self.preview_stack.remove_css_class("full-width")
+            self.preview_stack().remove_css_class("half-width")
+            self.preview_stack().remove_css_class("full-width")
 
             match self.preview_layout:
                 case PreviewLayout.FULL_WIDTH:
-                    self.flap.set_orientation(Gtk.Orientation.HORIZONTAL)
-                    self.flap.set_fold_policy(Adw.FlapFoldPolicy.ALWAYS)
-                    self.preview_stack.add_css_class("full-width")
-                    self.flap.set_reveal_flap(True)
+                    self.flap().set_orientation(Gtk.Orientation.HORIZONTAL)
+                    self.flap().set_fold_policy(Adw.FlapFoldPolicy.ALWAYS)
+                    self.preview_stack().add_css_class("full-width")
+                    self.flap().set_reveal_flap(True)
 
                 case PreviewLayout.HALF_WIDTH:
-                    self.flap.set_orientation(Gtk.Orientation.HORIZONTAL)
-                    self.flap.set_fold_policy(Adw.FlapFoldPolicy.NEVER)
-                    self.preview_stack.add_css_class("half-width")
-                    self.flap.set_reveal_flap(True)
+                    self.flap().set_orientation(Gtk.Orientation.HORIZONTAL)
+                    self.flap().set_fold_policy(Adw.FlapFoldPolicy.NEVER)
+                    self.preview_stack().add_css_class("half-width")
+                    self.flap().set_reveal_flap(True)
 
                 case PreviewLayout.HALF_HEIGHT:
-                    self.flap.set_orientation(Gtk.Orientation.VERTICAL)
-                    self.flap.set_fold_policy(Adw.FlapFoldPolicy.NEVER)
-                    self.flap.set_reveal_flap(True)
+                    self.flap().set_orientation(Gtk.Orientation.VERTICAL)
+                    self.flap().set_fold_policy(Adw.FlapFoldPolicy.NEVER)
+                    self.flap().set_reveal_flap(True)
 
                 case _:
                     raise ValueError("Unknown preview mode {}".format(self.preview_layout))
@@ -170,10 +173,10 @@ class PreviewRenderer(GObject.Object):
             self.preview_layout_cache = self.preview_layout
 
         def reatach_stack(*args, **kwargs):
-            if self.flap.get_reveal_progress() != 0:
+            if self.flap().get_reveal_progress() != 0:
                 return
-            self.main_window.flap.disconnect(d)
-            self.main_window.flap.set_flap(None)
+            self.main_window().flap.disconnect(d)
+            self.main_window().flap.set_flap(None)
 
             self.preview_layout_cache = self.preview_layout
             self.show_preview_window()
@@ -193,19 +196,23 @@ class PreviewRenderer(GObject.Object):
                  (PreviewLayout.FULL_WIDTH | PreviewLayout.HALF_WIDTH, PreviewLayout.HALF_HEIGHT):
                 self.hide()
                 self.resize_window()
-                c = self.main_window.flap.connect("notify::reveal-progress", set_flap_mode)
+                c = self.main_window().flap.connect("notify::reveal-progress", set_flap_mode)
 
             case (PreviewLayout.WINDOWED, PreviewLayout.FULL_WIDTH | PreviewLayout.HALF_WIDTH | PreviewLayout.HALF_HEIGHT):
                 self.hide()
-                self.main_window.flap.set_flap(self.preview_stack)
+                self.main_window().flap.set_flap(self.preview_stack())
                 self.show()
 
             case (PreviewLayout.FULL_WIDTH | PreviewLayout.HALF_WIDTH | PreviewLayout.HALF_HEIGHT, PreviewLayout.WINDOWED):
                 self.hide()
-                d = self.main_window.flap.connect("notify::reveal-progress", reatach_stack)
+                d = self.main_window().flap.connect("notify::reveal-progress", reatach_stack)
 
     def on_window_title_changed(self, *args, **kwargs):
-        self.preview_window_title = self.main_window.get_title() + " - " + _("Preview")
+        self.preview_window_title = self.main_window().get_title() + " - " + _("Preview")
 
-    def on_window_closed(self, *args):
-        self.main_window.lookup_action("preview").change_state(GLib.Variant.new_boolean(False))
+    def on_preview_window_closed(self, *args):
+        self.main_window().lookup_action("preview").change_state(GLib.Variant.new_boolean(False))
+
+    def on_main_window_closed(self, *args):
+        if self.window:
+            self.destroy_preview_window()

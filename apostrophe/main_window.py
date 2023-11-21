@@ -727,7 +727,7 @@ class MainWindow(Adw.ApplicationWindow):
         LOGGER.info('close request called')
 
         if self.close_anyway:
-            self.destroy()
+            self.run_dispose()
             return False
 
         # called if check_change decides we can throw away the contents of the textview
