@@ -108,7 +108,18 @@ class MainWindow(Adw.ApplicationWindow):
         self.progressbar_animation.connect("done", fade_out_progressbar)
 
         # Setup preview
+
+        self.preview_layout = self.settings.get_enum("preview-mode")
+
         self.preview_handler = PreviewHandler(self, self.textview, self.flap)
+
+        # not really necessary but we'll keep a preview_layout property on the window
+        # and bind it both to the switcher and the renderer
+        self.bind_property("preview_layout", self.headerbar.preview_layout_switcher, 
+                           "preview_layout", GObject.BindingFlags.BIDIRECTIONAL | GObject.BindingFlags.SYNC_CREATE)
+
+        self.bind_property("preview_layout", self.preview_handler.preview_renderer(), 
+                           "preview_layout", GObject.BindingFlags.SYNC_CREATE)
 
         # Setting up spellcheck
         #self.settings.bind("spellcheck", self.textview,
@@ -255,17 +266,6 @@ class MainWindow(Adw.ApplicationWindow):
 
         self.new_document()
 
-        # not really necessary but we'll keep a preview_layout property on the window
-        # and bind it both to the switcher and the renderer
-        self.bind_property("preview_layout", self.headerbar.preview_layout_switcher, 
-                           "preview_layout", GObject.BindingFlags.BIDIRECTIONAL)
-
-        self.bind_property("preview_layout", self.preview_handler.preview_renderer, 
-                           "preview_layout", GObject.BindingFlags.SYNC_CREATE)
-
-        self.preview_layout = self.settings.get_enum("preview-mode")
-        # TODO: remove this workaround for the crashing webview
-        self.preview_layout = 3
 
     def on_text_changed(self, *_args):
         """called when the text changes, sets the self.did_change to true and
