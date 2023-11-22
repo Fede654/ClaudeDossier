@@ -43,14 +43,14 @@ class PreviewHandler:
     connects it all together (including synchronization, ie. text changes, scroll)."""
 
     def __init__(self, window, text_view, flap):
-        self.text_view = text_view
+        self.text_view = text_view.weak_ref()
 
         self.web_view = None
         self.web_view_pending_html = None
 
         self.preview_converter = PreviewConverter()
         self.preview_renderer = PreviewRenderer(
-            window, text_view, flap)
+            window, text_view, flap).weak_ref()
 
         self.text_changed_handler_id = None
 
@@ -64,13 +64,13 @@ class PreviewHandler:
 
     def show(self):
         self.__show()
-        self.preview_renderer.show()
+        self.preview_renderer().show()
 
     def __show(self, html=None, step=Step.CONVERT_HTML):
 
         if step == Step.CONVERT_HTML:
             # First step: convert text to HTML.
-            buf = self.text_view.get_buffer()
+            buf = self.text_view().get_buffer()
 
             self.preview_converter.convert(
                 buf.get_text(buf.get_start_iter(), buf.get_end_iter(), False),
@@ -103,17 +103,17 @@ class PreviewHandler:
                 self.preview_visible = True
 
                 self.text_changed_handler_id = \
-                    self.text_view.get_buffer().connect("changed", self.__show)
+                    self.text_view().get_buffer().connect("changed", self.__show)
 
                 self.__show()
 
-            GLib.idle_add(self.web_view.set_scroll_scale, self.text_view.scroll_scale)
+            GLib.idle_add(self.web_view.set_scroll_scale, self.text_view().scroll_scale)
 
             if self.settings.get_boolean("sync-scroll"):
                 self.web_scroll_handler_id = \
                     self.web_view.connect("scroll-scale-changed", self.on_web_view_scrolled)
                 self.text_scroll_handler_id = \
-                    self.text_view.connect("scroll-scale-changed", self.on_text_view_scrolled)
+                    self.text_view().connect("scroll-scale-changed", self.on_text_view_scrolled)
 
     def reload(self, *_widget, reshow=False):
         if self.preview_visible:
@@ -125,31 +125,31 @@ class PreviewHandler:
         if self.preview_visible:
             self.preview_visible = False
 
-            #GLib.idle_add(self.text_view.scroll_scale, self.web_view.get_scroll_scale())
-            self.text_view.scroll_scale = self.web_view.get_scroll_scale()
+            #GLib.idle_add(self.text_view().scroll_scale, self.web_view.get_scroll_scale())
+            self.text_view().scroll_scale = self.web_view.get_scroll_scale()
 
-            self.preview_renderer.hide()
+            self.preview_renderer().hide()
 
             if self.text_scroll_handler_id:
-                self.text_view.disconnect(self.text_scroll_handler_id)
+                self.text_view().disconnect(self.text_scroll_handler_id)
                 self.text_scroll_handler_id = None
             if self.web_scroll_handler_id:
                 self.web_view.disconnect(self.web_scroll_handler_id)
                 self.web_scroll_handler_id = None
 
         if self.text_changed_handler_id:
-            self.text_view.get_buffer().disconnect(self.text_changed_handler_id)
+            self.text_view().get_buffer().disconnect(self.text_changed_handler_id)
 
         if self.loading:
             self.loading = False
-            self.preview_renderer.hide()
+            self.preview_renderer().hide()
             # TODO:
             return
             self.web_view.destroy()
             self.web_view = None
 
     def update_preview_mode(self):
-        self.preview_renderer.update_mode(self.web_view)
+        self.preview_renderer().update_mode(self.web_view)
 
     def on_load_changed(self, _web_view, event):
         if event == WebKit.LoadEvent.FINISHED:
@@ -160,7 +160,7 @@ class PreviewHandler:
             else:
                 # we only lazyload the webview once
                 if not self.shown:
-                    self.preview_renderer.load_webview(self.web_view)
+                    self.preview_renderer().load_webview(self.web_view)
                     self.shown = True
                 self.__show(step=Step.RENDER)
 
@@ -171,9 +171,9 @@ class PreviewHandler:
             self.web_view.set_scroll_scale(scale)
 
     def on_web_view_scrolled(self, _web_view, scale):
-        if self.preview_visible and self.text_view.get_mapped() and not math.isclose(
-                scale, self.text_view.scroll_scale, rel_tol=1e-1):
-            self.text_view.scroll_scale = scale
+        if self.preview_visible and self.text_view().get_mapped() and not math.isclose(
+                scale, self.text_view().scroll_scale, rel_tol=1e-1):
+            self.text_view().scroll_scale = scale
 
     @staticmethod
     def on_click_link(web_view, decision, _decision_type):
