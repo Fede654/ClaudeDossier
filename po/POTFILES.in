@@ -32,6 +32,7 @@ apostrophe/preview_handler.py
 apostrophe/preview_layout_switcher.py
 apostrophe/preview_renderer.py
 apostrophe/preview_web_view.py
+apostrophe/preview_window.py
 apostrophe/search_and_replace.py
 apostrophe/settings.py
 apostrophe/stats_counter.py

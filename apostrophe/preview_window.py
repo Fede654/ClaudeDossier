@@ -27,4 +27,4 @@ class PreviewWindow(Adw.ApplicationWindow):
 
     def __init__(self):
         super().__init__(application=Gio.Application.get_default(),
-                         title="Preview")
+                         title=_("Preview"))
