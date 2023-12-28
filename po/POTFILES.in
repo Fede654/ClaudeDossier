@@ -1,7 +1,7 @@
 # List of source files containing translatable strings.
 data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in
 data/org.gnome.gitlab.somas.Apostrophe.gschema.xml
-data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in
+data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in
 data/ui/About.ui.in
 data/ui/AboutHemingway.ui
 data/ui/Export.ui
