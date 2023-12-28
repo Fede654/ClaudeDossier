@@ -1,7 +1,7 @@
 {
     "app-id": "org.gnome.gitlab.somas.Apostrophe",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "45",
+    "runtime-version": "master",
     "sdk": "org.gnome.Sdk",
     "command": "apostrophe",
     "finish-args": [
@@ -116,6 +116,7 @@
             "name": "apostrophe",
             "builddir" : true,
             "buildsystem": "meson",
+            "run-tests": true,
             "config-opts": [
                 "-Dprofile=development"
             ],
