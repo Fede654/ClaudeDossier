@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: apostrophe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2023-09-11 15:13+0000\n"
-"PO-Revision-Date: 2024-01-07 15:15+0200\n"
+"POT-Creation-Date: 2024-01-07 13:16+0000\n"
+"PO-Revision-Date: 2024-01-07 15:17+0200\n"
 "Last-Translator: Efstathios Iosifidis <eiosifidis@gnome.org>\n"
 "Language-Team: Greek <gnome-el-list@gnome.org>\n"
 "Language: el\n"
@@ -26,11 +26,14 @@ msgstr "Απόστροφος"
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! Do NOT translate "uberwriter" or "apostrophe"! The list MUST also end with a semicolon!
 #: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:5
 msgid "uberwriter;UberWriter;apostrophe;markdown;editor;text;write;"
-msgstr "uberwriter;UberWriter;απόστροφος;markdown;επεξεργαστής;κείμενο;εγγραφή;"
+msgstr ""
+"uberwriter;UberWriter;απόστροφος;markdown;επεξεργαστής;κείμενο;εγγραφή;"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:6
 msgid "Apostrophe, an elegant, distraction-free markdown editor"
-msgstr "Η Απόστροφος, μια κομψή, απαλλαγμένη από διασπάσεις εφαρμογή, επεξεργασίας markdown"
+msgstr ""
+"Η Απόστροφος, μια κομψή, απαλλαγμένη από διασπάσεις εφαρμογή, επεξεργασίας "
+"markdown"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:29
 msgid "Color scheme"
@@ -38,9 +41,12 @@ msgstr "Χρωματικός σχηματισμός"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:30
 msgid "Use the color scheme in the application's UI and in the text area."
-msgstr "Χρησιμοποιήστε τον χρωματικό σχηματισμό στη διεπαφή χρήστη της εφαρμογής και στο πεδίο κειμένου."
+msgstr ""
+"Χρησιμοποιήστε τον χρωματικό σχηματισμό στη διεπαφή χρήστη της εφαρμογής και "
+"στο πεδίο κειμένου."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:36 data/ui/Preferences.ui:15 data/ui/Preferences.ui:16
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:36
+#: data/ui/Preferences.ui:15 data/ui/Preferences.ui:16
 msgid "Check spelling while typing"
 msgstr "Έλεγχος ορθογραφίας κατά την πληκτρολόγηση"
 
@@ -54,15 +60,20 @@ msgstr "Συγχρονισμός κύλισης επεξεργαστή/προε�
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:44
 msgid "Keep the editor and preview scroll positions in sync."
-msgstr "Διατηρεί συγχρονισμένες τις θέσεις κύλισης στον επεξεργαστή και την προεπισκόπηση."
+msgstr ""
+"Διατηρεί συγχρονισμένες τις θέσεις κύλισης στον επεξεργαστή και την "
+"προεπισκόπηση."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:50 data/ui/Preferences.ui:70
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:50
+#: data/ui/Preferences.ui:70
 msgid "Input format"
 msgstr "Μορφοποίηση εισαγωγής"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:51
 msgid "Input format to use when previewing and exporting using Pandoc."
-msgstr "Η μορφοποίηση εισαγωγής που χρησιμοποιείται κατά την προεπισκόπηση και την εξαγωγή με τη χρήση του Pandoc."
+msgstr ""
+"Η μορφοποίηση εισαγωγής που χρησιμοποιείται κατά την προεπισκόπηση και την "
+"εξαγωγή με τη χρήση του Pandoc."
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:57
 msgid "Autohide Headerbar"
@@ -70,7 +81,9 @@ msgstr "Αυτόματη απόκρυψη της γραμμής κεφαλίδα
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:58
 msgid "Hide the header and status bars when typing."
-msgstr "Απόκρυψη της γραμμής κεφαλίδας και της γραμμής κατάστασης κατά την πληκτρολόγηση."
+msgstr ""
+"Απόκρυψη της γραμμής κεφαλίδας και της γραμμής κατάστασης κατά την "
+"πληκτρολόγηση."
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:64
 msgid "Open file base path"
@@ -96,7 +109,8 @@ msgstr "Χαρακτήρες ανά γραμμή"
 msgid "Maximum number of characters per line within the editor."
 msgstr "Μέγιστος αριθμός χαρακτήρων ανά γραμμή μέσα στον επεξεργαστή."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:85 data/ui/AboutHemingway.ui:6
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:85
+#: data/ui/AboutHemingway.ui:6
 msgid "Hemingway Mode"
 msgstr "Λειτουργία Hemingway"
 
@@ -126,7 +140,9 @@ msgstr "Προεπισκόπηση ενεργή"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:107
 msgid "Whether showing of preview is active when launching a new window."
-msgstr "Εάν η εμφάνιση της προεπισκόπησης είναι ενεργή κατά την έναρξη νέου παραθύρου."
+msgstr ""
+"Εάν η εμφάνιση της προεπισκόπησης είναι ενεργή κατά την έναρξη νέου "
+"παραθύρου."
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:113
 msgid "Text size"
@@ -150,7 +166,8 @@ msgstr "Επεξεργασία Markdown με στυλ"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:8
 msgid "Focus on your writing with a clean, distraction-free markdown editor."
-msgstr "Εστιάστε στην γραφή σας με έναν καθαρό επεξεργαστή Markdown χωρίς διακοπές."
+msgstr ""
+"Εστιάστε στην γραφή σας με έναν καθαρό επεξεργαστή Markdown χωρίς διακοπές."
 
 #: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:9
 msgid "Features:"
@@ -169,16 +186,24 @@ msgid "Dark, light and sepia themes"
 msgstr "Θέματα σκοτεινού, φωτεινού και καστανού χρώματος"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:14
-msgid "Everything you expect from a text editor, such as spellchecking or document statistics"
-msgstr "Όλα όσα αναμένετε από έναν επεξεργαστή κειμένου, όπως ο έλεγχος ορθογραφίας ή στατιστικά εγγράφων"
+msgid ""
+"Everything you expect from a text editor, such as spellchecking or document "
+"statistics"
+msgstr ""
+"Όλα όσα αναμένετε από έναν επεξεργαστή κειμένου, όπως ο έλεγχος ορθογραφίας "
+"ή στατιστικά εγγράφων"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:15
 msgid "Live preview of what you write"
 msgstr "Ζωντανή προεπισκόπηση του κειμένου που γράφετε"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:16
-msgid "Export to all kind of formats: PDF, Word/Libreoffice, LaTeX, or even HTML slideshows"
-msgstr "Εξαγωγή σε όλα τα είδη μορφών: PDF, Word/Libreoffice, LaTeX ή ακόμη και σε παρουσιάσεις HTML"
+msgid ""
+"Export to all kind of formats: PDF, Word/Libreoffice, LaTeX, or even HTML "
+"slideshows"
+msgstr ""
+"Εξαγωγή σε όλα τα είδη μορφών: PDF, Word/Libreoffice, LaTeX ή ακόμη και σε "
+"παρουσιάσεις HTML"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:41
 msgid "Manuel G., Wolf V."
@@ -201,18 +226,20 @@ msgstr ""
 
 #: data/ui/AboutHemingway.ui:7
 msgid ""
-"The Hemingway Mode mimics the experience of writing on a typewriter, not allowing you to delete any text or "
-"doing any kind of editing. \n"
+"The Hemingway Mode mimics the experience of writing on a typewriter, not "
+"allowing you to delete any text or doing any kind of editing. \n"
 "\n"
-"Only being able to move forward may be frustrating, but can be an interesting exercise for improving your "
-"writing skills, gaining focus or facing the task on hand with a different mindset.\n"
+"Only being able to move forward may be frustrating, but can be an "
+"interesting exercise for improving your writing skills, gaining focus or "
+"facing the task on hand with a different mindset.\n"
 "  "
 msgstr ""
-"Η λειτουργία Hemingway μιμείται την εμπειρία της γραφής σε γραφομηχανή, μην επιτρέποντας διαγραφή κειμένου ή "
-"οποιοδήποτε άλλου είδους επεξεργασίας.\n"
+"Η λειτουργία Hemingway μιμείται την εμπειρία της γραφής σε γραφομηχανή, μην "
+"επιτρέποντας διαγραφή κειμένου ή οποιοδήποτε άλλου είδους επεξεργασίας.\n"
 "\n"
-"Η δυνατότητα να προχωράτε μόνο μπροστά ενδέχεται να σας απογοητεύει, αλλά μπορεί να αποτελέσει μια ενδιαφέρουσα "
-"άσκηση για τη βελτίωση των δεξιοτήτων γραφής σας, την επίτευξη εστίασης ή την αντιμετώπιση της εργασίας με "
+"Η δυνατότητα να προχωράτε μόνο μπροστά ενδέχεται να σας απογοητεύει, αλλά "
+"μπορεί να αποτελέσει μια ενδιαφέρουσα άσκηση για τη βελτίωση των δεξιοτήτων "
+"γραφής σας, την επίτευξη εστίασης ή την αντιμετώπιση της εργασίας με "
 "διαφορετική νοοτροπία.\n"
 "  "
 
@@ -220,74 +247,80 @@ msgstr ""
 msgid "_Close"
 msgstr "_Κλείσιμο"
 
-#: data/ui/Export.ui:33 apostrophe/export_dialog.py:132 apostrophe/export_dialog.py:344
-#: apostrophe/export_dialog.py:349 apostrophe/main_window.py:444 apostrophe/main_window.py:517
-#: apostrophe/main_window.py:609
+#: data/ui/Export.ui:33 apostrophe/export_dialog.py:131
+#: apostrophe/export_dialog.py:342 apostrophe/export_dialog.py:347
+#: apostrophe/main_window.py:432 apostrophe/main_window.py:505
+#: apostrophe/main_window.py:597
 msgid "Cancel"
 msgstr "Ακύρωση"
 
-#: data/ui/Export.ui:44 apostrophe/export_dialog.py:127 apostrophe/export_dialog.py:343
-#: apostrophe/export_dialog.py:347
+#: data/ui/Export.ui:44 apostrophe/export_dialog.py:126
+#: apostrophe/export_dialog.py:341 apostrophe/export_dialog.py:345
 msgid "Export"
 msgstr "Εξαγωγή"
 
-#: data/ui/Export.ui:114
+#: data/ui/Export.ui:117
 msgid "Options"
 msgstr "Ρυθμίσεις"
 
-#: data/ui/Export.ui:118
+#: data/ui/Export.ui:121
 msgid "Standalone"
 msgstr "Αυτόνομο"
 
-#: data/ui/Export.ui:120
-msgid "Use a header and footer to include things like stylesheets and meta information"
-msgstr "Χρησιμοποιήστε κεφαλίδα και υποσέλιδο για να περιλάβετε πράγματα όπως φύλλα στυλ και μεταπληροφορίες"
+#: data/ui/Export.ui:123
+msgid ""
+"Use a header and footer to include things like stylesheets and meta "
+"information"
+msgstr ""
+"Χρησιμοποιήστε κεφαλίδα και υποσέλιδο για να περιλάβετε πράγματα όπως φύλλα "
+"στυλ και μεταπληροφορίες"
 
-#: data/ui/Export.ui:133
+#: data/ui/Export.ui:136
 msgid "Table of Contents"
 msgstr "Πίνακας περιεχομένων"
 
-#: data/ui/Export.ui:147
+#: data/ui/Export.ui:150
 msgid "Number Sections"
 msgstr "Αριθμός ενοτήτων"
 
-#: data/ui/Export.ui:165 data/ui/Export.ui:170 data/ui/Export.ui:182 data/ui/Export.ui:187
+#: data/ui/Export.ui:168 data/ui/Export.ui:173 data/ui/Export.ui:185
+#: data/ui/Export.ui:190
 msgid "Page Size"
 msgstr "Μέγεθος σελίδας"
 
-#: data/ui/Export.ui:199
+#: data/ui/Export.ui:202
 msgid "HTML Options"
 msgstr "Επιλογές HTML"
 
-#: data/ui/Export.ui:204
+#: data/ui/Export.ui:207
 msgid "Self-contained"
 msgstr "Αυτόνομο"
 
-#: data/ui/Export.ui:206
+#: data/ui/Export.ui:209
 msgid "Produces an HTML file with no external dependencies"
 msgstr "Παράγει ένα αρχείο HTML χωρίς εξωτερικές εξαρτήσεις"
 
-#: data/ui/Export.ui:222
+#: data/ui/Export.ui:225
 msgid "Syntax Highlighting"
 msgstr "Επισήμανση σύνταξης"
 
-#: data/ui/Export.ui:228
+#: data/ui/Export.ui:231
 msgid "Use Syntax Highlighting"
 msgstr "Χρήση επισήμανσης σύνταξης"
 
-#: data/ui/Export.ui:235
+#: data/ui/Export.ui:238
 msgid "Highlight style"
 msgstr "Στυλ επισήμανσης"
 
-#: data/ui/Export.ui:249
+#: data/ui/Export.ui:252
 msgid "Presentation"
 msgstr "Παρουσίαση"
 
-#: data/ui/Export.ui:254
+#: data/ui/Export.ui:257
 msgid "Incremental bullets"
 msgstr "Σταδιακά σημεία"
 
-#: data/ui/Export.ui:256
+#: data/ui/Export.ui:259
 msgid "Show one bullet point after another in a slideshow"
 msgstr "Εμφάνιση ενός σημείου κείμενου μετά το άλλο σε παρουσίαση"
 
@@ -368,8 +401,10 @@ msgid "Autohide headerbar"
 msgstr "Αυτόματη απόκρυψη γραμμής κεφαλίδας"
 
 #: data/ui/Preferences.ui:29
-msgid "Autohide header and status bars while typing"
-msgstr "Αυτόματη απόκρυψη γραμμής κεφαλίδας και γραμμής κατάστασης κατά την πληκτρολόγηση"
+msgid "Autohide header and statusbars while typing"
+msgstr ""
+"Αυτόματη απόκρυψη γραμμής κεφαλίδας και γραμμής κατάστασης κατά την "
+"πληκτρολόγηση"
 
 #: data/ui/Preferences.ui:42
 msgid "Use bigger text"
@@ -377,7 +412,9 @@ msgstr "Χρήση μεγαλύτερου κειμένου"
 
 #: data/ui/Preferences.ui:43
 msgid "Reduce the margins width and increase the text size when possible"
-msgstr "Μείωση του πλάτους των περιθωρίων και αύξηση του μεγέθους του κειμένου όταν είναι δυνατόν"
+msgstr ""
+"Μείωση του πλάτους των περιθωρίων και αύξηση του μεγέθους του κειμένου όταν "
+"είναι δυνατόν"
 
 #: data/ui/Preferences.ui:56
 msgid "Restore session"
@@ -385,7 +422,8 @@ msgstr "Επαναφορά συνεδρίας"
 
 #: data/ui/Preferences.ui:57
 msgid "Return to your previous session when Apostrophe is started"
-msgstr "Επιστροφή στην προηγούμενη σας συνεδρία όταν ξεκινά η εφαρμογή Απόστροφος"
+msgstr ""
+"Επιστροφή στην προηγούμενη σας συνεδρία όταν ξεκινά η εφαρμογή Απόστροφος"
 
 #: data/ui/Preferences.ui:71
 msgid "Flavor of markdown Apostrophe will use"
@@ -395,7 +433,7 @@ msgstr "Το στυλ Markdown που θα χρησιμοποιήσει η εφ�
 msgid "Markdown flavor documentation"
 msgstr "Στυλ τεκμηρίωση Markdown"
 
-#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_renderer.py:208
+#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_renderer.py:211
 msgid "Preview"
 msgstr "Προεπισκόπηση"
 
@@ -411,32 +449,32 @@ msgstr "Κανένα πρόσφατο έγγραφο"
 msgid "No Results Found"
 msgstr "Δεν βρέθηκαν αποτελέσματα"
 
-#: data/ui/SearchBar.ui:28
+#: data/ui/SearchBar.ui:29
 msgid "Previous Match"
 msgstr "Προηγούμενη αντιστοιχία"
 
-#: data/ui/SearchBar.ui:37
+#: data/ui/SearchBar.ui:38
 msgid "Next Match"
 msgstr "Επόμενη αντιστοιχία"
 
 #. Translators: This indicates case sensitivity, so it should be the first vowel of the language in lowercase and uppercase
-#: data/ui/SearchBar.ui:52
+#: data/ui/SearchBar.ui:53
 msgid "aA"
 msgstr "αΑ"
 
-#: data/ui/SearchBar.ui:55
+#: data/ui/SearchBar.ui:56
 msgid "Case Sensitive"
 msgstr "Διάκριση πεζών/κεφαλαίων"
 
-#: data/ui/SearchBar.ui:64
+#: data/ui/SearchBar.ui:65
 msgid "Regular Expression"
 msgstr "Κανονική έκφραση"
 
-#: data/ui/SearchBar.ui:72 data/ui/SearchBar.ui:110
+#: data/ui/SearchBar.ui:73 data/ui/SearchBar.ui:111
 msgid "Replace"
 msgstr "Αντικατάσταση"
 
-#: data/ui/SearchBar.ui:118
+#: data/ui/SearchBar.ui:119
 msgid "Replace All"
 msgstr "Αντικατάσταση όλων"
 
@@ -662,24 +700,24 @@ msgstr "Το αρχείο άλλαξε από άλλο πρόγραμμα."
 msgid "_Discard Changes and Reload"
 msgstr "_Απόρριψη των αλλαγών και επαναφόρτωση"
 
-#: apostrophe/application.py:232
+#: apostrophe/application.py:223
 msgid "Donate"
 msgstr "Δωρεά"
 
-#: apostrophe/application.py:233
+#: apostrophe/application.py:224
 msgid "Translations"
 msgstr "Μεταφράσεις"
 
-#: apostrophe/export_dialog.py:122 apostrophe/helpers.py:84
+#: apostrophe/export_dialog.py:121 apostrophe/helpers.py:84
 msgid "Close"
 msgstr "Κλείσιμο"
 
-#: apostrophe/export_dialog.py:130 apostrophe/export_dialog.py:348
+#: apostrophe/export_dialog.py:129 apostrophe/export_dialog.py:346
 #, python-format
 msgid "Export to %s"
 msgstr "Εξαγωγή σε %s"
 
-#: apostrophe/export_dialog.py:156 apostrophe/export_dialog.py:337
+#: apostrophe/export_dialog.py:155 apostrophe/export_dialog.py:335
 #, python-brace-format
 msgid ""
 "An error happened while trying to export:\n"
@@ -690,11 +728,11 @@ msgstr ""
 "\n"
 "{err_msg}"
 
-#: apostrophe/export_dialog.py:235
+#: apostrophe/export_dialog.py:234
 msgid "Export to {}"
 msgstr "Εξαγωγή σε {}"
 
-#: apostrophe/export_dialog.py:344
+#: apostrophe/export_dialog.py:342
 msgid "Select folder"
 msgstr "Επιλογή φακέλου"
 
@@ -731,52 +769,56 @@ msgid "adverb"
 msgstr "επίρρημα"
 
 #. Hemingway Toast
-#: apostrophe/main_window.py:128
+#: apostrophe/main_window.py:139
 msgid "Text can't be deleted while on Hemingway mode"
 msgstr "Δεν μπορεί να διαγραφεί κείμενο κατά τη λειτουργία Hemingway"
 
-#: apostrophe/main_window.py:131
+#: apostrophe/main_window.py:142
 msgid "Tell me more"
 msgstr "Πες μου περισσότερα"
 
-#: apostrophe/main_window.py:440
+#: apostrophe/main_window.py:428
 msgid "Save your File"
 msgstr "Αποθήκευση του αρχείου σας"
 
-#: apostrophe/main_window.py:443 apostrophe/main_window.py:611
+#: apostrophe/main_window.py:431 apostrophe/main_window.py:599
 msgid "Save"
 msgstr "Αποθήκευση"
 
-#: apostrophe/main_window.py:506
+#: apostrophe/main_window.py:494
 msgid "Markdown Files"
 msgstr "Αρχεία Markdown"
 
-#: apostrophe/main_window.py:510
+#: apostrophe/main_window.py:498
 msgid "Plain Text Files"
 msgstr "Αρχεία απλού κειμένου"
 
-#: apostrophe/main_window.py:513
+#: apostrophe/main_window.py:501
 msgid "Open a .md file"
 msgstr "Άνοιγμα ενός αρχείου .md"
 
-#: apostrophe/main_window.py:516
+#: apostrophe/main_window.py:504
 msgid "Open"
 msgstr "Άνοιγμα"
 
-#: apostrophe/main_window.py:603
+#: apostrophe/main_window.py:591
 msgid "Save changes?"
 msgstr "Αποθήκευση αλλαγών;"
 
-#: apostrophe/main_window.py:604
+#: apostrophe/main_window.py:592
 #, python-format
-msgid "“%s” contains unsaved changes. If you don’t save, all your changes will be permanently lost."
-msgstr "Το «%s» περιέχει μη αποθηκευμένες αλλαγές. Αν δεν αποθηκεύσετε, όλες οι αλλαγές θα χαθούν οριστικά."
+msgid ""
+"“%s” contains unsaved changes. If you don’t save, all your changes will be "
+"permanently lost."
+msgstr ""
+"Το «%s» περιέχει μη αποθηκευμένες αλλαγές. Αν δεν αποθηκεύσετε, όλες οι "
+"αλλαγές θα χαθούν οριστικά."
 
-#: apostrophe/main_window.py:610
+#: apostrophe/main_window.py:598
 msgid "Discard"
 msgstr "Απόρριψη"
 
-#: apostrophe/main_window.py:768 apostrophe/main_window.py:792
+#: apostrophe/main_window.py:755 apostrophe/main_window.py:779
 msgid "New File"
 msgstr "Νέο αρχείο"
 
@@ -856,7 +898,8 @@ msgstr "έντονο κείμενο"
 msgid "strikethrough text"
 msgstr "κείμενο με διαγράμμιση"
 
-#: apostrophe/text_view_format_inserter.py:49 apostrophe/text_view_format_inserter.py:117
+#: apostrophe/text_view_format_inserter.py:49
+#: apostrophe/text_view_format_inserter.py:117
 #: apostrophe/text_view_format_inserter.py:187
 msgid "Item"
 msgstr "Αντικείμενο"
@@ -881,7 +924,8 @@ msgstr "https://www.example.com"
 msgid "link text"
 msgstr "κείμενο συνδέσμου"
 
-#: apostrophe/text_view_format_inserter.py:429 apostrophe/text_view_format_inserter.py:454
+#: apostrophe/text_view_format_inserter.py:429
+#: apostrophe/text_view_format_inserter.py:461
 msgid "image caption"
 msgstr "λεζάντα εικόνας"
 
@@ -893,7 +937,7 @@ msgstr "Εικόνα"
 msgid "Select an image"
 msgstr "Επιλογή εικόνας"
 
-#: apostrophe/text_view_format_inserter.py:543
+#: apostrophe/text_view_format_inserter.py:550
 msgid ""
 "\n"
 "code\n"
