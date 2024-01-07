@@ -208,6 +208,13 @@ msgid ""
 "writing skills, gaining focus or facing the task on hand with a different mindset.\n"
 "  "
 msgstr ""
+"Η λειτουργία Hemingway μιμείται την εμπειρία της γραφής σε γραφομηχανή, μην επιτρέποντας διαγραφή "
+"κειμένου ή οποιοδήποτε άλλου είδους επεξεργασίας.\n"
+"\n"
+"Η δυνατότητα να προχωράτε μόνο μπροστά ενδέχεται να σας απογοητεύει, αλλά μπορεί να αποτελέσει μια "
+"ενδιαφέρουσα άσκηση για τη βελτίωση των δεξιοτήτων γραφής σας, την επίτευξη εστίασης ή την αντιμετώπιση "
+"της εργασίας με διαφορετική νοοτροπία.\n"
+"  "
 
 #: data/ui/AboutHemingway.ui:13
 msgid "_Close"
@@ -230,11 +237,11 @@ msgstr "Ρυθμίσεις"
 
 #: data/ui/Export.ui:118
 msgid "Standalone"
-msgstr ""
+msgstr "Αυτόνομο"
 
 #: data/ui/Export.ui:120
 msgid "Use a header and footer to include things like stylesheets and meta information"
-msgstr ""
+msgstr "Χρησιμοποιήστε κεφαλίδα και υποσέλιδο για να περιλάβετε πράγματα όπως φύλλα στυλ και μεταπληροφορίες"
 
 #: data/ui/Export.ui:133
 msgid "Table of Contents"
@@ -242,7 +249,7 @@ msgstr "Πίνακας περιεχομένων"
 
 #: data/ui/Export.ui:147
 msgid "Number Sections"
-msgstr ""
+msgstr "Αριθμός ενοτήτων"
 
 #: data/ui/Export.ui:165 data/ui/Export.ui:170 data/ui/Export.ui:182 data/ui/Export.ui:187
 msgid "Page Size"
@@ -250,27 +257,27 @@ msgstr "Μέγεθος σελίδας"
 
 #: data/ui/Export.ui:199
 msgid "HTML Options"
-msgstr ""
+msgstr "Επιλογές HTML"
 
 #: data/ui/Export.ui:204
 msgid "Self-contained"
-msgstr ""
+msgstr "Αυτόνομο"
 
 #: data/ui/Export.ui:206
 msgid "Produces an HTML file with no external dependencies"
-msgstr ""
+msgstr "Παράγει ένα αρχείο HTML χωρίς εξωτερικές εξαρτήσεις"
 
 #: data/ui/Export.ui:222
 msgid "Syntax Highlighting"
-msgstr ""
+msgstr "Επισήμανση σύνταξης"
 
 #: data/ui/Export.ui:228
 msgid "Use Syntax Highlighting"
-msgstr ""
+msgstr "Χρήση επισήμανσης σύνταξης"
 
 #: data/ui/Export.ui:235
 msgid "Highlight style"
-msgstr ""
+msgstr "Στυλ επισήμανσης"
 
 #: data/ui/Export.ui:249
 msgid "Presentation"
@@ -278,11 +285,11 @@ msgstr "Παρουσίαση"
 
 #: data/ui/Export.ui:254
 msgid "Incremental bullets"
-msgstr ""
+msgstr "Σταδιακά σημεία"
 
 #: data/ui/Export.ui:256
 msgid "Show one bullet point after another in a slideshow"
-msgstr ""
+msgstr "Εμφάνιση ενός σημείου κείμενου μετά το άλλο σε παρουσίαση"
 
 #: data/ui/Headerbar.ui:11
 msgid "New"
@@ -294,7 +301,7 @@ msgstr "Ά_νοιγμα"
 
 #: data/ui/Headerbar.ui:20
 msgid "Open a markdown file"
-msgstr ""
+msgstr "Άνοιγμα αρχείου markdown"
 
 #: data/ui/Headerbar.ui:26
 msgid "_Save"
@@ -302,31 +309,31 @@ msgstr "_Αποθήκευση"
 
 #: data/ui/Headerbar.ui:28
 msgid "Save the markdown file"
-msgstr ""
+msgstr "Αποθήκευση του αρχείου markdown"
 
 #: data/ui/Headerbar.ui:44
 msgid "Open the Main Menu"
-msgstr ""
+msgstr "Άνοιγμα του κυρίως μενού"
 
 #: data/ui/Headerbar.ui:55
 msgid "_Find"
-msgstr "Ανεύ_ρεση"
+msgstr "_Εύρεση"
 
 #: data/ui/Headerbar.ui:57
 msgid "Search in the File"
-msgstr ""
+msgstr "Αναζήτηση στο αρχείο"
 
 #: data/ui/Headerbar.ui:80
 msgid "_Hemingway Mode"
-msgstr ""
+msgstr "Λειτουργία _Hemingway"
 
 #: data/ui/Headerbar.ui:84
 msgid "_Focus Mode"
-msgstr ""
+msgstr "Λειτουργία _εστίασης"
 
 #: data/ui/Headerbar.ui:90
 msgid "Find and _Replace"
-msgstr "Εύρεση και αντικατάσταση"
+msgstr "Εύρεση και _αντικατάσταση"
 
 #: data/ui/Headerbar.ui:96
 msgid "_Preferences"
@@ -334,23 +341,23 @@ msgstr "_Προτιμήσεις"
 
 #: data/ui/Headerbar.ui:102
 msgid "Open _Tutorial"
-msgstr ""
+msgstr "Άνοιγμα _Τεκμηρίωσης"
 
 #: data/ui/Headerbar.ui:107
 msgid "_Keyboard Shortcuts"
-msgstr "Συντομεύσεις _πληκτρολογίου"
+msgstr "Συντομεύσεις _Πληκτρολογίου"
 
 #: data/ui/Headerbar.ui:111
 msgid "_About Apostrophe"
-msgstr ""
+msgstr "_Περί της εφαρμογής Απόστροφος"
 
 #: data/ui/Headerbar.ui:122
 msgid "_Save As..."
-msgstr ""
+msgstr "_Αποθήκευση Ως..."
 
 #: data/ui/Headerbar.ui:145
 msgid "Advanced _Export…"
-msgstr ""
+msgstr "Σύνθετη _Εξαγωγή…"
 
 #: data/ui/Headerbar.ui:151
 msgid "_Copy HTML"
@@ -358,11 +365,11 @@ msgstr "_Αντιγραφή HTML"
 
 #: data/ui/Preferences.ui:28
 msgid "Autohide headerbar"
-msgstr ""
+msgstr "Αυτόματη απόκρυψη γραμμής κεφαλίδας"
 
 #: data/ui/Preferences.ui:29
-msgid "Autohide header and statusbars while typing"
-msgstr ""
+msgid "Autohide header and status bars while typing"
+msgstr "Αυτόματη απόκρυψη γραμμής κεφαλίδας και γραμμής κατάστασης κατά την πληκτρολόγηση"
 
 #: data/ui/Preferences.ui:42
 msgid "Use bigger text"
@@ -370,7 +377,7 @@ msgstr "Χρήση μεγαλύτερου κειμένου"
 
 #: data/ui/Preferences.ui:43
 msgid "Reduce the margins width and increase the text size when possible"
-msgstr ""
+msgstr "Μείωση του πλάτους των περιθωρίων και αύξηση του μεγέθους του κειμένου όταν είναι δυνατόν"
 
 #: data/ui/Preferences.ui:56
 msgid "Restore session"
@@ -378,15 +385,15 @@ msgstr "Επαναφορά συνεδρίας"
 
 #: data/ui/Preferences.ui:57
 msgid "Return to your previous session when Apostrophe is started"
-msgstr ""
+msgstr "Επιστροφή στην προηγούμενη σας συνεδρία όταν ξεκινά η εφαρμογή Απόστροφος"
 
 #: data/ui/Preferences.ui:71
 msgid "Flavor of markdown Apostrophe will use"
-msgstr ""
+msgstr "Το στυλ Markdown που θα χρησιμοποιήσει η εφαρμογή Απόστροφος"
 
 #: data/ui/Preferences.ui:80
 msgid "Markdown flavor documentation"
-msgstr ""
+msgstr "Στυλ τεκμηρίωση Markdown"
 
 #: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_renderer.py:208
 msgid "Preview"
@@ -394,7 +401,7 @@ msgstr "Προεπισκόπηση"
 
 #: data/ui/PreviewLayoutSwitcher.ui:24
 msgid "Screen Layout"
-msgstr ""
+msgstr "Διάταξη οθόνης"
 
 #: data/ui/Recents.ui:46
 msgid "No Recent Documents"
@@ -415,7 +422,7 @@ msgstr "Επόμενη αντιστοιχία"
 #. Translators: This indicates case sensitivity, so it should be the first vowel of the language in lowercase and uppercase
 #: data/ui/SearchBar.ui:52
 msgid "aA"
-msgstr ""
+msgstr "αΑ"
 
 #: data/ui/SearchBar.ui:55
 msgid "Case Sensitive"
@@ -481,17 +488,17 @@ msgstr "Έξοδος από την εφαρμογή"
 #: data/ui/Shortcuts.ui:64
 msgctxt "shortcut window"
 msgid "Modes"
-msgstr ""
+msgstr "Λειτουργίες"
 
 #: data/ui/Shortcuts.ui:67
 msgctxt "shortcut window"
 msgid "Focus mode"
-msgstr ""
+msgstr "Λειτουργία εστίασης"
 
 #: data/ui/Shortcuts.ui:73
 msgctxt "shortcut window"
 msgid "Hemingway mode"
-msgstr ""
+msgstr "Λειτουργία Hemingway"
 
 #: data/ui/Shortcuts.ui:80
 msgctxt "shortcut window"
@@ -531,22 +538,22 @@ msgstr "Επικεφαλίδα"
 #: data/ui/Shortcuts.ui:126
 msgctxt "shortcut window"
 msgid "List item"
-msgstr ""
+msgstr "Στοιχείο λίστας"
 
 #: data/ui/Shortcuts.ui:133
 msgctxt "shortcut window"
 msgid "Italic"
-msgstr "Πλάγια"
+msgstr "Πλάγια γραφή"
 
 #: data/ui/Shortcuts.ui:139
 msgctxt "shortcut window"
 msgid "Bold"
-msgstr "Έντονα"
+msgstr "Έντονη γραφή"
 
 #: data/ui/Shortcuts.ui:145
 msgctxt "shortcut window"
 msgid "Strikeout"
-msgstr ""
+msgstr "Διακριτική γραφή"
 
 #: data/ui/Shortcuts.ui:153
 msgctxt "shortcut window"
@@ -556,32 +563,32 @@ msgstr "Αντιγραφή και επικόλληση"
 #: data/ui/Shortcuts.ui:156
 msgctxt "shortcut window"
 msgid "Copy selected text to clipboard"
-msgstr ""
+msgstr "Αντιγραφή επιλεγμένου κειμένου στο πρόχειρο"
 
 #: data/ui/Shortcuts.ui:162
 msgctxt "shortcut window"
 msgid "Cut selected text to clipboard"
-msgstr ""
+msgstr "Αποκοπή επιλεγμένου κειμένου στο πρόχειρο"
 
 #: data/ui/Shortcuts.ui:168
 msgctxt "shortcut window"
 msgid "Paste selected text from clipboard"
-msgstr ""
+msgstr "Επικόλληση επιλεγμένου κειμένου από το πρόχειρο"
 
 #: data/ui/Shortcuts.ui:176
 msgctxt "shortcut window"
 msgid "Undo and redo"
-msgstr ""
+msgstr "Αναίρεση και επανάληψη"
 
 #: data/ui/Shortcuts.ui:179
 msgctxt "shortcut window"
 msgid "Undo previous command"
-msgstr ""
+msgstr "Αναίρεση προηγούμενης εντολής"
 
 #: data/ui/Shortcuts.ui:185
 msgctxt "shortcut window"
 msgid "Redo previous command"
-msgstr ""
+msgstr "Επανάληψη προηγούμενης εντολής"
 
 #: data/ui/Shortcuts.ui:193
 msgctxt "shortcut window"
@@ -595,7 +602,7 @@ msgstr "Επιλογή όλου του κειμένου"
 
 #: data/ui/TexliveWarning.ui:25 data/ui/TexliveWarning.ui:79
 msgid "TexLive Required"
-msgstr ""
+msgstr "Απαιτείται το TexLive"
 
 #: data/ui/TexliveWarning.ui:33
 msgid ""
@@ -605,10 +612,15 @@ msgid ""
 "Install it from Apostrophe's page in Software\n"
 "or by running the following command in a terminal:"
 msgstr ""
+"Η εφαρμογή Απόστροφος απαιτεί την επέκταση TeXLive\n"
+"για να εξάγει αρχεία PDF ή LaTeX.\n"
+"\n"
+"Εγκαταστήστε την από τη σελίδα του Απόστροφος στο Λογισμικό\n"
+"ή εκτελέστε την παρακάτω εντολή σε ένα τερματικό:"
 
 #: data/ui/TexliveWarning.ui:53
 msgid "Copy to clipboard"
-msgstr ""
+msgstr "Αντιγραφή στο πρόχειρο"
 
 #: data/ui/TexliveWarning.ui:87
 msgid ""
@@ -617,34 +629,38 @@ msgid ""
 "\n"
 "Install it from your distribution repositories"
 msgstr ""
+"Η Απόστροφος χρειάζεται το TexLive\n"
+"για να εξάγει αρχεία PDF ή LaTeX.\n"
+"\n"
+"Εγκαταστήστε το από τα αποθετήρια της διανομής σας"
 
 #: data/ui/ThemeSwitcher.ui:17
 msgid "Use System Colors"
-msgstr ""
+msgstr "Χρήση χρωμάτων συστήματος"
 
 #: data/ui/ThemeSwitcher.ui:27
 msgid "Use Light Colors"
-msgstr ""
+msgstr "Χρήση φωτεινών χρωμάτων"
 
 #: data/ui/ThemeSwitcher.ui:37
 msgid "Use Sepia Colors"
-msgstr ""
+msgstr "Χρήση χρωμάτων σεπία"
 
 #: data/ui/ThemeSwitcher.ui:47
 msgid "Use Dark Colors"
-msgstr ""
+msgstr "Χρήση σκούρων χρωμάτων"
 
 #: data/ui/Window.ui:86
 msgid "File Has Changed on Disk"
-msgstr ""
+msgstr "Το αρχείο άλλαξε στο δίσκο"
 
 #: data/ui/Window.ui:96
 msgid "The file has been changed by another program."
-msgstr ""
+msgstr "Το αρχείο άλλαξε από άλλο πρόγραμμα."
 
 #: data/ui/Window.ui:104
 msgid "_Discard Changes and Reload"
-msgstr ""
+msgstr "_Απόρριψη των αλλαγών και επαναφόρτωση"
 
 #: apostrophe/application.py:232
 msgid "Donate"
@@ -661,7 +677,7 @@ msgstr "Κλείσιμο"
 #: apostrophe/export_dialog.py:130 apostrophe/export_dialog.py:348
 #, python-format
 msgid "Export to %s"
-msgstr ""
+msgstr "Εξαγωγή σε %s"
 
 #: apostrophe/export_dialog.py:156 apostrophe/export_dialog.py:337
 #, python-brace-format
@@ -670,10 +686,13 @@ msgid ""
 "\n"
 "{err_msg}"
 msgstr ""
+"Προέκυψε σφάλμα κατά τη διάρκεια της εξαγωγής:\n"
+"\n"
+"{err_msg}"
 
 #: apostrophe/export_dialog.py:235
 msgid "Export to {}"
-msgstr ""
+msgstr "Εξαγωγή σε {}"
 
 #: apostrophe/export_dialog.py:344
 msgid "Select folder"
@@ -685,15 +704,15 @@ msgstr "Σφάλμα"
 
 #: apostrophe/inhibitor.py:36
 msgid "Unsaved documents"
-msgstr ""
+msgstr "Μη αποθηκευμένα έγγραφα"
 
 #: apostrophe/inline_preview.py:201
 msgid "Formula looks incorrect:"
-msgstr ""
+msgstr "Ο τύπος φαίνεται λανθασμένος:"
 
 #: apostrophe/inline_preview.py:241
 msgid "No matching footnote found"
-msgstr ""
+msgstr "Δεν βρέθηκε αντιστοιχία υποσημείωσης"
 
 #: apostrophe/inline_preview.py:261
 msgid "noun"
@@ -705,24 +724,24 @@ msgstr "ρήμα"
 
 #: apostrophe/inline_preview.py:265
 msgid "adjective"
-msgstr ""
+msgstr "επίθετο"
 
 #: apostrophe/inline_preview.py:267
 msgid "adverb"
-msgstr ""
+msgstr "επίρρημα"
 
 #. Hemingway Toast
 #: apostrophe/main_window.py:128
 msgid "Text can't be deleted while on Hemingway mode"
-msgstr ""
+msgstr "Δεν μπορεί να διαγραφεί κείμενο κατά τη λειτουργία Hemingway"
 
 #: apostrophe/main_window.py:131
 msgid "Tell me more"
-msgstr ""
+msgstr "Πες μου περισσότερα"
 
 #: apostrophe/main_window.py:440
 msgid "Save your File"
-msgstr ""
+msgstr "Αποθήκευση του αρχείου σας"
 
 #: apostrophe/main_window.py:443 apostrophe/main_window.py:611
 msgid "Save"
@@ -730,15 +749,15 @@ msgstr "Αποθήκευση"
 
 #: apostrophe/main_window.py:506
 msgid "Markdown Files"
-msgstr ""
+msgstr "Αρχεία Markdown"
 
 #: apostrophe/main_window.py:510
 msgid "Plain Text Files"
-msgstr ""
+msgstr "Αρχεία απλού κειμένου"
 
 #: apostrophe/main_window.py:513
 msgid "Open a .md file"
-msgstr ""
+msgstr "Άνοιγμα ενός αρχείου .md"
 
 #: apostrophe/main_window.py:516
 msgid "Open"
@@ -746,12 +765,12 @@ msgstr "Άνοιγμα"
 
 #: apostrophe/main_window.py:603
 msgid "Save changes?"
-msgstr ""
+msgstr "Αποθήκευση αλλαγών;"
 
 #: apostrophe/main_window.py:604
 #, python-format
 msgid "“%s” contains unsaved changes. If you don’t save, all your changes will be permanently lost."
-msgstr ""
+msgstr "Το «%s» περιέχει μη αποθηκευμένες αλλαγές. Αν δεν αποθηκεύσετε, όλες οι αλλαγές θα χαθούν οριστικά."
 
 #: apostrophe/main_window.py:610
 msgid "Discard"
@@ -763,79 +782,79 @@ msgstr "Νέο αρχείο"
 
 #: apostrophe/preview_layout_switcher.py:40
 msgid "Full-Width"
-msgstr ""
+msgstr "Πλήρες πλάτους"
 
 #: apostrophe/preview_layout_switcher.py:42
 msgid "Half-Width"
-msgstr ""
+msgstr "Μισό πλάτος"
 
 #: apostrophe/preview_layout_switcher.py:44
 msgid "Half-Height"
-msgstr ""
+msgstr "Μισό ύψος"
 
 #: apostrophe/preview_layout_switcher.py:46
 msgid "Windowed"
-msgstr ""
+msgstr "Σε παράθυρο"
 
 #: apostrophe/stats_handler.py:98
 msgid "{:n} of {:n} Characters"
-msgstr ""
+msgstr "{:n} από {:n} χαρακτήρες"
 
 #: apostrophe/stats_handler.py:100
 msgid "{:n} Character"
 msgid_plural "{:n} Characters"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{:n} χαρακτήρας"
+msgstr[1] "{:n} χαρακτήρες"
 
 #: apostrophe/stats_handler.py:103
 msgid "{:n} of {:n} Words"
-msgstr ""
+msgstr "{:n} από {:n} λέξεις"
 
 #: apostrophe/stats_handler.py:105
 msgid "{:n} Word"
 msgid_plural "{:n} Words"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{:n} λέξη"
+msgstr[1] "{:n} λέξεις"
 
 #: apostrophe/stats_handler.py:108
 msgid "{:n} of {:n} Sentences"
-msgstr ""
+msgstr "{:n} από {:n} προτάσεις"
 
 #: apostrophe/stats_handler.py:110
 msgid "{:n} Sentence"
 msgid_plural "{:n} Sentences"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{:n} πρόταση"
+msgstr[1] "{:n} προτάσεις"
 
 #: apostrophe/stats_handler.py:113
 msgid "{:n} of {:n} Paragraphs"
-msgstr ""
+msgstr "{:n} από {:n} παραγράφους"
 
 #: apostrophe/stats_handler.py:115
 msgid "{:n} Paragraph"
 msgid_plural "{:n} Paragraphs"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{:n} παράγραφος"
+msgstr[1] "{:n} παράγραφοι"
 
 #: apostrophe/stats_handler.py:118
 msgid "{:d}:{:02d}:{:02d} of {:d}:{:02d}:{:02d} Read Time"
-msgstr ""
+msgstr "{:d}:{:02d}:{:02d} από {:d}:{:02d}:{:02d} Χρόνος Ανάγνωσης"
 
 #: apostrophe/stats_handler.py:120
 msgid "{:d}:{:02d}:{:02d} Read Time"
-msgstr ""
+msgstr "{:d}:{:02d}:{:02d} Χρόνος Ανάγνωσης"
 
 #: apostrophe/text_view_format_inserter.py:24
 msgid "italic text"
-msgstr ""
+msgstr "πλάγιο κείμενο"
 
 #: apostrophe/text_view_format_inserter.py:29
 msgid "bold text"
-msgstr ""
+msgstr "έντονο κείμενο"
 
 #: apostrophe/text_view_format_inserter.py:34
 msgid "strikethrough text"
-msgstr ""
+msgstr "κείμενο με διαγράμμιση"
 
 #: apostrophe/text_view_format_inserter.py:49 apostrophe/text_view_format_inserter.py:117
 #: apostrophe/text_view_format_inserter.py:187
@@ -848,11 +867,11 @@ msgstr "Επικεφαλίδα"
 
 #: apostrophe/text_view_format_inserter.py:329
 msgid "Quote"
-msgstr ""
+msgstr "Παράθεση"
 
 #: apostrophe/text_view_format_inserter.py:371
 msgid "code"
-msgstr ""
+msgstr "κώδικας"
 
 #: apostrophe/text_view_format_inserter.py:394
 msgid "https://www.example.com"
@@ -860,15 +879,15 @@ msgstr "https://www.example.com"
 
 #: apostrophe/text_view_format_inserter.py:395
 msgid "link text"
-msgstr ""
+msgstr "κείμενο συνδέσμου"
 
 #: apostrophe/text_view_format_inserter.py:429 apostrophe/text_view_format_inserter.py:454
 msgid "image caption"
-msgstr ""
+msgstr "λεζάντα εικόνας"
 
 #: apostrophe/text_view_format_inserter.py:435
 msgid "Image"
-msgstr ""
+msgstr "Εικόνα"
 
 #: apostrophe/text_view_format_inserter.py:441
 msgid "Select an image"
@@ -879,6 +898,8 @@ msgid ""
 "\n"
 "code\n"
 msgstr ""
+"\n"
+"κώδικας\n"
 
 #: apostrophe/text_view.py:169 apostrophe/text_view.py:171
 msgid "web page"
