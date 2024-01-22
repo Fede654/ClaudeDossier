@@ -3,20 +3,21 @@
 # Manuel Genovés <manuel.genoves@gmail.com>, 2022.
 # leo <daniel.mustieles@gmail.com>, 2022.
 # Daniel Mustieles <daniel.mustieles@gmail.com>, 2022-2023.
+# Julián Villodre <jvillodrede@gmail.com>, 2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Apostrophe\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2022-12-17 00:19+0000\n"
-"PO-Revision-Date: 2023-03-14 13:35+0100\n"
-"Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
+"POT-Creation-Date: 2023-09-11 15:13+0000\n"
+"PO-Revision-Date: 2024-01-12 22:57+0100\n"
+"Last-Translator: Julián Villodre <jvillodrede@gmail.com>\n"
 "Language-Team: Spanish - Spain <gnome-es-list@gnome.org>\n"
-"Language: es_ES\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Gtranslator 42.0\n"
+"X-Generator: Gtranslator 45.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "X-DL-Team: es\n"
 "X-DL-Module: apostrophe\n"
@@ -149,6 +150,14 @@ msgstr "Tamaño del texto"
 msgid "Preferred relative size for the text."
 msgstr "Tamaño relativo preferido para el texto."
 
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:120
+msgid "Toolbar"
+msgstr "Barra de herramientas"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:121
+msgid "Whether the toolbar is shown or not."
+msgstr "Si se muestra la barra de herramientas o no."
+
 #: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:6
 msgid "Edit Markdown in style"
 msgstr "Edita markdown con estilo"
@@ -234,8 +243,8 @@ msgstr "_Cerrar"
 
 #: data/ui/Export.ui:33 apostrophe/export_dialog.py:132
 #: apostrophe/export_dialog.py:344 apostrophe/export_dialog.py:349
-#: apostrophe/main_window.py:400 apostrophe/main_window.py:471
-#: apostrophe/main_window.py:563
+#: apostrophe/main_window.py:444 apostrophe/main_window.py:517
+#: apostrophe/main_window.py:609
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -243,6 +252,10 @@ msgstr "Cancelar"
 #: apostrophe/export_dialog.py:343 apostrophe/export_dialog.py:347
 msgid "Export"
 msgstr "Exportar"
+
+#: data/ui/Export.ui:114
+msgid "Options"
+msgstr "Opciones"
 
 #: data/ui/Export.ui:118
 msgid "Standalone"
@@ -285,6 +298,10 @@ msgstr "Produce un archivo HTML sin dependencias externas"
 msgid "Syntax Highlighting"
 msgstr "Resaltado de sintaxis"
 
+#: data/ui/Export.ui:228
+msgid "Use Syntax Highlighting"
+msgstr "Usar resaltado de sintaxis"
+
 #: data/ui/Export.ui:235
 msgid "Highlight style"
 msgstr "Estilo de resaltado"
@@ -305,60 +322,71 @@ msgstr "Mostrar una viñeta tras otra en una presentación"
 msgid "New"
 msgstr "Nuevo"
 
-#: data/ui/Headerbar.ui:18 apostrophe/main_window.py:470
-msgid "Open"
-msgstr "Abrir"
+#: data/ui/Headerbar.ui:18
+msgid "_Open"
+msgstr "_Abrir"
 
-#: data/ui/Headerbar.ui:24 apostrophe/main_window.py:399
-#: apostrophe/main_window.py:565
-msgid "Save"
-msgstr "Guardar"
+#: data/ui/Headerbar.ui:20
+msgid "Open a markdown file"
+msgstr "Abrir un archivo de Markdown"
 
-#: data/ui/Headerbar.ui:40
-msgid "Menu"
-msgstr "Menú"
+#: data/ui/Headerbar.ui:26
+msgid "_Save"
+msgstr "_Guardar"
 
-#: data/ui/Headerbar.ui:51
-msgid "Find"
-msgstr "Buscar"
+#: data/ui/Headerbar.ui:28
+msgid "Save the markdown file"
+msgstr "Guardar el archivo de Markdown"
 
-#: data/ui/Headerbar.ui:74
+#: data/ui/Headerbar.ui:44
+msgid "Open the Main Menu"
+msgstr "Abrir el menú principal"
+
+#: data/ui/Headerbar.ui:55
+msgid "_Find"
+msgstr "_Buscar"
+
+#: data/ui/Headerbar.ui:57
+msgid "Search in the File"
+msgstr "Buscar en el archivo"
+
+#: data/ui/Headerbar.ui:80
 msgid "_Hemingway Mode"
 msgstr "Modo _Hemingway"
 
-#: data/ui/Headerbar.ui:78
+#: data/ui/Headerbar.ui:84
 msgid "_Focus Mode"
 msgstr "Modo de _concentración"
 
-#: data/ui/Headerbar.ui:84
+#: data/ui/Headerbar.ui:90
 msgid "Find and _Replace"
 msgstr "Buscar y reemplazar"
 
-#: data/ui/Headerbar.ui:90
+#: data/ui/Headerbar.ui:96
 msgid "_Preferences"
 msgstr "_Preferencias"
 
-#: data/ui/Headerbar.ui:96
+#: data/ui/Headerbar.ui:102
 msgid "Open _Tutorial"
 msgstr "Abrir _tutorial"
 
-#: data/ui/Headerbar.ui:101
+#: data/ui/Headerbar.ui:107
 msgid "_Keyboard Shortcuts"
 msgstr "Atajos de t_eclado"
 
-#: data/ui/Headerbar.ui:105
+#: data/ui/Headerbar.ui:111
 msgid "_About Apostrophe"
 msgstr "_Acerca de Apostrophe"
 
-#: data/ui/Headerbar.ui:116
+#: data/ui/Headerbar.ui:122
 msgid "_Save As..."
 msgstr "_Guardar como..."
 
-#: data/ui/Headerbar.ui:139
+#: data/ui/Headerbar.ui:145
 msgid "Advanced _Export…"
 msgstr "_Exportación avanzada…"
 
-#: data/ui/Headerbar.ui:145
+#: data/ui/Headerbar.ui:151
 msgid "_Copy HTML"
 msgstr "_Copiar HTML"
 
@@ -601,6 +629,40 @@ msgctxt "shortcut window"
 msgid "Select all text"
 msgstr "Seleccionar todo"
 
+#: data/ui/TexliveWarning.ui:25 data/ui/TexliveWarning.ui:79
+msgid "TexLive Required"
+msgstr "TexLive requerido"
+
+#: data/ui/TexliveWarning.ui:33
+msgid ""
+"Apostrophe needs the TeXLive extension\n"
+"in order to export PDF or LaTeX files.\n"
+"\n"
+"Install it from Apostrophe's page in Software\n"
+"or by running the following command in a terminal:"
+msgstr ""
+"Apostrophe necesita la extensión TeXLive\n"
+"para poder exportar a un archivo PDF o LaTeX.\n"
+"\n"
+"Instálela desde la página de Apostrophe en la aplicación Software\n"
+"o ejecutando este comando en una terminal:"
+
+#: data/ui/TexliveWarning.ui:53
+msgid "Copy to clipboard"
+msgstr "Copiar al portapapeles"
+
+#: data/ui/TexliveWarning.ui:87
+msgid ""
+"Apostrophe needs TeXLive\n"
+"in order to export PDF or LaTeX files.\n"
+"\n"
+"Install it from your distribution repositories"
+msgstr ""
+"Apostrophe necesita TeXLive\n"
+"para poder exportar a un archivo PDF o LaTeX.\n"
+"\n"
+"Instálelo desde los repositorios de su distribución"
+
 #: data/ui/ThemeSwitcher.ui:17
 msgid "Use System Colors"
 msgstr "Utilizar colores del sistema"
@@ -617,23 +679,15 @@ msgstr "Utilizar colores sepia"
 msgid "Use Dark Colors"
 msgstr "Usar colores oscuros"
 
-#: data/ui/Window.ui:58
-msgid "Show Statistics"
-msgstr "Mostrar estadísticas"
-
-#: data/ui/Window.ui:59
-msgid "0 Words"
-msgstr "0 palabras"
-
-#: data/ui/Window.ui:129
+#: data/ui/Window.ui:86
 msgid "File Has Changed on Disk"
 msgstr "El archivo ha cambiado en el disco"
 
-#: data/ui/Window.ui:139
+#: data/ui/Window.ui:96
 msgid "The file has been changed by another program."
 msgstr "Otro programa ha modificado el archivo"
 
-#: data/ui/Window.ui:147
+#: data/ui/Window.ui:104
 msgid "_Discard Changes and Reload"
 msgstr "_Descartar cambios y volver a cargar"
 
@@ -706,35 +760,43 @@ msgid "adverb"
 msgstr "adverbio"
 
 #. Hemingway Toast
-#: apostrophe/main_window.py:132
+#: apostrophe/main_window.py:128
 msgid "Text can't be deleted while on Hemingway mode"
 msgstr "No se puede eliminar el texto estando el modo Hemingway"
 
-#: apostrophe/main_window.py:135
+#: apostrophe/main_window.py:131
 msgid "Tell me more"
 msgstr "Saber más"
 
-#: apostrophe/main_window.py:396
+#: apostrophe/main_window.py:440
 msgid "Save your File"
 msgstr "Guardar el archivo"
 
-#: apostrophe/main_window.py:460
+#: apostrophe/main_window.py:443 apostrophe/main_window.py:611
+msgid "Save"
+msgstr "Guardar"
+
+#: apostrophe/main_window.py:506
 msgid "Markdown Files"
 msgstr "Archivo de Markdown"
 
-#: apostrophe/main_window.py:464
+#: apostrophe/main_window.py:510
 msgid "Plain Text Files"
 msgstr "Archivo de texto plano"
 
-#: apostrophe/main_window.py:467
+#: apostrophe/main_window.py:513
 msgid "Open a .md file"
 msgstr "Abrir un archivo .md"
 
-#: apostrophe/main_window.py:557
+#: apostrophe/main_window.py:516
+msgid "Open"
+msgstr "Abrir"
+
+#: apostrophe/main_window.py:603
 msgid "Save changes?"
 msgstr "¿Quiere guardar los cambios?"
 
-#: apostrophe/main_window.py:558
+#: apostrophe/main_window.py:604
 #, python-format
 msgid ""
 "“%s” contains unsaved changes. If you don’t save, all your changes will be "
@@ -743,11 +805,11 @@ msgstr ""
 "«%s» contiene cambios no guardados. Si no se guarda todos los cambios se "
 "perderán permanentemente."
 
-#: apostrophe/main_window.py:564
+#: apostrophe/main_window.py:610
 msgid "Discard"
 msgstr "Descartar"
 
-#: apostrophe/main_window.py:734 apostrophe/main_window.py:758
+#: apostrophe/main_window.py:768 apostrophe/main_window.py:792
 msgid "New File"
 msgstr "Nuevo archivo"
 
@@ -815,29 +877,77 @@ msgstr "{:d}:{:02d}:{:02d} de {:d}:{:02d}:{:02d} tiempo de lectura"
 msgid "{:d}:{:02d}:{:02d} Read Time"
 msgstr "{:d}:{:02d}:{:02d} Tiempo de lectura"
 
-#: apostrophe/text_view_format_inserter.py:14
+#: apostrophe/text_view_format_inserter.py:24
 msgid "italic text"
 msgstr "cursiva"
 
-#: apostrophe/text_view_format_inserter.py:19
+#: apostrophe/text_view_format_inserter.py:29
 msgid "bold text"
 msgstr "negrita"
 
-#: apostrophe/text_view_format_inserter.py:24
+#: apostrophe/text_view_format_inserter.py:34
 msgid "strikethrough text"
 msgstr "texto tachado"
 
-#: apostrophe/text_view_format_inserter.py:50
+#: apostrophe/text_view_format_inserter.py:49
+#: apostrophe/text_view_format_inserter.py:117
+#: apostrophe/text_view_format_inserter.py:187
 msgid "Item"
 msgstr "Elemento"
 
-#: apostrophe/text_view_format_inserter.py:97
+#: apostrophe/text_view_format_inserter.py:258
 msgid "Header"
 msgstr "Cabecera"
 
-#: apostrophe/text_view.py:177 apostrophe/text_view.py:179
+#: apostrophe/text_view_format_inserter.py:329
+msgid "Quote"
+msgstr "Entrecomillar"
+
+#: apostrophe/text_view_format_inserter.py:371
+msgid "code"
+msgstr "código"
+
+#: apostrophe/text_view_format_inserter.py:394
+msgid "https://www.example.com"
+msgstr "https://www.example.com"
+
+#: apostrophe/text_view_format_inserter.py:395
+msgid "link text"
+msgstr "enlazar texto"
+
+#: apostrophe/text_view_format_inserter.py:429
+#: apostrophe/text_view_format_inserter.py:454
+msgid "image caption"
+msgstr "descripción de la imagen"
+
+#: apostrophe/text_view_format_inserter.py:435
+msgid "Image"
+msgstr "Imagen"
+
+#: apostrophe/text_view_format_inserter.py:441
+msgid "Select an image"
+msgstr "Seleccionar una imagen"
+
+#: apostrophe/text_view_format_inserter.py:543
+msgid ""
+"\n"
+"code\n"
+msgstr ""
+"\n"
+"código\n"
+
+#: apostrophe/text_view.py:169 apostrophe/text_view.py:171
 msgid "web page"
 msgstr "sitio web"
+
+#~ msgid "Menu"
+#~ msgstr "Menú"
+
+#~ msgid "Show Statistics"
+#~ msgstr "Mostrar estadísticas"
+
+#~ msgid "0 Words"
+#~ msgstr "0 palabras"
 
 #~ msgid "Apostrophe website"
 #~ msgstr "Sitio web de Apostrophe"
@@ -853,9 +963,6 @@ msgstr "sitio web"
 
 #~ msgid "CSS File"
 #~ msgstr "Archivo CSS"
-
-#~ msgid "Select CSS file"
-#~ msgstr "Seleccionar archivo CSS"
 
 #~ msgid "Save as…"
 #~ msgstr "Guardar como..."
