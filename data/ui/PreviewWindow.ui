@@ -3,14 +3,13 @@
   <requires lib="gtk" version="4.0"/>
   <requires lib="adw" version="1.0"/>
   <template class="ApostrophePreviewWindow" parent="AdwApplicationWindow">
+    <property name="default-width">800</property>
+    <property name="default-height">600</property>
     <child>
       <object class="GtkBox" id="preview_box">
         <property name="orientation">vertical</property>
         <child>
           <object class="AdwHeaderBar">
-            <style>
-              <class name="flat" />
-            </style>
           </object>
         </child>
       </object>
