@@ -16,6 +16,7 @@
     <file compressed="true" preprocess="xml-stripblanks">ui/Editor.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/Export.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/Headerbar.ui</file>
+    <file compressed="true" preprocess="xml-stripblanks">ui/Panels.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/Preferences.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/PreviewLayoutSwitcher.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/PreviewLayoutSwitcherItem.ui</file>

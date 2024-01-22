@@ -21,6 +21,7 @@ from gettext import gettext as _
 import chardet
 import gi
 
+
 gi.require_version('Gtk', '4.0')
 from gi.repository import Adw, Gdk, Gio, GLib, GObject, Gtk
 
@@ -29,6 +30,7 @@ from apostrophe.editor import Editor
 from apostrophe.export_dialog import AdvancedExportDialog, ExportDialog
 from apostrophe.headerbars import BaseHeaderbar
 from apostrophe.helpers import App
+from apostrophe.panels import ApostrophePanels
 from apostrophe.preview_handler import PreviewHandler
 from apostrophe.search_and_replace import ApostropheSearchBar
 from apostrophe.settings import Settings
@@ -49,7 +51,7 @@ class MainWindow(Adw.ApplicationWindow):
     save_progressbar = Gtk.Template.Child()
     headerbar = Gtk.Template.Child()
     searchbar = Gtk.Template.Child()
-    flap = Gtk.Template.Child()
+    panels = Gtk.Template.Child()
     preview_stack = Gtk.Template.Child()
     discard_infobar = Gtk.Template.Child()
 
@@ -111,15 +113,17 @@ class MainWindow(Adw.ApplicationWindow):
 
         self.preview_layout = self.settings.get_enum("preview-mode")
 
-        self.preview_handler = PreviewHandler(self, self.textview, self.flap)
+        self.preview_handler = PreviewHandler(self, self.textview, self.panels)
 
         # not really necessary but we'll keep a preview_layout property on the window
         # and bind it both to the switcher and the renderer
         self.bind_property("preview_layout", self.headerbar.preview_layout_switcher, 
                            "preview_layout", GObject.BindingFlags.BIDIRECTIONAL | GObject.BindingFlags.SYNC_CREATE)
 
-        self.bind_property("preview_layout", self.preview_handler.preview_renderer(), 
-                           "preview_layout", GObject.BindingFlags.SYNC_CREATE)
+        self.bind_property("preview_layout", self.panels, 
+                           "layout", GObject.BindingFlags.SYNC_CREATE)
+
+        self.panels.connect("close-panel-window", self.on_preview_window_close)
 
         # Setting up spellcheck
         #self.settings.bind("spellcheck", self.textview,
@@ -290,6 +294,9 @@ class MainWindow(Adw.ApplicationWindow):
             self.reveal_headerbar_bottombar()
 
         self.textview.grab_focus()
+
+    def on_preview_window_close(self, *args, **kwargs):
+        self.preview = False
 
     def toggle_preview(self, *args, **kwargs):
         """Toggle the preview mode
