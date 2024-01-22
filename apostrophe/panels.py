@@ -53,6 +53,7 @@ class ApostrophePanels(Gtk.Widget, Gtk.Orientable):
     panel_container = Gtk.Template.Child()
     separator = Gtk.Template.Child()
 
+    panel_window = None
     panel_window_title = GObject.Property(type=str)
 
     @GObject.Property(type=Gtk.Orientation, default=Gtk.Orientation.VERTICAL)
