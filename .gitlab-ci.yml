@@ -8,5 +8,5 @@ flatpak:
         FLATPAK_MODULE: "apostrophe"
         APP_ID: "org.gnome.gitlab.somas.Apostrophe.Devel"
         RUNTIME_REPO: "https://nightly.gnome.org/gnome-nightly.flatpakrepo"
-        BUNDLE: "apostrophe.Devel.flatpak"
+        BUNDLE: "apostrophe-dev.flatpak"
     extends: .flatpak
