@@ -12,8 +12,8 @@
             <child>
               <object class="AdwActionRow">
                 <property name="visible">False</property>
-                <property name="tooltip-text" translatable="yes">Check spelling while typing</property>
-                <property name="title" translatable="yes">Check spelling while typing</property>
+                <property name="tooltip-text" translatable="yes">Check Spelling While Typing</property>
+                <property name="title" translatable="yes">Check Spelling While Typing</property>
                 <property name="activatable-widget">spellcheck_switch</property>
                 <child>
                   <object class="GtkSwitch" id="spellcheck_switch">
@@ -25,8 +25,8 @@
             </child>
             <child>
               <object class="AdwActionRow">
-                <property name="title" translatable="yes">Autohide headerbar</property>
-                <property name="subtitle" translatable="yes">Autohide header and statusbars while typing</property>
+                <property name="title" translatable="yes">Auto-Hide Header Bar</property>
+                <property name="subtitle" translatable="yes">Auto-hide header and status bars while typing</property>
                 <property name="activatable-widget">autohide_headerbar_switch</property>
                 <child>
                   <object class="GtkSwitch" id="autohide_headerbar_switch">
@@ -39,7 +39,7 @@
             </child>
             <child>
               <object class="AdwActionRow">
-                <property name="title" translatable="yes">Use bigger text</property>
+                <property name="title" translatable="yes">Large Text</property>
                 <property name="subtitle" translatable="yes">Reduce the margins width and increase the text size when possible</property>
                 <property name="activatable-widget">bigger_text_switch</property>
                 <child>
@@ -53,7 +53,7 @@
             <child>
               <object class="AdwActionRow">
                 <property name="visible">False</property>
-                <property name="title" translatable="yes">Restore session</property>
+                <property name="title" translatable="yes">Restore Session</property>
                 <property name="subtitle" translatable="yes">Return to your previous session when Apostrophe is started</property>
                 <property name="activatable-widget">session_restore_switch</property>
                 <child>
@@ -67,7 +67,7 @@
             <child>
               <object class="AdwComboRow" id="input_format_comborow">
                 <property name="activatable">False</property>
-                <property name="title" translatable="yes">Input format</property>
+                <property name="title" translatable="yes">Input Format</property>
                 <property name="subtitle" translatable="yes">Flavor of markdown Apostrophe will use</property>
                 <property name="expression">
                   <lookup name="name" type="InputFormat"/>
@@ -77,7 +77,7 @@
                   <object class="GtkButton">
                     <property name="valign">center</property>
                     <property name="icon_name">dialog-information-symbolic</property>
-                    <property name="tooltip-text" translatable="yes">Markdown flavor documentation</property>
+                    <property name="tooltip-text" translatable="yes">Markdown Flavor Documentation</property>
                     <signal name="clicked" handler="on_input_format_help"/>
                     <style>
                       <class name="flat"/>
