@@ -31,17 +31,26 @@ appdata_conf.set('gettext-package', gettext_package)
 
 metainfo_configured = configure_file(
     input: 'org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in',
-    output: 'org.gnome.gitlab.somas.Apostrophe.metainfo.xml',
+    output: 'configured' + '@BASENAME@',
     configuration: appdata_conf
 )
 
+# merge NEWS into metainfo file
+ascli_exe = find_program('appstreamcli')
+metainfo_with_relinfo = custom_target('gen-metainfo-rel',
+    input : ['../NEWS', metainfo_configured],
+    output : ['org.gnome.gitlab.somas.Apostrophe.metainfo.xml'],
+    command : [ascli_exe, 'news-to-metainfo', '--limit=2', '@INPUT0@', '@INPUT1@', '@OUTPUT@']
+)
+
 appdata_file = i18n.merge_file(
-  input: metainfo_configured,
+  input: metainfo_with_relinfo,
   output: '@0@.metainfo.xml'.format(application_id),
   po_dir: podir,
   install: true,
   install_dir: get_option('datadir') / 'metainfo'
 )
+
 # Validate AppData File
 appstreamcli = find_program('appstreamcli', required: false)
 if appstreamcli.found()
