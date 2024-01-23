@@ -87,7 +87,7 @@ or by running the following command in a terminal:</property>
                 <property name="label" translatable="yes">Apostrophe needs TeXLive
 in order to export PDF or LaTeX files.
 
-Install it from your distribution repositories</property>
+Install it from your distribution repositories.</property>
                 <property name="use-markup">1</property>
                 <property name="justify">center</property>
                 <property name="wrap">1</property>
