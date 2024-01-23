@@ -79,16 +79,18 @@ class ApostropheOpenPopover(Gtk.Popover):
 
     def on_manager_changed(self, *args, **kwargs):
         self.model.remove_all()
-        for item in self.recents_manager.get_items():
+        recents_list = filter(lambda item: item.get_mime_type() == 'text/markdown',
+                              self.recents_manager.get_items())
+        for item in recents_list:
             self.model.append(RecentItem(item.get_display_name(), item.get_uri_display(), item.get_uri()))
 
         self.stack.set_visible_child(self.recent if self.model else self.empty)
 
     @Gtk.Template.Callback()
     def on_search_entry_changed_cb(self, search_entry):
-        # TODO: implement nice filters in GTK4
-        recents_list = self.recents_manager.get_items()
-        filtered_list = filter(lambda item: search_entry.get_text() in item.get_display_name(), recents_list)
+        filtered_list = filter(lambda item: item.get_mime_type() == 'text/markdown' and
+                                            search_entry.get_text() in item.get_display_name(),
+                               self.recents_manager.get_items())
 
         self.model.remove_all()
         for item in filtered_list:
