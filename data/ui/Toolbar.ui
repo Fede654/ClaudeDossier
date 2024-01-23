@@ -65,7 +65,7 @@
                 </child>
                 <child>
                   <object class="GtkButton">
-                    <property name="tooltip-text" translatable="1">Unordered list</property>
+                    <property name="tooltip-text" translatable="1">Unordered List</property>
                     <property name="icon-name">view-list-bullet-symbolic</property>
                     <property name="action-name">win.insert-listitem</property>
                     <style>
@@ -75,7 +75,7 @@
                 </child>
                 <child>
                   <object class="GtkButton">
-                    <property name="tooltip-text" translatable="1">Ordered list</property>
+                    <property name="tooltip-text" translatable="1">Ordered List</property>
                     <property name="icon-name">view-list-ordered-symbolic</property>
                     <property name="action-name">win.insert-ordered-listitem</property>
                     <style>
@@ -85,7 +85,7 @@
                 </child>
                 <child>
                   <object class="GtkButton">
-                    <property name="tooltip-text" translatable="1">Check list</property>
+                    <property name="tooltip-text" translatable="1">Check List</property>
                     <property name="icon-name">checkbox-checked-symbolic</property>
                     <property name="action-name">win.insert-checklist-listitem</property>
                     <style>
@@ -150,7 +150,7 @@
         </child>
         <child>
           <object class="GtkToggleButton" id="show_extra_controls_button">
-            <property name="tooltip-text" translatable="1">Show more controls</property>
+            <property name="tooltip-text" translatable="1">Show More Controls</property>
             <property name="icon-name">go-next</property>
             <property name="active" bind-source="Toolbar" bind-property="extra_toolbar_revealed" bind-flags="bidirectional"/>
             <style>
