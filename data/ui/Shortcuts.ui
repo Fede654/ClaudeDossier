@@ -29,31 +29,31 @@
             </child>
             <child>
               <object class="GtkShortcutsShortcut" id="s1-4">
-                <property name="title" translatable="yes" context="shortcut window">Save as</property>
+                <property name="title" translatable="yes" context="shortcut window">Save As</property>
                 <property name="action-name">win.save_as</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut" id="s1-5">
-                <property name="title" translatable="yes" context="shortcut window">Close document</property>
+                <property name="title" translatable="yes" context="shortcut window">Close Document</property>
                 <property name="action-name">win.close</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut" id="s1-5d">
-                <property name="title" translatable="yes" context="shortcut window">Show preferences</property>
+                <property name="title" translatable="yes" context="shortcut window">Show Preferences</property>
                 <property name="action-name">app.preferences</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut" id="s1-5c">
-                <property name="title" translatable="yes" context="shortcut window">Keyboard shortcuts</property>
+                <property name="title" translatable="yes" context="shortcut window">Keyboard Shortcuts</property>
                 <property name="action-name">win.show-help-overlay</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut" id="s1-5b">
-                <property name="title" translatable="yes" context="shortcut window">Quit application</property>
+                <property name="title" translatable="yes" context="shortcut window">Quit Application</property>
                 <property name="action-name">app.quit</property>
               </object>
             </child>
@@ -64,13 +64,13 @@
             <property name="title" translatable="yes" context="shortcut window">Modes</property>
             <child>
               <object class="GtkShortcutsShortcut" id="s1-6">
-                <property name="title" translatable="yes" context="shortcut window">Focus mode</property>
+                <property name="title" translatable="yes" context="shortcut window">Focus Mode</property>
                 <property name="action-name">win.focus_mode</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut" id="s1-7">
-                <property name="title" translatable="yes" context="shortcut window">Hemingway mode</property>
+                <property name="title" translatable="yes" context="shortcut window">Hemingway Mode</property>
                 <property name="action-name">win.hemingway_mode</property>
               </object>
             </child>
@@ -100,7 +100,7 @@
             </child>
             <child>
               <object class="GtkShortcutsShortcut" id="s1-11">
-                <property name="title" translatable="yes" context="shortcut window">Find and replace</property>
+                <property name="title" translatable="yes" context="shortcut window">Find and Replace</property>
                 <property name="action-name">win.find_replace</property>
               </object>
             </child>
@@ -123,7 +123,7 @@
             </child>
             <child>
               <object class="GtkShortcutsShortcut" id="s2-3">
-                <property name="title" translatable="yes" context="shortcut window">List item</property>
+                <property name="title" translatable="yes" context="shortcut window">List Item</property>
                 <property name="accelerator">&lt;Primary&gt;u</property>
               </object>
             </child>
@@ -150,22 +150,22 @@
         </child>
         <child>
           <object class="GtkShortcutsGroup" id="copy-paste">
-            <property name="title" translatable="yes" context="shortcut window">Copy and paste</property>
+            <property name="title" translatable="yes" context="shortcut window">Copy and Paste</property>
             <child>
               <object class="GtkShortcutsShortcut" id="s3-1">
-                <property name="title" translatable="yes" context="shortcut window">Copy selected text to clipboard</property>
+                <property name="title" translatable="yes" context="shortcut window">Copy</property>
                 <property name="accelerator">&lt;Primary&gt;C</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut" id="s3-2">
-                <property name="title" translatable="yes" context="shortcut window">Cut selected text to clipboard</property>
+                <property name="title" translatable="yes" context="shortcut window">Cut</property>
                 <property name="accelerator">&lt;Primary&gt;X</property>
                 </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut" id="s3-3">
-                <property name="title" translatable="yes" context="shortcut window">Paste selected text from clipboard</property>
+                <property name="title" translatable="yes" context="shortcut window">Paste</property>
                 <property name="accelerator">&lt;Primary&gt;V</property>
               </object>
             </child>
@@ -173,16 +173,16 @@
         </child>
         <child>
           <object class="GtkShortcutsGroup" id="undo-redo">
-            <property name="title" translatable="yes" context="shortcut window">Undo and redo</property>
+            <property name="title" translatable="yes" context="shortcut window">Undo and Redo</property>
             <child>
               <object class="GtkShortcutsShortcut" id="s4-1">
-                <property name="title" translatable="yes" context="shortcut window">Undo previous command</property>
+                <property name="title" translatable="yes" context="shortcut window">Undo Previous Command</property>
                 <property name="accelerator">&lt;Primary&gt;Z</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut" id="s4-2">
-                <property name="title" translatable="yes" context="shortcut window">Redo previous command</property>
+                <property name="title" translatable="yes" context="shortcut window">Redo Previous Command</property>
                 <property name="accelerator">&lt;Shift&gt;&lt;Primary&gt;Z</property>
               </object>
             </child>
@@ -193,7 +193,7 @@
             <property name="title" translatable="yes" context="shortcut window">Selection</property>
             <child>
               <object class="GtkShortcutsShortcut" id="s5-1">
-                <property name="title" translatable="yes" context="shortcut window">Select all text</property>
+                <property name="title" translatable="yes" context="shortcut window">Select All Text</property>
                 <property name="accelerator">&lt;Primary&gt;A</property>
               </object>
             </child>

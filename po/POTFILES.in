@@ -24,7 +24,6 @@ apostrophe/inhibitor.py
 apostrophe/inline_preview.py
 apostrophe/main_window.py
 apostrophe/preview_layout_switcher.py
-apostrophe/preview_renderer.py
 apostrophe/preview_window.py
 apostrophe/stats_handler.py
 apostrophe/text_view_format_inserter.py

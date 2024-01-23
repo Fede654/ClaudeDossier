@@ -12,17 +12,12 @@
       <object class="GtkOverlay" id="AppOverlay">
         <property name="name">FullscreenOverlay</property>
         <property name="child">
-          <object class="AdwFlap" id="flap">
-            <property name="flap-position">end</property>
-            <property name="transition-type">slide</property>
-            <property name="fold-policy">never</property>
-            <property name="reveal-flap">false</property>
-            <property name="swipe-to-close">false</property>
-            <property name="swipe-to-open">false</property>
+          <object class="ApostrophePanels" id="panels">
             <style>
               <class name="preview-flap" />
             </style>
-            <child type="content">
+            <property name="hexpand">true</property>
+            <property name="content">
               <object class="Editor" id="editor">
                 <child>
                   <object class="GtkEventControllerFocus">
@@ -30,8 +25,8 @@
                   </object>
                 </child>
               </object>
-            </child>
-            <child type="flap">
+            </property>
+            <property name="panel">
               <object class="GtkStack" id="preview_stack">
                 <property name="hexpand">1</property>
                 <property name="overflow">hidden</property>
@@ -48,7 +43,7 @@
                   </object>
                 </child>
               </object>
-            </child>
+            </property>
           </object>
         </property>
         <child type="overlay">
@@ -93,7 +88,7 @@
                     <child>
                       <object class="GtkLabel" id="subtitle">
                         <property name="halign">start</property>
-                        <property name="label" translatable="yes">The file has been changed by another program.</property>
+                        <property name="label" translatable="yes">The file has been changed by another program</property>
                         <property name="wrap">True</property>
                       </object>
                     </child>

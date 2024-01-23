@@ -50,7 +50,7 @@ or by running the following command in a terminal:</property>
             <child>
               <object class="GtkButton">
                 <property name="halign">center</property>
-                <property name="label" translatable="yes">Copy to clipboard</property>
+                <property name="label" translatable="yes">Copy to Clipboard</property>
                 <signal name="clicked" handler="copy" swapped="no"/>
               </object>
             </child>

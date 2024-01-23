@@ -34,6 +34,7 @@ class PreviewLayout(IntEnum):
     HALF_WIDTH = 1
     HALF_HEIGHT = 2
     WINDOWED = 3
+    CLOSED = 4
 
     def get_text(self):
         if self == PreviewLayout.FULL_WIDTH:
@@ -97,7 +98,7 @@ class PreviewLayoutSwitcher(Gtk.Box):
     def __init__(self):
         super().__init__()
 
-        for i, layout in enumerate(PreviewLayout):
+        for layout in [PreviewLayout.HALF_WIDTH, PreviewLayout.FULL_WIDTH, PreviewLayout.HALF_HEIGHT, PreviewLayout.WINDOWED]:
             item = PreviewLayoutSwitcherItem(layout)
             self.list_box.append(item)
             self.items.append(item)

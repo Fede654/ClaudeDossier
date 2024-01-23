@@ -214,12 +214,7 @@
 .preview-flap {
   background-color: @view_bg_color;
 }
-.preview-stack{
-  border-color: @borders;
-  border-width: 1px;
-  border-left-style:solid;
-  border-right-style:solid;
-}
+
 
 /* Table insertion toolbar widget */
 

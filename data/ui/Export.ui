@@ -204,7 +204,7 @@
                                           <object class="AdwActionRow">
                                             <property name="width-request">100</property>
                                             <property name="can-focus">True</property>
-                                            <property name="title" translatable="yes">Self-contained</property>
+                                            <property name="title" translatable="yes">Self-Contained</property>
                                             <property name="activatable-widget">sw_self_contained</property>
                                             <property name="subtitle" translatable="yes">Produces an HTML file with no external dependencies</property>
                                             <child>
@@ -235,7 +235,7 @@
                                               <object class="AdwComboRow" id="cmb_syntax_highlighting">
                                                 <property name="can-focus">True</property>
                                                 <property name="activatable">False</property>
-                                                <property name="title" translatable="yes">Highlight style</property>
+                                                <property name="title" translatable="yes">Highlight Style</property>
                                                 <property name="expression">
                                                   <lookup name="string" type="GtkStringObject"/>
                                                 </property>
@@ -254,7 +254,7 @@
                                           <object class="AdwActionRow">
                                             <property name="width-request">100</property>
                                             <property name="can-focus">True</property>
-                                            <property name="title" translatable="yes">Incremental bullets</property>
+                                            <property name="title" translatable="yes">Incremental Bullets</property>
                                             <property name="activatable-widget">sw_incremental_bullets</property>
                                             <property name="subtitle" translatable="yes">Show one bullet point after another in a slideshow</property>
                                             <child>
