@@ -13,6 +13,7 @@ data/ui/PreviewWindow.ui
 data/ui/Recents.ui
 data/ui/SearchBar.ui
 data/ui/Shortcuts.ui
+data/ui/Statsbar.ui
 data/ui/TexliveWarning.ui
 data/ui/ThemeSwitcher.ui
 data/ui/Window.ui
