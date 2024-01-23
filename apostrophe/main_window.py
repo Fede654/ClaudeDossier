@@ -15,58 +15,56 @@
 
 import logging
 import os
+from dataclasses import dataclass
 from gettext import gettext as _
 
-from dataclasses import dataclass
 import chardet
-
 import gi
-gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk, Gdk, GObject, GLib, Gio, Handy
 
-from apostrophe.export_dialog import ExportDialog, AdvancedExportDialog
+
+gi.require_version('Gtk', '4.0')
+from gi.repository import Adw, Gdk, Gio, GLib, GObject, Gtk
+
+from apostrophe import helpers
+from apostrophe.editor import Editor
+from apostrophe.export_dialog import AdvancedExportDialog, ExportDialog
+from apostrophe.headerbars import BaseHeaderbar
+from apostrophe.helpers import App
+from apostrophe.panels import ApostrophePanels
 from apostrophe.preview_handler import PreviewHandler
-from apostrophe.stats_handler import StatsHandler
-from apostrophe.text_view import ApostropheTextView
 from apostrophe.search_and_replace import ApostropheSearchBar
 from apostrophe.settings import Settings
-from apostrophe.tweener import Tweener
-from apostrophe.helpers import App
-from apostrophe import helpers
-
-from .headerbars import BaseHeaderbar
+from apostrophe.stats_handler import StatsHandler
+from apostrophe.text_view import ApostropheTextView
+from apostrophe.text_view_format_inserter import FormatInserter
 
 LOGGER = logging.getLogger('apostrophe')
 
 
 @Gtk.Template(resource_path='/org/gnome/gitlab/somas/Apostrophe/ui/Window.ui')
-class MainWindow(Handy.ApplicationWindow):
+class MainWindow(Adw.ApplicationWindow):
 
     __gtype_name__ = "ApostropheWindow"
 
 
-    editor_scrolledwindow = Gtk.Template.Child()
+    editor = Gtk.Template.Child()
     save_progressbar = Gtk.Template.Child()
     headerbar = Gtk.Template.Child()
-    headerbar_eventbox = Gtk.Template.Child()
     searchbar = Gtk.Template.Child()
-    stats_revealer = Gtk.Template.Child()
-    stats_button = Gtk.Template.Child()
-    flap = Gtk.Template.Child()
-    # TODO ??
+    panels = Gtk.Template.Child()
     preview_stack = Gtk.Template.Child()
-    text_view = Gtk.Template.Child()
-    editor = Gtk.Template.Child()
+    discard_infobar = Gtk.Template.Child()
 
     subtitle = GObject.Property(type=str)
     is_fullscreen = GObject.Property(type=bool, default=False)
-    headerbar_visible = GObject.Property(type=bool, default=True)
-    bottombar_visible = GObject.Property(type=bool, default=True)
 
     preview = GObject.Property(type=bool, default=False)
     preview_layout = GObject.Property(type=int, default=1)
 
     did_change = GObject.Property(type=bool, default=False)
+
+    close_anyway = False
+    file_monitor = None
 
     def __init__(self, app):
         """Set up the main window"""
@@ -79,47 +77,73 @@ class MainWindow(Handy.ApplicationWindow):
         # Preferences
         self.settings = Settings.new()
 
+        # Connect signals that we can't connect on the UI file
+        self.connect("notify::is-fullscreen", self._on_fullscreen)
         # Create new, empty file
         # TODO: load last opened file?
 
         self.current = File()
 
         # Setup text editor
-        self.text_view.get_buffer().connect('changed', self.on_text_changed)
-        self.text_view.grab_focus()
+        self.textview = self.editor.textview
+        self.textview.get_buffer().connect('changed', self.on_text_changed)
 
         # Setup save progressbar an its animator
-        self.progressbar_initiate_tw = Tweener(self.save_progressbar,
-                                               self.save_progressbar.set_fraction,
-                                               0, 0.125, 40)
-        self.progressbar_finalize_tw = Tweener(self.save_progressbar,
-                                               self.save_progressbar.set_fraction,
-                                               0.125, 1, 400)
-        self.progressbar_opacity_tw = Tweener(self.save_progressbar,
-                                              self.save_progressbar.set_opacity,
-                                              1, 0, 300, 200,
-                                              callback = self.save_progressbar.set_visible,
-                                              callback_arg = False)
+        def hide_progressbar(animation, *args):
+            self.save_progressbar.hide()
 
-        # Setup stats counter
-        self.stats_handler = StatsHandler(self.stats_button, self.text_view)
+        fade_target = Adw.PropertyAnimationTarget.new(self.save_progressbar, "opacity")
+        self.progressbar_fade_out = Adw.TimedAnimation.new(self.save_progressbar, 1, 0, 500, fade_target)
+        self.progressbar_fade_out.set_easing(Adw.Easing.EASE_OUT_CUBIC)
+        self.progressbar_fade_out.connect("done", hide_progressbar)
+
+        def on_progressbar_value(animation, *args):
+            if animation.get_value() > 0.3 and self.did_change:
+                animation.pause()
+            
+        def fade_out_progressbar(animation, *args):
+            self.progressbar_fade_out.play()
+
+        fraction_target = Adw.PropertyAnimationTarget.new(self.save_progressbar, "fraction")
+        self.progressbar_animation = Adw.TimedAnimation.new(self.save_progressbar, 0, 1, 300, fraction_target)
+        self.progressbar_animation.connect("notify::value", on_progressbar_value)
+        self.progressbar_animation.connect("done", fade_out_progressbar)
 
         # Setup preview
-        self.preview_handler = PreviewHandler(self, self.text_view, self.flap)
+
+        self.preview_layout = self.settings.get_enum("preview-mode")
+
+        self.preview_handler = PreviewHandler(self, self.textview, self.panels)
+
+        # not really necessary but we'll keep a preview_layout property on the window
+        # and bind it both to the switcher and the renderer
+        self.bind_property("preview_layout", self.headerbar.preview_layout_switcher, 
+                           "preview_layout", GObject.BindingFlags.BIDIRECTIONAL | GObject.BindingFlags.SYNC_CREATE)
+
+        self.bind_property("preview_layout", self.panels, 
+                           "layout", GObject.BindingFlags.SYNC_CREATE)
+
+        self.panels.connect("close-panel-window", self.on_preview_window_close)
 
         # Setting up spellcheck
-        self.settings.bind("spellcheck", self.text_view,
-                           "spellcheck", Gio.SettingsBindFlags.GET)
+        #self.settings.bind("spellcheck", self.textview,
+        #                   "spellcheck", Gio.SettingsBindFlags.GET)
 
         # Setting up text size
-        self.settings.bind("bigger-text", self.text_view,
+        self.settings.bind("bigger-text", self.textview,
                            "bigger_text", Gio.SettingsBindFlags.GET)
 
-        self.settings.bind("characters-per-line", self.text_view,
+        self.settings.bind("characters-per-line", self.textview,
                            "line_chars", Gio.SettingsBindFlags.GET)
 
         # Search and replace initialization
-        self.searchbar.attach(self.text_view)
+        self.searchbar.attach(self.textview)
+
+        # Hemingway Toast
+        self.hemingway_toast = Adw.Toast.new(_("Text can't be deleted while on Hemingway mode"))
+        self.hemingway_toast.set_timeout(3)
+        self.hemingway_toast.set_action_name("win.show_hemingway_help")
+        self.hemingway_toast.set_button_label(_("Tell me more"))
 
         # Actions
         action = Gio.PropertyAction.new("find", self.searchbar, "search-mode-enabled")
@@ -128,10 +152,19 @@ class MainWindow(Handy.ApplicationWindow):
         action = Gio.PropertyAction.new("find_replace", self.searchbar, "replace-mode-enabled")
         self.add_action(action)
 
-        action = Gio.PropertyAction.new("focus_mode", self.text_view, "focus-mode")
+        action = Gio.PropertyAction.new("focus_mode", self.textview, "focus-mode")
         self.add_action(action)
 
-        action = Gio.PropertyAction.new("hemingway_mode", self.text_view, "hemingway-mode")
+        action = Gio.PropertyAction.new("hemingway_mode", self.textview.buffer, "hemingway-mode")
+        self.add_action(action)
+        self.textview.connect("notify::hemingway-mode", self.show_hemingway_toast)
+
+        action = Gio.SimpleAction.new("show_hemingway_toast", None)
+        action.connect("activate", self.show_hemingway_toast)
+        self.add_action(action)
+
+        action = Gio.SimpleAction.new("show_hemingway_help", None)
+        action.connect("activate", self.show_hemingway_help)
         self.add_action(action)
 
         action = Gio.PropertyAction.new("fullscreen", self, "is-fullscreen")
@@ -141,7 +174,7 @@ class MainWindow(Handy.ApplicationWindow):
         self.add_action(action)
         self.connect("notify::preview", self.toggle_preview)
 
-
+        # currently unused, we rather open a new window
         action = Gio.SimpleAction.new("new", None)
         action.connect("activate", self.new_document)
         self.add_action(action)
@@ -174,27 +207,69 @@ class MainWindow(Handy.ApplicationWindow):
         action.connect("activate", self.copy_html_to_clipboard)
         self.add_action(action)
 
-        # not really necessary but we'll keep a preview_layout property on the window
-        # and bind it both to the switcher and the renderer
-        self.preview_layout = self.settings.get_enum("preview-mode")
-        self.bind_property("preview_layout", self.headerbar.preview_layout_switcher, 
-                           "preview_layout", GObject.BindingFlags.BIDIRECTIONAL|GObject.BindingFlags.SYNC_CREATE)
+        action = Gio.SimpleAction.new("close", None)
+        action.connect("activate", self.do_close_request)
+        self.add_action(action)
 
-        self.bind_property("preview_layout", self.preview_handler.preview_renderer, 
-                           "preview_layout", GObject.BindingFlags.SYNC_CREATE)
+        action = Gio.SimpleAction.new("insert-bold")
+        action.connect_after("activate", FormatInserter().insert_bold, self.textview)
+        self.add_action(action)
+
+        action = Gio.SimpleAction.new("insert-italic")
+        action.connect_after("activate", FormatInserter().insert_italic, self.textview)
+        self.add_action(action)
+
+        action = Gio.SimpleAction.new("insert-strikethrough",)
+        action.connect_after("activate", FormatInserter().insert_strikethrough, self.textview)
+        self.add_action(action)
+
+        action = Gio.SimpleAction.new("insert-header", GLib.VariantType("i"))
+        action.connect_after("activate", FormatInserter().insert_header, self.textview)
+        self.add_action(action)
+
+        action = Gio.SimpleAction.new("insert-listitem")
+        action.connect_after("activate", FormatInserter().insert_list_item, self.textview)
+        self.add_action(action)
+
+        action = Gio.SimpleAction.new("insert-checklist-listitem")
+        action.connect_after("activate", FormatInserter().insert_checklist_item, self.textview)
+        self.add_action(action)
+
+        action = Gio.SimpleAction.new("insert-ordered-listitem")
+        action.connect_after("activate", FormatInserter().insert_ordered_list_item, self.textview)
+        self.add_action(action)
+
+        action = Gio.SimpleAction.new("insert-blockquote")
+        action.connect_after("activate", FormatInserter().insert_blockquote, self.textview)
+        self.add_action(action)
+
+        action = Gio.SimpleAction.new("insert-codeblock")
+        action.connect_after("activate", FormatInserter().insert_codeblock, self.textview)
+        self.add_action(action)
+
+        action = Gio.SimpleAction.new("insert-link")
+        action.connect_after("activate", FormatInserter().insert_link, self.textview)
+        self.add_action(action)
+
+        action = Gio.SimpleAction.new("insert-image")
+        action.connect_after("activate", FormatInserter().insert_image, self.textview)
+        self.add_action(action)
+
+        action = Gio.SimpleAction.new("insert-table", GLib.VariantType("ai"))
+        action.connect_after("activate", FormatInserter().insert_table, self.textview)
+        self.add_action(action)
+
+        scrollbar = self.editor.scrolledwindow.get_vscrollbar()
+        scrollbar.set_margin_top(54)
+        scrollbar.set_margin_bottom(48)
+
 
         self.preview = self.settings.get_boolean("preview-active")
 
-        self.text_view.hemingway_mode = self.settings.get_boolean("hemingway-mode")
+        self.textview.buffer.hemingway_mode = self.settings.get_boolean("hemingway-mode")
 
         self.new_document()
 
-    # TODO: change to closures on GTK4
-    # "Bind" scrolled window's scrollbar margin to headerbar visibility
-    @Gtk.Template.Callback()
-    def headerbar_revealed_cb(self, widget, *args):
-        scrollbar = self.editor_scrolledwindow.get_vscrollbar()
-        scrollbar.set_margin_top(46 if widget.get_reveal_child() else 0)
 
     def on_text_changed(self, *_args):
         """called when the text changes, sets the self.did_change to true and
@@ -207,7 +282,6 @@ class MainWindow(Handy.ApplicationWindow):
         if self.settings.get_value("autohide-headerbar"):
             self.hide_headerbar_bottombar()
 
-    @Gtk.Template.Callback()
     def _on_fullscreen(self, *args, **kwargs):
         """Puts the application in fullscreen mode and show/hides
         the poller for motion in the top border
@@ -219,18 +293,21 @@ class MainWindow(Handy.ApplicationWindow):
             self.unfullscreen()
             self.reveal_headerbar_bottombar()
 
-        self.text_view.grab_focus()
+        self.textview.grab_focus()
+
+    def on_preview_window_close(self, *args, **kwargs):
+        self.preview = False
 
     def toggle_preview(self, *args, **kwargs):
         """Toggle the preview mode
         """
 
         if self.preview:
-            self.text_view.grab_focus()
+            self.textview.grab_focus()
             self.preview_handler.show()
         else:
             self.preview_handler.hide()
-            self.text_view.grab_focus()
+            self.textview.grab_focus()
 
     def save_document(self, _action=None, _value=None, sync: bool = False) -> bool:
         """Try to save buffer in the current gfile.
@@ -244,18 +321,24 @@ class MainWindow(Handy.ApplicationWindow):
             bool: True if the document was saved correctly
         """
 
+        self.reveal_headerbar_bottombar()
         if self.current.gfile:
             LOGGER.info("saving")
+
+            # cancel any file monitor that is active
+            if self.file_monitor:
+                self.file_monitor.cancel()
+            self.discard_infobar.set_revealed(False)
 
             # We try to encode the file with the given encoding
             # if that doesn't work, we try with UTF-8
             # if that fails as well, we return False
             try:
                 try:
-                    encoded_text = self.text_view.get_text()\
+                    encoded_text = self.textview.get_text()\
                         .encode(self.current.encoding)
                 except UnicodeEncodeError:
-                    encoded_text = self.text_view.get_text()\
+                    encoded_text = self.textview.get_text()\
                         .encode("UTF-8")
                     self.current.encoding = "UTF-8"
             except UnicodeEncodeError as error:
@@ -265,7 +348,7 @@ class MainWindow(Handy.ApplicationWindow):
             else:
                 self.save_progressbar.set_opacity(1)
                 self.save_progressbar.set_visible(True)
-                self.progressbar_initiate_tw.start()
+                self.progressbar_animation.play()
 
                 # we allow synchronously saving operations
                 # for result-dependant code
@@ -278,24 +361,26 @@ class MainWindow(Handy.ApplicationWindow):
                             flags=Gio.FileCreateFlags.NONE,
                             cancellable=None)
                     except GLib.GError as error:
-                        helpers.show_error(self, str(error.message))
                         LOGGER.warning(str(error.message))
-                        self.progressbar_opacity_tw.start()
                         self.did_change = True
+                        self.progressbar_fade_out.play()
+                        self._set_file_monitor()
+                        helpers.show_error(self, str(error.message))
                         return False
 
                     if res:
-                        self.progressbar_initiate_tw.stop()
-                        self.progressbar_finalize_tw.start()
-                        self.progressbar_opacity_tw.start()
+                        if self.progressbar_animation.get_state() == Adw.AnimationState.PAUSED:
+                            self.progressbar_animation.resume()
 
                         self.update_headerbar_title()
                         self.did_change = False
+                        self._set_file_monitor()
                         return True
 
                     else:
-                        self.progressbar_opacity_tw.start()
+                        self.progressbar_fade_out.play()
                         self.did_change = True
+                        self._set_file_monitor()
                         return False
 
                 else:
@@ -318,73 +403,78 @@ class MainWindow(Handy.ApplicationWindow):
            where they want. Call set_headbar_title after that
         """
 
+        def on_response(dialog, response):
+            if response == Gtk.ResponseType.ACCEPT:
+
+                file = dialog.get_file()
+
+                if not file.query_exists():
+                    try:
+                        file.create(Gio.FileCreateFlags.NONE)
+                    except GLib.GError as error:
+                        helpers.show_error(self, str(error.message))
+                        LOGGER.warning(str(error.message))
+                        return False
+
+                self.current.gfile = file
+
+                recents_manager = Gtk.RecentManager.get_default()
+                recents_manager.add_item(self.current.gfile.get_uri())
+
+                self.update_headerbar_title(False, True)
+                dialog.destroy()
+                return self.save_document()
+            else:
+                return False
+
         filefilter = Gtk.FileFilter.new()
         filefilter.add_mime_type('text/x-markdown')
         filefilter.add_mime_type('text/plain')
         filefilter.set_name('Markdown (.md)')
-        filechooser = Gtk.FileChooserNative.new(
+        self.filechooser = Gtk.FileChooserNative.new(
             _("Save your File"),
             self,
             Gtk.FileChooserAction.SAVE,
             _("Save"),
             _("Cancel")
         )
-        filechooser.set_do_overwrite_confirmation(True)
-        filechooser.set_local_only(False)
-        filechooser.add_filter(filefilter)
-        filechooser.set_modal(True)
-        filechooser.set_transient_for(self)
+        self.filechooser.add_filter(filefilter)
+        self.filechooser.set_modal(True)
+        self.filechooser.set_transient_for(self)
 
         title = self.current.title
         if not title.endswith(".md"):
             title += ".md"
-        filechooser.set_current_name(title)
+        self.filechooser.set_current_name(title)
 
-        response = filechooser.run()
+        self.filechooser.connect("response", on_response)
 
-        if response == Gtk.ResponseType.ACCEPT:
-
-            file = filechooser.get_file()
-
-            if not file.query_exists():
-                try:
-                    file.create(Gio.FileCreateFlags.NONE)
-                except GLib.GError as error:
-                    helpers.show_error(self, str(error.message))
-                    LOGGER.warning(str(error.message))
-                    return False
-
-            self.current.gfile = file
-
-            recents_manager = Gtk.RecentManager.get_default()
-            recents_manager.add_item(self.current.gfile.get_uri())
-
-            self.update_headerbar_title(False, True)
-            filechooser.destroy()
-            return self.save_document()
-        else:
-            return False
+        self.filechooser.show()
 
     def _replace_contents_cb(self, gfile, result, _user_data=None):
         try:
             success, _etag = gfile.replace_contents_finish(result)
         except GLib.GError as error:
-            helpers.show_error(self, str(error.message))
             LOGGER.warning(str(error.message))
-            self.progressbar_opacity_tw.start()
             self.did_change = True
+            self.progressbar_fade_out.play()
+            self._set_file_monitor()
+            helpers.show_error(self, str(error.message))
             return False
 
         if success:
-            self.progressbar_initiate_tw.stop()
-            self.progressbar_finalize_tw.start()
-            self.progressbar_opacity_tw.start()
+            if self.progressbar_animation.get_state() == Adw.AnimationState.PAUSED:
+                self.progressbar_animation.resume()
 
             self.update_headerbar_title()
             self.did_change = False
+            # We add a 1ms delay to the call to avoid race conditions
+            # see #456
+            GLib.timeout_add(1, self._set_file_monitor, None, 0)
         else:
+            self.progressbar_fade_out.play()
             self.did_change = True
-            self.progressbar_opacity_tw.start()
+            self._set_file_monitor()
 
         return success
 
@@ -392,19 +482,18 @@ class MainWindow(Handy.ApplicationWindow):
         """Copies only html without headers etc. to Clipboard
         """
 
-        output = helpers.pandoc_convert(self.text_view.get_text())
-        clipboard = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD)
-        clipboard.set_text(output, -1)
-        clipboard.store()
+        output = helpers.pandoc_convert(self.textview.get_text())
+        clipboard = self.get_clipboard()
+        clipboard.set(output)
 
     def open_document(self, _action, _value):
         """open the desired file
         """
+        self.headerbar.open_menu.popdown()
 
-        response = self.check_change()
-        if (response == Gtk.ResponseType.CANCEL or
-            response == Gtk.ResponseType.DELETE_EVENT):
-            return
+        def on_response(dialog, response):
+            if response == Gtk.ResponseType.ACCEPT:
+                self.get_application().open([dialog.get_file()], "")
 
         markdown_filter = Gtk.FileFilter.new()
         markdown_filter.add_mime_type('text/markdown')
@@ -415,7 +504,7 @@ class MainWindow(Handy.ApplicationWindow):
         plaintext_filter.add_mime_type('text/plain')
         plaintext_filter.set_name(_('Plain Text Files'))
 
-        filechooser = Gtk.FileChooserNative.new(
+        self.filechooser = Gtk.FileChooserNative.new(
             _("Open a .md file"),
             self,
             Gtk.FileChooserAction.OPEN,
@@ -423,32 +512,46 @@ class MainWindow(Handy.ApplicationWindow):
             _("Cancel")
         )
 
-        filechooser.set_local_only(False)
-        filechooser.add_filter(markdown_filter)
-        filechooser.add_filter(plaintext_filter)
-        response = filechooser.run()
-        if response == Gtk.ResponseType.ACCEPT:
-            self.load_file(filechooser.get_file())
-            filechooser.destroy()
+        self.filechooser.set_modal(True)
+        self.filechooser.set_transient_for(self)
 
-        elif response == Gtk.ResponseType.CANCEL:
-            filechooser.destroy()
+        self.filechooser.add_filter(markdown_filter)
+        self.filechooser.add_filter(plaintext_filter)
+
+        self.filechooser.connect("response", on_response)
+        self.filechooser.show()
 
     def open_from_gvariant(self, _action, gvariant):
-        self.load_file(Gio.File.new_for_uri(gvariant.get_string()))
+        self.headerbar.open_menu.popdown()
+        self.get_application().open([Gio.File.new_for_uri(gvariant.get_string())], "")
 
     def load_file(self, file=None):
         """Open File from command line or open / open recent etc."""
-        LOGGER.info("trying to open %s", file.get_path())
+        LOGGER.info("trying to open %s", file.get_uri())
 
-        response = self.check_change()
-        if (response == Gtk.ResponseType.CANCEL or
-            response == Gtk.ResponseType.DELETE_EVENT):
-            return
         self.current.gfile = file
 
         self.current.gfile.load_contents_async(None,
                                                self._load_contents_cb, None)
+        self._set_file_monitor()
+
+    @Gtk.Template.Callback()
+    def reload_file(self, *args):
+        self.discard_infobar.set_revealed(False)
+        self.load_file(self.current.gfile)
+
+    def _set_file_monitor(self):
+        if self.current.gfile:
+            self.file_monitor = self.current.gfile.monitor_file(Gio.FileMonitorFlags.NONE, None)
+            self.file_monitor.connect("changed", self._on_file_changed)
+
+    @Gtk.Template.Callback()
+    def dismiss_discard_infobar(self, dialog, response):
+        if response == Gtk.ResponseType.CLOSE:
+            self.discard_infobar.set_revealed(False)
+
+    def _on_file_changed(self, file, other_file, event, *args):
+        self.discard_infobar.set_revealed(True)
 
     def _load_contents_cb(self, gfile, result, user_data=None):
         try:
@@ -470,10 +573,10 @@ class MainWindow(Handy.ApplicationWindow):
             LOGGER.warning(str(error.message))
             return
         else:
-            self.text_view.set_text(decoded)
-            start_iter = self.text_view.get_buffer().get_start_iter()
+            self.textview.set_text(decoded)
+            start_iter = self.textview.get_buffer().get_start_iter()
             GLib.idle_add(
-                lambda: self.text_view.get_buffer().place_cursor(start_iter))
+                lambda: self.textview.get_buffer().place_cursor(start_iter))
 
             ## add file to recents manager once it's fully loaded,
             # unless it is an internal resource
@@ -485,58 +588,56 @@ class MainWindow(Handy.ApplicationWindow):
 
             self.did_change = False
 
-    def check_change(self) -> Gtk.ResponseType:
+    def check_change(self,
+                     callback = None):
         """Show dialog to prevent loss of unsaved changes
         """
 
-        if self.did_change and self.text_view.get_text():
-            dialog = Gtk.MessageDialog(self,
-                                       Gtk.DialogFlags.MODAL |
-                                       Gtk.DialogFlags.DESTROY_WITH_PARENT,
-                                       Gtk.MessageType.WARNING,
-                                       Gtk.ButtonsType.NONE,
-                                       _("Save changes to document " +
-                                         "“%s” before closing?") %
-                                       self.current.title
-                                       )
+        if self.did_change:
+            dialog = Adw.MessageDialog.new(self,
+                                           _("Save changes?"),
+                                           _("“%s” contains unsaved changes. " +
+                                             "If you don’t save, " +
+                                             "all your changes will be " +
+                                             "permanently lost.") % self.current.title
+                                           )
+            dialog.add_response("cancel", _("Cancel"))
+            dialog.add_response("close", _("Discard"))
+            dialog.add_response("save", _("Save"))
+            dialog.set_response_appearance("close", Adw.ResponseAppearance.DESTRUCTIVE)
+            dialog.set_response_appearance("save", Adw.ResponseAppearance.SUGGESTED)
+            dialog.set_default_response("save")
+            dialog.set_close_response("cancel")
 
-            dialog.props.secondary_text = _("If you don’t save, " +
-                                            "all your changes will be " +
-                                            "permanently lost.")
-            close_button = dialog.add_button(_("Close without saving"),
-                                             Gtk.ResponseType.NO)
-            dialog.add_button(_("Cancel"), Gtk.ResponseType.CANCEL)
-            dialog.add_button(_("Save now"), Gtk.ResponseType.YES)
+            def on_response(message_dialog, response):
+                if response == "cancel":
+                    return
+                if response == "save":
+                    # If the saving fails, retry
+                    if self.save_document(sync=True) is False:
+                        return
+                if callback is not None:
+                    callback(self)
 
-            close_button.get_style_context().add_class("destructive-action")
-            dialog.set_default_response(Gtk.ResponseType.YES)
-            response = dialog.run()
+            dialog.connect("response", on_response)
 
-            dialog.destroy()
-
-            if response == Gtk.ResponseType.YES:
-                # If the saving fails, retry
-                if self.save_document(sync=True) is False:
-                    return self.check_change()
-
-            return response
+            dialog.present()
+            return
+        else:
+            if callback is not None:
+                callback(self)
 
     def new_document(self, *args, **kwargs):
-        """create new document
+        """create new document in the same window
         """
+        def callback(self):
+            self.textview.clear()
 
-        response = self.check_change()
-        if (response == Gtk.ResponseType.CANCEL or
-            response == Gtk.ResponseType.DELETE_EVENT):
-            return
-        self.text_view.clear()
+            self.did_change = False
+            self.current.gfile = None
+            self.update_headerbar_title(False, False)
 
-        self.did_change = False
-        self.current.gfile = None
-        self.update_headerbar_title(False, False)
-
-    def update_default_stat(self):
-        self.stats_handler.update_default_stat()
+        self.check_change(callback)
 
     def reload_preview(self, reshow=False):
         self.preview_handler.reload(reshow=reshow)
@@ -544,7 +645,7 @@ class MainWindow(Handy.ApplicationWindow):
     def open_export(self, _action, value):
         """open the export dialog
         """
-        text = bytes(self.text_view.get_text(), "utf-8")
+        text = bytes(self.textview.get_text(), "utf-8")
 
         export_format = value.get_string()
 
@@ -555,52 +656,47 @@ class MainWindow(Handy.ApplicationWindow):
     def open_advanced_export(self, *args, **kwargs):
         """open the advanced export dialog
         """
-        text = bytes(self.text_view.get_text(), "utf-8")
+        text = bytes(self.textview.get_text(), "utf-8")
 
         export_dialog = AdvancedExportDialog(self.current, text)
         export_dialog.set_transient_for(self)
         export_dialog.show()
 
+    def show_hemingway_toast(self, *args):
+        if self.textview.buffer.hemingway_mode:
+            # Only show the first three times
+            count = self.settings.get_int("hemingway-toast-count")
+            if count >= 3:
+                return
+            count += 1
+            self.settings.set_int("hemingway-toast-count", count)
+
+            self.editor.toast_overlay.add_toast(self.hemingway_toast)
+
+    def show_hemingway_help(self, *args):
+        hemingway_dialog = Gtk.Builder.new_from_resource("/org/gnome/gitlab/somas/Apostrophe/ui/AboutHemingway.ui")\
+                           .get_object("dialog")
+        hemingway_dialog.set_transient_for(self)
+        hemingway_dialog.present()
+
     @Gtk.Template.Callback()
-    def reveal_headerbar_bottombar(self, _widget=None, _data=None):
+    def reveal_headerbar_bottombar(self, *args):
+        self.editor.reveal_bottombar()
 
-        self.reveal_bottombar()
-
-        if not self.headerbar_visible:
-            self.headerbar_eventbox.hide()
-            self.headerbar.set_visible(True)
+        if not self.headerbar.get_reveal_child():
             self.headerbar.set_reveal_child(True)
-            self.get_style_context().remove_class("focus")
-            self.headerbar_visible = True
-
-    @Gtk.Template.Callback()
-    def reveal_bottombar(self, _widget=None, _data=None):
-
-        if not self.bottombar_visible:
-            self.stats_revealer.set_reveal_child(True)
-            self.stats_revealer.set_halign(Gtk.Align.END)
-            self.stats_revealer.queue_resize()
-
-            self.bottombar_visible = True
+            self.remove_css_class("no-headerbar")
 
     def hide_headerbar_bottombar(self):
-
-        if self.searchbar.get_search_mode():
+        if self.searchbar.search_mode_enabled or\
+           self.discard_infobar.get_revealed():
             return
 
-        if self.headerbar_visible:
+        if self.headerbar.get_reveal_child():
             self.headerbar.set_reveal_child(False)
-            self.get_style_context().add_class("focus")
+            self.add_css_class("no-headerbar")
 
-            self.headerbar_visible = False
-
-        if self.bottombar_visible:
-            self.stats_revealer.set_reveal_child(False)
-            self.stats_revealer.set_halign(Gtk.Align.FILL)
-
-            self.bottombar_visible = False
-
-        self.headerbar_eventbox.show()
+        self.editor.hide_bottombar()
 
     # TODO: this has to go
     def update_headerbar_title(self,
@@ -631,24 +727,28 @@ class MainWindow(Handy.ApplicationWindow):
     def save_state(self):
         self.settings.set_enum("preview-mode", self.preview_layout)
         self.settings.set_boolean("preview-active", self.preview)
-        self.settings.set_boolean("hemingway-mode", self.text_view.hemingway_mode)
+        self.settings.set_boolean("hemingway-mode", self.textview.buffer.hemingway_mode)
+        self.settings.set_boolean("toolbar-active", self.editor.toolbar_revealer.extra_toolbar_revealed)
 
-    @Gtk.Template.Callback()
-    def on_delete_called(self, _widget, _data=None):
-        """Called when the ApostropheWindow is closed.
-        """
-        LOGGER.info('delete called')
-        response = self.check_change()
-        if (response == Gtk.ResponseType.CANCEL or
-            response == Gtk.ResponseType.DELETE_EVENT):
-            return True
+    def do_close_request(self, *args):
+        LOGGER.info('close request called')
 
-        # save state if we're the last window OR if only the preview window is left
-        n_windows = len(self.get_application().get_windows())
-        if n_windows == 1 or \
-           (n_windows == 2 and self.preview_handler.preview_renderer.window):
-            self.save_state()
-        return False
+        if self.close_anyway:
+            self.run_dispose()
+            return False
+
+        # called if check_change decides we can throw away the contents of the textview
+        def callback(window):
+            # save state if we're the last window group left
+            n_windows = len(window.get_application().get_main_windows())
+
+            if n_windows == 1:
+                window.save_state()
+            window.close_anyway = True
+            window.do_close_request()
+
+        self.check_change(callback)
+        return True
 
 @dataclass
 class File():
@@ -659,7 +759,7 @@ class File():
         self.gfile = gfile
         self.encoding = encoding
         self.path = ""
-        self.title = ""
+        self.title = _("New File")
         self.name = ""
 
     @property

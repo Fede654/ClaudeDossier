@@ -15,14 +15,16 @@
 # with this program.  If not, see <http://www.gnu.org/licenses/>.
 # END LICENSE
 
-from apostrophe.settings import Settings
-from gi.repository import Gtk, GObject
-from enum import IntEnum
 import enum
-
+from enum import IntEnum
 from gettext import gettext as _
+
 import gi
-gi.require_version('Gtk', '3.0')
+from gi.repository import GObject, Gtk
+
+from apostrophe.settings import Settings
+
+gi.require_version('Gtk', '4.0')
 
 
 class PreviewLayout(IntEnum):
@@ -32,6 +34,7 @@ class PreviewLayout(IntEnum):
     HALF_WIDTH = 1
     HALF_HEIGHT = 2
     WINDOWED = 3
+    CLOSED = 4
 
     def get_text(self):
         if self == PreviewLayout.FULL_WIDTH:
@@ -70,7 +73,7 @@ class PreviewLayoutSwitcherItem(Gtk.ListBoxRow):
     def __init__(self, _layout):
         super().__init__()
         self.layout = _layout
-        self.icon.set_from_icon_name(self.layout.get_icon(), 4)
+        self.icon.set_from_icon_name(self.layout.get_icon())
         self.title.set_label(self.layout.get_text())
 
         self.connect("notify::selected", self.on_selected)
@@ -95,9 +98,9 @@ class PreviewLayoutSwitcher(Gtk.Box):
     def __init__(self):
         super().__init__()
 
-        for i, layout in enumerate(PreviewLayout):
+        for layout in [PreviewLayout.HALF_WIDTH, PreviewLayout.FULL_WIDTH, PreviewLayout.HALF_HEIGHT, PreviewLayout.WINDOWED]:
             item = PreviewLayoutSwitcherItem(layout)
-            self.list_box.add(item)
+            self.list_box.append(item)
             self.items.append(item)
 
         self.update_ui()
@@ -105,7 +108,7 @@ class PreviewLayoutSwitcher(Gtk.Box):
 
     @Gtk.Template.Callback()
     def update_ui(self, *args, **kwargs):
-        self.layout_image.set_from_icon_name(PreviewLayout(self.preview_layout).get_icon(), 4)
+        self.layout_image.set_from_icon_name(PreviewLayout(self.preview_layout).get_icon())
 
         for item in self.items:
             item.selected = item.layout == self.preview_layout
@@ -117,8 +120,3 @@ class PreviewLayoutSwitcher(Gtk.Box):
     def on_row_activated(self, _listbox, row):
         self.preview_layout = row.layout
         self.layout_popover.popdown()
-
-    # TODO: remove
-    @Gtk.Template.Callback()
-    def on_menu_state_changed(self, _listbox, row):
-        pass

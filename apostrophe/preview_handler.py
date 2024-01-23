@@ -15,16 +15,18 @@
 
 import math
 import webbrowser
-from enum import auto, IntEnum
+from enum import IntEnum, auto
+from gettext import gettext as _
 
 import gi
 
-from apostrophe.preview_renderer import PreviewRenderer
 from apostrophe.settings import Settings
 
-gi.require_version('WebKit2', '4.0')
-from gi.repository import WebKit2, GLib, Gtk, GObject
+gi.require_version('WebKit', '6.0')
+gi.require_version('Gtk', '4.0')
+from gi.repository import GLib, WebKit
 
+from apostrophe import config
 from apostrophe.preview_converter import PreviewConverter
 from apostrophe.preview_web_view import PreviewWebView
 
@@ -41,17 +43,15 @@ class PreviewHandler:
     The rendering itself is handled by `PreviewRendered`. This class handles conversion/loading and
     connects it all together (including synchronization, ie. text changes, scroll)."""
 
-    def __init__(self, window, text_view, flap):
-        self.text_view = text_view
+    def __init__(self, window, text_view, panels):
+        self.window = window.weak_ref(self.on_main_window_closed)
+        self.text_view = text_view.weak_ref()
+        self.panels = panels.weak_ref()
 
         self.web_view = None
         self.web_view_pending_html = None
 
         self.preview_converter = PreviewConverter()
-        self.preview_renderer = PreviewRenderer(
-            window, text_view, flap)
-
-        window.connect("style-updated", self.reload)
 
         self.text_changed_handler_id = None
 
@@ -63,15 +63,18 @@ class PreviewHandler:
         self.shown = False
         self.preview_visible = False
 
+        self.window().connect("notify::title", self.on_window_title_changed)
+
     def show(self):
         self.__show()
-        self.preview_renderer.show()
+        self.panels().revealed = True
 
     def __show(self, html=None, step=Step.CONVERT_HTML):
 
         if step == Step.CONVERT_HTML:
             # First step: convert text to HTML.
-            buf = self.text_view.get_buffer()
+            buf = self.text_view().get_buffer()
+
             self.preview_converter.convert(
                 buf.get_text(buf.get_start_iter(), buf.get_end_iter(), False),
                 self.__show, Step.LOAD_WEBVIEW)
@@ -79,12 +82,10 @@ class PreviewHandler:
         elif step == Step.LOAD_WEBVIEW:
             # Second step: load HTML.
             self.loading = True
-
             if not self.web_view:
                 self.web_view = PreviewWebView()
                 self.web_view.get_settings().set_allow_universal_access_from_file_urls(True)
-                #TODO: enable devtools on Devel profile
-                self.web_view.get_settings().set_enable_developer_extras(True)
+                self.web_view.get_settings().set_enable_developer_extras(config.PROFILE == '.Devel')
 
                 # Show preview once the load is finished
                 self.web_view.connect("load-changed", self.on_load_changed)
@@ -105,17 +106,17 @@ class PreviewHandler:
                 self.preview_visible = True
 
                 self.text_changed_handler_id = \
-                    self.text_view.get_buffer().connect("changed", self.__show)
+                    self.text_view().get_buffer().connect("changed", self.__show)
 
                 self.__show()
 
-            GLib.idle_add(self.web_view.set_scroll_scale, self.text_view.scroll_scale)
+            GLib.idle_add(self.web_view.set_scroll_scale, self.text_view().scroll_scale)
 
             if self.settings.get_boolean("sync-scroll"):
                 self.web_scroll_handler_id = \
                     self.web_view.connect("scroll-scale-changed", self.on_web_view_scrolled)
                 self.text_scroll_handler_id = \
-                    self.text_view.connect("scroll-scale-changed", self.on_text_view_scrolled)
+                    self.text_view().connect("scroll-scale-changed", self.on_text_view_scrolled)
 
     def reload(self, *_widget, reshow=False):
         if self.preview_visible:
@@ -123,36 +124,36 @@ class PreviewHandler:
                 self.hide()
             self.show()
 
-    def hide(self):
+    def load_webview(self):
+        self.web_view.show()
+        self.window().preview_stack.add_child(self.web_view)
+        self.window().preview_stack.set_visible_child(self.web_view)
+
+    def hide(self, *args, **kwargs):
         if self.preview_visible:
             self.preview_visible = False
 
-            #GLib.idle_add(self.text_view.scroll_scale, self.web_view.get_scroll_scale())
-            self.text_view.scroll_scale = self.web_view.get_scroll_scale()
+            #GLib.idle_add(self.text_view().scroll_scale, self.web_view.get_scroll_scale())
+            self.text_view().scroll_scale = self.web_view.get_scroll_scale()
 
-            self.preview_renderer.hide()
+            self.panels().revealed = False
 
             if self.text_scroll_handler_id:
-                self.text_view.disconnect(self.text_scroll_handler_id)
+                self.text_view().disconnect(self.text_scroll_handler_id)
                 self.text_scroll_handler_id = None
             if self.web_scroll_handler_id:
                 self.web_view.disconnect(self.web_scroll_handler_id)
                 self.web_scroll_handler_id = None
 
         if self.text_changed_handler_id:
-            self.text_view.get_buffer().disconnect(self.text_changed_handler_id)
+            self.text_view().get_buffer().disconnect(self.text_changed_handler_id)
 
         if self.loading:
             self.loading = False
-
-            self.web_view.destroy()
-            self.web_view = None
-
-    def update_preview_mode(self):
-        self.preview_renderer.update_mode(self.web_view)
+            self.panels().revealed = False
 
     def on_load_changed(self, _web_view, event):
-        if event == WebKit2.LoadEvent.FINISHED:
+        if event == WebKit.LoadEvent.FINISHED:
             self.loading = False
             if self.web_view_pending_html:
                 self.__show(html=self.web_view_pending_html, step=Step.LOAD_WEBVIEW)
@@ -160,7 +161,7 @@ class PreviewHandler:
             else:
                 # we only lazyload the webview once
                 if not self.shown:
-                    self.preview_renderer.load_webview(self.web_view)
+                    self.load_webview()
                     self.shown = True
                 self.__show(step=Step.RENDER)
 
@@ -171,9 +172,17 @@ class PreviewHandler:
             self.web_view.set_scroll_scale(scale)
 
     def on_web_view_scrolled(self, _web_view, scale):
-        if self.preview_visible and self.text_view.get_mapped() and not math.isclose(
-                scale, self.text_view.scroll_scale, rel_tol=1e-1):
-            self.text_view.scroll_scale = scale
+        if self.preview_visible and self.text_view().get_mapped() and not math.isclose(
+                scale, self.text_view().scroll_scale, rel_tol=1e-4):
+            self.text_view().scroll_scale = scale
+
+    def on_window_title_changed(self, *args, **kwargs):
+        self.panels().panel_window_title = self.window().get_title() + " - " + _("Preview")
+
+    def on_main_window_closed(self, *args):
+        if self.panels().panel_window:
+            self.panels().panel_window.destroy()
+            self.panels().panel_window = None
 
     @staticmethod
     def on_click_link(web_view, decision, _decision_type):
@@ -186,8 +195,8 @@ class PreviewHandler:
     def on_right_click(web_view, context_menu, _event, _hit_test):
         # disable some context menu option
         for item in context_menu.get_items():
-            if item.get_stock_action() in [WebKit2.ContextMenuAction.RELOAD,
-                                           WebKit2.ContextMenuAction.GO_BACK,
-                                           WebKit2.ContextMenuAction.GO_FORWARD,
-                                           WebKit2.ContextMenuAction.STOP]:
+            if item.get_stock_action() in [WebKit.ContextMenuAction.RELOAD,
+                                           WebKit.ContextMenuAction.GO_BACK,
+                                           WebKit.ContextMenuAction.GO_FORWARD,
+                                           WebKit.ContextMenuAction.STOP]:
                 context_menu.remove(item)

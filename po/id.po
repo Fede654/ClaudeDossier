@@ -1,22 +1,22 @@
 # Indonesian translation for apostrophe.
 # Copyright (C) 2021 apostrophe's COPYRIGHT HOLDER
 # This file is distributed under the same license as the apostrophe package.
-# Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2021
+# Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2021-2023
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: apostrophe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2022-03-07 19:03+0000\n"
-"PO-Revision-Date: 2022-03-08 22:18+0700\n"
-"Last-Translator: Andika Triwidada <andika@gmail.com>\n"
+"POT-Creation-Date: 2023-09-11 15:13+0000\n"
+"PO-Revision-Date: 2023-09-14 14:00+0700\n"
+"Last-Translator: Kukuh Syafaat <kukuhsyafaat@gnome.org>\n"
 "Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.2\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.3.1\n"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:3
 #: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:5
@@ -42,7 +42,7 @@ msgid "Use the color scheme in the application's UI and in the text area."
 msgstr "Gunakan skema warna di UI aplikasi dan di area teks."
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:36
-#: data/ui/Preferences.ui:23 data/ui/Preferences.ui:24
+#: data/ui/Preferences.ui:15 data/ui/Preferences.ui:16
 msgid "Check spelling while typing"
 msgstr "Memeriksa ejaan saat mengetik"
 
@@ -59,7 +59,7 @@ msgid "Keep the editor and preview scroll positions in sync."
 msgstr "Jaga agar penyunting dan pratinjau gulir dalam posisi sinkron."
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:50
-#: data/ui/Preferences.ui:90
+#: data/ui/Preferences.ui:70
 msgid "Input format"
 msgstr "Format masukan"
 
@@ -102,7 +102,7 @@ msgid "Maximum number of characters per line within the editor."
 msgstr "Cacah maksimum karakter per baris dalam penyunting."
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:85
-#: data/ui/Headerbar.ui:250
+#: data/ui/AboutHemingway.ui:6
 msgid "Hemingway Mode"
 msgstr "Mode Hemingway"
 
@@ -111,29 +111,45 @@ msgid "Whether the user can delete text or not."
 msgstr "Apakah pengguna dapat menghapus teks atau tidak."
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:92
+msgid "Hemingway Toast Count"
+msgstr "Cacah Hemingway Toast"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:93
+msgid "Number of times the Hemingway Toast has been shown"
+msgstr "Berapa kali Hemingway Toast telah ditampilkan"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:99
 msgid "Preview mode"
 msgstr "Mode pratinjau"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:93
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:100
 msgid "How to display the preview."
 msgstr "Cara menampilkan pratinjau."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:99
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:106
 msgid "Preview active"
 msgstr "Pratinjau aktif"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:100
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:107
 msgid "Whether showing of preview is active when launching a new window."
 msgstr ""
 "Apakah menampilkan pratinjau aktif saat meluncurkan suatu jendela baru."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:106
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:113
 msgid "Text size"
 msgstr "Ukuran teks"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:107
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:114
 msgid "Preferred relative size for the text."
 msgstr "Ukuran relatif yang disukai bagi teks."
+
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:120
+msgid "Toolbar"
+msgstr "Bilah Alat"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:121
+msgid "Whether the toolbar is shown or not."
+msgstr "Apakah bilah alat ditampilkan atau tidak."
 
 #: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:6
 msgid "Edit Markdown in style"
@@ -185,55 +201,62 @@ msgstr ""
 msgid "Manuel G., Wolf V."
 msgstr "Manuel G., Wolf V."
 
-#: data/ui/About.ui.in:12
+#: data/ui/About.ui.in:9
 msgid "Copyright (C) 2022, Manuel G., Wolf V."
 msgstr "Hak Cipta (C) 2020, Manuel G., Wolf V."
 
-#: data/ui/About.ui.in:14
-msgid "Apostrophe website"
-msgstr "Situs web Apostrophe"
-
 #. Put your name in here, like this:
 #. Manuel Genovés <manuel.genoves@gmail.com>
-#: data/ui/About.ui.in:20
+#: data/ui/About.ui.in:17
 msgid "translator-credits"
 msgstr ""
-"Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2021.\n"
+"Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2021-2023.\n"
 "Andika Triwidada <andika@gmail.com>, 2022."
 
-#: data/ui/About.ui.in:65
-msgid "Donations:"
-msgstr "Donasi:"
+#: data/ui/AboutHemingway.ui:7
+msgid ""
+"The Hemingway Mode mimics the experience of writing on a typewriter, not "
+"allowing you to delete any text or doing any kind of editing. \n"
+"\n"
+"Only being able to move forward may be frustrating, but can be an "
+"interesting exercise for improving your writing skills, gaining focus or "
+"facing the task on hand with a different mindset.\n"
+"  "
+msgstr ""
+"Mode Hemingway meniru pengalaman menulis di mesin tik, tidak memungkinkan "
+"Anda untuk menghapus teks apa pun atau melakukan penyuntingan apa pun. \n"
+"\n"
+"Hanya mampu bergerak maju mungkin membuat frustrasi, tetapi bisa menjadi "
+"latihan yang menarik untuk meningkatkan keterampilan menulis Anda, "
+"mendapatkan fokus atau menghadapi tugas yang ada dengan pola pikir yang "
+"berbeda.\n"
+"  "
 
-#: data/ui/About.ui.in:74
-msgid "Paypal"
-msgstr "Paypal"
+#: data/ui/AboutHemingway.ui:13
+msgid "_Close"
+msgstr "_Tutup"
 
-#: data/ui/About.ui.in:105
-msgid "Help to translate:"
-msgstr "Bantu untuk menerjemahkan:"
-
-#: data/ui/About.ui.in:114
-msgid "Damned Lies"
-msgstr "Damned Lies"
-
-#: data/ui/Export.ui:46 apostrophe/export_dialog.py:133
-#: apostrophe/export_dialog.py:324 apostrophe/export_dialog.py:329
-#: apostrophe/main_window.py:331 apostrophe/main_window.py:424
-#: apostrophe/main_window.py:509
+#: data/ui/Export.ui:33 apostrophe/export_dialog.py:132
+#: apostrophe/export_dialog.py:344 apostrophe/export_dialog.py:349
+#: apostrophe/main_window.py:444 apostrophe/main_window.py:517
+#: apostrophe/main_window.py:609
 msgid "Cancel"
 msgstr "Batal"
 
-#: data/ui/Export.ui:61 apostrophe/export_dialog.py:128
-#: apostrophe/export_dialog.py:323 apostrophe/export_dialog.py:327
+#: data/ui/Export.ui:44 apostrophe/export_dialog.py:127
+#: apostrophe/export_dialog.py:343 apostrophe/export_dialog.py:347
 msgid "Export"
 msgstr "Ekspor"
 
-#: data/ui/Export.ui:153
+#: data/ui/Export.ui:114
+msgid "Options"
+msgstr "Opsi"
+
+#: data/ui/Export.ui:118
 msgid "Standalone"
 msgstr "Mandiri"
 
-#: data/ui/Export.ui:155
+#: data/ui/Export.ui:120
 msgid ""
 "Use a header and footer to include things like stylesheets and meta "
 "information"
@@ -241,250 +264,265 @@ msgstr ""
 "Gunakan tajuk dan kaki untuk menyertakan hal-hal seperti stylesheet dan "
 "informasi meta"
 
-#: data/ui/Export.ui:170
+#: data/ui/Export.ui:133
 msgid "Table of Contents"
 msgstr "Daftar isi"
 
-#: data/ui/Export.ui:186
+#: data/ui/Export.ui:147
 msgid "Number Sections"
 msgstr "Bagian Angka"
 
-#: data/ui/Export.ui:210 data/ui/Export.ui:216
+#: data/ui/Export.ui:165 data/ui/Export.ui:170 data/ui/Export.ui:182
+#: data/ui/Export.ui:187
 msgid "Page Size"
 msgstr "Ukuran Halaman"
 
-#: data/ui/Export.ui:235
+#: data/ui/Export.ui:199
 msgid "HTML Options"
 msgstr "Opsi HTML"
 
-#: data/ui/Export.ui:241
+#: data/ui/Export.ui:204
 msgid "Self-contained"
 msgstr "Mandiri"
 
-#: data/ui/Export.ui:243
+#: data/ui/Export.ui:206
 msgid "Produces an HTML file with no external dependencies"
 msgstr "Hasilkan berkas HTML tanpa dependensi eksternal"
 
-#: data/ui/Export.ui:259
-msgid "CSS File"
-msgstr "Berkas CSS"
-
-#: data/ui/Export.ui:264
-msgid "Select CSS file"
-msgstr "Pilih berkas CSS"
-
-#: data/ui/Export.ui:285
+#: data/ui/Export.ui:222
 msgid "Syntax Highlighting"
 msgstr "Penyorotan Sintaks"
 
-#: data/ui/Export.ui:300
+#: data/ui/Export.ui:228
+msgid "Use Syntax Highlighting"
+msgstr "Gunakan Penyorotan Sintaks"
+
+#: data/ui/Export.ui:235
 msgid "Highlight style"
 msgstr "Gaya sorot"
 
-#: data/ui/Export.ui:321
+#: data/ui/Export.ui:249
 msgid "Presentation"
 msgstr "Presentasi"
 
-#: data/ui/Export.ui:327
+#: data/ui/Export.ui:254
 msgid "Incremental bullets"
 msgstr "Bulatan inkremental"
 
-#: data/ui/Export.ui:329
+#: data/ui/Export.ui:256
 msgid "Show one bullet point after another in a slideshow"
 msgstr "Tampilkan satu poin demi satu dalam tayangan salindia"
 
-#: data/ui/Headerbar.ui:57
+#: data/ui/Headerbar.ui:11
 msgid "New"
 msgstr "Baru"
 
-#: data/ui/Headerbar.ui:67 apostrophe/main_window.py:423
-msgid "Open"
-msgstr "Buka"
+#: data/ui/Headerbar.ui:18
+msgid "_Open"
+msgstr "_Buka"
 
-#: data/ui/Headerbar.ui:90 apostrophe/main_window.py:330
-msgid "Save"
-msgstr "Simpan"
+#: data/ui/Headerbar.ui:20
+msgid "Open a markdown file"
+msgstr "Buka berkas markdown"
+
+#: data/ui/Headerbar.ui:26
+msgid "_Save"
+msgstr "_Simpan"
+
+#: data/ui/Headerbar.ui:28
+msgid "Save the markdown file"
+msgstr "Simpan berkas markdown"
+
+#: data/ui/Headerbar.ui:44
+msgid "Open the Main Menu"
+msgstr "Buka Menu Utama"
+
+#: data/ui/Headerbar.ui:55
+msgid "_Find"
+msgstr "_Cari"
+
+#: data/ui/Headerbar.ui:57
+msgid "Search in the File"
+msgstr "Cari di Berkas"
+
+#: data/ui/Headerbar.ui:80
+msgid "_Hemingway Mode"
+msgstr "Mode _Hemingway"
+
+#: data/ui/Headerbar.ui:84
+msgid "_Focus Mode"
+msgstr "Mode _Fokus"
+
+#: data/ui/Headerbar.ui:90
+msgid "Find and _Replace"
+msgstr "Ca_ri dan Ganti"
+
+#: data/ui/Headerbar.ui:96
+msgid "_Preferences"
+msgstr "_Preferensi"
 
 #: data/ui/Headerbar.ui:102
-msgid "Save as…"
-msgstr "Simpan sebagai…"
+msgid "Open _Tutorial"
+msgstr "Buka _Tutorial"
 
-#: data/ui/Headerbar.ui:140
-msgid "Menu"
-msgstr "Menu"
+#: data/ui/Headerbar.ui:107
+msgid "_Keyboard Shortcuts"
+msgstr "Pintasan Papan Ti_k"
 
-#: data/ui/Headerbar.ui:166
-msgid "Find"
-msgstr "Cari"
+#: data/ui/Headerbar.ui:111
+msgid "_About Apostrophe"
+msgstr "Tent_ang Apostrophe"
 
-#: data/ui/Headerbar.ui:225
-msgid "New Window"
-msgstr "Jendela Baru"
+#: data/ui/Headerbar.ui:122
+msgid "_Save As..."
+msgstr "_Simpan Sebagai…"
 
-#: data/ui/Headerbar.ui:264
-msgid "Focus Mode"
-msgstr "Mode Fokus"
+#: data/ui/Headerbar.ui:145
+msgid "Advanced _Export…"
+msgstr "_Ekspor Lanjutan…"
 
-#: data/ui/Headerbar.ui:289
-msgid "Find and Replace"
-msgstr "Cari dan Ganti"
+#: data/ui/Headerbar.ui:151
+msgid "_Copy HTML"
+msgstr "Sa_lin HTML"
 
-#: data/ui/Headerbar.ui:314
-msgid "Preferences"
-msgstr "Preferensi"
-
-#: data/ui/Headerbar.ui:339
-msgid "Open Tutorial"
-msgstr "Buka Tutorial"
-
-#: data/ui/Headerbar.ui:353
-msgid "Keyboard Shortcuts"
-msgstr "Pintasan Papan Tik"
-
-#: data/ui/Headerbar.ui:367
-msgid "About Apostrophe"
-msgstr "Tentang Apostrophe"
-
-#: data/ui/Headerbar.ui:395
-msgid "Save As…"
-msgstr "Simpan Sebagai…"
-
-#: data/ui/Headerbar.ui:476
-msgid "Advanced Export…"
-msgstr "Ekspor Lanjutan…"
-
-#: data/ui/Headerbar.ui:501
-msgid "Copy HTML"
-msgstr "Salin HTML"
-
-#: data/ui/Preferences.ui:40
+#: data/ui/Preferences.ui:28
 msgid "Autohide headerbar"
 msgstr "Sembunyi Otomatis Bilah Tajuk"
 
-#: data/ui/Preferences.ui:41
+#: data/ui/Preferences.ui:29
 msgid "Autohide header and statusbars while typing"
 msgstr "Sembunyi otomatis bilah tajuk dan bilah status saat mengetik"
 
-#: data/ui/Preferences.ui:57
+#: data/ui/Preferences.ui:42
 msgid "Use bigger text"
 msgstr "Pakai teks yang lebih besar"
 
-#: data/ui/Preferences.ui:58
+#: data/ui/Preferences.ui:43
 msgid "Reduce the margins width and increase the text size when possible"
 msgstr "Kurangi lebar marjin dan perbesar ukuran teks ketika mungkin"
 
-#: data/ui/Preferences.ui:72
+#: data/ui/Preferences.ui:56
 msgid "Restore session"
 msgstr "Pulihkan sesi"
 
-#: data/ui/Preferences.ui:73
+#: data/ui/Preferences.ui:57
 msgid "Return to your previous session when Apostrophe is started"
 msgstr "Kembali ke sesi sebelumnya ketika Aposthrope dimulai"
 
-#: data/ui/Preferences.ui:91
+#: data/ui/Preferences.ui:71
 msgid "Flavor of markdown Apostrophe will use"
 msgstr "Varian markdown yang akan dipakai oleh Aposthrope"
 
-#: data/ui/Preferences.ui:100
+#: data/ui/Preferences.ui:80
 msgid "Markdown flavor documentation"
 msgstr "Dokumentasi varian markdown"
 
-#: data/ui/PreviewLayoutSwitcher.ui:10 data/ui/PreviewWindow.ui:13
+#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_renderer.py:208
 msgid "Preview"
 msgstr "Pratinjau"
 
-#: data/ui/PreviewLayoutSwitcher.ui:32
+#: data/ui/PreviewLayoutSwitcher.ui:24
 msgid "Screen Layout"
 msgstr "Tata Letak Layar"
 
-#: data/ui/Recents.ui:60
+#: data/ui/Recents.ui:46
 msgid "No Recent Documents"
 msgstr "Tidak Ada Dokumen Terkini"
 
-#: data/ui/Recents.ui:88
+#: data/ui/Recents.ui:69
 msgid "No Results Found"
 msgstr "Tidak Ditemukan Hasil"
 
-#: data/ui/SearchBar.ui:50
+#: data/ui/SearchBar.ui:28
 msgid "Previous Match"
 msgstr "Cocok Sebelumnya"
 
-#: data/ui/SearchBar.ui:63
+#: data/ui/SearchBar.ui:37
 msgid "Next Match"
 msgstr "Cocok Berikutnya"
 
 #. Translators: This indicates case sensitivity, so it should be the first vowel of the language in lowercase and uppercase
-#: data/ui/SearchBar.ui:85
+#: data/ui/SearchBar.ui:52
 msgid "aA"
 msgstr "aA"
 
-#: data/ui/SearchBar.ui:89
+#: data/ui/SearchBar.ui:55
 msgid "Case Sensitive"
 msgstr "Peka Huruf Besar Kecil"
 
-#: data/ui/SearchBar.ui:99
+#: data/ui/SearchBar.ui:64
 msgid "Regular Expression"
 msgstr "Ekspresi Reguler"
 
-#: data/ui/SearchBar.ui:111 data/ui/SearchBar.ui:165
+#: data/ui/SearchBar.ui:72 data/ui/SearchBar.ui:110
 msgid "Replace"
 msgstr "Ganti"
 
-#: data/ui/SearchBar.ui:175
+#: data/ui/SearchBar.ui:118
 msgid "Replace All"
 msgstr "Ganti Semua"
 
-#: data/ui/Shortcuts.ui:13
+#: data/ui/Shortcuts.ui:11
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Umum"
 
-#: data/ui/Shortcuts.ui:17
+#: data/ui/Shortcuts.ui:14
 msgctxt "shortcut window"
 msgid "New"
 msgstr "Baru"
 
-#: data/ui/Shortcuts.ui:24
+#: data/ui/Shortcuts.ui:20
 msgctxt "shortcut window"
 msgid "Open"
 msgstr "Buka"
 
-#: data/ui/Shortcuts.ui:31
+#: data/ui/Shortcuts.ui:26
 msgctxt "shortcut window"
 msgid "Save"
 msgstr "Simpan"
 
-#: data/ui/Shortcuts.ui:38
+#: data/ui/Shortcuts.ui:32
 msgctxt "shortcut window"
 msgid "Save as"
 msgstr "Simpan sebagai"
 
-#: data/ui/Shortcuts.ui:45
+#: data/ui/Shortcuts.ui:38
 msgctxt "shortcut window"
 msgid "Close document"
 msgstr "Tutup dokumen"
 
-#: data/ui/Shortcuts.ui:52
+#: data/ui/Shortcuts.ui:44
+msgctxt "shortcut window"
+msgid "Show preferences"
+msgstr "Tampilkan preferensi"
+
+#: data/ui/Shortcuts.ui:50
+msgctxt "shortcut window"
+msgid "Keyboard shortcuts"
+msgstr "Pintasan papan tik"
+
+#: data/ui/Shortcuts.ui:56
 msgctxt "shortcut window"
 msgid "Quit application"
 msgstr "Keluar aplikasi"
 
-#: data/ui/Shortcuts.ui:61
+#: data/ui/Shortcuts.ui:64
 msgctxt "shortcut window"
 msgid "Modes"
 msgstr "Mode"
 
-#: data/ui/Shortcuts.ui:65
+#: data/ui/Shortcuts.ui:67
 msgctxt "shortcut window"
 msgid "Focus mode"
 msgstr "Mode fokus"
 
-#: data/ui/Shortcuts.ui:72
+#: data/ui/Shortcuts.ui:73
 msgctxt "shortcut window"
 msgid "Hemingway mode"
 msgstr "Mode Hemingway"
 
-#: data/ui/Shortcuts.ui:79
+#: data/ui/Shortcuts.ui:80
 msgctxt "shortcut window"
 msgid "Preview"
 msgstr "Pratinjau"
@@ -494,25 +532,30 @@ msgctxt "shortcut window"
 msgid "Fullscreen"
 msgstr "Layar Penuh"
 
-#: data/ui/Shortcuts.ui:95 data/ui/Shortcuts.ui:99
+#: data/ui/Shortcuts.ui:94 data/ui/Shortcuts.ui:97
 msgctxt "shortcut window"
 msgid "Find"
 msgstr "Cari"
 
-#: data/ui/Shortcuts.ui:106
+#: data/ui/Shortcuts.ui:103
 msgctxt "shortcut window"
 msgid "Find and replace"
 msgstr "Cari dan ganti"
 
-#: data/ui/Shortcuts.ui:115
+#: data/ui/Shortcuts.ui:111
 msgctxt "shortcut window"
 msgid "Markdown"
 msgstr "Markdown"
 
-#: data/ui/Shortcuts.ui:119
+#: data/ui/Shortcuts.ui:114
 msgctxt "shortcut window"
 msgid "Separator"
 msgstr "Pemisah"
+
+#: data/ui/Shortcuts.ui:120
+msgctxt "shortcut window"
+msgid "Header"
+msgstr "Tajuk"
 
 #: data/ui/Shortcuts.ui:126
 msgctxt "shortcut window"
@@ -524,87 +567,141 @@ msgctxt "shortcut window"
 msgid "Italic"
 msgstr "Miring"
 
-#: data/ui/Shortcuts.ui:140
+#: data/ui/Shortcuts.ui:139
 msgctxt "shortcut window"
 msgid "Bold"
 msgstr "Tebal"
 
-#: data/ui/Shortcuts.ui:147
+#: data/ui/Shortcuts.ui:145
 msgctxt "shortcut window"
 msgid "Strikeout"
 msgstr "Coret"
 
-#: data/ui/Shortcuts.ui:156
+#: data/ui/Shortcuts.ui:153
 msgctxt "shortcut window"
 msgid "Copy and paste"
 msgstr "Salin dan tempel"
 
-#: data/ui/Shortcuts.ui:160
+#: data/ui/Shortcuts.ui:156
 msgctxt "shortcut window"
 msgid "Copy selected text to clipboard"
 msgstr "Salin teks yang dipilih ke papan klip"
 
-#: data/ui/Shortcuts.ui:167
+#: data/ui/Shortcuts.ui:162
 msgctxt "shortcut window"
 msgid "Cut selected text to clipboard"
 msgstr "Potong teks yang dipilih ke papan klip"
 
-#: data/ui/Shortcuts.ui:174
+#: data/ui/Shortcuts.ui:168
 msgctxt "shortcut window"
 msgid "Paste selected text from clipboard"
 msgstr "Tempel teks yang dipilih dari papan klip"
 
-#: data/ui/Shortcuts.ui:183
+#: data/ui/Shortcuts.ui:176
 msgctxt "shortcut window"
 msgid "Undo and redo"
 msgstr "Tak jadi dan jadi lagi"
 
-#: data/ui/Shortcuts.ui:187
+#: data/ui/Shortcuts.ui:179
 msgctxt "shortcut window"
 msgid "Undo previous command"
 msgstr "Tak jadi jalankan perintah sebelumnya"
 
-#: data/ui/Shortcuts.ui:194
+#: data/ui/Shortcuts.ui:185
 msgctxt "shortcut window"
 msgid "Redo previous command"
 msgstr "Jadi lagi jalankan perintah sebelumnya"
 
-#: data/ui/Shortcuts.ui:203
+#: data/ui/Shortcuts.ui:193
 msgctxt "shortcut window"
 msgid "Selection"
 msgstr "Pilihan"
 
-#: data/ui/Shortcuts.ui:207
+#: data/ui/Shortcuts.ui:196
 msgctxt "shortcut window"
 msgid "Select all text"
 msgstr "Pilih semua teks"
 
-#: data/ui/ThemeSwitcher.ui:22
+#: data/ui/TexliveWarning.ui:25 data/ui/TexliveWarning.ui:79
+msgid "TexLive Required"
+msgstr "Diperlukan TexLive"
+
+#: data/ui/TexliveWarning.ui:33
+msgid ""
+"Apostrophe needs the TeXLive extension\n"
+"in order to export PDF or LaTeX files.\n"
+"\n"
+"Install it from Apostrophe's page in Software\n"
+"or by running the following command in a terminal:"
+msgstr ""
+"Apostrof memerlukan ekstensi TeXLive\n"
+"untuk mengekspor berkas PDF atau LaTeX.\n"
+"\n"
+"Pasang dari halaman Apostrof di Perangkat Lunak\n"
+"atau dengan menjalankan perintah berikut di terminal:"
+
+#: data/ui/TexliveWarning.ui:53
+msgid "Copy to clipboard"
+msgstr "Salin ke papan klip"
+
+#: data/ui/TexliveWarning.ui:87
+msgid ""
+"Apostrophe needs TeXLive\n"
+"in order to export PDF or LaTeX files.\n"
+"\n"
+"Install it from your distribution repositories"
+msgstr ""
+"Apostrof membutuhkan TeXLive\n"
+"untuk mengekspor berkas PDF atau LaTeX.\n"
+"\n"
+"Pasang dari repositori distribusi Anda"
+
+#: data/ui/ThemeSwitcher.ui:17
 msgid "Use System Colors"
 msgstr "Gunakan Warna Sistem"
 
-#: data/ui/ThemeSwitcher.ui:51
+#: data/ui/ThemeSwitcher.ui:27
 msgid "Use Light Colors"
 msgstr "Gunakan Warna Terang"
 
-#: data/ui/ThemeSwitcher.ui:80
+#: data/ui/ThemeSwitcher.ui:37
 msgid "Use Sepia Colors"
 msgstr "Gunakan Warna Sepia"
 
-#: data/ui/ThemeSwitcher.ui:109
+#: data/ui/ThemeSwitcher.ui:47
 msgid "Use Dark Colors"
 msgstr "Gunakan Warna Gelap"
 
-#: data/ui/Window.ui:69
-msgid "Show Statistics"
-msgstr "Tampilkan Statistik"
+#: data/ui/Window.ui:86
+msgid "File Has Changed on Disk"
+msgstr "Berkas Telah Berubah pada Diska"
 
-#: apostrophe/export_dialog.py:131 apostrophe/export_dialog.py:328
+#: data/ui/Window.ui:96
+msgid "The file has been changed by another program."
+msgstr "Berkas telah diubah oleh program lain."
+
+#: data/ui/Window.ui:104
+msgid "_Discard Changes and Reload"
+msgstr "Buang Peru_bahan dan Muat Ulang"
+
+#: apostrophe/application.py:232
+msgid "Donate"
+msgstr "Donasi"
+
+#: apostrophe/application.py:233
+msgid "Translations"
+msgstr "Terjemahan"
+
+#: apostrophe/export_dialog.py:122 apostrophe/helpers.py:84
+msgid "Close"
+msgstr "Tutup"
+
+#: apostrophe/export_dialog.py:130 apostrophe/export_dialog.py:348
 #, python-format
 msgid "Export to %s"
 msgstr "Ekspor ke %s"
 
-#: apostrophe/export_dialog.py:158 apostrophe/export_dialog.py:358
+#: apostrophe/export_dialog.py:156 apostrophe/export_dialog.py:337
 #, python-brace-format
 msgid ""
 "An error happened while trying to export:\n"
@@ -615,15 +712,15 @@ msgstr ""
 "\n"
 "{err_msg}"
 
-#: apostrophe/export_dialog.py:234
+#: apostrophe/export_dialog.py:235
 msgid "Export to {}"
 msgstr "Ekspor ke {}"
 
-#: apostrophe/export_dialog.py:324
+#: apostrophe/export_dialog.py:344
 msgid "Select folder"
 msgstr "Pilih folder"
 
-#: apostrophe/helpers.py:89
+#: apostrophe/helpers.py:83
 msgid "Error"
 msgstr "Galat"
 
@@ -631,128 +728,242 @@ msgstr "Galat"
 msgid "Unsaved documents"
 msgstr "Dokumen yang belum disimpan"
 
-#: apostrophe/inline_preview.py:200
+#: apostrophe/inline_preview.py:201
 msgid "Formula looks incorrect:"
 msgstr "Rumus terlihat salah:"
 
-#: apostrophe/inline_preview.py:239
+#: apostrophe/inline_preview.py:241
 msgid "No matching footnote found"
 msgstr "Tidak ada catatan kaki yang cocok ditemukan"
 
-#: apostrophe/inline_preview.py:259
+#: apostrophe/inline_preview.py:261
 msgid "noun"
 msgstr "kata benda"
 
-#: apostrophe/inline_preview.py:261
+#: apostrophe/inline_preview.py:263
 msgid "verb"
 msgstr "kata kerja"
 
-#: apostrophe/inline_preview.py:263
+#: apostrophe/inline_preview.py:265
 msgid "adjective"
 msgstr "kata sifat"
 
-#: apostrophe/inline_preview.py:265
+#: apostrophe/inline_preview.py:267
 msgid "adverb"
 msgstr "kata keterangan"
 
-#: apostrophe/main_window.py:327
+#. Hemingway Toast
+#: apostrophe/main_window.py:128
+msgid "Text can't be deleted while on Hemingway mode"
+msgstr "Teks tidak dapat dihapus saat berada di mode Hemingway"
+
+#: apostrophe/main_window.py:131
+msgid "Tell me more"
+msgstr "Ceritakan lebih banyak"
+
+#: apostrophe/main_window.py:440
 msgid "Save your File"
 msgstr "Simpan berkas Anda"
 
-#: apostrophe/main_window.py:413
+#: apostrophe/main_window.py:443 apostrophe/main_window.py:611
+msgid "Save"
+msgstr "Simpan"
+
+#: apostrophe/main_window.py:506
 msgid "Markdown Files"
 msgstr "Berkas Markdown"
 
-#: apostrophe/main_window.py:417
+#: apostrophe/main_window.py:510
 msgid "Plain Text Files"
 msgstr "Berkas Teks Biasa"
 
-#: apostrophe/main_window.py:420
+#: apostrophe/main_window.py:513
 msgid "Open a .md file"
 msgstr "Buka berkas .md"
 
-#: apostrophe/main_window.py:499
+#: apostrophe/main_window.py:516
+msgid "Open"
+msgstr "Buka"
+
+#: apostrophe/main_window.py:603
+msgid "Save changes?"
+msgstr "Simpan perubahan?"
+
+#: apostrophe/main_window.py:604
 #, python-format
-msgid "Save changes to document “%s” before closing?"
-msgstr "Simpan perubahan ke dokumen \"%s\" sebelum menutup?"
+msgid ""
+"“%s” contains unsaved changes. If you don’t save, all your changes will be "
+"permanently lost."
+msgstr ""
+"\"%s\" berisi perubahan yang belum disimpan. Jika Anda tidak menyimpan, "
+"semua perubahan Anda akan hilang secara permanen."
 
-#: apostrophe/main_window.py:504
-msgid "If you don’t save, all your changes will be permanently lost."
-msgstr "Jika tidak disimpan, seluruh perubahan yang Anda buat akan hilang."
+#: apostrophe/main_window.py:610
+msgid "Discard"
+msgstr "Buang"
 
-#: apostrophe/main_window.py:507
-msgid "Close without saving"
-msgstr "Tutup tanpa menyimpan"
-
-#: apostrophe/main_window.py:510
-msgid "Save now"
-msgstr "Simpan sekarang"
-
-#: apostrophe/main_window.py:685
+#: apostrophe/main_window.py:768 apostrophe/main_window.py:792
 msgid "New File"
 msgstr "Berkas Baru"
 
-#: apostrophe/preview_layout_switcher.py:38
+#: apostrophe/preview_layout_switcher.py:40
 msgid "Full-Width"
 msgstr "Lebar Penuh"
 
-#: apostrophe/preview_layout_switcher.py:40
+#: apostrophe/preview_layout_switcher.py:42
 msgid "Half-Width"
 msgstr "Setengah Lebar"
 
-#: apostrophe/preview_layout_switcher.py:42
+#: apostrophe/preview_layout_switcher.py:44
 msgid "Half-Height"
 msgstr "Setengah Tinggi"
 
-#: apostrophe/preview_layout_switcher.py:44
+#: apostrophe/preview_layout_switcher.py:46
 msgid "Windowed"
 msgstr "Berjendela"
 
-#: apostrophe/stats_handler.py:75
+#: apostrophe/stats_handler.py:98
+msgid "{:n} of {:n} Characters"
+msgstr "{:n} dari {:n} Karakter"
+
+#: apostrophe/stats_handler.py:100
 msgid "{:n} Character"
 msgid_plural "{:n} Characters"
 msgstr[0] "{:n} Karakter"
 
-#: apostrophe/stats_handler.py:77
+#: apostrophe/stats_handler.py:103
+msgid "{:n} of {:n} Words"
+msgstr "{:n} dari {:n} Kata"
+
+#: apostrophe/stats_handler.py:105
 msgid "{:n} Word"
 msgid_plural "{:n} Words"
 msgstr[0] "{:n} Kata"
 
-#: apostrophe/stats_handler.py:79
+#: apostrophe/stats_handler.py:108
+msgid "{:n} of {:n} Sentences"
+msgstr "{:n} dari {:n}  Kalimat"
+
+#: apostrophe/stats_handler.py:110
 msgid "{:n} Sentence"
 msgid_plural "{:n} Sentences"
 msgstr[0] "{:n} Kalimat"
 
-#: apostrophe/stats_handler.py:81
+#: apostrophe/stats_handler.py:113
+msgid "{:n} of {:n} Paragraphs"
+msgstr "{:n} dari {:n} Paragraf"
+
+#: apostrophe/stats_handler.py:115
 msgid "{:n} Paragraph"
 msgid_plural "{:n} Paragraphs"
 msgstr[0] "{:n} Paragraf"
 
-#: apostrophe/stats_handler.py:83
+#: apostrophe/stats_handler.py:118
+msgid "{:d}:{:02d}:{:02d} of {:d}:{:02d}:{:02d} Read Time"
+msgstr "Waktu Baca {:d}:{:02d}:{:02d} dari {:d}:{:02d}:{:02d}"
+
+#: apostrophe/stats_handler.py:120
 msgid "{:d}:{:02d}:{:02d} Read Time"
 msgstr "Waktu Baca {:d}:{:02d}:{:02d}"
 
-#: apostrophe/text_view_drag_drop_handler.py:75
-#: apostrophe/text_view_drag_drop_handler.py:77
-msgid "web page"
-msgstr "halaman web"
-
-#: apostrophe/text_view_format_inserter.py:14
+#: apostrophe/text_view_format_inserter.py:24
 msgid "italic text"
 msgstr "teks miring"
 
-#: apostrophe/text_view_format_inserter.py:19
+#: apostrophe/text_view_format_inserter.py:29
 msgid "bold text"
 msgstr "teks tebal"
 
-#: apostrophe/text_view_format_inserter.py:24
+#: apostrophe/text_view_format_inserter.py:34
 msgid "strikethrough text"
 msgstr "teks coretan"
 
-#: apostrophe/text_view_format_inserter.py:50
+#: apostrophe/text_view_format_inserter.py:49
+#: apostrophe/text_view_format_inserter.py:117
+#: apostrophe/text_view_format_inserter.py:187
 msgid "Item"
 msgstr "Butir"
 
-#: apostrophe/text_view_format_inserter.py:98
+#: apostrophe/text_view_format_inserter.py:258
 msgid "Header"
 msgstr "Tajuk"
+
+#: apostrophe/text_view_format_inserter.py:329
+msgid "Quote"
+msgstr "Kutip"
+
+#: apostrophe/text_view_format_inserter.py:371
+msgid "code"
+msgstr "kode"
+
+#: apostrophe/text_view_format_inserter.py:394
+msgid "https://www.example.com"
+msgstr "https://www.contoh.com"
+
+#: apostrophe/text_view_format_inserter.py:395
+msgid "link text"
+msgstr "teks tautan"
+
+#: apostrophe/text_view_format_inserter.py:429
+#: apostrophe/text_view_format_inserter.py:454
+msgid "image caption"
+msgstr "kapsi gambar"
+
+#: apostrophe/text_view_format_inserter.py:435
+msgid "Image"
+msgstr "Gambar"
+
+#: apostrophe/text_view_format_inserter.py:441
+msgid "Select an image"
+msgstr "Pilih gambar"
+
+#: apostrophe/text_view_format_inserter.py:543
+msgid ""
+"\n"
+"code\n"
+msgstr ""
+"\n"
+"kode\n"
+
+#: apostrophe/text_view.py:169 apostrophe/text_view.py:171
+msgid "web page"
+msgstr "halaman web"
+
+#~ msgid "Menu"
+#~ msgstr "Menu"
+
+#~ msgid "Show Statistics"
+#~ msgstr "Tampilkan Statistik"
+
+#~ msgid "0 Words"
+#~ msgstr "0 Kata"
+
+#~ msgid "Apostrophe website"
+#~ msgstr "Situs web Apostrophe"
+
+#~ msgid "Paypal"
+#~ msgstr "Paypal"
+
+#~ msgid "Help to translate:"
+#~ msgstr "Bantu untuk menerjemahkan:"
+
+#~ msgid "Damned Lies"
+#~ msgstr "Damned Lies"
+
+#~ msgid "CSS File"
+#~ msgstr "Berkas CSS"
+
+#~ msgid "Save as…"
+#~ msgstr "Simpan sebagai…"
+
+#~ msgid "New Window"
+#~ msgstr "Jendela Baru"
+
+#~ msgid "Save changes to document “%s” before closing?"
+#~ msgstr "Simpan perubahan ke dokumen \"%s\" sebelum menutup?"
+
+#~ msgid "Close without saving"
+#~ msgstr "Tutup tanpa menyimpan"
+
+#~ msgid "Save now"
+#~ msgstr "Simpan sekarang"

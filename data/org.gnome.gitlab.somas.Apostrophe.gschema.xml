@@ -87,6 +87,13 @@
         Whether the user can delete text or not.
       </description>
     </key>
+    <key name='hemingway-toast-count' type='i'>
+      <default>0</default>
+      <summary>Hemingway Toast Count</summary>
+      <description>
+        Number of times the Hemingway Toast has been shown
+      </description>
+    </key>
     <key name='preview-mode' enum='org.gnome.gitlab.somas.Apostrophe.PreviewMode'>
       <default>"full-width"</default>
       <summary>Preview mode</summary>
@@ -106,6 +113,13 @@
       <summary>Text size</summary>
       <description>
         Preferred relative size for the text.
+      </description>
+    </key>
+    <key name='toolbar-active' type='b'>
+      <default>false</default>
+      <summary>Toolbar</summary>
+      <description>
+        Whether the toolbar is shown or not.
       </description>
     </key>
 

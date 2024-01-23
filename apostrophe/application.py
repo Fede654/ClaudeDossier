@@ -14,20 +14,21 @@
 
 import gi
 
+gi.require_version('Gtk', '4.0')
+gi.require_version('Adw', '1')
+from gettext import gettext as _
 
-gi.require_version('Gtk', '3.0')
-gi.require_version('Handy', '1')
-from gi.repository import GLib, Gio, Gtk, Gdk, Handy
+from gi.repository import Adw, Gdk, Gio, GLib, Gtk
 
-from apostrophe.main_window import MainWindow
-from apostrophe.settings import Settings
-from apostrophe.helpers import set_up_logging
+from apostrophe.helpers import get_debug_info, set_up_logging
 from apostrophe.preferences_dialog import ApostrophePreferencesDialog
 from apostrophe.inhibitor import Inhibitor
+from apostrophe.main_window import MainWindow
+from apostrophe.settings import Settings
 from apostrophe.theme_switcher import Theme
 
 
-class Application(Gtk.Application):
+class Application(Adw.Application):
 
     def __init__(self, application_id, *args, **kwargs):
         super().__init__(*args, application_id=application_id,
@@ -37,51 +38,32 @@ class Application(Gtk.Application):
         self.add_main_option("verbose", b"v", GLib.OptionFlags.NONE,
                              GLib.OptionArg.NONE, "Verbose output", None)
 
-        # Hardcode Adwaita to prevent issues with third party themes
-        gtk_settings = Gtk.Settings.get_default()
-        self._set_theme(gtk_settings)
-        gtk_settings.connect("notify::gtk-theme-name", self._set_theme)
-        gtk_settings.connect("notify::gtk-icon-theme-name", self._set_theme)
+        self.set_resource_base_path("/org/gnome/gitlab/somas/Apostrophe")
+        # gtk_settings = Gtk.Settings.get_default()
 
-        # Set css theme
-        css_provider_file = Gio.File.new_for_uri(
-            "resource:///org/gnome/gitlab/somas/Apostrophe/media/css/gtk/Adwaita.css")
-        self.style_provider = Gtk.CssProvider()
-        self.style_provider.load_from_file(css_provider_file)
-        Gtk.StyleContext.add_provider_for_screen(
-            Gdk.Screen.get_default(), self.style_provider,
-            Gtk.STYLE_PROVIDER_PRIORITY_USER)
-
-        # Style manager
-        style_manager = Handy.StyleManager.get_default()
-        style_manager.connect("notify::dark", self._set_color_scheme)
-        style_manager.connect("notify::high-contrast", self._set_color_scheme)
-        
-        # Set editor keybindings
-        # SCSS is not fit for this, so we do it in an external css file
-        css_bindings_file = Gio.File.new_for_uri(
-            "resource:///org/gnome/gitlab/somas/Apostrophe/media/css/gtk/bindings.css")
-        self.bindings_provider = Gtk.CssProvider()
-        self.bindings_provider.load_from_file(css_bindings_file)
-        Gtk.StyleContext.add_provider_for_screen(
-            Gdk.Screen.get_default(), self.bindings_provider,
-            Gtk.STYLE_PROVIDER_PRIORITY_USER)
-
-        # Set icons
-        Gtk.IconTheme.get_default().add_resource_path(
-            "/org/gnome/gitlab/somas/Apostrophe/icons"
-        )
-
-        Handy.init()
-
-        self.windows = []
         self.settings = Settings.new()
         self.inhibitor = None
         self._application_id = application_id
 
-    def do_startup(self, *args, **kwargs):
+    def do_startup(self):
+        Adw.Application.do_startup(self)
 
-        Gtk.Application.do_startup(self)
+        # Set css theme
+        css_sepia_provider_file = Gio.File.new_for_uri(
+            "resource:///org/gnome/gitlab/somas/Apostrophe/style-sepia.css")
+        self.sepia_style_provider = Gtk.CssProvider()
+        self.sepia_style_provider.load_from_file(css_sepia_provider_file)
+
+        # Style manager
+        style_manager = Adw.StyleManager.get_default()
+        style_manager.connect("notify::dark", self._set_color_scheme)
+        style_manager.connect("notify::high-contrast", self._set_color_scheme)
+
+        # Set icons
+        Gtk.IconTheme.get_for_display(
+            Gdk.Display.get_default()).add_resource_path(
+            "/org/gnome/gitlab/somas/Apostrophe/icons"
+        )
 
 
         color_scheme = self.settings.get_string("color-scheme")
@@ -97,10 +79,6 @@ class Application(Gtk.Application):
 
         action = Gio.SimpleAction.new("preferences", None)
         action.connect("activate", self.on_preferences)
-        self.add_action(action)
-
-        action = Gio.SimpleAction.new("shortcuts", None)
-        action.connect("activate", self.on_shortcuts)
         self.add_action(action)
 
         action = Gio.SimpleAction.new("about", None)
@@ -122,133 +100,116 @@ class Application(Gtk.Application):
         
         # Shortcuts
 
-        # TODO: be aware that a couple of shortcuts are defined in base.css
 
         self.set_accels_for_action("win.focus_mode", ["<Ctl>d"])
         self.set_accels_for_action("win.hemingway_mode", ["<Ctl>t"])
+        self.set_accels_for_action("win.preview", ["<Ctl>p"])
         self.set_accels_for_action("win.fullscreen", ["F11"])
         self.set_accels_for_action("win.find", ["<Ctl>f"])
         self.set_accels_for_action("win.find_replace", ["<Ctl>h"])
         self.set_accels_for_action("app.spellcheck", ["F7"])
 
-        self.set_accels_for_action("win.new", ["<Ctl>n"])
+        self.set_accels_for_action("app.new_window", ["<Ctl>n"])
+        self.set_accels_for_action("app.preferences", ["<Ctl>comma"])
         self.set_accels_for_action("win.open", ["<Ctl>o"])
         self.set_accels_for_action("win.save", ["<Ctl>s"])
         self.set_accels_for_action("win.save_as", ["<Ctl><shift>s"])
-        self.set_accels_for_action("app.quit", ["<Ctl>w", "<Ctl>q"])
+        self.set_accels_for_action("app.quit", ["<Ctl>q"])
+        self.set_accels_for_action("win.close", ["<Ctl>w"])
 
         # Inhibitor
         self.inhibitor = Inhibitor()
 
     def do_activate(self, *args, **kwargs):
 
-        if not self.windows:
+        if not self.get_windows():
             self.settings.connect("changed", self.on_settings_changed)
 
-        self.windows.append(MainWindow(self))
+            group = Gtk.WindowGroup.new()
+            group.add_window(MainWindow(self))
 
         if self._application_id == 'org.gnome.gitlab.somas.Apostrophe.Devel':
-            for window in self.windows:
+            for window in self.get_windows():
                 window.get_style_context().add_class('devel')
 
         self._set_color_scheme()
-        self.windows[-1].present()
+
+        self.get_windows()[-1].present()
 
     def do_handle_local_options(self, options):
         if options.contains("verbose") or self._application_id \
                 == 'org.gnome.gitlab.somas.Apostrophe.Devel':
-
             set_up_logging(1)
         return -1
 
     def do_open(self, files, _n_files, _hint):
         self.activate()
+        empty_windows = list(filter(lambda window: 
+                                        window.textview.get_text() == "" and\
+                                        not window.did_change, self.get_main_windows()))
         for i, file in enumerate(files):
-            if i == 0:
-                window = self.windows[0]
+            if i < len(empty_windows):
+                window = empty_windows[i]
             else:
                 window = MainWindow(self)
+
+                group = Gtk.WindowGroup.new()
+                group.add_window(window)
+
             window.load_file(file)
             window.present()
-            self.windows.append(window)
 
-    def _set_theme(self, settings, *_pspec):
-        # Third party themes cause issues with Apostrophe custom stylesheets
-        # If the user has a third party theme selected, we just change it to
-        # Adwaita to prevent those issues
-
-        # TODO: GTK4 - remove this
- 
-        theme_name = settings.get_property("gtk-theme-name")
-        icon_theme_name = settings.get_property("gtk-icon-theme-name")
-
-        if (theme_name not in ["Adwaita",
-                               "HighContrast",
-                               "HighContrastInverse"]):
-            settings.set_property("gtk-theme-name", "Adwaita")
-
+    def get_main_windows(self):
+        return [window for window in self.get_windows() if isinstance(window, MainWindow)]
 
     def _set_color_scheme(self, *args, **kwargs):
-        # TODO: GTK4 - remove this
-        theme = Theme.get_current()
+        sepia = Theme.get_current().name == "sepia"
 
-        style_manager = Handy.StyleManager.get_default()
-        dark = style_manager.get_dark()
-        sepia = theme.name == "sepia"
-        hc = style_manager.get_high_contrast()
-
-        if not self.windows:
+        if not self.get_windows():
             return
 
         if sepia:
-            if hc:
-                self.style_provider.load_from_file(theme.gtk_css_hc)
-            else:
-                self.style_provider.load_from_file(theme.gtk_css)
-        elif dark:
-            if hc:
-                self.style_provider.load_from_file(Theme.get_for_name("dark").gtk_css_hc)
-            else:
-                self.style_provider.load_from_file(Theme.get_for_name("dark").gtk_css)
+            Gtk.StyleContext.add_provider_for_display(
+                Gdk.Display.get_default(), self.sepia_style_provider,
+                Gtk.STYLE_PROVIDER_PRIORITY_USER)
         else:
-            if hc:
-                self.style_provider.load_from_file(Theme.get_for_name("light").gtk_css_hc)
-            else:
-                self.style_provider.load_from_file(Theme.get_for_name("light").gtk_css)
+            Gtk.StyleContext.remove_provider_for_display(
+                Gdk.Display.get_default(), self.sepia_style_provider
+            )
 
+        # refresh markup colors
+        for window in self.get_main_windows():
+            window.textview.markup.on_style_updated()
 
     def on_settings_changed(self, settings, key):
         # TODO: change this ffs
-        if not self.windows:
+        if not self.get_windows():
             return
-        if key == "color-scheme":
-            self._set_color_scheme()
-        elif key == "input-format":
-            for window in self.windows:
-                window.reload_preview()
-        elif key == "sync-scroll":
-            for window in self.windows:
-                window.reload_preview(reshow=True)
-        elif key == "stat-default":
-            for window in self.windows:
-                window.update_default_stat()
+        match key:
+            case "color-scheme":
+                self._set_color_scheme()
+                for window in self.get_main_windows():
+                    window.reload_preview()
+            case "input-format":
+                for window in self.get_main_windows():
+                    window.reload_preview()
+            case "sync-scroll":
+                for window in self.get_main_windows():
+                    window.reload_preview(reshow=True)
+            case "stat-default":
+                for window in self.get_main_windows():
+                    window.editor.update_default_stat()
 
     def on_new_window(self, _action, _value):
         window = MainWindow(self)
         window.present()
-        self.windows.append(window)
+        group = Gtk.WindowGroup.new()
+        group.add_window(window)
 
     def on_preferences(self, _action, _value):
         preferences_dialog = ApostrophePreferencesDialog()
         preferences_dialog.set_transient_for(self.get_active_window())
         preferences_dialog.show()
-
-    def on_shortcuts(self, _action, _param):
-        builder = Gtk.Builder()
-        builder.add_from_resource(
-            "/org/gnome/gitlab/somas/Apostrophe/ui/Shortcuts.ui")
-        builder.get_object("shortcuts").set_transient_for(self.get_active_window())
-        builder.get_object("shortcuts").show()
 
     def on_about(self, _action, _param):
         # TODO: what about non-csd
@@ -258,13 +219,16 @@ class Application(Gtk.Application):
         about_dialog = builder.get_object("AboutDialog")
         about_dialog.set_transient_for(self.get_active_window())
 
+        about_dialog.set_debug_info(get_debug_info())
+        about_dialog.add_link(_("Donate"), "https://paypal.me/manuelgenoves")
+        about_dialog.add_link(_("Translations"), "https://l10n.gnome.org/module/apostrophe/")
+
         about_dialog.present()
 
     def on_quit(self, _action, _param):
         quit = True
-        for window in self.windows:
-            window.present()
-            if window.on_delete_called(self):
+        for window in self.get_windows():
+            if window.do_close_request():
                 quit = False
         if quit:
             self.quit()

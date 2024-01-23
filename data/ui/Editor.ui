@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0" />
+  <requires lib="adw" version="1.0" />
+  <template class="Editor" parent="AdwBin">
+    <child>
+      <object class="AdwToastOverlay" id="toast_overlay">
+        <property name="child">
+          <object class="GtkOverlay">
+            <property name="child">
+              <object class="GtkScrolledWindow" id="scrolledwindow">
+                <property name="focusable">1</property>
+                <property name="receives-default">1</property>
+                <property name="hexpand">1</property>
+                <property name="vexpand">1</property>
+                <child>
+                  <object class="ApostropheTextView" id="textview">
+                  </object>
+                </child>
+              </object>
+            </property>
+            <child type="overlay">
+              <object class="GtkRevealer" id="background">
+                <property name="reveal-child">True</property>
+                <property name="valign">end</property>
+                <property name="halign">fill</property>
+                <property name="transition-type">crossfade</property>
+                <property name="child">
+                  <object class="GtkBox">
+                  </object>
+                </property>
+                <style>
+                  <class name="bottombar_background"/>
+                </style>
+              </object>
+            </child>
+            <child type="overlay">
+              <object class="Toolbar" id="toolbar_revealer">
+                <property name="valign">end</property>
+                <property name="transition-type">crossfade</property>
+                <property name="halign">start</property>
+                <property name="reveal-child">1</property>
+                <child>
+                  <object class="GtkEventControllerMotion">
+                    <signal name="enter" handler="reveal_bottombar" swapped="no" />
+                  </object>
+                </child>
+                <signal name="notify::extra-toolbar-revealed" handler="reveal_toolbar" swapped="no" />
+                <style>
+                  <class name="bottombar"/>
+                </style>
+              </object>
+            </child>
+            <child type="overlay">
+              <object class="Statsbar" id="stats_revealer">
+                <property name="valign">end</property>
+                <property name="halign">end</property>
+                <property name="transition-type">crossfade</property>
+                <property name="transition-duration">750</property>
+                <property name="reveal-child">1</property>
+                <child>
+                  <object class="GtkEventControllerMotion">
+                    <signal name="enter" handler="reveal_bottombar" swapped="no" />
+                  </object>
+                </child>
+                <style>
+                  <class name="bottombar"/>
+                </style>
+              </object>
+            </child>
+          </object>
+        </property>
+      </object>
+    </child>
+    <object class="GtkSizeGroup">
+      <property name="mode">vertical</property>
+      <widgets>
+        <widget name="background"/>
+        <widget name="toolbar_revealer"/>
+        <widget name="stats_revealer"/>
+      </widgets>
+    </object>
+  </template>
+</interface>

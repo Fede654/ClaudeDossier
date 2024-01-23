@@ -40,13 +40,12 @@ class PreviewConverter:
                 if self.queue.empty():
                     break
 
-            args = ['--standalone',
+            args = ['--metadata=pagetitle:""',
+                    '--standalone',
                     '--mathjax',
                     '--css=' + Theme.get_current().web_css,
                     '--lua-filter=' +
-                    helpers.get_media_path('/lua/relative_to_absolute.lua'),
-                    '--lua-filter=' +
-                    helpers.get_media_path('/lua/task-list.lua')]
-            text = helpers.pandoc_convert(text, to="html5", args=args)
+                    helpers.get_media_path('/lua/relative_to_absolute.lua')]
+            text = helpers.pandoc_convert(text, fr="markdown-raw_html", to="html5", args=args)
 
             GLib.idle_add(callback, text, *user_data)

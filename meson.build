@@ -1,10 +1,11 @@
 project(
   'apostrophe',
   version: '2.6.3',
-  meson_version: '>= 0.50.0'
+  meson_version: '>= 0.53.0'
 )
 
 # Importing modules
+fs = import('fs')
 
 gnome  = import('gnome')
 i18n   = import('i18n')
@@ -44,8 +45,8 @@ application_id = 'org.gnome.gitlab.somas.Apostrophe@0@'.format(profile)
 dependency('glib-2.0')
 dependency('gobject-2.0')
 dependency('gobject-introspection-1.0')
-dependency('gtk+-3.0')
-dependency('libhandy-1')
+dependency('gtk4', version: '>= 4.0.0')
+dependency('libadwaita-1')
 
 find_program('glib-compile-schemas', required: true)
 find_program('gtk-update-icon-cache', required: false)
@@ -59,6 +60,9 @@ pkgdatadir = datadir / meson.project_name()
 #bindir = join_paths(get_option('prefix'), get_option('bindir'))
 podir = meson.source_root() / 'po'
 
+if not fs.exists(join_paths(pkgdatadir, 'libs/reveal.js'))
+  error('No valid reveal.js installation found')
+endif
 
 subdir('data')
 #subdir('help')

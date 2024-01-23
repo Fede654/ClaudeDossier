@@ -13,20 +13,20 @@
 # with this program.  If not, see <http://www.gnu.org/licenses/>.
 # END LICENSE
 
-from gi.repository import Pango
-from gi.repository import Gtk, GLib
 import re
 from multiprocessing import Pipe, Process
 
 import gi
+from gi.repository import GLib, Gtk, Pango
 
 from apostrophe import helpers, markup_regex
-from apostrophe.markup_regex import STRIKETHROUGH, BOLD_ITALIC,\
-    BOLD, ITALIC_ASTERISK, ITALIC_UNDERSCORE, IMAGE, LINK, LINK_ALT,\
-    HORIZONTAL_RULE, LIST, ORDERED_LIST, BLOCK_QUOTE, HEADER, HEADER_UNDER,\
-    TABLE, MATH, CODE
+from apostrophe.markup_regex import (BLOCK_QUOTE, BOLD, BOLD_ITALIC, CODE,
+                                     HEADER, HEADER_UNDER, HORIZONTAL_RULE,
+                                     IMAGE, ITALIC_ASTERISK, ITALIC_UNDERSCORE,
+                                     LINK, LINK_ALT, LIST, MATH, ORDERED_LIST,
+                                     STRIKETHROUGH, TABLE)
 
-gi.require_version('Gtk', '3.0')
+gi.require_version('Gtk', '4.0')
 
 
 class MarkupHandler:
@@ -38,14 +38,15 @@ class MarkupHandler:
     TAG_NAME_WRAP_NONE = 'wrap_none'
     TAG_NAME_PLAIN_TEXT = 'plain_text'
     TAG_NAME_GRAY_TEXT = 'gray_text'
+    TAG_NAME_LINK_COLOR_TEXT = 'link_color_text'
     TAG_NAME_CODE_TEXT = 'code_text'
     TAG_NAME_CODE_BLOCK = 'code_block'
     TAG_NAME_UNFOCUSED_TEXT = 'unfocused_text'
     TAG_NAME_MARGIN_INDENT = 'margin_indent'
 
-    def __init__(self, text_view):
-        self.text_view = text_view
-        self.text_buffer = text_view.get_buffer()
+    def __init__(self, textview):
+        self.textview = textview
+        self.text_buffer = self.textview.get_buffer()
         self.marked_up_text = None
 
         # Tags.
@@ -85,6 +86,11 @@ class MarkupHandler:
                                                weight=Pango.Weight.NORMAL,
                                                style=Pango.Style.NORMAL)
 
+        self.tag_link_color_text = buffer.create_tag(self.TAG_NAME_LINK_COLOR_TEXT,
+                                               foreground='lightblue',
+                                               weight=Pango.Weight.NORMAL,
+                                               style=Pango.Style.ITALIC)
+
         self.tag_code_text = buffer.create_tag(self.TAG_NAME_CODE_TEXT,
                                                weight=Pango.Weight.NORMAL,
                                                style=Pango.Style.NORMAL,
@@ -105,6 +111,7 @@ class MarkupHandler:
             self.TAG_NAME_WRAP_NONE: lambda args: self.tag_wrap_none,
             self.TAG_NAME_PLAIN_TEXT: lambda args: self.tag_plain_text,
             self.TAG_NAME_GRAY_TEXT: lambda args: self.tag_gray_text,
+            self.TAG_NAME_LINK_COLOR_TEXT: lambda args: self.tag_link_color_text,
             self.TAG_NAME_CODE_TEXT: lambda args: self.tag_code_text,
             self.TAG_NAME_CODE_BLOCK: lambda args: self.tag_code_block,
             self.TAG_NAME_MARGIN_INDENT: lambda args: self.get_margin_indent_tag(
@@ -140,13 +147,17 @@ class MarkupHandler:
             self.on_parsed)
 
     def on_style_updated(self, *_):
-        style_context = self.text_view.get_style_context()
+        style_context = self.textview.get_style_context()
         (found, color) = style_context.lookup_color('code_bg_color')
         if not found:
             (_, color) = style_context.lookup_color('background_color')
         self.tag_code_text.set_property("background", color.to_string())
         self.tag_code_block.set_property(
             "paragraph-background", color.to_string())
+        (found, color) = style_context.lookup_color('link_fg_color')
+        if not found:
+            (_, color) = style_context.lookup_color('lightblue')
+        self.tag_link_color_text.set_property("foreground", color.to_string())
 
     def apply(self):
         """Applies markup, parsing it in a worker process
@@ -215,7 +226,7 @@ class MarkupHandler:
             # - "[description](url)" (gray out)
             # - "![description](image_url)" (gray out)
             regexps = (
-                (LINK, self.TAG_NAME_GRAY_TEXT),
+                (LINK, self.TAG_NAME_LINK_COLOR_TEXT),
                 (IMAGE, self.TAG_NAME_GRAY_TEXT)
             )
             for regexp, tag_name in regexps:
@@ -242,36 +253,6 @@ class MarkupHandler:
                     (), match.start("symbols"),
                     match.end("symbols")))
 
-            # Find "* list" (offset).
-            matches = re.finditer(LIST, text)
-            for match in matches:
-                # Lists use character+space (eg. "* ").
-                length = 2
-                nest = len(match.group("indent").replace("    ", "\t"))
-                margin = -length - 2 * nest
-                indent = -length - 2 * length * nest
-                result.append((
-                    self.TAG_NAME_MARGIN_INDENT,
-                    (margin, indent),
-                    match.start("content"),
-                    match.end("content")
-                ))
-
-            # Find "1. ordered list" (offset).
-            matches = re.finditer(ORDERED_LIST, text)
-            for match in matches:
-                # Ordered lists use numbers/letters+dot/parens+space
-                # (eg. "123. ").
-                length = len(match.group("prefix")) + 1
-                nest = len(match.group("indent").replace("    ", "\t"))
-                margin = -length - 2 * nest
-                indent = -length - 2 * length * nest
-                result.append((
-                    self.TAG_NAME_MARGIN_INDENT,
-                    (margin, indent),
-                    match.start("content"),
-                    match.end("content")
-                ))
 
             # Find "> blockquote" (offset).
             matches = re.finditer(BLOCK_QUOTE, text)
@@ -309,8 +290,8 @@ class MarkupHandler:
         """Reads the parsing result from the pipe
         and triggers any pending apply."""
 
-        self.parsing = False
         if self.apply_pending:
+            self.parsing = False # self.apply will reenable it right away.
             self.apply()  # self.apply clears the apply pending flag.
 
         try:
@@ -319,6 +300,9 @@ class MarkupHandler:
             return True
         except EOFError:
             return False
+        finally:
+            self.parsing = False
+
 
     def do_apply(self, original_text, result=[]):
         """Applies the result of parsing if the current text
@@ -352,14 +336,8 @@ class MarkupHandler:
 
         # Apply focus mode tag (grey out before/after current sentence).
         buffer.remove_tag(self.tag_unfocused_text, start, end)
-        if self.text_view.focus_mode:
-            cursor_iter = buffer.get_iter_at_mark(buffer.get_insert())
-            start_sentence = cursor_iter.copy()
-            if not start_sentence.starts_sentence():
-                start_sentence.backward_sentence_start()
-            end_sentence = cursor_iter.copy()
-            if not end_sentence.ends_sentence():
-                end_sentence.forward_sentence_end()
+        if self.textview.focus_mode:
+            start_sentence, end_sentence = buffer.get_current_sentence_bounds()
             buffer.apply_tag(self.tag_unfocused_text, start, start_sentence)
             buffer.apply_tag(self.tag_unfocused_text, end_sentence, end)
 
@@ -385,16 +363,16 @@ class MarkupHandler:
     def get_margin_indent(self, margin_level, indent_level,
                           baseline_margin=None, char_width=None):
         if baseline_margin is None:
-            baseline_margin = self.text_view.props.left_margin
+            baseline_margin = self.textview.get_left_margin()
         if char_width is None:
-            char_width = helpers.get_char_width(self.text_view)
+            char_width = helpers.get_char_width(self.textview)
         margin = max(baseline_margin + char_width * margin_level, 0)
         indent = char_width * indent_level
         return margin, indent
 
     def update_margins_indents(self):
-        baseline_margin = self.text_view.props.left_margin
-        char_width = helpers.get_char_width(self.text_view)
+        baseline_margin = self.textview.get_left_margin()
+        char_width = helpers.get_char_width(self.textview)
 
         # Bail out if neither the baseline margin nor character width change
         if baseline_margin == self.baseline_margin and char_width == self.char_width:
@@ -405,7 +383,7 @@ class MarkupHandler:
         # Adjust tab size
         tab_array = Pango.TabArray.new(1, True)
         tab_array.set_tab(0, Pango.TabAlign.LEFT, 4 * char_width)
-        self.text_view.set_tabs(tab_array)
+        self.textview.set_tabs(tab_array)
 
         # Adjust margins and indents
         for level, tag in self.tags_margins_indents.items():

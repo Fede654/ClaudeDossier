@@ -23,14 +23,14 @@
 import logging
 import os
 from gettext import gettext as _
+import shutil
 
 from zipfile import ZipFile
 import json
 
 import gi
-gi.require_version('Gtk', '3.0')
-gi.require_version('Handy', '1')
-from gi.repository import Gtk, Gdk, Gio, GObject, Handy
+gi.require_version('Gtk', '4.0')
+from gi.repository import Gtk, Gdk, Gio, GObject, Adw
 
 from apostrophe import helpers
 from apostrophe.theme_switcher import Theme
@@ -48,7 +48,11 @@ class Format(GObject.Object):
 
     @property
     def has_pages(self):
-        return self.to in {"pdf", "odt", "docx"}
+        return self.to in {"pdf", "odt", "docx", "latex"}
+
+    @property
+    def has_slides(self):
+        return self.to == "beamer"
 
     @property
     def is_html(self):
@@ -87,13 +91,12 @@ class ExportDialog:
             "extension": "html",
             "to": "html5",
             "mimetype": "text/html",
-            "args": ["--self-contained",
+            "args": ["--embed-resources",
+                     "--standalone",
                      "--css=%s" % Theme.get_current().web_css,
                      "--mathjax",
                      "--lua-filter=%s"
-                     % helpers.get_media_path('/lua/relative_to_absolute.lua'),
-                     "--lua-filter=%s"
-                     % helpers.get_media_path('/lua/task-list.lua')]
+                     % helpers.get_media_path('/lua/relative_to_absolute.lua')]
         },
         "odt":
         {
@@ -113,15 +116,10 @@ class ExportDialog:
                                       not helpers.exist_executable("pdftex"))
 
         if (self._show_texlive_warning):
-            self.dialog = Gtk.MessageDialog(
-                None,
-                Gtk.DialogFlags.MODAL |
-                Gtk.DialogFlags.DESTROY_WITH_PARENT,
-                Gtk.MessageType.ERROR,
-                Gtk.ButtonsType.CLOSE
-            )
-
-            self.dialog.get_message_area().add(TexliveWarning())
+            self.dialog = Adw.MessageDialog.new(None, None, None)
+            self.dialog.set_extra_child(TexliveWarning())
+            self.dialog.add_response("close", _("Close"))
+            self.dialog.set_close_response("close")
 
         else:
             self.dialog = Gtk.FileChooserNative.new(
@@ -136,35 +134,35 @@ class ExportDialog:
             dialog_filter.set_name(self.formats[self.format]["name"])
             dialog_filter.add_mime_type(self.formats[self.format]["mimetype"])
             self.dialog.add_filter(dialog_filter)
-            self.dialog.set_do_overwrite_confirmation(True)
 
             self.dialog.set_current_name(
                 file.name + '.' + self.formats[self.format]["extension"])
 
     def export(self):
-        response = self.dialog.run()
 
-        if not self._show_texlive_warning:
-            file = self.dialog.get_file()
-            fmt = self.formats[self.format]["to"]
-            args = self.formats[self.format]["args"]
+        def on_response(dialog, response):
+            if not self._show_texlive_warning:
+                file = self.dialog.get_file()
+                fmt = self.formats[self.format]["to"]
+                args = self.formats[self.format]["args"]
 
-            if response == Gtk.ResponseType.ACCEPT:
-                try:
-                    export(self.text, file, fmt, args)
-                except (NotADirectoryError, RuntimeError) as e:
-                    helpers.show_error(
-                        None,
-                        _("An error happened while trying to export:\n\n"
-                          "{err_msg}")
-                        .format(err_msg=str(e).encode()
-                                .decode("unicode-escape")))
+                if response == Gtk.ResponseType.ACCEPT:
+                    try:
+                        export(self.text, file, fmt, args)
+                    except (NotADirectoryError, RuntimeError) as e:
+                        helpers.show_error(
+                            None,
+                            _("An error happened while trying to export:\n\n"
+                            "{err_msg}")
+                            .format(err_msg=str(e).encode()
+                                    .decode("unicode-escape")))
 
-        self.dialog.destroy()
+        self.dialog.connect("response", on_response)
+        self.dialog.show()
 
 
 @Gtk.Template(resource_path='/org/gnome/gitlab/somas/Apostrophe/ui/Export.ui')
-class AdvancedExportDialog(Handy.Window):
+class AdvancedExportDialog(Adw.Window):
 
     __gtype_name__ = "AdvancedExportDialog"
 
@@ -183,6 +181,8 @@ class AdvancedExportDialog(Handy.Window):
 
     cmb_page_size = Gtk.Template.Child()
 
+    cmb_slide_size = Gtk.Template.Child()
+
     sw_self_contained = Gtk.Template.Child()
 
     sw_syntax_highlighting = Gtk.Template.Child()
@@ -194,6 +194,7 @@ class AdvancedExportDialog(Handy.Window):
     formats = Gio.ListStore.new(Format)
 
     page_sizes = ['A4', 'Letter']
+    slide_sizes = ['4:3', '16:9']
     syntax_styles = ['pygments',
                      'kate',
                      'monochrome',
@@ -220,22 +221,25 @@ class AdvancedExportDialog(Handy.Window):
         self.formats_list.select_row(self.formats_list.get_row_at_index(0))
 
         page_sizes_list = helpers.liststore_from_list(self.page_sizes)
-        self.cmb_page_size.bind_name_model(page_sizes_list,
-                                           self.get_hdy_name, None, None)
+        self.cmb_page_size.set_model(page_sizes_list)
+
+        slide_sizes_list = helpers.liststore_from_list(self.slide_sizes)
+        self.cmb_slide_size.set_model(slide_sizes_list)
 
         syntax_styles_list = helpers.liststore_from_list(self.syntax_styles)
-        self.cmb_syntax_highlighting.bind_name_model(syntax_styles_list,
-                                                     self.get_hdy_name,
-                                                     None, None)
+        self.cmb_syntax_highlighting.set_model(syntax_styles_list)
 
-    @GObject.Property(type=str)
-    def title(self):
+    def update_title(self):
         name = self.formats_list.get_selected_row().item.name
-        return _("Export to {}").format(name)
+        self.set_title(_("Export to {}").format(name))
 
     @GObject.Property(type=bool, default=False)
     def show_page_size_options(self):
         return self.formats_list.get_selected_row().item.has_pages
+
+    @GObject.Property(type=bool, default=False)
+    def show_slide_size_options(self):
+        return self.formats_list.get_selected_row().item.has_slides
 
     @GObject.Property(type=bool, default=False)
     def show_html_options(self):
@@ -274,21 +278,11 @@ class AdvancedExportDialog(Handy.Window):
         return self.formats_list.get_selected_row().item.to == "revealjs"
 
     def row_constructor(self, item, _user_data):
-        row = Handy.ActionRow.new()
+        row = Adw.ActionRow.new()
         row.item = item
         row.set_title(item.name)
 
         return row
-
-    def get_hdy_name(self, item, _user_data, _user_data_free):
-        return item.dup_string()
-
-    def get_hdy_comborow_name(self, hdy_cmbrow):
-        model = hdy_cmbrow.get_model()
-        index = hdy_cmbrow.get_selected_index()
-        item = model.get_item(index)
-
-        return item.dup_string()
 
     @Gtk.Template.Callback()
     def reveal_go_back(self, _widget, *args):
@@ -303,12 +297,13 @@ class AdvancedExportDialog(Handy.Window):
         self.leaflet.set_visible_child(self.options_page)
 
         self.notify("show_page_size_options")
+        self.notify("show_slide_size_options")
         self.notify("show_html_options")
         self.notify("show_syntax_options")
         self.notify("show_presentation_options")
         self.notify("show_texlive_warning")
         self.notify("options_page_name")
-        self.notify("title")
+        self.update_title()
 
     @Gtk.Template.Callback()
     def on_destroy(self, _widget):
@@ -317,6 +312,29 @@ class AdvancedExportDialog(Handy.Window):
     @Gtk.Template.Callback()
     def export(self, widget):
         self.retrieve_args()
+
+        def on_response(dialog, response):
+            if self.exports_multiple_files:
+                folder = export_dialog.get_file()
+                shutil.copytree(helpers.get_media_path('/libs/reveal.js'),
+                                os.path.join(folder.get_path(), 'reveal.js'), dirs_exist_ok=True)
+                export_file = folder.get_child(self.file.name + '.' +
+                                self.formats_list.get_selected_row().item.ext)
+            else:
+                export_file = export_dialog.get_file()
+
+            fmt = self.formats_list.get_selected_row().item.to
+            args = self.retrieve_args()
+
+            if response == Gtk.ResponseType.ACCEPT:
+                try:
+                    export(self.text, export_file, fmt, args)
+                except (NotADirectoryError, RuntimeError) as e:
+                    helpers.show_error(
+                        None,
+                        _("An error happened while trying to export:\n\n{err_msg}")
+                        .format(err_msg=str(e).encode().decode("unicode-escape")))
+            self.destroy()
 
         if self.exports_multiple_files:
             export_dialog = Gtk.FileChooserNative.new(
@@ -333,33 +351,8 @@ class AdvancedExportDialog(Handy.Window):
                 self.formats_list.get_selected_row().item.ext)
 
         export_dialog.set_transient_for(self)
-        export_dialog.set_do_overwrite_confirmation(True)
-
-        response = export_dialog.run()
-        if self.exports_multiple_files:
-            folder = export_dialog.get_file()
-            with ZipFile(helpers.get_media_path("/media/reveal.js.zip"),
-                         "r") as zipObj:
-                zipObj.extractall(folder.get_path())
-            export_file = folder.get_child(self.file.name + '.' +
-                              self.formats_list.get_selected_row().item.ext)
-        else:
-            export_file = export_dialog.get_file()
-
-        fmt = self.formats_list.get_selected_row().item.to
-        args = self.retrieve_args()
-
-        if response == Gtk.ResponseType.ACCEPT:
-            try:
-                export(self.text, export_file, fmt, args)
-            except (NotADirectoryError, RuntimeError) as e:
-                helpers.show_error(
-                    None,
-                    _("An error happened while trying to export:\n\n{err_msg}")
-                    .format(err_msg=str(e).encode().decode("unicode-escape")))
-
-        export_dialog.destroy()
-        self.destroy()
+        export_dialog.connect("response", on_response)
+        export_dialog.show()
 
     def retrieve_args(self):
         args = []
@@ -375,7 +368,7 @@ class AdvancedExportDialog(Handy.Window):
             args.append("--number-sections")
 
         if (self.show_page_size_options and
-           self.cmb_page_size.get_selected_index() == 0):
+           self.cmb_page_size.get_selected() == 0):
             if ((fmt := self.formats_list.get_selected_row().item.to) in
                {"pdf", "latex", "context"}):
                 args.append("--variable=papersize:a4")
@@ -383,20 +376,23 @@ class AdvancedExportDialog(Handy.Window):
                 args.append("--reference-doc=" + helpers.get_media_path(
                     "/reference_files/reference-a4." + fmt))
 
+        if (self.show_slide_size_options and
+            self.cmb_slide_size.get_selected() == 1):
+            if ((fmt := self.formats_list.get_selected_row().item.to) == "beamer"):
+                args.append("--variable=classoption:aspectratio=169")
+
         if self.show_html_options:
             args.append("--css=%s" % Theme.get_current().web_css)
             args.append("--mathjax")
             args.append("--lua-filter=%s" % helpers.get_media_path(
                 '/lua/relative_to_absolute.lua'))
-            args.append("--lua-filter=%s" % helpers.get_media_path(
-                '/lua/task-list.lua'))
             if self.sw_self_contained.get_active():
-                args.append("--self-contained")
+                args.append("--embed-resources")
+                args.append("--standalone")
 
         if self.show_syntax_options:
             if self.sw_syntax_highlighting.get_enable_expansion():
-                selected_style = self.get_hdy_comborow_name(
-                    self.cmb_syntax_highlighting)
+                selected_style = self.cmb_syntax_highlighting.get_selected_item().get_string()
                 args.append("--highlight-style={}".format(selected_style))
 
         if self.show_presentation_options:
@@ -422,8 +418,8 @@ class TexliveWarning(Gtk.Stack):
 
     @Gtk.Template.Callback()
     def copy(self, _widget):
-        cb = Gtk.Clipboard.get_default(Gdk.Display.get_default())
-        cb.set_text(self.command.get_text(), -1)
+        clipboard = self.get_clipboard()
+        clipboard.set(self.command.get_text())
 
 
 def export(text, file, _format, args):
