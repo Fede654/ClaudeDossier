@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apostrophe\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2024-01-23 09:20+0000\n"
-"PO-Revision-Date: 2024-01-23 16:43+0100\n"
+"POT-Creation-Date: 2024-01-23 21:15+0000\n"
+"PO-Revision-Date: 2024-01-24 14:54+0100\n"
 "Last-Translator: Jürgen Benvenuti <gastornis@posteo.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "Language: de\n"
@@ -637,6 +637,14 @@ msgctxt "shortcut window"
 msgid "Select All Text"
 msgstr "Gesamten Text auswählen"
 
+#: data/ui/Statsbar.ui:14
+msgid "Show Statistics"
+msgstr "Statistik anzeigen"
+
+#: data/ui/Statsbar.ui:15
+msgid "0 Words"
+msgstr "0 Wörter"
+
 #: data/ui/TexliveWarning.ui:25 data/ui/TexliveWarning.ui:79
 msgid "TexLive Required"
 msgstr "TexLive wird benötigt"
@@ -664,12 +672,12 @@ msgid ""
 "Apostrophe needs TeXLive\n"
 "in order to export PDF or LaTeX files.\n"
 "\n"
-"Install it from your distribution repositories"
+"Install it from your distribution repositories."
 msgstr ""
 "Apostrophe benötigt TeXLive,\n"
 "um PDF- oder LaTex-Dateien exportieren zu können.\n"
 "\n"
-"Installieren Sie TeXLive aus den Softwaredepots Ihrer Distribution"
+"Installieren Sie TeXLive aus den Softwaredepots Ihrer Distribution."
 
 #: data/ui/ThemeSwitcher.ui:17
 msgid "Use System Colors"
@@ -985,12 +993,6 @@ msgstr "Webseite"
 
 #~ msgid "Menu"
 #~ msgstr "Menü"
-
-#~ msgid "Show Statistics"
-#~ msgstr "Statistik anzeigen"
-
-#~ msgid "0 Words"
-#~ msgstr "0 Wörter"
 
 #~ msgid "{:n} of "
 #~ msgstr "{:n} von "
