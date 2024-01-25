@@ -8,15 +8,21 @@
         <property name="child">
           <object class="GtkOverlay">
             <property name="child">
-              <object class="GtkScrolledWindow" id="scrolledwindow">
-                <property name="focusable">1</property>
-                <property name="receives-default">1</property>
+              <object class="ApostropheMovableBin" id="movablebin">
                 <property name="hexpand">1</property>
                 <property name="vexpand">1</property>
-                <child>
-                  <object class="ApostropheTextView" id="textview">
+                <property name="child">
+                  <object class="GtkScrolledWindow" id="scrolledwindow">
+                    <property name="focusable">1</property>
+                    <property name="receives-default">1</property>
+                    <property name="hexpand">1</property>
+                    <property name="vexpand">1</property>
+                    <child>
+                        <object class="ApostropheTextView" id="textview">
+                        </object>
+                    </child>
                   </object>
-                </child>
+                </property>
               </object>
             </property>
             <child type="overlay">

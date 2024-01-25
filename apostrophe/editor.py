@@ -14,10 +14,13 @@
 """Manage the bottombar. It comprises the toolbar and the statsbar
 """
 
+import collections
+from datetime import datetime
 from gettext import gettext as _
 
 import gi
 
+from apostrophe.movable_bin import ApostropheMovableBin
 from apostrophe.stats_handler import StatsHandler
 
 gi.require_version('Gtk', '4.0')
@@ -39,15 +42,22 @@ class Editor(Adw.Bin):
     stats_revealer = Gtk.Template.Child()
     background = Gtk.Template.Child()
     textview = Gtk.Template.Child()
+    movablebin = Gtk.Template.Child()
+
+    hemingway_attempts = collections.deque(4*[datetime.min], 4)
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+
+        self.settings = Settings.new()
 
         # Setup stats counter
         self.stats_handler = StatsHandler(self.stats_revealer.stats_button, self.textview)
 
         # Initialize bottombar background
         self.reveal_toolbar()
+
+        self.textview.get_buffer().connect('attempted-hemingway', self.on_attempted_hemingway)
 
     @Gtk.Template.Callback()
     def reveal_toolbar(self, *_args):
@@ -85,3 +95,20 @@ class Editor(Adw.Bin):
 
     def update_default_stat(self):
         self.stats_handler.update_default_stat()
+
+    def on_attempted_hemingway(self, *args):
+        # log the time into a list with max length of 4
+        # then check if the time differences are small enough
+        # to show the help popover again
+        self.hemingway_attempts.appendleft(datetime.now())
+        if (self.hemingway_attempts[0] - self.hemingway_attempts[3]).seconds <= 70:
+            self.settings.set_int("hemingway-toast-count", 0)
+            self.activate_action("win.show_hemingway_toast")
+            pass
+
+        spring_params = Adw.SpringParams.new(0.5, 50, 30000)
+        target = Adw.PropertyAnimationTarget.new(self.movablebin, "offset-x")
+        hemingway_animation = Adw.SpringAnimation.new(self, 0, 0, spring_params, target)
+        hemingway_animation.set_initial_velocity(100)
+        hemingway_animation.set_epsilon(0.01)
+        hemingway_animation.play()
