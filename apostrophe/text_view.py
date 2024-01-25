@@ -13,10 +13,8 @@
 # with this program.  If not, see <http://www.gnu.org/licenses/>.
 # END LICENSE
 
-import collections
 import mimetypes
 import urllib
-from datetime import datetime
 from gettext import gettext as _
 from os.path import basename
 
@@ -64,7 +62,6 @@ class ApostropheTextView(Gtk.TextView):
     }
 
     bigger_text = GObject.Property(type=bool, default=False)
-    hemingway_mode = GObject.Property(type=bool, default=False)
     focus_mode = GObject.Property(type=bool, default=False)
     font_size = GObject.Property(type=int, default=16)
     line_chars = GObject.Property(type=int, default=66)
@@ -73,8 +70,6 @@ class ApostropheTextView(Gtk.TextView):
     scroller = None
 
     _scroll_scale = 0
-
-    hemingway_attempts = collections.deque(4*[datetime.min], 4)
 
     @GObject.Property(type=float, default=0)
     def scroll_scale(self):
@@ -102,9 +97,6 @@ class ApostropheTextView(Gtk.TextView):
         self.connect('unindent', self.buffer._unindent)
         self.connect('insert-hrule', self.shortcut.insert_horizontal_rule)
         self.connect('insert-header', self.shortcut.insert_header)
-
-        # Hemingway
-        self.buffer.connect('attempted-hemingway', self.on_attempted_hemingway)
 
         # Markup
         self.markup = MarkupHandler(self)
@@ -248,21 +240,6 @@ class ApostropheTextView(Gtk.TextView):
         self._on_spellcheck_update()
         self.grab_focus()
 
-    def on_attempted_hemingway(self, *args):
-        # log the time into a list with max length of 4
-        # then check if the time differences are small enough
-        # to show the help popover again
-        self.hemingway_attempts.appendleft(datetime.now())
-        if (self.hemingway_attempts[0] - self.hemingway_attempts[3]).seconds <= 70:
-            self.settings.set_int("hemingway-toast-count", 0)
-            self.activate_action("win.show_hemingway_toast")
-
-        spring_params = Adw.SpringParams.new(0.5, 0.5, 1000)
-        target = Adw.PropertyAnimationTarget.new(self, "left-margin")
-        hemingway_animation = Adw.SpringAnimation.new(self, self.get_left_margin(), self.get_left_margin(), spring_params, target)
-        hemingway_animation.set_initial_velocity(10)
-        hemingway_animation.play()
-
     @Gtk.Template.Callback()
     def _on_mark_set(self, _text_buffer, _location, mark, _data=None):
         # only scroll if the cursor was moved by keyboard.
@@ -379,13 +356,14 @@ class ApostropheTextView(Gtk.TextView):
     def do_map(self, *args, **kwargs):
         Gtk.TextView.do_map(self)
 
-        parent = self.get_parent()
-        if parent:
-            parent.set_size_request(self.get_min_width(), 500)
-            self.scroller = TextViewScroller(self, parent)
-            parent.get_vadjustment().connect("changed",
+        scrollable = self.get_parent()
+        movable_bin = scrollable.get_parent()
+        if scrollable:
+            movable_bin.set_size_request(self.get_min_width(), 500)
+            self.scroller = TextViewScroller(self, scrollable)
+            scrollable.get_vadjustment().connect("changed",
                                              self._on_vadjustment_changed)
-            parent.get_vadjustment().connect("value-changed",
+            scrollable.get_vadjustment().connect("value-changed",
                                              self._on_vadjustment_changed)
         else:
             self.scroller = None
