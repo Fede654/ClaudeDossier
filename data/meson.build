@@ -36,28 +36,29 @@ metainfo_configured = configure_file(
 )
 
 # merge NEWS into metainfo file
-# TODO: uncomment when https://github.com/hughsie/appstream-glib/issues/369 is solved
-# ascli_exe = find_program('appstreamcli')
-# metainfo_with_relinfo = custom_target('gen-metainfo-rel',
-#     input : ['../NEWS', metainfo_configured],
-#     output : ['org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in'],
-#     command : [ascli_exe, 'news-to-metainfo', '--limit=2', '@INPUT0@', '@INPUT1@', '@OUTPUT@']
-# )
+ascli_exe = find_program('appstreamcli')
+metainfo_with_relinfo = custom_target('gen-metainfo-rel',
+    input : ['../NEWS', metainfo_configured],
+    output : ['org.gnome.gitlab.somas.Apostrophe.metainfo.xml'],
+    command : [ascli_exe, 'news-to-metainfo', '--limit=2', '@INPUT0@', '@INPUT1@', '@OUTPUT@']
+)
 
 appdata_file = i18n.merge_file(
-  input: metainfo_configured,
+  input: metainfo_with_relinfo,
   output: '@0@.metainfo.xml'.format(application_id),
   po_dir: podir,
   install: true,
   install_dir: get_option('datadir') / 'metainfo'
 )
+
 # Validate AppData File
-appstream_util = find_program('appstream-util', required: false)
-if appstream_util.found()
+appstreamcli = find_program('appstreamcli', required: false)
+if appstreamcli.found()
   test (
-    'Validate appdata file',
-    appstream_util,
-    args: ['validate-relax', '--nonet', appdata_file.full_path()]
+    'validate-appdata',
+    appstreamcli,
+    args: ['validate', '--no-net', '--explain', appdata_file.full_path()],
+    workdir: meson.current_build_dir()
   )
 endif
 
@@ -72,7 +73,7 @@ install_data(
 ui_config = configuration_data()
 ui_config.set('app-id', application_id)
 ui_config.set('version', meson.project_version() + version_suffix)
-ui_config.set('package_url', 'https://apps.gnome.org/app/org.gnome.gitlab.somas.Apostrophe/')
+ui_config.set('package_url', 'https://apps.gnome.org/Apostrophe/')
 ui_preconfigured_files = files(
   'ui/About.ui.in'
 )

@@ -76,7 +76,7 @@ install_subdir(
 # System installation
 
 conf = configuration_data()
-conf.set('PACKAGE_URL', 'https://apps.gnome.org/app/org.gnome.gitlab.somas.Apostrophe/')
+conf.set('PACKAGE_URL', 'https://apps.gnome.org/Apostrophe/')
 conf.set('DATA_DIR', datadir)
 conf.set('PKGDATA_DIR', pkgdatadir)
 conf.set('LOCALE_DIR', join_paths(datadir, 'locale'))
@@ -106,7 +106,7 @@ configure_file(
 local_config = configuration_data()
 local_config.set('DATA_DIR', join_paths(meson.build_root(), 'data'))
 local_config.set('PKGDATA_DIR', join_paths(meson.build_root(), 'data'))
-local_config.set('PACKAGE_URL', 'https://apps.gnome.org/app/org.gnome.gitlab.somas.Apostrophe/')
+local_config.set('PACKAGE_URL', 'https://apps.gnome.org/Apostrophe/')
 local_config.set('LOCALE_DIR', join_paths(datadir, 'locale'))
 local_config.set('PYTHON_DIR', meson.source_root())
 local_config.set('PROFILE', profile)
