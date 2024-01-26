@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: apostrophe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2023-09-11 15:13+0000\n"
-"PO-Revision-Date: 2024-01-09 18:24+0100\n"
+"POT-Creation-Date: 2024-01-25 18:03+0000\n"
+"PO-Revision-Date: 2024-01-26 16:56+0100\n"
 "Last-Translator: Fabio T. <f.t.public@gmail.com>\n"
 "Language-Team: Friulian <f.t.public@gmail.com>\n"
 "Language: fur\n"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Generator: Poedit 3.4.2\n"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:3
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:5
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:4
 msgid "Apostrophe"
 msgstr "Apostrophe"
 
@@ -45,7 +45,6 @@ msgstr ""
 "test."
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:36
-#: data/ui/Preferences.ui:15 data/ui/Preferences.ui:16
 msgid "Check spelling while typing"
 msgstr "Control ortografic intant che si scrîf"
 
@@ -63,7 +62,6 @@ msgstr ""
 "Ten sincronizadis lis posizion dal scoriment dal editôr e de anteprime."
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:50
-#: data/ui/Preferences.ui:70
 msgid "Input format"
 msgstr "Formât input"
 
@@ -156,33 +154,33 @@ msgstr "Sbare dai struments"
 msgid "Whether the toolbar is shown or not."
 msgstr "Indiche se la sbare dai struments e je visibile o mancul."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:6
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:5
 msgid "Edit Markdown in style"
 msgstr "Modifiche la marcadure cun stîl"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:8
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:15
 msgid "Focus on your writing with a clean, distraction-free markdown editor."
 msgstr ""
 "Concentriti su la scriture cuntun editôr di marcaduris net e libar di "
 "distrazions."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:9
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:16
 msgid "Features:"
 msgstr "Funzionalitâts:"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:11
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:18
 msgid "An UI tailored to comfortable writing"
 msgstr "Une interface dissegnade par une comude scriture"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:12
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:19
 msgid "A distraction-free mode"
 msgstr "Une modalitât libare di distrazions"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:13
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:20
 msgid "Dark, light and sepia themes"
 msgstr "Temis scûr, clâr e sepât"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:14
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:21
 msgid ""
 "Everything you expect from a text editor, such as spellchecking or document "
 "statistics"
@@ -190,21 +188,17 @@ msgstr ""
 "Dut ce che tu ti spietis di un editôr di test, come il control ortografic o "
 "lis statistichis di document"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:15
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:22
 msgid "Live preview of what you write"
 msgstr "Anteprime in timp reâl di ce che tu scrivis"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:16
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:23
 msgid ""
 "Export to all kind of formats: PDF, Word/Libreoffice, LaTeX, or even HTML "
 "slideshows"
 msgstr ""
 "Espuarte in ducj i gjenars di formât: PDF, Word/Libreoffice, LaTeX, o ancje "
 "presentazions in HTML"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:41
-msgid "Manuel G., Wolf V."
-msgstr "Manuel G., Wolf V."
 
 #: data/ui/About.ui.in:9
 msgid "Copyright (C) 2022, Manuel G., Wolf V."
@@ -240,27 +234,27 @@ msgstr ""
 msgid "_Close"
 msgstr "_Siere"
 
-#: data/ui/Export.ui:33 apostrophe/export_dialog.py:132
-#: apostrophe/export_dialog.py:344 apostrophe/export_dialog.py:349
-#: apostrophe/main_window.py:444 apostrophe/main_window.py:517
-#: apostrophe/main_window.py:609
+#: data/ui/Export.ui:33 apostrophe/export_dialog.py:131
+#: apostrophe/export_dialog.py:342 apostrophe/export_dialog.py:347
+#: apostrophe/main_window.py:439 apostrophe/main_window.py:512
+#: apostrophe/main_window.py:604
 msgid "Cancel"
 msgstr "Anule"
 
-#: data/ui/Export.ui:44 apostrophe/export_dialog.py:127
-#: apostrophe/export_dialog.py:343 apostrophe/export_dialog.py:347
+#: data/ui/Export.ui:44 apostrophe/export_dialog.py:126
+#: apostrophe/export_dialog.py:341 apostrophe/export_dialog.py:345
 msgid "Export"
 msgstr "Espuarte"
 
-#: data/ui/Export.ui:114
+#: data/ui/Export.ui:117
 msgid "Options"
 msgstr "Opzions"
 
-#: data/ui/Export.ui:118
+#: data/ui/Export.ui:121
 msgid "Standalone"
 msgstr "Autonom"
 
-#: data/ui/Export.ui:120
+#: data/ui/Export.ui:123
 msgid ""
 "Use a header and footer to include things like stylesheets and meta "
 "information"
@@ -268,52 +262,52 @@ msgstr ""
 "Dopre une intestazion e un da pît di pagjine par includi robis come i sfueis "
 "di stîl e lis informazions meta"
 
-#: data/ui/Export.ui:133
+#: data/ui/Export.ui:136
 msgid "Table of Contents"
 msgstr "Tabele dai contignûts"
 
-#: data/ui/Export.ui:147
+#: data/ui/Export.ui:150
 msgid "Number Sections"
 msgstr "Numar di sezions"
 
-#: data/ui/Export.ui:165 data/ui/Export.ui:170 data/ui/Export.ui:182
-#: data/ui/Export.ui:187
+#: data/ui/Export.ui:168 data/ui/Export.ui:173 data/ui/Export.ui:185
+#: data/ui/Export.ui:190
 msgid "Page Size"
 msgstr "Dimension pagjine"
 
-#: data/ui/Export.ui:199
+#: data/ui/Export.ui:202
 msgid "HTML Options"
 msgstr "Opzions HTML"
 
-#: data/ui/Export.ui:204
-msgid "Self-contained"
+#: data/ui/Export.ui:207
+msgid "Self-Contained"
 msgstr "Auto-contignût"
 
-#: data/ui/Export.ui:206
+#: data/ui/Export.ui:209
 msgid "Produces an HTML file with no external dependencies"
 msgstr "Al prodûs un file HTML cence dipendencis esternis"
 
-#: data/ui/Export.ui:222
+#: data/ui/Export.ui:225
 msgid "Syntax Highlighting"
 msgstr "Evidenziazion de sintassi"
 
-#: data/ui/Export.ui:228
+#: data/ui/Export.ui:231
 msgid "Use Syntax Highlighting"
 msgstr "Dopre evidenziazion de sintassi"
 
-#: data/ui/Export.ui:235
-msgid "Highlight style"
+#: data/ui/Export.ui:238
+msgid "Highlight Style"
 msgstr "Stîl evidenziazion"
 
-#: data/ui/Export.ui:249
+#: data/ui/Export.ui:252
 msgid "Presentation"
 msgstr "Presentazion"
 
-#: data/ui/Export.ui:254
-msgid "Incremental bullets"
+#: data/ui/Export.ui:257
+msgid "Incremental Bullets"
 msgstr "Ponts incrementâi"
 
-#: data/ui/Export.ui:256
+#: data/ui/Export.ui:259
 msgid "Show one bullet point after another in a slideshow"
 msgstr "Mostre un pont di une liste dopo chel altri intune presentazion"
 
@@ -326,7 +320,7 @@ msgid "_Open"
 msgstr "_Vierç"
 
 #: data/ui/Headerbar.ui:20
-msgid "Open a markdown file"
+msgid "Open a Markdown File"
 msgstr "Vierç un file di marcadure"
 
 #: data/ui/Headerbar.ui:26
@@ -334,7 +328,7 @@ msgid "_Save"
 msgstr "_Salve"
 
 #: data/ui/Headerbar.ui:28
-msgid "Save the markdown file"
+msgid "Save the Markdown File"
 msgstr "Salve il file di marcadure"
 
 #: data/ui/Headerbar.ui:44
@@ -389,18 +383,22 @@ msgstr "_Esportazion avanzade…"
 msgid "_Copy HTML"
 msgstr "_Copie HTML"
 
+#: data/ui/Preferences.ui:15 data/ui/Preferences.ui:16
+msgid "Check Spelling While Typing"
+msgstr "Control ortografic intant che tu scrivis"
+
 #: data/ui/Preferences.ui:28
-msgid "Autohide headerbar"
-msgstr "Auto-plate sbare de intestazion"
+msgid "Auto-Hide Header Bar"
+msgstr "Plate in automatic la sbare de intestazion"
 
 #: data/ui/Preferences.ui:29
-msgid "Autohide header and statusbars while typing"
+msgid "Auto-hide header and status bars while typing"
 msgstr ""
-"Plate in automatic lis sbari de intestazion e dal stât intant che tu scrivis"
+"Plate in automatic lis sbaris de intestazion e dal stât intant che tu scrivis"
 
 #: data/ui/Preferences.ui:42
-msgid "Use bigger text"
-msgstr "Dopre test plui grant"
+msgid "Large Text"
+msgstr "Test grant"
 
 #: data/ui/Preferences.ui:43
 msgid "Reduce the margins width and increase the text size when possible"
@@ -408,22 +406,26 @@ msgstr ""
 "Ridûs la largjece dai margjins e incrès la dimension dal test se pussibil"
 
 #: data/ui/Preferences.ui:56
-msgid "Restore session"
+msgid "Restore Session"
 msgstr "Ripristine session"
 
 #: data/ui/Preferences.ui:57
 msgid "Return to your previous session when Apostrophe is started"
 msgstr "Torne ae session precedente cuant che al ven inviât Apostrophe"
 
+#: data/ui/Preferences.ui:70
+msgid "Input Format"
+msgstr "Formât input"
+
 #: data/ui/Preferences.ui:71
 msgid "Flavor of markdown Apostrophe will use"
 msgstr "Gjenar di marcadure che Apostrophe al doprarà"
 
 #: data/ui/Preferences.ui:80
-msgid "Markdown flavor documentation"
+msgid "Markdown Flavor Documentation"
 msgstr "Documentazion dal gjenar di marcadure"
 
-#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_renderer.py:208
+#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_window.py:30
 msgid "Preview"
 msgstr "Anteprime"
 
@@ -439,32 +441,32 @@ msgstr "Nissun document resint"
 msgid "No Results Found"
 msgstr "Nissun risultât cjatât"
 
-#: data/ui/SearchBar.ui:28
+#: data/ui/SearchBar.ui:29
 msgid "Previous Match"
 msgstr "Câs precedent"
 
-#: data/ui/SearchBar.ui:37
+#: data/ui/SearchBar.ui:38
 msgid "Next Match"
 msgstr "Câs sucessîf"
 
 #. Translators: This indicates case sensitivity, so it should be the first vowel of the language in lowercase and uppercase
-#: data/ui/SearchBar.ui:52
+#: data/ui/SearchBar.ui:53
 msgid "aA"
 msgstr "aA"
 
-#: data/ui/SearchBar.ui:55
+#: data/ui/SearchBar.ui:56
 msgid "Case Sensitive"
 msgstr "Ten cont di maiusculis o minusculis"
 
-#: data/ui/SearchBar.ui:64
+#: data/ui/SearchBar.ui:65
 msgid "Regular Expression"
 msgstr "Espression regolâr"
 
-#: data/ui/SearchBar.ui:72 data/ui/SearchBar.ui:110
+#: data/ui/SearchBar.ui:73 data/ui/SearchBar.ui:111
 msgid "Replace"
 msgstr "Sostituìs"
 
-#: data/ui/SearchBar.ui:118
+#: data/ui/SearchBar.ui:119
 msgid "Replace All"
 msgstr "Sostituìs dut"
 
@@ -490,27 +492,27 @@ msgstr "Salve"
 
 #: data/ui/Shortcuts.ui:32
 msgctxt "shortcut window"
-msgid "Save as"
+msgid "Save As"
 msgstr "Salve come"
 
 #: data/ui/Shortcuts.ui:38
 msgctxt "shortcut window"
-msgid "Close document"
+msgid "Close Document"
 msgstr "Siere document"
 
 #: data/ui/Shortcuts.ui:44
 msgctxt "shortcut window"
-msgid "Show preferences"
+msgid "Show Preferences"
 msgstr "Mostre preferencis"
 
 #: data/ui/Shortcuts.ui:50
 msgctxt "shortcut window"
-msgid "Keyboard shortcuts"
+msgid "Keyboard Shortcuts"
 msgstr "Scurtis di tastiere"
 
 #: data/ui/Shortcuts.ui:56
 msgctxt "shortcut window"
-msgid "Quit application"
+msgid "Quit Application"
 msgstr "Jes de aplicazion"
 
 #: data/ui/Shortcuts.ui:64
@@ -520,12 +522,12 @@ msgstr "Modalitâts"
 
 #: data/ui/Shortcuts.ui:67
 msgctxt "shortcut window"
-msgid "Focus mode"
+msgid "Focus Mode"
 msgstr "Modalitât concentrazion"
 
 #: data/ui/Shortcuts.ui:73
 msgctxt "shortcut window"
-msgid "Hemingway mode"
+msgid "Hemingway Mode"
 msgstr "Modalitât Hemingway"
 
 #: data/ui/Shortcuts.ui:80
@@ -545,7 +547,7 @@ msgstr "Cjate"
 
 #: data/ui/Shortcuts.ui:103
 msgctxt "shortcut window"
-msgid "Find and replace"
+msgid "Find and Replace"
 msgstr "Cjate e sostituìs"
 
 #: data/ui/Shortcuts.ui:111
@@ -565,7 +567,7 @@ msgstr "Intestazion"
 
 #: data/ui/Shortcuts.ui:126
 msgctxt "shortcut window"
-msgid "List item"
+msgid "List Item"
 msgstr "Element di liste"
 
 #: data/ui/Shortcuts.ui:133
@@ -585,38 +587,38 @@ msgstr "Stricât"
 
 #: data/ui/Shortcuts.ui:153
 msgctxt "shortcut window"
-msgid "Copy and paste"
+msgid "Copy and Paste"
 msgstr "Copie e tache"
 
 #: data/ui/Shortcuts.ui:156
 msgctxt "shortcut window"
-msgid "Copy selected text to clipboard"
-msgstr "Copie il test selezionât intes notis"
+msgid "Copy"
+msgstr "Copie"
 
 #: data/ui/Shortcuts.ui:162
 msgctxt "shortcut window"
-msgid "Cut selected text to clipboard"
-msgstr "Taie il test selezionât intes notis"
+msgid "Cut"
+msgstr "Taie"
 
 #: data/ui/Shortcuts.ui:168
 msgctxt "shortcut window"
-msgid "Paste selected text from clipboard"
-msgstr "Tache il test selezionât da lis notis"
+msgid "Paste"
+msgstr "Tache"
 
 #: data/ui/Shortcuts.ui:176
 msgctxt "shortcut window"
-msgid "Undo and redo"
+msgid "Undo and Redo"
 msgstr "Disfe e torne fâs"
 
 #: data/ui/Shortcuts.ui:179
 msgctxt "shortcut window"
-msgid "Undo previous command"
+msgid "Undo Previous Command"
 msgstr "Disfe il comant precedent"
 
 #: data/ui/Shortcuts.ui:185
 msgctxt "shortcut window"
-msgid "Redo previous command"
-msgstr "Torne a fâ il comant precedent"
+msgid "Redo Previous Command"
+msgstr "Torne fâs il comant precedent"
 
 #: data/ui/Shortcuts.ui:193
 msgctxt "shortcut window"
@@ -625,8 +627,16 @@ msgstr "Selezion"
 
 #: data/ui/Shortcuts.ui:196
 msgctxt "shortcut window"
-msgid "Select all text"
+msgid "Select All Text"
 msgstr "Selezione dut il test"
+
+#: data/ui/Statsbar.ui:14
+msgid "Show Statistics"
+msgstr "Mostre lis statistics"
+
+#: data/ui/Statsbar.ui:15
+msgid "0 Words"
+msgstr "0 Peraulis"
 
 #: data/ui/TexliveWarning.ui:25 data/ui/TexliveWarning.ui:79
 msgid "TexLive Required"
@@ -647,7 +657,7 @@ msgstr ""
 "o eseguint chest comant tal terminâl:"
 
 #: data/ui/TexliveWarning.ui:53
-msgid "Copy to clipboard"
+msgid "Copy to Clipboard"
 msgstr "Copie intes notis"
 
 #: data/ui/TexliveWarning.ui:87
@@ -655,12 +665,12 @@ msgid ""
 "Apostrophe needs TeXLive\n"
 "in order to export PDF or LaTeX files.\n"
 "\n"
-"Install it from your distribution repositories"
+"Install it from your distribution repositories."
 msgstr ""
 "Apostrophe al à bisugne di TeXLive\n"
 "par podê espuartâ files PDF o LaTeX.\n"
 "\n"
-"Instalilu dai dipuesits de distribuzion"
+"Instalilu dai dipuesits de distribuzion."
 
 #: data/ui/ThemeSwitcher.ui:17
 msgid "Use System Colors"
@@ -678,36 +688,36 @@ msgstr "Dopre colôrs sepâts"
 msgid "Use Dark Colors"
 msgstr "Dopre colôrs scûrs"
 
-#: data/ui/Window.ui:86
+#: data/ui/Window.ui:81
 msgid "File Has Changed on Disk"
 msgstr "Il file sul disc al è cambiât"
 
-#: data/ui/Window.ui:96
-msgid "The file has been changed by another program."
-msgstr "Il file al è stât modificât di un altri program."
+#: data/ui/Window.ui:91
+msgid "The file has been changed by another program"
+msgstr "Il file al è stât modificât di un altri program"
 
-#: data/ui/Window.ui:104
+#: data/ui/Window.ui:99
 msgid "_Discard Changes and Reload"
 msgstr "_Scarte lis modifichis e torne cjame"
 
-#: apostrophe/application.py:232
+#: apostrophe/application.py:223
 msgid "Donate"
 msgstr "Done"
 
-#: apostrophe/application.py:233
+#: apostrophe/application.py:224
 msgid "Translations"
 msgstr "Traduzions"
 
-#: apostrophe/export_dialog.py:122 apostrophe/helpers.py:84
+#: apostrophe/export_dialog.py:121 apostrophe/helpers.py:84
 msgid "Close"
 msgstr "Siere"
 
-#: apostrophe/export_dialog.py:130 apostrophe/export_dialog.py:348
+#: apostrophe/export_dialog.py:129 apostrophe/export_dialog.py:346
 #, python-format
 msgid "Export to %s"
 msgstr "Espuarte su %s"
 
-#: apostrophe/export_dialog.py:156 apostrophe/export_dialog.py:337
+#: apostrophe/export_dialog.py:155 apostrophe/export_dialog.py:335
 #, python-brace-format
 msgid ""
 "An error happened while trying to export:\n"
@@ -718,11 +728,11 @@ msgstr ""
 "\n"
 "{err_msg}"
 
-#: apostrophe/export_dialog.py:235
+#: apostrophe/export_dialog.py:234
 msgid "Export to {}"
 msgstr "Espuarte su {}"
 
-#: apostrophe/export_dialog.py:344
+#: apostrophe/export_dialog.py:342
 msgid "Select folder"
 msgstr "Selezione cartele"
 
@@ -759,43 +769,43 @@ msgid "adverb"
 msgstr "averbi"
 
 #. Hemingway Toast
-#: apostrophe/main_window.py:128
+#: apostrophe/main_window.py:143
 msgid "Text can't be deleted while on Hemingway mode"
 msgstr "Nol è pussibil eliminâ il test in modalitât Hemingway"
 
-#: apostrophe/main_window.py:131
+#: apostrophe/main_window.py:146
 msgid "Tell me more"
 msgstr "Dîmi di plui"
 
-#: apostrophe/main_window.py:440
+#: apostrophe/main_window.py:435
 msgid "Save your File"
 msgstr "Salve il to file"
 
-#: apostrophe/main_window.py:443 apostrophe/main_window.py:611
+#: apostrophe/main_window.py:438 apostrophe/main_window.py:606
 msgid "Save"
 msgstr "Salve"
 
-#: apostrophe/main_window.py:506
+#: apostrophe/main_window.py:501
 msgid "Markdown Files"
 msgstr "Files di marcadure"
 
-#: apostrophe/main_window.py:510
+#: apostrophe/main_window.py:505
 msgid "Plain Text Files"
 msgstr "Files di test sempliç"
 
-#: apostrophe/main_window.py:513
+#: apostrophe/main_window.py:508
 msgid "Open a .md file"
 msgstr "Vierç un file .md"
 
-#: apostrophe/main_window.py:516
+#: apostrophe/main_window.py:511
 msgid "Open"
 msgstr "Vierç"
 
-#: apostrophe/main_window.py:603
+#: apostrophe/main_window.py:598
 msgid "Save changes?"
 msgstr "Salvâ lis modifichis?"
 
-#: apostrophe/main_window.py:604
+#: apostrophe/main_window.py:599
 #, python-format
 msgid ""
 "“%s” contains unsaved changes. If you don’t save, all your changes will be "
@@ -804,27 +814,27 @@ msgstr ""
 "“%s” al conten modifichis che no son stadis salvadis. Se no tu salvis, dutis "
 "lis modifichis a laran pierdudis par simpri."
 
-#: apostrophe/main_window.py:610
+#: apostrophe/main_window.py:605
 msgid "Discard"
 msgstr "Scarte"
 
-#: apostrophe/main_window.py:768 apostrophe/main_window.py:792
+#: apostrophe/main_window.py:762 apostrophe/main_window.py:786
 msgid "New File"
 msgstr "Gnûf file"
 
-#: apostrophe/preview_layout_switcher.py:40
+#: apostrophe/preview_layout_switcher.py:41
 msgid "Full-Width"
 msgstr "A plene largjece"
 
-#: apostrophe/preview_layout_switcher.py:42
+#: apostrophe/preview_layout_switcher.py:43
 msgid "Half-Width"
 msgstr "A mieze largjece"
 
-#: apostrophe/preview_layout_switcher.py:44
+#: apostrophe/preview_layout_switcher.py:45
 msgid "Half-Height"
 msgstr "A mieze altece"
 
-#: apostrophe/preview_layout_switcher.py:46
+#: apostrophe/preview_layout_switcher.py:47
 msgid "Windowed"
 msgstr "Intun barcon"
 
@@ -915,7 +925,7 @@ msgid "link text"
 msgstr "test dal colegament"
 
 #: apostrophe/text_view_format_inserter.py:429
-#: apostrophe/text_view_format_inserter.py:454
+#: apostrophe/text_view_format_inserter.py:461
 msgid "image caption"
 msgstr "didascalie imagjin"
 
@@ -927,7 +937,7 @@ msgstr "Imagjin"
 msgid "Select an image"
 msgstr "Selezione une imagjin"
 
-#: apostrophe/text_view_format_inserter.py:543
+#: apostrophe/text_view_format_inserter.py:550
 msgid ""
 "\n"
 "code\n"
@@ -935,15 +945,46 @@ msgstr ""
 "\n"
 "codiç\n"
 
-#: apostrophe/text_view.py:169 apostrophe/text_view.py:171
+#: apostrophe/text_view.py:161 apostrophe/text_view.py:163
 msgid "web page"
 msgstr "pagjine web"
 
+#~ msgid "Manuel G., Wolf V."
+#~ msgstr "Manuel G., Wolf V."
+
+#~ msgid "Autohide headerbar"
+#~ msgstr "Auto-plate sbare de intestazion"
+
+#~ msgid "Use bigger text"
+#~ msgstr "Dopre test plui grant"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Keyboard shortcuts"
+#~ msgstr "Scurtis di tastiere"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Focus mode"
+#~ msgstr "Modalitât concentrazion"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Hemingway mode"
+#~ msgstr "Modalitât Hemingway"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Find and replace"
+#~ msgstr "Cjate e sostituìs"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Copy selected text to clipboard"
+#~ msgstr "Copie il test selezionât intes notis"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Cut selected text to clipboard"
+#~ msgstr "Taie il test selezionât intes notis"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Paste selected text from clipboard"
+#~ msgstr "Tache il test selezionât da lis notis"
+
 #~ msgid "Menu"
 #~ msgstr "Menù"
-
-#~ msgid "Show Statistics"
-#~ msgstr "Mostre lis statistics"
-
-#~ msgid "0 Words"
-#~ msgstr "0 Peraulis"
