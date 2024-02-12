@@ -9,18 +9,48 @@
     <property name="transition-duration">750</property>
     <property name="reveal-child">1</property>
     <property name="child">
-      <object class="GtkMenuButton" id="stats_button">
-        <property name="always-show-arrow">True</property>
-        <property name="tooltip-text" translatable="yes">Show Statistics</property>
-        <property name="label" translatable="true">0 Words</property>
-        <property name="halign">end</property>
-        <property name="valign">end</property>
-        <property name="margin-end">6</property>
-        <property name="margin-bottom">6</property>
-        <style>
-          <class name="stats-button" />
-          <class name="flat" />
-        </style>
+      <object class="GtkStack" id="buttons_stack">
+        <property name="hhomogeneous">True</property>
+        <property name="transition-type">crossfade</property>
+        <child>
+          <object class="GtkStackPage">
+            <property name="name">stats</property>
+            <property name="child">
+              <object class="GtkMenuButton" id="stats_button">
+                <property name="always-show-arrow">True</property>
+                <property name="tooltip-text" translatable="yes">Show Statistics</property>
+                <property name="label" translatable="true">0 Words</property>
+                <property name="halign">end</property>
+                <property name="valign">end</property>
+                <property name="margin-end">6</property>
+                <property name="margin-bottom">6</property>
+                <style>
+                  <class name="stats-button" />
+                  <class name="flat" />
+                </style>
+              </object>
+            </property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkStackPage">
+            <property name="name">stats_short</property>
+            <property name="child">
+              <object class="GtkMenuButton" id="stats_button_short">
+                <property name="tooltip-text" translatable="yes">Show Statistics</property>
+                <property name="icon-name">radio-symbolic</property>
+                <property name="halign">end</property>
+                <property name="valign">end</property>
+                <property name="margin-end">6</property>
+                <property name="margin-bottom">6</property>
+                <style>
+                  <class name="stats-button" />
+                  <class name="flat" />
+                </style>
+              </object>
+            </property>
+          </object>
+        </child>
       </object>
     </property>
   </template>

@@ -18,10 +18,11 @@ class StatsHandler:
     PARAGRAPHS = 3
     READ_TIME = 4
 
-    def __init__(self, stats_button, text_view):
+    def __init__(self, stats_button, stats_button_short, text_view):
         super().__init__()
 
         self.stats_button = stats_button
+        self.stats_button_short = stats_button_short
         
         self.stats_button.connect("destroy", self.on_destroy)
 
@@ -59,6 +60,17 @@ class StatsHandler:
         self.stats_button.set_direction(Gtk.ArrowType.UP)
         self.stats_button.set_create_popup_func(self.on_stats_button_clicked)
 
+        self.popover_short = Gtk.PopoverMenu.new_from_model(Gio.Menu())
+        self.popover_short.set_halign(Gtk.Align.END)
+        self.popover_short.set_margin_end(6)
+        self.popover_short.set_margin_bottom(6)
+        self.popover_short.set_has_arrow(False)
+        self.stats_button_short.set_popover(self.popover_short)
+        self.popover.connect('closed', self.on_popover_closed)
+
+        self.stats_button_short.set_direction(Gtk.ArrowType.UP)
+        self.stats_button_short.set_create_popup_func(self.on_stats_button_short_clicked)
+
         self.update_default_stat()
 
     def on_stats_button_clicked(self, *args, **kwargs):
@@ -72,6 +84,16 @@ class StatsHandler:
             menu.append_item(menu_item)
 
         self.popover.set_menu_model(menu)
+
+    def on_stats_button_short_clicked(self, *args, **kwargs):
+        menu = Gio.Menu()
+        stats = self.settings.props.settings_schema.get_key(
+            "stat-default").get_range()[1]
+        for i, stat in enumerate(stats):
+            menu_item = Gio.MenuItem.new(self.get_text_for_stat(i), None)
+            menu.append_item(menu_item)
+
+        self.popover_short.set_menu_model(menu)
 
     def on_popover_closed(self, _popover):
         self.text_view.grab_focus()
