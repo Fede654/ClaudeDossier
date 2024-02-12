@@ -26,7 +26,7 @@ from apostrophe.stats_handler import StatsHandler
 gi.require_version('Gtk', '4.0')
 from gi.repository import Adw, GLib, GObject, Gtk
 
-from apostrophe.bottombar import Statsbar, Toolbar
+from apostrophe.bottombar import BottomBar, Statsbar, Toolbar
 
 from .settings import Settings
 
@@ -52,7 +52,7 @@ class Editor(Adw.Bin):
         self.settings = Settings.new()
 
         # Setup stats counter
-        self.stats_handler = StatsHandler(self.stats_revealer.stats_button, self.textview)
+        self.stats_handler = StatsHandler(self.stats_revealer.stats_button, self.stats_revealer.stats_button_short, self.textview)
 
         # Initialize bottombar background
         self.reveal_toolbar()

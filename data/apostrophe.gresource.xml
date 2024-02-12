@@ -13,6 +13,7 @@
     <file compressed="true" alias="style.css">media/css/gtk/style.css</file>
     <file compressed="true" alias="style-dark.css">media/css/gtk/style-dark.css</file>
     <file compressed="true" alias="style-sepia.css">media/css/gtk/style-sepia.css</file>
+    <file compressed="true" preprocess="xml-stripblanks">ui/BottomBar.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/Editor.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/Export.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/Headerbar.ui</file>
