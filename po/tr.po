@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2024-01-23 17:46+0000\n"
-"PO-Revision-Date: 2024-01-24 23:47+0300\n"
+"POT-Creation-Date: 2024-01-25 18:03+0000\n"
+"PO-Revision-Date: 2024-02-18 04:51+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Türkçe <takim@gnome.org.tr>\n"
 "Language: tr\n"
@@ -23,7 +23,7 @@ msgstr ""
 "X-Generator: Poedit 3.4.2\n"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:3
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:5
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:4
 msgid "Apostrophe"
 msgstr "Apostrophe"
 
@@ -36,7 +36,7 @@ msgstr ""
 
 #: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:6
 msgid "Apostrophe, an elegant, distraction-free markdown editor"
-msgstr "Apostrophe; güzel , ilgi dağıtmayan bir markdown düzenleyici"
+msgstr "Apostrophe; güzel, ilgi dağıtmayan markdown düzenleyici"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:29
 msgid "Color scheme"
@@ -153,31 +153,31 @@ msgstr "Araç çubuğu"
 msgid "Whether the toolbar is shown or not."
 msgstr "Araç çubuğunun gösterilme durumu."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:6
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:5
 msgid "Edit Markdown in style"
-msgstr "Markdown’ın şıkça düzenle"
+msgstr "Markdown’ı şıkça düzenle"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:8
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:15
 msgid "Focus on your writing with a clean, distraction-free markdown editor."
-msgstr "Temiz, ilgi dağıtmayan bir markdown düzenleyiciyle yazınıza odaklanın."
+msgstr "Temiz, ilgi dağıtmayan markdown düzenleyiciyle yazınıza odaklanın."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:9
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:16
 msgid "Features:"
 msgstr "Özellikler:"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:11
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:18
 msgid "An UI tailored to comfortable writing"
 msgstr "Rahat yazmaya uygun kullanıcı arayüzü"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:12
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:19
 msgid "A distraction-free mode"
 msgstr "İlgi dağıtmayan kip"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:13
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:20
 msgid "Dark, light and sepia themes"
 msgstr "Karanlık, aydınlık ve sepya temalar"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:14
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:21
 msgid ""
 "Everything you expect from a text editor, such as spellchecking or document "
 "statistics"
@@ -185,21 +185,17 @@ msgstr ""
 "Yazım denetimi veya belge istatistikleri gibi bir metin düzenleyiciden "
 "beklediğiniz her şey"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:15
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:22
 msgid "Live preview of what you write"
 msgstr "Yazdıklarınızın canlı ön izlemesi"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:16
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:23
 msgid ""
 "Export to all kind of formats: PDF, Word/Libreoffice, LaTeX, or even HTML "
 "slideshows"
 msgstr ""
 "Her biçimde dışarıya aktarın: PDF, Word/Libreoffice, LaTeX ve hatta HTML "
 "slayt gösterileri"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:41
-msgid "Manuel G., Wolf V."
-msgstr "Manuel G., Wolf V."
 
 #: data/ui/About.ui.in:9
 msgid "Copyright (C) 2022, Manuel G., Wolf V."
@@ -427,7 +423,7 @@ msgstr "Apostrophe’un kullanacağı markdown türü"
 msgid "Markdown Flavor Documentation"
 msgstr "Markdown Çeşidi Belgeleri"
 
-#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_handler.py:180
+#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_window.py:30
 msgid "Preview"
 msgstr "Ön İzleme"
 
@@ -637,8 +633,6 @@ msgid "Show Statistics"
 msgstr "İstatistikleri Göster"
 
 #: data/ui/Statsbar.ui:15
-#| msgid "{:n} Word"
-#| msgid_plural "{:n} Words"
 msgid "0 Words"
 msgstr "0 Sözcük"
 
@@ -947,9 +941,12 @@ msgstr ""
 "\n"
 "kod\n"
 
-#: apostrophe/text_view.py:169 apostrophe/text_view.py:171
+#: apostrophe/text_view.py:161 apostrophe/text_view.py:163
 msgid "web page"
 msgstr "web sayfası"
+
+#~ msgid "Manuel G., Wolf V."
+#~ msgstr "Manuel G., Wolf V."
 
 #~ msgid "Autohide headerbar"
 #~ msgstr "Başlık çubuğunu kendiliğinden gizle"
