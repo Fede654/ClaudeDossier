@@ -498,6 +498,7 @@ class MainWindow(Adw.ApplicationWindow):
         markdown_filter = Gtk.FileFilter.new()
         markdown_filter.add_mime_type('text/markdown')
         markdown_filter.add_mime_type('text/x-markdown')
+        markdown_filter.add_suffix('md')
         markdown_filter.set_name(_('Markdown Files'))
 
         plaintext_filter = Gtk.FileFilter.new()
