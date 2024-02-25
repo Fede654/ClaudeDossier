@@ -113,6 +113,8 @@ class StatsHandler:
                     start,
                     end,
                     False))
+        else:
+            self.update_default_stat()
 
     def get_text_for_stat(self, stat):
         if stat == self.CHARACTERS:
