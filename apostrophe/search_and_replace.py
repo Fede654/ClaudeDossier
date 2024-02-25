@@ -140,7 +140,7 @@ class ApostropheSearchBar(Adw.Bin):
 
     @Gtk.Template.Callback()
     def hide(self, *arg, **kwargs):
-        self.set_search_mode(False)
+        self.search_mode_enabled = False
 
     @Gtk.Template.Callback()
     def replace_clicked(self, _widget, _data=None):
