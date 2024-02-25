@@ -596,7 +596,7 @@ class MainWindow(Adw.ApplicationWindow):
 
         if self.did_change:
             dialog = Adw.MessageDialog.new(self,
-                                           _("Save changes?"),
+                                           _("Save Changes?"),
                                            _("“%s” contains unsaved changes. " +
                                              "If you don’t save, " +
                                              "all your changes will be " +
