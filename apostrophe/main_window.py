@@ -540,7 +540,7 @@ class MainWindow(Adw.ApplicationWindow):
         self.discard_infobar.set_revealed(False)
         self.load_file(self.current.gfile)
 
-    def _set_file_monitor(self):
+    def _set_file_monitor(self, *args, **kwargs):
         if self.current.gfile:
             self.file_monitor = self.current.gfile.monitor_file(Gio.FileMonitorFlags.NONE, None)
             self.file_monitor.connect("changed", self._on_file_changed)
