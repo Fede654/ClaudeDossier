@@ -4,16 +4,16 @@
 #
 # Çağatay Yiğit Şahin <cyigitsahin@outlook.com>
 # Bünyamin Kırmızı <bunyamin.kirmizi@outlook.com>, 2022.
-# Emin Tufan Çetin <etcetin@gmail.com>, 2022.
 # Sabri Ünal <libreajans@gmail.com>, 2022, 2023.
+# Emin Tufan Çetin <etcetin@gmail.com>, 2022, 2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2024-01-25 18:03+0000\n"
-"PO-Revision-Date: 2024-02-18 04:51+0300\n"
-"Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
+"POT-Creation-Date: 2024-03-03 20:09+0000\n"
+"PO-Revision-Date: 2024-03-03 08:00+0300\n"
+"Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Türkçe <takim@gnome.org.tr>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
@@ -157,27 +157,27 @@ msgstr "Araç çubuğunun gösterilme durumu."
 msgid "Edit Markdown in style"
 msgstr "Markdown’ı şıkça düzenle"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:15
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:14
 msgid "Focus on your writing with a clean, distraction-free markdown editor."
 msgstr "Temiz, ilgi dağıtmayan markdown düzenleyiciyle yazınıza odaklanın."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:16
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:15
 msgid "Features:"
 msgstr "Özellikler:"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:18
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:17
 msgid "An UI tailored to comfortable writing"
 msgstr "Rahat yazmaya uygun kullanıcı arayüzü"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:19
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:18
 msgid "A distraction-free mode"
 msgstr "İlgi dağıtmayan kip"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:20
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:19
 msgid "Dark, light and sepia themes"
 msgstr "Karanlık, aydınlık ve sepya temalar"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:21
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:20
 msgid ""
 "Everything you expect from a text editor, such as spellchecking or document "
 "statistics"
@@ -185,11 +185,11 @@ msgstr ""
 "Yazım denetimi veya belge istatistikleri gibi bir metin düzenleyiciden "
 "beklediğiniz her şey"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:22
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:21
 msgid "Live preview of what you write"
 msgstr "Yazdıklarınızın canlı ön izlemesi"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:23
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:22
 msgid ""
 "Export to all kind of formats: PDF, Word/Libreoffice, LaTeX, or even HTML "
 "slideshows"
@@ -235,8 +235,8 @@ msgstr "_Kapat"
 
 #: data/ui/Export.ui:33 apostrophe/export_dialog.py:131
 #: apostrophe/export_dialog.py:342 apostrophe/export_dialog.py:347
-#: apostrophe/main_window.py:439 apostrophe/main_window.py:512
-#: apostrophe/main_window.py:604
+#: apostrophe/main_window.py:439 apostrophe/main_window.py:513
+#: apostrophe/main_window.py:605
 msgid "Cancel"
 msgstr "İptal"
 
@@ -628,11 +628,11 @@ msgctxt "shortcut window"
 msgid "Select All Text"
 msgstr "Tüm Metni Seç"
 
-#: data/ui/Statsbar.ui:14
+#: data/ui/Statsbar.ui:21 data/ui/Statsbar.ui:40
 msgid "Show Statistics"
 msgstr "İstatistikleri Göster"
 
-#: data/ui/Statsbar.ui:15
+#: data/ui/Statsbar.ui:22
 msgid "0 Words"
 msgstr "0 Sözcük"
 
@@ -781,31 +781,31 @@ msgstr "Daha çoğunu söyle"
 msgid "Save your File"
 msgstr "Dosyanızı kaydedin"
 
-#: apostrophe/main_window.py:438 apostrophe/main_window.py:606
+#: apostrophe/main_window.py:438 apostrophe/main_window.py:607
 msgid "Save"
 msgstr "Kaydet"
 
-#: apostrophe/main_window.py:501
+#: apostrophe/main_window.py:502
 msgid "Markdown Files"
 msgstr "Markdown Dosyaları"
 
-#: apostrophe/main_window.py:505
+#: apostrophe/main_window.py:506
 msgid "Plain Text Files"
 msgstr "Düz Metin Dosyaları"
 
-#: apostrophe/main_window.py:508
+#: apostrophe/main_window.py:509
 msgid "Open a .md file"
 msgstr "Bir .md dosyası aç"
 
-#: apostrophe/main_window.py:511
+#: apostrophe/main_window.py:512
 msgid "Open"
 msgstr "Aç"
 
-#: apostrophe/main_window.py:598
-msgid "Save changes?"
-msgstr "Değişiklikler kaydedilsin mi?"
-
 #: apostrophe/main_window.py:599
+msgid "Save Changes?"
+msgstr "Değişiklikler Kaydedilsin Mi?"
+
+#: apostrophe/main_window.py:600
 #, python-format
 msgid ""
 "“%s” contains unsaved changes. If you don’t save, all your changes will be "
@@ -814,11 +814,11 @@ msgstr ""
 "“%s” kaydedilmemiş değişiklikler içeriyor. Kaydetmezseniz, tüm "
 "değişiklikleriniz tümüyle yitecek."
 
-#: apostrophe/main_window.py:605
+#: apostrophe/main_window.py:606
 msgid "Discard"
 msgstr "_Gözden Çıkar"
 
-#: apostrophe/main_window.py:762 apostrophe/main_window.py:786
+#: apostrophe/main_window.py:763 apostrophe/main_window.py:787
 msgid "New File"
 msgstr "Yeni Dosya"
 
@@ -838,47 +838,47 @@ msgstr "Yarı Yükseklik"
 msgid "Windowed"
 msgstr "Pencereli"
 
-#: apostrophe/stats_handler.py:98
+#: apostrophe/stats_handler.py:122
 msgid "{:n} of {:n} Characters"
 msgstr "{:n} / {:n} Karakter"
 
-#: apostrophe/stats_handler.py:100
+#: apostrophe/stats_handler.py:124
 msgid "{:n} Character"
 msgid_plural "{:n} Characters"
 msgstr[0] "{:n} Karakter"
 
-#: apostrophe/stats_handler.py:103
+#: apostrophe/stats_handler.py:127
 msgid "{:n} of {:n} Words"
 msgstr "{:n} / {:n} Sözcük"
 
-#: apostrophe/stats_handler.py:105
+#: apostrophe/stats_handler.py:129
 msgid "{:n} Word"
 msgid_plural "{:n} Words"
 msgstr[0] "{:n} Sözcük"
 
-#: apostrophe/stats_handler.py:108
+#: apostrophe/stats_handler.py:132
 msgid "{:n} of {:n} Sentences"
 msgstr "{:n} / {:n} Tümce"
 
-#: apostrophe/stats_handler.py:110
+#: apostrophe/stats_handler.py:134
 msgid "{:n} Sentence"
 msgid_plural "{:n} Sentences"
 msgstr[0] "{:n} Tümce"
 
-#: apostrophe/stats_handler.py:113
+#: apostrophe/stats_handler.py:137
 msgid "{:n} of {:n} Paragraphs"
 msgstr "{:n} / {:n} Paragraf"
 
-#: apostrophe/stats_handler.py:115
+#: apostrophe/stats_handler.py:139
 msgid "{:n} Paragraph"
 msgid_plural "{:n} Paragraphs"
 msgstr[0] "{:n} Paragraf"
 
-#: apostrophe/stats_handler.py:118
+#: apostrophe/stats_handler.py:142
 msgid "{:d}:{:02d}:{:02d} of {:d}:{:02d}:{:02d} Read Time"
 msgstr "{:d}:{:02d}:{:02d} / {:d}:{:02d}:{:02d} Okuma Süresi"
 
-#: apostrophe/stats_handler.py:120
+#: apostrophe/stats_handler.py:144
 msgid "{:d}:{:02d}:{:02d} Read Time"
 msgstr "{:d}:{:02d}:{:02d} Okuma Süresi"
 
