@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: apostrophe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2024-01-23 17:46+0000\n"
-"PO-Revision-Date: 2024-01-23 22:47+0200\n"
+"POT-Creation-Date: 2024-03-03 20:09+0000\n"
+"PO-Revision-Date: 2024-03-03 22:33+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Generator: Lokalize 23.04.1\n"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:3
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:5
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:4
 msgid "Apostrophe"
 msgstr "Апостроф"
 
@@ -155,33 +155,33 @@ msgstr "Панель інструментів"
 msgid "Whether the toolbar is shown or not."
 msgstr "Визначає, чи буде показано панель інструментів."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:6
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:5
 msgid "Edit Markdown in style"
 msgstr "Редагувати Markdown у стилі"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:8
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:14
 msgid "Focus on your writing with a clean, distraction-free markdown editor."
 msgstr ""
 "Зосередьтеся на написанні тексту, скориставшись охайним ненав'язливим "
 "редактором markdown."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:9
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:15
 msgid "Features:"
 msgstr "Можливості:"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:11
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:17
 msgid "An UI tailored to comfortable writing"
 msgstr "Інтерфейс, який пристосовано до комфортного написання текстів"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:12
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:18
 msgid "A distraction-free mode"
 msgstr "Режим зосередженості"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:13
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:19
 msgid "Dark, light and sepia themes"
 msgstr "Темна, світла теми та тема у кольорах сепії"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:14
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:20
 msgid ""
 "Everything you expect from a text editor, such as spellchecking or document "
 "statistics"
@@ -189,21 +189,17 @@ msgstr ""
 "Усе, що ви могли очікувати від текстового редактора, зокрема перевірка "
 "правопису та показ статистики документа"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:15
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:21
 msgid "Live preview of what you write"
 msgstr "Інтерактивний перегляд результатів написання тексту"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:16
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:22
 msgid ""
 "Export to all kind of formats: PDF, Word/Libreoffice, LaTeX, or even HTML "
 "slideshows"
 msgstr ""
 "Експорт до усіх типів форматів: PDF, Word/Libreoffice, LaTeX, або навіть "
 "показів слайдів HTML"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:41
-msgid "Manuel G., Wolf V."
-msgstr "Manuel G., Wolf V."
 
 #: data/ui/About.ui.in:9
 msgid "Copyright (C) 2022, Manuel G., Wolf V."
@@ -239,8 +235,8 @@ msgstr "З_акрити"
 
 #: data/ui/Export.ui:33 apostrophe/export_dialog.py:131
 #: apostrophe/export_dialog.py:342 apostrophe/export_dialog.py:347
-#: apostrophe/main_window.py:439 apostrophe/main_window.py:512
-#: apostrophe/main_window.py:604
+#: apostrophe/main_window.py:439 apostrophe/main_window.py:513
+#: apostrophe/main_window.py:605
 msgid "Cancel"
 msgstr "Скасувати"
 
@@ -283,7 +279,6 @@ msgid "HTML Options"
 msgstr "Параметри HTML"
 
 #: data/ui/Export.ui:207
-#| msgid "Self-contained"
 msgid "Self-Contained"
 msgstr "Ізольовані"
 
@@ -300,7 +295,6 @@ msgid "Use Syntax Highlighting"
 msgstr "Підсвічування синтаксису"
 
 #: data/ui/Export.ui:238
-#| msgid "Highlight style"
 msgid "Highlight Style"
 msgstr "Стиль підсвічування"
 
@@ -309,7 +303,6 @@ msgid "Presentation"
 msgstr "Презентація"
 
 #: data/ui/Export.ui:257
-#| msgid "Incremental bullets"
 msgid "Incremental Bullets"
 msgstr "Нарощувальні позначки"
 
@@ -326,7 +319,6 @@ msgid "_Open"
 msgstr "_Відкрити"
 
 #: data/ui/Headerbar.ui:20
-#| msgid "Open a markdown file"
 msgid "Open a Markdown File"
 msgstr "Відкрити файл markdown"
 
@@ -335,7 +327,6 @@ msgid "_Save"
 msgstr "З_берегти"
 
 #: data/ui/Headerbar.ui:28
-#| msgid "Save the markdown file"
 msgid "Save the Markdown File"
 msgstr "Зберегти файл Markdown"
 
@@ -392,17 +383,14 @@ msgid "_Copy HTML"
 msgstr "_Копіювати HTML"
 
 #: data/ui/Preferences.ui:15 data/ui/Preferences.ui:16
-#| msgid "Check spelling while typing"
 msgid "Check Spelling While Typing"
 msgstr "Перевіряти правопису під час введення"
 
 #: data/ui/Preferences.ui:28
-#| msgid "Autohide Headerbar"
 msgid "Auto-Hide Header Bar"
 msgstr "Автоматично ховати панель заголовка"
 
 #: data/ui/Preferences.ui:29
-#| msgid "Autohide header and statusbars while typing"
 msgid "Auto-hide header and status bars while typing"
 msgstr "Автоматично ховати смужки заголовка і стану під час введення"
 
@@ -416,7 +404,6 @@ msgstr ""
 "Зменшити ширину полів і збільшити розмір області тексту, якщо це можливо"
 
 #: data/ui/Preferences.ui:56
-#| msgid "Restore session"
 msgid "Restore Session"
 msgstr "Відновити сеанс"
 
@@ -425,7 +412,6 @@ msgid "Return to your previous session when Apostrophe is started"
 msgstr "Повертатися до попереднього сеансу після запуску «Апострофа»"
 
 #: data/ui/Preferences.ui:70
-#| msgid "Input format"
 msgid "Input Format"
 msgstr "Вхідний формат"
 
@@ -434,11 +420,10 @@ msgid "Flavor of markdown Apostrophe will use"
 msgstr "Тип мови розмітки, яку використовуватиме «Апостроф»"
 
 #: data/ui/Preferences.ui:80
-#| msgid "Markdown flavor documentation"
 msgid "Markdown Flavor Documentation"
 msgstr "Документація до варіанта Markdown"
 
-#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_handler.py:180
+#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_window.py:30
 msgid "Preview"
 msgstr "Перегляд"
 
@@ -504,35 +489,26 @@ msgid "Save"
 msgstr "Зберегти"
 
 #: data/ui/Shortcuts.ui:32
-#| msgctxt "shortcut window"
-#| msgid "Save as"
 msgctxt "shortcut window"
 msgid "Save As"
 msgstr "Зберегти як"
 
 #: data/ui/Shortcuts.ui:38
-#| msgctxt "shortcut window"
-#| msgid "Close document"
 msgctxt "shortcut window"
 msgid "Close Document"
 msgstr "Закрити документ"
 
 #: data/ui/Shortcuts.ui:44
-#| msgctxt "shortcut window"
-#| msgid "Show preferences"
 msgctxt "shortcut window"
 msgid "Show Preferences"
 msgstr "Показати налаштування"
 
 #: data/ui/Shortcuts.ui:50
-#| msgid "_Keyboard Shortcuts"
 msgctxt "shortcut window"
 msgid "Keyboard Shortcuts"
 msgstr "Клавіатурні скорочення"
 
 #: data/ui/Shortcuts.ui:56
-#| msgctxt "shortcut window"
-#| msgid "Quit application"
 msgctxt "shortcut window"
 msgid "Quit Application"
 msgstr "Вийти з програми"
@@ -543,13 +519,11 @@ msgid "Modes"
 msgstr "Режими"
 
 #: data/ui/Shortcuts.ui:67
-#| msgid "_Focus Mode"
 msgctxt "shortcut window"
 msgid "Focus Mode"
 msgstr "Режим фокусування"
 
 #: data/ui/Shortcuts.ui:73
-#| msgid "Hemingway Mode"
 msgctxt "shortcut window"
 msgid "Hemingway Mode"
 msgstr "Режим Гемінґвея"
@@ -570,7 +544,6 @@ msgid "Find"
 msgstr "Знайти"
 
 #: data/ui/Shortcuts.ui:103
-#| msgid "Find and _Replace"
 msgctxt "shortcut window"
 msgid "Find and Replace"
 msgstr "Знайти і замінити"
@@ -591,8 +564,6 @@ msgid "Header"
 msgstr "Верхній колонтитул"
 
 #: data/ui/Shortcuts.ui:126
-#| msgctxt "shortcut window"
-#| msgid "List item"
 msgctxt "shortcut window"
 msgid "List Item"
 msgstr "Елемент списку"
@@ -613,8 +584,6 @@ msgid "Strikeout"
 msgstr "Перекреслений"
 
 #: data/ui/Shortcuts.ui:153
-#| msgctxt "shortcut window"
-#| msgid "Copy and paste"
 msgctxt "shortcut window"
 msgid "Copy and Paste"
 msgstr "Перенесення тексту"
@@ -635,22 +604,16 @@ msgid "Paste"
 msgstr "Вставити"
 
 #: data/ui/Shortcuts.ui:176
-#| msgctxt "shortcut window"
-#| msgid "Undo and redo"
 msgctxt "shortcut window"
 msgid "Undo and Redo"
 msgstr "Керування змінами"
 
 #: data/ui/Shortcuts.ui:179
-#| msgctxt "shortcut window"
-#| msgid "Undo previous command"
 msgctxt "shortcut window"
 msgid "Undo Previous Command"
 msgstr "Повернути попередню дію"
 
 #: data/ui/Shortcuts.ui:185
-#| msgctxt "shortcut window"
-#| msgid "Redo previous command"
 msgctxt "shortcut window"
 msgid "Redo Previous Command"
 msgstr "Повторити попередню дію"
@@ -661,17 +624,15 @@ msgid "Selection"
 msgstr "Позначення"
 
 #: data/ui/Shortcuts.ui:196
-#| msgctxt "shortcut window"
-#| msgid "Select all text"
 msgctxt "shortcut window"
 msgid "Select All Text"
 msgstr "Позначити увесь текст"
 
-#: data/ui/Statsbar.ui:14
+#: data/ui/Statsbar.ui:21 data/ui/Statsbar.ui:40
 msgid "Show Statistics"
 msgstr "Показати статистику"
 
-#: data/ui/Statsbar.ui:15
+#: data/ui/Statsbar.ui:22
 msgid "0 Words"
 msgstr "0 слів"
 
@@ -694,16 +655,10 @@ msgstr ""
 "або такої команди у терміналі:"
 
 #: data/ui/TexliveWarning.ui:53
-#| msgid "Copy to clipboard"
 msgid "Copy to Clipboard"
 msgstr "Скопіювати до буфера"
 
 #: data/ui/TexliveWarning.ui:87
-#| msgid ""
-#| "Apostrophe needs TeXLive\n"
-#| "in order to export PDF or LaTeX files.\n"
-#| "\n"
-#| "Install it from your distribution repositories"
 msgid ""
 "Apostrophe needs TeXLive\n"
 "in order to export PDF or LaTeX files.\n"
@@ -736,7 +691,6 @@ msgid "File Has Changed on Disk"
 msgstr "Файл змінено на диску"
 
 #: data/ui/Window.ui:91
-#| msgid "The file has been changed by another program."
 msgid "The file has been changed by another program"
 msgstr "Сторонньою програмою було внесено зміни до файла"
 
@@ -825,31 +779,32 @@ msgstr "Докладніше"
 msgid "Save your File"
 msgstr "Зберегти ваш файл"
 
-#: apostrophe/main_window.py:438 apostrophe/main_window.py:606
+#: apostrophe/main_window.py:438 apostrophe/main_window.py:607
 msgid "Save"
 msgstr "Зберегти"
 
-#: apostrophe/main_window.py:501
+#: apostrophe/main_window.py:502
 msgid "Markdown Files"
 msgstr "Файли Markdown"
 
-#: apostrophe/main_window.py:505
+#: apostrophe/main_window.py:506
 msgid "Plain Text Files"
 msgstr "Звичайні текстові файли"
 
-#: apostrophe/main_window.py:508
+#: apostrophe/main_window.py:509
 msgid "Open a .md file"
 msgstr "Відкрити файл .md"
 
-#: apostrophe/main_window.py:511
+#: apostrophe/main_window.py:512
 msgid "Open"
 msgstr "Відкрити"
 
-#: apostrophe/main_window.py:598
-msgid "Save changes?"
+#: apostrophe/main_window.py:599
+#| msgid "Save changes?"
+msgid "Save Changes?"
 msgstr "Зберегти зміни?"
 
-#: apostrophe/main_window.py:599
+#: apostrophe/main_window.py:600
 #, python-format
 msgid ""
 "“%s” contains unsaved changes. If you don’t save, all your changes will be "
@@ -858,11 +813,11 @@ msgstr ""
 "У «%s» є незбережені зміни. Якщо ви їх не збережете, всі зміни будуть "
 "остаточно втрачені."
 
-#: apostrophe/main_window.py:605
+#: apostrophe/main_window.py:606
 msgid "Discard"
 msgstr "Відкинути"
 
-#: apostrophe/main_window.py:762 apostrophe/main_window.py:786
+#: apostrophe/main_window.py:763 apostrophe/main_window.py:787
 msgid "New File"
 msgstr "Новий файл"
 
@@ -882,11 +837,11 @@ msgstr "Пів висоти"
 msgid "Windowed"
 msgstr "У вікні"
 
-#: apostrophe/stats_handler.py:98
+#: apostrophe/stats_handler.py:122
 msgid "{:n} of {:n} Characters"
 msgstr "{:n} з {:n} символів"
 
-#: apostrophe/stats_handler.py:100
+#: apostrophe/stats_handler.py:124
 msgid "{:n} Character"
 msgid_plural "{:n} Characters"
 msgstr[0] "{:n} символ"
@@ -894,11 +849,11 @@ msgstr[1] "{:n} символи"
 msgstr[2] "{:n} символів"
 msgstr[3] "{:n} символ"
 
-#: apostrophe/stats_handler.py:103
+#: apostrophe/stats_handler.py:127
 msgid "{:n} of {:n} Words"
 msgstr "{:n} з {:n} слів"
 
-#: apostrophe/stats_handler.py:105
+#: apostrophe/stats_handler.py:129
 msgid "{:n} Word"
 msgid_plural "{:n} Words"
 msgstr[0] "{:n} слово"
@@ -906,11 +861,11 @@ msgstr[1] "{:n} слова"
 msgstr[2] "{:n} слів"
 msgstr[3] "{:n} слово"
 
-#: apostrophe/stats_handler.py:108
+#: apostrophe/stats_handler.py:132
 msgid "{:n} of {:n} Sentences"
 msgstr "{:n} з {:n} речень"
 
-#: apostrophe/stats_handler.py:110
+#: apostrophe/stats_handler.py:134
 msgid "{:n} Sentence"
 msgid_plural "{:n} Sentences"
 msgstr[0] "{:n} речення"
@@ -918,11 +873,11 @@ msgstr[1] "{:n} речення"
 msgstr[2] "{:n} речень"
 msgstr[3] "{:n} речення"
 
-#: apostrophe/stats_handler.py:113
+#: apostrophe/stats_handler.py:137
 msgid "{:n} of {:n} Paragraphs"
 msgstr "{:n} з {:n} абзаців"
 
-#: apostrophe/stats_handler.py:115
+#: apostrophe/stats_handler.py:139
 msgid "{:n} Paragraph"
 msgid_plural "{:n} Paragraphs"
 msgstr[0] "{:n} абзац"
@@ -930,11 +885,11 @@ msgstr[1] "{:n} абзаци"
 msgstr[2] "{:n} абзаців"
 msgstr[3] "{:n} абзац"
 
-#: apostrophe/stats_handler.py:118
+#: apostrophe/stats_handler.py:142
 msgid "{:d}:{:02d}:{:02d} of {:d}:{:02d}:{:02d} Read Time"
 msgstr "{:d}:{:02d}:{:02d} з часу читання у {:d}:{:02d}:{:02d}"
 
-#: apostrophe/stats_handler.py:120
+#: apostrophe/stats_handler.py:144
 msgid "{:d}:{:02d}:{:02d} Read Time"
 msgstr "{:d}:{:02d}:{:02d} часу читання"
 
@@ -997,9 +952,12 @@ msgstr ""
 "\n"
 "код\n"
 
-#: apostrophe/text_view.py:169 apostrophe/text_view.py:171
+#: apostrophe/text_view.py:161 apostrophe/text_view.py:163
 msgid "web page"
 msgstr "вебсторінка"
+
+#~ msgid "Manuel G., Wolf V."
+#~ msgstr "Manuel G., Wolf V."
 
 #~ msgid "Autohide headerbar"
 #~ msgstr "Автоматично ховати панель заголовка"
