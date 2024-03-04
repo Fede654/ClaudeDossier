@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apostrophe\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2024-01-25 18:03+0000\n"
-"PO-Revision-Date: 2024-02-16 20:46+0100\n"
+"POT-Creation-Date: 2024-03-03 20:09+0000\n"
+"PO-Revision-Date: 2024-03-04 20:51+0100\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <openscope at fsf dot hu>\n"
 "Language: hu\n"
@@ -155,28 +155,28 @@ msgstr "Megjelenjen-e az eszköztár vagy sem."
 msgid "Edit Markdown in style"
 msgstr "Markdown szerkesztése a stílusban"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:15
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:14
 msgid "Focus on your writing with a clean, distraction-free markdown editor."
 msgstr ""
 "Koncentráljon az írásra egy letisztult, zavartalan Markdown-szerkesztővel."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:16
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:15
 msgid "Features:"
 msgstr "Funkciók:"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:18
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:17
 msgid "An UI tailored to comfortable writing"
 msgstr "Kényelmes íráshoz szabott felhasználói felület"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:19
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:18
 msgid "A distraction-free mode"
 msgstr "Zavaró elemektől mentes mód"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:20
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:19
 msgid "Dark, light and sepia themes"
 msgstr "Sötét, világos és szépia témák"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:21
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:20
 msgid ""
 "Everything you expect from a text editor, such as spellchecking or document "
 "statistics"
@@ -184,11 +184,11 @@ msgstr ""
 "Minden, amit elvárhat egy szövegszerkesztőtől, mint például helyesírás-"
 "ellenőrzés vagy dokumentumstatisztika"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:22
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:21
 msgid "Live preview of what you write"
 msgstr "Élő előnézet ahhoz, amit ír"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:23
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:22
 msgid ""
 "Export to all kind of formats: PDF, Word/Libreoffice, LaTeX, or even HTML "
 "slideshows"
@@ -232,8 +232,8 @@ msgstr "_Bezárás"
 
 #: data/ui/Export.ui:33 apostrophe/export_dialog.py:131
 #: apostrophe/export_dialog.py:342 apostrophe/export_dialog.py:347
-#: apostrophe/main_window.py:439 apostrophe/main_window.py:512
-#: apostrophe/main_window.py:604
+#: apostrophe/main_window.py:439 apostrophe/main_window.py:513
+#: apostrophe/main_window.py:605
 msgid "Cancel"
 msgstr "Mégse"
 
@@ -276,7 +276,6 @@ msgid "HTML Options"
 msgstr "HTML beállításai"
 
 #: data/ui/Export.ui:207
-#| msgid "Self-contained"
 msgid "Self-Contained"
 msgstr "Önálló"
 
@@ -293,7 +292,6 @@ msgid "Use Syntax Highlighting"
 msgstr "Szintaxis-kiemelés használata"
 
 #: data/ui/Export.ui:238
-#| msgid "Highlight style"
 msgid "Highlight Style"
 msgstr "Kiemelés stílusa"
 
@@ -302,7 +300,6 @@ msgid "Presentation"
 msgstr "Bemutató"
 
 #: data/ui/Export.ui:257
-#| msgid "Incremental bullets"
 msgid "Incremental Bullets"
 msgstr "Növekvő listaelemek"
 
@@ -319,7 +316,6 @@ msgid "_Open"
 msgstr "_Megnyitás"
 
 #: data/ui/Headerbar.ui:20
-#| msgid "Open a markdown file"
 msgid "Open a Markdown File"
 msgstr "Egy Markdown-fájl megnyitása"
 
@@ -328,7 +324,6 @@ msgid "_Save"
 msgstr "_Mentés"
 
 #: data/ui/Headerbar.ui:28
-#| msgid "Save the markdown file"
 msgid "Save the Markdown File"
 msgstr "A Markdown-fájl mentése"
 
@@ -385,17 +380,14 @@ msgid "_Copy HTML"
 msgstr "HTML _másolása"
 
 #: data/ui/Preferences.ui:15 data/ui/Preferences.ui:16
-#| msgid "Check spelling while typing"
 msgid "Check Spelling While Typing"
 msgstr "Helyesírás-ellenőrzés gépelés közben"
 
 #: data/ui/Preferences.ui:28
-#| msgid "Autohide Headerbar"
 msgid "Auto-Hide Header Bar"
 msgstr "Fejlécsor automatikus elrejtése"
 
 #: data/ui/Preferences.ui:29
-#| msgid "Autohide header and statusbars while typing"
 msgid "Auto-hide header and status bars while typing"
 msgstr "Fejléc és állapotsorok automatikus elrejtése gépelés közben"
 
@@ -410,7 +402,6 @@ msgstr ""
 "lehetséges"
 
 #: data/ui/Preferences.ui:56
-#| msgid "Restore session"
 msgid "Restore Session"
 msgstr "Munkamenet helyreállítása"
 
@@ -419,7 +410,6 @@ msgid "Return to your previous session when Apostrophe is started"
 msgstr "Visszatérés az előző munkamenethez az Aposztróf indításakor"
 
 #: data/ui/Preferences.ui:70
-#| msgid "Input format"
 msgid "Input Format"
 msgstr "Beviteli formátum"
 
@@ -428,7 +418,6 @@ msgid "Flavor of markdown Apostrophe will use"
 msgstr "Az Aposztróf által használandó Markdown-változat"
 
 #: data/ui/Preferences.ui:80
-#| msgid "Markdown flavor documentation"
 msgid "Markdown Flavor Documentation"
 msgstr "Markdown-változat dokumentációja"
 
@@ -498,35 +487,26 @@ msgid "Save"
 msgstr "Mentés"
 
 #: data/ui/Shortcuts.ui:32
-#| msgctxt "shortcut window"
-#| msgid "Save as"
 msgctxt "shortcut window"
 msgid "Save As"
 msgstr "Mentés másként"
 
 #: data/ui/Shortcuts.ui:38
-#| msgctxt "shortcut window"
-#| msgid "Close document"
 msgctxt "shortcut window"
 msgid "Close Document"
 msgstr "Dokumentum bezárása"
 
 #: data/ui/Shortcuts.ui:44
-#| msgctxt "shortcut window"
-#| msgid "Show preferences"
 msgctxt "shortcut window"
 msgid "Show Preferences"
 msgstr "Beállítások megjelenítése"
 
 #: data/ui/Shortcuts.ui:50
-#| msgid "_Keyboard Shortcuts"
 msgctxt "shortcut window"
 msgid "Keyboard Shortcuts"
 msgstr "Gyorsbillentyűk"
 
 #: data/ui/Shortcuts.ui:56
-#| msgctxt "shortcut window"
-#| msgid "Quit application"
 msgctxt "shortcut window"
 msgid "Quit Application"
 msgstr "Kilépés az alkalmazásból"
@@ -537,13 +517,11 @@ msgid "Modes"
 msgstr "Módok"
 
 #: data/ui/Shortcuts.ui:67
-#| msgid "_Focus Mode"
 msgctxt "shortcut window"
 msgid "Focus Mode"
 msgstr "Fókusz mód"
 
 #: data/ui/Shortcuts.ui:73
-#| msgid "Hemingway Mode"
 msgctxt "shortcut window"
 msgid "Hemingway Mode"
 msgstr "Hemingway mód"
@@ -564,7 +542,6 @@ msgid "Find"
 msgstr "Keresés"
 
 #: data/ui/Shortcuts.ui:103
-#| msgid "Find and _Replace"
 msgctxt "shortcut window"
 msgid "Find and Replace"
 msgstr "Keresés és csere"
@@ -585,8 +562,6 @@ msgid "Header"
 msgstr "Fejléc"
 
 #: data/ui/Shortcuts.ui:126
-#| msgctxt "shortcut window"
-#| msgid "List item"
 msgctxt "shortcut window"
 msgid "List Item"
 msgstr "Listaelem"
@@ -607,8 +582,6 @@ msgid "Strikeout"
 msgstr "Áthúzott"
 
 #: data/ui/Shortcuts.ui:153
-#| msgctxt "shortcut window"
-#| msgid "Copy and paste"
 msgctxt "shortcut window"
 msgid "Copy and Paste"
 msgstr "Másolás és beillesztés"
@@ -629,22 +602,16 @@ msgid "Paste"
 msgstr "Beillesztés"
 
 #: data/ui/Shortcuts.ui:176
-#| msgctxt "shortcut window"
-#| msgid "Undo and redo"
 msgctxt "shortcut window"
 msgid "Undo and Redo"
 msgstr "Visszavonás és ismétlés"
 
 #: data/ui/Shortcuts.ui:179
-#| msgctxt "shortcut window"
-#| msgid "Undo previous command"
 msgctxt "shortcut window"
 msgid "Undo Previous Command"
 msgstr "Előző parancs visszavonása"
 
 #: data/ui/Shortcuts.ui:185
-#| msgctxt "shortcut window"
-#| msgid "Redo previous command"
 msgctxt "shortcut window"
 msgid "Redo Previous Command"
 msgstr "Előző parancs ismétlése"
@@ -655,19 +622,15 @@ msgid "Selection"
 msgstr "Kiválasztás"
 
 #: data/ui/Shortcuts.ui:196
-#| msgctxt "shortcut window"
-#| msgid "Select all text"
 msgctxt "shortcut window"
 msgid "Select All Text"
 msgstr "Összes szöveg kijelölése"
 
-#: data/ui/Statsbar.ui:14
+#: data/ui/Statsbar.ui:21 data/ui/Statsbar.ui:40
 msgid "Show Statistics"
 msgstr "Statisztikák megjelenítése"
 
-#: data/ui/Statsbar.ui:15
-#| msgid "{:n} Word"
-#| msgid_plural "{:n} Words"
+#: data/ui/Statsbar.ui:22
 msgid "0 Words"
 msgstr "0 szó"
 
@@ -690,16 +653,10 @@ msgstr ""
 "vagy a következő parancs futtatásával a terminálból:"
 
 #: data/ui/TexliveWarning.ui:53
-#| msgid "Copy to clipboard"
 msgid "Copy to Clipboard"
 msgstr "Másolás a vágólapra"
 
 #: data/ui/TexliveWarning.ui:87
-#| msgid ""
-#| "Apostrophe needs TeXLive\n"
-#| "in order to export PDF or LaTeX files.\n"
-#| "\n"
-#| "Install it from your distribution repositories"
 msgid ""
 "Apostrophe needs TeXLive\n"
 "in order to export PDF or LaTeX files.\n"
@@ -732,7 +689,6 @@ msgid "File Has Changed on Disk"
 msgstr "A fájl megváltozott a lemezen"
 
 #: data/ui/Window.ui:91
-#| msgid "The file has been changed by another program."
 msgid "The file has been changed by another program"
 msgstr "A fájlt egy másik program megváltoztatta"
 
@@ -821,31 +777,32 @@ msgstr "Mutass többet"
 msgid "Save your File"
 msgstr "Fájl mentése"
 
-#: apostrophe/main_window.py:438 apostrophe/main_window.py:606
+#: apostrophe/main_window.py:438 apostrophe/main_window.py:607
 msgid "Save"
 msgstr "Mentés"
 
-#: apostrophe/main_window.py:501
+#: apostrophe/main_window.py:502
 msgid "Markdown Files"
 msgstr "Markdown-fájlok"
 
-#: apostrophe/main_window.py:505
+#: apostrophe/main_window.py:506
 msgid "Plain Text Files"
 msgstr "Egyszerű szöveges fájlok"
 
-#: apostrophe/main_window.py:508
+#: apostrophe/main_window.py:509
 msgid "Open a .md file"
 msgstr "Egy .md fájl megnyitása"
 
-#: apostrophe/main_window.py:511
+#: apostrophe/main_window.py:512
 msgid "Open"
 msgstr "Megnyitás"
 
-#: apostrophe/main_window.py:598
-msgid "Save changes?"
+#: apostrophe/main_window.py:599
+#| msgid "Save changes?"
+msgid "Save Changes?"
 msgstr "Menti a változtatásokat?"
 
-#: apostrophe/main_window.py:599
+#: apostrophe/main_window.py:600
 #, python-format
 msgid ""
 "“%s” contains unsaved changes. If you don’t save, all your changes will be "
@@ -854,11 +811,11 @@ msgstr ""
 "A(z) „%s” mentetlen változtatásokat tartalmaz. Ha nem menti, akkor minden "
 "változtatás véglegesen elvész."
 
-#: apostrophe/main_window.py:605
+#: apostrophe/main_window.py:606
 msgid "Discard"
 msgstr "Elvetés"
 
-#: apostrophe/main_window.py:762 apostrophe/main_window.py:786
+#: apostrophe/main_window.py:763 apostrophe/main_window.py:787
 msgid "New File"
 msgstr "Új fájl"
 
@@ -878,51 +835,51 @@ msgstr "Félhosszú"
 msgid "Windowed"
 msgstr "Ablak mód"
 
-#: apostrophe/stats_handler.py:98
+#: apostrophe/stats_handler.py:122
 msgid "{:n} of {:n} Characters"
 msgstr "{:n} / {:n} karakter"
 
-#: apostrophe/stats_handler.py:100
+#: apostrophe/stats_handler.py:124
 msgid "{:n} Character"
 msgid_plural "{:n} Characters"
 msgstr[0] "{:n} karakter"
 msgstr[1] "{:n} karakter"
 
-#: apostrophe/stats_handler.py:103
+#: apostrophe/stats_handler.py:127
 msgid "{:n} of {:n} Words"
 msgstr "{:n} / {:n} szó"
 
-#: apostrophe/stats_handler.py:105
+#: apostrophe/stats_handler.py:129
 msgid "{:n} Word"
 msgid_plural "{:n} Words"
 msgstr[0] "{:n} szó"
 msgstr[1] "{:n} szó"
 
-#: apostrophe/stats_handler.py:108
+#: apostrophe/stats_handler.py:132
 msgid "{:n} of {:n} Sentences"
 msgstr "{:n} / {:n} mondat"
 
-#: apostrophe/stats_handler.py:110
+#: apostrophe/stats_handler.py:134
 msgid "{:n} Sentence"
 msgid_plural "{:n} Sentences"
 msgstr[0] "{:n} mondat"
 msgstr[1] "{:n} mondat"
 
-#: apostrophe/stats_handler.py:113
+#: apostrophe/stats_handler.py:137
 msgid "{:n} of {:n} Paragraphs"
 msgstr "{:n} / {:n} bekezdés"
 
-#: apostrophe/stats_handler.py:115
+#: apostrophe/stats_handler.py:139
 msgid "{:n} Paragraph"
 msgid_plural "{:n} Paragraphs"
 msgstr[0] "{:n} bekezdés"
 msgstr[1] "{:n} bekezdés"
 
-#: apostrophe/stats_handler.py:118
+#: apostrophe/stats_handler.py:142
 msgid "{:d}:{:02d}:{:02d} of {:d}:{:02d}:{:02d} Read Time"
 msgstr "{:d}:{:02d}:{:02d} / {:d}:{:02d}:{:02d} olvasási idő"
 
-#: apostrophe/stats_handler.py:120
+#: apostrophe/stats_handler.py:144
 msgid "{:d}:{:02d}:{:02d} Read Time"
 msgstr "{:d}:{:02d}:{:02d} olvasási idő"
 
