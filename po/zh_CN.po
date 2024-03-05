@@ -5,16 +5,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apostrophe\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2024-02-16 19:52+0000\n"
-"PO-Revision-Date: 2024-02-16 19:54-0500\n"
+"POT-Creation-Date: 2024-03-03 20:09+0000\n"
+"PO-Revision-Date: 2024-03-05 16:54+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese - China <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.3\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Gtranslator 45.3\n"
+"Plural-Forms: nplurals=1; plural=0\n"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:3
 #: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:4
@@ -25,8 +25,8 @@ msgstr "Apostrophe"
 #: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:5
 msgid "uberwriter;UberWriter;apostrophe;markdown;editor;text;write;"
 msgstr ""
-"uberwriter;UberWriter;apostrophe;markdown;editor;text;write;编辑器;文本;文"
-"字;编写;写作;"
+"uberwriter;UberWriter;apostrophe;markdown;editor;text;write;编辑器;文本;文字;"
+"编写;写作;"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:6
 msgid "Apostrophe, an elegant, distraction-free markdown editor"
@@ -187,7 +187,7 @@ msgstr "导出为所有格式类型：PDF、Word/Libreoffice、LaTeX 或 HTML �
 
 #: data/ui/About.ui.in:9
 msgid "Copyright (C) 2022, Manuel G., Wolf V."
-msgstr "Copyright (C) 2022, Manuel G., Wolf V."
+msgstr "版权所有 (C) 2022, Manuel G., Wolf V."
 
 #. Put your name in here, like this:
 #. Manuel Genovés <manuel.genoves@gmail.com>
@@ -217,8 +217,8 @@ msgstr "关闭(_C)"
 
 #: data/ui/Export.ui:33 apostrophe/export_dialog.py:131
 #: apostrophe/export_dialog.py:342 apostrophe/export_dialog.py:347
-#: apostrophe/main_window.py:439 apostrophe/main_window.py:512
-#: apostrophe/main_window.py:604
+#: apostrophe/main_window.py:439 apostrophe/main_window.py:513
+#: apostrophe/main_window.py:605
 msgid "Cancel"
 msgstr "取消"
 
@@ -758,42 +758,42 @@ msgstr "了解更多"
 msgid "Save your File"
 msgstr "保存您的文件"
 
-#: apostrophe/main_window.py:438 apostrophe/main_window.py:606
+#: apostrophe/main_window.py:438 apostrophe/main_window.py:607
 msgid "Save"
 msgstr "保存"
 
-#: apostrophe/main_window.py:501
+#: apostrophe/main_window.py:502
 msgid "Markdown Files"
 msgstr "Markdown 文件"
 
-#: apostrophe/main_window.py:505
+#: apostrophe/main_window.py:506
 msgid "Plain Text Files"
 msgstr "纯文本文件"
 
-#: apostrophe/main_window.py:508
+#: apostrophe/main_window.py:509
 msgid "Open a .md file"
 msgstr "打开 .md 文件"
 
-#: apostrophe/main_window.py:511
+#: apostrophe/main_window.py:512
 msgid "Open"
 msgstr "打开"
 
-#: apostrophe/main_window.py:598
-msgid "Save changes?"
+#: apostrophe/main_window.py:599
+msgid "Save Changes?"
 msgstr "保存更改吗？"
 
-#: apostrophe/main_window.py:599
+#: apostrophe/main_window.py:600
 #, python-format
 msgid ""
 "“%s” contains unsaved changes. If you don’t save, all your changes will be "
 "permanently lost."
 msgstr "“%s”包含未保存更改。如果您不保存，所有更改将会永久丢失。"
 
-#: apostrophe/main_window.py:605
+#: apostrophe/main_window.py:606
 msgid "Discard"
 msgstr "丢弃"
 
-#: apostrophe/main_window.py:762 apostrophe/main_window.py:786
+#: apostrophe/main_window.py:763 apostrophe/main_window.py:787
 msgid "New File"
 msgstr "新建文件"
 
@@ -813,47 +813,47 @@ msgstr "纵向显示"
 msgid "Windowed"
 msgstr "分窗口显示"
 
-#: apostrophe/stats_handler.py:120
+#: apostrophe/stats_handler.py:122
 msgid "{:n} of {:n} Characters"
 msgstr "{:n} 共 {:n} 个字符"
 
-#: apostrophe/stats_handler.py:122
+#: apostrophe/stats_handler.py:124
 msgid "{:n} Character"
 msgid_plural "{:n} Characters"
 msgstr[0] "{:n} 个字符"
 
-#: apostrophe/stats_handler.py:125
+#: apostrophe/stats_handler.py:127
 msgid "{:n} of {:n} Words"
 msgstr "{:n} 共 {:n} 个词语"
 
-#: apostrophe/stats_handler.py:127
+#: apostrophe/stats_handler.py:129
 msgid "{:n} Word"
 msgid_plural "{:n} Words"
 msgstr[0] "{:n} 个词语"
 
-#: apostrophe/stats_handler.py:130
+#: apostrophe/stats_handler.py:132
 msgid "{:n} of {:n} Sentences"
 msgstr "{:n} 共 {:n} 个句子"
 
-#: apostrophe/stats_handler.py:132
+#: apostrophe/stats_handler.py:134
 msgid "{:n} Sentence"
 msgid_plural "{:n} Sentences"
 msgstr[0] "{:n} 个句子"
 
-#: apostrophe/stats_handler.py:135
+#: apostrophe/stats_handler.py:137
 msgid "{:n} of {:n} Paragraphs"
 msgstr "{:n} 共 {:n} 个段落"
 
-#: apostrophe/stats_handler.py:137
+#: apostrophe/stats_handler.py:139
 msgid "{:n} Paragraph"
 msgid_plural "{:n} Paragraphs"
 msgstr[0] "{:n} 个段落"
 
-#: apostrophe/stats_handler.py:140
+#: apostrophe/stats_handler.py:142
 msgid "{:d}:{:02d}:{:02d} of {:d}:{:02d}:{:02d} Read Time"
 msgstr "{:d}:{:02d}:{:02d} 共 {:d}:{:02d}:{:02d} 阅读时间"
 
-#: apostrophe/stats_handler.py:142
+#: apostrophe/stats_handler.py:144
 msgid "{:d}:{:02d}:{:02d} Read Time"
 msgstr "{:d}:{:02d}:{:02d} 阅读时间"
 
