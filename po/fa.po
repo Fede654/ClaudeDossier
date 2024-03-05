@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: apostrophe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2024-01-25 18:03+0000\n"
-"PO-Revision-Date: 2024-01-26 08:19+0330\n"
+"POT-Creation-Date: 2024-03-03 20:09+0000\n"
+"PO-Revision-Date: 2024-03-05 17:08+0330\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
 "Language: fa\n"
@@ -152,38 +152,38 @@ msgstr "این که نوار ابزار نشان داده شود یا نه."
 msgid "Edit Markdown in style"
 msgstr "ویرایش مارک‌دون در سبک"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:15
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:14
 msgid "Focus on your writing with a clean, distraction-free markdown editor."
 msgstr "با ویرایشگر مارک‌دونی تمیز و بدون حواس‌پرتی، روی نوشتن‌تان تمرکز کنید."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:16
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:15
 msgid "Features:"
 msgstr "ویژگی‌ها:"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:18
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:17
 msgid "An UI tailored to comfortable writing"
 msgstr "رابط کاربری‌ای طراحی شده برای نوشتن راحت"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:19
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:18
 msgid "A distraction-free mode"
 msgstr "حالتی بدون حواس‌پرتی"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:20
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:19
 msgid "Dark, light and sepia themes"
 msgstr "پوسته‌های تاریک، روشن و سوبیایی"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:21
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:20
 msgid ""
 "Everything you expect from a text editor, such as spellchecking or document "
 "statistics"
 msgstr ""
 "هر آن‌چه از یک ویرایشگر متن انتظار دارید، همچون بررسی املایی یا آمارهای سند"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:22
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:21
 msgid "Live preview of what you write"
 msgstr "پیش‌نمایش زنده از آن‌چه می‌نویسید"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:23
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:22
 msgid ""
 "Export to all kind of formats: PDF, Word/Libreoffice, LaTeX, or even HTML "
 "slideshows"
@@ -226,8 +226,8 @@ msgstr "_بستن"
 
 #: data/ui/Export.ui:33 apostrophe/export_dialog.py:131
 #: apostrophe/export_dialog.py:342 apostrophe/export_dialog.py:347
-#: apostrophe/main_window.py:439 apostrophe/main_window.py:512
-#: apostrophe/main_window.py:604
+#: apostrophe/main_window.py:439 apostrophe/main_window.py:513
+#: apostrophe/main_window.py:605
 msgid "Cancel"
 msgstr "لغو"
 
@@ -615,11 +615,11 @@ msgctxt "shortcut window"
 msgid "Select All Text"
 msgstr "گزینش تمام متن"
 
-#: data/ui/Statsbar.ui:14
+#: data/ui/Statsbar.ui:21 data/ui/Statsbar.ui:40
 msgid "Show Statistics"
 msgstr "نمایش آمار"
 
-#: data/ui/Statsbar.ui:15
+#: data/ui/Statsbar.ui:22
 msgid "0 Words"
 msgstr "۰ واژه"
 
@@ -766,31 +766,31 @@ msgstr "بیش‌تر بگو"
 msgid "Save your File"
 msgstr "ذخیرهٔ پرونده‌تان"
 
-#: apostrophe/main_window.py:438 apostrophe/main_window.py:606
+#: apostrophe/main_window.py:438 apostrophe/main_window.py:607
 msgid "Save"
 msgstr "ذخیره"
 
-#: apostrophe/main_window.py:501
+#: apostrophe/main_window.py:502
 msgid "Markdown Files"
 msgstr "پرونده‌های مارک‌دون"
 
-#: apostrophe/main_window.py:505
+#: apostrophe/main_window.py:506
 msgid "Plain Text Files"
 msgstr "پرونده‌های متنی ساده"
 
-#: apostrophe/main_window.py:508
+#: apostrophe/main_window.py:509
 msgid "Open a .md file"
 msgstr "گشودن یک پروندهٔ ‎.md"
 
-#: apostrophe/main_window.py:511
+#: apostrophe/main_window.py:512
 msgid "Open"
 msgstr "گشودن"
 
-#: apostrophe/main_window.py:598
-msgid "Save changes?"
+#: apostrophe/main_window.py:599
+msgid "Save Changes?"
 msgstr "ذخیرهٔ تغییرات؟"
 
-#: apostrophe/main_window.py:599
+#: apostrophe/main_window.py:600
 #, python-format
 msgid ""
 "“%s” contains unsaved changes. If you don’t save, all your changes will be "
@@ -799,11 +799,11 @@ msgstr ""
 "«%s» تغییراتی ذخیره نشده دارد. اگر ذخیره نکنید، تمامی تغییراتتان برای همیشه از "
 "دست خواهند رفت."
 
-#: apostrophe/main_window.py:605
+#: apostrophe/main_window.py:606
 msgid "Discard"
 msgstr "دور ریختن"
 
-#: apostrophe/main_window.py:762 apostrophe/main_window.py:786
+#: apostrophe/main_window.py:763 apostrophe/main_window.py:787
 msgid "New File"
 msgstr "پروندهٔ جدید"
 
@@ -823,47 +823,47 @@ msgstr "نیم‌صفحهٔ عمودی"
 msgid "Windowed"
 msgstr "پنجره‌ای"
 
-#: apostrophe/stats_handler.py:98
+#: apostrophe/stats_handler.py:122
 msgid "{:n} of {:n} Characters"
 msgstr "{:n} از {:n} نویسه"
 
-#: apostrophe/stats_handler.py:100
+#: apostrophe/stats_handler.py:124
 msgid "{:n} Character"
 msgid_plural "{:n} Characters"
 msgstr[0] "{:n} نویسه"
 
-#: apostrophe/stats_handler.py:103
+#: apostrophe/stats_handler.py:127
 msgid "{:n} of {:n} Words"
 msgstr "{:n} از {:n} واژه"
 
-#: apostrophe/stats_handler.py:105
+#: apostrophe/stats_handler.py:129
 msgid "{:n} Word"
 msgid_plural "{:n} Words"
 msgstr[0] "{:n} واژه"
 
-#: apostrophe/stats_handler.py:108
+#: apostrophe/stats_handler.py:132
 msgid "{:n} of {:n} Sentences"
 msgstr "{:n} از {:n} جمله"
 
-#: apostrophe/stats_handler.py:110
+#: apostrophe/stats_handler.py:134
 msgid "{:n} Sentence"
 msgid_plural "{:n} Sentences"
 msgstr[0] "{:n} جمله"
 
-#: apostrophe/stats_handler.py:113
+#: apostrophe/stats_handler.py:137
 msgid "{:n} of {:n} Paragraphs"
 msgstr "{:n} از {:n} بند"
 
-#: apostrophe/stats_handler.py:115
+#: apostrophe/stats_handler.py:139
 msgid "{:n} Paragraph"
 msgid_plural "{:n} Paragraphs"
 msgstr[0] "{:n} بند"
 
-#: apostrophe/stats_handler.py:118
+#: apostrophe/stats_handler.py:142
 msgid "{:d}:{:02d}:{:02d} of {:d}:{:02d}:{:02d} Read Time"
 msgstr "{:d}:{:02d}:{:02d} از {:d}:{:02d}:{:02d} زمان خواندن"
 
-#: apostrophe/stats_handler.py:120
+#: apostrophe/stats_handler.py:144
 msgid "{:d}:{:02d}:{:02d} Read Time"
 msgstr "{:d}:{:02d}:{:02d} زمان خواندن"
 
