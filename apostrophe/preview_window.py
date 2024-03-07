@@ -1,4 +1,4 @@
-# Copyright (C) 2021, Manuel Genovés <manuel.genoves@gmail.com>
+# Copyright (C) 2024, Manuel Genovés <manuel.genoves@gmail.com>
 # This program is free software: you can redistribute it and/or modify it
 # under the terms of the GNU General Public License version 3, as published
 # by the Free Software Foundation.
@@ -15,7 +15,9 @@
 
 import gi
 gi.require_version('Gtk', '4.0')
-from gi.repository import Gtk, Gdk, GObject, GLib, Gio, Adw
+from gi.repository import Adw, Gio, Gtk
+
+from gettext import gettext as _
 
 
 @Gtk.Template(resource_path='/org/gnome/gitlab/somas/Apostrophe/ui/PreviewWindow.ui')
