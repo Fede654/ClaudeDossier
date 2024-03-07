@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: apostrophe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2024-01-23 17:46+0000\n"
-"PO-Revision-Date: 2024-01-24 16:18+0700\n"
+"POT-Creation-Date: 2024-03-03 20:09+0000\n"
+"PO-Revision-Date: 2024-03-07 16:51+0700\n"
 "Last-Translator: Kukuh Syafaat <kukuhsyafaat@gnome.org>\n"
 "Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
 "Language: id\n"
@@ -16,10 +16,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.4\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:3
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:5
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:4
 msgid "Apostrophe"
 msgstr "Apostrophe"
 
@@ -149,33 +149,33 @@ msgstr "Bilah Alat"
 msgid "Whether the toolbar is shown or not."
 msgstr "Apakah bilah alat ditampilkan atau tidak."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:6
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:5
 msgid "Edit Markdown in style"
 msgstr "Sunting Markdown dalam gaya"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:8
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:14
 msgid "Focus on your writing with a clean, distraction-free markdown editor."
 msgstr ""
 "Fokus pada tulisan Anda dengan penyunting markdown yang bersih dan bebas "
 "gangguan."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:9
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:15
 msgid "Features:"
 msgstr "Fitur:"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:11
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:17
 msgid "An UI tailored to comfortable writing"
 msgstr "UI yang disesuaikan dengan tulisan yang nyaman"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:12
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:18
 msgid "A distraction-free mode"
 msgstr "Mode bebas gangguan"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:13
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:19
 msgid "Dark, light and sepia themes"
 msgstr "Tema gelap, terang dan sepia"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:14
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:20
 msgid ""
 "Everything you expect from a text editor, such as spellchecking or document "
 "statistics"
@@ -183,21 +183,17 @@ msgstr ""
 "Semua yang Anda harapkan dari penyunting teks, seperti pemeriksaan ejaan "
 "atau statistik dokumen"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:15
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:21
 msgid "Live preview of what you write"
 msgstr "Pratinjau langsung dari apa yang Anda tulis"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:16
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:22
 msgid ""
 "Export to all kind of formats: PDF, Word/Libreoffice, LaTeX, or even HTML "
 "slideshows"
 msgstr ""
 "Ekspor ke semua jenis format: PDF, Word/Libreoffice, LaTeX, atau bahkan "
 "tayangan salindia HTML"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:41
-msgid "Manuel G., Wolf V."
-msgstr "Manuel G., Wolf V."
 
 #: data/ui/About.ui.in:9
 msgid "Copyright (C) 2022, Manuel G., Wolf V."
@@ -236,8 +232,8 @@ msgstr "_Tutup"
 
 #: data/ui/Export.ui:33 apostrophe/export_dialog.py:131
 #: apostrophe/export_dialog.py:342 apostrophe/export_dialog.py:347
-#: apostrophe/main_window.py:439 apostrophe/main_window.py:512
-#: apostrophe/main_window.py:604
+#: apostrophe/main_window.py:439 apostrophe/main_window.py:513
+#: apostrophe/main_window.py:605
 msgid "Cancel"
 msgstr "Batal"
 
@@ -423,7 +419,7 @@ msgstr "Varian markdown yang akan dipakai oleh Aposthrope"
 msgid "Markdown Flavor Documentation"
 msgstr "Dokumentasi Varian Markdown"
 
-#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_handler.py:180
+#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_window.py:30
 msgid "Preview"
 msgstr "Pratinjau"
 
@@ -628,11 +624,11 @@ msgctxt "shortcut window"
 msgid "Select All Text"
 msgstr "Pilih Semua Teks"
 
-#: data/ui/Statsbar.ui:14
+#: data/ui/Statsbar.ui:21 data/ui/Statsbar.ui:40
 msgid "Show Statistics"
 msgstr "Tampilkan Statistik"
 
-#: data/ui/Statsbar.ui:15
+#: data/ui/Statsbar.ui:22
 msgid "0 Words"
 msgstr "0 Kata"
 
@@ -779,31 +775,31 @@ msgstr "Ceritakan lebih banyak"
 msgid "Save your File"
 msgstr "Simpan berkas Anda"
 
-#: apostrophe/main_window.py:438 apostrophe/main_window.py:606
+#: apostrophe/main_window.py:438 apostrophe/main_window.py:607
 msgid "Save"
 msgstr "Simpan"
 
-#: apostrophe/main_window.py:501
+#: apostrophe/main_window.py:502
 msgid "Markdown Files"
 msgstr "Berkas Markdown"
 
-#: apostrophe/main_window.py:505
+#: apostrophe/main_window.py:506
 msgid "Plain Text Files"
 msgstr "Berkas Teks Biasa"
 
-#: apostrophe/main_window.py:508
+#: apostrophe/main_window.py:509
 msgid "Open a .md file"
 msgstr "Buka berkas .md"
 
-#: apostrophe/main_window.py:511
+#: apostrophe/main_window.py:512
 msgid "Open"
 msgstr "Buka"
 
-#: apostrophe/main_window.py:598
-msgid "Save changes?"
-msgstr "Simpan perubahan?"
-
 #: apostrophe/main_window.py:599
+msgid "Save Changes?"
+msgstr "Simpan Perubahan?"
+
+#: apostrophe/main_window.py:600
 #, python-format
 msgid ""
 "“%s” contains unsaved changes. If you don’t save, all your changes will be "
@@ -812,11 +808,11 @@ msgstr ""
 "\"%s\" berisi perubahan yang belum disimpan. Jika Anda tidak menyimpan, "
 "semua perubahan Anda akan hilang secara permanen."
 
-#: apostrophe/main_window.py:605
+#: apostrophe/main_window.py:606
 msgid "Discard"
 msgstr "Buang"
 
-#: apostrophe/main_window.py:762 apostrophe/main_window.py:786
+#: apostrophe/main_window.py:763 apostrophe/main_window.py:787
 msgid "New File"
 msgstr "Berkas Baru"
 
@@ -836,47 +832,47 @@ msgstr "Setengah Tinggi"
 msgid "Windowed"
 msgstr "Berjendela"
 
-#: apostrophe/stats_handler.py:98
+#: apostrophe/stats_handler.py:122
 msgid "{:n} of {:n} Characters"
 msgstr "{:n} dari {:n} Karakter"
 
-#: apostrophe/stats_handler.py:100
+#: apostrophe/stats_handler.py:124
 msgid "{:n} Character"
 msgid_plural "{:n} Characters"
 msgstr[0] "{:n} Karakter"
 
-#: apostrophe/stats_handler.py:103
+#: apostrophe/stats_handler.py:127
 msgid "{:n} of {:n} Words"
 msgstr "{:n} dari {:n} Kata"
 
-#: apostrophe/stats_handler.py:105
+#: apostrophe/stats_handler.py:129
 msgid "{:n} Word"
 msgid_plural "{:n} Words"
 msgstr[0] "{:n} Kata"
 
-#: apostrophe/stats_handler.py:108
+#: apostrophe/stats_handler.py:132
 msgid "{:n} of {:n} Sentences"
 msgstr "{:n} dari {:n}  Kalimat"
 
-#: apostrophe/stats_handler.py:110
+#: apostrophe/stats_handler.py:134
 msgid "{:n} Sentence"
 msgid_plural "{:n} Sentences"
 msgstr[0] "{:n} Kalimat"
 
-#: apostrophe/stats_handler.py:113
+#: apostrophe/stats_handler.py:137
 msgid "{:n} of {:n} Paragraphs"
 msgstr "{:n} dari {:n} Paragraf"
 
-#: apostrophe/stats_handler.py:115
+#: apostrophe/stats_handler.py:139
 msgid "{:n} Paragraph"
 msgid_plural "{:n} Paragraphs"
 msgstr[0] "{:n} Paragraf"
 
-#: apostrophe/stats_handler.py:118
+#: apostrophe/stats_handler.py:142
 msgid "{:d}:{:02d}:{:02d} of {:d}:{:02d}:{:02d} Read Time"
 msgstr "Waktu Baca {:d}:{:02d}:{:02d} dari {:d}:{:02d}:{:02d}"
 
-#: apostrophe/stats_handler.py:120
+#: apostrophe/stats_handler.py:144
 msgid "{:d}:{:02d}:{:02d} Read Time"
 msgstr "Waktu Baca {:d}:{:02d}:{:02d}"
 
@@ -939,9 +935,12 @@ msgstr ""
 "\n"
 "kode\n"
 
-#: apostrophe/text_view.py:169 apostrophe/text_view.py:171
+#: apostrophe/text_view.py:161 apostrophe/text_view.py:163
 msgid "web page"
 msgstr "halaman web"
+
+#~ msgid "Manuel G., Wolf V."
+#~ msgstr "Manuel G., Wolf V."
 
 #~ msgid "Autohide headerbar"
 #~ msgstr "Sembunyi Otomatis Bilah Tajuk"
