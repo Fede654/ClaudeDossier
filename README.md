@@ -40,6 +40,7 @@ To build Apostrophe from source you need to have the following dependencies inst
 
 - Python dependencies: `python3 python3-regex python3-setuptools python3-levenshtein python3-enchant python3-gi python3-cairo python3-pypandoc`
 - A copy of reveal.js in the apropriate directory. Flatpak takes care of it for you, packagers should put it into prefix/share/apostrophe/libs/reveal.js, fully unzipped
+- FiraSans-Regular, FiraMono-Regular, FiraMono-Bold, FiraMono-Medium
 - *optional:* AppStream utility: `appstreamcli`
 - *optional:* pdftex module: `texlive texlive-latex-extra`
 
