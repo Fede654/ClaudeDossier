@@ -20,7 +20,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --text-color: #eeeeee;
-    --background-color: #353535;
+    --background-color: #282828;
     --alt-background-color: #3a3a3a;
     --link-color: #b5daff;
     --blockquote-text-color: #a8a8a6;
