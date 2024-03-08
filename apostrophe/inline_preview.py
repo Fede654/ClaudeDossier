@@ -172,7 +172,7 @@ class InlinePreview:
         self.characters_per_line = self.settings.get_int("characters-per-line")
 
         self.popover = Gtk.Popover.new(self.text_view)
-        self.popover.get_style_context().add_class("quick-preview-popup")
+        self.popover.add_css_class("quick-preview-popup")
         self.popover.set_modal(True)
 
         self.preview_fns = {
@@ -250,7 +250,7 @@ class InlinePreview:
         lexikon_dict = get_dictionary(term)
         if lexikon_dict:
             grid = Gtk.Grid.new()
-            grid.get_style_context().add_class("lexikon")
+            grid.add_css_class("lexikon")
             grid.set_row_spacing(2)
             grid.set_column_spacing(4)
             i = 0
@@ -269,9 +269,9 @@ class InlinePreview:
                     continue
 
                 vocab_label = Gtk.Label.new(term + " ~ " + word_type)
-                vocab_label.get_style_context().add_class("header")
+                vocab_label.add_css_class("header")
                 if i == 0:
-                    vocab_label.get_style_context().add_class("first")
+                    vocab_label.add_css_class("first")
                 vocab_label.set_halign(Gtk.Align.START)
                 vocab_label.set_justify(Gtk.Justification.LEFT)
                 grid.attach(vocab_label, 0, i, 3, 1)
@@ -279,14 +279,14 @@ class InlinePreview:
                 for definition in entry["defs"]:
                     i = i + 1
                     num_label = Gtk.Label.new(definition["num"] + ".")
-                    num_label.get_style_context().add_class("number")
+                    num_label.add_css_class("number")
                     num_label.set_valign(Gtk.Align.START)
                     grid.attach(num_label, 0, i, 1, 1)
 
                     def_label = Gtk.Label(
                         label=" ".join(
                             definition["description"]))
-                    def_label.get_style_context().add_class("description")
+                    def_label.add_css_class("description")
                     def_label.set_halign(Gtk.Align.START)
                     def_label.set_max_width_chars(self.characters_per_line)
                     def_label.set_line_wrap(True)

@@ -61,9 +61,9 @@ class TableInput(Gtk.Overlay):
                     button.set_action_target_value(GLib.Variant("ai", [row+1, column+1]))
 
                     if row == 0 and column == self.columns - 1:
-                        button.get_style_context().add_class("top-end")
+                        button.add_css_class("top-end")
                     if row == self.rows - 1 and column == 0:
-                        button.get_style_context().add_class("bottom-start")
+                        button.add_css_class("bottom-start")
 
                     button.connect("notify::has-focus", self._hover_region)
 
@@ -84,8 +84,8 @@ class TableInput(Gtk.Overlay):
         for child in self.get_children():
             column, row, _, _ = self.grid.query_child(child)
             if column <= button_column and row <= button_row:
-                child.get_style_context().add_class("hovered")
+                child.add_css_class
             else:
-                child.get_style_context().remove_class("hovered")
+                child.remove_css_class("hovered")
 
         self.label.set_label(f"{button_row + 1} x {button_column + 1}")

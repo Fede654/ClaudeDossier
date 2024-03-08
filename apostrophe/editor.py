@@ -62,13 +62,13 @@ class Editor(Adw.Bin):
     @Gtk.Template.Callback()
     def reveal_toolbar(self, *_args):
         if self.toolbar_revealer.extra_toolbar_revealed:
-            self.background.get_style_context().add_class('shown')
+            self.background.add_css_class('shown')
             self.background.set_can_target(True)
-            self.toolbar_revealer.show_extra_controls_button.get_style_context().add_class('active')
+            self.toolbar_revealer.show_extra_controls_button.add_css_class('active')
         else:
-            self.background.get_style_context().remove_class('shown')
+            self.background.remove_css_class('shown')
             self.background.set_can_target(False)
-            self.toolbar_revealer.show_extra_controls_button.get_style_context().remove_class('active')
+            self.toolbar_revealer.show_extra_controls_button.remove_css_class('active')
 
     @Gtk.Template.Callback()
     def reveal_bottombar(self, *args):
