@@ -217,13 +217,12 @@ class Application(Adw.Application):
         builder.add_from_resource(
             "/org/gnome/gitlab/somas/Apostrophe/About.ui")
         about_dialog = builder.get_object("AboutDialog")
-        about_dialog.set_transient_for(self.get_active_window())
 
         about_dialog.set_debug_info(get_debug_info())
         about_dialog.add_link(_("Donate"), "https://paypal.me/manuelgenoves")
         about_dialog.add_link(_("Translations"), "https://l10n.gnome.org/module/apostrophe/")
 
-        about_dialog.present()
+        about_dialog.present(self.get_active_window())
 
     def on_quit(self, _action, _param):
         quit = True
