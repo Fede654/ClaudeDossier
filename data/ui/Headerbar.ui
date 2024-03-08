@@ -2,8 +2,7 @@
 <interface>
   <requires lib="gtk" version="4.0"/>
   <requires lib="adw" version="1.0"/>
-  <template class="BaseHeaderbar" parent="GtkRevealer">
-    <property name="overflow">visible</property>
+  <template class="BaseHeaderbar" parent="AdwBin">
     <child>
       <object class="AdwHeaderBar" id="headerbar">
         <child type="start">

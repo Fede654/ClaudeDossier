@@ -252,3 +252,35 @@
   font-variant-numeric: tabular-nums;
   font-weight: bold;
 }
+
+.toolbars.top {
+  box-shadow: 0 1px alpha(@headerbar_shade_color, .5),
+              0 2px 4px alpha(@headerbar_shade_color, .5);
+  background-color: @headerbar_bg_color;
+  color: @headerbar_fg_color;
+  padding-bottom: 3px;
+}
+
+.toolbars.top:backdrop {
+  background-color: @headerbar_backdrop_color;
+  transition: background-color 200ms ease-out;
+}
+
+.toolbars.top headerbar {
+  background: none;
+  color: inherit;
+  box-shadow: none;
+  min-height: 43px;
+}
+
+.toolbars.top headerbar > windowhandle > box {
+  padding-bottom: 3px;
+}
+
+.toolbars.top searchbar > revealer > box {
+  background: none;
+  color: inherit;
+  box-shadow: none;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}

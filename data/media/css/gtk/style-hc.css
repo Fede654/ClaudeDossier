@@ -1,0 +1,4 @@
+.toolbars.top {
+  box-shadow: 0 1px @borders,
+              0 2px 4px alpha(@headerbar_shade_color, .5);
+}

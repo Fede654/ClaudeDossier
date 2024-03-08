@@ -49,6 +49,7 @@ class MainWindow(Adw.ApplicationWindow):
 
     editor = Gtk.Template.Child()
     save_progressbar = Gtk.Template.Child()
+    toolbar_revealer = Gtk.Template.Child()
     headerbar = Gtk.Template.Child()
     searchbar = Gtk.Template.Child()
     panels = Gtk.Template.Child()
@@ -681,8 +682,8 @@ class MainWindow(Adw.ApplicationWindow):
     def reveal_headerbar_bottombar(self, *args):
         self.editor.reveal_bottombar()
 
-        if not self.headerbar.get_reveal_child():
-            self.headerbar.set_reveal_child(True)
+        if not self.toolbar_revealer.get_reveal_child():
+            self.toolbar_revealer.set_reveal_child(True)
             self.remove_css_class("no-headerbar")
 
     def hide_headerbar_bottombar(self):
@@ -690,8 +691,8 @@ class MainWindow(Adw.ApplicationWindow):
            self.discard_infobar.get_revealed():
             return
 
-        if self.headerbar.get_reveal_child():
-            self.headerbar.set_reveal_child(False)
+        if self.toolbar_revealer.get_reveal_child():
+            self.toolbar_revealer.set_reveal_child(False)
             self.add_css_class("no-headerbar")
 
         self.editor.hide_bottombar()

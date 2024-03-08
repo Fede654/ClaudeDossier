@@ -53,14 +53,35 @@
             <property name="orientation">vertical</property>
             <property name="valign">start</property>
             <child>
-              <object class="BaseHeaderbar" id="headerbar">
+              <object class="GtkRevealer" id="toolbar_revealer">
                 <property name="transition-type">crossfade</property>
                 <property name="transition-duration">450</property>
                 <property name="reveal-child">True</property>
-                <property name="valign">start</property>
-                <property name="title" bind-source="ApostropheWindow" bind-property="title" />
-                <property name="subtitle" bind-source="ApostropheWindow" bind-property="subtitle" />
-                <property name="is-fullscreen" bind-source="ApostropheWindow" bind-property="is-fullscreen" />
+                <property name="overflow">visible</property>
+                <property name="child">
+                  <object class="GtkWindowHandle">
+                    <property name="child">
+                      <object class="GtkBox">
+                        <property name="orientation">vertical</property>
+                        <style>
+                          <class name="toolbars"/>
+                          <class name="top"/>
+                        </style>
+                        <child>
+                          <object class="BaseHeaderbar" id="headerbar">
+                            <property name="valign">start</property>
+                            <property name="title" bind-source="ApostropheWindow" bind-property="title" />
+                            <property name="subtitle" bind-source="ApostropheWindow" bind-property="subtitle" />
+                            <property name="is-fullscreen" bind-source="ApostropheWindow" bind-property="is-fullscreen" />
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ApostropheSearchBar" id="searchbar"></object>
+                        </child>
+                      </object>
+                    </property>
+                  </object>
+                </property>
                 <child>
                   <object class="GtkEventControllerMotion">
                     <signal name="enter" handler="reveal_headerbar_bottombar" swapped="no" />
@@ -113,9 +134,6 @@
                   <class name="osd" />
                 </style>
               </object>
-            </child>
-            <child>
-              <object class="ApostropheSearchBar" id="searchbar"></object>
             </child>
           </object>
         </child>

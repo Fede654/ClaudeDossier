@@ -29,7 +29,7 @@ from .theme_switcher import ThemeSwitcher
 
 
 @Gtk.Template(resource_path='/org/gnome/gitlab/somas/Apostrophe/ui/Headerbar.ui')
-class BaseHeaderbar(Gtk.Revealer):
+class BaseHeaderbar(Adw.Bin):
 
     __gtype_name__ = "BaseHeaderbar"
 
