@@ -2,7 +2,7 @@
 <interface>
   <requires lib="gtk" version="4.0" />
   <requires lib="adw" version="1.0" />
-  <object class="AdwMessageDialog" id="dialog">
+  <object class="AdwAlertDialog" id="dialog">
   <property name="heading" translatable="yes">Hemingway Mode</property>
   <property name="body" translatable="yes">The Hemingway Mode mimics the experience of writing on a typewriter, not allowing you to delete any text or doing any kind of editing. 
 

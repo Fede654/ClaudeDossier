@@ -65,8 +65,8 @@ class ApostropheOpenPopover(Gtk.Popover):
         row.set_subtitle(item.path)
 
         delete_button = Gtk.Button.new_from_icon_name("window-close-symbolic")
-        delete_button.get_style_context().add_class("flat")
-        delete_button.get_style_context().add_class("circular")
+        delete_button.add_css_class("flat")
+        delete_button.add_css_class("circular")
         delete_button.set_valign(Gtk.Align.CENTER)
         delete_button.connect("clicked", self.on_delete_click, item)
 

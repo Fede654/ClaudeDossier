@@ -2,71 +2,39 @@
 <interface>
   <requires lib="gtk" version="4.0"/>
   <requires lib="adw" version="1.0"/>
-  <template class="ApostrophePreferencesDialog" parent="AdwPreferencesWindow">
-    <property name="default-height">380</property>
-    <property name="search-enabled">False</property>
+  <template class="ApostrophePreferencesDialog" parent="AdwPreferencesDialog">
     <child>
       <object class="AdwPreferencesPage">
         <child>
           <object class="AdwPreferencesGroup">
             <child>
-              <object class="AdwActionRow">
+              <object class="AdwSwitchRow" id="spellcheck_row">
                 <property name="visible">False</property>
                 <property name="tooltip-text" translatable="yes">Check Spelling While Typing</property>
                 <property name="title" translatable="yes">Check Spelling While Typing</property>
-                <property name="activatable-widget">spellcheck_switch</property>
-                <child>
-                  <object class="GtkSwitch" id="spellcheck_switch">
-                    <property name="name">spellcheck</property>
-                    <property name="valign">center</property>
-                  </object>
-                </child>
               </object>
             </child>
             <child>
-              <object class="AdwActionRow">
+              <object class="AdwSwitchRow" id="autohide_headerbar_row">
                 <property name="title" translatable="yes">Auto-Hide Header Bar</property>
                 <property name="subtitle" translatable="yes">Auto-hide header and status bars while typing</property>
-                <property name="activatable-widget">autohide_headerbar_switch</property>
-                <child>
-                  <object class="GtkSwitch" id="autohide_headerbar_switch">
-                    <property name="name">autohide_headerbar</property>
-                    <property name="focusable">1</property>
-                    <property name="valign">center</property>
-                  </object>
-                </child>
               </object>
             </child>
             <child>
-              <object class="AdwActionRow">
+              <object class="AdwSwitchRow" id="bigger_text_row">
                 <property name="title" translatable="yes">Large Text</property>
                 <property name="subtitle" translatable="yes">Reduce the margins width and increase the text size when possible</property>
-                <property name="activatable-widget">bigger_text_switch</property>
-                <child>
-                  <object class="GtkSwitch" id="bigger_text_switch">
-                    <property name="name">bigger_text</property>
-                    <property name="valign">center</property>
-                  </object>
-                </child>
               </object>
             </child>
             <child>
-              <object class="AdwActionRow">
+              <object class="AdwSwitchRow" id="session_restore_row">
                 <property name="visible">False</property>
                 <property name="title" translatable="yes">Restore Session</property>
                 <property name="subtitle" translatable="yes">Return to your previous session when Apostrophe is started</property>
-                <property name="activatable-widget">session_restore_switch</property>
-                <child>
-                  <object class="GtkSwitch" id="session_restore_switch">
-                    <property name="name">session_restore</property>
-                    <property name="valign">center</property>
-                  </object>
-                </child>
               </object>
             </child>
             <child>
               <object class="AdwComboRow" id="input_format_comborow">
-                <property name="activatable">False</property>
                 <property name="title" translatable="yes">Input Format</property>
                 <property name="subtitle" translatable="yes">Flavor of markdown Apostrophe will use</property>
                 <property name="expression">

@@ -128,10 +128,6 @@ class Application(Adw.Application):
             group = Gtk.WindowGroup.new()
             group.add_window(MainWindow(self))
 
-        if self._application_id == 'org.gnome.gitlab.somas.Apostrophe.Devel':
-            for window in self.get_windows():
-                window.get_style_context().add_class('devel')
-
         self._set_color_scheme()
 
         self.get_windows()[-1].present()
@@ -208,8 +204,7 @@ class Application(Adw.Application):
 
     def on_preferences(self, _action, _value):
         preferences_dialog = ApostrophePreferencesDialog()
-        preferences_dialog.set_transient_for(self.get_active_window())
-        preferences_dialog.show()
+        preferences_dialog.present(self.get_active_window())
 
     def on_about(self, _action, _param):
         # TODO: what about non-csd
@@ -217,13 +212,12 @@ class Application(Adw.Application):
         builder.add_from_resource(
             "/org/gnome/gitlab/somas/Apostrophe/About.ui")
         about_dialog = builder.get_object("AboutDialog")
-        about_dialog.set_transient_for(self.get_active_window())
 
         about_dialog.set_debug_info(get_debug_info())
         about_dialog.add_link(_("Donate"), "https://paypal.me/manuelgenoves")
         about_dialog.add_link(_("Translations"), "https://l10n.gnome.org/module/apostrophe/")
 
-        about_dialog.present()
+        about_dialog.present(self.get_active_window())
 
     def on_quit(self, _action, _param):
         quit = True

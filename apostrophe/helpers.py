@@ -80,10 +80,10 @@ def set_up_logging(level):
 
 
 def show_error(parent, message):
-    dialog = Adw.MessageDialog.new(parent, _("Error"), message)
+    dialog = Adw.AlertDialog.new(_("Error"), message)
     dialog.add_response("close", _("Close"))
     dialog.set_close_response("close")
-    dialog.show()
+    dialog.present(parent)
 
 def exist_executable(command):
     """return if a command can be executed in the SO

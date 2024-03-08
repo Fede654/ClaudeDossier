@@ -49,11 +49,13 @@ class MainWindow(Adw.ApplicationWindow):
 
     editor = Gtk.Template.Child()
     save_progressbar = Gtk.Template.Child()
+    toolbar_revealer = Gtk.Template.Child()
     headerbar = Gtk.Template.Child()
     searchbar = Gtk.Template.Child()
     panels = Gtk.Template.Child()
     preview_stack = Gtk.Template.Child()
     discard_infobar = Gtk.Template.Child()
+    preview_spinner = Gtk.Template.Child()
 
     subtitle = GObject.Property(type=str)
     is_fullscreen = GObject.Property(type=bool, default=False)
@@ -269,6 +271,9 @@ class MainWindow(Adw.ApplicationWindow):
         self.textview.buffer.hemingway_mode = self.settings.get_boolean("hemingway-mode")
 
         self.new_document()
+
+        if self.get_application()._application_id == 'org.gnome.gitlab.somas.Apostrophe.Devel':
+            self.add_css_class('devel')
 
 
     def on_text_changed(self, *_args):
@@ -595,13 +600,12 @@ class MainWindow(Adw.ApplicationWindow):
         """
 
         if self.did_change:
-            dialog = Adw.MessageDialog.new(self,
-                                           _("Save Changes?"),
-                                           _("“%s” contains unsaved changes. " +
-                                             "If you don’t save, " +
-                                             "all your changes will be " +
-                                             "permanently lost.") % self.current.title
-                                           )
+            dialog = Adw.AlertDialog.new(_("Save Changes?"),
+                                         _("“%s” contains unsaved changes. " +
+                                           "If you don’t save, " +
+                                           "all your changes will be " +
+                                           "permanently lost.") % self.current.title
+                                         )
             dialog.add_response("cancel", _("Cancel"))
             dialog.add_response("close", _("Discard"))
             dialog.add_response("save", _("Save"))
@@ -622,7 +626,7 @@ class MainWindow(Adw.ApplicationWindow):
 
             dialog.connect("response", on_response)
 
-            dialog.present()
+            dialog.present(self)
             return
         else:
             if callback is not None:
@@ -651,8 +655,7 @@ class MainWindow(Adw.ApplicationWindow):
         export_format = value.get_string()
 
         export_dialog = ExportDialog(self.current, export_format, text)
-        export_dialog.dialog.set_transient_for(self)
-        export_dialog.export()
+        export_dialog.export(self)
 
     def open_advanced_export(self, *args, **kwargs):
         """open the advanced export dialog
@@ -660,8 +663,7 @@ class MainWindow(Adw.ApplicationWindow):
         text = bytes(self.textview.get_text(), "utf-8")
 
         export_dialog = AdvancedExportDialog(self.current, text)
-        export_dialog.set_transient_for(self)
-        export_dialog.show()
+        export_dialog.present(self)
 
     def show_hemingway_toast(self, *args):
         if self.textview.buffer.hemingway_mode:
@@ -677,15 +679,14 @@ class MainWindow(Adw.ApplicationWindow):
     def show_hemingway_help(self, *args):
         hemingway_dialog = Gtk.Builder.new_from_resource("/org/gnome/gitlab/somas/Apostrophe/ui/AboutHemingway.ui")\
                            .get_object("dialog")
-        hemingway_dialog.set_transient_for(self)
-        hemingway_dialog.present()
+        hemingway_dialog.present(self)
 
     @Gtk.Template.Callback()
     def reveal_headerbar_bottombar(self, *args):
         self.editor.reveal_bottombar()
 
-        if not self.headerbar.get_reveal_child():
-            self.headerbar.set_reveal_child(True)
+        if not self.toolbar_revealer.get_reveal_child():
+            self.toolbar_revealer.set_reveal_child(True)
             self.remove_css_class("no-headerbar")
 
     def hide_headerbar_bottombar(self):
@@ -693,8 +694,8 @@ class MainWindow(Adw.ApplicationWindow):
            self.discard_infobar.get_revealed():
             return
 
-        if self.headerbar.get_reveal_child():
-            self.headerbar.set_reveal_child(False)
+        if self.toolbar_revealer.get_reveal_child():
+            self.toolbar_revealer.set_reveal_child(False)
             self.add_css_class("no-headerbar")
 
         self.editor.hide_bottombar()
@@ -750,6 +751,14 @@ class MainWindow(Adw.ApplicationWindow):
 
         self.check_change(callback)
         return True
+
+    @Gtk.Template.Callback()
+    def spinner_map_cb(self, *args):
+        self.preview_spinner.set_spinning(True)
+
+    @Gtk.Template.Callback()
+    def spinner_unmap_cb(self, *args):
+        self.preview_spinner.set_spinning(False)
 
 @dataclass
 class File():

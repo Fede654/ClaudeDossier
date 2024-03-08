@@ -13,6 +13,9 @@
     <child>
       <object class="GtkSeparator" id="separator">
         <property name="orientation" bind-source="ApostrophePanels" bind-property="orientation"/>
+        <style>
+          <class name="sidebar"/>
+        </style>
       </object>
     </child>
     <child>

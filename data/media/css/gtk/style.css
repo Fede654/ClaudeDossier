@@ -1,9 +1,3 @@
-/*@define-color code_theme_selected_bg_color mix(#{$base_color}, #{$theme_selected_fg_color}, 0.15);*/
-
-@define-color view_bg_color #FFFFFF;
-@define-color view_fg_color #2e3436;
-
-@define-color headerbar_bg_color  @view_bg_color;
 @define-color code_bg_color mix(@window_bg_color, @view_fg_color, 0.15);
 
 @define-color link_fg_color mix(@window_bg_color, @view_fg_color, 0.45);
@@ -41,7 +35,7 @@
 }
 
 .bottombar_background box{
-  transition: 250ms ease-in;
+  transition: 250ms ease-out;
   background-color: alpha(@view_bg_color, 0);
 }
 
@@ -50,11 +44,11 @@
 }
 
 .bottombar button {
-  color: alpha(@theme_fg_color, 0.7);
+  opacity: .7;
 }
 
 .bottombar button:hover {
-  color: @theme_fg_color;
+  opacity: 1;
 }
 
 .bottombar .show_extra_controls_button image{
@@ -74,8 +68,8 @@
 .lexikon {
   font-family: serif;
   font-size: 12px;
-  background: @theme_selected_bg_color;
-  border: 4px solid @theme_selected_bg_color;
+  background: @accent_bg_color;
+  border: 4px solid @accent_bg_color;
 }
 
 .lexikon .header {
@@ -95,18 +89,18 @@
 }
 
 .quick-preview-popup {
-  background-color: @theme_selected_bg_color;
+  background-color: @accent_bg_color;
   padding: 8px 12px 8px 12px;
 }
 
 .quick-preview-popup grid {
-  background-color: @theme_selected_bg_color;
-  color: @theme_selected_fg_color;
-  border-color: @theme_selected_bg_color;
+  background-color: @accent_bg_color;
+  color: @accent_fg_color;
+  border-color: @accent_bg_color;
 }
 
 .quick-preview-popup label {
-  color: @theme_selected_fg_color;
+  color: @accent_fg_color;
 }
 
 /* theme selector */
@@ -140,7 +134,7 @@
 .themeswitcher checkbutton.dark:checked,
 .themeswitcher checkbutton.sepia:checked,
 .themeswitcher checkbutton.system:checked {
-  box-shadow: inset 0 0 0 2px @theme_selected_bg_color;
+  box-shadow: inset 0 0 0 2px @accent_bg_color;
 }
 
 .themeswitcher checkbutton radio {
@@ -155,8 +149,8 @@
 }
 .themeswitcher checkbutton radio:checked{
   -gtk-icon-source: -gtk-icontheme("object-select-symbolic");
-  background-color: @theme_selected_bg_color;
-  color: @theme_selected_fg_color;
+  background-color: @accent_bg_color;
+  color: @accent_fg_color;
 }
 
 
@@ -257,4 +251,40 @@
   font-size: 2em;
   font-variant-numeric: tabular-nums;
   font-weight: bold;
+}
+
+.toolbars.top {
+  box-shadow: 0 1px alpha(@headerbar_shade_color, .5),
+              0 2px 4px alpha(@headerbar_shade_color, .5);
+  background-color: @headerbar_bg_color;
+  color: @headerbar_fg_color;
+  padding-bottom: 3px;
+}
+
+.toolbars.top:backdrop {
+  background-color: @headerbar_backdrop_color;
+  transition: background-color 200ms ease-out;
+}
+
+.toolbars.top headerbar {
+  background: none;
+  color: inherit;
+  box-shadow: none;
+  min-height: 43px;
+}
+
+.toolbars.top headerbar > windowhandle > box {
+  padding-bottom: 3px;
+}
+
+.toolbars.top searchbar > revealer > box {
+  background: none;
+  color: inherit;
+  box-shadow: none;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+separator.sidebar {
+  background: alpha(@sidebar_border_color, 1.5);
 }

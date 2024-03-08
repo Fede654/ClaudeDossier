@@ -116,7 +116,7 @@ class ExportDialog:
                                       not helpers.exist_executable("pdftex"))
 
         if (self._show_texlive_warning):
-            self.dialog = Adw.MessageDialog.new(None, None, None)
+            self.dialog = Adw.AlertDialog.new(None, None)
             self.dialog.set_extra_child(TexliveWarning())
             self.dialog.add_response("close", _("Close"))
             self.dialog.set_close_response("close")
@@ -138,7 +138,7 @@ class ExportDialog:
             self.dialog.set_current_name(
                 file.name + '.' + self.formats[self.format]["extension"])
 
-    def export(self):
+    def export(self, window):
 
         def on_response(dialog, response):
             if not self._show_texlive_warning:
@@ -158,19 +158,20 @@ class ExportDialog:
                                     .decode("unicode-escape")))
 
         self.dialog.connect("response", on_response)
-        self.dialog.show()
+        if self._show_texlive_warning:
+            self.dialog.present(window)
+        else:
+            self.dialog.show()
 
 
 @Gtk.Template(resource_path='/org/gnome/gitlab/somas/Apostrophe/ui/Export.ui')
-class AdvancedExportDialog(Adw.Window):
+class AdvancedExportDialog(Adw.Dialog):
 
     __gtype_name__ = "AdvancedExportDialog"
 
-    headerbar = Gtk.Template.Child()
-
     formats_list = Gtk.Template.Child()
 
-    leaflet = Gtk.Template.Child()
+    split_view = Gtk.Template.Child()
     options_page = Gtk.Template.Child()
     formats_page = Gtk.Template.Child()
 
@@ -260,14 +261,6 @@ class AdvancedExportDialog(Adw.Window):
 
         return is_tex and not texlive_installed
 
-    @GObject.Property(type=bool, default=False)
-    def show_go_back_button(self):
-        folded = self.leaflet.props.folded
-        on_options_page = (self.leaflet.get_visible_child() ==
-                           self.options_page)
-
-        return folded and on_options_page
-
     @GObject.Property(type=str, default="options")
     def options_page_name(self):
         name = "texlive_warning" if self.show_texlive_warning else "options"
@@ -285,16 +278,8 @@ class AdvancedExportDialog(Adw.Window):
         return row
 
     @Gtk.Template.Callback()
-    def reveal_go_back(self, _widget, *args):
-        self.notify("show_go_back_button")
-
-    @Gtk.Template.Callback()
-    def go_back(self, _widget):
-        self.leaflet.set_visible_child(self.formats_page)
-
-    @Gtk.Template.Callback()
     def on_format_selected(self, _widget, _row):
-        self.leaflet.set_visible_child(self.options_page)
+        self.split_view.set_show_content(True)
 
         self.notify("show_page_size_options")
         self.notify("show_slide_size_options")
@@ -304,10 +289,6 @@ class AdvancedExportDialog(Adw.Window):
         self.notify("show_texlive_warning")
         self.notify("options_page_name")
         self.update_title()
-
-    @Gtk.Template.Callback()
-    def on_destroy(self, _widget):
-        self.destroy()
 
     @Gtk.Template.Callback()
     def export(self, widget):
@@ -331,10 +312,10 @@ class AdvancedExportDialog(Adw.Window):
                     export(self.text, export_file, fmt, args)
                 except (NotADirectoryError, RuntimeError) as e:
                     helpers.show_error(
-                        None,
+                        self,
                         _("An error happened while trying to export:\n\n{err_msg}")
                         .format(err_msg=str(e).encode().decode("unicode-escape")))
-            self.destroy()
+            self.close()
 
         if self.exports_multiple_files:
             export_dialog = Gtk.FileChooserNative.new(
