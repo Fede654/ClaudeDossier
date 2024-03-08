@@ -271,9 +271,15 @@ class AdvancedExportDialog(Adw.Dialog):
         return self.formats_list.get_selected_row().item.to == "revealjs"
 
     def row_constructor(self, item, _user_data):
-        row = Adw.ActionRow.new()
+        row = Gtk.ListBoxRow.new()
         row.item = item
-        row.set_title(item.name)
+
+        label = Gtk.Label.new();
+        label.set_label(item.name);
+        label.set_xalign(0);
+        label.set_wrap(True);
+
+        row.set_child(label);
 
         return row
 
