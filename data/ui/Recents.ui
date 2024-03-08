@@ -58,21 +58,17 @@
                   <class name="undershoot-top"/>
                 </style>
                 <property name="child">
-                  <object class="GtkViewport">
-                    <property name="child">
-                      <object class="GtkListBox" id="list_box">
-                        <property name="selection-mode">none</property>
-                        <child type="placeholder">
-                          <object class="GtkLabel">
-                            <property name="label" translatable="yes">No Results Found</property>
-                            <style>
-                              <class name="placeholder"/>
-                              <class name="dim-label"/>
-                            </style>
-                          </object>
-                        </child>
+                  <object class="GtkListBox" id="list_box">
+                    <property name="selection-mode">none</property>
+                    <child type="placeholder">
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">No Results Found</property>
+                        <style>
+                          <class name="placeholder"/>
+                          <class name="dim-label"/>
+                        </style>
                       </object>
-                    </property>
+                    </child>
                   </object>
                 </property>
               </object>
