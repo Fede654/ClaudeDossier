@@ -74,10 +74,10 @@ class ApostrophePreferencesDialog(Adw.PreferencesDialog):
         }
     ]
 
-    autohide_headerbar_switch = Gtk.Template.Child()
-    spellcheck_switch = Gtk.Template.Child()
+    autohide_headerbar_row = Gtk.Template.Child()
+    spellcheck_row = Gtk.Template.Child()
     input_format_comborow = Gtk.Template.Child()
-    bigger_text_switch = Gtk.Template.Child()
+    bigger_text_row = Gtk.Template.Child()
 
     settings = Settings.new()
 
@@ -98,17 +98,17 @@ class ApostrophePreferencesDialog(Adw.PreferencesDialog):
             self.input_format_comborow.set_selected(current_format)
 
         self.settings.bind("autohide-headerbar",
-                           self.autohide_headerbar_switch,
+                           self.autohide_headerbar_row,
                            "active",
                            Gio.SettingsBindFlags.DEFAULT)
 
         self.settings.bind("spellcheck",
-                           self.spellcheck_switch,
+                           self.spellcheck_row,
                            "active",
                            Gio.SettingsBindFlags.DEFAULT)
 
         self.settings.bind("bigger-text",
-                           self.bigger_text_switch,
+                           self.bigger_text_row,
                            "active",
                            Gio.SettingsBindFlags.DEFAULT)
 
@@ -121,3 +121,4 @@ class ApostrophePreferencesDialog(Adw.PreferencesDialog):
     def on_input_format_help(self, _):
         fmt = self.input_format_comborow.get_selected_item()
         webbrowser.open(fmt.help)
+

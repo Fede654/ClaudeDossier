@@ -85,39 +85,21 @@
                                       <object class="AdwExpanderRow">
                                         <property name="title" translatable="1">Options</property>
                                         <child>
-                                          <object class="AdwActionRow">
+                                          <object class="AdwSwitchRow" id="sw_standalone">
                                             <property name="title" translatable="yes">Standalone</property>
-                                            <property name="activatable-widget">sw_standalone</property>
                                             <property name="subtitle" translatable="yes">Use a header and footer to include things like stylesheets and meta information</property>
-                                            <child>
-                                              <object class="GtkSwitch" id="sw_standalone">
-                                                <property name="valign">center</property>
-                                                <property name="active">1</property>
-                                              </object>
-                                            </child>
+                                            <property name="active">1</property>
                                           </object>
                                         </child>
                                         <child>
-                                          <object class="AdwActionRow">
+                                          <object class="AdwSwitchRow" id="sw_toc">
                                             <property name="title" translatable="yes">Table of Contents</property>
-                                            <property name="activatable-widget">sw_toc</property>
-                                            <child>
-                                              <object class="GtkSwitch" id="sw_toc">
-                                                <property name="sensitive" bind-source="sw_standalone" bind-property="active"/>
-                                                <property name="valign">center</property>
-                                              </object>
-                                            </child>
+                                            <property name="sensitive" bind-source="sw_standalone" bind-property="active"/>
                                           </object>
                                         </child>
                                         <child>
-                                          <object class="AdwActionRow">
+                                          <object class="AdwSwitchRow" id="sw_numbers">
                                             <property name="title" translatable="yes">Number Sections</property>
-                                            <property name="activatable-widget">sw_numbers</property>
-                                            <child>
-                                              <object class="GtkSwitch" id="sw_numbers">
-                                                <property name="valign">center</property>
-                                              </object>
-                                            </child>
                                           </object>
                                         </child>
                                       </object>
@@ -158,16 +140,10 @@
                                     <property name="visible" bind-source="AdvancedExportDialog" bind-property="show_html_options"/>
                                     <property name="title" translatable="yes">HTML Options</property>
                                     <child>
-                                      <object class="AdwActionRow">
+                                      <object class="AdwSwitchRow" id="sw_self_contained">
                                         <property name="title" translatable="yes">Self-Contained</property>
-                                        <property name="activatable-widget">sw_self_contained</property>
                                         <property name="subtitle" translatable="yes">Produces an HTML file with no external dependencies</property>
-                                        <child>
-                                          <object class="GtkSwitch" id="sw_self_contained">
-                                            <property name="valign">center</property>
-                                            <property name="active">1</property>
-                                          </object>
-                                        </child>
+                                        <property name="active">1</property>
                                       </object>
                                     </child>
                                   </object>
@@ -198,16 +174,10 @@
                                     <property name="visible" bind-source="AdvancedExportDialog" bind-property="show_presentation_options"/>
                                     <property name="title" translatable="yes">Presentation</property>
                                     <child>
-                                      <object class="AdwActionRow">
+                                      <object class="AdwSwitchRow" id="sw_incremental_bullets">
                                         <property name="title" translatable="yes">Incremental Bullets</property>
-                                        <property name="activatable-widget">sw_incremental_bullets</property>
                                         <property name="subtitle" translatable="yes">Show one bullet point after another in a slideshow</property>
-                                        <child>
-                                          <object class="GtkSwitch" id="sw_incremental_bullets">
-                                            <property name="valign">center</property>
-                                            <property name="active">1</property>
-                                          </object>
-                                        </child>
+                                        <property name="active">1</property>
                                       </object>
                                     </child>
                                   </object>
