@@ -116,7 +116,7 @@ class ExportDialog:
                                       not helpers.exist_executable("pdftex"))
 
         if (self._show_texlive_warning):
-            self.dialog = Adw.MessageDialog.new(None, None, None)
+            self.dialog = Adw.AlertDialog.new(None, None)
             self.dialog.set_extra_child(TexliveWarning())
             self.dialog.add_response("close", _("Close"))
             self.dialog.set_close_response("close")
@@ -138,7 +138,7 @@ class ExportDialog:
             self.dialog.set_current_name(
                 file.name + '.' + self.formats[self.format]["extension"])
 
-    def export(self):
+    def export(self, window):
 
         def on_response(dialog, response):
             if not self._show_texlive_warning:
@@ -158,7 +158,10 @@ class ExportDialog:
                                     .decode("unicode-escape")))
 
         self.dialog.connect("response", on_response)
-        self.dialog.show()
+        if self._show_texlive_warning:
+            self.dialog.present(window)
+        else:
+            self.dialog.show()
 
 
 @Gtk.Template(resource_path='/org/gnome/gitlab/somas/Apostrophe/ui/Export.ui')
@@ -331,7 +334,7 @@ class AdvancedExportDialog(Adw.Window):
                     export(self.text, export_file, fmt, args)
                 except (NotADirectoryError, RuntimeError) as e:
                     helpers.show_error(
-                        None,
+                        self,
                         _("An error happened while trying to export:\n\n{err_msg}")
                         .format(err_msg=str(e).encode().decode("unicode-escape")))
             self.destroy()

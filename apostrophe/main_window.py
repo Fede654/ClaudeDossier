@@ -596,13 +596,12 @@ class MainWindow(Adw.ApplicationWindow):
         """
 
         if self.did_change:
-            dialog = Adw.MessageDialog.new(self,
-                                           _("Save Changes?"),
-                                           _("“%s” contains unsaved changes. " +
-                                             "If you don’t save, " +
-                                             "all your changes will be " +
-                                             "permanently lost.") % self.current.title
-                                           )
+            dialog = Adw.AlertDialog.new(_("Save Changes?"),
+                                         _("“%s” contains unsaved changes. " +
+                                           "If you don’t save, " +
+                                           "all your changes will be " +
+                                           "permanently lost.") % self.current.title
+                                         )
             dialog.add_response("cancel", _("Cancel"))
             dialog.add_response("close", _("Discard"))
             dialog.add_response("save", _("Save"))
@@ -623,7 +622,7 @@ class MainWindow(Adw.ApplicationWindow):
 
             dialog.connect("response", on_response)
 
-            dialog.present()
+            dialog.present(self)
             return
         else:
             if callback is not None:
@@ -652,8 +651,7 @@ class MainWindow(Adw.ApplicationWindow):
         export_format = value.get_string()
 
         export_dialog = ExportDialog(self.current, export_format, text)
-        export_dialog.dialog.set_transient_for(self)
-        export_dialog.export()
+        export_dialog.export(self)
 
     def open_advanced_export(self, *args, **kwargs):
         """open the advanced export dialog
@@ -678,8 +676,7 @@ class MainWindow(Adw.ApplicationWindow):
     def show_hemingway_help(self, *args):
         hemingway_dialog = Gtk.Builder.new_from_resource("/org/gnome/gitlab/somas/Apostrophe/ui/AboutHemingway.ui")\
                            .get_object("dialog")
-        hemingway_dialog.set_transient_for(self)
-        hemingway_dialog.present()
+        hemingway_dialog.present(self)
 
     @Gtk.Template.Callback()
     def reveal_headerbar_bottombar(self, *args):
