@@ -1,9 +1,9 @@
 @import url("base.css");
 
 :root {
-  --text-color: #2e3436;
-  --background-color: #f6f5f4;
-  --alt-background-color: #edeeef;
+  --text-color: rgba(0, 0, 0, 0.8);
+  --background-color: #f5f5f5;
+  --alt-background-color: #eeeeee;
   --link-color: #0d71de;
   --blockquote-text-color: #747e85;
   --blockquote-border-color: #d6d8da;
@@ -19,7 +19,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --text-color: #eeeeec;
+    --text-color: #eeeeee;
     --background-color: #353535;
     --alt-background-color: #3a3a3a;
     --link-color: #b5daff;
