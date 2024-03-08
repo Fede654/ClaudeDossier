@@ -84,157 +84,45 @@
                   <object class="GtkStackPage">
                     <property name="name">FALSE</property>
                     <property name="child">
-                      <object class="GtkScrolledWindow" id="options">
-                        <property name="focusable">1</property>
-                        <property name="min-content-width">400</property>
-                        <property name="propagate-natural-height">1</property>
-                        <property name="child">
-                          <object class="GtkViewport">
+                      <object class="AdwPreferencesPage" id="options">
+                        <property name="width-request">400</property>
+                        <child>
+                          <object class="AdwPreferencesGroup">
                             <child>
-                              <object class="AdwClamp">
-                                <property name="margin-top">20</property>
-                                <property name="margin-bottom">20</property>
-                                <property name="maximum-size">550</property>
-                                <property name="tightening-threshold">300</property>
+                              <object class="AdwExpanderRow">
+                                <property name="title" translatable="1">Options</property>
                                 <child>
-                                  <object class="GtkBox">
-                                    <property name="orientation">vertical</property>
+                                  <object class="AdwActionRow">
+                                    <property name="title" translatable="yes">Standalone</property>
+                                    <property name="activatable-widget">sw_standalone</property>
+                                    <property name="subtitle" translatable="yes">Use a header and footer to include things like stylesheets and meta information</property>
                                     <child>
-                                      <object class="AdwPreferencesGroup">
-                                        <child>
-                                          <object class="AdwExpanderRow">
-                                            <property name="title" translatable="1">Options</property>
-                                            <child>
-                                              <object class="AdwActionRow">
-                                                <property name="title" translatable="yes">Standalone</property>
-                                                <property name="activatable-widget">sw_standalone</property>
-                                                <property name="subtitle" translatable="yes">Use a header and footer to include things like stylesheets and meta information</property>
-                                                <child>
-                                                  <object class="GtkSwitch" id="sw_standalone">
-                                                    <property name="valign">center</property>
-                                                    <property name="active">1</property>
-                                                  </object>
-                                                </child>
-                                              </object>
-                                            </child>
-                                            <child>
-                                              <object class="AdwActionRow">
-                                                <property name="title" translatable="yes">Table of Contents</property>
-                                                <property name="activatable-widget">sw_toc</property>
-                                                <child>
-                                                  <object class="GtkSwitch" id="sw_toc">
-                                                    <property name="sensitive" bind-source="sw_standalone" bind-property="active"/>
-                                                    <property name="valign">center</property>
-                                                  </object>
-                                                </child>
-                                              </object>
-                                            </child>
-                                            <child>
-                                              <object class="AdwActionRow">
-                                                <property name="title" translatable="yes">Number Sections</property>
-                                                <property name="activatable-widget">sw_numbers</property>
-                                                <child>
-                                                  <object class="GtkSwitch" id="sw_numbers">
-                                                    <property name="valign">center</property>
-                                                  </object>
-                                                </child>
-                                              </object>
-                                            </child>
-                                          </object>
-                                        </child>
+                                      <object class="GtkSwitch" id="sw_standalone">
+                                        <property name="valign">center</property>
+                                        <property name="active">1</property>
                                       </object>
                                     </child>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="AdwActionRow">
+                                    <property name="title" translatable="yes">Table of Contents</property>
+                                    <property name="activatable-widget">sw_toc</property>
                                     <child>
-                                      <object class="AdwPreferencesGroup" id="page_options">
-                                        <property name="visible" bind-source="AdvancedExportDialog" bind-property="show_page_size_options"/>
-                                        <property name="margin-top">18</property>
-                                        <property name="title" translatable="yes">Page Size</property>
-                                        <child>
-                                          <object class="AdwComboRow" id="cmb_page_size">
-                                            <property name="title" translatable="yes">Page Size</property>
-                                            <property name="expression">
-                                              <lookup name="string" type="GtkStringObject"/>
-                                            </property>
-                                          </object>
-                                        </child>
+                                      <object class="GtkSwitch" id="sw_toc">
+                                        <property name="sensitive" bind-source="sw_standalone" bind-property="active"/>
+                                        <property name="valign">center</property>
                                       </object>
                                     </child>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="AdwActionRow">
+                                    <property name="title" translatable="yes">Number Sections</property>
+                                    <property name="activatable-widget">sw_numbers</property>
                                     <child>
-                                      <object class="AdwPreferencesGroup" id="slide_options">
-                                        <property name="visible" bind-source="AdvancedExportDialog" bind-property="show_slide_size_options"/>
-                                        <property name="margin-top">18</property>
-                                        <property name="title" translatable="yes">Page Size</property>
-                                        <child>
-                                          <object class="AdwComboRow" id="cmb_slide_size">
-                                            <property name="activatable">False</property>
-                                            <property name="title" translatable="yes">Page Size</property>
-                                            <property name="expression">
-                                              <lookup name="string" type="GtkStringObject"/>
-                                            </property>
-                                          </object>
-                                        </child>
-                                      </object>
-                                    </child>
-                                    <child>
-                                      <object class="AdwPreferencesGroup" id="html_options">
-                                        <property name="visible" bind-source="AdvancedExportDialog" bind-property="show_html_options"/>
-                                        <property name="margin-top">18</property>
-                                        <property name="title" translatable="yes">HTML Options</property>
-                                        <child>
-                                          <object class="AdwActionRow">
-                                            <property name="title" translatable="yes">Self-Contained</property>
-                                            <property name="activatable-widget">sw_self_contained</property>
-                                            <property name="subtitle" translatable="yes">Produces an HTML file with no external dependencies</property>
-                                            <child>
-                                              <object class="GtkSwitch" id="sw_self_contained">
-                                                <property name="valign">center</property>
-                                                <property name="active">1</property>
-                                              </object>
-                                            </child>
-                                          </object>
-                                        </child>
-                                      </object>
-                                    </child>
-                                    <child>
-                                      <object class="AdwPreferencesGroup" id="syntax_options">
-                                        <property name="visible" bind-source="AdvancedExportDialog" bind-property="show_syntax_options"/>
-                                        <property name="margin-top">18</property>
-                                        <property name="title" translatable="yes">Syntax Highlighting</property>
-                                        <child>
-                                          <object class="AdwExpanderRow" id="sw_syntax_highlighting">
-                                            <property name="title" translatable="1">Use Syntax Highlighting</property>
-                                            <property name="enable-expansion">False</property>
-                                            <property name="show-enable-switch">True</property>
-                                            <child>
-                                              <object class="AdwComboRow" id="cmb_syntax_highlighting">
-                                                <property name="title" translatable="yes">Highlight Style</property>
-                                                <property name="expression">
-                                                  <lookup name="string" type="GtkStringObject"/>
-                                                </property>
-                                              </object>
-                                            </child>
-                                          </object>
-                                        </child>
-                                      </object>
-                                    </child>
-                                    <child>
-                                      <object class="AdwPreferencesGroup" id="beamer_options">
-                                        <property name="visible" bind-source="AdvancedExportDialog" bind-property="show_presentation_options"/>
-                                        <property name="margin-top">18</property>
-                                        <property name="title" translatable="yes">Presentation</property>
-                                        <child>
-                                          <object class="AdwActionRow">
-                                            <property name="title" translatable="yes">Incremental Bullets</property>
-                                            <property name="activatable-widget">sw_incremental_bullets</property>
-                                            <property name="subtitle" translatable="yes">Show one bullet point after another in a slideshow</property>
-                                            <child>
-                                              <object class="GtkSwitch" id="sw_incremental_bullets">
-                                                <property name="valign">center</property>
-                                                <property name="active">1</property>
-                                              </object>
-                                            </child>
-                                          </object>
-                                        </child>
+                                      <object class="GtkSwitch" id="sw_numbers">
+                                        <property name="valign">center</property>
                                       </object>
                                     </child>
                                   </object>
@@ -242,7 +130,95 @@
                               </object>
                             </child>
                           </object>
-                        </property>
+                        </child>
+                        <child>
+                          <object class="AdwPreferencesGroup" id="page_options">
+                            <property name="visible" bind-source="AdvancedExportDialog" bind-property="show_page_size_options"/>
+                            <property name="title" translatable="yes">Page Size</property>
+                            <child>
+                              <object class="AdwComboRow" id="cmb_page_size">
+                                <property name="title" translatable="yes">Page Size</property>
+                                <property name="expression">
+                                  <lookup name="string" type="GtkStringObject"/>
+                                </property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="AdwPreferencesGroup" id="slide_options">
+                            <property name="visible" bind-source="AdvancedExportDialog" bind-property="show_slide_size_options"/>
+                            <property name="title" translatable="yes">Page Size</property>
+                            <child>
+                              <object class="AdwComboRow" id="cmb_slide_size">
+                                <property name="activatable">False</property>
+                                <property name="title" translatable="yes">Page Size</property>
+                                <property name="expression">
+                                  <lookup name="string" type="GtkStringObject"/>
+                                </property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="AdwPreferencesGroup" id="html_options">
+                            <property name="visible" bind-source="AdvancedExportDialog" bind-property="show_html_options"/>
+                            <property name="title" translatable="yes">HTML Options</property>
+                            <child>
+                              <object class="AdwActionRow">
+                                <property name="title" translatable="yes">Self-Contained</property>
+                                <property name="activatable-widget">sw_self_contained</property>
+                                <property name="subtitle" translatable="yes">Produces an HTML file with no external dependencies</property>
+                                <child>
+                                  <object class="GtkSwitch" id="sw_self_contained">
+                                    <property name="valign">center</property>
+                                    <property name="active">1</property>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="AdwPreferencesGroup" id="syntax_options">
+                            <property name="visible" bind-source="AdvancedExportDialog" bind-property="show_syntax_options"/>
+                            <property name="title" translatable="yes">Syntax Highlighting</property>
+                            <child>
+                              <object class="AdwExpanderRow" id="sw_syntax_highlighting">
+                                <property name="title" translatable="1">Use Syntax Highlighting</property>
+                                <property name="enable-expansion">False</property>
+                                <property name="show-enable-switch">True</property>
+                                <child>
+                                  <object class="AdwComboRow" id="cmb_syntax_highlighting">
+                                    <property name="title" translatable="yes">Highlight Style</property>
+                                    <property name="expression">
+                                      <lookup name="string" type="GtkStringObject"/>
+                                    </property>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="AdwPreferencesGroup" id="beamer_options">
+                            <property name="visible" bind-source="AdvancedExportDialog" bind-property="show_presentation_options"/>
+                            <property name="title" translatable="yes">Presentation</property>
+                            <child>
+                              <object class="AdwActionRow">
+                                <property name="title" translatable="yes">Incremental Bullets</property>
+                                <property name="activatable-widget">sw_incremental_bullets</property>
+                                <property name="subtitle" translatable="yes">Show one bullet point after another in a slideshow</property>
+                                <child>
+                                  <object class="GtkSwitch" id="sw_incremental_bullets">
+                                    <property name="valign">center</property>
+                                    <property name="active">1</property>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
                       </object>
                     </property>
                   </object>
