@@ -284,3 +284,7 @@
   padding-top: 3px;
   padding-bottom: 3px;
 }
+
+separator.sidebar {
+  background: alpha(@sidebar_border_color, 1.5);
+}
