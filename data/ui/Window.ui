@@ -36,10 +36,12 @@
                 </style>
                 <child>
                   <object class="GtkSpinner" id="preview_spinner">
-                    <property name="spinning">1</property>
+                    <property name="spinning">0</property>
                     <property name="halign">center</property>
                     <property name="hexpand">1</property>
                     <property name="vexpand">1</property>
+                    <signal name="map" handler="spinner_map_cb" swapped="no" />
+                    <signal name="unmap" handler="spinner_unmap_cb" swapped="no" />
                   </object>
                 </child>
               </object>

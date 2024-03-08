@@ -54,6 +54,7 @@ class MainWindow(Adw.ApplicationWindow):
     panels = Gtk.Template.Child()
     preview_stack = Gtk.Template.Child()
     discard_infobar = Gtk.Template.Child()
+    preview_spinner = Gtk.Template.Child()
 
     subtitle = GObject.Property(type=str)
     is_fullscreen = GObject.Property(type=bool, default=False)
@@ -750,6 +751,14 @@ class MainWindow(Adw.ApplicationWindow):
 
         self.check_change(callback)
         return True
+
+    @Gtk.Template.Callback()
+    def spinner_map_cb(self, *args):
+        self.preview_spinner.set_spinning(True)
+
+    @Gtk.Template.Callback()
+    def spinner_unmap_cb(self, *args):
+        self.preview_spinner.set_spinning(False)
 
 @dataclass
 class File():
