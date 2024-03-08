@@ -272,6 +272,9 @@ class MainWindow(Adw.ApplicationWindow):
 
         self.new_document()
 
+        if self.get_application()._application_id == 'org.gnome.gitlab.somas.Apostrophe.Devel':
+            self.add_css_class('devel')
+
 
     def on_text_changed(self, *_args):
         """called when the text changes, sets the self.did_change to true and

@@ -128,10 +128,6 @@ class Application(Adw.Application):
             group = Gtk.WindowGroup.new()
             group.add_window(MainWindow(self))
 
-        if self._application_id == 'org.gnome.gitlab.somas.Apostrophe.Devel':
-            for window in self.get_windows():
-                window.get_style_context().add_class('devel')
-
         self._set_color_scheme()
 
         self.get_windows()[-1].present()
