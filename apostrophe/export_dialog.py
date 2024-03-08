@@ -165,7 +165,7 @@ class ExportDialog:
 
 
 @Gtk.Template(resource_path='/org/gnome/gitlab/somas/Apostrophe/ui/Export.ui')
-class AdvancedExportDialog(Adw.Window):
+class AdvancedExportDialog(Adw.Dialog):
 
     __gtype_name__ = "AdvancedExportDialog"
 
@@ -310,7 +310,7 @@ class AdvancedExportDialog(Adw.Window):
 
     @Gtk.Template.Callback()
     def on_destroy(self, _widget):
-        self.destroy()
+        self.close()
 
     @Gtk.Template.Callback()
     def export(self, widget):
@@ -337,7 +337,7 @@ class AdvancedExportDialog(Adw.Window):
                         self,
                         _("An error happened while trying to export:\n\n{err_msg}")
                         .format(err_msg=str(e).encode().decode("unicode-escape")))
-            self.destroy()
+            self.close()
 
         if self.exports_multiple_files:
             export_dialog = Gtk.FileChooserNative.new(

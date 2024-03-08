@@ -2,11 +2,9 @@
 <interface>
   <requires lib="gtk" version="4.0"/>
   <requires lib="adw" version="1.0"/>
-  <template class="AdvancedExportDialog" parent="AdwWindow">
-    <property name="modal">True</property>
-    <property name="default-width">800</property>
-    <property name="default-height">550</property>
-    <property name="destroy-with-parent">True</property>
+  <template class="AdvancedExportDialog" parent="AdwDialog">
+    <property name="content-width">800</property>
+    <property name="content-height">550</property>
     <child>
       <object class="GtkBox">
         <property name="orientation">vertical</property>

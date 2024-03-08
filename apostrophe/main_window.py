@@ -659,8 +659,7 @@ class MainWindow(Adw.ApplicationWindow):
         text = bytes(self.textview.get_text(), "utf-8")
 
         export_dialog = AdvancedExportDialog(self.current, text)
-        export_dialog.set_transient_for(self)
-        export_dialog.show()
+        export_dialog.present(self)
 
     def show_hemingway_toast(self, *args):
         if self.textview.buffer.hemingway_mode:
