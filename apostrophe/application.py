@@ -208,8 +208,7 @@ class Application(Adw.Application):
 
     def on_preferences(self, _action, _value):
         preferences_dialog = ApostrophePreferencesDialog()
-        preferences_dialog.set_transient_for(self.get_active_window())
-        preferences_dialog.show()
+        preferences_dialog.present(self.get_active_window())
 
     def on_about(self, _action, _param):
         # TODO: what about non-csd

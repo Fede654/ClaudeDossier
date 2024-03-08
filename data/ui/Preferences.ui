@@ -2,9 +2,7 @@
 <interface>
   <requires lib="gtk" version="4.0"/>
   <requires lib="adw" version="1.0"/>
-  <template class="ApostrophePreferencesDialog" parent="AdwPreferencesWindow">
-    <property name="default-height">380</property>
-    <property name="search-enabled">False</property>
+  <template class="ApostrophePreferencesDialog" parent="AdwPreferencesDialog">
     <child>
       <object class="AdwPreferencesPage">
         <child>

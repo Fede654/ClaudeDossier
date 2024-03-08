@@ -42,7 +42,7 @@ class InputFormat(GObject.Object):
         self.help: str = help
 
 @Gtk.Template(resource_path='/org/gnome/gitlab/somas/Apostrophe/ui/Preferences.ui')
-class ApostrophePreferencesDialog(Adw.PreferencesWindow):
+class ApostrophePreferencesDialog(Adw.PreferencesDialog):
 
     __gtype_name__ = "ApostrophePreferencesDialog"
 
