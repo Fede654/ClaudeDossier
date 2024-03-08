@@ -35,7 +35,7 @@
 }
 
 .bottombar_background box{
-  transition: 250ms ease-in;
+  transition: 250ms ease-out;
   background-color: alpha(@view_bg_color, 0);
 }
 
