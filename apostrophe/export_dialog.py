@@ -169,11 +169,9 @@ class AdvancedExportDialog(Adw.Dialog):
 
     __gtype_name__ = "AdvancedExportDialog"
 
-    headerbar = Gtk.Template.Child()
-
     formats_list = Gtk.Template.Child()
 
-    leaflet = Gtk.Template.Child()
+    split_view = Gtk.Template.Child()
     options_page = Gtk.Template.Child()
     formats_page = Gtk.Template.Child()
 
@@ -263,14 +261,6 @@ class AdvancedExportDialog(Adw.Dialog):
 
         return is_tex and not texlive_installed
 
-    @GObject.Property(type=bool, default=False)
-    def show_go_back_button(self):
-        folded = self.leaflet.props.folded
-        on_options_page = (self.leaflet.get_visible_child() ==
-                           self.options_page)
-
-        return folded and on_options_page
-
     @GObject.Property(type=str, default="options")
     def options_page_name(self):
         name = "texlive_warning" if self.show_texlive_warning else "options"
@@ -288,16 +278,8 @@ class AdvancedExportDialog(Adw.Dialog):
         return row
 
     @Gtk.Template.Callback()
-    def reveal_go_back(self, _widget, *args):
-        self.notify("show_go_back_button")
-
-    @Gtk.Template.Callback()
-    def go_back(self, _widget):
-        self.leaflet.set_visible_child(self.formats_page)
-
-    @Gtk.Template.Callback()
     def on_format_selected(self, _widget, _row):
-        self.leaflet.set_visible_child(self.options_page)
+        self.split_view.set_show_content(True)
 
         self.notify("show_page_size_options")
         self.notify("show_slide_size_options")
@@ -307,10 +289,6 @@ class AdvancedExportDialog(Adw.Dialog):
         self.notify("show_texlive_warning")
         self.notify("options_page_name")
         self.update_title()
-
-    @Gtk.Template.Callback()
-    def on_destroy(self, _widget):
-        self.close()
 
     @Gtk.Template.Callback()
     def export(self, widget):
