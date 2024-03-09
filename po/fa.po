@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: apostrophe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2024-03-03 20:09+0000\n"
-"PO-Revision-Date: 2024-03-05 17:08+0330\n"
+"POT-Creation-Date: 2024-03-08 20:17+0000\n"
+"PO-Revision-Date: 2024-03-09 04:34+0330\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
 "Language: fa\n"
@@ -224,193 +224,190 @@ msgstr ""
 msgid "_Close"
 msgstr "_بستن"
 
-#: data/ui/Export.ui:33 apostrophe/export_dialog.py:131
-#: apostrophe/export_dialog.py:342 apostrophe/export_dialog.py:347
-#: apostrophe/main_window.py:439 apostrophe/main_window.py:513
-#: apostrophe/main_window.py:605
-msgid "Cancel"
-msgstr "لغو"
+#: data/ui/Export.ui:21
+msgid "Formats"
+msgstr "قالب‌ها"
 
-#: data/ui/Export.ui:44 apostrophe/export_dialog.py:126
-#: apostrophe/export_dialog.py:341 apostrophe/export_dialog.py:345
+#: data/ui/Export.ui:67 apostrophe/export_dialog.py:126
+#: apostrophe/export_dialog.py:322 apostrophe/export_dialog.py:326
 msgid "Export"
 msgstr "برون‌ریزی"
 
-#: data/ui/Export.ui:117
+#: data/ui/Export.ui:86
 msgid "Options"
 msgstr "گزینه‌ها"
 
-#: data/ui/Export.ui:121
+#: data/ui/Export.ui:89
 msgid "Standalone"
 msgstr "مستقل"
 
-#: data/ui/Export.ui:123
+#: data/ui/Export.ui:90
 msgid ""
 "Use a header and footer to include things like stylesheets and meta information"
 msgstr "استفاده از یک سرایند و پاورقی برای شمول چیزهایی مثل سبک‌برگ‌ها و فراداده‌ها"
 
-#: data/ui/Export.ui:136
+#: data/ui/Export.ui:96
 msgid "Table of Contents"
 msgstr "جدول محتویات"
 
-#: data/ui/Export.ui:150
+#: data/ui/Export.ui:102
 msgid "Number Sections"
 msgstr "تعداد بخش‌ها"
 
-#: data/ui/Export.ui:168 data/ui/Export.ui:173 data/ui/Export.ui:185
-#: data/ui/Export.ui:190
+#: data/ui/Export.ui:112 data/ui/Export.ui:115 data/ui/Export.ui:126
+#: data/ui/Export.ui:130
 msgid "Page Size"
 msgstr "اندارهٔ صفحه"
 
-#: data/ui/Export.ui:202
+#: data/ui/Export.ui:141
 msgid "HTML Options"
 msgstr "گزینه‌های HTML"
 
-#: data/ui/Export.ui:207
+#: data/ui/Export.ui:144
 msgid "Self-Contained"
 msgstr "خودبسنده"
 
-#: data/ui/Export.ui:209
+#: data/ui/Export.ui:145
 msgid "Produces an HTML file with no external dependencies"
 msgstr "ایجاد یک پروندهٔ HTML بدون وابستگی‌های خارجی"
 
-#: data/ui/Export.ui:225
+#: data/ui/Export.ui:154
 msgid "Syntax Highlighting"
 msgstr "برجسته‌سازی نحو"
 
-#: data/ui/Export.ui:231
+#: data/ui/Export.ui:157
 msgid "Use Syntax Highlighting"
 msgstr "استفاده از برجسته‌سازی نحوی"
 
-#: data/ui/Export.ui:238
+#: data/ui/Export.ui:162
 msgid "Highlight Style"
 msgstr "برجسته کردن سبک"
 
-#: data/ui/Export.ui:252
+#: data/ui/Export.ui:175
 msgid "Presentation"
 msgstr "ارائه"
 
-#: data/ui/Export.ui:257
+#: data/ui/Export.ui:178
 msgid "Incremental Bullets"
 msgstr "گلوله‌های افزایشی"
 
-#: data/ui/Export.ui:259
+#: data/ui/Export.ui:179
 msgid "Show one bullet point after another in a slideshow"
 msgstr "نمایش گلوله‌ای پس از دیگری در نمایش اسلاید"
 
-#: data/ui/Headerbar.ui:11
+#: data/ui/Headerbar.ui:10
 msgid "New"
 msgstr "جدید"
 
-#: data/ui/Headerbar.ui:18
+#: data/ui/Headerbar.ui:17
 msgid "_Open"
 msgstr "_باز کردن"
 
-#: data/ui/Headerbar.ui:20
+#: data/ui/Headerbar.ui:19
 msgid "Open a Markdown File"
 msgstr "گشودن پروندهٔ مارک‌دون"
 
-#: data/ui/Headerbar.ui:26
+#: data/ui/Headerbar.ui:25
 msgid "_Save"
 msgstr "_ذخیره"
 
-#: data/ui/Headerbar.ui:28
+#: data/ui/Headerbar.ui:27
 msgid "Save the Markdown File"
 msgstr "ذخیرهٔ پروندهٔ مارک‌دون"
 
-#: data/ui/Headerbar.ui:44
+#: data/ui/Headerbar.ui:43
 msgid "Open the Main Menu"
 msgstr "گشودن فهرست اصلی"
 
-#: data/ui/Headerbar.ui:55
+#: data/ui/Headerbar.ui:54
 msgid "_Find"
 msgstr "_یافتن"
 
-#: data/ui/Headerbar.ui:57
+#: data/ui/Headerbar.ui:56
 msgid "Search in the File"
 msgstr "جست‌وجو در پرونده"
 
-#: data/ui/Headerbar.ui:80
+#: data/ui/Headerbar.ui:79
 msgid "_Hemingway Mode"
 msgstr "حالت _همینگوی"
 
-#: data/ui/Headerbar.ui:84
+#: data/ui/Headerbar.ui:83
 msgid "_Focus Mode"
 msgstr "حالت _تمرکز"
 
-#: data/ui/Headerbar.ui:90
+#: data/ui/Headerbar.ui:89
 msgid "Find and _Replace"
 msgstr "یافتن و _جایگزینی"
 
-#: data/ui/Headerbar.ui:96
+#: data/ui/Headerbar.ui:95
 msgid "_Preferences"
 msgstr "_ترجیحات"
 
-#: data/ui/Headerbar.ui:102
+#: data/ui/Headerbar.ui:101
 msgid "Open _Tutorial"
 msgstr "گشودن _خودآموز"
 
-#: data/ui/Headerbar.ui:107
+#: data/ui/Headerbar.ui:106
 msgid "_Keyboard Shortcuts"
 msgstr "_میان‌برهای صفحه‌کلید"
 
-#: data/ui/Headerbar.ui:111
+#: data/ui/Headerbar.ui:110
 msgid "_About Apostrophe"
 msgstr "_دربارهٔ آپاستروف"
 
-#: data/ui/Headerbar.ui:122
+#: data/ui/Headerbar.ui:121
 msgid "_Save As..."
 msgstr "_ذخیره به شکل…"
 
-#: data/ui/Headerbar.ui:145
+#: data/ui/Headerbar.ui:144
 msgid "Advanced _Export…"
 msgstr "_برون‌ریزی پیش‌رفته…"
 
-#: data/ui/Headerbar.ui:151
+#: data/ui/Headerbar.ui:150
 msgid "_Copy HTML"
 msgstr "_رونوشت HTML"
 
-#: data/ui/Preferences.ui:15 data/ui/Preferences.ui:16
+#: data/ui/Preferences.ui:13 data/ui/Preferences.ui:14
 msgid "Check Spelling While Typing"
 msgstr "بررسی املایی هنگام نوشتن"
 
-#: data/ui/Preferences.ui:28
+#: data/ui/Preferences.ui:19
 msgid "Auto-Hide Header Bar"
 msgstr "نهفتن خودکار نوار سرایند"
 
-#: data/ui/Preferences.ui:29
+#: data/ui/Preferences.ui:20
 msgid "Auto-hide header and status bars while typing"
 msgstr "نهفتن خودکار نوارهای سرایند و وضعیت هنگام نوشتن"
 
-#: data/ui/Preferences.ui:42
+#: data/ui/Preferences.ui:25
 msgid "Large Text"
 msgstr "متن درشت"
 
-#: data/ui/Preferences.ui:43
+#: data/ui/Preferences.ui:26
 msgid "Reduce the margins width and increase the text size when possible"
 msgstr "کاهش پهنای حاشیه‌ها و افزایش اندازهٔ متن در صورت امکان"
 
-#: data/ui/Preferences.ui:56
+#: data/ui/Preferences.ui:32
 msgid "Restore Session"
 msgstr "بازگردانی نشست"
 
-#: data/ui/Preferences.ui:57
+#: data/ui/Preferences.ui:33
 msgid "Return to your previous session when Apostrophe is started"
 msgstr "بازگشت به نشست پشیشینتان هنگام آغاز آپاستروف"
 
-#: data/ui/Preferences.ui:70
+#: data/ui/Preferences.ui:38
 msgid "Input Format"
 msgstr "قالب ورودی"
 
-#: data/ui/Preferences.ui:71
+#: data/ui/Preferences.ui:39
 msgid "Flavor of markdown Apostrophe will use"
 msgstr "طعم مارک‌دونی که آپاستروف استفاده خواهد کرد"
 
-#: data/ui/Preferences.ui:80
+#: data/ui/Preferences.ui:48
 msgid "Markdown Flavor Documentation"
 msgstr "مستندات با طعم مارک‌دون"
 
-#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_window.py:30
+#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_window.py:32
 msgid "Preview"
 msgstr "پیش‌نمایش"
 
@@ -418,11 +415,11 @@ msgstr "پیش‌نمایش"
 msgid "Screen Layout"
 msgstr "چیدمان صفحه"
 
-#: data/ui/Recents.ui:46
+#: data/ui/Recents.ui:41
 msgid "No Recent Documents"
 msgstr "سند اخیری وجود ندارد"
 
-#: data/ui/Recents.ui:69
+#: data/ui/Recents.ui:65
 msgid "No Results Found"
 msgstr "نتیجه‌ای پیدا نشد"
 
@@ -673,23 +670,23 @@ msgstr "استفاده از رنگ‌های سوبیایی"
 msgid "Use Dark Colors"
 msgstr "استفاده از رنگ‌های تاریک"
 
-#: data/ui/Window.ui:81
+#: data/ui/Window.ui:104
 msgid "File Has Changed on Disk"
 msgstr "پرونده روی دیسک تغییر کرده"
 
-#: data/ui/Window.ui:91
+#: data/ui/Window.ui:114
 msgid "The file has been changed by another program"
 msgstr "پرونده به دست برنامه‌ای دیگر تغییر کرده"
 
-#: data/ui/Window.ui:99
+#: data/ui/Window.ui:122
 msgid "_Discard Changes and Reload"
 msgstr "_دور ریختن تغییرات و بار کردن دوباره"
 
-#: apostrophe/application.py:223
+#: apostrophe/application.py:217
 msgid "Donate"
 msgstr "اعانه"
 
-#: apostrophe/application.py:224
+#: apostrophe/application.py:218
 msgid "Translations"
 msgstr "ترجمه‌ها"
 
@@ -697,12 +694,18 @@ msgstr "ترجمه‌ها"
 msgid "Close"
 msgstr "بستن"
 
-#: apostrophe/export_dialog.py:129 apostrophe/export_dialog.py:346
+#: apostrophe/export_dialog.py:129 apostrophe/export_dialog.py:327
 #, python-format
 msgid "Export to %s"
 msgstr "برون‌ریزی به %s"
 
-#: apostrophe/export_dialog.py:155 apostrophe/export_dialog.py:335
+#: apostrophe/export_dialog.py:131 apostrophe/export_dialog.py:323
+#: apostrophe/export_dialog.py:328 apostrophe/main_window.py:444
+#: apostrophe/main_window.py:518 apostrophe/main_window.py:609
+msgid "Cancel"
+msgstr "لغو"
+
+#: apostrophe/export_dialog.py:155 apostrophe/export_dialog.py:316
 #, python-brace-format
 msgid ""
 "An error happened while trying to export:\n"
@@ -713,11 +716,11 @@ msgstr ""
 "\n"
 "{err_msg}"
 
-#: apostrophe/export_dialog.py:234
+#: apostrophe/export_dialog.py:235
 msgid "Export to {}"
 msgstr "برون‌ریزی به {}"
 
-#: apostrophe/export_dialog.py:342
+#: apostrophe/export_dialog.py:323
 msgid "Select folder"
 msgstr "گزینش شاخه"
 
@@ -754,43 +757,43 @@ msgid "adverb"
 msgstr "قید"
 
 #. Hemingway Toast
-#: apostrophe/main_window.py:143
+#: apostrophe/main_window.py:145
 msgid "Text can't be deleted while on Hemingway mode"
 msgstr "در حالت همینگوی نمی‌تواند متن را حذف کرد"
 
-#: apostrophe/main_window.py:146
+#: apostrophe/main_window.py:148
 msgid "Tell me more"
 msgstr "بیش‌تر بگو"
 
-#: apostrophe/main_window.py:435
+#: apostrophe/main_window.py:440
 msgid "Save your File"
 msgstr "ذخیرهٔ پرونده‌تان"
 
-#: apostrophe/main_window.py:438 apostrophe/main_window.py:607
+#: apostrophe/main_window.py:443 apostrophe/main_window.py:611
 msgid "Save"
 msgstr "ذخیره"
 
-#: apostrophe/main_window.py:502
+#: apostrophe/main_window.py:507
 msgid "Markdown Files"
 msgstr "پرونده‌های مارک‌دون"
 
-#: apostrophe/main_window.py:506
+#: apostrophe/main_window.py:511
 msgid "Plain Text Files"
 msgstr "پرونده‌های متنی ساده"
 
-#: apostrophe/main_window.py:509
+#: apostrophe/main_window.py:514
 msgid "Open a .md file"
 msgstr "گشودن یک پروندهٔ ‎.md"
 
-#: apostrophe/main_window.py:512
+#: apostrophe/main_window.py:517
 msgid "Open"
 msgstr "گشودن"
 
-#: apostrophe/main_window.py:599
+#: apostrophe/main_window.py:603
 msgid "Save Changes?"
 msgstr "ذخیرهٔ تغییرات؟"
 
-#: apostrophe/main_window.py:600
+#: apostrophe/main_window.py:604
 #, python-format
 msgid ""
 "“%s” contains unsaved changes. If you don’t save, all your changes will be "
@@ -799,11 +802,11 @@ msgstr ""
 "«%s» تغییراتی ذخیره نشده دارد. اگر ذخیره نکنید، تمامی تغییراتتان برای همیشه از "
 "دست خواهند رفت."
 
-#: apostrophe/main_window.py:606
+#: apostrophe/main_window.py:610
 msgid "Discard"
 msgstr "دور ریختن"
 
-#: apostrophe/main_window.py:763 apostrophe/main_window.py:787
+#: apostrophe/main_window.py:772 apostrophe/main_window.py:796
 msgid "New File"
 msgstr "پروندهٔ جدید"
 
