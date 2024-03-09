@@ -453,7 +453,7 @@ class FormatInserter:
             self.settings = Settings.new()
             basepath = self.settings.get_string("open-file-path")
             if basepath != "/":
-                basepath = Gio.File.new_for_path()
+                basepath = Gio.File.new_for_path(basepath)
                 path = urllib.parse.quote(basepath.get_relative_path(image))
             else:
                 path = urllib.parse.quote(image.get_path())
