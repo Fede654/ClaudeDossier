@@ -314,16 +314,9 @@ class MainWindow(Adw.ApplicationWindow):
             self.preview_handler.hide()
             self.textview.grab_focus()
 
-    def save_document(self, _action=None, _value=None, sync: bool = False, callback=None):
+    def save_document(self, _action=None, _value=None, callback=None):
         """Try to save buffer in the current gfile.
         If the file doesn't exist calls save_document_as
-
-        Args:
-            sync (bool, optional): Wheter the save operation should be done
-            synchronously. Defaults to False.
-
-        Returns:
-            bool: True if the document was saved correctly
         """
 
         self.reveal_headerbar_bottombar()
@@ -355,51 +348,19 @@ class MainWindow(Adw.ApplicationWindow):
                 self.save_progressbar.set_visible(True)
                 self.progressbar_animation.play()
 
-                # we allow synchronously saving operations
-                # for result-dependant code
-                if sync:
-                    try:
-                        res = self.current.gfile.replace_contents(
-                            encoded_text,
-                            etag=None,
-                            make_backup=False,
-                            flags=Gio.FileCreateFlags.NONE,
-                            cancellable=None)
-                    except GLib.GError as error:
-                        LOGGER.warning(str(error.message))
-                        self.did_change = True
-                        self.progressbar_fade_out.play()
-                        self._set_file_monitor()
-                        helpers.show_error(self, str(error.message))
-                        return
-                    if res:
-                        if self.progressbar_animation.get_state() == Adw.AnimationState.PAUSED:
-                            self.progressbar_animation.resume()
-
-                        self.update_headerbar_title()
-                        self.did_change = False
-                        self._set_file_monitor()
-                        if callback is not None:
-                            callback(self)
-                    else:
-                        self.progressbar_fade_out.play()
-                        self.did_change = True
-                        self._set_file_monitor()
-                else:
-                    self.current.gfile.replace_contents_bytes_async(
-                        GLib.Bytes.new(encoded_text),
-                        etag=None,
-                        make_backup=False,
-                        flags=Gio.FileCreateFlags.NONE,
-                        cancellable=None,
-                        callback=self._replace_contents_cb,
-                        user_data=callback)
+                self.current.gfile.replace_contents_bytes_async(
+                    GLib.Bytes.new(encoded_text),
+                    etag=None,
+                    make_backup=False,
+                    flags=Gio.FileCreateFlags.NONE,
+                    cancellable=None,
+                    callback=self._replace_contents_cb,
+                    user_data=callback)
         # if there's no GFile we ask for one:
         else:
-            self.save_document_as(sync=sync, callback=callback)
+            self.save_document_as(callback=callback)
 
-    def save_document_as(self, _widget=None, _data=None,
-                         sync: bool=False, callback=None):
+    def save_document_as(self, _widget=None, _data=None, callback=None):
         """provide to the user a filechooser and save the document
            where they want. Call set_headbar_title after that
         """
@@ -424,7 +385,7 @@ class MainWindow(Adw.ApplicationWindow):
 
                 self.update_headerbar_title(False, True)
                 dialog.destroy()
-                self.save_document(sync=sync, callback=callback)
+                self.save_document(callback=callback)
 
         filefilter = Gtk.FileFilter.new()
         filefilter.add_mime_type('text/x-markdown')
@@ -618,7 +579,7 @@ class MainWindow(Adw.ApplicationWindow):
                         callback(self)
                     case "save":
                         # If the saving fails, retry
-                        self.save_document(sync=True, callback=callback)
+                        self.save_document(callback=callback)
 
             dialog.connect("response", on_response)
 
