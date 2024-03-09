@@ -380,9 +380,6 @@ class MainWindow(Adw.ApplicationWindow):
 
                 self.current.gfile = file
 
-                recents_manager = Gtk.RecentManager.get_default()
-                recents_manager.add_item(self.current.gfile.get_uri())
-
                 self.update_headerbar_title(False, True)
                 dialog.destroy()
                 self.save_document(callback=callback)
@@ -430,7 +427,9 @@ class MainWindow(Adw.ApplicationWindow):
             self.did_change = False
             # We add a 1ms delay to the call to avoid race conditions
             # see #456
-            GLib.timeout_add(1, self._set_file_monitor, None, 0)
+            GLib.timeout_add(500, self._set_file_monitor, None, 0)
+            recents_manager = Gtk.RecentManager.get_default()
+            recents_manager.add_item(self.current.gfile.get_uri())
             if callback is not None:
                 callback(self)
         else:
