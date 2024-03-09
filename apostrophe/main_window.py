@@ -314,7 +314,7 @@ class MainWindow(Adw.ApplicationWindow):
             self.preview_handler.hide()
             self.textview.grab_focus()
 
-    def save_document(self, _action=None, _value=None, sync: bool = False) -> bool:
+    def save_document(self, _action=None, _value=None, sync: bool = False, callback=None):
         """Try to save buffer in the current gfile.
         If the file doesn't exist calls save_document_as
 
@@ -349,7 +349,7 @@ class MainWindow(Adw.ApplicationWindow):
             except UnicodeEncodeError as error:
                 helpers.show_error(self, str(error.reason))
                 LOGGER.warning(str(error.reason))
-                return False
+                return
             else:
                 self.save_progressbar.set_opacity(1)
                 self.save_progressbar.set_visible(True)
@@ -371,8 +371,7 @@ class MainWindow(Adw.ApplicationWindow):
                         self.progressbar_fade_out.play()
                         self._set_file_monitor()
                         helpers.show_error(self, str(error.message))
-                        return False
-
+                        return
                     if res:
                         if self.progressbar_animation.get_state() == Adw.AnimationState.PAUSED:
                             self.progressbar_animation.resume()
@@ -380,14 +379,12 @@ class MainWindow(Adw.ApplicationWindow):
                         self.update_headerbar_title()
                         self.did_change = False
                         self._set_file_monitor()
-                        return True
-
+                        if callback is not None:
+                            callback(self)
                     else:
                         self.progressbar_fade_out.play()
                         self.did_change = True
                         self._set_file_monitor()
-                        return False
-
                 else:
                     self.current.gfile.replace_contents_bytes_async(
                         GLib.Bytes.new(encoded_text),
@@ -396,14 +393,13 @@ class MainWindow(Adw.ApplicationWindow):
                         flags=Gio.FileCreateFlags.NONE,
                         cancellable=None,
                         callback=self._replace_contents_cb,
-                        user_data=None)
-                    return True
+                        user_data=callback)
         # if there's no GFile we ask for one:
         else:
-            return self.save_document_as(sync=sync)
+            self.save_document_as(sync=sync, callback=callback)
 
     def save_document_as(self, _widget=None, _data=None,
-                         sync: bool = False) -> bool:
+                         sync: bool=False, callback=None):
         """provide to the user a filechooser and save the document
            where they want. Call set_headbar_title after that
         """
@@ -419,7 +415,7 @@ class MainWindow(Adw.ApplicationWindow):
                     except GLib.GError as error:
                         helpers.show_error(self, str(error.message))
                         LOGGER.warning(str(error.message))
-                        return False
+                        return
 
                 self.current.gfile = file
 
@@ -428,9 +424,7 @@ class MainWindow(Adw.ApplicationWindow):
 
                 self.update_headerbar_title(False, True)
                 dialog.destroy()
-                return self.save_document()
-            else:
-                return False
+                self.save_document(sync=sync, callback=callback)
 
         filefilter = Gtk.FileFilter.new()
         filefilter.add_mime_type('text/x-markdown')
@@ -456,7 +450,7 @@ class MainWindow(Adw.ApplicationWindow):
 
         self.filechooser.show()
 
-    def _replace_contents_cb(self, gfile, result, _user_data=None):
+    def _replace_contents_cb(self, gfile, result, callback=None):
         try:
             success, _etag = gfile.replace_contents_finish(result)
         except GLib.GError as error:
@@ -476,6 +470,8 @@ class MainWindow(Adw.ApplicationWindow):
             # We add a 1ms delay to the call to avoid race conditions
             # see #456
             GLib.timeout_add(1, self._set_file_monitor, None, 0)
+            if callback is not None:
+                callback(self)
         else:
             self.progressbar_fade_out.play()
             self.did_change = True
@@ -615,19 +611,18 @@ class MainWindow(Adw.ApplicationWindow):
             dialog.set_close_response("cancel")
 
             def on_response(message_dialog, response):
-                if response == "cancel":
-                    return
-                if response == "save":
-                    # If the saving fails, retry
-                    if self.save_document(sync=True) is False:
+                match response:
+                    case "cancel":
                         return
-                if callback is not None:
-                    callback(self)
+                    case "close":
+                        callback(self)
+                    case "save":
+                        # If the saving fails, retry
+                        self.save_document(sync=True, callback=callback)
 
             dialog.connect("response", on_response)
 
             dialog.present(self)
-            return
         else:
             if callback is not None:
                 callback(self)
