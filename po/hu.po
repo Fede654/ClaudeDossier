@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apostrophe\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2024-03-03 20:09+0000\n"
-"PO-Revision-Date: 2024-03-04 20:51+0100\n"
+"POT-Creation-Date: 2024-03-08 20:17+0000\n"
+"PO-Revision-Date: 2024-03-10 17:15+0100\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <openscope at fsf dot hu>\n"
 "Language: hu\n"
@@ -230,27 +230,25 @@ msgstr ""
 msgid "_Close"
 msgstr "_Bezárás"
 
-#: data/ui/Export.ui:33 apostrophe/export_dialog.py:131
-#: apostrophe/export_dialog.py:342 apostrophe/export_dialog.py:347
-#: apostrophe/main_window.py:439 apostrophe/main_window.py:513
-#: apostrophe/main_window.py:605
-msgid "Cancel"
-msgstr "Mégse"
+#: data/ui/Export.ui:21
+#| msgid "Input Format"
+msgid "Formats"
+msgstr "Formátumok"
 
-#: data/ui/Export.ui:44 apostrophe/export_dialog.py:126
-#: apostrophe/export_dialog.py:341 apostrophe/export_dialog.py:345
+#: data/ui/Export.ui:67 apostrophe/export_dialog.py:126
+#: apostrophe/export_dialog.py:322 apostrophe/export_dialog.py:326
 msgid "Export"
 msgstr "Exportálás"
 
-#: data/ui/Export.ui:117
+#: data/ui/Export.ui:86
 msgid "Options"
 msgstr "Beállítások"
 
-#: data/ui/Export.ui:121
+#: data/ui/Export.ui:89
 msgid "Standalone"
 msgstr "Egyedülálló"
 
-#: data/ui/Export.ui:123
+#: data/ui/Export.ui:90
 msgid ""
 "Use a header and footer to include things like stylesheets and meta "
 "information"
@@ -258,170 +256,170 @@ msgstr ""
 "Fejléc és lábléc használata az olyan dolgokhoz, mint a stíluslapok és a "
 "metainformációk"
 
-#: data/ui/Export.ui:136
+#: data/ui/Export.ui:96
 msgid "Table of Contents"
 msgstr "Tartalomjegyzék"
 
-#: data/ui/Export.ui:150
+#: data/ui/Export.ui:102
 msgid "Number Sections"
 msgstr "Alcímek számozása"
 
-#: data/ui/Export.ui:168 data/ui/Export.ui:173 data/ui/Export.ui:185
-#: data/ui/Export.ui:190
+#: data/ui/Export.ui:112 data/ui/Export.ui:115 data/ui/Export.ui:126
+#: data/ui/Export.ui:130
 msgid "Page Size"
 msgstr "Oldalméret"
 
-#: data/ui/Export.ui:202
+#: data/ui/Export.ui:141
 msgid "HTML Options"
 msgstr "HTML beállításai"
 
-#: data/ui/Export.ui:207
+#: data/ui/Export.ui:144
 msgid "Self-Contained"
 msgstr "Önálló"
 
-#: data/ui/Export.ui:209
+#: data/ui/Export.ui:145
 msgid "Produces an HTML file with no external dependencies"
 msgstr "Külső függőségek nélküli HTML-fájlt állít elő"
 
-#: data/ui/Export.ui:225
+#: data/ui/Export.ui:154
 msgid "Syntax Highlighting"
 msgstr "Szintaxis-kiemelés"
 
-#: data/ui/Export.ui:231
+#: data/ui/Export.ui:157
 msgid "Use Syntax Highlighting"
 msgstr "Szintaxis-kiemelés használata"
 
-#: data/ui/Export.ui:238
+#: data/ui/Export.ui:162
 msgid "Highlight Style"
 msgstr "Kiemelés stílusa"
 
-#: data/ui/Export.ui:252
+#: data/ui/Export.ui:175
 msgid "Presentation"
 msgstr "Bemutató"
 
-#: data/ui/Export.ui:257
+#: data/ui/Export.ui:178
 msgid "Incremental Bullets"
 msgstr "Növekvő listaelemek"
 
-#: data/ui/Export.ui:259
+#: data/ui/Export.ui:179
 msgid "Show one bullet point after another in a slideshow"
 msgstr "Felsorolás elemeinek megjelenítése egymás után a diavetítéskor"
 
-#: data/ui/Headerbar.ui:11
+#: data/ui/Headerbar.ui:10
 msgid "New"
 msgstr "Új"
 
-#: data/ui/Headerbar.ui:18
+#: data/ui/Headerbar.ui:17
 msgid "_Open"
 msgstr "_Megnyitás"
 
-#: data/ui/Headerbar.ui:20
+#: data/ui/Headerbar.ui:19
 msgid "Open a Markdown File"
 msgstr "Egy Markdown-fájl megnyitása"
 
-#: data/ui/Headerbar.ui:26
+#: data/ui/Headerbar.ui:25
 msgid "_Save"
 msgstr "_Mentés"
 
-#: data/ui/Headerbar.ui:28
+#: data/ui/Headerbar.ui:27
 msgid "Save the Markdown File"
 msgstr "A Markdown-fájl mentése"
 
-#: data/ui/Headerbar.ui:44
+#: data/ui/Headerbar.ui:43
 msgid "Open the Main Menu"
 msgstr "A főmenü megnyitása"
 
-#: data/ui/Headerbar.ui:55
+#: data/ui/Headerbar.ui:54
 msgid "_Find"
 msgstr "_Keresés"
 
-#: data/ui/Headerbar.ui:57
+#: data/ui/Headerbar.ui:56
 msgid "Search in the File"
 msgstr "Keresés a fájlban"
 
-#: data/ui/Headerbar.ui:80
+#: data/ui/Headerbar.ui:79
 msgid "_Hemingway Mode"
 msgstr "_Hemingway mód"
 
-#: data/ui/Headerbar.ui:84
+#: data/ui/Headerbar.ui:83
 msgid "_Focus Mode"
 msgstr "_Fókusz mód"
 
-#: data/ui/Headerbar.ui:90
+#: data/ui/Headerbar.ui:89
 msgid "Find and _Replace"
 msgstr "Keresés és _csere"
 
-#: data/ui/Headerbar.ui:96
+#: data/ui/Headerbar.ui:95
 msgid "_Preferences"
 msgstr "_Beállítások"
 
-#: data/ui/Headerbar.ui:102
+#: data/ui/Headerbar.ui:101
 msgid "Open _Tutorial"
 msgstr "_Oktatás megnyitása"
 
-#: data/ui/Headerbar.ui:107
+#: data/ui/Headerbar.ui:106
 msgid "_Keyboard Shortcuts"
 msgstr "_Gyorsbillenytűk"
 
-#: data/ui/Headerbar.ui:111
+#: data/ui/Headerbar.ui:110
 msgid "_About Apostrophe"
 msgstr "Az Aposztróf _névjegye"
 
-#: data/ui/Headerbar.ui:122
+#: data/ui/Headerbar.ui:121
 msgid "_Save As..."
 msgstr "_Mentés másként…"
 
-#: data/ui/Headerbar.ui:145
+#: data/ui/Headerbar.ui:144
 msgid "Advanced _Export…"
 msgstr "Speciális _exportálás…"
 
-#: data/ui/Headerbar.ui:151
+#: data/ui/Headerbar.ui:150
 msgid "_Copy HTML"
 msgstr "HTML _másolása"
 
-#: data/ui/Preferences.ui:15 data/ui/Preferences.ui:16
+#: data/ui/Preferences.ui:13 data/ui/Preferences.ui:14
 msgid "Check Spelling While Typing"
 msgstr "Helyesírás-ellenőrzés gépelés közben"
 
-#: data/ui/Preferences.ui:28
+#: data/ui/Preferences.ui:19
 msgid "Auto-Hide Header Bar"
 msgstr "Fejlécsor automatikus elrejtése"
 
-#: data/ui/Preferences.ui:29
+#: data/ui/Preferences.ui:20
 msgid "Auto-hide header and status bars while typing"
 msgstr "Fejléc és állapotsorok automatikus elrejtése gépelés közben"
 
-#: data/ui/Preferences.ui:42
+#: data/ui/Preferences.ui:25
 msgid "Large Text"
 msgstr "Nagy szöveg"
 
-#: data/ui/Preferences.ui:43
+#: data/ui/Preferences.ui:26
 msgid "Reduce the margins width and increase the text size when possible"
 msgstr ""
 "A margók szélességének csökkentése és a szöveg méretének növelése, ha "
 "lehetséges"
 
-#: data/ui/Preferences.ui:56
+#: data/ui/Preferences.ui:32
 msgid "Restore Session"
 msgstr "Munkamenet helyreállítása"
 
-#: data/ui/Preferences.ui:57
+#: data/ui/Preferences.ui:33
 msgid "Return to your previous session when Apostrophe is started"
 msgstr "Visszatérés az előző munkamenethez az Aposztróf indításakor"
 
-#: data/ui/Preferences.ui:70
+#: data/ui/Preferences.ui:38
 msgid "Input Format"
 msgstr "Beviteli formátum"
 
-#: data/ui/Preferences.ui:71
+#: data/ui/Preferences.ui:39
 msgid "Flavor of markdown Apostrophe will use"
 msgstr "Az Aposztróf által használandó Markdown-változat"
 
-#: data/ui/Preferences.ui:80
+#: data/ui/Preferences.ui:48
 msgid "Markdown Flavor Documentation"
 msgstr "Markdown-változat dokumentációja"
 
-#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_window.py:30
+#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_window.py:32
 msgid "Preview"
 msgstr "Előnézet"
 
@@ -429,11 +427,11 @@ msgstr "Előnézet"
 msgid "Screen Layout"
 msgstr "Képernyő-elrendezés"
 
-#: data/ui/Recents.ui:46
+#: data/ui/Recents.ui:41
 msgid "No Recent Documents"
 msgstr "Nincsenek legutóbbi dokumentumok"
 
-#: data/ui/Recents.ui:69
+#: data/ui/Recents.ui:65
 msgid "No Results Found"
 msgstr "Nincsenek találatok"
 
@@ -684,23 +682,23 @@ msgstr "Szépia színek használata"
 msgid "Use Dark Colors"
 msgstr "Sötét színek használata"
 
-#: data/ui/Window.ui:81
+#: data/ui/Window.ui:104
 msgid "File Has Changed on Disk"
 msgstr "A fájl megváltozott a lemezen"
 
-#: data/ui/Window.ui:91
+#: data/ui/Window.ui:114
 msgid "The file has been changed by another program"
 msgstr "A fájlt egy másik program megváltoztatta"
 
-#: data/ui/Window.ui:99
+#: data/ui/Window.ui:122
 msgid "_Discard Changes and Reload"
 msgstr "Változtatások _elvetése és újratöltés"
 
-#: apostrophe/application.py:223
+#: apostrophe/application.py:217
 msgid "Donate"
 msgstr "Adományozás"
 
-#: apostrophe/application.py:224
+#: apostrophe/application.py:218
 msgid "Translations"
 msgstr "Fordítások"
 
@@ -708,12 +706,18 @@ msgstr "Fordítások"
 msgid "Close"
 msgstr "Bezárás"
 
-#: apostrophe/export_dialog.py:129 apostrophe/export_dialog.py:346
+#: apostrophe/export_dialog.py:129 apostrophe/export_dialog.py:327
 #, python-format
 msgid "Export to %s"
 msgstr "Exportálás ide: %s"
 
-#: apostrophe/export_dialog.py:155 apostrophe/export_dialog.py:335
+#: apostrophe/export_dialog.py:131 apostrophe/export_dialog.py:323
+#: apostrophe/export_dialog.py:328 apostrophe/main_window.py:444
+#: apostrophe/main_window.py:518 apostrophe/main_window.py:609
+msgid "Cancel"
+msgstr "Mégse"
+
+#: apostrophe/export_dialog.py:155 apostrophe/export_dialog.py:316
 #, python-brace-format
 msgid ""
 "An error happened while trying to export:\n"
@@ -724,11 +728,11 @@ msgstr ""
 "\n"
 "{err_msg}"
 
-#: apostrophe/export_dialog.py:234
+#: apostrophe/export_dialog.py:235
 msgid "Export to {}"
 msgstr "Exportálás ide: {}"
 
-#: apostrophe/export_dialog.py:342
+#: apostrophe/export_dialog.py:323
 msgid "Select folder"
 msgstr "Mappa kiválasztása"
 
@@ -765,44 +769,43 @@ msgid "adverb"
 msgstr "határozószó"
 
 #. Hemingway Toast
-#: apostrophe/main_window.py:143
+#: apostrophe/main_window.py:145
 msgid "Text can't be deleted while on Hemingway mode"
 msgstr "A szöveg nem törölhető Hemingway módban"
 
-#: apostrophe/main_window.py:146
+#: apostrophe/main_window.py:148
 msgid "Tell me more"
 msgstr "Mutass többet"
 
-#: apostrophe/main_window.py:435
+#: apostrophe/main_window.py:440
 msgid "Save your File"
 msgstr "Fájl mentése"
 
-#: apostrophe/main_window.py:438 apostrophe/main_window.py:607
+#: apostrophe/main_window.py:443 apostrophe/main_window.py:611
 msgid "Save"
 msgstr "Mentés"
 
-#: apostrophe/main_window.py:502
+#: apostrophe/main_window.py:507
 msgid "Markdown Files"
 msgstr "Markdown-fájlok"
 
-#: apostrophe/main_window.py:506
+#: apostrophe/main_window.py:511
 msgid "Plain Text Files"
 msgstr "Egyszerű szöveges fájlok"
 
-#: apostrophe/main_window.py:509
+#: apostrophe/main_window.py:514
 msgid "Open a .md file"
 msgstr "Egy .md fájl megnyitása"
 
-#: apostrophe/main_window.py:512
+#: apostrophe/main_window.py:517
 msgid "Open"
 msgstr "Megnyitás"
 
-#: apostrophe/main_window.py:599
-#| msgid "Save changes?"
+#: apostrophe/main_window.py:603
 msgid "Save Changes?"
 msgstr "Menti a változtatásokat?"
 
-#: apostrophe/main_window.py:600
+#: apostrophe/main_window.py:604
 #, python-format
 msgid ""
 "“%s” contains unsaved changes. If you don’t save, all your changes will be "
@@ -811,11 +814,11 @@ msgstr ""
 "A(z) „%s” mentetlen változtatásokat tartalmaz. Ha nem menti, akkor minden "
 "változtatás véglegesen elvész."
 
-#: apostrophe/main_window.py:606
+#: apostrophe/main_window.py:610
 msgid "Discard"
 msgstr "Elvetés"
 
-#: apostrophe/main_window.py:763 apostrophe/main_window.py:787
+#: apostrophe/main_window.py:772 apostrophe/main_window.py:796
 msgid "New File"
 msgstr "Új fájl"
 
