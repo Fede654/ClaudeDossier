@@ -106,7 +106,10 @@ class ApostropheTextView(Gtk.TextView):
         # self.preview_popover = InlinePreview(self)
 
         # Drag and drop
-        drop_target = Gtk.DropTarget.new(GObject.TYPE_STRING, Gdk.DragAction.COPY)
+        formats = Gdk.ContentFormatsBuilder.new()
+        formats.add_gtype(Gio.File)
+        formats.add_gtype(GObject.TYPE_STRING)
+        drop_target = Gtk.DropTarget(formats=formats.to_formats(), actions=Gdk.DragAction.COPY)
         drop_target.connect('drop', self.on_drop)
         self.add_controller(drop_target)
 
@@ -123,12 +126,14 @@ class ApostropheTextView(Gtk.TextView):
     def on_drop(self, drop_target, content, _x, _y):
         # check if a file was dropped
         try:
+            # if we got a file, get its uri
+            if isinstance(content, Gio.File):
+                content = content.get_uri()
             GLib.Uri.is_valid(content, GLib.UriFlags.NONE)
             uri = GLib.Uri.parse(content, GLib.UriFlags.NONE)
 
             # we could try to use glib utils for handling uris but it's not that
             # worth it
-
             if content.startswith("file://"):
                 # remove trailing newlines
                 content = content.strip()
