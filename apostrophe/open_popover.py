@@ -96,13 +96,5 @@ class ApostropheOpenPopover(Gtk.Popover):
         for item in filtered_list:
             self.model.append(RecentItem(item.get_display_name(), item.get_uri_display(), item.get_uri()))
 
-    @Gtk.Template.Callback()
-    def on_search_entry_activate_cb(self, *arg, **kwargs):
-        print("activate")
-
-    @Gtk.Template.Callback()
-    def on_search_entry_stop_cb(self, *arg, **kwargs):
-        print("stop")
-
     def on_delete_click(self, _widget, item):
         self.recents_manager.remove_item(item.uri)
