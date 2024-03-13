@@ -12,7 +12,7 @@
 # You should have received a copy of the GNU General Public License along
 # with this program.  If not, see <http://www.gnu.org/licenses/>.
 # END LICENSE
-
+import os
 import math
 import webbrowser
 from enum import IntEnum, auto
@@ -83,6 +83,10 @@ class PreviewHandler:
             # Second step: load HTML.
             self.loading = True
             if not self.web_view:
+                # chdir to a base path so the webview doesn't crash
+                # once the webview is loaded we'll change back to the previous one
+                # TODO: check out if we can remove this in the future                os.chdir("/")
+                os.chdir("/")
                 self.web_view = PreviewWebView()
                 self.web_view.get_settings().set_allow_universal_access_from_file_urls(True)
                 self.web_view.get_settings().set_enable_developer_extras(config.PROFILE == '.Devel')
@@ -155,6 +159,9 @@ class PreviewHandler:
     def on_load_changed(self, _web_view, event):
         if event == WebKit.LoadEvent.FINISHED:
             self.loading = False
+            # once the webview is loaded, change back the working dir
+            # to the file path, so pandoc can work properly
+            os.chdir(self.window().current.base_path)
             if self.web_view_pending_html:
                 self.__show(html=self.web_view_pending_html, step=Step.LOAD_WEBVIEW)
                 self.web_view_pending_html = None

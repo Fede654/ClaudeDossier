@@ -736,11 +736,11 @@ class File():
         if file:
             if file.is_native():
                 self.path = file.get_parent().get_path()
-                base_path = file.get_parent().get_path()
-                os.chdir(base_path)
+                self.base_path = file.get_parent().get_path()
+                
             else:
                 self.path = file.get_parent().get_uri()
-                base_path = "/"
+                self.base_path = "/"
 
             file_info = file.query_info("standard",
                                         Gio.FileQueryInfoFlags.NONE,
@@ -749,10 +749,12 @@ class File():
                 "standard::display-name")
         else:
             self.title = _("New File")
-            base_path = "/"
+            self.base_path = "/"
+        os.chdir(self.base_path)
+
         self.name = self.title
         if self.name.endswith(".md"):
             self.name = self.name[:-3]
         # TODO: remove path in favor of gfile
-        self._settings.set_string("open-file-path", base_path)
+        self._settings.set_string("open-file-path", self.base_path)
         self._gfile = file
