@@ -57,6 +57,20 @@
             </child>
           </object>
         </child>
+        <child>
+          <object class="AdwPreferencesGroup">
+            <child>
+              <object class="AdwComboRow" id="preview_security_comborow">
+                <property name="title" translatable="yes">Preview Security</property>
+                <property name="subtitle" translatable="yes">Desired level of security when rendering the preview</property>
+                <property name="expression">
+                  <lookup name="name" type="SecurityFormat"/>
+                </property>
+                <signal name="notify::selected" handler="on_security"/>
+              </object>
+            </child>
+          </object>
+        </child>
       </object>
     </child>
   </template>

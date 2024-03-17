@@ -17,6 +17,12 @@
     <value nick='windowed' value='3' />
   </enum>
 
+  <enum id='org.gnome.gitlab.somas.Apostrophe.PreviewSecurity'>
+    <value nick='ask' value='0' />
+    <value nick='always-restricted' value='1' />
+    <value nick='always-unrestricted' value='2' />
+  </enum>
+
   <schema path="/org/gnome/gitlab/somas/Apostrophe/" id="org.gnome.gitlab.somas.Apostrophe">
     <key name='color-scheme' type='s'>
       <choices>
@@ -99,6 +105,13 @@
       <summary>Preview mode</summary>
       <description>
         How to display the preview.
+      </description>
+    </key>
+    <key name='preview-security' enum='org.gnome.gitlab.somas.Apostrophe.PreviewSecurity'>
+      <default>"ask"</default>
+      <summary>Preview Security</summary>
+      <description>
+        Security policy to apply when rendering files.
       </description>
     </key>
     <key name='preview-active' type='b'>

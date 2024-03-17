@@ -44,6 +44,46 @@
                     <signal name="unmap" handler="spinner_unmap_cb" swapped="no" />
                   </object>
                 </child>
+                <child>
+                  <object class="AdwStatusPage" id="security_warning">
+                    <property name="icon-name">dialog-warning-symbolic</property>
+                    <property name="title" translatable="yes">This file may be insecure</property>
+                    <property name="description" translatable="yes">Previewing files from untrusted sources can be dangerous.
+If you're unsure about the contents of this file, open it in the Restricted Preview where javascript and HTML are disabled.
+                    </property>
+                    <property name="child">
+                      <object class="GtkBox">
+                        <property name="orientation">vertical</property>
+                        <child>
+                          <object class="GtkBox">
+                            <property name="halign">center</property>
+                            <property name="spacing">12</property>
+                            <property name="margin-bottom">12</property>
+                            <child>
+                              <object class="GtkButton">
+                                <property name="label" translatable="yes">Load Preview</property>
+                                <signal name="clicked" handler="load_preview" swapped="no"/>
+                                <style>
+                                  <class name="pill"/>
+                                </style>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkButton">
+                                <property name="label" translatable="yes">Load Restricted Preview</property>
+                                <signal name="clicked" handler="load_restricted_preview" swapped="no"/>
+                                <style>
+                                  <class name="pill"/>
+                                  <class name="suggested-action"/>
+                                </style>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </property>
+                  </object>
+                </child>
               </object>
             </property>
           </object>

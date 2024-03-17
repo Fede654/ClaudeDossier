@@ -22,11 +22,17 @@ import gi
 from apostrophe import helpers
 
 gi.require_version('Gtk', '4.0')
-from gi.repository import Gtk, Adw, Gio, GObject
 import logging
+
+from gi.repository import Adw, Gio, GObject, Gtk
+
 logger = logging.getLogger('apostrophe')
 
+from gettext import gettext as _
+
+from apostrophe.preview_security import PreviewSecurity
 from apostrophe.settings import Settings
+
 
 class InputFormat(GObject.Object):
     __gtype_name__ = "InputFormat"
@@ -40,6 +46,17 @@ class InputFormat(GObject.Object):
         self.name: str = name
         self.format: str = format
         self.help: str = help
+
+class SecurityFormat(GObject.Object):
+    __gtype_name__ = "SecurityFormat"
+
+    id = GObject.Property(type=int)
+    name = GObject.Property(type=str)
+
+    def __init__(self, id, name, **kwargs):
+        super().__init__(**kwargs)
+        self.id: int = id
+        self.name: str = name
 
 @Gtk.Template(resource_path='/org/gnome/gitlab/somas/Apostrophe/ui/Preferences.ui')
 class ApostrophePreferencesDialog(Adw.PreferencesDialog):
@@ -74,9 +91,25 @@ class ApostrophePreferencesDialog(Adw.PreferencesDialog):
         }
     ]
 
+    security_levels = [
+        {
+            "id": PreviewSecurity.ASK,
+            "name": _("Always Ask")
+        },
+        {
+            "id": PreviewSecurity.RESTRICTED,
+            "name": _("Always Use Restricted Preview")
+        },
+        {
+            "id": PreviewSecurity.UNRESTRICTED,
+            "name": _("Always Use Unrestricted Preview")
+        },
+    ]
+
     autohide_headerbar_row = Gtk.Template.Child()
     spellcheck_row = Gtk.Template.Child()
     input_format_comborow = Gtk.Template.Child()
+    preview_security_comborow = Gtk.Template.Child()
     bigger_text_row = Gtk.Template.Child()
 
     settings = Settings.new()
@@ -96,6 +129,19 @@ class ApostrophePreferencesDialog(Adw.PreferencesDialog):
 
         if current_format:
             self.input_format_comborow.set_selected(current_format)
+
+        security_levels = Gio.ListStore.new(SecurityFormat)
+
+        for i, level in enumerate(self.security_levels):
+            security_levels.append(SecurityFormat(level["id"],
+                                             level["name"]))
+            if (level["id"] == self.settings.get_enum("preview-security")):
+                current_security_level = i
+
+        self.preview_security_comborow.set_model(security_levels)
+
+        if current_security_level:
+            self.preview_security_comborow.set_selected(current_security_level)
 
         self.settings.bind("autohide-headerbar",
                            self.autohide_headerbar_row,
@@ -122,3 +168,7 @@ class ApostrophePreferencesDialog(Adw.PreferencesDialog):
         fmt = self.input_format_comborow.get_selected_item()
         webbrowser.open(fmt.help)
 
+    @Gtk.Template.Callback()
+    def on_security(self, _widget, _index):
+        fmt = self.preview_security_comborow.get_selected_item()
+        self.settings.set_enum("preview-security", fmt.id)
