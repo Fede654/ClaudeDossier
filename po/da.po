@@ -1,7 +1,7 @@
 # Danish translation for apostrophe.
-# Copyright (C) 2022-2023 apostrophe's COPYRIGHT HOLDER
+# Copyright (C) 2022-2024 apostrophe's COPYRIGHT HOLDER
 # This file is distributed under the same license as the apostrophe package.
-# Ask Hjorth Larsen <asklarsen@gmail.com>, 2022-2023.
+# Ask Hjorth Larsen <asklarsen@gmail.com>, 2022-2024.
 #
 # toast --> banner
 #
@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: apostrophe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2023-09-11 15:13+0000\n"
-"PO-Revision-Date: 2023-09-14 18:11+0200\n"
+"POT-Creation-Date: 2024-03-08 20:17+0000\n"
+"PO-Revision-Date: 2024-03-14 00:36+0100\n"
 "Last-Translator: Ask Hjorth Larsen <asklarsen@gmail.com>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "Language: da\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:3
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:5
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:4
 msgid "Apostrophe"
 msgstr "Apostrophe"
 
@@ -47,7 +47,6 @@ msgid "Use the color scheme in the application's UI and in the text area."
 msgstr "Brug farveskemaet i programmets brugerflade og i tekstområdet."
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:36
-#: data/ui/Preferences.ui:15 data/ui/Preferences.ui:16
 msgid "Check spelling while typing"
 msgstr "Løbende stavekontrol"
 
@@ -64,7 +63,6 @@ msgid "Keep the editor and preview scroll positions in sync."
 msgstr "Behold altid samme rulleposition i redigering og forhåndsvisning."
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:50
-#: data/ui/Preferences.ui:70
 msgid "Input format"
 msgstr "Inputformat"
 
@@ -154,34 +152,34 @@ msgstr "Værktøjslinje"
 msgid "Whether the toolbar is shown or not."
 msgstr "Om værktøjslinjen vises."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:6
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:5
 msgid "Edit Markdown in style"
 msgstr "Stil for redigering af markdown"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:8
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:14
 msgid "Focus on your writing with a clean, distraction-free markdown editor."
 msgstr ""
 "Fokusér på dit skrivearbejde med en ryddelig markdownredigering uden "
 "distraktioner."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:9
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:15
 msgid "Features:"
 msgstr "Funktioner:"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:11
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:17
 msgid "An UI tailored to comfortable writing"
 msgstr "Brugerflade skræddersyet til behagelig skrivning"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:12
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:18
 msgid "A distraction-free mode"
 msgstr "En tilstand uden distraktioner"
 
 # Kan dette skrives bedre?
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:13
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:19
 msgid "Dark, light and sepia themes"
 msgstr "Mørkt, lyst og sepiatema"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:14
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:20
 msgid ""
 "Everything you expect from a text editor, such as spellchecking or document "
 "statistics"
@@ -189,21 +187,17 @@ msgstr ""
 "Alt hvad du forventer fra en tekstredigering sâsom stavekontrol og "
 "dokumentstatistik"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:15
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:21
 msgid "Live preview of what you write"
 msgstr "Dynamisk forhåndsvisning af det du skriver"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:16
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:22
 msgid ""
 "Export to all kind of formats: PDF, Word/Libreoffice, LaTeX, or even HTML "
 "slideshows"
 msgstr ""
 "Eksportér til alle mulige formater: PDF, Word/Libreoffice, LaTeX eller endda "
 "HTML-præsentationer"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:41
-msgid "Manuel G., Wolf V."
-msgstr "Manuel G., Wolf V."
 
 #: data/ui/About.ui.in:9
 msgid "Copyright (C) 2022, Manuel G., Wolf V."
@@ -242,188 +236,193 @@ msgstr ""
 msgid "_Close"
 msgstr "_Luk"
 
-#: data/ui/Export.ui:33 apostrophe/export_dialog.py:132
-#: apostrophe/export_dialog.py:344 apostrophe/export_dialog.py:349
-#: apostrophe/main_window.py:444 apostrophe/main_window.py:517
-#: apostrophe/main_window.py:609
-msgid "Cancel"
-msgstr "Annullér"
+#: data/ui/Export.ui:21
+msgid "Formats"
+msgstr "Formater"
 
-#: data/ui/Export.ui:44 apostrophe/export_dialog.py:127
-#: apostrophe/export_dialog.py:343 apostrophe/export_dialog.py:347
+#: data/ui/Export.ui:67 apostrophe/export_dialog.py:126
+#: apostrophe/export_dialog.py:322 apostrophe/export_dialog.py:326
 msgid "Export"
 msgstr "Eksportér"
 
-#: data/ui/Export.ui:114
+#: data/ui/Export.ui:86
 msgid "Options"
 msgstr "Indstillinger"
 
-#: data/ui/Export.ui:118
+#: data/ui/Export.ui:89
 msgid "Standalone"
 msgstr "Selvstændig"
 
-#: data/ui/Export.ui:120
+#: data/ui/Export.ui:90
 msgid ""
 "Use a header and footer to include things like stylesheets and meta "
 "information"
 msgstr ""
 "Brug sidehoved og -fod til at inkludere f.eks. stilark og metainformation"
 
-#: data/ui/Export.ui:133
+#: data/ui/Export.ui:96
 msgid "Table of Contents"
 msgstr "Indholdsfortegnelse"
 
-#: data/ui/Export.ui:147
+#: data/ui/Export.ui:102
 msgid "Number Sections"
 msgstr "Nummerér afsnit"
 
-#: data/ui/Export.ui:165 data/ui/Export.ui:170 data/ui/Export.ui:182
-#: data/ui/Export.ui:187
+#: data/ui/Export.ui:112 data/ui/Export.ui:115 data/ui/Export.ui:126
+#: data/ui/Export.ui:130
 msgid "Page Size"
 msgstr "Sidestørrelse"
 
-#: data/ui/Export.ui:199
+#: data/ui/Export.ui:141
 msgid "HTML Options"
 msgstr "HTML-indstillinger"
 
-#: data/ui/Export.ui:204
-msgid "Self-contained"
+#: data/ui/Export.ui:144
+msgid "Self-Contained"
 msgstr "Selvstændig"
 
-#: data/ui/Export.ui:206
+#: data/ui/Export.ui:145
 msgid "Produces an HTML file with no external dependencies"
 msgstr "Danner en HTML-fil uden eksterne afhængigheder"
 
-#: data/ui/Export.ui:222
+#: data/ui/Export.ui:154
 msgid "Syntax Highlighting"
 msgstr "Syntaksfremhævning"
 
-#: data/ui/Export.ui:228
+#: data/ui/Export.ui:157
 msgid "Use Syntax Highlighting"
 msgstr "Brug syntaksfremhævning"
 
-#: data/ui/Export.ui:235
-msgid "Highlight style"
+#: data/ui/Export.ui:162
+msgid "Highlight Style"
 msgstr "Stil for syntaksfremhævning"
 
-#: data/ui/Export.ui:249
+#: data/ui/Export.ui:175
 msgid "Presentation"
 msgstr "Præsentation"
 
 # Næste streng virker som forklaring
-#: data/ui/Export.ui:254
-msgid "Incremental bullets"
+#: data/ui/Export.ui:178
+msgid "Incremental Bullets"
 msgstr "Et punkt ad gangen"
 
-#: data/ui/Export.ui:256
+#: data/ui/Export.ui:179
 msgid "Show one bullet point after another in a slideshow"
 msgstr "Vis punkter et ad gangen i præsentation"
 
-#: data/ui/Headerbar.ui:11
+#: data/ui/Headerbar.ui:10
 msgid "New"
 msgstr "Ny"
 
-#: data/ui/Headerbar.ui:18
+#: data/ui/Headerbar.ui:17
 msgid "_Open"
 msgstr "_Åbn"
 
-#: data/ui/Headerbar.ui:20
-msgid "Open a markdown file"
+#: data/ui/Headerbar.ui:19
+msgid "Open a Markdown File"
 msgstr "Åbn en markdownfil"
 
-#: data/ui/Headerbar.ui:26
+#: data/ui/Headerbar.ui:25
 msgid "_Save"
 msgstr "_Gem"
 
-#: data/ui/Headerbar.ui:28
-msgid "Save the markdown file"
+#: data/ui/Headerbar.ui:27
+msgid "Save the Markdown File"
 msgstr "Gem markdownfilen"
 
-#: data/ui/Headerbar.ui:44
+#: data/ui/Headerbar.ui:43
 msgid "Open the Main Menu"
 msgstr "Åbn hovedmenuen"
 
-#: data/ui/Headerbar.ui:55
+#: data/ui/Headerbar.ui:54
 msgid "_Find"
 msgstr "_Find"
 
-#: data/ui/Headerbar.ui:57
+#: data/ui/Headerbar.ui:56
 msgid "Search in the File"
 msgstr "Søg i filen"
 
-#: data/ui/Headerbar.ui:80
+#: data/ui/Headerbar.ui:79
 msgid "_Hemingway Mode"
 msgstr "_Hemingway-tilstand"
 
-#: data/ui/Headerbar.ui:84
+#: data/ui/Headerbar.ui:83
 msgid "_Focus Mode"
 msgstr "_Fokustilstand"
 
-#: data/ui/Headerbar.ui:90
+#: data/ui/Headerbar.ui:89
 msgid "Find and _Replace"
 msgstr "Søg og _erstat"
 
-#: data/ui/Headerbar.ui:96
+#: data/ui/Headerbar.ui:95
 msgid "_Preferences"
 msgstr "_Indstillinger"
 
-#: data/ui/Headerbar.ui:102
+#: data/ui/Headerbar.ui:101
 msgid "Open _Tutorial"
 msgstr "Åbn _vejledning"
 
-#: data/ui/Headerbar.ui:107
+#: data/ui/Headerbar.ui:106
 msgid "_Keyboard Shortcuts"
 msgstr "_Tastaturgenveje"
 
-#: data/ui/Headerbar.ui:111
+#: data/ui/Headerbar.ui:110
 msgid "_About Apostrophe"
 msgstr "_Om Apostrophe"
 
-#: data/ui/Headerbar.ui:122
+#: data/ui/Headerbar.ui:121
 msgid "_Save As..."
 msgstr "Gem _som …"
 
-#: data/ui/Headerbar.ui:145
+#: data/ui/Headerbar.ui:144
 msgid "Advanced _Export…"
 msgstr "Avanceret e_ksport …"
 
-#: data/ui/Headerbar.ui:151
+#: data/ui/Headerbar.ui:150
 msgid "_Copy HTML"
 msgstr "_Kopiér HTML"
 
-#: data/ui/Preferences.ui:28
-msgid "Autohide headerbar"
+#: data/ui/Preferences.ui:13 data/ui/Preferences.ui:14
+msgid "Check Spelling While Typing"
+msgstr "Løbende stavekontrol"
+
+#: data/ui/Preferences.ui:19
+msgid "Auto-Hide Header Bar"
 msgstr "Skjul automatisk titellinje"
 
-#: data/ui/Preferences.ui:29
-msgid "Autohide header and statusbars while typing"
-msgstr "Skjul automatisk titel- og statuslinje mens du skriver"
+#: data/ui/Preferences.ui:20
+msgid "Auto-hide header and status bars while typing"
+msgstr "Skjul automatisk titel- og statuslinje, mens du skriver"
 
-#: data/ui/Preferences.ui:42
-msgid "Use bigger text"
-msgstr "Brug større tekst"
+#: data/ui/Preferences.ui:25
+msgid "Large Text"
+msgstr "Stor tekst"
 
-#: data/ui/Preferences.ui:43
+#: data/ui/Preferences.ui:26
 msgid "Reduce the margins width and increase the text size when possible"
 msgstr "Reducér margenbredden og forøg tekststørrelsen hvis muligt"
 
-#: data/ui/Preferences.ui:56
-msgid "Restore session"
+#: data/ui/Preferences.ui:32
+msgid "Restore Session"
 msgstr "Gendan session"
 
-#: data/ui/Preferences.ui:57
+#: data/ui/Preferences.ui:33
 msgid "Return to your previous session when Apostrophe is started"
 msgstr "Gendan din forrige session ved programstart"
 
-#: data/ui/Preferences.ui:71
+#: data/ui/Preferences.ui:38
+msgid "Input Format"
+msgstr "Inputformat"
+
+#: data/ui/Preferences.ui:39
 msgid "Flavor of markdown Apostrophe will use"
 msgstr "Hvilket markdownformat Apostrophe skal bruge"
 
-#: data/ui/Preferences.ui:80
-msgid "Markdown flavor documentation"
+#: data/ui/Preferences.ui:48
+msgid "Markdown Flavor Documentation"
 msgstr "Dokumentation for markdownformat"
 
-#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_renderer.py:208
+#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_window.py:32
 msgid "Preview"
 msgstr "Forhåndsvisning"
 
@@ -431,40 +430,40 @@ msgstr "Forhåndsvisning"
 msgid "Screen Layout"
 msgstr "Skærmlayout"
 
-#: data/ui/Recents.ui:46
+#: data/ui/Recents.ui:41
 msgid "No Recent Documents"
 msgstr "Ingen senest brugte dokumenter"
 
-#: data/ui/Recents.ui:69
+#: data/ui/Recents.ui:65
 msgid "No Results Found"
 msgstr "Ingen resultater fundet"
 
-#: data/ui/SearchBar.ui:28
+#: data/ui/SearchBar.ui:29
 msgid "Previous Match"
 msgstr "Forrige resultat"
 
-#: data/ui/SearchBar.ui:37
+#: data/ui/SearchBar.ui:38
 msgid "Next Match"
 msgstr "Næste resultat"
 
 #. Translators: This indicates case sensitivity, so it should be the first vowel of the language in lowercase and uppercase
-#: data/ui/SearchBar.ui:52
+#: data/ui/SearchBar.ui:53
 msgid "aA"
 msgstr "aA"
 
-#: data/ui/SearchBar.ui:55
+#: data/ui/SearchBar.ui:56
 msgid "Case Sensitive"
 msgstr "Forskel på store/små bogstaver"
 
-#: data/ui/SearchBar.ui:64
+#: data/ui/SearchBar.ui:65
 msgid "Regular Expression"
 msgstr "Regulært udtryk"
 
-#: data/ui/SearchBar.ui:72 data/ui/SearchBar.ui:110
+#: data/ui/SearchBar.ui:73 data/ui/SearchBar.ui:111
 msgid "Replace"
 msgstr "Erstat"
 
-#: data/ui/SearchBar.ui:118
+#: data/ui/SearchBar.ui:119
 msgid "Replace All"
 msgstr "Erstat alle"
 
@@ -490,27 +489,27 @@ msgstr "Gem"
 
 #: data/ui/Shortcuts.ui:32
 msgctxt "shortcut window"
-msgid "Save as"
+msgid "Save As"
 msgstr "Gem som"
 
 #: data/ui/Shortcuts.ui:38
 msgctxt "shortcut window"
-msgid "Close document"
+msgid "Close Document"
 msgstr "Luk dokument"
 
 #: data/ui/Shortcuts.ui:44
 msgctxt "shortcut window"
-msgid "Show preferences"
+msgid "Show Preferences"
 msgstr "Vis indstillinger"
 
 #: data/ui/Shortcuts.ui:50
 msgctxt "shortcut window"
-msgid "Keyboard shortcuts"
+msgid "Keyboard Shortcuts"
 msgstr "Tastaturgenveje"
 
 #: data/ui/Shortcuts.ui:56
 msgctxt "shortcut window"
-msgid "Quit application"
+msgid "Quit Application"
 msgstr "Afslut programmet"
 
 #: data/ui/Shortcuts.ui:64
@@ -520,12 +519,12 @@ msgstr "Tilstande"
 
 #: data/ui/Shortcuts.ui:67
 msgctxt "shortcut window"
-msgid "Focus mode"
+msgid "Focus Mode"
 msgstr "Fokustilstand"
 
 #: data/ui/Shortcuts.ui:73
 msgctxt "shortcut window"
-msgid "Hemingway mode"
+msgid "Hemingway Mode"
 msgstr "Hemingway-tilstand"
 
 #: data/ui/Shortcuts.ui:80
@@ -545,7 +544,7 @@ msgstr "Søg"
 
 #: data/ui/Shortcuts.ui:103
 msgctxt "shortcut window"
-msgid "Find and replace"
+msgid "Find and Replace"
 msgstr "Søg og erstat"
 
 #: data/ui/Shortcuts.ui:111
@@ -578,7 +577,7 @@ msgstr "Overskrift"
 
 #: data/ui/Shortcuts.ui:126
 msgctxt "shortcut window"
-msgid "List item"
+msgid "List Item"
 msgstr "Listeelement"
 
 #: data/ui/Shortcuts.ui:133
@@ -598,37 +597,37 @@ msgstr "Gennemstreget"
 
 #: data/ui/Shortcuts.ui:153
 msgctxt "shortcut window"
-msgid "Copy and paste"
+msgid "Copy and Paste"
 msgstr "Kopiér og indsæt"
 
 #: data/ui/Shortcuts.ui:156
 msgctxt "shortcut window"
-msgid "Copy selected text to clipboard"
-msgstr "Kopiér markeret tekst til udklipsholderen"
+msgid "Copy"
+msgstr "Kopiér"
 
 #: data/ui/Shortcuts.ui:162
 msgctxt "shortcut window"
-msgid "Cut selected text to clipboard"
-msgstr "Klip markeret tekst til udklipsholderen"
+msgid "Cut"
+msgstr "Klip"
 
 #: data/ui/Shortcuts.ui:168
 msgctxt "shortcut window"
-msgid "Paste selected text from clipboard"
-msgstr "Indsæt tekst fra udklipsholderen"
+msgid "Paste"
+msgstr "Indsæt"
 
 #: data/ui/Shortcuts.ui:176
 msgctxt "shortcut window"
-msgid "Undo and redo"
+msgid "Undo and Redo"
 msgstr "Fortryd og omgør"
 
 #: data/ui/Shortcuts.ui:179
 msgctxt "shortcut window"
-msgid "Undo previous command"
+msgid "Undo Previous Command"
 msgstr "Fortryd forrige kommando"
 
 #: data/ui/Shortcuts.ui:185
 msgctxt "shortcut window"
-msgid "Redo previous command"
+msgid "Redo Previous Command"
 msgstr "Omgør forrige kommando"
 
 #: data/ui/Shortcuts.ui:193
@@ -638,8 +637,16 @@ msgstr "Markering"
 
 #: data/ui/Shortcuts.ui:196
 msgctxt "shortcut window"
-msgid "Select all text"
+msgid "Select All Text"
 msgstr "Markér hele teksten"
+
+#: data/ui/Statsbar.ui:21 data/ui/Statsbar.ui:40
+msgid "Show Statistics"
+msgstr "Vis statistik"
+
+#: data/ui/Statsbar.ui:22
+msgid "0 Words"
+msgstr "0 ord"
 
 #: data/ui/TexliveWarning.ui:25 data/ui/TexliveWarning.ui:79
 msgid "TexLive Required"
@@ -660,7 +667,7 @@ msgstr ""
 "eller ved at køre følgende kommando i en terminal:"
 
 #: data/ui/TexliveWarning.ui:53
-msgid "Copy to clipboard"
+msgid "Copy to Clipboard"
 msgstr "Kopiér til udklipsholderen"
 
 #: data/ui/TexliveWarning.ui:87
@@ -668,12 +675,12 @@ msgid ""
 "Apostrophe needs TeXLive\n"
 "in order to export PDF or LaTeX files.\n"
 "\n"
-"Install it from your distribution repositories"
+"Install it from your distribution repositories."
 msgstr ""
-"Apostrophe skal bruge udvidelsen TeXLive for at\n"
+"Apostrophe skal bruge TeXLive for at\n"
 "eksportere PDF- eller LaTeX-filer.\n"
 "\n"
-"Installér den fra din distributions arkiver"
+"Installér TexLive fra din distributions arkiver."
 
 #: data/ui/ThemeSwitcher.ui:17
 msgid "Use System Colors"
@@ -691,36 +698,42 @@ msgstr "Brug sepiafarver"
 msgid "Use Dark Colors"
 msgstr "Brug mørke farver"
 
-#: data/ui/Window.ui:86
+#: data/ui/Window.ui:104
 msgid "File Has Changed on Disk"
 msgstr "Filen har ændret sig på disken"
 
-#: data/ui/Window.ui:96
-msgid "The file has been changed by another program."
-msgstr "Filen er blevet ændret af et andet program."
+#: data/ui/Window.ui:114
+msgid "The file has been changed by another program"
+msgstr "Filen er blevet ændret af et andet program"
 
-#: data/ui/Window.ui:104
+#: data/ui/Window.ui:122
 msgid "_Discard Changes and Reload"
 msgstr "_Forkast ændringer og genindlæs"
 
-#: apostrophe/application.py:232
+#: apostrophe/application.py:217
 msgid "Donate"
 msgstr "Donér"
 
-#: apostrophe/application.py:233
+#: apostrophe/application.py:218
 msgid "Translations"
 msgstr "Oversættelser"
 
-#: apostrophe/export_dialog.py:122 apostrophe/helpers.py:84
+#: apostrophe/export_dialog.py:121 apostrophe/helpers.py:84
 msgid "Close"
 msgstr "Luk"
 
-#: apostrophe/export_dialog.py:130 apostrophe/export_dialog.py:348
+#: apostrophe/export_dialog.py:129 apostrophe/export_dialog.py:327
 #, python-format
 msgid "Export to %s"
 msgstr "Eksportér til %s"
 
-#: apostrophe/export_dialog.py:156 apostrophe/export_dialog.py:337
+#: apostrophe/export_dialog.py:131 apostrophe/export_dialog.py:323
+#: apostrophe/export_dialog.py:328 apostrophe/main_window.py:444
+#: apostrophe/main_window.py:518 apostrophe/main_window.py:609
+msgid "Cancel"
+msgstr "Annullér"
+
+#: apostrophe/export_dialog.py:155 apostrophe/export_dialog.py:316
 #, python-brace-format
 msgid ""
 "An error happened while trying to export:\n"
@@ -735,7 +748,7 @@ msgstr ""
 msgid "Export to {}"
 msgstr "Eksportér til {}"
 
-#: apostrophe/export_dialog.py:344
+#: apostrophe/export_dialog.py:323
 msgid "Select folder"
 msgstr "Vælg mappe"
 
@@ -773,11 +786,11 @@ msgid "adverb"
 msgstr "biord"
 
 #. Hemingway Toast
-#: apostrophe/main_window.py:128
+#: apostrophe/main_window.py:145
 msgid "Text can't be deleted while on Hemingway mode"
 msgstr "Teksten kan ikke fjernes i Hemingway-tilstand"
 
-#: apostrophe/main_window.py:131
+#: apostrophe/main_window.py:148
 msgid "Tell me more"
 msgstr "Fortæl mig mere"
 
@@ -789,24 +802,24 @@ msgstr "Gem din fil"
 msgid "Save"
 msgstr "Gem"
 
-#: apostrophe/main_window.py:506
+#: apostrophe/main_window.py:507
 msgid "Markdown Files"
 msgstr "Markdownfiler"
 
-#: apostrophe/main_window.py:510
+#: apostrophe/main_window.py:511
 msgid "Plain Text Files"
 msgstr "Rene tekstfiler"
 
-#: apostrophe/main_window.py:513
+#: apostrophe/main_window.py:514
 msgid "Open a .md file"
 msgstr "Åbn en .md-fil"
 
-#: apostrophe/main_window.py:516
+#: apostrophe/main_window.py:517
 msgid "Open"
 msgstr "Åbn"
 
 #: apostrophe/main_window.py:603
-msgid "Save changes?"
+msgid "Save Changes?"
 msgstr "Gem ændringer?"
 
 #: apostrophe/main_window.py:604
@@ -822,72 +835,72 @@ msgstr ""
 msgid "Discard"
 msgstr "Forkast"
 
-#: apostrophe/main_window.py:768 apostrophe/main_window.py:792
+#: apostrophe/main_window.py:772 apostrophe/main_window.py:796
 msgid "New File"
 msgstr "Ny fil"
 
-#: apostrophe/preview_layout_switcher.py:40
+#: apostrophe/preview_layout_switcher.py:41
 msgid "Full-Width"
 msgstr "Fuld bredde"
 
-#: apostrophe/preview_layout_switcher.py:42
+#: apostrophe/preview_layout_switcher.py:43
 msgid "Half-Width"
 msgstr "Half bredde"
 
-#: apostrophe/preview_layout_switcher.py:44
+#: apostrophe/preview_layout_switcher.py:45
 msgid "Half-Height"
 msgstr "Halv højde"
 
 # Det drejer sig om en forhåndsvisningstilstand ifølge kildekoden.
-#: apostrophe/preview_layout_switcher.py:46
+#: apostrophe/preview_layout_switcher.py:47
 msgid "Windowed"
 msgstr "Nyt vindue"
 
-#: apostrophe/stats_handler.py:98
+#: apostrophe/stats_handler.py:122
 msgid "{:n} of {:n} Characters"
 msgstr "{:n} af {:n} tegn"
 
-#: apostrophe/stats_handler.py:100
+#: apostrophe/stats_handler.py:124
 msgid "{:n} Character"
 msgid_plural "{:n} Characters"
 msgstr[0] "{:n} tegn"
 msgstr[1] "{:n} tegn"
 
-#: apostrophe/stats_handler.py:103
+#: apostrophe/stats_handler.py:127
 msgid "{:n} of {:n} Words"
 msgstr "{:n} af {:n} ord"
 
-#: apostrophe/stats_handler.py:105
+#: apostrophe/stats_handler.py:129
 msgid "{:n} Word"
 msgid_plural "{:n} Words"
 msgstr[0] "{:n} ord"
 msgstr[1] "{:n} ord"
 
-#: apostrophe/stats_handler.py:108
+#: apostrophe/stats_handler.py:132
 msgid "{:n} of {:n} Sentences"
 msgstr "{:n} af {:n} sætninger"
 
-#: apostrophe/stats_handler.py:110
+#: apostrophe/stats_handler.py:134
 msgid "{:n} Sentence"
 msgid_plural "{:n} Sentences"
 msgstr[0] "{:n} sætning"
 msgstr[1] "{:n} sætninger"
 
-#: apostrophe/stats_handler.py:113
+#: apostrophe/stats_handler.py:137
 msgid "{:n} of {:n} Paragraphs"
 msgstr "{:n} af {:n} afsnit"
 
-#: apostrophe/stats_handler.py:115
+#: apostrophe/stats_handler.py:139
 msgid "{:n} Paragraph"
 msgid_plural "{:n} Paragraphs"
 msgstr[0] "{:n} afsnit"
 msgstr[1] "{:n} afsnit"
 
-#: apostrophe/stats_handler.py:118
+#: apostrophe/stats_handler.py:142
 msgid "{:d}:{:02d}:{:02d} of {:d}:{:02d}:{:02d} Read Time"
 msgstr "{:d}:{:02d}:{:02d} af {:d}:{:02d}:{:02d} læsetid"
 
-#: apostrophe/stats_handler.py:120
+#: apostrophe/stats_handler.py:144
 msgid "{:d}:{:02d}:{:02d} Read Time"
 msgstr "{:d}:{:02d}:{:02d} læsetid"
 
@@ -944,7 +957,7 @@ msgid "link text"
 msgstr "linktekst"
 
 #: apostrophe/text_view_format_inserter.py:429
-#: apostrophe/text_view_format_inserter.py:454
+#: apostrophe/text_view_format_inserter.py:461
 msgid "image caption"
 msgstr "billedtekst"
 
@@ -956,24 +969,57 @@ msgstr "Billede"
 msgid "Select an image"
 msgstr "Vælg et billede"
 
-#: apostrophe/text_view_format_inserter.py:543
+#: apostrophe/text_view_format_inserter.py:550
 msgid ""
 "\n"
 "code\n"
-msgstr "\nkode\n"
+msgstr ""
+"\n"
+"kode\n"
 
-#: apostrophe/text_view.py:169 apostrophe/text_view.py:171
+#: apostrophe/text_view.py:161 apostrophe/text_view.py:163
 msgid "web page"
 msgstr "webside"
 
+#~ msgid "Manuel G., Wolf V."
+#~ msgstr "Manuel G., Wolf V."
+
+#~ msgid "Autohide headerbar"
+#~ msgstr "Skjul automatisk titellinje"
+
+#~ msgid "Use bigger text"
+#~ msgstr "Brug større tekst"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Keyboard shortcuts"
+#~ msgstr "Tastaturgenveje"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Focus mode"
+#~ msgstr "Fokustilstand"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Hemingway mode"
+#~ msgstr "Hemingway-tilstand"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Find and replace"
+#~ msgstr "Søg og erstat"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Copy selected text to clipboard"
+#~ msgstr "Kopiér markeret tekst til udklipsholderen"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Cut selected text to clipboard"
+#~ msgstr "Klip markeret tekst til udklipsholderen"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Paste selected text from clipboard"
+#~ msgstr "Indsæt tekst fra udklipsholderen"
+
 #~ msgid "Menu"
 #~ msgstr "Menu"
-
-#~ msgid "Show Statistics"
-#~ msgstr "Vis statistik"
-
-#~ msgid "0 Words"
-#~ msgstr "0 ord"
 
 #~ msgid "Apostrophe website"
 #~ msgstr "Websted for Apostrophe"
