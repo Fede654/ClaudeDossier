@@ -87,8 +87,7 @@ class ApostropheTextBuffer(GtkSource.Buffer):
                 self.delete(start_line, end_line)
             text = indent + "1" + match.group("delimiter") + " "
 
-        position = self.get_iter_at_mark(self.get_insert())
-        Gtk.TextBuffer.do_insert_text(self, position, text, -1)
+        GtkSource.Buffer.do_insert_text(self, position, text, -1)
 
     def _unindent(self, *args):
         if self.hemingway_mode:
@@ -114,7 +113,7 @@ class ApostropheTextBuffer(GtkSource.Buffer):
                 text += match.group("text")
 
             position = self.get_iter_at_mark(self.get_insert())
-            Gtk.TextBuffer.do_insert_text(self, position, text, -1)
+            GtkSource.Buffer.do_insert_text(self, position, text, -1)
 
         # Unindent regular tabs
         else:
@@ -173,7 +172,7 @@ class ApostropheTextBuffer(GtkSource.Buffer):
                 position = self.get_iter_at_mark(self.get_insert())
 
         position = self.get_iter_at_mark(self.get_insert())
-        Gtk.TextBuffer.do_insert_text(self, position, text, -1)
+        GtkSource.Buffer.do_insert_text(self, position, text, -1)
 
     def do_insert_text(self, position, text, length):
         if self.hemingway_mode and self.get_has_selection():
@@ -202,7 +201,7 @@ class ApostropheTextBuffer(GtkSource.Buffer):
                     text += pairs[x]
                     move_cursor = -1
 
-        Gtk.TextBuffer.do_insert_text(self, position, text, -1)
+        GtkSource.Buffer.do_insert_text(self, position, text, -1)
         if move_cursor:
             cursor_iter = self.get_iter_at_mark(self.get_insert())
             cursor_iter.forward_cursor_positions(move_cursor)
@@ -212,4 +211,4 @@ class ApostropheTextBuffer(GtkSource.Buffer):
         if self.hemingway_mode:
             self.emit("attempted-hemingway")
         else:
-            Gtk.TextBuffer.do_delete_range(self, start, end)
+            GtkSource.Buffer.do_delete_range(self, start, end)
