@@ -60,119 +60,123 @@ class ApostropheTextBuffer(GtkSource.Buffer):
         '''Takes over tab insertions.
            If the insertion happens within a list, 
            it nicely handles it, otherwise inserts a plain \t'''
-        start_line, end_line = self.get_current_line_bounds()
-        current_sentence = self.get_text(start_line, end_line, True)
-        text = '\t'
+        with user_action(self):
+            start_line, end_line = self.get_current_line_bounds()
+            current_sentence = self.get_text(start_line, end_line, True)
+            text = "\t"
 
-        # Indent unordered lists
-        match = re.fullmatch(LIST, current_sentence)
-        if match and not match.group("text"):
-            symbols = cycle(['-', '*', '+'])
-            for i in range(3):
-                if next(symbols) == match.group("symbol"):
-                    break
-            next_symbol = next(symbols)
-            indent = "\t" if "\t" in match.group("indent") else "    " + match.group("indent")
+            # Indent unordered lists
+            match = re.fullmatch(LIST, current_sentence)
+            if match and not match.group("text"):
+                symbols = cycle(['-', '*', '+'])
+                for i in range(3):
+                    if next(symbols) == match.group("symbol"):
+                        break
+                next_symbol = next(symbols)
+                indent = "\t" if "\t" in match.group("indent") else "    " + match.group("indent")
 
-            with self._temp_disable_hemingway():
-                self.delete(start_line, end_line)
-            text = indent + next_symbol + " "
+                with self._temp_disable_hemingway():
+                    self.delete(start_line, end_line)
+                text = indent + next_symbol + " "
 
-        # Indent ordered lists
-        match = re.fullmatch(ORDERED_LIST, current_sentence)
-        if match and not match.group("text"):
-            indent = "\t" if "\t" in match.group("indent") else "    " + match.group("indent")
+            # Indent ordered lists
+            match = re.fullmatch(ORDERED_LIST, current_sentence)
+            if match and not match.group("text"):
+                indent = "\t" if "\t" in match.group("indent") else "    " + match.group("indent")
 
-            with self._temp_disable_hemingway():
-                self.delete(start_line, end_line)
-            text = indent + "1" + match.group("delimiter") + " "
-
-        GtkSource.Buffer.do_insert_text(self, position, text, -1)
-
-    def _unindent(self, *args):
-        if self.hemingway_mode:
-            self.emit("attempted-hemingway")
-            return
-
-        start_line, end_line = self.get_current_line_bounds()
-        current_sentence = self.get_text(start_line, end_line, True)
-
-        # Unindent unordered lists
-        match = re.fullmatch(LIST, current_sentence)
-        if match:
-            symbols = cycle(['+', '*', '-'])
-            for i in range(3):
-                if next(symbols) == match.group("symbol"):
-                    break
-            next_symbol = next(symbols)
-            indent = match.group("indent").removesuffix("\t").removesuffix("    ")
-
-            self.delete(start_line, end_line)
-            text = indent + next_symbol + " "
-            if match.group("text"):
-                text += match.group("text")
+                with self._temp_disable_hemingway():
+                    self.delete(start_line, end_line)
+                text = indent + "1" + match.group("delimiter") + " "
 
             position = self.get_iter_at_mark(self.get_insert())
             GtkSource.Buffer.do_insert_text(self, position, text, -1)
 
-        # Unindent regular tabs
-        else:
-            pen_iter = self.get_end_iter()
-            pen_iter.backward_char()
-            end_iter = self.get_end_iter()
 
-            if pen_iter.get_char() == "\t":
-                with user_action(self):
-                    self.delete(pen_iter, end_iter)
+    def _unindent(self, *args):
+        with user_action(self):
+            if self.hemingway_mode:
+                self.emit("attempted-hemingway")
+                return
+
+            start_line, end_line = self.get_current_line_bounds()
+            current_sentence = self.get_text(start_line, end_line, True)
+
+            # Unindent unordered lists
+            match = re.fullmatch(LIST, current_sentence)
+            if match:
+                symbols = cycle(['+', '*', '-'])
+                for i in range(3):
+                    if next(symbols) == match.group("symbol"):
+                        break
+                next_symbol = next(symbols)
+                indent = match.group("indent").removesuffix("\t").removesuffix("    ")
+
+                self.delete(start_line, end_line)
+                text = indent + next_symbol + " "
+                if match.group("text"):
+                    text += match.group("text")
+
+                position = self.get_iter_at_mark(self.get_insert())
+                GtkSource.Buffer.do_insert_text(self, position, text, -1)
+
+            # Unindent regular tabs
+            else:
+                pen_iter = self.get_end_iter()
+                pen_iter.backward_char()
+                end_iter = self.get_end_iter()
+
+                if pen_iter.get_char() == "\t":
+                        self.delete(pen_iter, end_iter)
 
     def _autocomplete_lists(self):
-        start_line, end_line = self.get_current_line_bounds()
-        current_sentence = self.get_text(start_line, end_line, True)
+        with user_action(self):
+            start_line, end_line = self.get_current_line_bounds()
+            current_sentence = self.get_text(start_line, end_line, True)
 
-        text = "\n"
+            text = "\n"
 
-        # ORDERED LISTS
-        match = re.match(ORDERED_LIST, current_sentence)
-        if match:
-            if match.group("text"):
-                if match.group("number"):
-                    next_prefix = match.group("indent") +\
-                                str(int(match.group("number")) + 1) +\
-                                match.group("delimiter") +\
-                                " "
+            # ORDERED LISTS
+            match = re.match(ORDERED_LIST, current_sentence)
+            if match:
+                if match.group("text"):
+                    if match.group("number"):
+                        next_prefix = match.group("indent") +\
+                                    str(int(match.group("number")) + 1) +\
+                                    match.group("delimiter") +\
+                                    " "
+                        text += next_prefix
+                # if there's no text when the user hits enter we exit the list mode
+                else:
+                    with self._temp_disable_hemingway():
+                        self.delete(start_line, end_line)
+                    position = self.get_iter_at_mark(self.get_insert())
+
+            # CHECKLIST
+            match = re.match(CHECKLIST, current_sentence)
+            if match:
+                if match.group("text"):
+                    next_prefix = match.group("indent") + match.group("symbol") + " [ ] "
                     text += next_prefix
-            # if there's no text when the user hits enter we exit the list mode
-            else:
-                with self._temp_disable_hemingway():
-                    self.delete(start_line, end_line)
-                position = self.get_iter_at_mark(self.get_insert())
+                # if there's no text when the user hits enter we exit the list mode
+                else:
+                    with self._temp_disable_hemingway():
+                        self.delete(start_line, end_line)
+                    position = self.get_iter_at_mark(self.get_insert())
 
-        # CHECKLIST
-        match = re.match(CHECKLIST, current_sentence)
-        if match:
-            if match.group("text"):
-                next_prefix = match.group("indent") + match.group("symbol") + " [ ] "
-                text += next_prefix
-            # if there's no text when the user hits enter we exit the list mode
-            else:
-                with self._temp_disable_hemingway():
-                    self.delete(start_line, end_line)
-                position = self.get_iter_at_mark(self.get_insert())
+            # UNORDERED LISTS
+            match = re.match(LIST, current_sentence)
+            if match:
+                if match.group("text"):
+                    next_prefix = match.group("indent") + match.group("symbol") + " "
+                    text += next_prefix
+                # if there's no text when the user hits enter we exit the list mode
+                else:
+                    with self._temp_disable_hemingway():
+                        self.delete(start_line, end_line)
+                    position = self.get_iter_at_mark(self.get_insert())
 
-        # UNORDERED LISTS
-        match = re.match(LIST, current_sentence)
-        if match:
-            if match.group("text"):
-                next_prefix = match.group("indent") + match.group("symbol") + " "
-                text += next_prefix
-            # if there's no text when the user hits enter we exit the list mode
-            else:
-                with self._temp_disable_hemingway():
-                    self.delete(start_line, end_line)
-                position = self.get_iter_at_mark(self.get_insert())
-
-        position = self.get_iter_at_mark(self.get_insert())
-        GtkSource.Buffer.do_insert_text(self, position, text, -1)
+            position = self.get_iter_at_mark(self.get_insert())
+            GtkSource.Buffer.do_insert_text(self, position, text, -1)
 
     def do_insert_text(self, position, text, length):
         if self.hemingway_mode and self.get_has_selection():
