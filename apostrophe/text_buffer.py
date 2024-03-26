@@ -199,11 +199,16 @@ class ApostropheTextBuffer(GtkSource.Buffer):
                     "<" : ">"
                 }
 
-                #is the next character whitespace?
+                # is the next character whitespace?
                 if self.get_iter_at_mark(self.get_insert()).get_char().isspace() or\
                    self.get_iter_at_mark(self.get_insert()).is_end():
                     text += pairs[x]
                     move_cursor = -1
+            case (")" | "]" | "}" | '"' | ">") as x:
+                # is already closed?
+                if self.get_iter_at_mark(self.get_insert()).get_char() == x:
+                    text = ""
+                    move_cursor = 1
 
         GtkSource.Buffer.do_insert_text(self, position, text, -1)
         if move_cursor:
