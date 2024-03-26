@@ -7,7 +7,7 @@ from apostrophe.helpers import user_action
 gi.require_version('Gtk', '4.0')
 gi.require_version('GtkSource', '5')
 
-from gi.repository import GObject, Gtk, GtkSource
+from gi.repository import GObject, Gtk, GtkSource, GLib
 from apostrophe.markup_regex import LIST, CHECKLIST, ORDERED_LIST
 
 class ApostropheTextBuffer(GtkSource.Buffer):
@@ -181,10 +181,10 @@ class ApostropheTextBuffer(GtkSource.Buffer):
         move_cursor = None
         match text:
             case "\n":
-                self._autocomplete_lists()
+                GLib.idle_add(self._autocomplete_lists)
                 return
             case "\t":
-                self._indent()
+                GLib.idle_add(self._indent)
                 return
             case ("(" | "[" | "{" | '"' | "<") as x:
                 pairs = {
