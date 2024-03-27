@@ -59,6 +59,7 @@
         </child>
         <child>
           <object class="AdwPreferencesGroup">
+            <property name="visible">False</property>
             <child>
               <object class="AdwComboRow" id="preview_security_comborow">
                 <property name="title" translatable="yes">Preview Security</property>
