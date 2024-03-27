@@ -29,22 +29,23 @@ from apostrophe.text_view_scroller import TextViewScroller
 from apostrophe.text_buffer import ApostropheTextBuffer
 
 gi.require_version('Gtk', '4.0')
-#gi.require_version('Gspell', '1')
+gi.require_version('GtkSource', '5')
+gi.require_version('Spelling', '1')
+
 import logging
 
-from gi.repository import Adw, Gdk, Gio, GLib, GObject, Gtk
+from gi.repository import Adw, Gdk, Gio, GLib, GObject, Gtk, GtkSource, Spelling
 
 LOGGER = logging.getLogger('apostrophe')
 
 DEFAULT_DPI = 98304
 
 @Gtk.Template(resource_path='/org/gnome/gitlab/somas/Apostrophe/ui/TextView.ui')
-class ApostropheTextView(Gtk.TextView):
+class ApostropheTextView(GtkSource.View):
     """ApostropheTextView encapsulates all the features around the editor.
 
     It combines the following:
     - Undo / redo (via TextBufferUndoRedoHandler)
-    - Format shortcuts (via TextBufferShortcutInserter)
     - Markup (via TextBufferMarkupHandler)
     - Preview popover (via TextBufferMarkupHandler)
     - Drag and drop
@@ -55,9 +56,6 @@ class ApostropheTextView(Gtk.TextView):
     __gtype_name__ = "ApostropheTextView"
 
     __gsignals__ = {
-        'unindent': (GObject.SignalFlags.ACTION, None, ()),
-        'insert-hrule': (GObject.SignalFlags.ACTION, None, ()),
-        'insert-header': (GObject.SignalFlags.ACTION, None, (int,)),
         'scroll-scale-changed': (GObject.SIGNAL_RUN_LAST, None, (float,)),
     }
 
@@ -88,15 +86,22 @@ class ApostropheTextView(Gtk.TextView):
         self.settings = Settings.new()
 
         self.buffer = self.get_buffer()
-        # Spell checking
-        # self.gspell_view = Gspell.TextView.get_from_gtk_text_view(self)
-        # self.gspell_view.basic_setup()
 
-        # Format shortcuts
-        self.shortcut = FormatInserter()
-        self.connect('unindent', self.buffer._unindent)
-        self.connect('insert-hrule', self.shortcut.insert_horizontal_rule)
-        self.connect('insert-header', self.shortcut.insert_header)
+        # Spell checking
+        checker = Spelling.Checker.get_default()
+        self.adapter = Spelling.TextBufferAdapter.new(self.buffer, checker)
+        extra_menu = self.adapter.get_menu_model()
+
+        self.set_extra_menu(extra_menu)
+        self.insert_action_group('spelling', self.adapter)
+
+        self.settings.bind("spellcheck", self.adapter,
+                           "enabled", Gio.SettingsBindFlags.DEFAULT)
+
+        key = Gtk.EventControllerKey.new()
+        key.set_propagation_phase(Gtk.PropagationPhase.CAPTURE)
+        key.connect_after('key-pressed', self._on_key_pressed)
+        self.add_controller(key)
 
         # Markup
         self.markup = MarkupHandler(self)
@@ -122,6 +127,11 @@ class ApostropheTextView(Gtk.TextView):
         self.frozen_scroll_scale = None
 
         self.update_vertical_margin()
+
+    def _on_key_pressed(self, controller, key, keycode, state):
+        if ((key == Gdk.KEY_Tab or key == Gdk.KEY_KP_Tab or key == Gdk.KEY_ISO_Left_Tab) and state == Gdk.ModifierType.SHIFT_MASK):
+            self.buffer._unindent()
+            return Gdk.EVENT_STOP
 
     def on_drop(self, drop_target, content, _x, _y):
         # check if a file was dropped
@@ -231,6 +241,18 @@ class ApostropheTextView(Gtk.TextView):
                       mark, self.focus_mode)
 
     @Gtk.Template.Callback()
+    def _on_button_pressed_event(self, gesture, n_press, x, y):
+        event = gesture.get_last_event()
+        if n_press != 1 or not event.triggers_context_menu():
+            pass
+        else:
+            buffer_x, buffer_y = self.window_to_buffer_coords(Gtk.TextWindowType.TEXT, x, y)
+            found, iter = self.get_iter_at_location(buffer_x, buffer_y)
+            if found:
+                self.buffer.place_cursor(iter)
+        return False
+
+    @Gtk.Template.Callback()
     def _on_button_release_event(self, *args, **kwargs):
         if self.focus_mode:
             self.markup.apply()
@@ -272,9 +294,9 @@ class ApostropheTextView(Gtk.TextView):
 
     @Gtk.Template.Callback()
     def _on_spellcheck_update(self, *args, **kwargs):
+        # TODO: whenever we have https://gitlab.gnome.org/GNOME/gtk/-/issues/6133
         pass
-        # self.gspell_view.set_inline_spell_checking(
-        #     self.spellcheck and not self.focus_mode)
+        self.adapter.set_enabled(self.spellcheck and not self.focus_mode)
 
     @Gtk.Template.Callback()
     def _on_text_changed(self, *_):

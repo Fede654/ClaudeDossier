@@ -15,12 +15,13 @@
 import gi
 
 gi.require_version('Gtk', '4.0')
+gi.require_version('GtkSource', '5')
 gi.require_version('Adw', '1')
 from gettext import gettext as _
 
-from gi.repository import Adw, Gdk, Gio, GLib, Gtk
+from gi.repository import Adw, Gdk, Gio, GLib, Gtk, GtkSource
 
-from apostrophe.helpers import get_debug_info, set_up_logging
+from apostrophe.helpers import get_debug_info, set_up_logging, get_media_path
 from apostrophe.preferences_dialog import ApostrophePreferencesDialog
 from apostrophe.inhibitor import Inhibitor
 from apostrophe.main_window import MainWindow
@@ -58,6 +59,10 @@ class Application(Adw.Application):
         style_manager = Adw.StyleManager.get_default()
         style_manager.connect("notify::dark", self._set_color_scheme)
         style_manager.connect("notify::high-contrast", self._set_color_scheme)
+
+        # Editor styles
+        scheme_manager = GtkSource.StyleSchemeManager.get_default()
+        scheme_manager.prepend_search_path(get_media_path("/styles"))
 
         # Set icons
         Gtk.IconTheme.get_for_display(
@@ -159,7 +164,8 @@ class Application(Adw.Application):
         return [window for window in self.get_windows() if isinstance(window, MainWindow)]
 
     def _set_color_scheme(self, *args, **kwargs):
-        sepia = Theme.get_current().name == "sepia"
+        theme = Theme.get_current().name
+        sepia = theme == "sepia"
 
         if not self.get_windows():
             return
@@ -173,9 +179,13 @@ class Application(Adw.Application):
                 Gdk.Display.get_default(), self.sepia_style_provider
             )
 
-        # refresh markup colors
         for window in self.get_main_windows():
+            # refresh markup colors
             window.textview.markup.on_style_updated()
+
+            # refresh sourceview styles
+            scheme_manager = GtkSource.StyleSchemeManager.get_default()
+            window.textview.buffer.set_style_scheme(scheme_manager.get_scheme(theme))
 
     def on_settings_changed(self, settings, key):
         # TODO: change this ffs
@@ -198,6 +208,7 @@ class Application(Adw.Application):
 
     def on_new_window(self, _action, _value):
         window = MainWindow(self)
+        self._set_color_scheme()
         window.present()
         group = Gtk.WindowGroup.new()
         group.add_window(window)
