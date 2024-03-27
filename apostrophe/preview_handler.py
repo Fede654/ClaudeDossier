@@ -21,6 +21,7 @@ from gettext import gettext as _
 import gi
 
 from apostrophe.settings import Settings
+from apostrophe.preview_security import PreviewSecurity
 
 gi.require_version('WebKit', '6.0')
 gi.require_version('Gtk', '4.0')
@@ -69,14 +70,20 @@ class PreviewHandler:
         self.__show()
         self.panels().revealed = True
 
-    def __show(self, html=None, step=Step.CONVERT_HTML):
+    def __show(self, html=None, step=Step.CONVERT_HTML, *args):
+
+        if self.window().current.security_level not in [PreviewSecurity.RESTRICTED, PreviewSecurity.UNRESTRICTED]:
+            return
 
         if step == Step.CONVERT_HTML:
             # First step: convert text to HTML.
             buf = self.text_view().get_buffer()
 
+            secure_preview = self.window().current.security_level == PreviewSecurity.RESTRICTED
+
             self.preview_converter.convert(
                 buf.get_text(buf.get_start_iter(), buf.get_end_iter(), False),
+                secure_preview,
                 self.__show, Step.LOAD_WEBVIEW)
 
         elif step == Step.LOAD_WEBVIEW:
@@ -98,6 +105,8 @@ class PreviewHandler:
                 self.web_view.connect("decide-policy", self.on_click_link)
 
                 self.web_view.connect("context-menu", self.on_right_click)
+            else:
+                self.window().preview_stack.set_visible_child(self.web_view)
 
             if self.web_view.is_loading():
                 self.web_view_pending_html = html
@@ -128,9 +137,12 @@ class PreviewHandler:
                 self.hide()
             self.show()
 
+    def refresh_preview(self, *args, **kwargs):
+        self.__show()
+
     def load_webview(self):
-        self.web_view.show()
-        self.window().preview_stack.add_child(self.web_view)
+        if not self.window().preview_stack.get_child_by_name("webview"):
+            self.window().preview_stack.add_named(self.web_view, "webview")
         self.window().preview_stack.set_visible_child(self.web_view)
 
     def hide(self, *args, **kwargs):

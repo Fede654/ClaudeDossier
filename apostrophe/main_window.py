@@ -32,11 +32,13 @@ from apostrophe.headerbars import BaseHeaderbar
 from apostrophe.helpers import App
 from apostrophe.panels import ApostrophePanels
 from apostrophe.preview_handler import PreviewHandler
+from apostrophe.preview_security import PreviewSecurity
 from apostrophe.search_and_replace import ApostropheSearchBar
 from apostrophe.settings import Settings
 from apostrophe.stats_handler import StatsHandler
 from apostrophe.text_view import ApostropheTextView
 from apostrophe.text_view_format_inserter import FormatInserter
+from apostrophe.preview_security import PreviewSecurityHandler
 
 LOGGER = logging.getLogger('apostrophe')
 
@@ -54,6 +56,7 @@ class MainWindow(Adw.ApplicationWindow):
     searchbar = Gtk.Template.Child()
     panels = Gtk.Template.Child()
     preview_stack = Gtk.Template.Child()
+    security_warning = Gtk.Template.Child()
     discard_infobar = Gtk.Template.Child()
     preview_spinner = Gtk.Template.Child()
 
@@ -64,6 +67,7 @@ class MainWindow(Adw.ApplicationWindow):
     preview_layout = GObject.Property(type=int, default=1)
 
     did_change = GObject.Property(type=bool, default=False)
+    current = GObject.Property(type=GObject.Object, default=None)
 
     close_anyway = False
     file_monitor = None
@@ -126,6 +130,9 @@ class MainWindow(Adw.ApplicationWindow):
                            "layout", GObject.BindingFlags.SYNC_CREATE)
 
         self.panels.connect("close-panel-window", self.on_preview_window_close)
+
+        # preview security handler
+        self.preview_security_handler = PreviewSecurityHandler(self)
 
         # Setting up spellcheck
         #self.settings.bind("spellcheck", self.textview,
@@ -318,6 +325,14 @@ class MainWindow(Adw.ApplicationWindow):
             self.preview_handler.hide()
             self.textview.grab_focus()
 
+    @Gtk.Template.Callback()
+    def load_restricted_preview(self, *args):
+        self.current.security_level = PreviewSecurity.RESTRICTED
+
+    @Gtk.Template.Callback()
+    def load_preview(self, *args):
+        self.current.security_level = PreviewSecurity.UNRESTRICTED
+
     def save_document(self, _action=None, _value=None, callback=None):
         """Try to save buffer in the current gfile.
         If the file doesn't exist calls save_document_as
@@ -496,6 +511,7 @@ class MainWindow(Adw.ApplicationWindow):
         LOGGER.info("trying to open %s", file.get_uri())
 
         self.current.gfile = file
+        self.preview_security_handler.set_file_security_level()
 
         self.current.gfile.load_contents_async(None,
                                                self._load_contents_cb, None)
@@ -540,6 +556,7 @@ class MainWindow(Adw.ApplicationWindow):
             return
         else:
             self.textview.set_text(decoded)
+            self.preview_security_handler.assert_security_risk(decoded)
             start_iter = self.textview.get_buffer().get_start_iter()
             GLib.idle_add(
                 lambda: self.textview.get_buffer().place_cursor(start_iter))
@@ -599,6 +616,7 @@ class MainWindow(Adw.ApplicationWindow):
 
             self.did_change = False
             self.current.gfile = None
+            self.preview_security_handler.set_file_security_level(PreviewSecurity.UNRESTRICTED)
             self.update_headerbar_title(False, False)
 
         self.check_change(callback)
@@ -720,19 +738,16 @@ class MainWindow(Adw.ApplicationWindow):
     def spinner_unmap_cb(self, *args):
         self.preview_spinner.set_spinning(False)
 
-@dataclass
-class File():
+#@dataclass
+class File(GObject.Object):
     """Class for keeping track of files, their attributes, and their methods"""
 
-    def __init__(self, gfile=None, encoding="UTF-8"):
-        self._settings = Settings.new()
-        self.gfile = gfile
-        self.encoding = encoding
-        self.path = ""
-        self.title = _("New File")
-        self.name = ""
+    __gtype_name__ = "ApostropheFile"
 
-    @property
+    security_level = GObject.Property(type=int, default=PreviewSecurity.ASK)
+    _gfile = None
+
+    @GObject.Property(type=GObject.Object, default=None)
     def gfile(self):
         return self._gfile
 
@@ -763,3 +778,14 @@ class File():
         # TODO: remove path in favor of gfile
         self._settings.set_string("open-file-path", self.base_path)
         self._gfile = file
+
+    def __init__(self, gfile=None, encoding="UTF-8"):
+        super().__init__()
+        self._settings = Settings.new()
+        self.gfile = gfile
+        self.encoding = encoding
+        self.path = ""
+        self.base_path = "/"
+        self.title = _("New File")
+        self.name = ""
+        self.security_level = PreviewSecurity.ASK

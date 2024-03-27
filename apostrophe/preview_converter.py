@@ -18,12 +18,12 @@ class PreviewConverter:
         worker.daemon = True
         worker.start()
 
-    def convert(self, text, callback, *user_data):
+    def convert(self, text, secure_preview, callback, *user_data):
         """Converts text to html, calling callback when done.
 
         The callback argument contains the result."""
 
-        self.queue.put((text, callback, user_data))
+        self.queue.put((text, secure_preview, callback, user_data))
 
     def stop(self):
         """Stops the background worker.
@@ -34,11 +34,15 @@ class PreviewConverter:
     def __do_convert(self):
         while True:
             while True:
-                (text, callback, user_data) = self.queue.get()
+                (text, secure_preview, callback, user_data) = self.queue.get()
                 if text is None and callback is None:
                     return
                 if self.queue.empty():
                     break
+            if secure_preview:
+                fr = "markdown-raw_html"
+            else:
+                fr = "markdown"
 
             args = ['--metadata=pagetitle:""',
                     '--standalone',
@@ -46,6 +50,6 @@ class PreviewConverter:
                     '--css=' + Theme.get_current().web_css,
                     '--lua-filter=' +
                     helpers.get_media_path('/lua/relative_to_absolute.lua')]
-            text = helpers.pandoc_convert(text, fr="markdown-raw_html", to="html5", args=args)
+            text = helpers.pandoc_convert(text, fr=fr, to="html5", args=args)
 
             GLib.idle_add(callback, text, *user_data)
