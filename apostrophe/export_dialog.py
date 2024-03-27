@@ -337,7 +337,8 @@ class AdvancedExportDialog(Adw.Dialog):
                 self.file.name + '.' +
                 self.formats_list.get_selected_row().item.ext)
 
-        export_dialog.set_transient_for(self)
+        export_dialog.set_modal(True)
+        export_dialog.set_transient_for(self.get_root())
         export_dialog.connect("response", on_response)
         export_dialog.show()
 
