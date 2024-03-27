@@ -229,6 +229,10 @@ class MainWindow(Adw.ApplicationWindow):
         action.connect_after("activate", FormatInserter().insert_header, self.textview)
         self.add_action(action)
 
+        action = Gio.SimpleAction.new("insert-hrule")
+        action.connect_after("activate", FormatInserter().insert_horizontal_rule, self.textview)
+        self.add_action(action)
+
         action = Gio.SimpleAction.new("insert-listitem")
         action.connect_after("activate", FormatInserter().insert_list_item, self.textview)
         self.add_action(action)

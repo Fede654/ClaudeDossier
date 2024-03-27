@@ -46,7 +46,6 @@ class ApostropheTextView(GtkSource.View):
 
     It combines the following:
     - Undo / redo (via TextBufferUndoRedoHandler)
-    - Format shortcuts (via TextBufferShortcutInserter)
     - Markup (via TextBufferMarkupHandler)
     - Preview popover (via TextBufferMarkupHandler)
     - Drag and drop
@@ -57,9 +56,6 @@ class ApostropheTextView(GtkSource.View):
     __gtype_name__ = "ApostropheTextView"
 
     __gsignals__ = {
-        'unindent': (GObject.SignalFlags.ACTION, None, ()),
-        'insert-hrule': (GObject.SignalFlags.ACTION, None, ()),
-        'insert-header': (GObject.SignalFlags.ACTION, None, (int,)),
         'scroll-scale-changed': (GObject.SIGNAL_RUN_LAST, None, (float,)),
     }
 
@@ -98,14 +94,10 @@ class ApostropheTextView(GtkSource.View):
         self.set_extra_menu(extra_menu)
         self.insert_action_group('spelling', self.adapter)
 
-        #self.adapter.set_enabled(True)
-
-
-        # Format shortcuts
-        self.shortcut = FormatInserter()
-        self.connect('unindent', self.buffer._unindent)
-        self.connect('insert-hrule', self.shortcut.insert_horizontal_rule)
-        self.connect('insert-header', self.shortcut.insert_header)
+        key = Gtk.EventControllerKey.new()
+        key.set_propagation_phase(Gtk.PropagationPhase.CAPTURE)
+        key.connect_after('key-pressed', self._on_key_pressed)
+        self.add_controller(key)
 
         # Markup
         self.markup = MarkupHandler(self)
@@ -131,6 +123,11 @@ class ApostropheTextView(GtkSource.View):
         self.frozen_scroll_scale = None
 
         self.update_vertical_margin()
+
+    def _on_key_pressed(self, controller, key, keycode, state):
+        if ((key == Gdk.KEY_Tab or key == Gdk.KEY_KP_Tab or key == Gdk.KEY_ISO_Left_Tab) and state == Gdk.ModifierType.SHIFT_MASK):
+            self.buffer._unindent()
+            return Gdk.EVENT_STOP
 
     def on_drop(self, drop_target, content, _x, _y):
         # check if a file was dropped
@@ -238,6 +235,18 @@ class ApostropheTextView(GtkSource.View):
             mark = self.buffer.get_insert()
         GLib.idle_add(self.scroller.smooth_scroll_to_mark,
                       mark, self.focus_mode)
+
+    @Gtk.Template.Callback()
+    def _on_button_pressed_event(self, gesture, n_press, x, y):
+        event = gesture.get_last_event()
+        if n_press != 1 or not event.triggers_context_menu():
+            pass
+        else:
+            buffer_x, buffer_y = self.window_to_buffer_coords(Gtk.TextWindowType.TEXT, x, y)
+            found, iter = self.get_iter_at_location(buffer_x, buffer_y)
+            if found:
+                self.buffer.place_cursor(iter)
+        return False
 
     @Gtk.Template.Callback()
     def _on_button_release_event(self, *args, **kwargs):
