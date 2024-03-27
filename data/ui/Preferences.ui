@@ -9,9 +9,8 @@
           <object class="AdwPreferencesGroup">
             <child>
               <object class="AdwSwitchRow" id="spellcheck_row">
-                <property name="visible">False</property>
-                <property name="tooltip-text" translatable="yes">Check Spelling While Typing</property>
-                <property name="title" translatable="yes">Check Spelling While Typing</property>
+                <property name="tooltip-text" translatable="yes">Check Spelling</property>
+                <property name="title" translatable="yes">Check Spelling</property>
               </object>
             </child>
             <child>

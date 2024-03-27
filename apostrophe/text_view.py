@@ -86,6 +86,7 @@ class ApostropheTextView(GtkSource.View):
         self.settings = Settings.new()
 
         self.buffer = self.get_buffer()
+
         # Spell checking
         checker = Spelling.Checker.get_default()
         self.adapter = Spelling.TextBufferAdapter.new(self.buffer, checker)
@@ -93,6 +94,9 @@ class ApostropheTextView(GtkSource.View):
 
         self.set_extra_menu(extra_menu)
         self.insert_action_group('spelling', self.adapter)
+
+        self.settings.bind("spellcheck", self.adapter,
+                           "enabled", Gio.SettingsBindFlags.DEFAULT)
 
         key = Gtk.EventControllerKey.new()
         key.set_propagation_phase(Gtk.PropagationPhase.CAPTURE)

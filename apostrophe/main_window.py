@@ -690,6 +690,7 @@ class MainWindow(Adw.ApplicationWindow):
         self.settings.set_boolean("preview-active", self.preview)
         self.settings.set_boolean("hemingway-mode", self.textview.buffer.hemingway_mode)
         self.settings.set_boolean("toolbar-active", self.editor.toolbar_revealer.extra_toolbar_revealed)
+        self.settings.set_boolean("spellcheck", self.textview.adapter.get_enabled())
 
     def do_close_request(self, *args):
         LOGGER.info('close request called')
