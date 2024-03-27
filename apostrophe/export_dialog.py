@@ -274,12 +274,12 @@ class AdvancedExportDialog(Adw.Dialog):
         row = Gtk.ListBoxRow.new()
         row.item = item
 
-        label = Gtk.Label.new();
-        label.set_label(item.name);
-        label.set_xalign(0);
-        label.set_wrap(True);
+        label = Gtk.Label.new()
+        label.set_label(item.name)
+        label.set_xalign(0)
+        label.set_wrap(True)
 
-        row.set_child(label);
+        row.set_child(label)
 
         return row
 
