@@ -19,7 +19,7 @@
               <object class="GtkMenuButton" id="stats_button">
                 <property name="always-show-arrow">True</property>
                 <property name="tooltip-text" translatable="yes">Show Statistics</property>
-                <property name="label" translatable="true">0 Words</property>
+                <property name="label" translatable="yes">0 Words</property>
                 <property name="halign">end</property>
                 <property name="valign">end</property>
                 <property name="margin-end">6</property>
