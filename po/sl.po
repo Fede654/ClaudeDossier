@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: apostrophe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2024-03-08 20:17+0000\n"
-"PO-Revision-Date: 2024-03-10 10:44+0100\n"
+"POT-Creation-Date: 2024-03-27 16:37+0000\n"
+"PO-Revision-Date: 2024-03-30 16:07+0100\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
@@ -39,118 +39,127 @@ msgid "Apostrophe, an elegant, distraction-free markdown editor"
 msgstr ""
 "Apostrof, enostaven, a funkcijsko zmogljiv urejevalnik zapisa markdown."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:29
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:35
 msgid "Color scheme"
 msgstr "Barvna shema"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:30
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:36
 msgid "Use the color scheme in the application's UI and in the text area."
 msgstr "Uporabi barvno shemo v vmesniku programa in polju za vnos besedila."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:36
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:42
 msgid "Check spelling while typing"
 msgstr "Preverjaj črkovanje med vpisovanjem"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:37
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:43
 msgid "Enable or disable spellchecking."
 msgstr "Preklopi delovanje preverjanja črkovanja."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:43
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:49
 msgid "Synchronize editor/preview scrolling"
 msgstr "Uskladi drsenje urejevalnika/pregledovalnika"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:44
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:50
 msgid "Keep the editor and preview scroll positions in sync."
 msgstr "Samodejno usklajuje položaj drsnika urejevalnika in pregledovalnika."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:50
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:56
 msgid "Input format"
 msgstr "Vhodni zapis"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:51
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:57
 msgid "Input format to use when previewing and exporting using Pandoc."
 msgstr ""
 "Vhodni zapis, ki je uporabljen pri predogledu in izvažanju z uporabo Pandoc."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:57
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:63
 msgid "Autohide Headerbar"
 msgstr "Samodejno skrij vrstico glave"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:58
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:64
 msgid "Hide the header and status bars when typing."
 msgstr "Skrije vrstici glave in stanja med vnosom besedila."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:64
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:70
 msgid "Open file base path"
 msgstr "Odpri mapo datoteke"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:65
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:71
 msgid "Open file paths of the current session"
 msgstr "Odpri poti datoteke trenutne seje"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:71
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:77
 msgid "Default statistic"
 msgstr "Privzeta statistika"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:72
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:78
 msgid "Which statistic is shown on the main window."
 msgstr ""
 "Kateri podatki statistike dokumenta naj bodo prikazani na glavnem oknu."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:78
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:84
 msgid "Characters per line"
 msgstr "Znaki na vrstico"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:79
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:85
 msgid "Maximum number of characters per line within the editor."
 msgstr "Največje število znakov na vrstico v polju besedila urejevalnika."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:85
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:91
 #: data/ui/AboutHemingway.ui:6
 msgid "Hemingway Mode"
 msgstr "Hemingwayev način"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:86
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:92
 msgid "Whether the user can delete text or not."
 msgstr "Ali lahko uporabnik izbriše besedilo"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:92
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:98
 msgid "Hemingway Toast Count"
 msgstr "Število Hemingwayevih toastov"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:93
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:99
 msgid "Number of times the Hemingway Toast has been shown"
 msgstr "Kolikokrat se je pokazal Hemingwayjev toast"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:99
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:105
 msgid "Preview mode"
 msgstr "Predogledni način"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:100
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:106
 msgid "How to display the preview."
 msgstr "Kako naj bo prikazan predogled vsebine."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:106
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:112
+#: data/ui/Preferences.ui:64
+msgid "Preview Security"
+msgstr "Varnost predogleda"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:113
+msgid "Security policy to apply when rendering files."
+msgstr "Varnostni pravilnik, ki velja pri izrisovanju datotek."
+
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:119
 msgid "Preview active"
 msgstr "Predogledni način"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:107
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:120
 msgid "Whether showing of preview is active when launching a new window."
 msgstr "Ali je prikaz predogleda dejaven pri zagonu novega okna."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:113
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:126
 msgid "Text size"
 msgstr "Velikost besedila"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:114
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:127
 msgid "Preferred relative size for the text."
 msgstr "Želena relativna velikost besedila."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:120
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:133
 msgid "Toolbar"
 msgstr "Orodna vrstica"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:121
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:134
 msgid "Whether the toolbar is shown or not."
 msgstr "Ali naj bo orodna vrstica prikazana ali ne."
 
@@ -237,7 +246,7 @@ msgid "Formats"
 msgstr "Vrste datotek"
 
 #: data/ui/Export.ui:67 apostrophe/export_dialog.py:126
-#: apostrophe/export_dialog.py:322 apostrophe/export_dialog.py:326
+#: apostrophe/export_dialog.py:328 apostrophe/export_dialog.py:332
 msgid "Export"
 msgstr "Izvozi"
 
@@ -378,46 +387,50 @@ msgstr "Napreden _izvoz …"
 msgid "_Copy HTML"
 msgstr "_Kopiraj HTML"
 
-#: data/ui/Preferences.ui:13 data/ui/Preferences.ui:14
-msgid "Check Spelling While Typing"
-msgstr "Preverjaj črkovanje med vnosom"
+#: data/ui/Preferences.ui:12 data/ui/Preferences.ui:13
+msgid "Check Spelling"
+msgstr "Preveri črkovanje"
 
-#: data/ui/Preferences.ui:19
+#: data/ui/Preferences.ui:18
 msgid "Auto-Hide Header Bar"
 msgstr "Samodejno skrij vrstico glave"
 
-#: data/ui/Preferences.ui:20
+#: data/ui/Preferences.ui:19
 msgid "Auto-hide header and status bars while typing"
 msgstr "Samodejno skrij vrstico glave in stanja med vpisovanjem"
 
-#: data/ui/Preferences.ui:25
+#: data/ui/Preferences.ui:24
 msgid "Large Text"
 msgstr "Veliko besedilo"
 
-#: data/ui/Preferences.ui:26
+#: data/ui/Preferences.ui:25
 msgid "Reduce the margins width and increase the text size when possible"
 msgstr ""
 "Zmanjšajte širino robov in povečajte velikost besedila, kadar je to mogoče"
 
-#: data/ui/Preferences.ui:32
+#: data/ui/Preferences.ui:31
 msgid "Restore Session"
 msgstr "Obnovi sejo"
 
-#: data/ui/Preferences.ui:33
+#: data/ui/Preferences.ui:32
 msgid "Return to your previous session when Apostrophe is started"
 msgstr "Ob zagonu naj se program povrne v predhodno sejo"
 
-#: data/ui/Preferences.ui:38
+#: data/ui/Preferences.ui:37
 msgid "Input Format"
 msgstr "Vhodni zapis"
 
-#: data/ui/Preferences.ui:39
+#: data/ui/Preferences.ui:38
 msgid "Flavor of markdown Apostrophe will use"
 msgstr "Oblika zapisa markdown, ki naj bo uporaljena v programu"
 
-#: data/ui/Preferences.ui:48
+#: data/ui/Preferences.ui:47
 msgid "Markdown Flavor Documentation"
 msgstr "Dokumentacija o različicah zapisa markdown"
+
+#: data/ui/Preferences.ui:65
+msgid "Desired level of security when rendering the preview"
+msgstr "Želena raven varnosti pri izrisovanju predogleda"
 
 #: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_window.py:32
 msgid "Preview"
@@ -427,11 +440,11 @@ msgstr "Predogled"
 msgid "Screen Layout"
 msgstr "Zaslonska razporeditev"
 
-#: data/ui/Recents.ui:41
+#: data/ui/Recents.ui:39
 msgid "No Recent Documents"
 msgstr "Ni nedavnih dokumentov"
 
-#: data/ui/Recents.ui:65
+#: data/ui/Recents.ui:63
 msgid "No Results Found"
 msgstr "Ni najdenih zadetkov."
 
@@ -439,20 +452,20 @@ msgstr "Ni najdenih zadetkov."
 msgid "Previous Match"
 msgstr "Predhodni zadetek"
 
-#: data/ui/SearchBar.ui:38
+#: data/ui/SearchBar.ui:39
 msgid "Next Match"
 msgstr "Naslednji zadetek"
 
 #. Translators: This indicates case sensitivity, so it should be the first vowel of the language in lowercase and uppercase
-#: data/ui/SearchBar.ui:53
+#: data/ui/SearchBar.ui:55
 msgid "aA"
 msgstr "aA"
 
-#: data/ui/SearchBar.ui:56
+#: data/ui/SearchBar.ui:58
 msgid "Case Sensitive"
 msgstr "Razlikovanje malih/velikih črk"
 
-#: data/ui/SearchBar.ui:65
+#: data/ui/SearchBar.ui:66
 msgid "Regular Expression"
 msgstr "Logični izraz"
 
@@ -460,7 +473,7 @@ msgstr "Logični izraz"
 msgid "Replace"
 msgstr "Zamenjaj"
 
-#: data/ui/SearchBar.ui:119
+#: data/ui/SearchBar.ui:120
 msgid "Replace All"
 msgstr "Zamenjaj vse"
 
@@ -682,23 +695,47 @@ msgstr "Uporabi učinek sepia"
 msgid "Use Dark Colors"
 msgstr "Uporabi temne barve"
 
-#: data/ui/Window.ui:104
+#: data/ui/Window.ui:50
+msgid "This file may be insecure"
+msgstr "Ta datoteka morda ni varna"
+
+#: data/ui/Window.ui:51
+msgid ""
+"Previewing files from untrusted sources can be dangerous.\n"
+"If you're unsure about the contents of this file, open it in the Restricted "
+"Preview where javascript and HTML are disabled.\n"
+"                    "
+msgstr ""
+"Predogled datotek iz virov, ki niso zaupanja vredni, je lahko nevaren.\n"
+"Če niste prepričani o vsebini te datoteke, jo odprite v omejenem predogledu, "
+"v katerem sta javascript in HTML onemogočena.\n"
+"                    "
+
+#: data/ui/Window.ui:64
+msgid "Load Preview"
+msgstr "Naloži predogled"
+
+#: data/ui/Window.ui:73
+msgid "Load Restricted Preview"
+msgstr "Naloži omejeni predogleda"
+
+#: data/ui/Window.ui:144
 msgid "File Has Changed on Disk"
 msgstr "Datoteka je bila na disku spremenjena"
 
-#: data/ui/Window.ui:114
+#: data/ui/Window.ui:154
 msgid "The file has been changed by another program"
 msgstr "Datoteka je bila spremenjena v drugem programu."
 
-#: data/ui/Window.ui:122
+#: data/ui/Window.ui:162
 msgid "_Discard Changes and Reload"
 msgstr "_Opusti spremembe in ponovno naloži"
 
-#: apostrophe/application.py:217
+#: apostrophe/application.py:228
 msgid "Donate"
 msgstr "Donirajte"
 
-#: apostrophe/application.py:218
+#: apostrophe/application.py:229
 msgid "Translations"
 msgstr "Prevodi"
 
@@ -706,18 +743,18 @@ msgstr "Prevodi"
 msgid "Close"
 msgstr "Zapri"
 
-#: apostrophe/export_dialog.py:129 apostrophe/export_dialog.py:327
+#: apostrophe/export_dialog.py:129 apostrophe/export_dialog.py:333
 #, python-format
 msgid "Export to %s"
 msgstr "Izvozi v %s"
 
-#: apostrophe/export_dialog.py:131 apostrophe/export_dialog.py:323
-#: apostrophe/export_dialog.py:328 apostrophe/main_window.py:444
-#: apostrophe/main_window.py:518 apostrophe/main_window.py:609
+#: apostrophe/export_dialog.py:131 apostrophe/export_dialog.py:329
+#: apostrophe/export_dialog.py:334 apostrophe/main_window.py:415
+#: apostrophe/main_window.py:493 apostrophe/main_window.py:586
 msgid "Cancel"
 msgstr "Prekliči"
 
-#: apostrophe/export_dialog.py:155 apostrophe/export_dialog.py:316
+#: apostrophe/export_dialog.py:155 apostrophe/export_dialog.py:322
 #, python-brace-format
 msgid ""
 "An error happened while trying to export:\n"
@@ -732,7 +769,7 @@ msgstr ""
 msgid "Export to {}"
 msgstr "Izvozi v {}"
 
-#: apostrophe/export_dialog.py:323
+#: apostrophe/export_dialog.py:329
 msgid "Select folder"
 msgstr "Izbor mape"
 
@@ -769,43 +806,43 @@ msgid "adverb"
 msgstr "prislov"
 
 #. Hemingway Toast
-#: apostrophe/main_window.py:145
+#: apostrophe/main_window.py:152
 msgid "Text can't be deleted while on Hemingway mode"
 msgstr "Besedila v Hemingwayevem načinu ni mogoče izbrisati"
 
-#: apostrophe/main_window.py:148
+#: apostrophe/main_window.py:155
 msgid "Tell me more"
 msgstr "Več o tem"
 
-#: apostrophe/main_window.py:440
+#: apostrophe/main_window.py:411
 msgid "Save your File"
 msgstr "Shrani datoteko"
 
-#: apostrophe/main_window.py:443 apostrophe/main_window.py:611
+#: apostrophe/main_window.py:414 apostrophe/main_window.py:588
 msgid "Save"
 msgstr "Shrani"
 
-#: apostrophe/main_window.py:507
+#: apostrophe/main_window.py:482
 msgid "Markdown Files"
 msgstr "Oblikovanje Markdown"
 
-#: apostrophe/main_window.py:511
+#: apostrophe/main_window.py:486
 msgid "Plain Text Files"
 msgstr "Besedilne datoteke"
 
-#: apostrophe/main_window.py:514
+#: apostrophe/main_window.py:489
 msgid "Open a .md file"
 msgstr "Odpri datoteko .md"
 
-#: apostrophe/main_window.py:517
+#: apostrophe/main_window.py:492
 msgid "Open"
 msgstr "Odpri"
 
-#: apostrophe/main_window.py:603
+#: apostrophe/main_window.py:580
 msgid "Save Changes?"
 msgstr "Ali želite shraniti spremembe?"
 
-#: apostrophe/main_window.py:604
+#: apostrophe/main_window.py:581
 #, python-format
 msgid ""
 "“%s” contains unsaved changes. If you don’t save, all your changes will be "
@@ -814,11 +851,11 @@ msgstr ""
 "»%s« vsebuje neshranjene spremembe. Če ne shranite, bodo vse spremembe "
 "trajno izgubljene."
 
-#: apostrophe/main_window.py:610
+#: apostrophe/main_window.py:587
 msgid "Discard"
 msgstr "Zavrzi"
 
-#: apostrophe/main_window.py:772 apostrophe/main_window.py:796
+#: apostrophe/main_window.py:771 apostrophe/main_window.py:789
 msgid "New File"
 msgstr "Nova datoteka"
 
@@ -953,6 +990,6 @@ msgstr ""
 "\n"
 "koda\n"
 
-#: apostrophe/text_view.py:161 apostrophe/text_view.py:163
+#: apostrophe/text_view.py:176 apostrophe/text_view.py:178
 msgid "web page"
 msgstr "spletna stran"
