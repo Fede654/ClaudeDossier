@@ -52,7 +52,7 @@ class PreviewSecurityHandler:
             "<button", "<canvas", "<caption", "<center", "<cite", "<code", "<col", "<colgroup", "<data", 
             "<datalist", "<dd", "<del", "<details", "<dfn", "<dialog", "<dir", "<div", "<dl", "<dt", "<em", 
             "<embed", "<fieldset", "<figcaption", "<figure", "<font", "<footer", "<form", "<frame", "<frameset", 
-            "<h", "<head", "<header", "<hgroup", "<hr", "<html", "<i", "<iframe", "<img", "<input", "<ins", 
+            "<h[1-6]", "<head", "<header", "<hgroup", "<hr", "<html", "<i", "<iframe", "<img", "<input", "<ins", 
             "<kbd", "<label", "<legend", "<li", "<link", "<main", "<map", "<mark", "<menu", "<meta", "<meter", 
             "<nav", "<noframes", "<noscript", "<object", "<ol", "<optgroup", "<option", "<output", "<p", 
             "<param", "<picture", "<pre", "<progress", "<q", "<rp", "<rt", "<ruby", "<s", "<samp", "<script", 
