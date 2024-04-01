@@ -22,6 +22,10 @@
       <li>Export to all kind of formats: PDF, Word/Libreoffice, LaTeX, or even HTML slideshows</li>
     </ul>
   </description>
+  <branding>
+    <color type="primary" scheme_preference="light">#90ded5</color>
+    <color type="primary" scheme_preference="dark">#1b786d</color>
+  </branding>
   <launchable type="desktop-id">@app-id@.desktop</launchable>
   <url type="homepage">https://apps.gnome.org/Apostrophe/</url>
   <url type="bugtracker">https://gitlab.gnome.org/World/apostrophe/-/issues</url>
