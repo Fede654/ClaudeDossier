@@ -15,9 +15,12 @@ class ApostropheTextBuffer(GtkSource.Buffer):
 
     __gsignals__ = {
         'attempted-hemingway': (GObject.SignalFlags.ACTION, None, ()),
+        'changed-debounced': (GObject.SIGNAL_RUN_LAST, None, ()),
     }
 
     hemingway_mode = GObject.Property(type=bool, default=False)
+    changed_debounced_timeout = GObject.Property(type=int, default=100)
+    changed_debounced_timeout_id = None
 
     def __init__(self):
         super().__init__()
@@ -221,3 +224,13 @@ class ApostropheTextBuffer(GtkSource.Buffer):
             self.emit("attempted-hemingway")
         else:
             GtkSource.Buffer.do_delete_range(self, start, end)
+
+    def changed_debounced(self):
+        self.emit("changed-debounced")
+        self.changed_debounced_timeout_id = None
+
+    def do_changed(self):
+        if self.changed_debounced_timeout_id:
+            GLib.source_remove(self.changed_debounced_timeout_id)
+            self.changed_debounced_timeout_id = None
+        self.changed_debounced_timeout_id = GLib.timeout_add(self.changed_debounced_timeout, self.changed_debounced)
