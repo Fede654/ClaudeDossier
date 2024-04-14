@@ -27,6 +27,7 @@ from apostrophe.text_view_format_inserter import FormatInserter
 from apostrophe.text_view_markup_handler import MarkupHandler
 from apostrophe.text_view_scroller import TextViewScroller
 from apostrophe.text_buffer import ApostropheTextBuffer
+from apostrophe.theme_switcher import Theme
 
 gi.require_version('Gtk', '4.0')
 gi.require_version('GtkSource', '5')
@@ -124,6 +125,11 @@ class ApostropheTextView(GtkSource.View):
         self.frozen_scroll_scale = None
 
         self.update_vertical_margin()
+
+        # color scheme
+        theme = Theme.get_current().name
+        scheme_manager = GtkSource.StyleSchemeManager.get_default()
+        self.buffer.set_style_scheme(scheme_manager.get_scheme(theme))
 
     def _on_key_pressed(self, controller, key, keycode, state):
         if ((key == Gdk.KEY_Tab or key == Gdk.KEY_KP_Tab or key == Gdk.KEY_ISO_Left_Tab) and state == Gdk.ModifierType.SHIFT_MASK):
