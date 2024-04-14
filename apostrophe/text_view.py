@@ -13,7 +13,7 @@
 # with this program.  If not, see <http://www.gnu.org/licenses/>.
 # END LICENSE
 
-import mimetypes
+import math
 import urllib
 from gettext import gettext as _
 from os.path import basename
@@ -55,10 +55,6 @@ class ApostropheTextView(GtkSource.View):
 
     __gtype_name__ = "ApostropheTextView"
 
-    __gsignals__ = {
-        'scroll-scale-changed': (GObject.SIGNAL_RUN_LAST, None, (float,)),
-    }
-
     bigger_text = GObject.Property(type=bool, default=False)
     focus_mode = GObject.Property(type=bool, default=False)
     font_size = GObject.Property(type=int, default=16)
@@ -71,12 +67,13 @@ class ApostropheTextView(GtkSource.View):
 
     @GObject.Property(type=float, default=0)
     def scroll_scale(self):
-        return self.scroller.get_scroll_scale() if self.scroller else 0
+        return self.scroller.get_scroll_scale_() if self.scroller else 0
 
     @scroll_scale.setter
     def scroll_scale(self, scale):
-        if self.scroller:
-            self.scroller.set_scroll_scale(scale)
+        if self.scroller and not math.isclose(scale, self._scroll_scale, rel_tol=1e-5):
+            self._scroll_scale = scale
+            self.scroller.set_scroll_scale_(scale)
 
     gesture_controller = Gtk.Template.Child()
 
@@ -307,7 +304,7 @@ class ApostropheTextView(GtkSource.View):
         if self.frozen_scroll_scale is not None:
             self.scroll_scale = self.frozen_scroll_scale
         elif self.scroller.can_scroll():
-            self.emit("scroll-scale-changed", self.scroll_scale)
+            self.notify("scroll_scale")
 
     def _unfreeze_scroll_scale(self):
         self.frozen_scroll_scale = None

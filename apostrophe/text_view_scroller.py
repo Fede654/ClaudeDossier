@@ -22,36 +22,34 @@ class TextViewScroller:
         self.smooth_scroller = None
 
     def can_scroll(self):
-        vap = self.scrolled_window.get_vadjustment().props
-        return vap.upper > vap.page_size
+        vap = self.scrolled_window.get_vadjustment()
+        return vap.get_upper() > vap.get_page_size()
 
-    def get_scroll_scale(self):
-        vap = self.scrolled_window.get_vadjustment().props
-        if vap.upper > vap.page_size:
-            return vap.value / (vap.upper - vap.page_size)
+    def get_scroll_scale_(self):
+        vap = self.scrolled_window.get_vadjustment()
+        if vap.get_upper() > vap.get_page_size():
+            return vap.get_value() / (vap.get_upper() - vap.get_page_size())
         else:
             return 0
 
-    def set_scroll_scale(self, scale):
-        vap = self.scrolled_window.get_vadjustment().props
-        vap.value = (vap.upper - vap.page_size) * scale
+    def set_scroll_scale_(self, scale):
+        vap = self.scrolled_window.get_vadjustment()
+        vap.set_value((vap.get_upper() - vap.get_page_size()) * scale)
 
     def scroll_to_mark(self, mark, center):
         """Scrolls until mark is visible, if needed."""
-
         target_pos = self.get_target_pos_for_mark(mark, center)
         if target_pos:
             self.scrolled_window.get_vadjustment().set_value(target_pos)
 
     def smooth_scroll_to_mark(self, mark, center):
         """Smoothly scrolls until mark is visible, if needed."""
-
         if self.smooth_scroller and self.smooth_scroller.is_started:
             self.smooth_scroller.end()
 
         target_pos = self.get_target_pos_for_mark(mark, center)
         if target_pos:
-            source_pos = self.scrolled_window.get_vadjustment().props.value
+            source_pos = self.scrolled_window.get_vadjustment().get_value()
             self.smooth_scroller = SmoothScroller(
                 self.scrolled_window, source_pos, target_pos)
             self.smooth_scroller.start()
@@ -62,16 +60,16 @@ class TextViewScroller:
         mark_iter = self.textview.get_buffer().get_iter_at_mark(mark)
         mark_rect = self.textview.get_iter_location(mark_iter)
 
-        vap = self.scrolled_window.get_vadjustment().props
+        vap = self.scrolled_window.get_vadjustment()
 
-        pos_y = mark_rect.y + mark_rect.height + self.textview.props.top_margin
-        pos_viewport_y = pos_y - vap.value
+        pos_y = mark_rect.y + mark_rect.height + self.textview.get_top_margin()
+        pos_viewport_y = pos_y - vap.get_value()
         target_pos = None
         if center:
-            if pos_viewport_y != vap.page_size / 2:
-                target_pos = pos_y - (vap.page_size / 2)
-        elif pos_viewport_y > vap.page_size - margin:
-            target_pos = pos_y - vap.page_size + margin
+            if pos_viewport_y != vap.get_page_size() / 2:
+                target_pos = pos_y - (vap.get_page_size() / 2)
+        elif pos_viewport_y > vap.get_page_size() - margin:
+            target_pos = pos_y - vap.get_page_size() + margin
         elif pos_viewport_y < margin:
             target_pos = pos_y - margin - mark_rect.height
 
@@ -124,5 +122,5 @@ class SmoothScroller:
 
         time = ease_out_cubic(time)
         pos = self.source_pos + (time * (self.target_pos - self.source_pos))
-        widget.get_vadjustment().props.value = pos
+        widget.get_vadjustment().set_value(pos)
         return True
