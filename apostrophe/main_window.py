@@ -59,6 +59,7 @@ class MainWindow(Adw.ApplicationWindow):
     security_warning = Gtk.Template.Child()
     discard_infobar = Gtk.Template.Child()
     preview_spinner = Gtk.Template.Child()
+    webview_snapshot = Gtk.Template.Child()
 
     subtitle = GObject.Property(type=str)
     is_fullscreen = GObject.Property(type=bool, default=False)

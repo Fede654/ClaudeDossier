@@ -12,8 +12,8 @@
 # You should have received a copy of the GNU General Public License along
 # with this program.  If not, see <http://www.gnu.org/licenses/>.
 # END LICENSE
+import logging
 import os
-import math
 import webbrowser
 from enum import IntEnum, auto
 from gettext import gettext as _
@@ -66,6 +66,8 @@ class PreviewHandler:
         self.shown = False
         self.preview_visible = False
 
+        self.snapshot = False
+
         self.window().connect("notify::title", self.on_window_title_changed)
 
     def show(self):
@@ -107,8 +109,12 @@ class PreviewHandler:
                 self.web_view.connect("decide-policy", self.on_click_link)
 
                 self.web_view.connect("context-menu", self.on_right_click)
-            else:
-                self.window().preview_stack.set_visible_child(self.web_view)
+
+            # only make a new screenshot if the preview is fully loaded and rendered
+            if self.web_view.get_estimated_load_progress() == 1 and not self.loading:
+                self.web_view.get_snapshot(
+                    WebKit.SnapshotRegion.VISIBLE, WebKit.SnapshotOptions.NONE,
+                    None, self.update_webview_snapshot)
 
             # stop syncing the scroll scale
             if self.scroll_handler_id:
@@ -157,8 +163,20 @@ class PreviewHandler:
             self.loading = False
             self.panels().revealed = False
 
+    def update_webview_snapshot(self, web_view, result):
+        try:
+            self.snapshot = web_view.get_snapshot_finish(result)
+            self.window().webview_snapshot.set_paintable(self.snapshot)
+        except Exception as e:
+            logger.debug(e)
+
     def on_load_changed(self, web_view, event):
         if event == WebKit.LoadEvent.STARTED:
+            if self.snapshot:
+                # we need to change the transition to none to not bleed the loading underneath
+                self.window().preview_stack.set_transition_type(Gtk.StackTransitionType.NONE)
+                self.window().preview_stack.set_visible_child(self.window().webview_snapshot)
+                self.window().preview_stack.set_transition_type(Gtk.StackTransitionType.CROSSFADE)
             self.shown = False
         elif event == WebKit.LoadEvent.FINISHED:
             # once the webview is loaded, change back the working dir
