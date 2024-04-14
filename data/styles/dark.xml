@@ -22,7 +22,7 @@
 
   <!-- Named Colors -->
   <color name="view_bg"                     value="#2d2d2d"/>
-  <color name="view_fg"                     value="#eeeeec"/>
+  <color name="view_fg"                     value="#eeeeee"/>
 
   <!-- Global Styles -->
   <style name="bracket-match"              bold="true"/>
