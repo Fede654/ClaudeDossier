@@ -20,17 +20,18 @@ from gettext import gettext as _
 
 import gi
 
-from apostrophe.settings import Settings
 from apostrophe.preview_security import PreviewSecurity
+from apostrophe.settings import Settings
 
 gi.require_version('WebKit', '6.0')
 gi.require_version('Gtk', '4.0')
-from gi.repository import GLib, WebKit
+from gi.repository import Gtk, WebKit
 
 from apostrophe import config
 from apostrophe.preview_converter import PreviewConverter
 from apostrophe.preview_web_view import PreviewWebView
 
+logger = logging.getLogger('apostrophe')
 
 class Step(IntEnum):
     CONVERT_HTML = auto()
@@ -57,6 +58,7 @@ class PreviewHandler:
         self.text_changed_handler_id = None
 
         self.settings = Settings.new()
+        self.scroll_handler_id = None
         self.web_scroll_handler_id = None
         self.text_scroll_handler_id = None
 
@@ -88,18 +90,18 @@ class PreviewHandler:
 
         elif step == Step.LOAD_WEBVIEW:
             # Second step: load HTML.
-            self.loading = True
             if not self.web_view:
                 # chdir to a base path so the webview doesn't crash
                 # once the webview is loaded we'll change back to the previous one
-                # TODO: check out if we can remove this in the future                os.chdir("/")
+                # TODO: check out if we can remove this in the future
                 os.chdir("/")
                 self.web_view = PreviewWebView()
                 self.web_view.get_settings().set_allow_universal_access_from_file_urls(True)
                 self.web_view.get_settings().set_enable_developer_extras(config.PROFILE == '.Devel')
 
                 # Show preview once the load is finished
-                self.web_view.connect("load-changed", self.on_load_changed)
+                self.web_view.connect_after("load-changed", self.on_load_changed)
+                self.web_view.connect("rendered", self.on_rendered)
 
                 # All links will be opened in default browser, but local files are opened in apps.
                 self.web_view.connect("decide-policy", self.on_click_link)
@@ -108,9 +110,15 @@ class PreviewHandler:
             else:
                 self.window().preview_stack.set_visible_child(self.web_view)
 
-            if self.web_view.is_loading():
+            # stop syncing the scroll scale
+            if self.scroll_handler_id:
+                self.scroll_handler_id.unbind()
+                self.scroll_handler_id = None
+
+            if self.loading:
                 self.web_view_pending_html = html
             else:
+                self.loading = True
                 self.web_view.load_html(html, "file://localhost/")
 
         elif step == Step.RENDER:
@@ -119,17 +127,9 @@ class PreviewHandler:
                 self.preview_visible = True
 
                 self.text_changed_handler_id = \
-                    self.text_view().get_buffer().connect("changed", self.__show)
+                    self.text_view().get_buffer().connect("changed-debounced", self.__show)
 
                 self.__show()
-
-            GLib.idle_add(self.web_view.set_scroll_scale, self.text_view().scroll_scale)
-
-            if self.settings.get_boolean("sync-scroll"):
-                self.web_scroll_handler_id = \
-                    self.web_view.connect("scroll-scale-changed", self.on_web_view_scrolled)
-                self.text_scroll_handler_id = \
-                    self.text_view().connect("scroll-scale-changed", self.on_text_view_scrolled)
 
     def reload(self, *_widget, reshow=False):
         if self.preview_visible:
@@ -148,18 +148,7 @@ class PreviewHandler:
     def hide(self, *args, **kwargs):
         if self.preview_visible:
             self.preview_visible = False
-
-            #GLib.idle_add(self.text_view().scroll_scale, self.web_view.get_scroll_scale())
-            self.text_view().scroll_scale = self.web_view.get_scroll_scale()
-
             self.panels().revealed = False
-
-            if self.text_scroll_handler_id:
-                self.text_view().disconnect(self.text_scroll_handler_id)
-                self.text_scroll_handler_id = None
-            if self.web_scroll_handler_id:
-                self.web_view.disconnect(self.web_scroll_handler_id)
-                self.web_scroll_handler_id = None
 
         if self.text_changed_handler_id:
             self.text_view().get_buffer().disconnect(self.text_changed_handler_id)
@@ -168,32 +157,28 @@ class PreviewHandler:
             self.loading = False
             self.panels().revealed = False
 
-    def on_load_changed(self, _web_view, event):
-        if event == WebKit.LoadEvent.FINISHED:
-            self.loading = False
+    def on_load_changed(self, web_view, event):
+        if event == WebKit.LoadEvent.STARTED:
+            self.shown = False
+        elif event == WebKit.LoadEvent.FINISHED:
             # once the webview is loaded, change back the working dir
             # to the file path, so pandoc can work properly
             os.chdir(self.window().current.base_path)
             if self.web_view_pending_html:
                 self.__show(html=self.web_view_pending_html, step=Step.LOAD_WEBVIEW)
                 self.web_view_pending_html = None
-            else:
-                # we only lazyload the webview once
-                if not self.shown:
-                    self.load_webview()
-                    self.shown = True
-                self.__show(step=Step.RENDER)
 
-    def on_text_view_scrolled(self, _text_view, scale):
-        if self.preview_visible and not math.isclose(scale,
-                                           self.web_view.get_scroll_scale(),
-                                           rel_tol=1e-4):
-            self.web_view.set_scroll_scale(scale)
+    def on_rendered(self, web_view):
+        self.loading = False
 
-    def on_web_view_scrolled(self, _web_view, scale):
-        if self.preview_visible and self.text_view().get_mapped() and not math.isclose(
-                scale, self.text_view().scroll_scale, rel_tol=1e-4):
-            self.text_view().scroll_scale = scale
+        # sync scroll before showing again the preview
+        if self.settings.get_boolean("sync-scroll") and not self.scroll_handler_id:
+            self.scroll_handler_id = self.text_view().bind_property("scroll-scale", self.web_view, "scroll-scale", 3)
+        if not self.shown:
+            self.load_webview()
+            self.shown = True
+
+        self.__show(step=Step.RENDER)
 
     def on_window_title_changed(self, *args, **kwargs):
         self.panels().panel_window_title = self.window().get_title() + " - " + _("Preview")
