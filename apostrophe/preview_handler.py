@@ -64,7 +64,7 @@ class PreviewHandler:
 
         self.loading = False
         self.shown = False
-        self.preview_visible = False
+        self.preview_visible = self.settings.get_boolean("preview-active")
 
         self.snapshot = False
 
