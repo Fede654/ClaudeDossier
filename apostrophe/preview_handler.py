@@ -144,7 +144,8 @@ class PreviewHandler:
             self.show()
 
     def refresh_preview(self, *args, **kwargs):
-        self.__show()
+        if self.preview_visible:
+            self.__show()
 
     def load_webview(self):
         if not self.window().preview_stack.get_child_by_name("webview"):
