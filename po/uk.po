@@ -7,17 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: apostrophe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2024-03-27 16:37+0000\n"
-"PO-Revision-Date: 2024-03-27 18:44+0200\n"
+"POT-Creation-Date: 2024-04-14 23:02+0000\n"
+"PO-Revision-Date: 2024-04-15 17:48+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
-"Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
+"Language-Team: Ukrainian\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Lokalize 23.04.1\n"
+"X-Generator: Lokalize 23.04.3\n"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:3
 #: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:4
@@ -131,7 +131,6 @@ msgstr "Як показувати попередній перегляд."
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:112
 #: data/ui/Preferences.ui:64
-#| msgid "Preview active"
 msgid "Preview Security"
 msgstr "Безпека перегляду"
 
@@ -390,7 +389,6 @@ msgid "_Copy HTML"
 msgstr "_Копіювати HTML"
 
 #: data/ui/Preferences.ui:12 data/ui/Preferences.ui:13
-#| msgid "Check Spelling While Typing"
 msgid "Check Spelling"
 msgstr "Перевірити правопис"
 
@@ -698,40 +696,44 @@ msgstr "Кольори сепії"
 msgid "Use Dark Colors"
 msgstr "Використовувати темні кольори"
 
-#: data/ui/Window.ui:50
+#: data/ui/Window.ui:67
 msgid "This file may be insecure"
 msgstr "Цей файл може бути небезпечним"
 
-#: data/ui/Window.ui:51
+#: data/ui/Window.ui:68
+#| msgid ""
+#| "Previewing files from untrusted sources can be dangerous.\n"
+#| "If you're unsure about the contents of this file, open it in the "
+#| "Restricted Preview where javascript and HTML are disabled.\n"
+#| "                    "
 msgid ""
 "Previewing files from untrusted sources can be dangerous.\n"
 "If you're unsure about the contents of this file, open it in the Restricted "
 "Preview where javascript and HTML are disabled.\n"
-"                    "
+"                        "
 msgstr ""
 "Попередній перегляд файлів із ненадійних джерел може бути небезпечним.\n"
-"Якщо ви не певні щодо вмісту файла, відкрийте його у режимі обмеженого"
-" перегляду із вимкненими javascript і HTML.\n"
+"Якщо ви не певні щодо вмісту файла, відкрийте його у режимі обмеженого "
+"перегляду із вимкненими javascript і HTML.\n"
 "                    "
 
-#: data/ui/Window.ui:64
-#| msgid "Preview"
+#: data/ui/Window.ui:81
 msgid "Load Preview"
 msgstr "Завантажити перегляд"
 
-#: data/ui/Window.ui:73
+#: data/ui/Window.ui:90
 msgid "Load Restricted Preview"
 msgstr "Завантажити обмежений перегляд"
 
-#: data/ui/Window.ui:144
+#: data/ui/Window.ui:163
 msgid "File Has Changed on Disk"
 msgstr "Файл змінено на диску"
 
-#: data/ui/Window.ui:154
+#: data/ui/Window.ui:173
 msgid "The file has been changed by another program"
 msgstr "Сторонньою програмою було внесено зміни до файла"
 
-#: data/ui/Window.ui:162
+#: data/ui/Window.ui:181
 msgid "_Discard Changes and Reload"
 msgstr "Від_кинути зміни і перезавантажити"
 
@@ -753,8 +755,8 @@ msgid "Export to %s"
 msgstr "Експортувати в %s"
 
 #: apostrophe/export_dialog.py:131 apostrophe/export_dialog.py:329
-#: apostrophe/export_dialog.py:334 apostrophe/main_window.py:415
-#: apostrophe/main_window.py:493 apostrophe/main_window.py:586
+#: apostrophe/export_dialog.py:334 apostrophe/main_window.py:416
+#: apostrophe/main_window.py:494 apostrophe/main_window.py:587
 msgid "Cancel"
 msgstr "Скасувати"
 
@@ -810,43 +812,43 @@ msgid "adverb"
 msgstr "прислівник"
 
 #. Hemingway Toast
-#: apostrophe/main_window.py:152
+#: apostrophe/main_window.py:153
 msgid "Text can't be deleted while on Hemingway mode"
 msgstr "У режимі Гемінґвея текст не можна вилучати"
 
-#: apostrophe/main_window.py:155
+#: apostrophe/main_window.py:156
 msgid "Tell me more"
 msgstr "Докладніше"
 
-#: apostrophe/main_window.py:411
+#: apostrophe/main_window.py:412
 msgid "Save your File"
 msgstr "Зберегти ваш файл"
 
-#: apostrophe/main_window.py:414 apostrophe/main_window.py:588
+#: apostrophe/main_window.py:415 apostrophe/main_window.py:589
 msgid "Save"
 msgstr "Зберегти"
 
-#: apostrophe/main_window.py:482
+#: apostrophe/main_window.py:483
 msgid "Markdown Files"
 msgstr "Файли Markdown"
 
-#: apostrophe/main_window.py:486
+#: apostrophe/main_window.py:487
 msgid "Plain Text Files"
 msgstr "Звичайні текстові файли"
 
-#: apostrophe/main_window.py:489
+#: apostrophe/main_window.py:490
 msgid "Open a .md file"
 msgstr "Відкрити файл .md"
 
-#: apostrophe/main_window.py:492
+#: apostrophe/main_window.py:493
 msgid "Open"
 msgstr "Відкрити"
 
-#: apostrophe/main_window.py:580
+#: apostrophe/main_window.py:581
 msgid "Save Changes?"
 msgstr "Зберегти зміни?"
 
-#: apostrophe/main_window.py:581
+#: apostrophe/main_window.py:582
 #, python-format
 msgid ""
 "“%s” contains unsaved changes. If you don’t save, all your changes will be "
@@ -855,11 +857,11 @@ msgstr ""
 "У «%s» є незбережені зміни. Якщо ви їх не збережете, всі зміни будуть "
 "остаточно втрачені."
 
-#: apostrophe/main_window.py:587
+#: apostrophe/main_window.py:588
 msgid "Discard"
 msgstr "Відкинути"
 
-#: apostrophe/main_window.py:771 apostrophe/main_window.py:789
+#: apostrophe/main_window.py:772 apostrophe/main_window.py:790
 msgid "New File"
 msgstr "Новий файл"
 
@@ -994,7 +996,7 @@ msgstr ""
 "\n"
 "код\n"
 
-#: apostrophe/text_view.py:176 apostrophe/text_view.py:178
+#: apostrophe/text_view.py:179 apostrophe/text_view.py:181
 msgid "web page"
 msgstr "вебсторінка"
 
