@@ -51,8 +51,6 @@
         </child>
         <child type="end">
           <object class="GtkToggleButton">
-            <property name="tooltip-text" translatable="yes">_Find</property>
-            <property name="use-underline">True</property>
             <property name="tooltip-text" translatable="yes">Search in the File</property>
             <property name="action-name">win.find</property>
             <property name="icon-name">system-search-symbolic</property>
