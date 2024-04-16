@@ -1,21 +1,20 @@
 # List of source files containing translatable strings.
 data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in
 data/org.gnome.gitlab.somas.Apostrophe.gschema.xml
-data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in
+data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in
 data/ui/About.ui.in
 data/ui/AboutHemingway.ui
 data/ui/Export.ui
 data/ui/Headerbar.ui
 data/ui/Preferences.ui
 data/ui/PreviewLayoutSwitcher.ui
-data/ui/PreviewLayoutSwitcherItem.ui
-data/ui/PreviewWindow.ui
 data/ui/Recents.ui
 data/ui/SearchBar.ui
 data/ui/Shortcuts.ui
 data/ui/Statsbar.ui
 data/ui/TexliveWarning.ui
 data/ui/ThemeSwitcher.ui
+data/ui/Toolbar.ui
 data/ui/Window.ui
 apostrophe/application.py
 apostrophe/export_dialog.py
@@ -23,6 +22,8 @@ apostrophe/helpers.py
 apostrophe/inhibitor.py
 apostrophe/inline_preview.py
 apostrophe/main_window.py
+apostrophe/preferences_dialog.py
+apostrophe/preview_handler.py
 apostrophe/preview_layout_switcher.py
 apostrophe/preview_window.py
 apostrophe/stats_handler.py
