@@ -7,7 +7,7 @@
       <object class="AdwHeaderBar" id="headerbar">
         <child type="start">
           <object class="GtkButton">
-            <property name="tooltip-text" translatable="yes">New</property>
+            <property name="tooltip-text" translatable="yes">New File</property>
             <property name="action-name">app.new_window</property>
             <property name="icon_name">document-new-symbolic</property>
           </object>
@@ -16,7 +16,7 @@
           <object class="GtkMenuButton">
             <property name="label" translatable="yes">_Open</property>
             <property name="use-underline">True</property>
-            <property name="tooltip-text" translatable="yes">Open a Markdown File</property>
+            <property name="tooltip-text" translatable="yes">Open Markdown File</property>
             <property name="popover">open_menu</property>
           </object>
         </child>
@@ -24,7 +24,7 @@
           <object class="AdwSplitButton">
             <property name="label" translatable="yes">_Save</property>
             <property name="use-underline">True</property>
-            <property name="tooltip-text" translatable="yes">Save the Markdown File</property>
+            <property name="tooltip-text" translatable="yes">Save Markdown File</property>
             <property name="action-name">win.save</property>
             <property name="menu-model">export_menu</property>
           </object>
@@ -40,7 +40,7 @@
           <object class="GtkMenuButton" id="menu_button">
             <property name="menu-model">Main Menu</property>
             <property name="icon-name">open-menu-symbolic</property>
-            <property name="tooltip-text" translatable="yes">Open the Main Menu</property>
+            <property name="tooltip-text" translatable="yes">Main Menu</property>
             <style>
               <class name="image-button"/>
             </style>
