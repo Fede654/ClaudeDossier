@@ -60,7 +60,7 @@
                     </child>
                     <child>
                       <object class="GtkToggleButton" id="regex">
-                        <property name="label" translatable="0">(.*)</property>
+                        <property name="label" translatable="no">(.*)</property>
                         <property name="focusable">1</property>
                         <property name="receives-default">1</property>
                         <property name="tooltip-text" translatable="yes">Regular Expression</property>

@@ -24,7 +24,7 @@
                 <property name="spacing">6</property>
                 <child>
                   <object class="GtkButton">
-                    <property name="tooltip-text" translatable="1">Bold</property>
+                    <property name="tooltip-text" translatable="yes">Bold</property>
                     <property name="icon-name">format-text-bold-symbolic</property>
                     <property name="action-name">win.insert-bold</property>
                     <style>
@@ -34,7 +34,7 @@
                 </child>
                 <child>
                   <object class="GtkButton">
-                    <property name="tooltip-text" translatable="1">Italic</property>
+                    <property name="tooltip-text" translatable="yes">Italic</property>
                     <property name="icon-name">format-text-italic-symbolic</property>
                     <property name="action-name">win.insert-italic</property>
                     <style>
@@ -44,7 +44,7 @@
                 </child>
                 <child>
                   <object class="GtkButton">
-                    <property name="tooltip-text" translatable="1">Strikethrough</property>
+                    <property name="tooltip-text" translatable="yes">Strikethrough</property>
                     <property name="icon-name">format-text-strikethrough-symbolic</property>
                     <property name="action-name">win.insert-strikethrough</property>
                     <style>
@@ -54,7 +54,7 @@
                 </child>
                 <child>
                   <object class="GtkButton">
-                    <property name="tooltip-text" translatable="1">Heading</property>
+                    <property name="tooltip-text" translatable="yes">Heading</property>
                     <property name="icon-name">format-text-heading-symbolic</property>
                     <property name="action-name">win.insert-header</property>
                     <property name='action-target'>-1</property>
@@ -65,7 +65,7 @@
                 </child>
                 <child>
                   <object class="GtkButton">
-                    <property name="tooltip-text" translatable="1">Unordered List</property>
+                    <property name="tooltip-text" translatable="yes">Unordered List</property>
                     <property name="icon-name">view-list-bullet-symbolic</property>
                     <property name="action-name">win.insert-listitem</property>
                     <style>
@@ -75,7 +75,7 @@
                 </child>
                 <child>
                   <object class="GtkButton">
-                    <property name="tooltip-text" translatable="1">Ordered List</property>
+                    <property name="tooltip-text" translatable="yes">Ordered List</property>
                     <property name="icon-name">view-list-ordered-symbolic</property>
                     <property name="action-name">win.insert-ordered-listitem</property>
                     <style>
@@ -85,7 +85,7 @@
                 </child>
                 <child>
                   <object class="GtkButton">
-                    <property name="tooltip-text" translatable="1">Check List</property>
+                    <property name="tooltip-text" translatable="yes">Check List</property>
                     <property name="icon-name">checkbox-checked-symbolic</property>
                     <property name="action-name">win.insert-checklist-listitem</property>
                     <style>
@@ -95,7 +95,7 @@
                 </child>
                 <child>
                   <object class="GtkButton">
-                    <property name="tooltip-text" translatable="1">Blockquote</property>
+                    <property name="tooltip-text" translatable="yes">Blockquote</property>
                     <property name="icon-name">quotation-symbolic</property>
                     <property name="action-name">win.insert-blockquote</property>
                     <style>
@@ -105,7 +105,7 @@
                 </child>
                 <child>
                   <object class="GtkButton">
-                    <property name="tooltip-text" translatable="1">Code</property>
+                    <property name="tooltip-text" translatable="yes">Code</property>
                     <property name="icon-name">code-symbolic</property>
                     <property name="action-name">win.insert-codeblock</property>
                     <style>
@@ -115,7 +115,7 @@
                 </child>
                 <child>
                   <object class="GtkButton">
-                    <property name="tooltip-text" translatable="1">Link</property>
+                    <property name="tooltip-text" translatable="yes">Link</property>
                     <property name="icon-name">web-browser-symbolic</property>
                     <property name="action-name">win.insert-link</property>
                     <style>
@@ -125,7 +125,7 @@
                 </child>
                 <child>
                   <object class="GtkButton">
-                    <property name="tooltip-text" translatable="1">Image</property>
+                    <property name="tooltip-text" translatable="yes">Image</property>
                     <property name="icon-name">image-x-generic-symbolic</property>
                     <property name="action-name">win.insert-image</property>
                     <style>
@@ -135,7 +135,7 @@
                 </child>
                 <child>
                   <object class="GtkMenuButton">
-                    <property name="tooltip-text" translatable="1">Table</property>
+                    <property name="tooltip-text" translatable="yes">Table</property>
                     <property name="icon-name">table-symbolic</property>
                     <property name="popover">insert_table_popover</property>
                     <property name="direction">up</property>
@@ -150,7 +150,7 @@
         </child>
         <child>
           <object class="GtkToggleButton" id="show_extra_controls_button">
-            <property name="tooltip-text" translatable="1">Show More Controls</property>
+            <property name="tooltip-text" translatable="yes">Show More Controls</property>
             <property name="icon-name">go-next</property>
             <property name="active" bind-source="Toolbar" bind-property="extra_toolbar_revealed" bind-flags="bidirectional"/>
             <style>
