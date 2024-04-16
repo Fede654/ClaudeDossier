@@ -55,6 +55,11 @@
       "to": "mediawiki"
     },
     {
+      "name": "DokuWiki Markup",
+      "ext": "txt",
+      "to": "dokuwiki"
+    },
+    {
       "name": "ConTeXt",
       "ext": "tex",
       "to": "context"
