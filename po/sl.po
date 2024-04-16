@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: apostrophe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2024-03-27 16:37+0000\n"
-"PO-Revision-Date: 2024-03-30 16:07+0100\n"
+"POT-Creation-Date: 2024-04-14 23:02+0000\n"
+"PO-Revision-Date: 2024-04-16 08:39+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
@@ -695,39 +695,39 @@ msgstr "Uporabi učinek sepia"
 msgid "Use Dark Colors"
 msgstr "Uporabi temne barve"
 
-#: data/ui/Window.ui:50
+#: data/ui/Window.ui:67
 msgid "This file may be insecure"
 msgstr "Ta datoteka morda ni varna"
 
-#: data/ui/Window.ui:51
+#: data/ui/Window.ui:68
 msgid ""
 "Previewing files from untrusted sources can be dangerous.\n"
 "If you're unsure about the contents of this file, open it in the Restricted "
 "Preview where javascript and HTML are disabled.\n"
-"                    "
+"                        "
 msgstr ""
 "Predogled datotek iz virov, ki niso zaupanja vredni, je lahko nevaren.\n"
 "Če niste prepričani o vsebini te datoteke, jo odprite v omejenem predogledu, "
 "v katerem sta javascript in HTML onemogočena.\n"
-"                    "
+"                        "
 
-#: data/ui/Window.ui:64
+#: data/ui/Window.ui:81
 msgid "Load Preview"
 msgstr "Naloži predogled"
 
-#: data/ui/Window.ui:73
+#: data/ui/Window.ui:90
 msgid "Load Restricted Preview"
 msgstr "Naloži omejeni predogleda"
 
-#: data/ui/Window.ui:144
+#: data/ui/Window.ui:163
 msgid "File Has Changed on Disk"
 msgstr "Datoteka je bila na disku spremenjena"
 
-#: data/ui/Window.ui:154
+#: data/ui/Window.ui:173
 msgid "The file has been changed by another program"
 msgstr "Datoteka je bila spremenjena v drugem programu."
 
-#: data/ui/Window.ui:162
+#: data/ui/Window.ui:181
 msgid "_Discard Changes and Reload"
 msgstr "_Opusti spremembe in ponovno naloži"
 
@@ -749,8 +749,8 @@ msgid "Export to %s"
 msgstr "Izvozi v %s"
 
 #: apostrophe/export_dialog.py:131 apostrophe/export_dialog.py:329
-#: apostrophe/export_dialog.py:334 apostrophe/main_window.py:415
-#: apostrophe/main_window.py:493 apostrophe/main_window.py:586
+#: apostrophe/export_dialog.py:334 apostrophe/main_window.py:416
+#: apostrophe/main_window.py:494 apostrophe/main_window.py:587
 msgid "Cancel"
 msgstr "Prekliči"
 
@@ -806,43 +806,43 @@ msgid "adverb"
 msgstr "prislov"
 
 #. Hemingway Toast
-#: apostrophe/main_window.py:152
+#: apostrophe/main_window.py:153
 msgid "Text can't be deleted while on Hemingway mode"
 msgstr "Besedila v Hemingwayevem načinu ni mogoče izbrisati"
 
-#: apostrophe/main_window.py:155
+#: apostrophe/main_window.py:156
 msgid "Tell me more"
 msgstr "Več o tem"
 
-#: apostrophe/main_window.py:411
+#: apostrophe/main_window.py:412
 msgid "Save your File"
 msgstr "Shrani datoteko"
 
-#: apostrophe/main_window.py:414 apostrophe/main_window.py:588
+#: apostrophe/main_window.py:415 apostrophe/main_window.py:589
 msgid "Save"
 msgstr "Shrani"
 
-#: apostrophe/main_window.py:482
+#: apostrophe/main_window.py:483
 msgid "Markdown Files"
 msgstr "Oblikovanje Markdown"
 
-#: apostrophe/main_window.py:486
+#: apostrophe/main_window.py:487
 msgid "Plain Text Files"
 msgstr "Besedilne datoteke"
 
-#: apostrophe/main_window.py:489
+#: apostrophe/main_window.py:490
 msgid "Open a .md file"
 msgstr "Odpri datoteko .md"
 
-#: apostrophe/main_window.py:492
+#: apostrophe/main_window.py:493
 msgid "Open"
 msgstr "Odpri"
 
-#: apostrophe/main_window.py:580
+#: apostrophe/main_window.py:581
 msgid "Save Changes?"
 msgstr "Ali želite shraniti spremembe?"
 
-#: apostrophe/main_window.py:581
+#: apostrophe/main_window.py:582
 #, python-format
 msgid ""
 "“%s” contains unsaved changes. If you don’t save, all your changes will be "
@@ -851,11 +851,11 @@ msgstr ""
 "»%s« vsebuje neshranjene spremembe. Če ne shranite, bodo vse spremembe "
 "trajno izgubljene."
 
-#: apostrophe/main_window.py:587
+#: apostrophe/main_window.py:588
 msgid "Discard"
 msgstr "Zavrzi"
 
-#: apostrophe/main_window.py:771 apostrophe/main_window.py:789
+#: apostrophe/main_window.py:772 apostrophe/main_window.py:790
 msgid "New File"
 msgstr "Nova datoteka"
 
@@ -990,6 +990,6 @@ msgstr ""
 "\n"
 "koda\n"
 
-#: apostrophe/text_view.py:176 apostrophe/text_view.py:178
+#: apostrophe/text_view.py:179 apostrophe/text_view.py:181
 msgid "web page"
 msgstr "spletna stran"
