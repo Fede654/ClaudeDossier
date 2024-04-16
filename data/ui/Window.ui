@@ -66,8 +66,7 @@
                         <property name="icon-name">dialog-warning-symbolic</property>
                         <property name="title" translatable="yes">This file may be insecure</property>
                         <property name="description" translatable="yes">Previewing files from untrusted sources can be dangerous.
-If you're unsure about the contents of this file, open it in the Restricted Preview where javascript and HTML are disabled.
-                        </property>
+If you're unsure about the contents of this file, open it in the Restricted Preview where javascript and HTML are disabled.</property>
                         <property name="child">
                           <object class="GtkBox">
                             <property name="orientation">vertical</property>
