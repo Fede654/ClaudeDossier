@@ -84,7 +84,7 @@ class TableInput(Gtk.Overlay):
         for child in self.get_children():
             column, row, _, _ = self.grid.query_child(child)
             if column <= button_column and row <= button_row:
-                child.add_css_class
+                child.add_css_class("hovered")
             else:
                 child.remove_css_class("hovered")
 
