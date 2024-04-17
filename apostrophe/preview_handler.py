@@ -217,7 +217,7 @@ class PreviewHandler:
             return True
 
     @staticmethod
-    def on_right_click(web_view, context_menu, _event, _hit_test):
+    def on_right_click(web_view, context_menu, _hit_test):
         # disable some context menu option
         for item in context_menu.get_items():
             if item.get_stock_action() in [WebKit.ContextMenuAction.RELOAD,
