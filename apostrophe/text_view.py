@@ -297,8 +297,6 @@ class ApostropheTextView(GtkSource.View):
 
     @Gtk.Template.Callback()
     def _on_spellcheck_update(self, *args, **kwargs):
-        # TODO: whenever we have https://gitlab.gnome.org/GNOME/gtk/-/issues/6133
-        pass
         self.adapter.set_enabled(self.spellcheck and not self.focus_mode)
 
     @Gtk.Template.Callback()
