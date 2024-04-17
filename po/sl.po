@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: apostrophe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2024-04-14 23:02+0000\n"
-"PO-Revision-Date: 2024-04-16 08:39+0200\n"
+"POT-Creation-Date: 2024-04-16 21:59+0000\n"
+"PO-Revision-Date: 2024-04-17 15:56+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
@@ -23,7 +23,7 @@ msgstr ""
 "X-Generator: Poedit 2.2.1\n"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:3
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:4
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:4
 msgid "Apostrophe"
 msgstr "Apostrof"
 
@@ -163,31 +163,36 @@ msgstr "Orodna vrstica"
 msgid "Whether the toolbar is shown or not."
 msgstr "Ali naj bo orodna vrstica prikazana ali ne."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:5
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:5
 msgid "Edit Markdown in style"
 msgstr "Uporabi oblikovanje Markdown v slogu"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:14
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:9
+msgid "Manuel Genovés"
+msgstr "Manuel Genovés"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:14
 msgid "Focus on your writing with a clean, distraction-free markdown editor."
 msgstr "Osredotočite se na pisanje s enostavnim in preglednim urejevalnikom."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:15
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:15
 msgid "Features:"
 msgstr "Zmožnosti:"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:17
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:17
 msgid "An UI tailored to comfortable writing"
 msgstr "Vmesnik, prilagojen udobnemu pisanju"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:18
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:18
 msgid "A distraction-free mode"
 msgstr "Način vnašanja brez nepotrebnih motenj"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:19
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:19
 msgid "Dark, light and sepia themes"
 msgstr "Temna, svetla in starinska tema"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:20
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:20
 msgid ""
 "Everything you expect from a text editor, such as spellchecking or document "
 "statistics"
@@ -195,11 +200,11 @@ msgstr ""
 "Vse, kar pričakujete od urejevalnika besedil, od črkovanja do statistike "
 "dokumenta"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:21
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:21
 msgid "Live preview of what you write"
 msgstr "Sprotni predogled vnesenega besedila"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:22
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:22
 msgid ""
 "Export to all kind of formats: PDF, Word/Libreoffice, LaTeX, or even HTML "
 "slideshows"
@@ -315,29 +320,30 @@ msgstr "Naraščajoče oznake"
 msgid "Show one bullet point after another in a slideshow"
 msgstr "Pokaže eno vrstično oznako za drugo v predstavitvi"
 
-#: data/ui/Headerbar.ui:10
-msgid "New"
-msgstr "Nov dokument"
+#: data/ui/Headerbar.ui:10 apostrophe/main_window.py:772
+#: apostrophe/main_window.py:790
+msgid "New File"
+msgstr "Nova datoteka"
 
 #: data/ui/Headerbar.ui:17
 msgid "_Open"
 msgstr "_Odpri "
 
 #: data/ui/Headerbar.ui:19
-msgid "Open a Markdown File"
-msgstr "Odpri datoteko zapisa markdown"
+msgid "Open Markdown File"
+msgstr "Odpri datoteko Markdown"
 
 #: data/ui/Headerbar.ui:25
 msgid "_Save"
 msgstr "_Shrani"
 
 #: data/ui/Headerbar.ui:27
-msgid "Save the Markdown File"
-msgstr "Shrani datoteko zapisa markdown"
+msgid "Save Markdown File"
+msgstr "Shrani datoteko Markdown"
 
 #: data/ui/Headerbar.ui:43
-msgid "Open the Main Menu"
-msgstr "Odpri glavni meni"
+msgid "Main Menu"
+msgstr "Glavni meni"
 
 #: data/ui/Headerbar.ui:54
 msgid "_Find"
@@ -432,7 +438,8 @@ msgstr "Dokumentacija o različicah zapisa markdown"
 msgid "Desired level of security when rendering the preview"
 msgstr "Želena raven varnosti pri izrisovanju predogleda"
 
-#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_window.py:32
+#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_handler.py:203
+#: apostrophe/preview_window.py:32
 msgid "Preview"
 msgstr "Predogled"
 
@@ -695,6 +702,58 @@ msgstr "Uporabi učinek sepia"
 msgid "Use Dark Colors"
 msgstr "Uporabi temne barve"
 
+#: data/ui/Toolbar.ui:27
+msgid "Bold"
+msgstr "Krepko"
+
+#: data/ui/Toolbar.ui:37
+msgid "Italic"
+msgstr "Ležeče"
+
+#: data/ui/Toolbar.ui:47
+msgid "Strikethrough"
+msgstr "Prečrtano"
+
+#: data/ui/Toolbar.ui:57
+msgid "Heading"
+msgstr "Naslov"
+
+#: data/ui/Toolbar.ui:68
+msgid "Unordered List"
+msgstr "Označen seznam"
+
+#: data/ui/Toolbar.ui:78
+msgid "Ordered List"
+msgstr "Oštevilčen seznam"
+
+#: data/ui/Toolbar.ui:88
+msgid "Check List"
+msgstr "Seznam potrditvenih polj"
+
+#: data/ui/Toolbar.ui:98
+msgid "Blockquote"
+msgstr "Navedek"
+
+#: data/ui/Toolbar.ui:108
+msgid "Code"
+msgstr "Koda"
+
+#: data/ui/Toolbar.ui:118
+msgid "Link"
+msgstr "Povezava"
+
+#: data/ui/Toolbar.ui:128 apostrophe/text_view_format_inserter.py:435
+msgid "Image"
+msgstr "Slika"
+
+#: data/ui/Toolbar.ui:138
+msgid "Table"
+msgstr "Tabela"
+
+#: data/ui/Toolbar.ui:153
+msgid "Show More Controls"
+msgstr "Pokaži več kontrolnikov"
+
 #: data/ui/Window.ui:67
 msgid "This file may be insecure"
 msgstr "Ta datoteka morda ni varna"
@@ -703,31 +762,29 @@ msgstr "Ta datoteka morda ni varna"
 msgid ""
 "Previewing files from untrusted sources can be dangerous.\n"
 "If you're unsure about the contents of this file, open it in the Restricted "
-"Preview where javascript and HTML are disabled.\n"
-"                        "
+"Preview where javascript and HTML are disabled."
 msgstr ""
 "Predogled datotek iz virov, ki niso zaupanja vredni, je lahko nevaren.\n"
 "Če niste prepričani o vsebini te datoteke, jo odprite v omejenem predogledu, "
-"v katerem sta javascript in HTML onemogočena.\n"
-"                        "
+"v katerem sta javascript in HTML onemogočena."
 
-#: data/ui/Window.ui:81
+#: data/ui/Window.ui:80
 msgid "Load Preview"
 msgstr "Naloži predogled"
 
-#: data/ui/Window.ui:90
+#: data/ui/Window.ui:89
 msgid "Load Restricted Preview"
 msgstr "Naloži omejeni predogleda"
 
-#: data/ui/Window.ui:163
+#: data/ui/Window.ui:162
 msgid "File Has Changed on Disk"
 msgstr "Datoteka je bila na disku spremenjena"
 
-#: data/ui/Window.ui:173
+#: data/ui/Window.ui:172
 msgid "The file has been changed by another program"
 msgstr "Datoteka je bila spremenjena v drugem programu."
 
-#: data/ui/Window.ui:181
+#: data/ui/Window.ui:180
 msgid "_Discard Changes and Reload"
 msgstr "_Opusti spremembe in ponovno naloži"
 
@@ -855,9 +912,17 @@ msgstr ""
 msgid "Discard"
 msgstr "Zavrzi"
 
-#: apostrophe/main_window.py:772 apostrophe/main_window.py:790
-msgid "New File"
-msgstr "Nova datoteka"
+#: apostrophe/preferences_dialog.py:97
+msgid "Always Ask"
+msgstr "Vedno vprašaj"
+
+#: apostrophe/preferences_dialog.py:101
+msgid "Always Use Restricted Preview"
+msgstr "Vedno uporabi omejeni predogleda"
+
+#: apostrophe/preferences_dialog.py:105
+msgid "Always Use Unrestricted Preview"
+msgstr "Vedno uporabi neomejeni predogleda"
 
 #: apostrophe/preview_layout_switcher.py:41
 msgid "Full-Width"
@@ -973,10 +1038,6 @@ msgstr "besedilo povezave"
 #: apostrophe/text_view_format_inserter.py:461
 msgid "image caption"
 msgstr "napis slike"
-
-#: apostrophe/text_view_format_inserter.py:435
-msgid "Image"
-msgstr "Slika"
 
 #: apostrophe/text_view_format_inserter.py:441
 msgid "Select an image"
