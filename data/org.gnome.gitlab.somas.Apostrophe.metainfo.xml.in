@@ -31,7 +31,7 @@
   <update_contact>manuel.genoves_at_gmail.com</update_contact>
   <translation type="gettext">@gettext-package@</translation>
   <screenshots>
-    <screenshot>
+    <screenshot type="default">
       <caption>Main window</caption>
       <image type="source">https://gitlab.gnome.org/World/apostrophe/-/raw/d50c630033213de5ee5cde0664e296b1fdcb5476/screenshots/main.png</image>
     </screenshot>
