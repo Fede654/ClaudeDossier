@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: apostrophe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2024-04-14 23:02+0000\n"
-"PO-Revision-Date: 2024-04-15 17:48+0300\n"
+"POT-Creation-Date: 2024-04-16 21:59+0000\n"
+"PO-Revision-Date: 2024-04-17 13:15+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian\n"
 "Language: uk\n"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Generator: Lokalize 23.04.3\n"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:3
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:4
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:4
 msgid "Apostrophe"
 msgstr "Апостроф"
 
@@ -164,33 +164,38 @@ msgstr "Панель інструментів"
 msgid "Whether the toolbar is shown or not."
 msgstr "Визначає, чи буде показано панель інструментів."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:5
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:5
 msgid "Edit Markdown in style"
 msgstr "Редагувати Markdown у стилі"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:14
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:9
+msgid "Manuel Genovés"
+msgstr "Manuel Genovés"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:14
 msgid "Focus on your writing with a clean, distraction-free markdown editor."
 msgstr ""
 "Зосередьтеся на написанні тексту, скориставшись охайним ненав'язливим "
 "редактором markdown."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:15
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:15
 msgid "Features:"
 msgstr "Можливості:"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:17
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:17
 msgid "An UI tailored to comfortable writing"
 msgstr "Інтерфейс, який пристосовано до комфортного написання текстів"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:18
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:18
 msgid "A distraction-free mode"
 msgstr "Режим зосередженості"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:19
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:19
 msgid "Dark, light and sepia themes"
 msgstr "Темна, світла теми та тема у кольорах сепії"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:20
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:20
 msgid ""
 "Everything you expect from a text editor, such as spellchecking or document "
 "statistics"
@@ -198,11 +203,11 @@ msgstr ""
 "Усе, що ви могли очікувати від текстового редактора, зокрема перевірка "
 "правопису та показ статистики документа"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:21
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:21
 msgid "Live preview of what you write"
 msgstr "Інтерактивний перегляд результатів написання тексту"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:22
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:22
 msgid ""
 "Export to all kind of formats: PDF, Word/Libreoffice, LaTeX, or even HTML "
 "slideshows"
@@ -316,16 +321,18 @@ msgstr "Нарощувальні позначки"
 msgid "Show one bullet point after another in a slideshow"
 msgstr "Показувати одну позначку пункту за іншою у показі слайдів"
 
-#: data/ui/Headerbar.ui:10
-msgid "New"
-msgstr "Створити"
+#: data/ui/Headerbar.ui:10 apostrophe/main_window.py:772
+#: apostrophe/main_window.py:790
+msgid "New File"
+msgstr "Новий файл"
 
 #: data/ui/Headerbar.ui:17
 msgid "_Open"
 msgstr "_Відкрити"
 
 #: data/ui/Headerbar.ui:19
-msgid "Open a Markdown File"
+#| msgid "Open a Markdown File"
+msgid "Open Markdown File"
 msgstr "Відкрити файл markdown"
 
 #: data/ui/Headerbar.ui:25
@@ -333,12 +340,14 @@ msgid "_Save"
 msgstr "З_берегти"
 
 #: data/ui/Headerbar.ui:27
-msgid "Save the Markdown File"
+#| msgid "Save the Markdown File"
+msgid "Save Markdown File"
 msgstr "Зберегти файл Markdown"
 
 #: data/ui/Headerbar.ui:43
-msgid "Open the Main Menu"
-msgstr "Відкрити головне меню"
+#| msgid "Open the Main Menu"
+msgid "Main Menu"
+msgstr "Головне меню"
 
 #: data/ui/Headerbar.ui:54
 msgid "_Find"
@@ -433,7 +442,8 @@ msgstr "Документація до варіанта Markdown"
 msgid "Desired level of security when rendering the preview"
 msgstr "Бажаний рівень захисту при обробці зображень попереднього перегляду"
 
-#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_window.py:32
+#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_handler.py:203
+#: apostrophe/preview_window.py:32
 msgid "Preview"
 msgstr "Перегляд"
 
@@ -696,6 +706,64 @@ msgstr "Кольори сепії"
 msgid "Use Dark Colors"
 msgstr "Використовувати темні кольори"
 
+#: data/ui/Toolbar.ui:27
+#| msgctxt "shortcut window"
+#| msgid "Bold"
+msgid "Bold"
+msgstr "Напівжирний"
+
+#: data/ui/Toolbar.ui:37
+#| msgctxt "shortcut window"
+#| msgid "Italic"
+msgid "Italic"
+msgstr "Курсив"
+
+#: data/ui/Toolbar.ui:47
+#| msgid "strikethrough text"
+msgid "Strikethrough"
+msgstr "Перекреслення"
+
+#: data/ui/Toolbar.ui:57
+#| msgid "Header"
+msgid "Heading"
+msgstr "Заголовок"
+
+#: data/ui/Toolbar.ui:68
+msgid "Unordered List"
+msgstr "Невпорядкований список"
+
+#: data/ui/Toolbar.ui:78
+msgid "Ordered List"
+msgstr "Впорядкований список"
+
+#: data/ui/Toolbar.ui:88
+msgid "Check List"
+msgstr "Перелік пунктів"
+
+#: data/ui/Toolbar.ui:98
+msgid "Blockquote"
+msgstr "Блок цитування"
+
+#: data/ui/Toolbar.ui:108
+msgid "Code"
+msgstr "Код"
+
+#: data/ui/Toolbar.ui:118
+msgid "Link"
+msgstr "Посилання"
+
+#: data/ui/Toolbar.ui:128 apostrophe/text_view_format_inserter.py:435
+msgid "Image"
+msgstr "Зображення"
+
+#: data/ui/Toolbar.ui:138
+msgid "Table"
+msgstr "Таблиця"
+
+#: data/ui/Toolbar.ui:153
+msgid "Show More Controls"
+msgstr "Показати додаткове керування"
+
 #: data/ui/Window.ui:67
 msgid "This file may be insecure"
 msgstr "Цей файл може бути небезпечним"
@@ -705,35 +773,33 @@ msgstr "Цей файл може бути небезпечним"
 #| "Previewing files from untrusted sources can be dangerous.\n"
 #| "If you're unsure about the contents of this file, open it in the "
 #| "Restricted Preview where javascript and HTML are disabled.\n"
-#| "                    "
+#| "                        "
 msgid ""
 "Previewing files from untrusted sources can be dangerous.\n"
 "If you're unsure about the contents of this file, open it in the Restricted "
-"Preview where javascript and HTML are disabled.\n"
-"                        "
+"Preview where javascript and HTML are disabled."
 msgstr ""
 "Попередній перегляд файлів із ненадійних джерел може бути небезпечним.\n"
 "Якщо ви не певні щодо вмісту файла, відкрийте його у режимі обмеженого "
-"перегляду із вимкненими javascript і HTML.\n"
-"                    "
+"перегляду із вимкненими javascript і HTML.                   "
 
-#: data/ui/Window.ui:81
+#: data/ui/Window.ui:80
 msgid "Load Preview"
 msgstr "Завантажити перегляд"
 
-#: data/ui/Window.ui:90
+#: data/ui/Window.ui:89
 msgid "Load Restricted Preview"
 msgstr "Завантажити обмежений перегляд"
 
-#: data/ui/Window.ui:163
+#: data/ui/Window.ui:162
 msgid "File Has Changed on Disk"
 msgstr "Файл змінено на диску"
 
-#: data/ui/Window.ui:173
+#: data/ui/Window.ui:172
 msgid "The file has been changed by another program"
 msgstr "Сторонньою програмою було внесено зміни до файла"
 
-#: data/ui/Window.ui:181
+#: data/ui/Window.ui:180
 msgid "_Discard Changes and Reload"
 msgstr "Від_кинути зміни і перезавантажити"
 
@@ -861,9 +927,19 @@ msgstr ""
 msgid "Discard"
 msgstr "Відкинути"
 
-#: apostrophe/main_window.py:772 apostrophe/main_window.py:790
-msgid "New File"
-msgstr "Новий файл"
+#: apostrophe/preferences_dialog.py:97
+msgid "Always Ask"
+msgstr "Завжди питати"
+
+#: apostrophe/preferences_dialog.py:101
+#| msgid "Load Restricted Preview"
+msgid "Always Use Restricted Preview"
+msgstr "Завжди використовувати обмежений перегляд"
+
+#: apostrophe/preferences_dialog.py:105
+#| msgid "Load Restricted Preview"
+msgid "Always Use Unrestricted Preview"
+msgstr "Завжди використовувати необмежений перегляд"
 
 #: apostrophe/preview_layout_switcher.py:41
 msgid "Full-Width"
@@ -980,10 +1056,6 @@ msgstr "текст посилання"
 msgid "image caption"
 msgstr "підпис зображення"
 
-#: apostrophe/text_view_format_inserter.py:435
-msgid "Image"
-msgstr "Зображення"
-
 #: apostrophe/text_view_format_inserter.py:441
 msgid "Select an image"
 msgstr "Виберіть зображення"
@@ -999,6 +1071,9 @@ msgstr ""
 #: apostrophe/text_view.py:179 apostrophe/text_view.py:181
 msgid "web page"
 msgstr "вебсторінка"
+
+#~ msgid "New"
+#~ msgstr "Створити"
 
 #~ msgid "Manuel G., Wolf V."
 #~ msgstr "Manuel G., Wolf V."
