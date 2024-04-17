@@ -24,6 +24,12 @@
   </enum>
 
   <schema path="/org/gnome/gitlab/somas/Apostrophe/" id="org.gnome.gitlab.somas.Apostrophe">
+    <key name="window-width" type="i">
+      <default>1000</default>
+    </key>
+    <key name="window-height" type="i">
+      <default>600</default>
+    </key>
     <key name='color-scheme' type='s'>
       <choices>
         <choice value="system"/>
