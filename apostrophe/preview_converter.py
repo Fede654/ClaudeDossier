@@ -4,6 +4,7 @@ from threading import Thread
 from gi.repository import GLib
 
 from apostrophe import helpers
+from apostrophe.settings import Settings
 from apostrophe.theme_switcher import Theme, ThemeSwitcher
 
 
@@ -42,7 +43,7 @@ class PreviewConverter:
             if secure_preview:
                 fr = "markdown-raw_html"
             else:
-                fr = "markdown"
+                fr = Settings.new().get_value('input-format').get_string() or "markdown"
 
             args = ['--metadata=pagetitle:""',
                     '--standalone',
