@@ -129,11 +129,12 @@ class PreviewHandler:
 
         elif step == Step.RENDER:
             # Last step: show the preview. This is a one-time step.
-            if not self.preview_visible:
-                self.preview_visible = True
-
+            if not self.text_changed_handler_id:
                 self.text_changed_handler_id = \
                     self.text_view().get_buffer().connect("changed-debounced", self.__show)
+
+            if not self.preview_visible:
+                self.preview_visible = True
 
                 self.__show()
 
@@ -159,6 +160,7 @@ class PreviewHandler:
 
         if self.text_changed_handler_id:
             self.text_view().get_buffer().disconnect(self.text_changed_handler_id)
+            self.text_changed_handler_id = None
 
         if self.loading:
             self.loading = False
