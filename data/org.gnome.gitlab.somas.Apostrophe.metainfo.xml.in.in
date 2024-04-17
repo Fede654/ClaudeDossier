@@ -36,20 +36,25 @@
   <update_contact>manuel.genoves_at_gmail.com</update_contact>
   <translation type="gettext">@gettext-package@</translation>
   <screenshots>
-    <screenshot type="default">
-      <image type="source">https://gitlab.gnome.org/World/apostrophe/-/raw/main/screenshots/main.png</image>
+    <screenshot>
+      <image type="source">https://gitlab.gnome.org/World/apostrophe/-/raw/d50c630033213de5ee5cde0664e296b1fdcb5476/screenshots/main.png</image>
+      <caption>Main window</caption>
     </screenshot>
     <screenshot>
-      <image type="source">https://gitlab.gnome.org/World/apostrophe/-/raw/main/screenshots/main-dark.png</image>
+      <image type="source">https://gitlab.gnome.org/World/apostrophe/-/raw/d50c630033213de5ee5cde0664e296b1fdcb5476/screenshots/main-dark.png</image>
+      <caption>Main window in dark mode</caption>
     </screenshot>
     <screenshot>
-      <image type="source">https://gitlab.gnome.org/World/apostrophe/-/raw/main/screenshots/formula.png</image>
+      <image type="source">https://gitlab.gnome.org/World/apostrophe/-/raw/d50c630033213de5ee5cde0664e296b1fdcb5476/screenshots/table.png</image>
+      <caption>Inserting a table with the help of the toolbar</caption>
     </screenshot>
     <screenshot>
-      <image type="source">https://gitlab.gnome.org/World/apostrophe/-/raw/main/screenshots/preview.png</image>
+      <image type="source">https://gitlab.gnome.org/World/apostrophe/-/raw/d50c630033213de5ee5cde0664e296b1fdcb5476/screenshots/preview.png</image>
+      <caption>The preview lets you see a live rendered version of your document</caption>
     </screenshot>
     <screenshot>
-      <image type="source">https://gitlab.gnome.org/World/apostrophe/-/raw/main/screenshots/focus.png</image>
+      <image type="source">https://gitlab.gnome.org/World/apostrophe/-/raw/d50c630033213de5ee5cde0664e296b1fdcb5476/screenshots/focus.png</image>
+      <caption>The focus mode allow for a more distraction-free experience</caption>
     </screenshot>
   </screenshots>
   <content_rating type="oars-1.1"/>

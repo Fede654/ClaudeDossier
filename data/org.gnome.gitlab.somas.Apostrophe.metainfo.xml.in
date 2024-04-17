@@ -5,10 +5,9 @@
   <summary>Edit Markdown in style</summary>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0+</project_license>
-  <developer_name translatable="no">Manuel Genovés, Wolf V.</developer_name>
-  <developer id="gnome.org">
-    <name translatable="no">Manuel Genovés</name>
-    <name translatable="no">Wolf Vollprecht</name>
+  <developer_name>Manuel Genovés</developer_name>
+  <developer id="es.escapist">
+    <name>Manuel Genovés</name>
   </developer>
   <description>
     <p>Focus on your writing with a clean, distraction-free markdown editor.</p>
@@ -32,23 +31,48 @@
   <update_contact>manuel.genoves_at_gmail.com</update_contact>
   <translation type="gettext">@gettext-package@</translation>
   <screenshots>
-    <screenshot type="default">
-      <image type="source">https://gitlab.gnome.org/World/apostrophe/-/raw/main/screenshots/main.png</image>
+    <screenshot>
+      <caption>Main window</caption>
+      <image type="source">https://gitlab.gnome.org/World/apostrophe/-/raw/d50c630033213de5ee5cde0664e296b1fdcb5476/screenshots/main.png</image>
     </screenshot>
     <screenshot>
-      <image type="source">https://gitlab.gnome.org/World/apostrophe/-/raw/main/screenshots/main-dark.png</image>
+      <caption>Main window in dark mode</caption>
+      <image type="source">https://gitlab.gnome.org/World/apostrophe/-/raw/d50c630033213de5ee5cde0664e296b1fdcb5476/screenshots/main-dark.png</image>
     </screenshot>
     <screenshot>
-      <image type="source">https://gitlab.gnome.org/World/apostrophe/-/raw/main/screenshots/formula.png</image>
+      <caption>Inserting a table with the help of the toolbar</caption>
+      <image type="source">https://gitlab.gnome.org/World/apostrophe/-/raw/d50c630033213de5ee5cde0664e296b1fdcb5476/screenshots/table.png</image>
     </screenshot>
     <screenshot>
-      <image type="source">https://gitlab.gnome.org/World/apostrophe/-/raw/main/screenshots/preview.png</image>
+      <caption>The preview lets you see a live rendered version of your document</caption>
+      <image type="source">https://gitlab.gnome.org/World/apostrophe/-/raw/d50c630033213de5ee5cde0664e296b1fdcb5476/screenshots/preview.png</image>
     </screenshot>
     <screenshot>
-      <image type="source">https://gitlab.gnome.org/World/apostrophe/-/raw/main/screenshots/focus.png</image>
+      <caption>The focus mode allow for a more distraction-free experience</caption>
+      <image type="source">https://gitlab.gnome.org/World/apostrophe/-/raw/d50c630033213de5ee5cde0664e296b1fdcb5476/screenshots/focus.png</image>
     </screenshot>
   </screenshots>
+  <branding>
+    <color type="primary" scheme_preference="light">#90ded5</color>
+    <color type="primary" scheme_preference="dark">#1b786d</color>
+  </branding>
   <releases>
+    <release type="stable" version="3.0" date="2024-05-01T00:00:00Z">
+      <description>
+        <p>This release adds the following features:</p>
+        <ul>
+          <li>Port to GTK4 and the newest libadwaita widgets</li>
+          <li>Improved UI and styling</li>
+          <li>New toolbar for interactively formatting text</li>
+          <li>Implement autoindentation and brace autocompletion</li>
+          <li>Live stats for selected text</li>
+          <li>Improved Hemingway Mode</li>
+          <li>New secured preview mode when opening potentially dangerous files</li>
+          <li>Detect when the file being edited is changed by another program</li>
+          <li>Added DocuWiki to the available export formats</li>
+        </ul>
+      </description>
+    </release>
     <release type="stable" version="2.6.3" date="2022-04-29T00:00:00Z">
       <description>
         <p>This release fixes the following bugs:</p>

@@ -1,13 +1,17 @@
-Version 3.0.alpha
+Version 3.0
 ~~~~~~~~~~~~~~~
-Released: 2024-01-30
+Released: 2024-05-01
 
 Features:
-- GTK4 port
-- Live stats for selected text
+- Port to GTK4 and the newest libadwaita widgets
 - Improved UI and styling
+- New toolbar for interactively formatting text
+- Implement autoindentation and brace autocompletion
+- Live stats for selected text
 - Improved Hemingway Mode
-- Implemented notification on external file changes
+- New secured preview mode when opening potentially dangerous files
+- Detect when the file being edited is changed by another program
+- Added DocuWiki to the available export formats
 
 Version 2.6.3
 ~~~~~~~~~~~~~~~
