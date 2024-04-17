@@ -13,9 +13,6 @@
         <property name="name">FullscreenOverlay</property>
         <property name="child">
           <object class="ApostrophePanels" id="panels">
-            <style>
-              <class name="preview-flap" />
-            </style>
             <property name="hexpand">true</property>
             <property name="content">
               <object class="Editor" id="editor">
@@ -32,7 +29,7 @@
                 <property name="overflow">hidden</property>
                 <property name="transition-type">crossfade</property>
                 <style>
-                  <class name="preview-stack" />
+                  <class name="preview-background"/>
                 </style>
                 <child>
                   <object class="GtkStackPage">

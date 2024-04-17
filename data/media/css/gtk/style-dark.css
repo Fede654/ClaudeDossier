@@ -5,6 +5,7 @@
 
 @define-color link_fg_color #575757;
 
+@define-color preview_bg_color #282828;
 
 separator.sidebar {
   background: @sidebar_border_color;
