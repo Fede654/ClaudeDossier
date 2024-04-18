@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: apostrophe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2024-04-16 21:59+0000\n"
-"PO-Revision-Date: 2024-04-17 13:15+0300\n"
+"POT-Creation-Date: 2024-04-17 20:12+0000\n"
+"PO-Revision-Date: 2024-04-18 18:27+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian\n"
 "Language: uk\n"
@@ -215,6 +215,31 @@ msgstr ""
 "Експорт до усіх типів форматів: PDF, Word/Libreoffice, LaTeX, або навіть "
 "показів слайдів HTML"
 
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:41
+#| msgid "Main Menu"
+msgid "Main window"
+msgstr "Головне вікно"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:45
+msgid "Main window in dark mode"
+msgstr "Головне вікно у темному режимі"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:49
+msgid "Inserting a table with the help of the toolbar"
+msgstr "Вставлення таблиці із довідкою щодо панелі інструментів"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:53
+msgid "The preview lets you see a live rendered version of your document"
+msgstr ""
+"За допомогою попереднього перегляду ви можете бачити інтерактивну оброблену"
+" версію вашого документа"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:57
+msgid "The focus mode allow for a more distraction-free experience"
+msgstr ""
+"Режим фокусування забезпечує роботу без зайвих елементів, які відволікають"
+" увагу"
+
 #: data/ui/About.ui.in:9
 msgid "Copyright (C) 2022, Manuel G., Wolf V."
 msgstr "© Manuel G., Wolf V., 2022"
@@ -331,7 +356,6 @@ msgid "_Open"
 msgstr "_Відкрити"
 
 #: data/ui/Headerbar.ui:19
-#| msgid "Open a Markdown File"
 msgid "Open Markdown File"
 msgstr "Відкрити файл markdown"
 
@@ -340,60 +364,54 @@ msgid "_Save"
 msgstr "З_берегти"
 
 #: data/ui/Headerbar.ui:27
-#| msgid "Save the Markdown File"
 msgid "Save Markdown File"
 msgstr "Зберегти файл Markdown"
 
 #: data/ui/Headerbar.ui:43
-#| msgid "Open the Main Menu"
 msgid "Main Menu"
 msgstr "Головне меню"
 
 #: data/ui/Headerbar.ui:54
-msgid "_Find"
-msgstr "З_найти"
-
-#: data/ui/Headerbar.ui:56
 msgid "Search in the File"
 msgstr "Шукати у файлі"
 
-#: data/ui/Headerbar.ui:79
+#: data/ui/Headerbar.ui:77
 msgid "_Hemingway Mode"
 msgstr "Режим _Гемінґвея"
 
-#: data/ui/Headerbar.ui:83
+#: data/ui/Headerbar.ui:81
 msgid "_Focus Mode"
 msgstr "Режим з_осередженості"
 
-#: data/ui/Headerbar.ui:89
+#: data/ui/Headerbar.ui:87
 msgid "Find and _Replace"
 msgstr "Знайти й за_мінити"
 
-#: data/ui/Headerbar.ui:95
+#: data/ui/Headerbar.ui:93
 msgid "_Preferences"
 msgstr "_Налаштування"
 
-#: data/ui/Headerbar.ui:101
+#: data/ui/Headerbar.ui:99
 msgid "Open _Tutorial"
 msgstr "Відкрити під_ручник"
 
-#: data/ui/Headerbar.ui:106
+#: data/ui/Headerbar.ui:104
 msgid "_Keyboard Shortcuts"
 msgstr "_Клавіатурні скорочення"
 
-#: data/ui/Headerbar.ui:110
+#: data/ui/Headerbar.ui:108
 msgid "_About Apostrophe"
 msgstr "_Про «Апостроф»"
 
-#: data/ui/Headerbar.ui:121
+#: data/ui/Headerbar.ui:119
 msgid "_Save As..."
 msgstr "Зберегти _як…"
 
-#: data/ui/Headerbar.ui:144
+#: data/ui/Headerbar.ui:142
 msgid "Advanced _Export…"
 msgstr "Розширене _експортування…"
 
-#: data/ui/Headerbar.ui:150
+#: data/ui/Headerbar.ui:148
 msgid "_Copy HTML"
 msgstr "_Копіювати HTML"
 
@@ -442,7 +460,7 @@ msgstr "Документація до варіанта Markdown"
 msgid "Desired level of security when rendering the preview"
 msgstr "Бажаний рівень захисту при обробці зображень попереднього перегляду"
 
-#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_handler.py:203
+#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_handler.py:205
 #: apostrophe/preview_window.py:32
 msgid "Preview"
 msgstr "Перегляд"
@@ -707,24 +725,18 @@ msgid "Use Dark Colors"
 msgstr "Використовувати темні кольори"
 
 #: data/ui/Toolbar.ui:27
-#| msgctxt "shortcut window"
-#| msgid "Bold"
 msgid "Bold"
 msgstr "Напівжирний"
 
 #: data/ui/Toolbar.ui:37
-#| msgctxt "shortcut window"
-#| msgid "Italic"
 msgid "Italic"
 msgstr "Курсив"
 
 #: data/ui/Toolbar.ui:47
-#| msgid "strikethrough text"
 msgid "Strikethrough"
 msgstr "Перекреслення"
 
 #: data/ui/Toolbar.ui:57
-#| msgid "Header"
 msgid "Heading"
 msgstr "Заголовок"
 
@@ -764,16 +776,11 @@ msgstr "Таблиця"
 msgid "Show More Controls"
 msgstr "Показати додаткове керування"
 
-#: data/ui/Window.ui:67
+#: data/ui/Window.ui:64
 msgid "This file may be insecure"
 msgstr "Цей файл може бути небезпечним"
 
-#: data/ui/Window.ui:68
-#| msgid ""
-#| "Previewing files from untrusted sources can be dangerous.\n"
-#| "If you're unsure about the contents of this file, open it in the "
-#| "Restricted Preview where javascript and HTML are disabled.\n"
-#| "                        "
+#: data/ui/Window.ui:65
 msgid ""
 "Previewing files from untrusted sources can be dangerous.\n"
 "If you're unsure about the contents of this file, open it in the Restricted "
@@ -783,23 +790,23 @@ msgstr ""
 "Якщо ви не певні щодо вмісту файла, відкрийте його у режимі обмеженого "
 "перегляду із вимкненими javascript і HTML.                   "
 
-#: data/ui/Window.ui:80
+#: data/ui/Window.ui:77
 msgid "Load Preview"
 msgstr "Завантажити перегляд"
 
-#: data/ui/Window.ui:89
+#: data/ui/Window.ui:86
 msgid "Load Restricted Preview"
 msgstr "Завантажити обмежений перегляд"
 
-#: data/ui/Window.ui:162
+#: data/ui/Window.ui:159
 msgid "File Has Changed on Disk"
 msgstr "Файл змінено на диску"
 
-#: data/ui/Window.ui:172
+#: data/ui/Window.ui:169
 msgid "The file has been changed by another program"
 msgstr "Сторонньою програмою було внесено зміни до файла"
 
-#: data/ui/Window.ui:180
+#: data/ui/Window.ui:177
 msgid "_Discard Changes and Reload"
 msgstr "Від_кинути зміни і перезавантажити"
 
@@ -932,12 +939,10 @@ msgid "Always Ask"
 msgstr "Завжди питати"
 
 #: apostrophe/preferences_dialog.py:101
-#| msgid "Load Restricted Preview"
 msgid "Always Use Restricted Preview"
 msgstr "Завжди використовувати обмежений перегляд"
 
 #: apostrophe/preferences_dialog.py:105
-#| msgid "Load Restricted Preview"
 msgid "Always Use Unrestricted Preview"
 msgstr "Завжди використовувати необмежений перегляд"
 
@@ -1071,6 +1076,9 @@ msgstr ""
 #: apostrophe/text_view.py:179 apostrophe/text_view.py:181
 msgid "web page"
 msgstr "вебсторінка"
+
+#~ msgid "_Find"
+#~ msgstr "З_найти"
 
 #~ msgid "New"
 #~ msgstr "Створити"
