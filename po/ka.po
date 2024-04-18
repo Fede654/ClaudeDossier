@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: apostrophe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2024-04-16 21:59+0000\n"
-"PO-Revision-Date: 2024-04-17 02:19+0200\n"
+"POT-Creation-Date: 2024-04-17 20:12+0000\n"
+"PO-Revision-Date: 2024-04-18 12:58+0200\n"
 "Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
 "Language-Team: Georgian < >\n"
 "Language: ka\n"
@@ -211,6 +211,28 @@ msgstr ""
 "გატანა ყველა სახის ფორმატში: PDF, Word/Libreoffice, LaTeX ან თუნდაც HTML "
 "სლაიდშოუ"
 
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:41
+msgid "Main window"
+msgstr "მთავარი ფანჯარა"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:45
+msgid "Main window in dark mode"
+msgstr "მთავარი ფანჯარა მუქ რეჟიმში"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:49
+msgid "Inserting a table with the help of the toolbar"
+msgstr "ცხრილის ჩასმა ხელსაწყოთა ზოლის დახმარებით"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:53
+msgid "The preview lets you see a live rendered version of your document"
+msgstr ""
+"მინიატურა საშუალებას გაძლევთ, თქვენი დოკუმენტის ცოცხალი დარენდერებული ვერსია "
+"იხილოთ"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:57
+msgid "The focus mode allow for a more distraction-free experience"
+msgstr "ფოკუსის რეჟიმი ყურადღების გაფანტვის გარეშე მუშაობის საშუალებას მოგცემთ"
+
 #: data/ui/About.ui.in:9
 msgid "Copyright (C) 2022, Manuel G., Wolf V."
 msgstr "საავტორო უფლებიბი (C) 2022, მანუელ გ., ვულფ ვ."
@@ -344,50 +366,46 @@ msgid "Main Menu"
 msgstr "მთავარი მენიუ"
 
 #: data/ui/Headerbar.ui:54
-msgid "_Find"
-msgstr "_ძებნა"
-
-#: data/ui/Headerbar.ui:56
 msgid "Search in the File"
 msgstr "ფაილში ძებნა"
 
-#: data/ui/Headerbar.ui:79
+#: data/ui/Headerbar.ui:77
 msgid "_Hemingway Mode"
 msgstr "_ჰემინგუეის რეჟიმი"
 
-#: data/ui/Headerbar.ui:83
+#: data/ui/Headerbar.ui:81
 msgid "_Focus Mode"
 msgstr "_ფოკუსის რეჟიმი"
 
-#: data/ui/Headerbar.ui:89
+#: data/ui/Headerbar.ui:87
 msgid "Find and _Replace"
 msgstr "ძებნა და _ჩანაცვლება"
 
-#: data/ui/Headerbar.ui:95
+#: data/ui/Headerbar.ui:93
 msgid "_Preferences"
 msgstr "_გამართვა"
 
-#: data/ui/Headerbar.ui:101
+#: data/ui/Headerbar.ui:99
 msgid "Open _Tutorial"
 msgstr "_გაკვეთილის გახსნა"
 
-#: data/ui/Headerbar.ui:106
+#: data/ui/Headerbar.ui:104
 msgid "_Keyboard Shortcuts"
 msgstr "_კლავიატურის მალსახმობები"
 
-#: data/ui/Headerbar.ui:110
+#: data/ui/Headerbar.ui:108
 msgid "_About Apostrophe"
 msgstr "Apostrophe-ის შესახებ"
 
-#: data/ui/Headerbar.ui:121
+#: data/ui/Headerbar.ui:119
 msgid "_Save As..."
 msgstr "_შენახვა, როგორც..."
 
-#: data/ui/Headerbar.ui:144
+#: data/ui/Headerbar.ui:142
 msgid "Advanced _Export…"
 msgstr "გაუმჯობესებული _გატანა…"
 
-#: data/ui/Headerbar.ui:150
+#: data/ui/Headerbar.ui:148
 msgid "_Copy HTML"
 msgstr "HTML-ის _კოპირება"
 
@@ -436,7 +454,7 @@ msgstr "მარკდაუნის ტიპის დოკუმენტ�
 msgid "Desired level of security when rendering the preview"
 msgstr "მინიატურის რენდერისას სასურველი უსაფრთხოების დონე"
 
-#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_handler.py:203
+#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_handler.py:205
 #: apostrophe/preview_window.py:32
 msgid "Preview"
 msgstr "მინიატურა"
@@ -752,11 +770,11 @@ msgstr "ცხრილი"
 msgid "Show More Controls"
 msgstr "მეტი კონტროლების ჩვენება"
 
-#: data/ui/Window.ui:67
+#: data/ui/Window.ui:64
 msgid "This file may be insecure"
 msgstr "ეს ფაილი, შეიძლება, უსაფრთხო არაა"
 
-#: data/ui/Window.ui:68
+#: data/ui/Window.ui:65
 msgid ""
 "Previewing files from untrusted sources can be dangerous.\n"
 "If you're unsure about the contents of this file, open it in the Restricted "
@@ -766,23 +784,23 @@ msgstr ""
 "თუ დარწმუნებული არ ბრძანდებით, რას შეიძლება ეს ფაილი შეიცავდეს, გახსენით ის "
 "შეზღუდულ მინიატურაში, სადაც Javascript და HTML გამორთულია."
 
-#: data/ui/Window.ui:80
+#: data/ui/Window.ui:77
 msgid "Load Preview"
 msgstr "მინიატურის ჩატვირთვა"
 
-#: data/ui/Window.ui:89
+#: data/ui/Window.ui:86
 msgid "Load Restricted Preview"
 msgstr "შეზღუდული მინიატურის ჩატვირთვა"
 
-#: data/ui/Window.ui:162
+#: data/ui/Window.ui:159
 msgid "File Has Changed on Disk"
 msgstr "დისკზე ფაილი შეიცვალა"
 
-#: data/ui/Window.ui:172
+#: data/ui/Window.ui:169
 msgid "The file has been changed by another program"
 msgstr "ფაილი შეიცვალა სხვა პროგრამის მიერ"
 
-#: data/ui/Window.ui:180
+#: data/ui/Window.ui:177
 msgid "_Discard Changes and Reload"
 msgstr "_ცვლილებების გაუქმება და თავიდან ჩატვირთვა"
 
@@ -1044,6 +1062,9 @@ msgstr ""
 #: apostrophe/text_view.py:179 apostrophe/text_view.py:181
 msgid "web page"
 msgstr "ვებგვერდი"
+
+#~ msgid "_Find"
+#~ msgstr "_ძებნა"
 
 #~ msgid "New"
 #~ msgstr "ახალი"
