@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: apostrophe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2024-04-16 21:59+0000\n"
-"PO-Revision-Date: 2024-04-17 15:56+0200\n"
+"POT-Creation-Date: 2024-04-17 20:12+0000\n"
+"PO-Revision-Date: 2024-04-18 09:36+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
@@ -212,6 +212,26 @@ msgstr ""
 "Izvoz v številne zapise: PDF, Word/Libreoffice, LaTeX, ali celo predstavitve "
 "HTML"
 
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:41
+msgid "Main window"
+msgstr "Glavno okno"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:45
+msgid "Main window in dark mode"
+msgstr "Glavno okno v temnem načinu"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:49
+msgid "Inserting a table with the help of the toolbar"
+msgstr "Vstavljanje tabele s pomočjo orodne vrstice"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:53
+msgid "The preview lets you see a live rendered version of your document"
+msgstr "V predogledu si lahko ogledate upodobljeno različico dokumenta v živo"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:57
+msgid "The focus mode allow for a more distraction-free experience"
+msgstr "Način pozornosti omogoča izkušnjo brez motenj"
+
 #: data/ui/About.ui.in:9
 msgid "Copyright (C) 2022, Manuel G., Wolf V."
 msgstr "Avtorske pravice (C) 2022, Manuel G., Wolf V."
@@ -346,50 +366,46 @@ msgid "Main Menu"
 msgstr "Glavni meni"
 
 #: data/ui/Headerbar.ui:54
-msgid "_Find"
-msgstr "_Najdi"
-
-#: data/ui/Headerbar.ui:56
 msgid "Search in the File"
 msgstr "Išči v datoteki"
 
-#: data/ui/Headerbar.ui:79
+#: data/ui/Headerbar.ui:77
 msgid "_Hemingway Mode"
 msgstr "_Hemingwayev način"
 
-#: data/ui/Headerbar.ui:83
+#: data/ui/Headerbar.ui:81
 msgid "_Focus Mode"
 msgstr "_Način pozornosti"
 
-#: data/ui/Headerbar.ui:89
+#: data/ui/Headerbar.ui:87
 msgid "Find and _Replace"
 msgstr "Najdi in _zamenjaj"
 
-#: data/ui/Headerbar.ui:95
+#: data/ui/Headerbar.ui:93
 msgid "_Preferences"
 msgstr "_Možnosti"
 
-#: data/ui/Headerbar.ui:101
+#: data/ui/Headerbar.ui:99
 msgid "Open _Tutorial"
 msgstr "Odpri _vadnico"
 
-#: data/ui/Headerbar.ui:106
+#: data/ui/Headerbar.ui:104
 msgid "_Keyboard Shortcuts"
 msgstr "_Tipkovne bližnjice"
 
-#: data/ui/Headerbar.ui:110
+#: data/ui/Headerbar.ui:108
 msgid "_About Apostrophe"
 msgstr "_O programu"
 
-#: data/ui/Headerbar.ui:121
+#: data/ui/Headerbar.ui:119
 msgid "_Save As..."
 msgstr "_Shrani kot ..."
 
-#: data/ui/Headerbar.ui:144
+#: data/ui/Headerbar.ui:142
 msgid "Advanced _Export…"
 msgstr "Napreden _izvoz …"
 
-#: data/ui/Headerbar.ui:150
+#: data/ui/Headerbar.ui:148
 msgid "_Copy HTML"
 msgstr "_Kopiraj HTML"
 
@@ -438,7 +454,7 @@ msgstr "Dokumentacija o različicah zapisa markdown"
 msgid "Desired level of security when rendering the preview"
 msgstr "Želena raven varnosti pri izrisovanju predogleda"
 
-#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_handler.py:203
+#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_handler.py:205
 #: apostrophe/preview_window.py:32
 msgid "Preview"
 msgstr "Predogled"
@@ -754,11 +770,11 @@ msgstr "Tabela"
 msgid "Show More Controls"
 msgstr "Pokaži več kontrolnikov"
 
-#: data/ui/Window.ui:67
+#: data/ui/Window.ui:64
 msgid "This file may be insecure"
 msgstr "Ta datoteka morda ni varna"
 
-#: data/ui/Window.ui:68
+#: data/ui/Window.ui:65
 msgid ""
 "Previewing files from untrusted sources can be dangerous.\n"
 "If you're unsure about the contents of this file, open it in the Restricted "
@@ -768,23 +784,23 @@ msgstr ""
 "Če niste prepričani o vsebini te datoteke, jo odprite v omejenem predogledu, "
 "v katerem sta javascript in HTML onemogočena."
 
-#: data/ui/Window.ui:80
+#: data/ui/Window.ui:77
 msgid "Load Preview"
 msgstr "Naloži predogled"
 
-#: data/ui/Window.ui:89
+#: data/ui/Window.ui:86
 msgid "Load Restricted Preview"
 msgstr "Naloži omejeni predogleda"
 
-#: data/ui/Window.ui:162
+#: data/ui/Window.ui:159
 msgid "File Has Changed on Disk"
 msgstr "Datoteka je bila na disku spremenjena"
 
-#: data/ui/Window.ui:172
+#: data/ui/Window.ui:169
 msgid "The file has been changed by another program"
 msgstr "Datoteka je bila spremenjena v drugem programu."
 
-#: data/ui/Window.ui:180
+#: data/ui/Window.ui:177
 msgid "_Discard Changes and Reload"
 msgstr "_Opusti spremembe in ponovno naloži"
 
