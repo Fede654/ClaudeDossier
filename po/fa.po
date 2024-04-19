@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: apostrophe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2024-04-14 23:02+0000\n"
-"PO-Revision-Date: 2024-04-15 16:25+0330\n"
+"POT-Creation-Date: 2024-04-17 20:12+0000\n"
+"PO-Revision-Date: 2024-04-19 04:38+0330\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
 "Language: fa\n"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Generator: Poedit 3.4.2\n"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:3
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:4
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:4
 msgid "Apostrophe"
 msgstr "آپاستروف"
 
@@ -157,47 +157,72 @@ msgstr "نوار ابزار"
 msgid "Whether the toolbar is shown or not."
 msgstr "این که نوار ابزار نشان داده شود یا نه."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:5
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:5
 msgid "Edit Markdown in style"
 msgstr "ویرایش مارک‌دون در سبک"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:14
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:9
+msgid "Manuel Genovés"
+msgstr "مانوئل جنووس"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:14
 msgid "Focus on your writing with a clean, distraction-free markdown editor."
 msgstr "با ویرایشگر مارک‌دونی تمیز و بدون حواس‌پرتی، روی نوشتن‌تان تمرکز کنید."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:15
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:15
 msgid "Features:"
 msgstr "ویژگی‌ها:"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:17
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:17
 msgid "An UI tailored to comfortable writing"
 msgstr "رابط کاربری‌ای طراحی شده برای نوشتن راحت"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:18
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:18
 msgid "A distraction-free mode"
 msgstr "حالتی بدون حواس‌پرتی"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:19
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:19
 msgid "Dark, light and sepia themes"
 msgstr "پوسته‌های تاریک، روشن و سوبیایی"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:20
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:20
 msgid ""
 "Everything you expect from a text editor, such as spellchecking or document "
 "statistics"
 msgstr ""
 "هر آن‌چه از یک ویرایشگر متن انتظار دارید، همچون بررسی املایی یا آمارهای سند"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:21
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:21
 msgid "Live preview of what you write"
 msgstr "پیش‌نمایش زنده از آن‌چه می‌نویسید"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:22
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:22
 msgid ""
 "Export to all kind of formats: PDF, Word/Libreoffice, LaTeX, or even HTML "
 "slideshows"
 msgstr ""
 "به تمامی قالب‌ها برون‌ریزی کنید: PDF، لیبره‌آفیس/ورد، لاتک، یا حتی نمابرگ‌های HTML"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:41
+msgid "Main window"
+msgstr "پنجرهٔ اصلی"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:45
+msgid "Main window in dark mode"
+msgstr "پنجرهٔ اصلی در حالت تیره"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:49
+msgid "Inserting a table with the help of the toolbar"
+msgstr "درج جدولی با یاری نوار ابزار"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:53
+msgid "The preview lets you see a live rendered version of your document"
+msgstr "پیش‌نمایش می‌گذارد نگارشی پرداخت شده از سندتان را ببینید"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:57
+msgid "The focus mode allow for a more distraction-free experience"
+msgstr "حالت تمرکز اجازهٔ تجربه‌ای بدون حواس‌پرتی را می‌دهد"
 
 #: data/ui/About.ui.in:9
 msgid "Copyright (C) 2022, Manuel G., Wolf V."
@@ -304,16 +329,17 @@ msgstr "گلوله‌های افزایشی"
 msgid "Show one bullet point after another in a slideshow"
 msgstr "نمایش گلوله‌ای پس از دیگری در نمایش اسلاید"
 
-#: data/ui/Headerbar.ui:10
-msgid "New"
-msgstr "جدید"
+#: data/ui/Headerbar.ui:10 apostrophe/main_window.py:772
+#: apostrophe/main_window.py:790
+msgid "New File"
+msgstr "پروندهٔ جدید"
 
 #: data/ui/Headerbar.ui:17
 msgid "_Open"
 msgstr "_باز کردن"
 
 #: data/ui/Headerbar.ui:19
-msgid "Open a Markdown File"
+msgid "Open Markdown File"
 msgstr "گشودن پروندهٔ مارک‌دون"
 
 #: data/ui/Headerbar.ui:25
@@ -321,58 +347,54 @@ msgid "_Save"
 msgstr "_ذخیره"
 
 #: data/ui/Headerbar.ui:27
-msgid "Save the Markdown File"
+msgid "Save Markdown File"
 msgstr "ذخیرهٔ پروندهٔ مارک‌دون"
 
 #: data/ui/Headerbar.ui:43
-msgid "Open the Main Menu"
-msgstr "گشودن فهرست اصلی"
+msgid "Main Menu"
+msgstr "فهرست اصلی"
 
 #: data/ui/Headerbar.ui:54
-msgid "_Find"
-msgstr "_یافتن"
-
-#: data/ui/Headerbar.ui:56
 msgid "Search in the File"
 msgstr "جست‌وجو در پرونده"
 
-#: data/ui/Headerbar.ui:79
+#: data/ui/Headerbar.ui:77
 msgid "_Hemingway Mode"
 msgstr "حالت _همینگوی"
 
-#: data/ui/Headerbar.ui:83
+#: data/ui/Headerbar.ui:81
 msgid "_Focus Mode"
 msgstr "حالت _تمرکز"
 
-#: data/ui/Headerbar.ui:89
+#: data/ui/Headerbar.ui:87
 msgid "Find and _Replace"
 msgstr "یافتن و _جایگزینی"
 
-#: data/ui/Headerbar.ui:95
+#: data/ui/Headerbar.ui:93
 msgid "_Preferences"
 msgstr "_ترجیحات"
 
-#: data/ui/Headerbar.ui:101
+#: data/ui/Headerbar.ui:99
 msgid "Open _Tutorial"
 msgstr "گشودن _خودآموز"
 
-#: data/ui/Headerbar.ui:106
+#: data/ui/Headerbar.ui:104
 msgid "_Keyboard Shortcuts"
 msgstr "_میان‌برهای صفحه‌کلید"
 
-#: data/ui/Headerbar.ui:110
+#: data/ui/Headerbar.ui:108
 msgid "_About Apostrophe"
 msgstr "_دربارهٔ آپاستروف"
 
-#: data/ui/Headerbar.ui:121
+#: data/ui/Headerbar.ui:119
 msgid "_Save As..."
 msgstr "_ذخیره به شکل…"
 
-#: data/ui/Headerbar.ui:144
+#: data/ui/Headerbar.ui:142
 msgid "Advanced _Export…"
 msgstr "_برون‌ریزی پیش‌رفته…"
 
-#: data/ui/Headerbar.ui:150
+#: data/ui/Headerbar.ui:148
 msgid "_Copy HTML"
 msgstr "_رونوشت HTML"
 
@@ -420,7 +442,8 @@ msgstr "مستندات با طعم مارک‌دون"
 msgid "Desired level of security when rendering the preview"
 msgstr "سطح امنیتی دلخواه هنگام پرداخت پیش‌نمایش"
 
-#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_window.py:32
+#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_handler.py:205
+#: apostrophe/preview_window.py:32
 msgid "Preview"
 msgstr "پیش‌نمایش"
 
@@ -683,39 +706,89 @@ msgstr "استفاده از رنگ‌های سوبیایی"
 msgid "Use Dark Colors"
 msgstr "استفاده از رنگ‌های تاریک"
 
-#: data/ui/Window.ui:67
+#: data/ui/Toolbar.ui:27
+msgid "Bold"
+msgstr "ضخیم"
+
+#: data/ui/Toolbar.ui:37
+msgid "Italic"
+msgstr "کج"
+
+#: data/ui/Toolbar.ui:47
+msgid "Strikethrough"
+msgstr "خط‌خورده"
+
+#: data/ui/Toolbar.ui:57
+msgid "Heading"
+msgstr "عنوان"
+
+#: data/ui/Toolbar.ui:68
+msgid "Unordered List"
+msgstr "سیاههٔ مرتّب نشده"
+
+#: data/ui/Toolbar.ui:78
+msgid "Ordered List"
+msgstr "سیاههٔ مرتّب"
+
+#: data/ui/Toolbar.ui:88
+msgid "Check List"
+msgstr "سیاههٔ بررسی"
+
+#: data/ui/Toolbar.ui:98
+msgid "Blockquote"
+msgstr "نقل نقول"
+
+#: data/ui/Toolbar.ui:108
+msgid "Code"
+msgstr "کد"
+
+#: data/ui/Toolbar.ui:118
+msgid "Link"
+msgstr "پیوند"
+
+#: data/ui/Toolbar.ui:128 apostrophe/text_view_format_inserter.py:435
+msgid "Image"
+msgstr "تصویر"
+
+#: data/ui/Toolbar.ui:138
+msgid "Table"
+msgstr "جدول"
+
+#: data/ui/Toolbar.ui:153
+msgid "Show More Controls"
+msgstr "نمایش واپایش‌های بیش‌تر"
+
+#: data/ui/Window.ui:64
 msgid "This file may be insecure"
 msgstr "ممکن است این پرونده ناامن باشد"
 
-#: data/ui/Window.ui:68
+#: data/ui/Window.ui:65
 msgid ""
 "Previewing files from untrusted sources can be dangerous.\n"
 "If you're unsure about the contents of this file, open it in the Restricted "
-"Preview where javascript and HTML are disabled.\n"
-"                        "
+"Preview where javascript and HTML are disabled."
 msgstr ""
 "پیش‌نمایش پرونده‌ها از منابع نامطمئن می‌تواند خطرناک باشد.\n"
 "اگر دربارهٔ محتوای این پرونده مطمئن نیستید، در پیش‌نمایش محدود که جاوااسکریپت و "
-"HTML از کار افتاده‌اند بگشاییدش.\n"
-"                        "
+"HTML از کار افتاده‌اند بگشاییدش."
 
-#: data/ui/Window.ui:81
+#: data/ui/Window.ui:77
 msgid "Load Preview"
 msgstr "بار کردن پیش‌نمایش"
 
-#: data/ui/Window.ui:90
+#: data/ui/Window.ui:86
 msgid "Load Restricted Preview"
 msgstr "بار کردن پیش‌نمایش محدود"
 
-#: data/ui/Window.ui:163
+#: data/ui/Window.ui:159
 msgid "File Has Changed on Disk"
 msgstr "پرونده روی دیسک تغییر کرده"
 
-#: data/ui/Window.ui:173
+#: data/ui/Window.ui:169
 msgid "The file has been changed by another program"
 msgstr "پرونده به دست برنامه‌ای دیگر تغییر کرده"
 
-#: data/ui/Window.ui:181
+#: data/ui/Window.ui:177
 msgid "_Discard Changes and Reload"
 msgstr "_دور ریختن تغییرات و بار کردن دوباره"
 
@@ -843,9 +916,17 @@ msgstr ""
 msgid "Discard"
 msgstr "دور ریختن"
 
-#: apostrophe/main_window.py:772 apostrophe/main_window.py:790
-msgid "New File"
-msgstr "پروندهٔ جدید"
+#: apostrophe/preferences_dialog.py:97
+msgid "Always Ask"
+msgstr "همواره پرسیده شود"
+
+#: apostrophe/preferences_dialog.py:101
+msgid "Always Use Restricted Preview"
+msgstr "استفادهٔ همیشگی از پیش‌نمایش محدود"
+
+#: apostrophe/preferences_dialog.py:105
+msgid "Always Use Unrestricted Preview"
+msgstr "استفادهٔ همیشگی از پیش‌نمایش نامحدود"
 
 #: apostrophe/preview_layout_switcher.py:41
 msgid "Full-Width"
@@ -950,10 +1031,6 @@ msgstr "متن پیوند"
 msgid "image caption"
 msgstr "عنوان تصویر"
 
-#: apostrophe/text_view_format_inserter.py:435
-msgid "Image"
-msgstr "تصویر"
-
 #: apostrophe/text_view_format_inserter.py:441
 msgid "Select an image"
 msgstr "گزینش تصویر"
@@ -969,6 +1046,12 @@ msgstr ""
 #: apostrophe/text_view.py:179 apostrophe/text_view.py:181
 msgid "web page"
 msgstr "صفحهٔ وب"
+
+#~ msgid "New"
+#~ msgstr "جدید"
+
+#~ msgid "_Find"
+#~ msgstr "_یافتن"
 
 #~ msgid "Manuel G., Wolf V."
 #~ msgstr "مانویل جی.، وُلف وی."
