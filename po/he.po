@@ -8,17 +8,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: apostrophe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2024-04-16 21:59+0000\n"
-"PO-Revision-Date: 2024-04-17 19:31+0300\n"
-"Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
-"Language-Team: GNOME\n"
+"POT-Creation-Date: 2024-04-17 20:12+0000\n"
+"PO-Revision-Date: 2024-04-21 22:36+0300\n"
+"Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
+"Language-Team: Hebrew\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? "
-"2 : 3);\n"
-"X-Generator: Poedit 3.4.2\n"
+"2 : 3)\n"
+"X-Generator: Gtranslator 46.0\n"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:3
 #: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:4
@@ -204,6 +204,26 @@ msgid ""
 msgstr ""
 "ייצוא לכל סוגי הקבצים: PDF,‏ Word/Libreoffice,‏ LaTeX או אפילו מצגות HTML"
 
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:41
+msgid "Main window"
+msgstr "חלון ראשי"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:45
+msgid "Main window in dark mode"
+msgstr "חלון ראשי במצב כהה"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:49
+msgid "Inserting a table with the help of the toolbar"
+msgstr "הכנסת טבלה בעזרת סרגל הכלים"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:53
+msgid "The preview lets you see a live rendered version of your document"
+msgstr "התצוגה המקדימה מאפשרת לך לראות גרסה חיה של עיבוד המסמך שלך"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:57
+msgid "The focus mode allow for a more distraction-free experience"
+msgstr "מצב מיקוד מאפשר לך חוויה נטולת הסחות דעת"
+
 #: data/ui/About.ui.in:9
 msgid "Copyright (C) 2022, Manuel G., Wolf V."
 msgstr "כל הזכויות שמורות (C) 2022, מנואל ג., וולף ו."
@@ -337,50 +357,46 @@ msgid "Main Menu"
 msgstr "תפריט ראשי"
 
 #: data/ui/Headerbar.ui:54
-msgid "_Find"
-msgstr "_איתור"
-
-#: data/ui/Headerbar.ui:56
 msgid "Search in the File"
 msgstr "חיפוש בקובץ"
 
-#: data/ui/Headerbar.ui:79
+#: data/ui/Headerbar.ui:77
 msgid "_Hemingway Mode"
 msgstr "מצב ה_מינגווי"
 
-#: data/ui/Headerbar.ui:83
+#: data/ui/Headerbar.ui:81
 msgid "_Focus Mode"
 msgstr "מצב _מיקוד"
 
-#: data/ui/Headerbar.ui:89
+#: data/ui/Headerbar.ui:87
 msgid "Find and _Replace"
 msgstr "חיפוש וה_חלפה"
 
-#: data/ui/Headerbar.ui:95
+#: data/ui/Headerbar.ui:93
 msgid "_Preferences"
 msgstr "_העדפות"
 
-#: data/ui/Headerbar.ui:101
+#: data/ui/Headerbar.ui:99
 msgid "Open _Tutorial"
 msgstr "פתיחת _מדריך"
 
-#: data/ui/Headerbar.ui:106
+#: data/ui/Headerbar.ui:104
 msgid "_Keyboard Shortcuts"
 msgstr "קיצורי _מקלדת"
 
-#: data/ui/Headerbar.ui:110
+#: data/ui/Headerbar.ui:108
 msgid "_About Apostrophe"
 msgstr "על _אפוסטרוף"
 
-#: data/ui/Headerbar.ui:121
+#: data/ui/Headerbar.ui:119
 msgid "_Save As..."
 msgstr "שמירה _בשם…"
 
-#: data/ui/Headerbar.ui:144
+#: data/ui/Headerbar.ui:142
 msgid "Advanced _Export…"
 msgstr "ייצוא _מתקדם…"
 
-#: data/ui/Headerbar.ui:150
+#: data/ui/Headerbar.ui:148
 msgid "_Copy HTML"
 msgstr "הע_תקת HTML"
 
@@ -428,7 +444,7 @@ msgstr "תיעוד תצורת ה־Markdown"
 msgid "Desired level of security when rendering the preview"
 msgstr "רמת האבטחה הרצויה בעת עיבוד התצוגה המקדימה"
 
-#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_handler.py:203
+#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_handler.py:205
 #: apostrophe/preview_window.py:32
 msgid "Preview"
 msgstr "תצוגה מקדימה"
@@ -755,11 +771,11 @@ msgstr "טבלה"
 msgid "Show More Controls"
 msgstr "הצגת פקדים נוספים"
 
-#: data/ui/Window.ui:67
+#: data/ui/Window.ui:64
 msgid "This file may be insecure"
 msgstr "הקובץ הזה יכול להיות מפוקפק"
 
-#: data/ui/Window.ui:68
+#: data/ui/Window.ui:65
 msgid ""
 "Previewing files from untrusted sources can be dangerous.\n"
 "If you're unsure about the contents of this file, open it in the Restricted "
@@ -769,23 +785,23 @@ msgstr ""
 "במקרה של ספק בנוגע לתוכן הקובץ הזה, יש לפתוח אותו בתצוגה מקדימה מוגבלת בה "
 "JavaScript ו־HTML מושבתות."
 
-#: data/ui/Window.ui:80
+#: data/ui/Window.ui:77
 msgid "Load Preview"
 msgstr "טעינת תצוגה מקדימה"
 
-#: data/ui/Window.ui:89
+#: data/ui/Window.ui:86
 msgid "Load Restricted Preview"
 msgstr "טעינת תצוגה מקדימה מוגבלת"
 
-#: data/ui/Window.ui:162
+#: data/ui/Window.ui:159
 msgid "File Has Changed on Disk"
 msgstr "הקובץ שונה בכונן"
 
-#: data/ui/Window.ui:172
+#: data/ui/Window.ui:169
 msgid "The file has been changed by another program"
 msgstr "הקובץ שונה על ידי תכנה אחרת"
 
-#: data/ui/Window.ui:180
+#: data/ui/Window.ui:177
 msgid "_Discard Changes and Reload"
 msgstr "_ביטול שינויים וטעינה מחדש"
 
@@ -1053,6 +1069,9 @@ msgstr ""
 #: apostrophe/text_view.py:179 apostrophe/text_view.py:181
 msgid "web page"
 msgstr "דף אינטרנט"
+
+#~ msgid "_Find"
+#~ msgstr "_איתור"
 
 #~ msgid "New"
 #~ msgstr "חדש"
