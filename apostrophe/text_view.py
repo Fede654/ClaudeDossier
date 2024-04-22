@@ -90,6 +90,8 @@ class ApostropheTextView(GtkSource.View):
         self.adapter = Spelling.TextBufferAdapter.new(self.buffer, checker)
         extra_menu = self.adapter.get_menu_model()
 
+        checker.connect("notify::language", self._on_spelling_language_changed)
+
         self.set_extra_menu(extra_menu)
         self.insert_action_group('spelling', self.adapter)
 
@@ -309,6 +311,9 @@ class ApostropheTextView(GtkSource.View):
             self.scroll_scale = self.frozen_scroll_scale
         elif self.scroller.can_scroll():
             self.notify("scroll_scale")
+
+    def _on_spelling_language_changed(self, _obj, _spec):
+        self.adapter.invalidate_all()
 
     def _unfreeze_scroll_scale(self):
         self.frozen_scroll_scale = None
