@@ -19,11 +19,13 @@ class ApostropheTextBuffer(GtkSource.Buffer):
     }
 
     hemingway_mode = GObject.Property(type=bool, default=False)
+    paste_ongoing = GObject.Property(type=bool, default=False)
     changed_debounced_timeout = GObject.Property(type=int, default=100)
     changed_debounced_timeout_id = None
 
     def __init__(self):
         super().__init__()
+        self.connect("paste-done", self._on_clipboard_paste_finished)
 
     @contextmanager
     def _temp_disable_hemingway(self):
@@ -186,32 +188,33 @@ class ApostropheTextBuffer(GtkSource.Buffer):
             return
 
         move_cursor = None
-        match text:
-            case "\n":
-                GLib.idle_add(self._autocomplete_lists)
-                return
-            case "\t":
-                GLib.idle_add(self._indent)
-                return
-            case ("(" | "[" | "{" | '"' | "<") as x:
-                pairs = {
-                    "(" : ")",
-                    "[" : "]",
-                    "{" : "}",
-                    '"' : '"',
-                    "<" : ">"
-                }
+        if not self.paste_ongoing:
+            match text:
+                case "\n":
+                    GLib.idle_add(self._autocomplete_lists)
+                    return
+                case "\t":
+                    GLib.idle_add(self._indent)
+                    return
+                case ("(" | "[" | "{" | '"' | "<") as x:
+                    pairs = {
+                        "(" : ")",
+                        "[" : "]",
+                        "{" : "}",
+                        '"' : '"',
+                        "<" : ">"
+                    }
 
-                # is the next character whitespace?
-                if self.get_iter_at_mark(self.get_insert()).get_char().isspace() or\
-                   self.get_iter_at_mark(self.get_insert()).is_end():
-                    text += pairs[x]
-                    move_cursor = -1
-            case (")" | "]" | "}" | '"' | ">") as x:
-                # is already closed?
-                if self.get_iter_at_mark(self.get_insert()).get_char() == x:
-                    text = ""
-                    move_cursor = 1
+                    # is the next character whitespace?
+                    if self.get_iter_at_mark(self.get_insert()).get_char().isspace() or\
+                    self.get_iter_at_mark(self.get_insert()).is_end():
+                        text += pairs[x]
+                        move_cursor = -1
+                case (")" | "]" | "}" | '"' | ">") as x:
+                    # is already closed?
+                    if self.get_iter_at_mark(self.get_insert()).get_char() == x:
+                        text = ""
+                        move_cursor = 1
 
         GtkSource.Buffer.do_insert_text(self, position, text, -1)
         if move_cursor:
@@ -234,3 +237,6 @@ class ApostropheTextBuffer(GtkSource.Buffer):
             GLib.source_remove(self.changed_debounced_timeout_id)
             self.changed_debounced_timeout_id = None
         self.changed_debounced_timeout_id = GLib.timeout_add(self.changed_debounced_timeout, self.changed_debounced)
+
+    def _on_clipboard_paste_finished(self, *args, **kwargs):
+        self.paste_ongoing = False

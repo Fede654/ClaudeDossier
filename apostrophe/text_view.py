@@ -126,6 +126,10 @@ class ApostropheTextView(GtkSource.View):
         # TODO: Find a better way to handle unwanted scroll.
         self.frozen_scroll_scale = None
 
+        # When pasting b-trees, we may get more than one insertion. 
+        # We want to disable autocompletion until the paste is done
+        self.connect("paste-clipboard", self._on_clipboard_paste_started)
+
         self.update_vertical_margin()
 
         # color scheme
@@ -314,6 +318,9 @@ class ApostropheTextView(GtkSource.View):
 
     def _on_spelling_language_changed(self, _obj, _spec):
         self.adapter.invalidate_all()
+
+    def _on_clipboard_paste_started(self, *args, **kwargs):
+        self.buffer.paste_ongoing = True
 
     def _unfreeze_scroll_scale(self):
         self.frozen_scroll_scale = None
