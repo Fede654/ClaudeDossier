@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2024-03-27 21:05+0000\n"
-"PO-Revision-Date: 2024-03-28 00:08+0300\n"
+"POT-Creation-Date: 2024-04-17 20:12+0000\n"
+"PO-Revision-Date: 2024-04-17 23:58+0300\n"
 "Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
 "Language-Team: Türkçe <takim@gnome.org.tr>\n"
 "Language: tr\n"
@@ -23,7 +23,7 @@ msgstr ""
 "X-Generator: Poedit 3.4.2\n"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:3
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:4
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:4
 msgid "Apostrophe"
 msgstr "Apostrophe"
 
@@ -162,31 +162,36 @@ msgstr "Araç çubuğu"
 msgid "Whether the toolbar is shown or not."
 msgstr "Araç çubuğunun gösterilme durumu."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:5
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:5
 msgid "Edit Markdown in style"
 msgstr "Markdown’ı şıkça düzenle"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:14
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:9
+msgid "Manuel Genovés"
+msgstr "Manuel Genovés"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:14
 msgid "Focus on your writing with a clean, distraction-free markdown editor."
 msgstr "Temiz, ilgi dağıtmayan markdown düzenleyiciyle yazınıza odaklanın."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:15
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:15
 msgid "Features:"
 msgstr "Özellikler:"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:17
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:17
 msgid "An UI tailored to comfortable writing"
 msgstr "Rahat yazmaya uygun kullanıcı arayüzü"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:18
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:18
 msgid "A distraction-free mode"
 msgstr "İlgi dağıtmayan kip"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:19
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:19
 msgid "Dark, light and sepia themes"
 msgstr "Karanlık, aydınlık ve sepya temalar"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:20
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:20
 msgid ""
 "Everything you expect from a text editor, such as spellchecking or document "
 "statistics"
@@ -194,17 +199,37 @@ msgstr ""
 "Yazım denetimi veya belge istatistikleri gibi bir metin düzenleyiciden "
 "beklediğiniz her şey"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:21
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:21
 msgid "Live preview of what you write"
 msgstr "Yazdıklarınızın canlı ön izlemesi"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:22
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:22
 msgid ""
 "Export to all kind of formats: PDF, Word/Libreoffice, LaTeX, or even HTML "
 "slideshows"
 msgstr ""
 "Her biçimde dışarıya aktarın: PDF, Word/Libreoffice, LaTeX ve hatta HTML "
 "slayt gösterileri"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:41
+msgid "Main window"
+msgstr "Ana pencere"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:45
+msgid "Main window in dark mode"
+msgstr "Koyu kipte ana pencere"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:49
+msgid "Inserting a table with the help of the toolbar"
+msgstr "Araç çubuğu yardımıyla tablo ekleme"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:53
+msgid "The preview lets you see a live rendered version of your document"
+msgstr "Ön izleme, belgenizin canlı işlenmiş sürümünü görmenizi sağlar"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:57
+msgid "The focus mode allow for a more distraction-free experience"
+msgstr "Odak kipi dikkat dağıtmayan bir deneyim sunar"
 
 #: data/ui/About.ui.in:9
 msgid "Copyright (C) 2022, Manuel G., Wolf V."
@@ -315,16 +340,17 @@ msgstr "Artımlı Madde İmleri"
 msgid "Show one bullet point after another in a slideshow"
 msgstr "Slayt gösterisinde madde imlerini birbiri ardına göster"
 
-#: data/ui/Headerbar.ui:10
-msgid "New"
-msgstr "Yeni"
+#: data/ui/Headerbar.ui:10 apostrophe/main_window.py:772
+#: apostrophe/main_window.py:790
+msgid "New File"
+msgstr "Yeni Dosya"
 
 #: data/ui/Headerbar.ui:17
 msgid "_Open"
 msgstr "_Aç"
 
 #: data/ui/Headerbar.ui:19
-msgid "Open a Markdown File"
+msgid "Open Markdown File"
 msgstr "Markdown Dosyası Aç"
 
 #: data/ui/Headerbar.ui:25
@@ -332,58 +358,54 @@ msgid "_Save"
 msgstr "_Kaydet"
 
 #: data/ui/Headerbar.ui:27
-msgid "Save the Markdown File"
+msgid "Save Markdown File"
 msgstr "Markdown Dosyasını Kaydet"
 
 #: data/ui/Headerbar.ui:43
-msgid "Open the Main Menu"
-msgstr "Ana Menüyü Aç"
+msgid "Main Menu"
+msgstr "Ana Menü"
 
 #: data/ui/Headerbar.ui:54
-msgid "_Find"
-msgstr "_Bul"
-
-#: data/ui/Headerbar.ui:56
 msgid "Search in the File"
 msgstr "Dosyada Ara"
 
-#: data/ui/Headerbar.ui:79
+#: data/ui/Headerbar.ui:77
 msgid "_Hemingway Mode"
 msgstr "_Hemingway Kipi"
 
-#: data/ui/Headerbar.ui:83
+#: data/ui/Headerbar.ui:81
 msgid "_Focus Mode"
 msgstr "_Odaklanma Kipi"
 
-#: data/ui/Headerbar.ui:89
+#: data/ui/Headerbar.ui:87
 msgid "Find and _Replace"
 msgstr "Bul ve _Değiştir"
 
-#: data/ui/Headerbar.ui:95
+#: data/ui/Headerbar.ui:93
 msgid "_Preferences"
 msgstr "_Tercihler"
 
-#: data/ui/Headerbar.ui:101
+#: data/ui/Headerbar.ui:99
 msgid "Open _Tutorial"
 msgstr "_Eğitimi Aç"
 
-#: data/ui/Headerbar.ui:106
+#: data/ui/Headerbar.ui:104
 msgid "_Keyboard Shortcuts"
 msgstr "Klavye _Kısayolları"
 
-#: data/ui/Headerbar.ui:110
+#: data/ui/Headerbar.ui:108
 msgid "_About Apostrophe"
 msgstr "Apostrophe _Hakkında"
 
-#: data/ui/Headerbar.ui:121
+#: data/ui/Headerbar.ui:119
 msgid "_Save As..."
 msgstr "Farklı _Kaydet…"
 
-#: data/ui/Headerbar.ui:144
+#: data/ui/Headerbar.ui:142
 msgid "Advanced _Export…"
 msgstr "Gelişmiş _Dışa Aktarma…"
 
-#: data/ui/Headerbar.ui:150
+#: data/ui/Headerbar.ui:148
 msgid "_Copy HTML"
 msgstr "HTML’yi _Kopyala"
 
@@ -433,7 +455,8 @@ msgstr "Markdown Çeşidi Belgeleri"
 msgid "Desired level of security when rendering the preview"
 msgstr "Ön izleme oluşturulurken istenen güvenlik düzeyi"
 
-#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_window.py:32
+#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_handler.py:205
+#: apostrophe/preview_window.py:32
 msgid "Preview"
 msgstr "Ön İzleme"
 
@@ -696,39 +719,89 @@ msgstr "Sepya Renkler Kullan"
 msgid "Use Dark Colors"
 msgstr "Koyu Renkler Kullanın"
 
-#: data/ui/Window.ui:50
+#: data/ui/Toolbar.ui:27
+msgid "Bold"
+msgstr "Kalın"
+
+#: data/ui/Toolbar.ui:37
+msgid "Italic"
+msgstr "Eğik"
+
+#: data/ui/Toolbar.ui:47
+msgid "Strikethrough"
+msgstr "Üstü Çizili"
+
+#: data/ui/Toolbar.ui:57
+msgid "Heading"
+msgstr "Başlık"
+
+#: data/ui/Toolbar.ui:68
+msgid "Unordered List"
+msgstr "Sırasız Liste"
+
+#: data/ui/Toolbar.ui:78
+msgid "Ordered List"
+msgstr "Sıralı Liste"
+
+#: data/ui/Toolbar.ui:88
+msgid "Check List"
+msgstr "Denetim Listesi"
+
+#: data/ui/Toolbar.ui:98
+msgid "Blockquote"
+msgstr "Alıntı"
+
+#: data/ui/Toolbar.ui:108
+msgid "Code"
+msgstr "Kod"
+
+#: data/ui/Toolbar.ui:118
+msgid "Link"
+msgstr "Bağlantı"
+
+#: data/ui/Toolbar.ui:128 apostrophe/text_view_format_inserter.py:435
+msgid "Image"
+msgstr "Resim"
+
+#: data/ui/Toolbar.ui:138
+msgid "Table"
+msgstr "Tablo"
+
+#: data/ui/Toolbar.ui:153
+msgid "Show More Controls"
+msgstr "Daha Çok Denetim Göster"
+
+#: data/ui/Window.ui:64
 msgid "This file may be insecure"
 msgstr "Dosya güvensiz olabilir"
 
-#: data/ui/Window.ui:51
+#: data/ui/Window.ui:65
 msgid ""
 "Previewing files from untrusted sources can be dangerous.\n"
 "If you're unsure about the contents of this file, open it in the Restricted "
-"Preview where javascript and HTML are disabled.\n"
-"                    "
+"Preview where javascript and HTML are disabled."
 msgstr ""
 "Güvenilmeyen kaynaklardan gelen dosyaları ön izlemek tehlikeli olabilir.\n"
-"Dosyanın içeriğinden emin değilseniz, javascript ve HTML’nin devre dışı "
-"bırakıldığı Kısıtlı Ön İzlemeʼde açın.\n"
-"                    "
+"Dosyanın içeriğinden emin değilseniz, javascript ve HTMLʼnin devre dışı "
+"bırakıldığı Kısıtlı Ön İzleme ile açın."
 
-#: data/ui/Window.ui:64
+#: data/ui/Window.ui:77
 msgid "Load Preview"
 msgstr "Ön İzlemeyi Yükle"
 
-#: data/ui/Window.ui:73
+#: data/ui/Window.ui:86
 msgid "Load Restricted Preview"
 msgstr "Kısıtlı Ön İzlemeyi Yükle"
 
-#: data/ui/Window.ui:144
+#: data/ui/Window.ui:159
 msgid "File Has Changed on Disk"
 msgstr "Dosya Diskte Değiştirildi"
 
-#: data/ui/Window.ui:154
+#: data/ui/Window.ui:169
 msgid "The file has been changed by another program"
 msgstr "Dosya başka bir programca değiştirildi"
 
-#: data/ui/Window.ui:162
+#: data/ui/Window.ui:177
 msgid "_Discard Changes and Reload"
 msgstr "Değişiklikleri _Gözden Çıkar ve Yeniden Yükle"
 
@@ -751,8 +824,8 @@ msgid "Export to %s"
 msgstr "%s olarak dışa aktar"
 
 #: apostrophe/export_dialog.py:131 apostrophe/export_dialog.py:329
-#: apostrophe/export_dialog.py:334 apostrophe/main_window.py:415
-#: apostrophe/main_window.py:493 apostrophe/main_window.py:586
+#: apostrophe/export_dialog.py:334 apostrophe/main_window.py:416
+#: apostrophe/main_window.py:494 apostrophe/main_window.py:587
 msgid "Cancel"
 msgstr "İptal"
 
@@ -809,43 +882,43 @@ msgid "adverb"
 msgstr "belirteç"
 
 #. Hemingway Toast
-#: apostrophe/main_window.py:152
+#: apostrophe/main_window.py:153
 msgid "Text can't be deleted while on Hemingway mode"
 msgstr "Hemingway kipindeyken metin silinemez"
 
-#: apostrophe/main_window.py:155
+#: apostrophe/main_window.py:156
 msgid "Tell me more"
 msgstr "Daha çoğunu söyle"
 
-#: apostrophe/main_window.py:411
+#: apostrophe/main_window.py:412
 msgid "Save your File"
 msgstr "Dosyanızı kaydedin"
 
-#: apostrophe/main_window.py:414 apostrophe/main_window.py:588
+#: apostrophe/main_window.py:415 apostrophe/main_window.py:589
 msgid "Save"
 msgstr "Kaydet"
 
-#: apostrophe/main_window.py:482
+#: apostrophe/main_window.py:483
 msgid "Markdown Files"
 msgstr "Markdown Dosyaları"
 
-#: apostrophe/main_window.py:486
+#: apostrophe/main_window.py:487
 msgid "Plain Text Files"
 msgstr "Düz Metin Dosyaları"
 
-#: apostrophe/main_window.py:489
+#: apostrophe/main_window.py:490
 msgid "Open a .md file"
 msgstr "Bir .md dosyası aç"
 
-#: apostrophe/main_window.py:492
+#: apostrophe/main_window.py:493
 msgid "Open"
 msgstr "Aç"
 
-#: apostrophe/main_window.py:580
+#: apostrophe/main_window.py:581
 msgid "Save Changes?"
 msgstr "Değişiklikler Kaydedilsin Mi?"
 
-#: apostrophe/main_window.py:581
+#: apostrophe/main_window.py:582
 #, python-format
 msgid ""
 "“%s” contains unsaved changes. If you don’t save, all your changes will be "
@@ -854,13 +927,21 @@ msgstr ""
 "“%s” kaydedilmemiş değişiklikler içeriyor. Kaydetmezseniz, tüm "
 "değişiklikleriniz tümüyle yitecek."
 
-#: apostrophe/main_window.py:587
+#: apostrophe/main_window.py:588
 msgid "Discard"
 msgstr "_Gözden Çıkar"
 
-#: apostrophe/main_window.py:771 apostrophe/main_window.py:789
-msgid "New File"
-msgstr "Yeni Dosya"
+#: apostrophe/preferences_dialog.py:97
+msgid "Always Ask"
+msgstr "Her Zaman Sor"
+
+#: apostrophe/preferences_dialog.py:101
+msgid "Always Use Restricted Preview"
+msgstr "Daima Kısıtlı Ön İzleme Kullan"
+
+#: apostrophe/preferences_dialog.py:105
+msgid "Always Use Unrestricted Preview"
+msgstr "Daima Kısıtsız Ön İzleme Kullan"
 
 #: apostrophe/preview_layout_switcher.py:41
 msgid "Full-Width"
@@ -965,10 +1046,6 @@ msgstr "bağlantı metni"
 msgid "image caption"
 msgstr "resim açıklaması"
 
-#: apostrophe/text_view_format_inserter.py:435
-msgid "Image"
-msgstr "Resim"
-
 #: apostrophe/text_view_format_inserter.py:441
 msgid "Select an image"
 msgstr "Resim seç"
@@ -981,6 +1058,12 @@ msgstr ""
 "\n"
 "kod\n"
 
-#: apostrophe/text_view.py:176 apostrophe/text_view.py:178
+#: apostrophe/text_view.py:179 apostrophe/text_view.py:181
 msgid "web page"
 msgstr "web sayfası"
+
+#~ msgid "_Find"
+#~ msgstr "_Bul"
+
+#~ msgid "New"
+#~ msgstr "Yeni"
