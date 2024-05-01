@@ -27,7 +27,7 @@ Any help is appreciated!
 
 ### Building using GNOME Builder
 
-GNOME Builder offers the easiest method to build Apostrophe. Just follow [this guide](https://wiki.gnome.org/Newcomers/BuildProject) and you'll be up and running in a minute.
+GNOME Builder offers the easiest method to build Apostrophe. Just follow [this guide](https://welcome.gnome.org/app/Apostrophe/#getting-the-app-to-build) and you'll be up and running in a minute.
 
 ### Building from Git
 
@@ -40,6 +40,7 @@ To build Apostrophe from source you need to have the following dependencies inst
 
 - Python dependencies: `python3 python3-regex python3-setuptools python3-levenshtein python3-enchant python3-gi python3-cairo python3-pypandoc`
 - A copy of reveal.js in the apropriate directory. Flatpak takes care of it for you, packagers should put it into prefix/share/apostrophe/libs/reveal.js, fully unzipped
+- Patched libspelling and sourceview. The patches are in `build-aux/flatpak/sourceview_text_commits.patch` and `build-aux/flatpak/libspelling_text_commits.patch`
 - FiraSans-Regular, FiraMono-Regular, FiraMono-Bold, FiraMono-Medium
 - *optional:* AppStream utility: `appstreamcli`
 - *optional:* pdftex module: `texlive texlive-latex-extra`
