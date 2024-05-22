@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apostrophe\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2024-03-27 21:05+0000\n"
-"PO-Revision-Date: 2024-03-28 08:52-0300\n"
+"POT-Creation-Date: 2024-04-17 20:12+0000\n"
+"PO-Revision-Date: 2024-05-15 15:58-0300\n"
 "Last-Translator: Leônidas Araújo <leorusvellt@hotmail.com>\n"
 "Language-Team: Brazilian Portuguese <https://br.gnome.org/traducao>\n"
 "Language: pt_BR\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Generator: Poedit 3.3.1\n"
+"X-Generator: Poedit 3.4.2\n"
 "X-DL-Team: pt_BR\n"
 "X-DL-Module: apostrophe\n"
 "X-DL-Branch: main\n"
@@ -33,7 +33,7 @@ msgstr ""
 "X-DL-State: Translating\n"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:3
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:4
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:4
 msgid "Apostrophe"
 msgstr "Apostrophe"
 
@@ -178,32 +178,37 @@ msgstr "Barra de ferramentas"
 msgid "Whether the toolbar is shown or not."
 msgstr "Se a barra de ferramentas é mostrada ou não."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:5
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:5
 msgid "Edit Markdown in style"
 msgstr "Editar Markdown em estilo"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:14
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:9
+msgid "Manuel Genovés"
+msgstr "Manuel Genovés"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:14
 msgid "Focus on your writing with a clean, distraction-free markdown editor."
 msgstr ""
 "Foque na sua escrita com um editor markdown elegante e livre de distrações."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:15
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:15
 msgid "Features:"
 msgstr "Recursos:"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:17
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:17
 msgid "An UI tailored to comfortable writing"
 msgstr "Uma UI projetada para escrita confortável"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:18
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:18
 msgid "A distraction-free mode"
 msgstr "Um modo livre de distrações"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:19
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:19
 msgid "Dark, light and sepia themes"
 msgstr "Temas claro, escuro e sépia"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:20
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:20
 msgid ""
 "Everything you expect from a text editor, such as spellchecking or document "
 "statistics"
@@ -211,17 +216,39 @@ msgstr ""
 "Tudo que você espera de um editor de texto, como verificação ortográfica ou "
 "estatísticas do documento"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:21
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:21
 msgid "Live preview of what you write"
 msgstr "Visão dinâmica do que você escreve"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:22
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:22
 msgid ""
 "Export to all kind of formats: PDF, Word/Libreoffice, LaTeX, or even HTML "
 "slideshows"
 msgstr ""
 "Exporte para todos os tipos de formatos: PDF, Word/Libreoffice, LaTeX ou até "
 "mesmo apresentações de slides em HTML"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:41
+msgid "Main window"
+msgstr "Janela principal"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:45
+msgid "Main window in dark mode"
+msgstr "Janela principal no modo escuro"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:49
+msgid "Inserting a table with the help of the toolbar"
+msgstr "Inserindo uma tabela com a ajuda da barra de ferramentas"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:53
+msgid "The preview lets you see a live rendered version of your document"
+msgstr ""
+"A visualização permite que você veja uma versão renderizada ao vivo do seu "
+"documento"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:57
+msgid "The focus mode allow for a more distraction-free experience"
+msgstr "O modo de foco permite uma experiência mais livre de distrações"
 
 #: data/ui/About.ui.in:9
 msgid "Copyright (C) 2022, Manuel G., Wolf V."
@@ -335,75 +362,72 @@ msgstr "Marcadores incrementais"
 msgid "Show one bullet point after another in a slideshow"
 msgstr "Mostra um marcador após o outro em uma apresentação de slides"
 
-#: data/ui/Headerbar.ui:10
-msgid "New"
-msgstr "Novo"
+#: data/ui/Headerbar.ui:10 apostrophe/main_window.py:772
+#: apostrophe/main_window.py:790
+msgid "New File"
+msgstr "Novo arquivo"
 
 #: data/ui/Headerbar.ui:17
 msgid "_Open"
 msgstr "_Abrir"
 
 #: data/ui/Headerbar.ui:19
-msgid "Open a Markdown File"
-msgstr "Abrir um arquivo markdown"
+msgid "Open Markdown File"
+msgstr "Abrir arquivo markdown"
 
 #: data/ui/Headerbar.ui:25
 msgid "_Save"
 msgstr "_Salvar"
 
 #: data/ui/Headerbar.ui:27
-msgid "Save the Markdown File"
-msgstr "Salvar o arquivo markdown"
+msgid "Save Markdown File"
+msgstr "Salvar arquivo markdown"
 
 #: data/ui/Headerbar.ui:43
-msgid "Open the Main Menu"
-msgstr "Abrir o Menu Principal"
+msgid "Main Menu"
+msgstr "Menu principal"
 
 #: data/ui/Headerbar.ui:54
-msgid "_Find"
-msgstr "_Localizar"
-
-#: data/ui/Headerbar.ui:56
 msgid "Search in the File"
 msgstr "Procurar no Arquivo"
 
-#: data/ui/Headerbar.ui:79
+#: data/ui/Headerbar.ui:77
 msgid "_Hemingway Mode"
 msgstr "Modo _Hemingway"
 
-#: data/ui/Headerbar.ui:83
+#: data/ui/Headerbar.ui:81
 msgid "_Focus Mode"
 msgstr "Modo _Foco"
 
-#: data/ui/Headerbar.ui:89
+#: data/ui/Headerbar.ui:87
 msgid "Find and _Replace"
 msgstr "Localiza_r e substituir"
 
-#: data/ui/Headerbar.ui:95
+#: data/ui/Headerbar.ui:93
 msgid "_Preferences"
 msgstr "_Preferências"
 
-#: data/ui/Headerbar.ui:101
+#: data/ui/Headerbar.ui:99
 msgid "Open _Tutorial"
 msgstr "Abrir _tutorial"
 
-#: data/ui/Headerbar.ui:106
+#: data/ui/Headerbar.ui:104
 msgid "_Keyboard Shortcuts"
 msgstr "Atalhos de _teclado"
 
-#: data/ui/Headerbar.ui:110
+#: data/ui/Headerbar.ui:108
 msgid "_About Apostrophe"
 msgstr "Sobre _Apostrophe"
 
-#: data/ui/Headerbar.ui:121
+#: data/ui/Headerbar.ui:119
 msgid "_Save As..."
 msgstr "_Salvar como…"
 
-#: data/ui/Headerbar.ui:144
+#: data/ui/Headerbar.ui:142
 msgid "Advanced _Export…"
 msgstr "_Exportação avançada…"
 
-#: data/ui/Headerbar.ui:150
+#: data/ui/Headerbar.ui:148
 msgid "_Copy HTML"
 msgstr "_Copiar HTML"
 
@@ -454,7 +478,8 @@ msgstr "Documentação da opção de markdown"
 msgid "Desired level of security when rendering the preview"
 msgstr "Nível de segurança desejado ao renderizar a visualização"
 
-#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_window.py:32
+#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_handler.py:205
+#: apostrophe/preview_window.py:32
 msgid "Preview"
 msgstr "Pré-visualizar"
 
@@ -717,39 +742,90 @@ msgstr "Usar cores sépia"
 msgid "Use Dark Colors"
 msgstr "Usar cores escuras"
 
-#: data/ui/Window.ui:50
+#: data/ui/Toolbar.ui:27
+msgid "Bold"
+msgstr "Negrito"
+
+#: data/ui/Toolbar.ui:37
+msgid "Italic"
+msgstr "Itálico"
+
+#: data/ui/Toolbar.ui:47
+msgid "Strikethrough"
+msgstr "Tachado"
+
+#: data/ui/Toolbar.ui:57
+msgid "Heading"
+msgstr "Título"
+
+#: data/ui/Toolbar.ui:68
+msgid "Unordered List"
+msgstr "Lista não ordenada"
+
+#: data/ui/Toolbar.ui:78
+msgid "Ordered List"
+msgstr "Lista ordenada"
+
+# Leônidas -- Resolvi usar a expressão traduzida. No entanto, existe a alternativa de se usar a expressão original, uma vez que é uma expressão conhecida.
+#: data/ui/Toolbar.ui:88
+msgid "Check List"
+msgstr "Lista de verificação"
+
+#: data/ui/Toolbar.ui:98
+msgid "Blockquote"
+msgstr "Citação"
+
+#: data/ui/Toolbar.ui:108
+msgid "Code"
+msgstr "Código"
+
+#: data/ui/Toolbar.ui:118
+msgid "Link"
+msgstr "Link"
+
+#: data/ui/Toolbar.ui:128 apostrophe/text_view_format_inserter.py:435
+msgid "Image"
+msgstr "Imagem"
+
+#: data/ui/Toolbar.ui:138
+msgid "Table"
+msgstr "Tabela"
+
+#: data/ui/Toolbar.ui:153
+msgid "Show More Controls"
+msgstr "Mostrar mais controles"
+
+#: data/ui/Window.ui:64
 msgid "This file may be insecure"
 msgstr "Este arquivo pode ser inseguro"
 
-#: data/ui/Window.ui:51
+#: data/ui/Window.ui:65
 msgid ""
 "Previewing files from untrusted sources can be dangerous.\n"
 "If you're unsure about the contents of this file, open it in the Restricted "
-"Preview where javascript and HTML are disabled.\n"
-"                    "
+"Preview where javascript and HTML are disabled."
 msgstr ""
 "A visualização de arquivos de fontes não confiáveis pode ser perigosa.\n"
 "Se você não tiver certeza sobre o conteúdo deste arquivo, abra-o na "
-"Visualização Restrita, onde o javascript e o HTML estão desativados.\n"
-"                    "
+"Visualização Restrita, onde o Javascript e o HTML estão desativados."
 
-#: data/ui/Window.ui:64
+#: data/ui/Window.ui:77
 msgid "Load Preview"
 msgstr "Carregar pré-visualização"
 
-#: data/ui/Window.ui:73
+#: data/ui/Window.ui:86
 msgid "Load Restricted Preview"
 msgstr "Carregar visualização restrita"
 
-#: data/ui/Window.ui:144
+#: data/ui/Window.ui:159
 msgid "File Has Changed on Disk"
 msgstr "O arquivo foi alterado no disco"
 
-#: data/ui/Window.ui:154
+#: data/ui/Window.ui:169
 msgid "The file has been changed by another program"
 msgstr "O arquivo foi alterado por outro programa"
 
-#: data/ui/Window.ui:162
+#: data/ui/Window.ui:177
 msgid "_Discard Changes and Reload"
 msgstr "_Descartar alterações e recarregar"
 
@@ -771,8 +847,8 @@ msgid "Export to %s"
 msgstr "Exportar para %s"
 
 #: apostrophe/export_dialog.py:131 apostrophe/export_dialog.py:329
-#: apostrophe/export_dialog.py:334 apostrophe/main_window.py:415
-#: apostrophe/main_window.py:493 apostrophe/main_window.py:586
+#: apostrophe/export_dialog.py:334 apostrophe/main_window.py:416
+#: apostrophe/main_window.py:494 apostrophe/main_window.py:587
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -828,43 +904,43 @@ msgid "adverb"
 msgstr "advérbio"
 
 #. Hemingway Toast
-#: apostrophe/main_window.py:152
+#: apostrophe/main_window.py:153
 msgid "Text can't be deleted while on Hemingway mode"
 msgstr "O texto não pode ser excluído no Modo Hemingway"
 
-#: apostrophe/main_window.py:155
+#: apostrophe/main_window.py:156
 msgid "Tell me more"
 msgstr "Conte-me mais"
 
-#: apostrophe/main_window.py:411
+#: apostrophe/main_window.py:412
 msgid "Save your File"
 msgstr "Salvar seu arquivo"
 
-#: apostrophe/main_window.py:414 apostrophe/main_window.py:588
+#: apostrophe/main_window.py:415 apostrophe/main_window.py:589
 msgid "Save"
 msgstr "Salvar"
 
-#: apostrophe/main_window.py:482
+#: apostrophe/main_window.py:483
 msgid "Markdown Files"
 msgstr "Arquivos Markdown"
 
-#: apostrophe/main_window.py:486
+#: apostrophe/main_window.py:487
 msgid "Plain Text Files"
 msgstr "Arquivos em texto puro"
 
-#: apostrophe/main_window.py:489
+#: apostrophe/main_window.py:490
 msgid "Open a .md file"
 msgstr "Abrir um arquivo .md"
 
-#: apostrophe/main_window.py:492
+#: apostrophe/main_window.py:493
 msgid "Open"
 msgstr "Abrir"
 
-#: apostrophe/main_window.py:580
+#: apostrophe/main_window.py:581
 msgid "Save Changes?"
 msgstr "Salvar alterações?"
 
-#: apostrophe/main_window.py:581
+#: apostrophe/main_window.py:582
 #, python-format
 msgid ""
 "“%s” contains unsaved changes. If you don’t save, all your changes will be "
@@ -873,13 +949,21 @@ msgstr ""
 "“%s” contém alterações não salvas. Se você não salvar, todas as suas "
 "alterações serão perdidas permanentemente."
 
-#: apostrophe/main_window.py:587
+#: apostrophe/main_window.py:588
 msgid "Discard"
 msgstr "Descartar"
 
-#: apostrophe/main_window.py:771 apostrophe/main_window.py:789
-msgid "New File"
-msgstr "Novo arquivo"
+#: apostrophe/preferences_dialog.py:97
+msgid "Always Ask"
+msgstr "Perguntar sempre"
+
+#: apostrophe/preferences_dialog.py:101
+msgid "Always Use Restricted Preview"
+msgstr "Sempre usar a visualização restrita"
+
+#: apostrophe/preferences_dialog.py:105
+msgid "Always Use Unrestricted Preview"
+msgstr "Sempre usar a visualização irrestrita"
 
 #: apostrophe/preview_layout_switcher.py:41
 msgid "Full-Width"
@@ -988,10 +1072,6 @@ msgstr "texto do link"
 msgid "image caption"
 msgstr "legenda da imagem"
 
-#: apostrophe/text_view_format_inserter.py:435
-msgid "Image"
-msgstr "Imagem"
-
 #: apostrophe/text_view_format_inserter.py:441
 msgid "Select an image"
 msgstr "Seleciona uma imagem"
@@ -1004,9 +1084,15 @@ msgstr ""
 "\n"
 "código\n"
 
-#: apostrophe/text_view.py:176 apostrophe/text_view.py:178
+#: apostrophe/text_view.py:179 apostrophe/text_view.py:181
 msgid "web page"
 msgstr "página web"
+
+#~ msgid "New"
+#~ msgstr "Novo"
+
+#~ msgid "_Find"
+#~ msgstr "_Localizar"
 
 #~ msgid "Manuel G., Wolf V."
 #~ msgstr "Manuel G., Wolf V."
