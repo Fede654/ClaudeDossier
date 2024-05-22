@@ -15,7 +15,6 @@ Apostrophe is a [GTK+](https://www.gtk.org) based distraction free Markdown edit
 Also several unofficial builds are available:
 
 * Nix(OS): [`pkgs.apostrophe`](https://github.com/NixOS/nixpkgs/blob/master/pkgs/applications/editors/apostrophe/default.nix)
-* Arch Linux (AUR)
 * [Fedora](https://src.fedoraproject.org/rpms/apostrophe): `sudo dnf install apostrophe`
 
 ## Translation
