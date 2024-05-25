@@ -7,28 +7,26 @@ msgid ""
 msgstr ""
 "Project-Id-Version: apostrophe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2024-03-28 22:01+0000\n"
-"PO-Revision-Date: 2024-03-31 16:16+0530\n"
+"POT-Creation-Date: 2024-05-03 20:06+0000\n"
+"PO-Revision-Date: 2024-05-08 16:14+0530\n"
 "Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
-"Language-Team: Hindi\n"
+"Language-Team: Hindi <indlinux-hindi@lists.sourceforge.net>\n"
 "Language: hi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Gtranslator 46.0\n"
+"X-Generator: Gtranslator 46.1\n"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:3
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:4
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:4
 msgid "Apostrophe"
 msgstr "Apostrophe"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! Do NOT translate "uberwriter" or "apostrophe"! The list MUST also end with a semicolon!
 #: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:5
 msgid "uberwriter;UberWriter;apostrophe;markdown;editor;text;write;"
-msgstr ""
-"uberwriter;UberWriter;apostrophe;markdown;editor;text;write;एपोस्ट्रोफ़;"
-"मार्कडाउन;संपादक;टेक्स्ट;लिखें"
+msgstr "uberwriter;UberWriter;apostrophe;मार्कडाउन;संपादक;पाठ;लिखें;"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:6
 msgid "Apostrophe, an elegant, distraction-free markdown editor"
@@ -40,7 +38,7 @@ msgstr "रंग योजना"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:36
 msgid "Use the color scheme in the application's UI and in the text area."
-msgstr "एप्लिकेशन के UI और टेक्स्ट क्षेत्र में रंग योजना का उपयोग करें।"
+msgstr "अनुप्रयोग के UI और पाठ क्षेत्र में रंग योजना का उपयोग करें।"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:42
 msgid "Check spelling while typing"
@@ -52,28 +50,28 @@ msgstr "वर्तनी जांच सक्षम या अक्षम �
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:49
 msgid "Synchronize editor/preview scrolling"
-msgstr "संपादक/पूर्वावलोकन स्क्रॉलिंग समक्रमिक करें"
+msgstr "संपादक/पूर्वावलोकन स्क्रॉलिंग समन्वयित करें"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:50
 msgid "Keep the editor and preview scroll positions in sync."
-msgstr "संपादक और पूर्वावलोकन स्क्रॉल स्थिति को समक्रमिक रखें।"
+msgstr "संपादक और पूर्वावलोकन स्क्रॉल स्थिति को समन्वयित रखें।"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:56
 msgid "Input format"
-msgstr "इनपुट प्रारूप"
+msgstr "आगत प्रारूप"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:57
 msgid "Input format to use when previewing and exporting using Pandoc."
 msgstr ""
-"Pandoc का उपयोग करके पूर्वावलोकन और निर्यात करते समय उपयोग करने के लिए इनपुट प्रारूप।"
+"Pandoc का उपयोग करके पूर्वावलोकन और निर्यात करते समय उपयोग करने के लिए आगत प्रारूप।"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:63
 msgid "Autohide Headerbar"
-msgstr "हेडरबार को स्वतः छिपाएं"
+msgstr "शीर्षलेखपट्टी को स्वतः छिपाएं"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:64
 msgid "Hide the header and status bars when typing."
-msgstr "टाइप करते समय हेडर और स्टेटस बार छिपाएँ।"
+msgstr "टाइप करते समय शीर्षलेख और स्थिति पट्टी छिपाएं।"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:70
 msgid "Open file base path"
@@ -85,11 +83,11 @@ msgstr "वर्तमान सत्र के फाइल पथ खोल�
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:77
 msgid "Default statistic"
-msgstr "डिफ़ॉल्ट आँकड़ा"
+msgstr "तयशुदा आंकड़ा"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:78
 msgid "Which statistic is shown on the main window."
-msgstr "कौन सा आँकड़ा मुख्य विंडो पर दिखाया गया है।"
+msgstr "कौन सा आंकड़ा मुख्य विंडो पर दिखाया जाये।"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:84
 msgid "Characters per line"
@@ -106,7 +104,7 @@ msgstr "हेमिंग्वे मोड"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:92
 msgid "Whether the user can delete text or not."
-msgstr "उपयोगकर्ता टेक्स्ट हटा सकता है या नहीं।"
+msgstr "उपयोगकर्ता पाठ हटा सकता है या नहीं।"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:98
 msgid "Hemingway Toast Count"
@@ -143,61 +141,86 @@ msgstr "नई विंडो लॉन्च करते समय पूर�
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:126
 msgid "Text size"
-msgstr "टेक्स्ट का आकार"
+msgstr "पाठ का आकार"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:127
 msgid "Preferred relative size for the text."
-msgstr "टेक्स्ट के लिए पसंदीदा सापेक्ष आकार।"
+msgstr "पाठ के लिए पसंदीदा सापेक्ष आकार।"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:133
 msgid "Toolbar"
-msgstr "टूलबार"
+msgstr "टूलपट्टी"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:134
 msgid "Whether the toolbar is shown or not."
-msgstr "टूलबार दिखाया जाए या नहीं।"
+msgstr "टूलपट्टी दिखाया जाए या नहीं।"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:5
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:5
 msgid "Edit Markdown in style"
 msgstr "मार्कडाउन को अंदाज़ में संपादित करें"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:14
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:9
+msgid "Manuel Genovés"
+msgstr "मैनुएल जेनोवेस"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:14
 msgid "Focus on your writing with a clean, distraction-free markdown editor."
 msgstr "एक स्वच्छ, विकर्षण-मुक्त मार्कडाउन संपादक के साथ अपने लेखन पर ध्यान केंद्रित करें।"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:15
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:15
 msgid "Features:"
-msgstr "विशेषताएँ:"
+msgstr "विशेषताएं:"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:17
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:17
 msgid "An UI tailored to comfortable writing"
 msgstr "आरामदायक लेखन के लिए तैयार एक UI"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:18
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:18
 msgid "A distraction-free mode"
 msgstr "एक विकर्षण-मुक्त मोड"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:19
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:19
 msgid "Dark, light and sepia themes"
 msgstr "गहरी, हल्की और सेपिया थीम"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:20
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:20
 msgid ""
 "Everything you expect from a text editor, such as spellchecking or document "
 "statistics"
-msgstr "वह सब कुछ जो आप एक टेक्स्ट एडिटर से अपेक्षा करते हैं, जैसे वर्तनी जांच या दस्तावेज़ आँकड़े"
+msgstr "वह सब कुछ जो आप एक पाठ संपादक से अपेक्षा करते हैं, जैसे वर्तनी जांच या दस्तावेज़ आंकड़े"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:21
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:21
 msgid "Live preview of what you write"
-msgstr "आप जो लिखते हैं उसका लाइव पूर्वावलोकन"
+msgstr "आप जो लिखते हैं उसका सीधा पूर्वावलोकन"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:22
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:22
 msgid ""
 "Export to all kind of formats: PDF, Word/Libreoffice, LaTeX, or even HTML "
 "slideshows"
 msgstr ""
 "सभी प्रकार के प्रारूपों में निर्यात करें: PDF, Word/Libreoffice, LaTeX, या यहां तक कि "
 "HTML स्लाइड शो"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:41
+msgid "Main window"
+msgstr "मुख्य विंडो"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:45
+msgid "Main window in dark mode"
+msgstr "गहरे मोड में मुख्य विंडो"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:49
+msgid "Inserting a table with the help of the toolbar"
+msgstr "टूलपट्टी की सहायता से तालिका सम्मिलित करना"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:53
+msgid "The preview lets you see a live rendered version of your document"
+msgstr "पूर्वावलोकन आपको अपने दस्तावेज़ का सीधा प्रस्तुत संस्करण देखने देता है"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:57
+msgid "The focus mode allow for a more distraction-free experience"
+msgstr "फोकस मोड अधिक व्याकुलता-मुक्त अनुभव की अनुमति देता है"
 
 #: data/ui/About.ui.in:9
 msgid "Copyright (C) 2022, Manuel G., Wolf V."
@@ -229,7 +252,7 @@ msgstr ""
 
 #: data/ui/AboutHemingway.ui:13
 msgid "_Close"
-msgstr "बंद (_C)"
+msgstr "बंद करें (_C)"
 
 #: data/ui/Export.ui:21
 msgid "Formats"
@@ -283,15 +306,15 @@ msgstr "बिना किसी बाहरी निर्भरता व�
 
 #: data/ui/Export.ui:154
 msgid "Syntax Highlighting"
-msgstr "वाक्यविन्यास हाइलाइटिंग"
+msgstr "वाक्यविन्यास चिन्हांकन"
 
 #: data/ui/Export.ui:157
 msgid "Use Syntax Highlighting"
-msgstr "वाक्यविन्यास हाइलाइटिंग का उपयोग करें"
+msgstr "वाक्यविन्यास चिन्हांकन का उपयोग करें"
 
 #: data/ui/Export.ui:162
 msgid "Highlight Style"
-msgstr "हाइलाइट शैली"
+msgstr "चिन्हांकन शैली"
 
 #: data/ui/Export.ui:175
 msgid "Presentation"
@@ -305,16 +328,17 @@ msgstr "वृद्धिशील बुलेट"
 msgid "Show one bullet point after another in a slideshow"
 msgstr "स्लाइड शो में एक के बाद एक बुलेट बिंदु दिखाएं"
 
-#: data/ui/Headerbar.ui:10
-msgid "New"
-msgstr "नया"
+#: data/ui/Headerbar.ui:10 apostrophe/main_window.py:772
+#: apostrophe/main_window.py:790
+msgid "New File"
+msgstr "नई फाइल"
 
 #: data/ui/Headerbar.ui:17
 msgid "_Open"
 msgstr "खोलें (_O)"
 
 #: data/ui/Headerbar.ui:19
-msgid "Open a Markdown File"
+msgid "Open Markdown File"
 msgstr "मार्कडाउन फाइल खोलें"
 
 #: data/ui/Headerbar.ui:25
@@ -322,58 +346,54 @@ msgid "_Save"
 msgstr "सहेजें (_S)"
 
 #: data/ui/Headerbar.ui:27
-msgid "Save the Markdown File"
+msgid "Save Markdown File"
 msgstr "मार्कडाउन फाइल सहेजें"
 
 #: data/ui/Headerbar.ui:43
-msgid "Open the Main Menu"
-msgstr "मुख्य मेनू खोलें"
+msgid "Main Menu"
+msgstr "मुख्य मेनू"
 
 #: data/ui/Headerbar.ui:54
-msgid "_Find"
-msgstr "खोजें (_F)"
-
-#: data/ui/Headerbar.ui:56
 msgid "Search in the File"
 msgstr "फाइल में खोजें"
 
-#: data/ui/Headerbar.ui:79
+#: data/ui/Headerbar.ui:77
 msgid "_Hemingway Mode"
 msgstr "हेमिंग्वे मोड (_H)"
 
-#: data/ui/Headerbar.ui:83
+#: data/ui/Headerbar.ui:81
 msgid "_Focus Mode"
 msgstr "फोकस मोड (_F)"
 
-#: data/ui/Headerbar.ui:89
+#: data/ui/Headerbar.ui:87
 msgid "Find and _Replace"
-msgstr "ढूँढें और बदलें (_R)"
+msgstr "खोजें और बदलें (_R)"
 
-#: data/ui/Headerbar.ui:95
+#: data/ui/Headerbar.ui:93
 msgid "_Preferences"
-msgstr "प्राथमिकताएँ (_P)"
+msgstr "प्राथमिकताएं (_P)"
 
-#: data/ui/Headerbar.ui:101
+#: data/ui/Headerbar.ui:99
 msgid "Open _Tutorial"
 msgstr "अनुशिक्षण खोलें (_T)"
 
-#: data/ui/Headerbar.ui:106
+#: data/ui/Headerbar.ui:104
 msgid "_Keyboard Shortcuts"
 msgstr "कीबोर्ड शॉर्टकट (_K)"
 
-#: data/ui/Headerbar.ui:110
+#: data/ui/Headerbar.ui:108
 msgid "_About Apostrophe"
 msgstr "Apostrophe के बारे में (_A)"
 
-#: data/ui/Headerbar.ui:121
+#: data/ui/Headerbar.ui:119
 msgid "_Save As..."
-msgstr "ऐसे सहेजें... (_S)"
+msgstr "ऐसे सहेजें (_S)..."
 
-#: data/ui/Headerbar.ui:144
+#: data/ui/Headerbar.ui:142
 msgid "Advanced _Export…"
-msgstr "उन्नत निर्यात… (_E)"
+msgstr "उन्नत निर्यात (_E)…"
 
-#: data/ui/Headerbar.ui:150
+#: data/ui/Headerbar.ui:148
 msgid "_Copy HTML"
 msgstr "HTML कॉपी करें (_C)"
 
@@ -383,19 +403,19 @@ msgstr "वर्तनी जांचें"
 
 #: data/ui/Preferences.ui:18
 msgid "Auto-Hide Header Bar"
-msgstr "हेडर बार को स्वतः छिपाएँ"
+msgstr "शीर्षलेख पट्टी को स्वतः छिपाएं"
 
 #: data/ui/Preferences.ui:19
 msgid "Auto-hide header and status bars while typing"
-msgstr "टाइप करते समय हेडर और स्टेटस बार को स्वतः छिपाएँ"
+msgstr "टाइप करते समय शीर्षलेख और स्थिति पट्टी को स्वतः छिपाएं"
 
 #: data/ui/Preferences.ui:24
 msgid "Large Text"
-msgstr "बड़ा टेक्स्ट"
+msgstr "बड़ा पाठ"
 
 #: data/ui/Preferences.ui:25
 msgid "Reduce the margins width and increase the text size when possible"
-msgstr "हाशिये की चौड़ाई कम करें और जब संभव हो तो टेक्स्ट का आकार बढ़ाएँ"
+msgstr "हाशिये की चौड़ाई कम करें और जब संभव हो तो पाठ का आकार बढ़ाएं"
 
 #: data/ui/Preferences.ui:31
 msgid "Restore Session"
@@ -407,7 +427,7 @@ msgstr "Apostrophe शुरू होने पर अपने पिछले
 
 #: data/ui/Preferences.ui:37
 msgid "Input Format"
-msgstr "इनपुट प्रारूप"
+msgstr "आगत प्रारूप"
 
 #: data/ui/Preferences.ui:38
 msgid "Flavor of markdown Apostrophe will use"
@@ -421,13 +441,14 @@ msgstr "मार्कडाउन जायके का दस्तावे
 msgid "Desired level of security when rendering the preview"
 msgstr "पूर्वावलोकन प्रस्तुत करते समय सुरक्षा का वांछित स्तर"
 
-#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_window.py:32
+#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_handler.py:205
+#: apostrophe/preview_window.py:32
 msgid "Preview"
 msgstr "पूर्वावलोकन"
 
 #: data/ui/PreviewLayoutSwitcher.ui:24
 msgid "Screen Layout"
-msgstr "स्क्रीन लेआउट"
+msgstr "स्क्रीन अभिन्यास"
 
 #: data/ui/Recents.ui:39
 msgid "No Recent Documents"
@@ -469,7 +490,7 @@ msgstr "सभी बदलें"
 #: data/ui/Shortcuts.ui:11
 msgctxt "shortcut window"
 msgid "General"
-msgstr "जनरल"
+msgstr "सामान्य"
 
 #: data/ui/Shortcuts.ui:14
 msgctxt "shortcut window"
@@ -499,7 +520,7 @@ msgstr "दस्तावेज़ बंद करें"
 #: data/ui/Shortcuts.ui:44
 msgctxt "shortcut window"
 msgid "Show Preferences"
-msgstr "प्राथमिकताएँ दिखाएँ"
+msgstr "प्राथमिकताएं दिखाएं"
 
 #: data/ui/Shortcuts.ui:50
 msgctxt "shortcut window"
@@ -509,7 +530,7 @@ msgstr "कीबोर्ड शॉर्टकट"
 #: data/ui/Shortcuts.ui:56
 msgctxt "shortcut window"
 msgid "Quit Application"
-msgstr "एप्लिकेशन छोड़ें"
+msgstr "अनुप्रयोग छोड़ें"
 
 #: data/ui/Shortcuts.ui:64
 msgctxt "shortcut window"
@@ -534,7 +555,7 @@ msgstr "पूर्वावलोकन"
 #: data/ui/Shortcuts.ui:86
 msgctxt "shortcut window"
 msgid "Fullscreen"
-msgstr "फ़ुलस्क्रीन"
+msgstr "पूर्णस्क्रीन"
 
 #: data/ui/Shortcuts.ui:94 data/ui/Shortcuts.ui:97
 msgctxt "shortcut window"
@@ -544,7 +565,7 @@ msgstr "खोजें"
 #: data/ui/Shortcuts.ui:103
 msgctxt "shortcut window"
 msgid "Find and Replace"
-msgstr "ढूँढें और बदलें"
+msgstr "खोजें और बदलें"
 
 #: data/ui/Shortcuts.ui:111
 msgctxt "shortcut window"
@@ -624,7 +645,7 @@ msgstr "चयन"
 #: data/ui/Shortcuts.ui:196
 msgctxt "shortcut window"
 msgid "Select All Text"
-msgstr "सभी टेक्स्ट चुनें"
+msgstr "सभी पाठ चुनें"
 
 #: data/ui/Statsbar.ui:21 data/ui/Statsbar.ui:40
 msgid "Show Statistics"
@@ -646,10 +667,10 @@ msgid ""
 "Install it from Apostrophe's page in Software\n"
 "or by running the following command in a terminal:"
 msgstr ""
-"Apostrophe को TeXLive एक्सटेंशन की आवश्यकता है\n"
-"PDF या LaTeX फाइलें निर्यात करने के लिए।\n"
+"PDF या LaTeX फाइलों को निर्यात करने के लिए Apostrophe\n"
+"को TeXLive विस्तार की आवश्यकता होती है।\n"
 "\n"
-"इसे सॉफ़्टवेयर में Apostrophe के पेज से इंस्टॉल करें\n"
+"इसे सॉफ्टवेयर में Apostrophe के पेज से स्थापित करें\n"
 "या टर्मिनल में निम्नलिखित कमांड चलाकर:"
 
 #: data/ui/TexliveWarning.ui:53
@@ -663,10 +684,10 @@ msgid ""
 "\n"
 "Install it from your distribution repositories."
 msgstr ""
-"Apostrophe को TeXLive की आवश्यकता है\n"
-"PDF या LaTeX फाइलें निर्यात करने के लिए।\n"
+"PDF या LaTeX फाइलें निर्यात करने के लिए\n"
+"Apostrophe को TeXLive की आवश्यकता होती है।\n"
 "\n"
-"इसे अपने वितरण रिपॉजिटरी से इंस्टॉल करें।"
+"इसे अपने वितरण रिपॉजिटरी से स्थापित करें।"
 
 #: data/ui/ThemeSwitcher.ui:17
 msgid "Use System Colors"
@@ -684,41 +705,91 @@ msgstr "सेपिया रंगों का प्रयोग"
 msgid "Use Dark Colors"
 msgstr "गहरे रंग का प्रयोग"
 
-#: data/ui/Window.ui:50
+#: data/ui/Toolbar.ui:27
+msgid "Bold"
+msgstr "बोल्ड"
+
+#: data/ui/Toolbar.ui:37
+msgid "Italic"
+msgstr "तिर्छा"
+
+#: data/ui/Toolbar.ui:47
+msgid "Strikethrough"
+msgstr "स्ट्राइकथ्रू"
+
+#: data/ui/Toolbar.ui:57
+msgid "Heading"
+msgstr "शीर्षलेख"
+
+#: data/ui/Toolbar.ui:68
+msgid "Unordered List"
+msgstr "अव्यवस्थित सूची"
+
+#: data/ui/Toolbar.ui:78
+msgid "Ordered List"
+msgstr "आदेशित सूची"
+
+#: data/ui/Toolbar.ui:88
+msgid "Check List"
+msgstr "जांच सूची"
+
+#: data/ui/Toolbar.ui:98
+msgid "Blockquote"
+msgstr "ब्लॉकउद्धरण"
+
+#: data/ui/Toolbar.ui:108
+msgid "Code"
+msgstr "कोड"
+
+#: data/ui/Toolbar.ui:118
+msgid "Link"
+msgstr "लिंक"
+
+#: data/ui/Toolbar.ui:128 apostrophe/text_view_format_inserter.py:435
+msgid "Image"
+msgstr "छवि"
+
+#: data/ui/Toolbar.ui:138
+msgid "Table"
+msgstr "तालिका"
+
+#: data/ui/Toolbar.ui:153
+msgid "Show More Controls"
+msgstr "अधिक नियंत्रण दिखाएं"
+
+#: data/ui/Window.ui:64
 msgid "This file may be insecure"
 msgstr "यह फाइल असुरक्षित हो सकती है"
 
-#: data/ui/Window.ui:51
+#: data/ui/Window.ui:65
 msgid ""
 "Previewing files from untrusted sources can be dangerous.\n"
 "If you're unsure about the contents of this file, open it in the Restricted "
-"Preview where javascript and HTML are disabled.\n"
-"                    "
+"Preview where javascript and HTML are disabled."
 msgstr ""
 "अविश्वसनीय स्रोतों से फाइलों का पूर्वावलोकन करना खतरनाक हो सकता है।\n"
 "यदि आप इस फाइल की सामग्री के बारे में अनिश्चित हैं, तो इसे प्रतिबंधित पूर्वावलोकन में खोलें "
-"जहाँ javascript और HTML अक्षम हैं।\n"
-"                    "
+"जहाँ javascript और HTML अक्षम हैं।"
 
-#: data/ui/Window.ui:64
+#: data/ui/Window.ui:77
 msgid "Load Preview"
 msgstr "पूर्वावलोकन लोड करें"
 
-#: data/ui/Window.ui:73
+#: data/ui/Window.ui:86
 msgid "Load Restricted Preview"
 msgstr "प्रतिबंधित पूर्वावलोकन लोड करें"
 
-#: data/ui/Window.ui:144
+#: data/ui/Window.ui:159
 msgid "File Has Changed on Disk"
 msgstr "डिस्क पर फाइल बदल गई है"
 
-#: data/ui/Window.ui:154
+#: data/ui/Window.ui:169
 msgid "The file has been changed by another program"
 msgstr "फाइल को किसी अन्य प्रोग्राम द्वारा बदल दिया गया है"
 
-#: data/ui/Window.ui:162
+#: data/ui/Window.ui:177
 msgid "_Discard Changes and Reload"
-msgstr "परिवर्तन त्यागें और पुनः लोड करें"
+msgstr "परिवर्तन त्यागें और पुनः लोड करें (_D)"
 
 #: apostrophe/application.py:228
 msgid "Donate"
@@ -730,7 +801,7 @@ msgstr "अनुवाद"
 
 #: apostrophe/export_dialog.py:121 apostrophe/helpers.py:84
 msgid "Close"
-msgstr "बंद"
+msgstr "बंद करें"
 
 #: apostrophe/export_dialog.py:129 apostrophe/export_dialog.py:333
 #, python-format
@@ -738,10 +809,10 @@ msgid "Export to %s"
 msgstr "%s को निर्यात करें"
 
 #: apostrophe/export_dialog.py:131 apostrophe/export_dialog.py:329
-#: apostrophe/export_dialog.py:334 apostrophe/main_window.py:415
-#: apostrophe/main_window.py:493 apostrophe/main_window.py:586
+#: apostrophe/export_dialog.py:334 apostrophe/main_window.py:416
+#: apostrophe/main_window.py:494 apostrophe/main_window.py:587
 msgid "Cancel"
-msgstr "रद्द"
+msgstr "रद्द करें"
 
 #: apostrophe/export_dialog.py:155 apostrophe/export_dialog.py:322
 #, python-brace-format
@@ -795,58 +866,66 @@ msgid "adverb"
 msgstr "क्रिया विशेषण"
 
 #. Hemingway Toast
-#: apostrophe/main_window.py:152
+#: apostrophe/main_window.py:153
 msgid "Text can't be deleted while on Hemingway mode"
-msgstr "हेमिंग्वे मोड पर रहते हुए टेक्स्ट को हटाया नहीं जा सकता"
+msgstr "हेमिंग्वे मोड पर रहते हुए पाठ को हटाया नहीं जा सकता"
 
-#: apostrophe/main_window.py:155
+#: apostrophe/main_window.py:156
 msgid "Tell me more"
-msgstr "मुझे और बताएँ"
+msgstr "मुझे और बताएं"
 
-#: apostrophe/main_window.py:411
+#: apostrophe/main_window.py:412
 msgid "Save your File"
 msgstr "अपनी फाइल सहेजें"
 
-#: apostrophe/main_window.py:414 apostrophe/main_window.py:588
+#: apostrophe/main_window.py:415 apostrophe/main_window.py:589
 msgid "Save"
 msgstr "सहेजें"
 
-#: apostrophe/main_window.py:482
+#: apostrophe/main_window.py:483
 msgid "Markdown Files"
 msgstr "मार्कडाउन फाइलें"
 
-#: apostrophe/main_window.py:486
+#: apostrophe/main_window.py:487
 msgid "Plain Text Files"
-msgstr "सादी टेक्स्ट फाइलें"
+msgstr "सादी पाठ फाइलें"
 
-#: apostrophe/main_window.py:489
+#: apostrophe/main_window.py:490
 msgid "Open a .md file"
 msgstr "एक .md फाइल खोलें"
 
-#: apostrophe/main_window.py:492
+#: apostrophe/main_window.py:493
 msgid "Open"
 msgstr "खोले"
 
-#: apostrophe/main_window.py:580
+#: apostrophe/main_window.py:581
 msgid "Save Changes?"
 msgstr "परिवर्तन सहेजें?"
 
-#: apostrophe/main_window.py:581
+#: apostrophe/main_window.py:582
 #, python-format
 msgid ""
 "“%s” contains unsaved changes. If you don’t save, all your changes will be "
 "permanently lost."
 msgstr ""
-"\"%s\" में सहेजे न गए परिवर्तन शामिल हैं। यदि आप सहेजते नहीं हैं, तो आपके सभी परिवर्तन "
-"स्थायी रूप से खो जाएंगे।"
+"“%s” में सहेजे न गए परिवर्तन शामिल हैं। यदि आप सहेजते नहीं हैं, तो आपके सभी परिवर्तन स्थायी "
+"रूप से खो जाएंगे।"
 
-#: apostrophe/main_window.py:587
+#: apostrophe/main_window.py:588
 msgid "Discard"
-msgstr "खारिज"
+msgstr "त्यागें"
 
-#: apostrophe/main_window.py:771 apostrophe/main_window.py:789
-msgid "New File"
-msgstr "नई फाइल"
+#: apostrophe/preferences_dialog.py:97
+msgid "Always Ask"
+msgstr "हमेशा पूछें"
+
+#: apostrophe/preferences_dialog.py:101
+msgid "Always Use Restricted Preview"
+msgstr "हमेशा प्रतिबंधित पूर्वावलोकन का प्रयोग करें"
+
+#: apostrophe/preferences_dialog.py:105
+msgid "Always Use Unrestricted Preview"
+msgstr "हमेशा अप्रतिबंधित पूर्वावलोकन का उपयोग करें"
 
 #: apostrophe/preview_layout_switcher.py:41
 msgid "Full-Width"
@@ -914,15 +993,15 @@ msgstr "{:d}:{:02d}:{:02d} पढ़ने का समय"
 
 #: apostrophe/text_view_format_inserter.py:24
 msgid "italic text"
-msgstr "तिरछे टेक्स्ट"
+msgstr "तिरछे पाठ"
 
 #: apostrophe/text_view_format_inserter.py:29
 msgid "bold text"
-msgstr "बोल्ड टेक्स्ट"
+msgstr "बोल्ड पाठ"
 
 #: apostrophe/text_view_format_inserter.py:34
 msgid "strikethrough text"
-msgstr "स्ट्राइकथ्रू टेक्स्ट"
+msgstr "स्ट्राइकथ्रू पाठ"
 
 #: apostrophe/text_view_format_inserter.py:49
 #: apostrophe/text_view_format_inserter.py:117
@@ -948,16 +1027,12 @@ msgstr "https://www.example.com"
 
 #: apostrophe/text_view_format_inserter.py:395
 msgid "link text"
-msgstr "लिंक टेक्स्ट"
+msgstr "लिंक पाठ"
 
 #: apostrophe/text_view_format_inserter.py:429
 #: apostrophe/text_view_format_inserter.py:461
 msgid "image caption"
 msgstr "छवि का शीर्षक"
-
-#: apostrophe/text_view_format_inserter.py:435
-msgid "Image"
-msgstr "छवि"
 
 #: apostrophe/text_view_format_inserter.py:441
 msgid "Select an image"
@@ -971,6 +1046,6 @@ msgstr ""
 "\n"
 "कोड\n"
 
-#: apostrophe/text_view.py:176 apostrophe/text_view.py:178
+#: apostrophe/text_view.py:185 apostrophe/text_view.py:187
 msgid "web page"
 msgstr "वेब पेज"
