@@ -1,3 +1,14 @@
+Version 3.1
+~~~~~~~~~~~~~~~
+Released: 2024-06-28
+
+Bugfixes:
+- Fixed buggy drag and drop behavior 
+- Fixed labels not displaying in the Recents popover when they had an ampersand
+
+Features:
+- Added pride colors to the savebar
+
 Version 3.0
 ~~~~~~~~~~~~~~~
 Released: 2024-05-01

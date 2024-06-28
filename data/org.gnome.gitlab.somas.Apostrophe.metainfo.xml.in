@@ -57,6 +57,19 @@
     <color type="primary" scheme_preference="dark">#1b786d</color>
   </branding>
   <releases>
+    <release type="stable" version="3.1" date="2024-06-28T00:00:00Z">
+      <description>
+        <p>This release fixes the following bugs:</p>
+        <ul>
+          <li>Fixed buggy drag and drop behavior</li>
+          <li>Fixed labels not displaying in the Recents popover when they had an ampersand</li>
+        </ul>
+        <p>This release adds the following feature:</p>
+        <ul>
+          <li>Added pride colors to the savebar</li>
+        </ul>
+      </description>
+    </release>
     <release type="stable" version="3.0" date="2024-05-01T00:00:00Z">
       <description>
         <p>This release adds the following features:</p>
