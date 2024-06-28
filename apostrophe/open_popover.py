@@ -82,7 +82,7 @@ class ApostropheOpenPopover(Gtk.Popover):
         recents_list = filter(lambda item: item.get_mime_type() == 'text/markdown',
                               self.recents_manager.get_items())
         for item in recents_list:
-            self.model.append(RecentItem(item.get_display_name(), item.get_uri_display(), item.get_uri()))
+            self.model.append(RecentItem(GLib.markup_escape_text(item.get_display_name()), GLib.markup_escape_text(item.get_uri_display()), item.get_uri()))
 
         self.stack.set_visible_child(self.recent if self.model else self.empty)
 
@@ -94,7 +94,7 @@ class ApostropheOpenPopover(Gtk.Popover):
 
         self.model.remove_all()
         for item in filtered_list:
-            self.model.append(RecentItem(item.get_display_name(), item.get_uri_display(), item.get_uri()))
+            self.model.append(RecentItem(GLib.markup_escape_text(item.get_display_name()), GLib.markup_escape_text(item.get_uri_display()), item.get_uri()))
 
     def on_delete_click(self, _widget, item):
         self.recents_manager.remove_item(item.uri)
