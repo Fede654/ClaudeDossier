@@ -39,6 +39,7 @@ from apostrophe.stats_handler import StatsHandler
 from apostrophe.text_view import ApostropheTextView
 from apostrophe.text_view_format_inserter import FormatInserter
 from apostrophe.preview_security import PreviewSecurityHandler
+from apostrophe.pride import apply_seasonal_style
 
 LOGGER = logging.getLogger('apostrophe')
 
@@ -115,6 +116,9 @@ class MainWindow(Adw.ApplicationWindow):
         self.progressbar_animation = Adw.TimedAnimation.new(self.save_progressbar, 0, 1, 300, fraction_target)
         self.progressbar_animation.connect("notify::value", on_progressbar_value)
         self.progressbar_animation.connect("done", fade_out_progressbar)
+
+        # Setup pride progressbar
+        apply_seasonal_style(self.save_progressbar)
 
         # Setup preview
 
