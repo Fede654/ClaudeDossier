@@ -189,10 +189,7 @@ class ApostropheTextView(GtkSource.View):
         except Exception as e:
             # delete automatically added DnD text
             insert_mark = self.buffer.get_insert()
-            cursor_iter_r = self.buffer.get_iter_at_mark(insert_mark)
-            cursor_iter_l = cursor_iter_r.copy()
-            cursor_iter_l.backward_chars(len(content))
-
+            cursor_iter_l, cursor_iter_r = self.buffer.get_selection_bounds()
             self.buffer.delete(cursor_iter_l, cursor_iter_r)
 
             limit_left = 0
