@@ -56,6 +56,17 @@
     <color type="primary" scheme_preference="light">#90ded5</color>
     <color type="primary" scheme_preference="dark">#1b786d</color>
   </branding>
+  <requires>
+      <display_length compare="ge">1311</display_length>
+  </requires>
+  <recommends>
+    <internet>always</internet>
+  </recommends>
+  <supports>
+    <control>pointing</control>
+    <control>keyboard</control>
+    <control>touch</control>
+  </supports>
   <releases>
     <release type="stable" version="3.1" date="2024-06-28T00:00:00Z">
       <description>
