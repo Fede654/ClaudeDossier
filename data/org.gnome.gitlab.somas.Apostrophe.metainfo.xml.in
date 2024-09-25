@@ -57,7 +57,7 @@
     <color type="primary" scheme_preference="dark">#1b786d</color>
   </branding>
   <requires>
-      <display_length compare="ge">1311</display_length>
+    <display_length compare="ge">1311</display_length>
   </requires>
   <recommends>
     <internet>always</internet>
@@ -68,6 +68,20 @@
     <control>touch</control>
   </supports>
   <releases>
+    <release type="stable" version="3.2" date="2024-09-25T00:00:00Z">
+      <description>
+        <p>This release fixes the following bugs:</p>
+        <ul>
+          <li>Fixed disability flag not being shown in the savebar</li>
+          <li>Fixed bold text not working on the live preview</li>
+        </ul>
+        <p>This release adds the following features:</p>
+        <ul>
+          <li>Updated dependencies</li>
+          <li>Updated Basque, Norwegian, Spanish, Turkish, Romanian and Finish translations</li>
+        </ul>
+      </description>
+    </release>
     <release type="stable" version="3.1" date="2024-06-28T00:00:00Z">
       <description>
         <p>This release fixes the following bugs:</p>

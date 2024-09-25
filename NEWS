@@ -1,3 +1,15 @@
+Version 3.2
+~~~~~~~~~~~~~~~
+Released: 2024-09-25
+
+Bugfixes:
+- Fixed disability flag not being shown in the savebar 
+- Fixed bold text not working on the live preview
+
+Features:
+- Updated dependencies
+- Updated Basque, Norwegian, Spanish, Turkish, Romanian and Finish translations
+
 Version 3.1
 ~~~~~~~~~~~~~~~
 Released: 2024-06-28
