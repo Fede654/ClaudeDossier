@@ -5,8 +5,8 @@
     "sdk": "org.gnome.Sdk",
     "command": "apostrophe",
     "finish-args": [
-        "--socket=wayland",
         "--socket=fallback-x11",
+        "--socket=wayland",
         "--share=ipc",
         "--share=network",
         "--device=dri",
@@ -14,7 +14,13 @@
         "--filesystem=xdg-run/gvfsd",
         "--talk-name=org.gtk.vfs",
         "--talk-name=org.gtk.vfs.*",
-        "--env=PATH=/app/bin:/usr/bin:/app/extensions/TexLive/2018/bin/x86_64-linux/"
+        "--env=PATH=/app/bin:/usr/bin:/app/extensions/TexLive/2018/bin/x86_64-linux/:/app/extensions/TexLive/2018/bin/aarch64-linux/"
+    ],
+    "cleanup": [
+        "/lib/pkgconfig",
+        "/share/vala",
+        "/share/gir-1.0",
+        "/share/gtk-doc"
     ],
     "add-extensions": {
         "org.gnome.gitlab.somas.Apostrophe.Plugin": {
@@ -37,8 +43,8 @@
                 {
                     "type": "archive",
                     "archive-type": "tar-gzip",
-                    "url": "https://github.com/jgm/pandoc/releases/download/3.1.8/pandoc-3.1.8-linux-amd64.tar.gz",
-                    "sha512": "d09fac84c6bba940cc9a57e70c72cce107032d404a33a284687d607baf862bfadae58e8888c326fafb330e1e22a14cdc120d015a17a5dc8dbf795603af0436bf",
+                    "url": "https://github.com/jgm/pandoc/releases/download/3.4/pandoc-3.4-linux-amd64.tar.gz",
+                    "sha512": "b38ca8b7c51117051de235a937bf50382ca831e68f190503c3526261920c4568f963400c1953247495d18782f5b0d864085621965a11750255b508ba7779ccaa",
                     "only-arches": [
                         "x86_64"
                     ],
@@ -52,8 +58,8 @@
                 {
                     "type": "archive",
                     "archive-type": "tar-gzip",
-                    "url": "https://github.com/jgm/pandoc/releases/download/3.1.8/pandoc-3.1.8-linux-arm64.tar.gz",
-                    "sha512": "4f5d4c643e859d3a77faf48992aa64bef898da76312c4cbbb6cab5f772e5ab8085767938cfa50cb778078dfb4a4cdcf5073fbba6c3941305563b61e920c21a35",
+                    "url": "https://github.com/jgm/pandoc/releases/download/3.4/pandoc-3.4-linux-arm64.tar.gz",
+                    "sha512": "954c7b267d67566da8c613f866c82b3a2e6d65e42f261f07ffa486a0e2c4095b3320cee637aecfa297e7abd81e118fcfe0e05d04870bc23219c0a3154c96e15a",
                     "only-arches": [
                         "aarch64"
                     ],
@@ -104,8 +110,8 @@
                 {
                     "type": "archive",
                     "archive-type": "tar-gzip",
-                    "url": "https://api.github.com/repos/hakimel/reveal.js/tarball/4.6.0",
-                    "sha512": "96d6839264ba7b26fa281ca8b3c881dccc43e8338eaf397685a46885bd2685d301def9c33bfac65b46dfe35b51edd27df84f195ff01fb2993ebc43dd0017b4e2",
+                    "url": "https://api.github.com/repos/hakimel/reveal.js/tarball/5.1.0",
+                    "sha512": "5e1651966f07fa9622124c0acac90ef1640909f4414622816bb96e94ea10a30e2a3aa1af14b1c61e1fe2ad74a10a8ef88a16d5abb4ebacafef278e2429502578",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/hakimel/reveal.js/releases/latest",
@@ -133,7 +139,10 @@
         {
             "name": "libspelling",
             "buildsystem": "meson",
-            "config-opts": ["-Ddocs=false", "-Dvapi=false"],
+            "config-opts": [
+                "-Ddocs=false",
+                "-Dvapi=false"
+            ],
             "sources": [
                 {
                     "type": "archive",
@@ -148,7 +157,7 @@
         },
         {
             "name": "apostrophe",
-            "builddir" : true,
+            "builddir": true,
             "buildsystem": "meson",
             "run-tests": true,
             "config-opts": [
