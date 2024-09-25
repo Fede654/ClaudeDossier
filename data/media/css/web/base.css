@@ -83,7 +83,7 @@ a:hover {
 }
 
 strong {
-  font-weight: 600;
+  font-weight: bold;
 }
 
 img {
@@ -140,7 +140,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: 600;
+  font-weight: bold;
   margin: 0;
 }
 
@@ -371,7 +371,7 @@ h5,
 h6 {
   margin-top: 1.5em;
   margin-bottom: 1em;
-  font-weight: 600;
+  font-weight: bold;
   line-height: 1.25;
 }
 
@@ -447,7 +447,7 @@ dl dt {
   margin-top: 1em;
   font-size: 1em;
   font-style: italic;
-  font-weight: 600;
+  font-weight: bold;
 }
 
 dl dd {
@@ -462,7 +462,7 @@ table {
 }
 
 table th {
-  font-weight: 600;
+  font-weight: bold;
 }
 
 table th,
