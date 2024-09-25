@@ -10,7 +10,7 @@ Apostrophe is a [GTK+](https://www.gtk.org) based distraction free Markdown edit
 
 ## Install
 
-<a href='https://flathub.org/apps/details/org.gnome.gitlab.somas.Apostrophe'><img width='240' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-en.png'/></a>
+<a href='https://flathub.org/apps/details/org.gnome.gitlab.somas.Apostrophe'><img width='240' alt='Download on Flathub' src='https://flathub.org/api/badge?svg&locale=en'/></a>
 
 Also several unofficial builds are available:
 
