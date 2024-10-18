@@ -16,16 +16,16 @@
 import os
 import re
 import telnetlib
+import threading
 from gettext import gettext as _
 from urllib.parse import unquote
 
 import gi
 
 gi.require_version("Gtk", "4.0")
-# gi.require_version("WebKit2", "4.0")
-from gi.repository import Gdk, GdkPixbuf, GLib, Gtk
+gi.require_version('WebKit', '6.0')
+from gi.repository import Gdk, GObject, GLib, Gtk, WebKit, Adw
 
-# from gi.repository import WebKit2
 from apostrophe import latex_to_PNG, markup_regex
 from apostrophe.settings import Settings
 
@@ -153,27 +153,110 @@ def get_dictionary(term):
     return da.parse_wordnet(output.decode(encoding="UTF-8"))
 
 
-class InlinePreview:
+class FixedWidthContainer(Adw.Bin):
+    __gtype_name__ = "FixedWidthContainer"
+
+    content_ = None
+
+    @GObject.Property(type=Gtk.Widget)
+    def content(self):
+        return self.content_
+
+    @content.setter
+    def content(self, value):
+        self.set_child(value)
+        self.content_ = value
+
+    def __init__(self):
+        super().__init__()
+
+        self.queue_allocate()
+        self.queue_resize()
+        self.set_layout_manager(None)
+
+    def do_size_allocate(self, width, height, baseline):
+        self.content.allocate(width, height, baseline)
+
+    def do_measure(self, orientation, for_size):
+        content_horizontal_natural = self.content.measure(Gtk.Orientation.HORIZONTAL, -1).natural
+        if orientation == Gtk.Orientation.HORIZONTAL:
+            min = natural = content_horizontal_natural
+        else:
+            min, natural, _, _ = self.content.measure(orientation, content_horizontal_natural)
+
+        min_baseline = -1
+        nat_baseline = -1
+
+        return (min, natural, min_baseline, nat_baseline)
+
+@Gtk.Template(resource_path='/org/gnome/gitlab/somas/Apostrophe/ui/InlinePreviewPopover.ui')
+class InlinePreviewPopover(Gtk.Popover):
+    __gtype_name__ = "InlinePreviewPopover"
+
+    stack = Gtk.Template.Child()
+    spinner = Gtk.Template.Child()
+    empty = Gtk.Template.Child()
+    error = Gtk.Template.Child()
+    is_loaded = GObject.property(type=bool, default=False)
+    preview_ = None
+
+    @GObject.Property(type=Gtk.Widget)
+    def preview(self):
+        return self.preview_
+
+    @preview.setter
+    def preview(self, value):
+        self.remove_preview()
+        self.stack.add_named(value, "view")
+        self.stack.set_visible_child(value)
+        self.preview_ = value
+        self.is_loaded = True
+
+    def __init__(self):
+        super().__init__()
+        self.connect("closed", self._on_popover_closed)
+        self.stack.set_visible_child(self.empty)
+
+    def set_loading(self):
+        GLib.timeout_add(15, self.set_spinner, None, 0)
+
+    def set_spinner(self, *args, **kwargs):
+        if not self.is_loaded:
+            self.stack.set_visible_child(self.spinner)
+        return False
+
+    def remove_preview(self):
+        if preview:= self.stack.get_child_by_name("view"):
+            self.stack.remove(preview)
+        self.is_loaded = False
+        self.stack.set_visible_child(self.empty)
+
+    def set_not_found(self):
+        self.stack.set_visible_child(self.error)
+
+    def _on_popover_closed(self, *args, **kwargs):
+        self.remove_preview()
+
+class InlinePreview(GObject.Object):
     WIDTH = 400
     HEIGHT = 300
 
     def __init__(self, text_view):
+
         self.settings = Settings.new()
 
         self.text_view = text_view
-        self.text_view.gesture_controller.connect("pressed",
-                                                   self.on_button_press_event)
         self.text_buffer = text_view.get_buffer()
-        self.cursor_mark = self.text_buffer.create_mark(
-            "click",
-            self.text_buffer.get_iter_at_mark(self.text_buffer.get_insert()))
 
         self.latex_converter = latex_to_PNG.LatexToPNG()
         self.characters_per_line = self.settings.get_int("characters-per-line")
 
-        self.popover = Gtk.Popover.new(self.text_view)
-        self.popover.add_css_class("quick-preview-popup")
-        self.popover.set_modal(True)
+        self.popover = InlinePreviewPopover()
+        self.popover.set_parent(text_view)
+
+        self.popover.connect("closed", self._on_popover_closed)
+
+        self.current_match = None
 
         self.preview_fns = {
             markup_regex.MATH: self.get_view_for_math,
@@ -184,29 +267,43 @@ class InlinePreview:
             re.compile(r"(?P<text>\w+)"): self.get_view_for_lexikon
         }
 
-    def on_button_press_event(self, _text_view, event):
-        if event.button == 1 and event.state & Gdk.ModifierType.CONTROL_MASK:
-            x, y = self.text_view.window_to_buffer_coords(2, int(event.x),
-                                                          int(event.y))
-            self.text_buffer.move_mark(
-                self.cursor_mark,
-                self.text_view.get_iter_at_location(x, y).iter)
-            self.open_popover(self.text_view)
-
     def get_view_for_math(self, match):
+
         success, result = self.latex_converter.generatepng(match.group("text"))
         if success:
-            return Gtk.Image.new_from_file(result)
+            result = Gdk.Texture.new_from_filename(result)
+
+        if match == self.current_match:
+            GLib.idle_add(self.get_view_for_math_finish, success, result)
+
+    def get_view_for_math_finish(self, success, result):
+        if success:
+            image = Gtk.Picture()
+            image.set_paintable(result)
+            width, height = result.get_intrinsic_width(), result.get_intrinsic_height()
+            ratio = max(width/self.WIDTH, height/self.HEIGHT, 1)
+            width, height = width/ratio, height/ratio
+            view = Gtk.ScrolledWindow.new()
+            view.set_min_content_width(width)
+            view.set_min_content_height(height)
+            view.set_child(image)
         else:
-            error = _("Formula looks incorrect:")
-            error += "\n\n“{}”".format(result)
-            return Gtk.Label(label=error)
+            if result == 2:
+                error = _("LaTeX not found")
+            else:
+                error = _("Formula looks incorrect:")
+                error += "\n\n“{}”".format(result)
+            view = Gtk.Label(label=error)
+        view.add_css_class("formula")
+        self.popover.preview = view
+        return False
 
     def get_view_for_image(self, match):
         path = match.group("url")
 
         if path.startswith(("https://", "http://", "www.")):
-            return self.get_view_for_link(match)
+            self.get_view_for_link(match)
+            return
         if path.startswith(("file://")):
             path = path[7:]
         if not path.startswith(("/", "file://")):
@@ -214,40 +311,73 @@ class InlinePreview:
                 self.settings.get_string("open-file-path"), path)
         path = unquote(path)
 
-        return Gtk.Image.new_from_pixbuf(
-            GdkPixbuf.Pixbuf.new_from_file_at_size(path, self.WIDTH,
-                                                   self.HEIGHT))
+        if match == self.current_match:
+            texture = Gdk.Texture.new_from_filename(path)
+            GLib.idle_add(self.get_view_for_image_finish, texture)
+
+    def get_view_for_image_finish(self, texture):
+        image = Gtk.Picture()
+        image.set_paintable(texture)
+        width, height = texture.get_intrinsic_width(), texture.get_intrinsic_height()
+        ratio = max(width/self.WIDTH, height/self.HEIGHT, 1)
+        width, height = width/ratio, height/ratio
+        view = Gtk.ScrolledWindow.new()
+        view.set_min_content_width(width)
+        view.set_min_content_height(height)
+        view.set_child(image)
+        self.popover.preview = view
+        return False
 
     def get_view_for_link(self, match):
-        return
+        if match == self.current_match:
+            GLib.idle_add(self.get_view_for_link_finish, match)
+
+    def get_view_for_link_finish(self, match):
         url = match.group("url")
-        web_view = WebKit2.WebView(zoom_level=0.3125)  # ~1280x960
+        web_view = WebKit.WebView(zoom_level=0.3125)  # ~1280x960
         web_view.set_size_request(self.WIDTH, self.HEIGHT)
         if GLib.uri_parse_scheme(url) is None:
             url = "http://{}".format(url)
         web_view.load_uri(url)
-        return web_view
+        self.popover.preview = web_view
+        return False
 
     def get_view_for_footnote(self, match):
         footnote_id = match.group("id")
         fn_matches = re.finditer(
             markup_regex.FOOTNOTE,
-            self.text_buffer.props.text)
+            self.text_buffer.get_text(
+                *self.text_buffer.get_bounds(),
+                False
+            ))
         for fn_match in fn_matches:
             if fn_match.group("id") == footnote_id:
                 if fn_match:
                     footnote = re.sub("\n[\t ]+", "\n", fn_match.group("text"))
                 else:
                     footnote = _("No matching footnote found")
-                label = Gtk.Label(label=footnote)
-                label.set_max_width_chars(self.characters_per_line)
-                label.set_line_wrap(True)
-                return label
-        return None
+                if match == self.current_match:
+                    GLib.idle_add(self.get_view_for_footnote_finish, footnote)
+                return False
+
+    def get_view_for_footnote_finish(self, footnote):
+
+        label = Gtk.Label(label=footnote)
+        label.set_max_width_chars(self.characters_per_line)
+        label.set_wrap(True)
+        view = FixedWidthContainer()
+        view.add_css_class("footnote")
+        view.content = label
+        self.popover.preview = view
+        return False
 
     def get_view_for_lexikon(self, match):
         term = match.group("text")
         lexikon_dict = get_dictionary(term)
+        if match == self.current_match:
+            GLib.idle_add(self.get_view_for_lexikon_finish, term, lexikon_dict)
+
+    def get_view_for_lexikon_finish(self, term, lexikon_dict):
         if lexikon_dict:
             grid = Gtk.Grid.new()
             grid.add_css_class("lexikon")
@@ -289,16 +419,37 @@ class InlinePreview:
                     def_label.add_css_class("description")
                     def_label.set_halign(Gtk.Align.START)
                     def_label.set_max_width_chars(self.characters_per_line)
-                    def_label.set_line_wrap(True)
+                    def_label.set_wrap(True)
                     def_label.set_justify(Gtk.Justification.FILL)
                     grid.attach(def_label, 1, i, 1, 1)
                 i = i + 1
             if i > 0:
-                return grid
-        return None
+                view = Gtk.ScrolledWindow.new()
+                view.set_max_content_height(self.HEIGHT)
+                view.set_propagate_natural_width(True)
+                view.set_propagate_natural_height(True)
+                fixed_container = FixedWidthContainer()
+                fixed_container.content = grid
+                view.set_child(fixed_container)
+                self.popover.preview = view
+        else:
+            self.popover.set_not_found()
+        return False
 
-    def open_popover(self, _editor, _data=None):
-        start_iter = self.text_buffer.get_iter_at_mark(self.cursor_mark)
+    def open_popover(self, *args, **kwargs):
+        rect = self.text_view.get_iter_location(
+                            self.text_buffer.get_iter_at_mark(self.text_buffer.get_insert()))
+        rect.x, rect.y = self.text_view.buffer_to_window_coords(
+            Gtk.TextWindowType.TEXT, rect.x, rect.y)
+        self.popover.set_pointing_to(rect)
+
+        self.popover.popup()
+        self.popover.set_loading()
+
+        self.populate_popover()
+
+    def populate_popover(self, *args, **kwargs):
+        start_iter = self.text_buffer.get_iter_at_mark(self.text_buffer.get_insert())
         line_offset = start_iter.get_line_offset()
         end_iter = start_iter.copy()
         start_iter.set_line_offset(0)
@@ -309,17 +460,9 @@ class InlinePreview:
             matches = re.finditer(regex, text)
             for match in matches:
                 if match.start() <= line_offset <= match.end():
-                    prev_view = self.popover.get_child()
-                    if prev_view:
-                        prev_view.destroy()
-                    view = get_view_fn(match)
-                    if view:
-                        view.show_all()
-                        self.popover.add(view)
-                        rect = self.text_view.get_iter_location(
-                            self.text_buffer.get_iter_at_mark(self.cursor_mark))
-                        rect.x, rect.y = self.text_view.buffer_to_window_coords(
-                            Gtk.TextWindowType.TEXT, rect.x, rect.y)
-                        self.popover.set_pointing_to(rect)
-                        GLib.idle_add(self.popover.popup)
+                    self.current_match = match
+                    threading.Thread(target=get_view_fn, args=(match,)).start()
                     return
+
+    def _on_popover_closed(self, *args, **kwargs):
+        self.current_match = None

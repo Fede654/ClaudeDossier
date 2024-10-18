@@ -88,15 +88,36 @@ class ApostropheTextView(GtkSource.View):
         # Spell checking
         checker = Spelling.Checker.get_default()
         self.adapter = Spelling.TextBufferAdapter.new(self.buffer, checker)
-        extra_menu = self.adapter.get_menu_model()
+        spellchecking_menu = self.adapter.get_menu_model()
 
         checker.connect("notify::language", self._on_spelling_language_changed)
 
-        self.set_extra_menu(extra_menu)
         self.insert_action_group('spelling', self.adapter)
 
         self.settings.bind("spellcheck", self.adapter,
                            "enabled", Gio.SettingsBindFlags.DEFAULT)
+        
+        # Preview popover
+        self.preview_popover = InlinePreview(self)
+        action = Gio.SimpleAction.new("open_inline_preview")
+        action.connect("activate", self.preview_popover.open_popover)
+
+        group = Gio.SimpleActionGroup.new()
+        group.add_action(action)
+
+        self.insert_action_group("text", group)
+        
+        peek_menu = Gio.Menu()
+        peek_item = Gio.MenuItem.new("Peek", 'text.open_inline_preview')
+        peek_menu.append_item(peek_item)
+
+        # Context menu
+
+        extra_menu = Gio.Menu()
+        extra_menu.append_section(None, peek_menu)
+        extra_menu.append_section(None, spellchecking_menu)
+
+        self.set_extra_menu(extra_menu)
 
         key = Gtk.EventControllerKey.new()
         key.set_propagation_phase(Gtk.PropagationPhase.CAPTURE)
@@ -106,9 +127,6 @@ class ApostropheTextView(GtkSource.View):
         # Markup
         self.markup = MarkupHandler(self)
         self.connect('destroy', self.markup.stop)
-
-        # Preview popover
-        # self.preview_popover = InlinePreview(self)
 
         # Drag and drop
         formats = Gdk.ContentFormatsBuilder.new()
@@ -249,13 +267,14 @@ class ApostropheTextView(GtkSource.View):
     @Gtk.Template.Callback()
     def _on_button_pressed_event(self, gesture, n_press, x, y):
         event = gesture.get_last_event()
-        if n_press != 1 or not event.triggers_context_menu():
-            pass
-        else:
-            buffer_x, buffer_y = self.window_to_buffer_coords(Gtk.TextWindowType.TEXT, x, y)
-            found, iter = self.get_iter_at_location(buffer_x, buffer_y)
-            if found:
-                self.buffer.place_cursor(iter)
+        buffer_x, buffer_y = self.window_to_buffer_coords(Gtk.TextWindowType.TEXT, x, y)
+        found, iter = self.get_iter_at_location(buffer_x, buffer_y)
+        if found:
+            self.buffer.place_cursor(iter)
+
+        if event.get_modifier_state() == Gdk.ModifierType.CONTROL_MASK and not event.triggers_context_menu():
+            self.preview_popover.open_popover()
+
         return False
 
     @Gtk.Template.Callback()
@@ -297,6 +316,8 @@ class ApostropheTextView(GtkSource.View):
         # TODO: Find a better way to handle unwanted scroll on resize.
         self.frozen_scroll_scale = self.scroll_scale
         GLib.idle_add(self._unfreeze_scroll_scale)
+
+        self.preview_popover.popover.present()
 
     @Gtk.Template.Callback()
     def _on_spellcheck_update(self, *args, **kwargs):

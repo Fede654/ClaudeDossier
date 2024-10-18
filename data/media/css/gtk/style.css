@@ -73,42 +73,41 @@
   transform: scale(-1,1);
 }
 
+.quick-preview-popup .footnote,
+.quick-preview-popup .formula
+{
+  margin: 18px;
+}
+
 .lexikon {
   font-family: serif;
   font-size: 12px;
-  background: @accent_bg_color;
-  border: 4px solid @accent_bg_color;
+  margin: 18px;
 }
 
 .lexikon .header {
   font-size: 14px;
-  padding-top: 16px;
-  padding-bottom: 4px;
+  padding-top: 18px;
+  padding-bottom: 6px;
   font-weight: bold;
 }
 
-.lexikon .header .header.first {
+.lexikon .header.first {
   padding-top: 0px;
 }
 
 .lexikon .number {
-  padding-left: 16px;
-  padding-right: 4px;
+  padding-left: 18px;
+  padding-right: 6px;
 }
 
 .quick-preview-popup {
-  background-color: @accent_bg_color;
-  padding: 8px 12px 8px 12px;
+  padding: 6px 12px 6px 12px;
 }
 
-.quick-preview-popup grid {
-  background-color: @accent_bg_color;
-  color: @accent_fg_color;
-  border-color: @accent_bg_color;
-}
 
-.quick-preview-popup label {
-  color: @accent_fg_color;
+.quick-preview-popup > contents {
+  padding: 0;
 }
 
 /* theme selector */
