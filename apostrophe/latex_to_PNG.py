@@ -99,7 +99,7 @@ class LatexToPNG:
             """
             Errors in Latex output start with "! "
             Stripping exclamation marks and superflous newlines
-            and telling the user what he"s done wrong.
+            and telling the user what they've done wrong.
             """
             i = []
             error = ""
