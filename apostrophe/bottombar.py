@@ -79,6 +79,8 @@ class BottomBar(Gtk.Widget):
         stats_width = self.stats_container.measure(Gtk.Orientation.HORIZONTAL, -1).minimum
         stats_height = self.toolbar_container.measure(Gtk.Orientation.VERTICAL, -1).minimum
 
+        stats_wide_width = self.stats.measure(Gtk.Orientation.HORIZONTAL, -1).minimum
+
         self.background_container.allocate(width, toolbar_height, baseline)
 
         if self.get_direction() == Gtk.TextDirection.LTR:
@@ -94,7 +96,10 @@ class BottomBar(Gtk.Widget):
             self.stats_container.allocate(stats_width,stats_height, baseline)
             self.toolbar_container.allocate(toolbar_width, toolbar_height, baseline, offset_transform)
 
-        self.set_stats_mode()
+        if toolbar_width + stats_wide_width > width:
+            self.stats.buttons_stack.set_visible_child(self.stats.stats_button_short)
+        else:
+            self.stats.buttons_stack.set_visible_child(self.stats.stats_button)
 
     def do_measure(self, orientation, for_size):
         toolbar = self.toolbar_container.measure(orientation, -1)
@@ -122,16 +127,6 @@ class BottomBar(Gtk.Widget):
         stats_width = self.stats_container.get_width()
 
         return y > 0 and ((x < toolbar_width or x > (bottombar_width - stats_width)) or self.toolbar.extra_toolbar_revealed)
-    
-    def set_stats_mode(self):
-        parent_width = self.get_width()
-        toolbar_width = self.toolbar.get_width()
-        stats_wide_width = self.stats.stats_button.get_width()
-
-        if toolbar_width + stats_wide_width > parent_width:
-            self.stats.buttons_stack.set_visible_child(self.stats.stats_button_short)
-        else:
-            self.stats.buttons_stack.set_visible_child(self.stats.stats_button)
 
 
 @Gtk.Template(resource_path='/org/gnome/gitlab/somas/Apostrophe/ui/Toolbar.ui')
