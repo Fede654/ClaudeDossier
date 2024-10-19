@@ -269,7 +269,7 @@ class ApostropheTextView(GtkSource.View):
         event = gesture.get_last_event()
         buffer_x, buffer_y = self.window_to_buffer_coords(Gtk.TextWindowType.TEXT, x, y)
         found, iter = self.get_iter_at_location(buffer_x, buffer_y)
-        if found:
+        if found and not self.buffer.get_has_selection():
             self.buffer.place_cursor(iter)
 
         if event.get_modifier_state() == Gdk.ModifierType.CONTROL_MASK and not event.triggers_context_menu():
