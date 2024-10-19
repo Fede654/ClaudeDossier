@@ -27,15 +27,16 @@
     <color type="primary" scheme_preference="dark">#1b786d</color>
   </branding>
   <requires>
-    <display_length compare="ge">1311</display_length>
+    <display_length compare="ge">656</display_length>
   </requires>
   <recommends>
-    <internet>always</internet>
+    <display_length compare="ge">1311</display_length>
   </recommends>
   <supports>
     <control>pointing</control>
     <control>keyboard</control>
     <control>touch</control>
+    <internet>offline-only</internet>
   </supports>
   <launchable type="desktop-id">@app-id@.desktop</launchable>
   <url type="homepage">https://apps.gnome.org/Apostrophe/</url>
