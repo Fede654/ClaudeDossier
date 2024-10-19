@@ -199,6 +199,20 @@ class MarkupHandler:
             # tag_end).
             result = []
 
+            # Find "```" code block tag (offset + colorize paragraph).
+            code_blocks = []
+            matches = re.finditer(markup_regex.CODE_BLOCK, text)
+            for match in matches:
+                start, end = match.start("block"), match.end("block")
+                result.append((
+                    self.TAG_NAME_CODE_BLOCK, (),
+                    start, end))
+                code_blocks.append((start, end))
+
+            # helper functions to test if a range is inside code blocks.
+            inside_code_blocks = lambda start, end: any(True for (s, e) in code_blocks if s < start and end <  e)
+            match_inside_code_blocks = lambda m: inside_code_blocks(m.start(), m.end())
+
             # Find:
             # - "_italic_" (italic)
             # - "**bold**" (bold)
@@ -220,6 +234,8 @@ class MarkupHandler:
             for regexp, tag_name in regexps:
                 matches = re.finditer(regexp, text)
                 for match in matches:
+                    if match_inside_code_blocks(match):
+                        continue
                     result.append((tag_name, (), match.start(), match.end()))
 
             # Find:
@@ -232,6 +248,8 @@ class MarkupHandler:
             for regexp, tag_name in regexps:
                 matches = re.finditer(regexp, text)
                 for match in matches:
+                    if match_inside_code_blocks(match):
+                        continue
                     result.append(
                         (tag_name, (), match.start(), match.start("text")))
                     result.append(
@@ -240,6 +258,8 @@ class MarkupHandler:
             # Find "<url>" links (gray out).
             matches = re.finditer(LINK_ALT, text)
             for match in matches:
+                if match_inside_code_blocks(match):
+                    continue
                 result.append((
                     self.TAG_NAME_GRAY_TEXT,
                     (), match.start("text"),
@@ -248,6 +268,8 @@ class MarkupHandler:
             # Find "---" horizontal rule (center).
             matches = re.finditer(HORIZONTAL_RULE, text)
             for match in matches:
+                if match_inside_code_blocks(match):
+                    continue
                 result.append((
                     self.TAG_NAME_CENTER,
                     (), match.start("symbols"),
@@ -257,12 +279,16 @@ class MarkupHandler:
             # Find "> blockquote" (offset).
             matches = re.finditer(BLOCK_QUOTE, text)
             for match in matches:
+                if match_inside_code_blocks(match):
+                    continue
                 result.append((self.TAG_NAME_MARGIN_INDENT,
                                (2, -2), match.start(), match.end()))
 
             # Find "# Header" (offset+bold).
             matches = re.finditer(HEADER, text)
             for match in matches:
+                if match_inside_code_blocks(match):
+                    continue
                 margin = -len(match.group("level")) - 1
                 result.append((
                     self.TAG_NAME_MARGIN_INDENT, (margin, 0),
@@ -273,15 +299,10 @@ class MarkupHandler:
             # Find "=======" header underline (bold).
             matches = re.finditer(HEADER_UNDER, text)
             for match in matches:
+                if match_inside_code_blocks(match):
+                    continue
                 result.append(
                     (self.TAG_NAME_BOLD, (), match.start(), match.end()))
-
-            # Find "```" code block tag (offset + colorize paragraph).
-            matches = re.finditer(markup_regex.CODE_BLOCK, text)
-            for match in matches:
-                result.append((
-                    self.TAG_NAME_CODE_BLOCK, (),
-                    match.start("block"), match.end("block")))
 
             # Send parsed data back.
             child_conn.send((text, result))
