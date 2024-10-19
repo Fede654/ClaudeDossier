@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: apostrophe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2024-07-29 20:34+0000\n"
-"PO-Revision-Date: 2024-08-04 17:13+0300\n"
+"POT-Creation-Date: 2024-10-19 08:02+0000\n"
+"PO-Revision-Date: 2024-10-19 10:34+0200\n"
 "Last-Translator: twlvnn kraftwerk <kraft_werk@tutanota.com>\n"
 "Language-Team: Bulgarian <dict-notifications@fsa-bg.org>\n"
 "Language: bg\n"
@@ -215,25 +215,25 @@ msgstr ""
 "Изнасяне в най-различни формати: PDF, Word/LibreOffice, LaTeX и дори "
 "презентация на HTML"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:41
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:52
 msgid "Main window"
 msgstr "Основен прозорец"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:45
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:56
 msgid "Main window in dark mode"
 msgstr "Основен прозорец в тъмен режим"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:49
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:60
 msgid "Inserting a table with the help of the toolbar"
 msgstr "Вмъкване на таблица с помощта на лентата за инструменти"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:53
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:64
 msgid "The preview lets you see a live rendered version of your document"
 msgstr ""
 "Предварителният преглед ви позволява да видите визуализация на документа по "
 "време на писане."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:57
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:68
 msgid "The focus mode allow for a more distraction-free experience"
 msgstr "Режимът на фокусиране дава възможност за работа без разсейване"
 
@@ -245,7 +245,16 @@ msgstr "Авторски права (C) 2022, Manuel G., Wolf V."
 #. Manuel Genovés <manuel.genoves@gmail.com>
 #: data/ui/About.ui.in:17
 msgid "translator-credits"
-msgstr "twlvnn kraftwerk <kraft_werk@tutanota.com>"
+msgstr ""
+"Twlvnn Kraftwerk &lt;<a href='mailto:kraft_werk@tutanota."
+"com'>kraft_werk@tutanota.com</a>&gt;\n"
+"\n"
+"\n"
+"Проектът за превод на GNOME има нужда от подкрепа.\n"
+"Научете повече за нас на <a href='https://fsa-bg.org/project/gtp'>уеб сайта</"
+"a> ни.\n"
+"Докладвайте за грешки в превода в <a href='https://fsa-bg.org/project/gtp/"
+"newticket'>съответния раздел</a>."
 
 #: data/ui/AboutHemingway.ui:7
 msgid ""
@@ -410,6 +419,10 @@ msgstr "Разширено _изнасяне…"
 #: data/ui/Headerbar.ui:148
 msgid "_Copy HTML"
 msgstr "_Копиране на HTML"
+
+#: data/ui/InlinePreviewPopover.ui:42
+msgid "Not Found"
+msgstr "Няма намерени"
 
 #: data/ui/Preferences.ui:12 data/ui/Preferences.ui:13
 msgid "Check Spelling"
@@ -859,27 +872,31 @@ msgstr "Грешка"
 msgid "Unsaved documents"
 msgstr "Незапазени документи"
 
-#: apostrophe/inline_preview.py:201
+#: apostrophe/inline_preview.py:292
+msgid "LaTeX not found"
+msgstr "LaTeX липсва"
+
+#: apostrophe/inline_preview.py:294
 msgid "Formula looks incorrect:"
 msgstr "Формулата изглежда неправилна:"
 
-#: apostrophe/inline_preview.py:241
+#: apostrophe/inline_preview.py:358
 msgid "No matching footnote found"
 msgstr "Няма съвпадащи бележки под линия"
 
-#: apostrophe/inline_preview.py:261
+#: apostrophe/inline_preview.py:391
 msgid "noun"
 msgstr "Съществително"
 
-#: apostrophe/inline_preview.py:263
+#: apostrophe/inline_preview.py:393
 msgid "verb"
 msgstr "Глагол"
 
-#: apostrophe/inline_preview.py:265
+#: apostrophe/inline_preview.py:395
 msgid "adjective"
 msgstr "Прилагателно"
 
-#: apostrophe/inline_preview.py:267
+#: apostrophe/inline_preview.py:397
 msgid "adverb"
 msgstr "Наречие"
 
@@ -1064,6 +1081,6 @@ msgstr ""
 "\n"
 "код\n"
 
-#: apostrophe/text_view.py:185 apostrophe/text_view.py:187
+#: apostrophe/text_view.py:203 apostrophe/text_view.py:205
 msgid "web page"
 msgstr "Интернет страница"
