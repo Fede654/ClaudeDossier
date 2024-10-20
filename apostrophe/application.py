@@ -33,7 +33,7 @@ class Application(Adw.Application):
 
     def __init__(self, application_id, *args, **kwargs):
         super().__init__(*args, application_id=application_id,
-                         flags=Gio.ApplicationFlags.HANDLES_OPEN | Gio.ApplicationFlags.NON_UNIQUE,
+                         flags=Gio.ApplicationFlags.HANDLES_OPEN,
                          **kwargs)
 
         self.add_main_option("verbose", b"v", GLib.OptionFlags.NONE,
@@ -102,9 +102,8 @@ class Application(Adw.Application):
                  GLib.Variant.new_string(stat_default))
         action.connect("activate", self.on_stat_default)
         self.add_action(action)
-        
-        # Shortcuts
 
+        # Shortcuts
 
         self.set_accels_for_action("win.focus_mode", ["<Ctl>d"])
         self.set_accels_for_action("win.hemingway_mode", ["<Ctl>t"])
@@ -149,6 +148,23 @@ class Application(Adw.Application):
                                         window.textview.get_text() == "" and\
                                         not window.did_change, self.get_main_windows()))
         for i, file in enumerate(files):
+            c = False
+            for window in self.get_main_windows():
+                if not file or not window.current.gfile:
+                    continue
+                file_id = file.query_info(Gio.FILE_ATTRIBUTE_ID_FILE, 
+                                          Gio.FileQueryInfoFlags.NONE,
+                                          None).get_attribute_as_string(Gio.FILE_ATTRIBUTE_ID_FILE)
+                window_file_id = window.current.gfile.query_info(
+                    Gio.FILE_ATTRIBUTE_ID_FILE,
+                    Gio.FileQueryInfoFlags.NONE,
+                    None).get_attribute_as_string(Gio.FILE_ATTRIBUTE_ID_FILE)
+                if file_id == window_file_id:
+                    GLib.idle_add(window.present)
+                    c = True
+            if c:
+                continue
+
             if i < len(empty_windows):
                 window = empty_windows[i]
             else:
