@@ -5,15 +5,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apostrophe\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2024-04-17 20:12+0000\n"
-"PO-Revision-Date: 2024-05-19 20:29+0800\n"
+"POT-Creation-Date: 2024-10-18 22:19+0000\n"
+"PO-Revision-Date: 2024-10-21 18:56+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Gtranslator 46.1\n"
+"X-Generator: Gtranslator 47.0\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:3
@@ -199,23 +199,23 @@ msgid ""
 "slideshows"
 msgstr "导出为所有格式类型：PDF、Word/Libreoffice、LaTeX 或 HTML 幻灯片"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:41
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:52
 msgid "Main window"
 msgstr "主窗口"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:45
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:56
 msgid "Main window in dark mode"
 msgstr "暗色模式的主窗口"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:49
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:60
 msgid "Inserting a table with the help of the toolbar"
 msgstr "在工具栏的帮助下插入表格"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:53
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:64
 msgid "The preview lets you see a live rendered version of your document"
 msgstr "预览可让您查看文档的实时渲染版本"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:57
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:68
 msgid "The focus mode allow for a more distraction-free experience"
 msgstr "专注模式可获得更加无干扰的体验"
 
@@ -227,7 +227,7 @@ msgstr "版权所有 (C) 2022, Manuel G., Wolf V."
 #. Manuel Genovés <manuel.genoves@gmail.com>
 #: data/ui/About.ui.in:17
 msgid "translator-credits"
-msgstr "lumingzh <lumingzh@qq.com>"
+msgstr "lumingzh <lumingzh@qq.com>, 2022-2024"
 
 #: data/ui/AboutHemingway.ui:7
 msgid ""
@@ -321,8 +321,8 @@ msgstr "项目符号递增"
 msgid "Show one bullet point after another in a slideshow"
 msgstr "在演示文稿中依次显示每个项目符号"
 
-#: data/ui/Headerbar.ui:10 apostrophe/main_window.py:772
-#: apostrophe/main_window.py:790
+#: data/ui/Headerbar.ui:10 apostrophe/main_window.py:776
+#: apostrophe/main_window.py:794
 msgid "New File"
 msgstr "新建文件"
 
@@ -389,6 +389,10 @@ msgstr "高级导出(_E)…"
 #: data/ui/Headerbar.ui:148
 msgid "_Copy HTML"
 msgstr "复制 HTML(_C)"
+
+#: data/ui/InlinePreviewPopover.ui:42
+msgid "Not Found"
+msgstr "未找到"
 
 #: data/ui/Preferences.ui:12 data/ui/Preferences.ui:13
 msgid "Check Spelling"
@@ -801,8 +805,8 @@ msgid "Export to %s"
 msgstr "导出为 %s"
 
 #: apostrophe/export_dialog.py:131 apostrophe/export_dialog.py:329
-#: apostrophe/export_dialog.py:334 apostrophe/main_window.py:416
-#: apostrophe/main_window.py:494 apostrophe/main_window.py:587
+#: apostrophe/export_dialog.py:334 apostrophe/main_window.py:420
+#: apostrophe/main_window.py:498 apostrophe/main_window.py:591
 msgid "Cancel"
 msgstr "取消"
 
@@ -833,75 +837,79 @@ msgstr "错误"
 msgid "Unsaved documents"
 msgstr "未保存文档"
 
-#: apostrophe/inline_preview.py:201
+#: apostrophe/inline_preview.py:292
+msgid "LaTeX not found"
+msgstr "未找到 LaTeX"
+
+#: apostrophe/inline_preview.py:294
 msgid "Formula looks incorrect:"
 msgstr "公式错误："
 
-#: apostrophe/inline_preview.py:241
+#: apostrophe/inline_preview.py:358
 msgid "No matching footnote found"
 msgstr "未发现匹配的脚注"
 
-#: apostrophe/inline_preview.py:261
+#: apostrophe/inline_preview.py:391
 msgid "noun"
 msgstr "名词"
 
-#: apostrophe/inline_preview.py:263
+#: apostrophe/inline_preview.py:393
 msgid "verb"
 msgstr "动词"
 
-#: apostrophe/inline_preview.py:265
+#: apostrophe/inline_preview.py:395
 msgid "adjective"
 msgstr "形容词"
 
-#: apostrophe/inline_preview.py:267
+#: apostrophe/inline_preview.py:397
 msgid "adverb"
 msgstr "副词"
 
 #. Hemingway Toast
-#: apostrophe/main_window.py:153
+#: apostrophe/main_window.py:157
 msgid "Text can't be deleted while on Hemingway mode"
 msgstr "在海明威模式无法删除文本"
 
-#: apostrophe/main_window.py:156
+#: apostrophe/main_window.py:160
 msgid "Tell me more"
 msgstr "了解更多"
 
-#: apostrophe/main_window.py:412
+#: apostrophe/main_window.py:416
 msgid "Save your File"
 msgstr "保存您的文件"
 
-#: apostrophe/main_window.py:415 apostrophe/main_window.py:589
+#: apostrophe/main_window.py:419 apostrophe/main_window.py:593
 msgid "Save"
 msgstr "保存"
 
-#: apostrophe/main_window.py:483
+#: apostrophe/main_window.py:487
 msgid "Markdown Files"
 msgstr "Markdown 文件"
 
-#: apostrophe/main_window.py:487
+#: apostrophe/main_window.py:491
 msgid "Plain Text Files"
 msgstr "纯文本文件"
 
-#: apostrophe/main_window.py:490
+#: apostrophe/main_window.py:494
 msgid "Open a .md file"
 msgstr "打开 .md 文件"
 
-#: apostrophe/main_window.py:493
+#: apostrophe/main_window.py:497
 msgid "Open"
 msgstr "打开"
 
-#: apostrophe/main_window.py:581
+#: apostrophe/main_window.py:585
 msgid "Save Changes?"
 msgstr "保存更改吗？"
 
-#: apostrophe/main_window.py:582
+#: apostrophe/main_window.py:586
 #, python-format
 msgid ""
 "“%s” contains unsaved changes. If you don’t save, all your changes will be "
 "permanently lost."
 msgstr "“%s”包含未保存更改。如果您不保存，所有更改将会永久丢失。"
 
-#: apostrophe/main_window.py:588
+#: apostrophe/main_window.py:592
 msgid "Discard"
 msgstr "丢弃"
 
@@ -1032,7 +1040,7 @@ msgstr ""
 "\n"
 "代码\n"
 
-#: apostrophe/text_view.py:179 apostrophe/text_view.py:181
+#: apostrophe/text_view.py:203 apostrophe/text_view.py:205
 msgid "web page"
 msgstr "网页"
 
