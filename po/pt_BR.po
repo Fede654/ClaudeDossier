@@ -15,9 +15,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apostrophe\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2024-04-17 20:12+0000\n"
-"PO-Revision-Date: 2024-05-15 15:58-0300\n"
-"Last-Translator: Leônidas Araújo <leorusvellt@hotmail.com>\n"
+"POT-Creation-Date: 2024-10-18 22:19+0000\n"
+"PO-Revision-Date: 2024-10-21 07:56-0300\n"
+"Last-Translator: Juliano de Souza Camargo <julianosc@pm.me>\n"
 "Language-Team: Brazilian Portuguese <https://br.gnome.org/traducao>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Gtranslator 47.0\n"
 "X-DL-Team: pt_BR\n"
 "X-DL-Module: apostrophe\n"
 "X-DL-Branch: main\n"
@@ -228,25 +228,25 @@ msgstr ""
 "Exporte para todos os tipos de formatos: PDF, Word/Libreoffice, LaTeX ou até "
 "mesmo apresentações de slides em HTML"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:41
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:52
 msgid "Main window"
 msgstr "Janela principal"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:45
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:56
 msgid "Main window in dark mode"
 msgstr "Janela principal no modo escuro"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:49
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:60
 msgid "Inserting a table with the help of the toolbar"
 msgstr "Inserindo uma tabela com a ajuda da barra de ferramentas"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:53
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:64
 msgid "The preview lets you see a live rendered version of your document"
 msgstr ""
 "A visualização permite que você veja uma versão renderizada ao vivo do seu "
 "documento"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:57
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:68
 msgid "The focus mode allow for a more distraction-free experience"
 msgstr "O modo de foco permite uma experiência mais livre de distrações"
 
@@ -362,8 +362,8 @@ msgstr "Marcadores incrementais"
 msgid "Show one bullet point after another in a slideshow"
 msgstr "Mostra um marcador após o outro em uma apresentação de slides"
 
-#: data/ui/Headerbar.ui:10 apostrophe/main_window.py:772
-#: apostrophe/main_window.py:790
+#: data/ui/Headerbar.ui:10 apostrophe/main_window.py:776
+#: apostrophe/main_window.py:794
 msgid "New File"
 msgstr "Novo arquivo"
 
@@ -430,6 +430,10 @@ msgstr "_Exportação avançada…"
 #: data/ui/Headerbar.ui:148
 msgid "_Copy HTML"
 msgstr "_Copiar HTML"
+
+#: data/ui/InlinePreviewPopover.ui:42
+msgid "Not Found"
+msgstr "Não localizado"
 
 #: data/ui/Preferences.ui:12 data/ui/Preferences.ui:13
 msgid "Check Spelling"
@@ -847,8 +851,8 @@ msgid "Export to %s"
 msgstr "Exportar para %s"
 
 #: apostrophe/export_dialog.py:131 apostrophe/export_dialog.py:329
-#: apostrophe/export_dialog.py:334 apostrophe/main_window.py:416
-#: apostrophe/main_window.py:494 apostrophe/main_window.py:587
+#: apostrophe/export_dialog.py:334 apostrophe/main_window.py:420
+#: apostrophe/main_window.py:498 apostrophe/main_window.py:591
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -879,68 +883,72 @@ msgstr "Erro"
 msgid "Unsaved documents"
 msgstr "Documentos não salvos"
 
-#: apostrophe/inline_preview.py:201
+#: apostrophe/inline_preview.py:292
+msgid "LaTeX not found"
+msgstr "LaTeX não localizado"
+
+#: apostrophe/inline_preview.py:294
 msgid "Formula looks incorrect:"
 msgstr "A fórmula parece incorreta:"
 
-#: apostrophe/inline_preview.py:241
+#: apostrophe/inline_preview.py:358
 msgid "No matching footnote found"
 msgstr "Não foi encontrada nota de rodapé correspondente"
 
-#: apostrophe/inline_preview.py:261
+#: apostrophe/inline_preview.py:391
 msgid "noun"
 msgstr "substantivo"
 
-#: apostrophe/inline_preview.py:263
+#: apostrophe/inline_preview.py:393
 msgid "verb"
 msgstr "verbo"
 
-#: apostrophe/inline_preview.py:265
+#: apostrophe/inline_preview.py:395
 msgid "adjective"
 msgstr "adjetivo"
 
-#: apostrophe/inline_preview.py:267
+#: apostrophe/inline_preview.py:397
 msgid "adverb"
 msgstr "advérbio"
 
 #. Hemingway Toast
-#: apostrophe/main_window.py:153
+#: apostrophe/main_window.py:157
 msgid "Text can't be deleted while on Hemingway mode"
 msgstr "O texto não pode ser excluído no Modo Hemingway"
 
-#: apostrophe/main_window.py:156
+#: apostrophe/main_window.py:160
 msgid "Tell me more"
 msgstr "Conte-me mais"
 
-#: apostrophe/main_window.py:412
+#: apostrophe/main_window.py:416
 msgid "Save your File"
 msgstr "Salvar seu arquivo"
 
-#: apostrophe/main_window.py:415 apostrophe/main_window.py:589
+#: apostrophe/main_window.py:419 apostrophe/main_window.py:593
 msgid "Save"
 msgstr "Salvar"
 
-#: apostrophe/main_window.py:483
+#: apostrophe/main_window.py:487
 msgid "Markdown Files"
 msgstr "Arquivos Markdown"
 
-#: apostrophe/main_window.py:487
+#: apostrophe/main_window.py:491
 msgid "Plain Text Files"
 msgstr "Arquivos em texto puro"
 
-#: apostrophe/main_window.py:490
+#: apostrophe/main_window.py:494
 msgid "Open a .md file"
 msgstr "Abrir um arquivo .md"
 
-#: apostrophe/main_window.py:493
+#: apostrophe/main_window.py:497
 msgid "Open"
 msgstr "Abrir"
 
-#: apostrophe/main_window.py:581
+#: apostrophe/main_window.py:585
 msgid "Save Changes?"
 msgstr "Salvar alterações?"
 
-#: apostrophe/main_window.py:582
+#: apostrophe/main_window.py:586
 #, python-format
 msgid ""
 "“%s” contains unsaved changes. If you don’t save, all your changes will be "
@@ -949,7 +957,7 @@ msgstr ""
 "“%s” contém alterações não salvas. Se você não salvar, todas as suas "
 "alterações serão perdidas permanentemente."
 
-#: apostrophe/main_window.py:588
+#: apostrophe/main_window.py:592
 msgid "Discard"
 msgstr "Descartar"
 
@@ -1084,7 +1092,7 @@ msgstr ""
 "\n"
 "código\n"
 
-#: apostrophe/text_view.py:179 apostrophe/text_view.py:181
+#: apostrophe/text_view.py:203 apostrophe/text_view.py:205
 msgid "web page"
 msgstr "página web"
 
