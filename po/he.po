@@ -8,17 +8,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: apostrophe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2024-04-17 20:12+0000\n"
-"PO-Revision-Date: 2024-04-21 22:36+0300\n"
-"Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
+"POT-Creation-Date: 2024-10-18 22:19+0000\n"
+"PO-Revision-Date: 2024-10-27 08:12+0200\n"
+"Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? "
-"2 : 3)\n"
-"X-Generator: Gtranslator 46.0\n"
+"2 : 3);\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:3
 #: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:4
@@ -204,23 +204,23 @@ msgid ""
 msgstr ""
 "ייצוא לכל סוגי הקבצים: PDF,‏ Word/Libreoffice,‏ LaTeX או אפילו מצגות HTML"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:41
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:52
 msgid "Main window"
 msgstr "חלון ראשי"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:45
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:56
 msgid "Main window in dark mode"
 msgstr "חלון ראשי במצב כהה"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:49
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:60
 msgid "Inserting a table with the help of the toolbar"
 msgstr "הכנסת טבלה בעזרת סרגל הכלים"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:53
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:64
 msgid "The preview lets you see a live rendered version of your document"
 msgstr "התצוגה המקדימה מאפשרת לך לראות גרסה חיה של עיבוד המסמך שלך"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:57
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:68
 msgid "The focus mode allow for a more distraction-free experience"
 msgstr "מצב מיקוד מאפשר לך חוויה נטולת הסחות דעת"
 
@@ -331,8 +331,8 @@ msgstr "תבליטים מתווספים"
 msgid "Show one bullet point after another in a slideshow"
 msgstr "להציג נקודת תבליט אחת אחרי השנייה במצגת"
 
-#: data/ui/Headerbar.ui:10 apostrophe/main_window.py:772
-#: apostrophe/main_window.py:790
+#: data/ui/Headerbar.ui:10 apostrophe/main_window.py:776
+#: apostrophe/main_window.py:794
 msgid "New File"
 msgstr "קובץ חדש"
 
@@ -399,6 +399,10 @@ msgstr "ייצוא _מתקדם…"
 #: data/ui/Headerbar.ui:148
 msgid "_Copy HTML"
 msgstr "הע_תקת HTML"
+
+#: data/ui/InlinePreviewPopover.ui:42
+msgid "Not Found"
+msgstr "לא נמצא"
 
 #: data/ui/Preferences.ui:12 data/ui/Preferences.ui:13
 msgid "Check Spelling"
@@ -823,8 +827,8 @@ msgid "Export to %s"
 msgstr "ייצוא אל %s"
 
 #: apostrophe/export_dialog.py:131 apostrophe/export_dialog.py:329
-#: apostrophe/export_dialog.py:334 apostrophe/main_window.py:416
-#: apostrophe/main_window.py:494 apostrophe/main_window.py:587
+#: apostrophe/export_dialog.py:334 apostrophe/main_window.py:420
+#: apostrophe/main_window.py:498 apostrophe/main_window.py:591
 msgid "Cancel"
 msgstr "ביטול"
 
@@ -855,75 +859,79 @@ msgstr "שגיאה"
 msgid "Unsaved documents"
 msgstr "מסמכים שלא נשמרו"
 
-#: apostrophe/inline_preview.py:201
+#: apostrophe/inline_preview.py:292
+msgid "LaTeX not found"
+msgstr "LaTeX/לאטך לא נמצא"
+
+#: apostrophe/inline_preview.py:294
 msgid "Formula looks incorrect:"
 msgstr "הנוסחה נראית שגויה:"
 
-#: apostrophe/inline_preview.py:241
+#: apostrophe/inline_preview.py:358
 msgid "No matching footnote found"
 msgstr "לא נמצאה הערת שוליים מתאימה"
 
-#: apostrophe/inline_preview.py:261
+#: apostrophe/inline_preview.py:391
 msgid "noun"
 msgstr "שם עצם"
 
-#: apostrophe/inline_preview.py:263
+#: apostrophe/inline_preview.py:393
 msgid "verb"
 msgstr "פועל"
 
-#: apostrophe/inline_preview.py:265
+#: apostrophe/inline_preview.py:395
 msgid "adjective"
 msgstr "שם תואר"
 
-#: apostrophe/inline_preview.py:267
+#: apostrophe/inline_preview.py:397
 msgid "adverb"
 msgstr "תואר הפועל"
 
 #. Hemingway Toast
-#: apostrophe/main_window.py:153
+#: apostrophe/main_window.py:157
 msgid "Text can't be deleted while on Hemingway mode"
 msgstr "טקסט לא יכול להימחק כשנמצאים במצב המינגווי"
 
-#: apostrophe/main_window.py:156
+#: apostrophe/main_window.py:160
 msgid "Tell me more"
 msgstr "לספר לי עוד"
 
-#: apostrophe/main_window.py:412
+#: apostrophe/main_window.py:416
 msgid "Save your File"
 msgstr "שמירת הקובץ שלך"
 
-#: apostrophe/main_window.py:415 apostrophe/main_window.py:589
+#: apostrophe/main_window.py:419 apostrophe/main_window.py:593
 msgid "Save"
 msgstr "שמירה"
 
-#: apostrophe/main_window.py:483
+#: apostrophe/main_window.py:487
 msgid "Markdown Files"
 msgstr "קובצי Markdown"
 
-#: apostrophe/main_window.py:487
+#: apostrophe/main_window.py:491
 msgid "Plain Text Files"
 msgstr "קובצי טקסט פשוט"
 
-#: apostrophe/main_window.py:490
+#: apostrophe/main_window.py:494
 msgid "Open a .md file"
 msgstr "פתיחת קובץ ‎.md"
 
-#: apostrophe/main_window.py:493
+#: apostrophe/main_window.py:497
 msgid "Open"
 msgstr "פתיחה"
 
-#: apostrophe/main_window.py:581
+#: apostrophe/main_window.py:585
 msgid "Save Changes?"
 msgstr "לשמור את השינויים?"
 
-#: apostrophe/main_window.py:582
+#: apostrophe/main_window.py:586
 #, python-format
 msgid ""
 "“%s” contains unsaved changes. If you don’t save, all your changes will be "
 "permanently lost."
 msgstr "‏„%s” מכיל שינויים שלא נשמור. ללא שמירה, כל השינויים יאבדו לצמיתות."
 
-#: apostrophe/main_window.py:588
+#: apostrophe/main_window.py:592
 msgid "Discard"
 msgstr "השלכה"
 
@@ -1066,7 +1074,7 @@ msgstr ""
 "\n"
 "קוד\n"
 
-#: apostrophe/text_view.py:179 apostrophe/text_view.py:181
+#: apostrophe/text_view.py:203 apostrophe/text_view.py:205
 msgid "web page"
 msgstr "דף אינטרנט"
 
