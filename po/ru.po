@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apostrophe\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2024-04-17 20:28+0000\n"
+"POT-Creation-Date: 2024-10-23 03:51+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Ser82-png <asvmail.as@gmail.com>\n"
 "Language-Team: \n"
@@ -210,23 +210,23 @@ msgstr ""
 "Экспорт во всевозможные форматы: PDF, Word/Libreoffice, LaTeX или даже слайд-"
 "шоу HTML"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:41
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:53
 msgid "Main window"
 msgstr "Главное меню"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:45
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:57
 msgid "Main window in dark mode"
 msgstr "Главное окно в тёмном стиле"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:49
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:61
 msgid "Inserting a table with the help of the toolbar"
 msgstr "Вставка таблицы с помощью панели инструментов"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:53
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:65
 msgid "The preview lets you see a live rendered version of your document"
 msgstr "Предварительный просмотр позволяет посмотреть реальный вид документа"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:57
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:69
 msgid "The focus mode allow for a more distraction-free experience"
 msgstr ""
 "Режим сосредоточения позволяет избавиться от большинства отвлекающих факторов"
@@ -340,8 +340,8 @@ msgstr "Инкрементные маркеры"
 msgid "Show one bullet point after another in a slideshow"
 msgstr "Показывать элементы маркированного списка один за другим в слайдшоу"
 
-#: data/ui/Headerbar.ui:10 apostrophe/main_window.py:772
-#: apostrophe/main_window.py:790
+#: data/ui/Headerbar.ui:10 apostrophe/main_window.py:776
+#: apostrophe/main_window.py:794
 msgid "New File"
 msgstr "Новый файл"
 
@@ -408,6 +408,10 @@ msgstr "Расширенный _экспорт…"
 #: data/ui/Headerbar.ui:148
 msgid "_Copy HTML"
 msgstr "_Скопировать HTML"
+
+#: data/ui/InlinePreviewPopover.ui:42
+msgid "Not Found"
+msgstr "Ничего не найдено"
 
 #: data/ui/Preferences.ui:12 data/ui/Preferences.ui:13
 msgid "Check Spelling"
@@ -804,11 +808,11 @@ msgstr "Этот файл был изменен другой программо�
 msgid "_Discard Changes and Reload"
 msgstr "_Отказаться от изменений и перезагрузить"
 
-#: apostrophe/application.py:228
+#: apostrophe/application.py:244
 msgid "Donate"
 msgstr "Пожертвовать"
 
-#: apostrophe/application.py:229
+#: apostrophe/application.py:245
 msgid "Translations"
 msgstr "Переводы"
 
@@ -822,8 +826,8 @@ msgid "Export to %s"
 msgstr "Экспортировать в %s"
 
 #: apostrophe/export_dialog.py:131 apostrophe/export_dialog.py:329
-#: apostrophe/export_dialog.py:334 apostrophe/main_window.py:416
-#: apostrophe/main_window.py:494 apostrophe/main_window.py:587
+#: apostrophe/export_dialog.py:334 apostrophe/main_window.py:420
+#: apostrophe/main_window.py:498 apostrophe/main_window.py:591
 msgid "Cancel"
 msgstr "Отменить"
 
@@ -854,68 +858,72 @@ msgstr "Ошибка"
 msgid "Unsaved documents"
 msgstr "Несохранённые документы"
 
-#: apostrophe/inline_preview.py:201
+#: apostrophe/inline_preview.py:292
+msgid "LaTeX not found"
+msgstr "LaTeX не найден"
+
+#: apostrophe/inline_preview.py:294
 msgid "Formula looks incorrect:"
 msgstr "Формула выглядит неправильно:"
 
-#: apostrophe/inline_preview.py:241
+#: apostrophe/inline_preview.py:358
 msgid "No matching footnote found"
 msgstr "Соответствующая сноска не найдена"
 
-#: apostrophe/inline_preview.py:261
+#: apostrophe/inline_preview.py:391
 msgid "noun"
 msgstr "существительное"
 
-#: apostrophe/inline_preview.py:263
+#: apostrophe/inline_preview.py:393
 msgid "verb"
 msgstr "глагол"
 
-#: apostrophe/inline_preview.py:265
+#: apostrophe/inline_preview.py:395
 msgid "adjective"
 msgstr "прилагательное"
 
-#: apostrophe/inline_preview.py:267
+#: apostrophe/inline_preview.py:397
 msgid "adverb"
 msgstr "наречие"
 
 #. Hemingway Toast
-#: apostrophe/main_window.py:153
+#: apostrophe/main_window.py:157
 msgid "Text can't be deleted while on Hemingway mode"
 msgstr "Нельзя удалять текст в режиме Хемингуэя"
 
-#: apostrophe/main_window.py:156
+#: apostrophe/main_window.py:160
 msgid "Tell me more"
 msgstr "Подробнее"
 
-#: apostrophe/main_window.py:412
+#: apostrophe/main_window.py:416
 msgid "Save your File"
 msgstr "Сохранить ваш файл"
 
-#: apostrophe/main_window.py:415 apostrophe/main_window.py:589
+#: apostrophe/main_window.py:419 apostrophe/main_window.py:593
 msgid "Save"
 msgstr "Сохранить"
 
-#: apostrophe/main_window.py:483
+#: apostrophe/main_window.py:487
 msgid "Markdown Files"
 msgstr "Файлы Markdown"
 
-#: apostrophe/main_window.py:487
+#: apostrophe/main_window.py:491
 msgid "Plain Text Files"
 msgstr "Обычные текстовые файлы"
 
-#: apostrophe/main_window.py:490
+#: apostrophe/main_window.py:494
 msgid "Open a .md file"
 msgstr "Открыть .md файл"
 
-#: apostrophe/main_window.py:493
+#: apostrophe/main_window.py:497
 msgid "Open"
 msgstr "Открыть"
 
-#: apostrophe/main_window.py:581
+#: apostrophe/main_window.py:585
 msgid "Save Changes?"
 msgstr "Сохранить изменения?"
 
-#: apostrophe/main_window.py:582
+#: apostrophe/main_window.py:586
 #, python-format
 msgid ""
 "“%s” contains unsaved changes. If you don’t save, all your changes will be "
@@ -924,7 +932,7 @@ msgstr ""
 "«%s» содержит несохраненные изменения. Если не сохранить изменения, они "
 "будут безвозвратно утеряны."
 
-#: apostrophe/main_window.py:588
+#: apostrophe/main_window.py:592
 msgid "Discard"
 msgstr "Не сохранять"
 
@@ -1063,7 +1071,7 @@ msgstr ""
 "\n"
 "код\n"
 
-#: apostrophe/text_view.py:179 apostrophe/text_view.py:181
+#: apostrophe/text_view.py:203 apostrophe/text_view.py:205
 msgid "web page"
 msgstr "веб-страница"
 
