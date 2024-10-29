@@ -232,7 +232,8 @@ class InlinePreviewPopover(Gtk.Popover):
         self.stack.set_visible_child(self.empty)
 
     def set_not_found(self):
-        self.stack.set_visible_child(self.error)
+        self.is_loaded = True
+        GLib.idle_add(self.stack.set_visible_child, self.error)
 
     def _on_popover_closed(self, *args, **kwargs):
         self.remove_preview()
@@ -312,8 +313,11 @@ class InlinePreview(GObject.Object):
         path = unquote(path)
 
         if match == self.current_match:
-            texture = Gdk.Texture.new_from_filename(path)
-            GLib.idle_add(self.get_view_for_image_finish, texture)
+            try:
+                texture = Gdk.Texture.new_from_filename(path)
+                GLib.idle_add(self.get_view_for_image_finish, texture)
+            except GLib.GError as error:
+                self.popover.set_not_found()
 
     def get_view_for_image_finish(self, texture):
         image = Gtk.Picture()
@@ -463,6 +467,8 @@ class InlinePreview(GObject.Object):
                     self.current_match = match
                     threading.Thread(target=get_view_fn, args=(match,)).start()
                     return
+
+        self.popover.set_not_found()
 
     def _on_popover_closed(self, *args, **kwargs):
         self.current_match = None
