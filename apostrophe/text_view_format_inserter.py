@@ -450,8 +450,7 @@ class FormatInserter:
                 # get an uri
                 text_view.grab_focus()
                 return
-            self.settings = Settings.new()
-            basepath = self.settings.get_string("open-file-path")
+            basepath = window.current.base_path
             if basepath != "/":
                 basepath = Gio.File.new_for_path(basepath)
                 path = urllib.parse.quote(basepath.get_relative_path(image))

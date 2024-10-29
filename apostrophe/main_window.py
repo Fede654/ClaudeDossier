@@ -780,8 +780,6 @@ class File(GObject.Object):
         self.name = self.title
         if self.name.endswith(".md"):
             self.name = self.name[:-3]
-        # TODO: remove path in favor of gfile
-        self._settings.set_string("open-file-path", self.base_path)
         self._gfile = file
 
     def __init__(self, gfile=None, encoding="UTF-8"):

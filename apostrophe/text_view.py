@@ -182,7 +182,7 @@ class ApostropheTextView(GtkSource.View):
                 content = content[7:]
 
                 if mime[0] is not None and mime[0].startswith('image/'):
-                    basepath = self.settings.get_string("open-file-path")
+                    basepath = self.get_root().current.base_path
                     basepath = urllib.parse.quote(basepath)
 
 
