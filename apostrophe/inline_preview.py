@@ -268,10 +268,12 @@ class InlinePreview(GObject.Object):
         }
 
     def get_view_for_math(self, match):
-
-        success, result = self.latex_converter.generatepng(match.group("text"))
+        success, temp_result = self.latex_converter.generatepng(match.group("text"))
         if success:
-            result = Gdk.Texture.new_from_filename(result)
+            result = Gdk.Texture.new_from_filename(temp_result.name)
+            temp_result.close()
+        else:
+            result = temp_result
 
         if match == self.current_match:
             GLib.idle_add(self.get_view_for_math_finish, success, result)

@@ -54,7 +54,7 @@ class LatexToPNG:
     TEX_FOOTER = r"""\end{document}"""
 
     def __init__(self):
-        self.temp_result = tempfile.NamedTemporaryFile(suffix=".png")
+        self.temp_result = None
 
     def latex2png(self, tex, outfile, dpi, modified):
         """Convert LaTeX input file infile to PNG file named outfile."""
@@ -111,12 +111,14 @@ class LatexToPNG:
                 error = error[:-1]
             raise Exception(error)
 
+        self.clean_up(temps)
+
     def generatepng(self, formula):
         try:
             self.temp_result = tempfile.NamedTemporaryFile(suffix=".png")
             formula = "$" + formula + "$"
             self.latex2png(formula, self.temp_result.name, 300, False)
-            return True, self.temp_result.name
+            return True, self.temp_result
 
         except Exception as e:
             self.temp_result.close()
