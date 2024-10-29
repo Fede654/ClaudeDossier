@@ -88,15 +88,12 @@ class PreviewHandler:
             self.preview_converter.convert(
                 buf.get_text(buf.get_start_iter(), buf.get_end_iter(), False),
                 secure_preview,
+                self.window().current.base_path,
                 self.__show, Step.LOAD_WEBVIEW)
 
         elif step == Step.LOAD_WEBVIEW:
             # Second step: load HTML.
             if not self.web_view:
-                # chdir to a base path so the webview doesn't crash
-                # once the webview is loaded we'll change back to the previous one
-                # TODO: check out if we can remove this in the future
-                os.chdir("/")
                 self.web_view = PreviewWebView()
                 self.web_view.get_settings().set_allow_universal_access_from_file_urls(True)
                 self.web_view.get_settings().set_enable_developer_extras(config.PROFILE == '.Devel')
@@ -182,9 +179,6 @@ class PreviewHandler:
                 self.window().preview_stack.set_transition_type(Gtk.StackTransitionType.CROSSFADE)
             self.shown = False
         elif event == WebKit.LoadEvent.FINISHED:
-            # once the webview is loaded, change back the working dir
-            # to the file path, so pandoc can work properly
-            os.chdir(self.window().current.base_path)
             if self.web_view_pending_html:
                 self.__show(html=self.web_view_pending_html, step=Step.LOAD_WEBVIEW)
                 self.web_view_pending_html = None

@@ -775,7 +775,6 @@ class File(GObject.Object):
         else:
             self.title = _("New File")
             self.base_path = "/"
-        os.chdir(self.base_path)
 
         self.name = self.title
         if self.name.endswith(".md"):

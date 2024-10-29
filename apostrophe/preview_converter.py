@@ -19,12 +19,12 @@ class PreviewConverter:
         worker.daemon = True
         worker.start()
 
-    def convert(self, text, secure_preview, callback, *user_data):
+    def convert(self, text, secure_preview, base_path, callback, *user_data):
         """Converts text to html, calling callback when done.
 
         The callback argument contains the result."""
 
-        self.queue.put((text, secure_preview, callback, user_data))
+        self.queue.put((text, secure_preview, base_path, callback, user_data))
 
     def stop(self):
         """Stops the background worker.
@@ -35,7 +35,7 @@ class PreviewConverter:
     def __do_convert(self):
         while True:
             while True:
-                (text, secure_preview, callback, user_data) = self.queue.get()
+                (text, secure_preview, base_path, callback, user_data) = self.queue.get()
                 if text is None and callback is None:
                     return
                 if self.queue.empty():
@@ -49,6 +49,7 @@ class PreviewConverter:
                     '--standalone',
                     '--mathjax',
                     '--css=' + Theme.get_current().web_css,
+                    '--metadata=base_path:' + base_path,
                     '--lua-filter=' +
                     helpers.get_media_path('/lua/relative_to_absolute.lua')]
 

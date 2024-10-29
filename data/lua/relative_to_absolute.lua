@@ -1,3 +1,5 @@
+local base_path = "/"
+
 function string.starts(String, Starts)
   any_start_with = false
   for i, Start in ipairs(Starts) do
@@ -7,11 +9,15 @@ function string.starts(String, Starts)
 end
 
 function fix_path (path)
-  if string.starts(path, {"/", "www.", "http", "file://", "#", "mailto:"}) then
+  if base_path == "/" or string.starts(path, {"/", "www.", "http", "file://", "#", "mailto:"}) then
     return path
   else
-    return (pandoc.system.get_working_directory() or '') .. "/" .. path
+    return base_path .. "/" .. path
   end
+end
+
+function Meta(meta)
+  base_path = tostring(meta.base_path or "/")
 end
 
 function Link (element)
@@ -23,3 +29,9 @@ function Image (element)
   element.src = fix_path(element.src)
   return element
 end
+
+return {
+  {Meta = Meta},
+  {Link = Link},
+  {Image = Image}
+}
