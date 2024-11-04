@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apostrophe\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2024-04-18 05:36+0000\n"
-"PO-Revision-Date: 2024-04-18 12:15+0200\n"
+"POT-Creation-Date: 2024-10-18 22:19+0000\n"
+"PO-Revision-Date: 2024-10-20 20:54+0200\n"
 "Last-Translator: Jürgen Benvenuti <gastornis@posteo.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "Language: de\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:3
 #: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:4
@@ -216,24 +216,24 @@ msgstr ""
 "Export in alle möglichen Formate: PDF, Word/Libreoffice, LaTeX oder sogar "
 "HTML-Diashows"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:41
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:52
 msgid "Main window"
 msgstr "Hauptfenster"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:45
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:56
 msgid "Main window in dark mode"
 msgstr "Hauptfenster im dunklen Modus"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:49
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:60
 msgid "Inserting a table with the help of the toolbar"
 msgstr "Einfügen einer Tabelle mithilfe der Werkzeugleiste"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:53
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:64
 msgid "The preview lets you see a live rendered version of your document"
 msgstr ""
 "In der Vorschau sehen Sie eine live dargestellte Version Ihres Dokuments"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:57
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:68
 msgid "The focus mode allow for a more distraction-free experience"
 msgstr "Der Fokusmodus erlaubt eine ablenkungsfreiere Erfahrung"
 
@@ -351,8 +351,8 @@ msgstr "Schrittweise Auflistung"
 msgid "Show one bullet point after another in a slideshow"
 msgstr "Listenpunkte nacheinander in einer Diashow anzeigen"
 
-#: data/ui/Headerbar.ui:10 apostrophe/main_window.py:772
-#: apostrophe/main_window.py:790
+#: data/ui/Headerbar.ui:10 apostrophe/main_window.py:776
+#: apostrophe/main_window.py:794
 msgid "New File"
 msgstr "Neue Datei"
 
@@ -419,6 +419,10 @@ msgstr "Fortgeschrittener _Export …"
 #: data/ui/Headerbar.ui:148
 msgid "_Copy HTML"
 msgstr "HTML _kopieren"
+
+#: data/ui/InlinePreviewPopover.ui:42
+msgid "Not Found"
+msgstr "Nicht gefunden"
 
 #: data/ui/Preferences.ui:12 data/ui/Preferences.ui:13
 msgid "Check Spelling"
@@ -833,8 +837,8 @@ msgid "Export to %s"
 msgstr "Nach %s exportieren"
 
 #: apostrophe/export_dialog.py:131 apostrophe/export_dialog.py:329
-#: apostrophe/export_dialog.py:334 apostrophe/main_window.py:416
-#: apostrophe/main_window.py:494 apostrophe/main_window.py:587
+#: apostrophe/export_dialog.py:334 apostrophe/main_window.py:420
+#: apostrophe/main_window.py:498 apostrophe/main_window.py:591
 msgid "Cancel"
 msgstr "Abbrechen"
 
@@ -865,69 +869,73 @@ msgstr "Fehler"
 msgid "Unsaved documents"
 msgstr "Nicht gespeicherte Dokumente"
 
-#: apostrophe/inline_preview.py:201
+#: apostrophe/inline_preview.py:292
+msgid "LaTeX not found"
+msgstr "LaTex nicht gefunden"
+
+#: apostrophe/inline_preview.py:294
 msgid "Formula looks incorrect:"
 msgstr "Formel sieht falsch aus:"
 
-#: apostrophe/inline_preview.py:241
+#: apostrophe/inline_preview.py:358
 msgid "No matching footnote found"
 msgstr "Keine zugehörige Fußnote gefunden"
 
-#: apostrophe/inline_preview.py:261
+#: apostrophe/inline_preview.py:391
 msgid "noun"
 msgstr "Nomen"
 
-#: apostrophe/inline_preview.py:263
+#: apostrophe/inline_preview.py:393
 msgid "verb"
 msgstr "Verb"
 
-#: apostrophe/inline_preview.py:265
+#: apostrophe/inline_preview.py:395
 msgid "adjective"
 msgstr "Adjektiv"
 
-#: apostrophe/inline_preview.py:267
+#: apostrophe/inline_preview.py:397
 msgid "adverb"
 msgstr "Adverb"
 
 #. Hemingway Toast
-#: apostrophe/main_window.py:153
+#: apostrophe/main_window.py:157
 msgid "Text can't be deleted while on Hemingway mode"
 msgstr ""
 "Während Sie sich im Hemingway-Modus befinden, kann Text nicht gelöscht werden"
 
-#: apostrophe/main_window.py:156
+#: apostrophe/main_window.py:160
 msgid "Tell me more"
 msgstr "Mehr erfahren"
 
-#: apostrophe/main_window.py:412
+#: apostrophe/main_window.py:416
 msgid "Save your File"
 msgstr "Datei speichern"
 
-#: apostrophe/main_window.py:415 apostrophe/main_window.py:589
+#: apostrophe/main_window.py:419 apostrophe/main_window.py:593
 msgid "Save"
 msgstr "Speichern"
 
-#: apostrophe/main_window.py:483
+#: apostrophe/main_window.py:487
 msgid "Markdown Files"
 msgstr "Markdown-Dateien"
 
-#: apostrophe/main_window.py:487
+#: apostrophe/main_window.py:491
 msgid "Plain Text Files"
 msgstr "Einfache Textdateien"
 
-#: apostrophe/main_window.py:490
+#: apostrophe/main_window.py:494
 msgid "Open a .md file"
 msgstr "Eine ».md«-Datei öffnen"
 
-#: apostrophe/main_window.py:493
+#: apostrophe/main_window.py:497
 msgid "Open"
 msgstr "Öffnen"
 
-#: apostrophe/main_window.py:581
+#: apostrophe/main_window.py:585
 msgid "Save Changes?"
 msgstr "Änderungen speichern?"
 
-#: apostrophe/main_window.py:582
+#: apostrophe/main_window.py:586
 #, python-format
 msgid ""
 "“%s” contains unsaved changes. If you don’t save, all your changes will be "
@@ -936,7 +944,7 @@ msgstr ""
 "»%s« enthält ungespeicherte Änderungen. Wenn Sie nicht speichern, gehen alle "
 "Änderungen unwiderruflich verloren."
 
-#: apostrophe/main_window.py:588
+#: apostrophe/main_window.py:592
 msgid "Discard"
 msgstr "Verwerfen"
 
@@ -1022,7 +1030,7 @@ msgstr "kursiver Text"
 
 #: apostrophe/text_view_format_inserter.py:29
 msgid "bold text"
-msgstr "fettgedruckter Text"
+msgstr "fett gedruckter Text"
 
 #: apostrophe/text_view_format_inserter.py:34
 msgid "strikethrough text"
@@ -1071,7 +1079,7 @@ msgstr ""
 "\n"
 "Code\n"
 
-#: apostrophe/text_view.py:179 apostrophe/text_view.py:181
+#: apostrophe/text_view.py:203 apostrophe/text_view.py:205
 msgid "web page"
 msgstr "Webseite"
 
