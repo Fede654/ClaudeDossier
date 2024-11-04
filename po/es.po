@@ -9,15 +9,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apostrophe\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2024-07-29 20:34+0000\n"
-"PO-Revision-Date: 2024-09-07 21:47+0200\n"
+"POT-Creation-Date: 2024-10-18 22:19+0000\n"
+"PO-Revision-Date: 2024-10-30 21:34+0100\n"
 "Last-Translator: Julián Villodre <jvillodrede@gmail.com>\n"
 "Language-Team: Spanish - Spain <gnome-es-list@gnome.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Gtranslator 46.1\n"
+"X-Generator: Gtranslator 47.0\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "X-DL-Team: es\n"
 "X-DL-Module: apostrophe\n"
@@ -216,25 +216,25 @@ msgstr ""
 "Exporta a todo tipo de formatos: PDF, Word/Libreoffice, LaTeX o incluso "
 "diapositivas HTML"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:41
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:52
 msgid "Main window"
 msgstr "Ventana principal"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:45
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:56
 msgid "Main window in dark mode"
 msgstr "Ventana principal en modo oscuro"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:49
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:60
 msgid "Inserting a table with the help of the toolbar"
 msgstr "Insertar una tabla con la ayuda de la barra de herramientas"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:53
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:64
 msgid "The preview lets you see a live rendered version of your document"
 msgstr ""
 "La vista previa le permite ver una versión renderizada en vivo de su "
 "documento"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:57
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:68
 msgid "The focus mode allow for a more distraction-free experience"
 msgstr ""
 "El modo de concentración ofrece una experiencia más libre de distracciones"
@@ -416,6 +416,10 @@ msgstr "_Exportación avanzada…"
 #: data/ui/Headerbar.ui:148
 msgid "_Copy HTML"
 msgstr "_Copiar HTML"
+
+#: data/ui/InlinePreviewPopover.ui:42
+msgid "Not Found"
+msgstr "No encontrado"
 
 #: data/ui/Preferences.ui:12 data/ui/Preferences.ui:13
 msgid "Check Spelling"
@@ -864,27 +868,31 @@ msgstr "Error"
 msgid "Unsaved documents"
 msgstr "Documentos no guardados"
 
-#: apostrophe/inline_preview.py:201
+#: apostrophe/inline_preview.py:292
+msgid "LaTeX not found"
+msgstr "No se encontró LaTeX"
+
+#: apostrophe/inline_preview.py:294
 msgid "Formula looks incorrect:"
 msgstr "La fórmula parece incorrecta:"
 
-#: apostrophe/inline_preview.py:241
+#: apostrophe/inline_preview.py:358
 msgid "No matching footnote found"
 msgstr "No se encontró la nota al pie correspondiente"
 
-#: apostrophe/inline_preview.py:261
+#: apostrophe/inline_preview.py:391
 msgid "noun"
 msgstr "nombre"
 
-#: apostrophe/inline_preview.py:263
+#: apostrophe/inline_preview.py:393
 msgid "verb"
 msgstr "verbo"
 
-#: apostrophe/inline_preview.py:265
+#: apostrophe/inline_preview.py:395
 msgid "adjective"
 msgstr "adjetivo"
 
-#: apostrophe/inline_preview.py:267
+#: apostrophe/inline_preview.py:397
 msgid "adverb"
 msgstr "adverbio"
 
@@ -1069,7 +1077,7 @@ msgstr ""
 "\n"
 "código\n"
 
-#: apostrophe/text_view.py:185 apostrophe/text_view.py:187
+#: apostrophe/text_view.py:203 apostrophe/text_view.py:205
 msgid "web page"
 msgstr "sitio web"
 
