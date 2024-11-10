@@ -209,6 +209,7 @@ class AdvancedExportDialog(Adw.Dialog):
 
         self.file = file
         self.text = text
+        self.revealjs = helpers.get_media_path('/libs/reveal.js')
 
         if not self.formats:
             with open(helpers.get_media_path("/media/formats.json")) as f:
@@ -303,8 +304,8 @@ class AdvancedExportDialog(Adw.Dialog):
         def on_response(dialog, response):
             if self.exports_multiple_files:
                 folder = export_dialog.get_file()
-                shutil.copytree(helpers.get_media_path('/libs/reveal.js'),
-                                os.path.join(folder.get_path(), 'reveal.js'), dirs_exist_ok=True)
+                if self.revealjs:
+                    shutil.copytree(self.revealjs, os.path.join(folder.get_path(), 'reveal.js'), dirs_exist_ok=True)
                 export_file = folder.get_child(self.file.name + '.' +
                                 self.formats_list.get_selected_row().item.ext)
             else:
@@ -387,7 +388,7 @@ class AdvancedExportDialog(Adw.Dialog):
             if self.sw_incremental_bullets.get_active():
                 args.append("--incremental")
 
-        if self.formats_list.get_selected_row().item.to == "revealjs":
+        if self.formats_list.get_selected_row().item.to == "revealjs" and self.revealjs:
             args.extend(["-V", "revealjs-url=reveal.js"])
 
         return args

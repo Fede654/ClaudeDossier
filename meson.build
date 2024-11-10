@@ -60,10 +60,6 @@ pkgdatadir = datadir / meson.project_name()
 #bindir = join_paths(get_option('prefix'), get_option('bindir'))
 podir = meson.source_root() / 'po'
 
-if not fs.exists(join_paths(pkgdatadir, 'libs/reveal.js'))
-  error('No valid reveal.js installation found')
-endif
-
 subdir('data')
 #subdir('help')
 subdir('po')
