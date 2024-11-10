@@ -90,14 +90,11 @@ install_subdir(
 
 install_subdir(
 	'media',
-  # exclude_directories: 'css/gtk'
+	exclude_directories: ['css/gtk', 'icons'],
+	exclude_files: ['apostrophe_markdown.md'],
 	install_dir: pkgdatadir
 )
 
-install_subdir(
-	'ui',
-	install_dir: pkgdatadir
-)
 install_subdir(
 	'reference_files',
 	install_dir: pkgdatadir
