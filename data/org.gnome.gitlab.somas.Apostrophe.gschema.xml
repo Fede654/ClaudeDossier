@@ -65,13 +65,6 @@
         Hide the header and status bars when typing.
       </description>
     </key>
-    <key name='open-file-path' type='s'>
-      <default>"/tmp"</default>
-      <summary>Open file base path</summary>
-      <description>
-        Open file paths of the current session
-      </description>
-    </key>
     <key name='stat-default' enum='org.gnome.gitlab.somas.Apostrophe.Stat'>
       <default>"words"</default>
       <summary>Default statistic</summary>

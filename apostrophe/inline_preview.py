@@ -300,15 +300,16 @@ class InlinePreview(GObject.Object):
 
     def get_view_for_image(self, match):
         path = match.group("url")
+        window = self.text_view.get_root()
+        basepath = window.current.base_path
 
         if path.startswith(("https://", "http://", "www.")):
             self.get_view_for_link(match)
             return
         if path.startswith(("file://")):
             path = path[7:]
-        if not path.startswith(("/", "file://")):
-            path = os.path.join(
-                self.settings.get_string("open-file-path"), path)
+        if not path.startswith(("/", "file://")) and basepath != "/":
+            path = os.path.join(basepath, path)
         path = unquote(path)
 
         if match == self.current_match:
