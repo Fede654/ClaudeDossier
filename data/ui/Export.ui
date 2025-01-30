@@ -92,6 +92,13 @@
                                           </object>
                                         </child>
                                         <child>
+                                          <object class="AdwSwitchRow" id="sw_absolute">
+                                            <property name="title" translatable="yes">Relative to Absolute</property>
+                                            <property name="subtitle" translatable="yes">Replace relative path with absolute for images and links</property>
+                                            <property name="active">1</property>
+                                          </object>
+                                        </child>
+                                        <child>
                                           <object class="AdwSwitchRow" id="sw_toc">
                                             <property name="title" translatable="yes">Table of Contents</property>
                                             <property name="sensitive" bind-source="sw_standalone" bind-property="active"/>

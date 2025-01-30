@@ -71,9 +71,7 @@ class LatexToPNG:
         open(texfile, "w").write(tex)
         saved_pwd = os.getcwd()
 
-        os.chdir(outdir)
-
-        args = ["latex", "-halt-on-error", texfile]
+        args = ["latex", "-halt-on-error", "-output-directory=" + outdir, texfile]
         p = subprocess.Popen(args,
                              stderr=subprocess.STDOUT,
                              stdout=subprocess.PIPE)

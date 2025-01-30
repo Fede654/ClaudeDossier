@@ -94,9 +94,7 @@ class ExportDialog:
             "args": ["--embed-resources",
                      "--standalone",
                      "--css=%s" % Theme.get_current().web_css,
-                     "--mathjax",
-                     "--lua-filter=%s"
-                     % helpers.get_media_path('/lua/relative_to_absolute.lua')]
+                     "--mathjax"]
         },
         "odt":
         {
@@ -109,6 +107,7 @@ class ExportDialog:
     }
 
     def __init__(self, file, _format, text):
+        self.file = file
         self.format = _format
         self.text = text
 
@@ -144,7 +143,10 @@ class ExportDialog:
             if not self._show_texlive_warning:
                 file = self.dialog.get_file()
                 fmt = self.formats[self.format]["to"]
-                args = self.formats[self.format]["args"]
+                args = self.formats[self.format]["args"].copy()
+
+                args.append("--metadata=base_path:%s" % self.file.base_path)
+                args.append("--lua-filter=%s" % helpers.get_media_path('/lua/relative_to_absolute.lua'))
 
                 if response == Gtk.ResponseType.ACCEPT:
                     try:
@@ -177,6 +179,7 @@ class AdvancedExportDialog(Adw.Dialog):
 
     # #### --option properties-- #####
     sw_standalone = Gtk.Template.Child()
+    sw_absolute = Gtk.Template.Child()
     sw_toc = Gtk.Template.Child()
     sw_numbers = Gtk.Template.Child()
 
@@ -351,6 +354,9 @@ class AdvancedExportDialog(Adw.Dialog):
 
         if self.sw_standalone.get_active():
             args.append("--standalone")
+        if self.sw_absolute.get_active():
+            args.append("--metadata=base_path:%s" % self.file.base_path)
+            args.append("--lua-filter=%s" % helpers.get_media_path('/lua/relative_to_absolute.lua'))
         if self.sw_toc.get_active():
             args.append("--toc")
         if self.sw_numbers.get_active():
@@ -373,8 +379,6 @@ class AdvancedExportDialog(Adw.Dialog):
         if self.show_html_options:
             args.append("--css=%s" % Theme.get_current().web_css)
             args.append("--mathjax")
-            args.append("--lua-filter=%s" % helpers.get_media_path(
-                '/lua/relative_to_absolute.lua'))
             if self.sw_self_contained.get_active():
                 args.append("--embed-resources")
                 args.append("--standalone")
