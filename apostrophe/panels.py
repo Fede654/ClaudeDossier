@@ -246,14 +246,21 @@ class ApostrophePanels(Gtk.Widget, Gtk.Orientable):
                     content.minimum_baseline,
                     content.natural_baseline)
 
+    def do_root(self):
+        Gtk.Widget.do_root(self)
+        if not self.content_container.get_parent():
+            self.content_container.set_parent(self)
+
+        if not self.panel_container.get_parent():
+            self.panel_container.set_parent(self)
+
+        if not self.separator.get_parent():
+            self.separator.set_parent(self)
+
     def do_unroot(self):
         self.content_container.unparent()
         self.panel_container.unparent()
         self.separator.unparent()
-
-        self.content_container = None
-        self.panel_container = None
-        self.separator = None
 
         Gtk.Widget.do_unroot(self)
 
