@@ -15,7 +15,7 @@
 
 import os
 import re
-import telnetlib
+import socket
 import threading
 from gettext import gettext as _
 from urllib.parse import unquote
@@ -36,14 +36,22 @@ class DictAccessor:
     reDefinition = re.compile(br"^151(.*?)^\.", re.DOTALL + re.MULTILINE)
 
     def __init__(self, host="dict.dict.org", port=2628, timeout=60):
-        self.telnet = telnetlib.Telnet(host, port)
-        self.timeout = timeout
-        self.login_response = self.telnet.expect([self.reEndResponse],
-                                                 self.timeout)[2]
+        self.socket = socket.create_connection((host, port), timeout)
+        self.socket_file = self.socket.makefile("rb")
+        self.login_response = self._read_response()
+
+    def _read_response(self):
+        response = b""
+        while True:
+            line = self.socket_file.readline()
+            response += line
+            if self.reEndResponse.search(response):
+                break
+        return response
 
     def run_command(self, cmd):
-        self.telnet.write(cmd.encode("utf-8") + b"\r\n")
-        return self.telnet.expect([self.reEndResponse], self.timeout)[2]
+        self.socket.sendall(cmd.encode("utf-8") + b"\r\n")
+        return self._read_response()
 
     def get_matches(self, database, strategy, word):
         if database in ["", "all"]:
@@ -87,7 +95,7 @@ class DictAccessor:
 
     def close(self):
         t = self.run_command("QUIT")
-        self.telnet.close()
+        self.socket.close()
         return t
 
     def parse_wordnet(self, response):
