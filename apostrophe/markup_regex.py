@@ -27,7 +27,7 @@ LIST = re.compile(
 CHECKLIST = re.compile(
     r"(?:^|\n)(?P<content>(?P<indent>(?:\t| {4})*)(?P<symbol>(?:[\-*+])) \[(?P<check>(?:[xX ]))\] (?:\t| {4})*(?P<text>.+(?:\n+ \2.+)*)?)")
 ORDERED_LIST = re.compile(
-    r"(?:^|\n)(?P<content>(?P<indent>(?:\t| {4})*)(?P<prefix>(?:(?P<number>\d+)|(?:[a-z]))+(?P<delimiter>[.)]))(?:\t| {4}| )(?P<text>.+(?:\n+ {2}\2.+)*)?)")
+    r"(?:^|\n)(?P<content>(?P<indent>(?>\t| {4})*)(?P<prefix>(?:(?P<number>\d+)|[a-z]+)(?P<delimiter>[.)]))[ \t](?P<text>.+(?:\n+(?!(?:\t| {4})*\S)(?: {2}|\t)(?P=indent).+)*))")
 BLOCK_QUOTE = re.compile(
     r"^ {0,3}(?:> ?)+(?P<text>.+)", re.M)
 HEADER = re.compile(
