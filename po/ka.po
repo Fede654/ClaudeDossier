@@ -2,14 +2,14 @@
 # Copyright (C) 2022 apostrophe's authors
 # This file is distributed under the same license as the apostrophe package.
 # Jacob Gogichaishvili <iakob.gogichaishvili@gmail.com>, 2022.
-# Ekaterine Papava <papava.e@gtu.ge>, 2022-2024
+# Ekaterine Papava <papava.e@gtu.ge>, 2022-2025
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: apostrophe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2024-10-18 22:19+0000\n"
-"PO-Revision-Date: 2024-10-23 05:50+0200\n"
+"POT-Creation-Date: 2025-01-30 20:15+0000\n"
+"PO-Revision-Date: 2025-02-01 05:06+0100\n"
 "Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
 "Language-Team: Georgian < >\n"
 "Language: ka\n"
@@ -79,84 +79,76 @@ msgid "Hide the header and status bars when typing."
 msgstr "სათაურ და სტატუსის ზოლის დამალვა კრეფვის დროს."
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:70
-msgid "Open file base path"
-msgstr "ფაილის ბილიკის გახსნა"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:71
-msgid "Open file paths of the current session"
-msgstr "გასნილი ფაილების ბილიკები მიმდინარე სესიაში"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:77
 msgid "Default statistic"
 msgstr "ნაგულისხმევი სტატისტიკა"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:78
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:71
 msgid "Which statistic is shown on the main window."
 msgstr "რომელი სტატისტიკა ნაჩვენებია მთავარ ფანჯარაზე."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:84
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:77
 msgid "Characters per line"
 msgstr "სიმბოლოები ი თითო სტრიქონში"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:85
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:78
 msgid "Maximum number of characters per line within the editor."
 msgstr "მაქსიმუმი ასო თითო სტრიქონში რედაქტორში."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:91
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:84
 #: data/ui/AboutHemingway.ui:6
 msgid "Hemingway Mode"
 msgstr "ჰემინგუეის რეჟიმი"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:92
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:85
 msgid "Whether the user can delete text or not."
 msgstr "შეუძლია თუ არა მომხმარებელს ტექსტის წაშლა."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:98
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:91
 msgid "Hemingway Toast Count"
 msgstr "ჰემინგუეის სადღეგრძელოების რაოდენობა"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:99
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:92
 msgid "Number of times the Hemingway Toast has been shown"
 msgstr "ჰემინგუეის სადღეგრძელოს ჩვენების რაოდენობა"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:105
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:98
 msgid "Preview mode"
 msgstr "მინიატურის რეჟიმი"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:106
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:99
 msgid "How to display the preview."
 msgstr "როგორ გამოჩნდება გადახედვა."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:112
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:105
 #: data/ui/Preferences.ui:64
 msgid "Preview Security"
 msgstr "მინიატურის უსაფრთხოება"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:113
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:106
 msgid "Security policy to apply when rendering files."
 msgstr "ფაილების რენდერისას გამოყენებული უსაფრთხოების პოლიტიკა."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:119
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:112
 msgid "Preview active"
 msgstr "აქტიური გადახედვა"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:120
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:113
 msgid "Whether showing of preview is active when launching a new window."
 msgstr "აქტიურია თუ არა გადახედვის ჩვენება ახალი ფანჯრის გაშვებისას."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:126
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:119
 msgid "Text size"
 msgstr "ტექსტის ზომა"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:127
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:120
 msgid "Preferred relative size for the text."
 msgstr "სასურველი შედარებითი ზომა ტექსტისთვის."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:133
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:126
 msgid "Toolbar"
 msgstr "ხელსაწყოთა ზოლი"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:134
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:127
 msgid "Whether the toolbar is shown or not."
 msgstr "ნაჩვენებია ხელსაწყოების ზოლი, თუ არა."
 
@@ -211,25 +203,25 @@ msgstr ""
 "გატანა ყველა სახის ფორმატში: PDF, Word/Libreoffice, LaTeX ან თუნდაც HTML "
 "სლაიდშოუ"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:52
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:53
 msgid "Main window"
 msgstr "მთავარი ფანჯარა"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:56
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:57
 msgid "Main window in dark mode"
 msgstr "მთავარი ფანჯარა მუქ რეჟიმში"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:60
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:61
 msgid "Inserting a table with the help of the toolbar"
 msgstr "ცხრილის ჩასმა ხელსაწყოთა ზოლის დახმარებით"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:64
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:65
 msgid "The preview lets you see a live rendered version of your document"
 msgstr ""
 "მინიატურა საშუალებას გაძლევთ, თქვენი დოკუმენტის ცოცხალი დარენდერებული ვერსია "
 "იხილოთ"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:68
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:69
 msgid "The focus mode allow for a more distraction-free experience"
 msgstr "ფოკუსის რეჟიმი ყურადღების გაფანტვის გარეშე მუშაობის საშუალებას მოგცემთ"
 
@@ -270,8 +262,8 @@ msgstr "_დახურვა"
 msgid "Formats"
 msgstr "ფორმატები"
 
-#: data/ui/Export.ui:67 apostrophe/export_dialog.py:126
-#: apostrophe/export_dialog.py:328 apostrophe/export_dialog.py:332
+#: data/ui/Export.ui:67 apostrophe/export_dialog.py:125
+#: apostrophe/export_dialog.py:332 apostrophe/export_dialog.py:336
 msgid "Export"
 msgstr "გატანა"
 
@@ -292,56 +284,65 @@ msgstr ""
 "შეგიძლიათ გამოიყენოთ"
 
 #: data/ui/Export.ui:96
+msgid "Relative to Absolute"
+msgstr "აბსოლუტურთან შეფარდებით"
+
+#: data/ui/Export.ui:97
+msgid "Replace relative path with absolute for images and links"
+msgstr ""
+"შედარებითი ბილიკის ჩანაცვლება აბსოლუტურით გამოსახულებებისა და ბმულებისთვის"
+
+#: data/ui/Export.ui:103
 msgid "Table of Contents"
 msgstr "სარჩევი"
 
-#: data/ui/Export.ui:102
+#: data/ui/Export.ui:109
 msgid "Number Sections"
 msgstr "ნომრის სექციები"
 
-#: data/ui/Export.ui:112 data/ui/Export.ui:115 data/ui/Export.ui:126
-#: data/ui/Export.ui:130
+#: data/ui/Export.ui:119 data/ui/Export.ui:122 data/ui/Export.ui:133
+#: data/ui/Export.ui:137
 msgid "Page Size"
 msgstr "გვერდის ზომა"
 
-#: data/ui/Export.ui:141
+#: data/ui/Export.ui:148
 msgid "HTML Options"
 msgstr "HTML"
 
-#: data/ui/Export.ui:144
+#: data/ui/Export.ui:151
 msgid "Self-Contained"
 msgstr "თვითმყოფადი"
 
-#: data/ui/Export.ui:145
+#: data/ui/Export.ui:152
 msgid "Produces an HTML file with no external dependencies"
 msgstr "ქმნის დამოუკიდებელ HTML ფაილს"
 
-#: data/ui/Export.ui:154
+#: data/ui/Export.ui:161
 msgid "Syntax Highlighting"
 msgstr "სინტაქსის გამოკვეთა"
 
-#: data/ui/Export.ui:157
+#: data/ui/Export.ui:164
 msgid "Use Syntax Highlighting"
 msgstr "სინტაქსის გამოკვეთის გამოყენება"
 
-#: data/ui/Export.ui:162
+#: data/ui/Export.ui:169
 msgid "Highlight Style"
 msgstr "გამოკვეთის სტილი"
 
-#: data/ui/Export.ui:175
+#: data/ui/Export.ui:182
 msgid "Presentation"
 msgstr "პრეზენტაცია"
 
-#: data/ui/Export.ui:178
+#: data/ui/Export.ui:185
 msgid "Incremental Bullets"
 msgstr "ინკრემენტული ტყვიები"
 
-#: data/ui/Export.ui:179
+#: data/ui/Export.ui:186
 msgid "Show one bullet point after another in a slideshow"
 msgstr "ჩვენება ერთი ტყვია მეორის მიყოლებით სლაიდშოუში"
 
 #: data/ui/Headerbar.ui:10 apostrophe/main_window.py:776
-#: apostrophe/main_window.py:794
+#: apostrophe/main_window.py:791
 msgid "New File"
 msgstr "ახალი ფაილი"
 
@@ -458,7 +459,7 @@ msgstr "მარკდაუნის ტიპის დოკუმენტ�
 msgid "Desired level of security when rendering the preview"
 msgstr "მინიატურის რენდერისას სასურველი უსაფრთხოების დონე"
 
-#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_handler.py:205
+#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_handler.py:199
 #: apostrophe/preview_window.py:32
 msgid "Preview"
 msgstr "მინიატურა"
@@ -808,30 +809,30 @@ msgstr "ფაილი შეიცვალა სხვა პროგრა
 msgid "_Discard Changes and Reload"
 msgstr "_ცვლილებების გაუქმება და თავიდან ჩატვირთვა"
 
-#: apostrophe/application.py:228
+#: apostrophe/application.py:244
 msgid "Donate"
 msgstr "შემოწირულობა"
 
-#: apostrophe/application.py:229
+#: apostrophe/application.py:245
 msgid "Translations"
 msgstr "თარგმანები"
 
-#: apostrophe/export_dialog.py:121 apostrophe/helpers.py:84
+#: apostrophe/export_dialog.py:120 apostrophe/helpers.py:84
 msgid "Close"
 msgstr "დახურვა"
 
-#: apostrophe/export_dialog.py:129 apostrophe/export_dialog.py:333
+#: apostrophe/export_dialog.py:128 apostrophe/export_dialog.py:337
 #, python-format
 msgid "Export to %s"
 msgstr "%s-ში გატანა"
 
-#: apostrophe/export_dialog.py:131 apostrophe/export_dialog.py:329
-#: apostrophe/export_dialog.py:334 apostrophe/main_window.py:420
+#: apostrophe/export_dialog.py:130 apostrophe/export_dialog.py:333
+#: apostrophe/export_dialog.py:338 apostrophe/main_window.py:420
 #: apostrophe/main_window.py:498 apostrophe/main_window.py:591
 msgid "Cancel"
 msgstr "გაუქმება"
 
-#: apostrophe/export_dialog.py:155 apostrophe/export_dialog.py:322
+#: apostrophe/export_dialog.py:157 apostrophe/export_dialog.py:326
 #, python-brace-format
 msgid ""
 "An error happened while trying to export:\n"
@@ -842,11 +843,11 @@ msgstr ""
 "\n"
 "{err_msg}"
 
-#: apostrophe/export_dialog.py:235
+#: apostrophe/export_dialog.py:239
 msgid "Export to {}"
 msgstr "{}-ში გატანა"
 
-#: apostrophe/export_dialog.py:329
+#: apostrophe/export_dialog.py:333
 msgid "Select folder"
 msgstr "საქაღალდეს არჩევა"
 
@@ -858,31 +859,31 @@ msgstr "შეცდომა"
 msgid "Unsaved documents"
 msgstr "შეუნახავი დოკუმენტები"
 
-#: apostrophe/inline_preview.py:292
+#: apostrophe/inline_preview.py:295
 msgid "LaTeX not found"
 msgstr "LaTeX აღმოჩენილი არაა"
 
-#: apostrophe/inline_preview.py:294
+#: apostrophe/inline_preview.py:297
 msgid "Formula looks incorrect:"
 msgstr "ფორმულა არასწორად გამოიყურება:"
 
-#: apostrophe/inline_preview.py:358
+#: apostrophe/inline_preview.py:365
 msgid "No matching footnote found"
 msgstr "შესატყვისი სქოლიო ვერ მოიძებნა"
 
-#: apostrophe/inline_preview.py:391
+#: apostrophe/inline_preview.py:398
 msgid "noun"
 msgstr "არსებითი სახელი"
 
-#: apostrophe/inline_preview.py:393
+#: apostrophe/inline_preview.py:400
 msgid "verb"
 msgstr "ზმნა"
 
-#: apostrophe/inline_preview.py:395
+#: apostrophe/inline_preview.py:402
 msgid "adjective"
 msgstr "ზედსართავი სახელი"
 
-#: apostrophe/inline_preview.py:397
+#: apostrophe/inline_preview.py:404
 msgid "adverb"
 msgstr "ზმნიზედა"
 
@@ -1051,7 +1052,7 @@ msgid "link text"
 msgstr "ბმულის ტექსტი"
 
 #: apostrophe/text_view_format_inserter.py:429
-#: apostrophe/text_view_format_inserter.py:461
+#: apostrophe/text_view_format_inserter.py:464
 msgid "image caption"
 msgstr "გამოსახულების წარწერა"
 
@@ -1059,7 +1060,7 @@ msgstr "გამოსახულების წარწერა"
 msgid "Select an image"
 msgstr "მონიშნეთ გამოსახულება"
 
-#: apostrophe/text_view_format_inserter.py:550
+#: apostrophe/text_view_format_inserter.py:553
 msgid ""
 "\n"
 "code\n"
@@ -1070,6 +1071,12 @@ msgstr ""
 #: apostrophe/text_view.py:203 apostrophe/text_view.py:205
 msgid "web page"
 msgstr "ვებგვერდი"
+
+#~ msgid "Open file base path"
+#~ msgstr "ფაილის ბილიკის გახსნა"
+
+#~ msgid "Open file paths of the current session"
+#~ msgstr "გასნილი ფაილების ბილიკები მიმდინარე სესიაში"
 
 #~ msgid "_Find"
 #~ msgstr "_ძებნა"
