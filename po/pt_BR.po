@@ -1,31 +1,31 @@
 # Brazilian Portuguese translation of apostrophe
-# Copyright (C) 2022 the apostrophe's COPYRIGHT HOLDERS
+# Copyright (C) 2025 the apostrophe's COPYRIGHT HOLDERS
 # This file is distributed under the same license as the apostrophe package.
 # Otto Robba <https://launchpad.net/~otto-ottorobba>, 2012.
 # Kemel Zaidan aka Legendario <https://answers.launchpad.net/~kemelzaidan>, 2014.
 # Felipe Bouabci Simões, 2021.
 # Gustavo Costa <xfgusta@gmail.com>, 2021.
 # Enrico Nicoletto <liverig@gmail.com>, 2021-2022.
-# Rafael Fontenelle <rafaelff@gnome.org>, 2022.
 # Leônidas Araújo <leorusvellt@hotmail.com>, 2022.
 # Alex Jr <alexalencarjr@outlook.com>, 2023.
 # Juliano de Souza Camargo <julianosc@pm.me>, 2024.
+# Rafael Fontenelle <rafaelff@gnome.org>, 2022-2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Apostrophe\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2024-10-18 22:19+0000\n"
-"PO-Revision-Date: 2024-10-21 07:56-0300\n"
-"Last-Translator: Juliano de Souza Camargo <julianosc@pm.me>\n"
+"POT-Creation-Date: 2025-01-30 20:15+0000\n"
+"PO-Revision-Date: 2025-01-31 22:50-0300\n"
+"Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <https://br.gnome.org/traducao>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Generator: Gtranslator 47.0\n"
+"X-Generator: Gtranslator 47.1\n"
 "X-DL-Team: pt_BR\n"
 "X-DL-Module: apostrophe\n"
 "X-DL-Branch: main\n"
@@ -40,9 +40,7 @@ msgstr "Apostrophe"
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! Do NOT translate "uberwriter" or "apostrophe"! The list MUST also end with a semicolon!
 #: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:5
 msgid "uberwriter;UberWriter;apostrophe;markdown;editor;text;write;"
-msgstr ""
-"uberwriter;UberWriter;apostrophe;markdown;marcação;editor;edição;texto;"
-"writer;escrever;"
+msgstr "uberwriter;UberWriter;apostrophe;markdown;marcação;editor;edição;texto;writer;escrever;"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:6
 msgid "Apostrophe, an elegant, distraction-free markdown editor"
@@ -94,87 +92,79 @@ msgid "Hide the header and status bars when typing."
 msgstr "Oculta cabeçalho e barra de status enquanto digita."
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:70
-msgid "Open file base path"
-msgstr "Abrir caminho base de arquivo"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:71
-msgid "Open file paths of the current session"
-msgstr "Caminhos dos arquivos abertos na sessão atual"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:77
 msgid "Default statistic"
 msgstr "Estatística padrão"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:78
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:71
 msgid "Which statistic is shown on the main window."
 msgstr "Qual estatística é mostrada na janela principal."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:84
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:77
 msgid "Characters per line"
 msgstr "Caracteres por linha"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:85
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:78
 msgid "Maximum number of characters per line within the editor."
 msgstr "Número máximo de caracteres por linha no editor."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:91
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:84
 #: data/ui/AboutHemingway.ui:6
 msgid "Hemingway Mode"
 msgstr "Modo Hemingway"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:92
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:85
 msgid "Whether the user can delete text or not."
 msgstr "Se o usuário pode excluir texto ou não."
 
 # Leônidas -- Melhorar a tradução para "Toast" neste contexto
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:98
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:91
 msgid "Hemingway Toast Count"
 msgstr "Contagem de alertas Hemingway"
 
 # Leônidas -- Melhorar a tradução para "Toast" neste contexto
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:99
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:92
 msgid "Number of times the Hemingway Toast has been shown"
 msgstr "Número de vezes que o alerta Hemingway foi exibido"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:105
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:98
 msgid "Preview mode"
 msgstr "Modo Pré-visualização"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:106
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:99
 msgid "How to display the preview."
 msgstr "Como exibir a pré-visualização."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:112
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:105
 #: data/ui/Preferences.ui:64
 msgid "Preview Security"
 msgstr "Pré-visualização segura"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:113
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:106
 msgid "Security policy to apply when rendering files."
 msgstr "Política de segurança a ser aplicada ao renderizar arquivos."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:119
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:112
 msgid "Preview active"
 msgstr "Pré-visualização ativa"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:120
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:113
 msgid "Whether showing of preview is active when launching a new window."
 msgstr ""
 "Se a exibição da pré-visualização está ativa ao lançar uma nova janela."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:126
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:119
 msgid "Text size"
 msgstr "Tamanho do texto"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:127
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:120
 msgid "Preferred relative size for the text."
 msgstr "Tamanho relativo preferido para o texto."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:133
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:126
 msgid "Toolbar"
 msgstr "Barra de ferramentas"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:134
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:127
 msgid "Whether the toolbar is shown or not."
 msgstr "Se a barra de ferramentas é mostrada ou não."
 
@@ -228,25 +218,25 @@ msgstr ""
 "Exporte para todos os tipos de formatos: PDF, Word/Libreoffice, LaTeX ou até "
 "mesmo apresentações de slides em HTML"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:52
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:53
 msgid "Main window"
 msgstr "Janela principal"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:56
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:57
 msgid "Main window in dark mode"
 msgstr "Janela principal no modo escuro"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:60
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:61
 msgid "Inserting a table with the help of the toolbar"
 msgstr "Inserindo uma tabela com a ajuda da barra de ferramentas"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:64
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:65
 msgid "The preview lets you see a live rendered version of your document"
 msgstr ""
 "A visualização permite que você veja uma versão renderizada ao vivo do seu "
 "documento"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:68
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:69
 msgid "The focus mode allow for a more distraction-free experience"
 msgstr "O modo de foco permite uma experiência mais livre de distrações"
 
@@ -292,8 +282,8 @@ msgstr "Fe_char"
 msgid "Formats"
 msgstr "Formatos"
 
-#: data/ui/Export.ui:67 apostrophe/export_dialog.py:126
-#: apostrophe/export_dialog.py:328 apostrophe/export_dialog.py:332
+#: data/ui/Export.ui:67 apostrophe/export_dialog.py:125
+#: apostrophe/export_dialog.py:332 apostrophe/export_dialog.py:336
 msgid "Export"
 msgstr "Exportar"
 
@@ -314,56 +304,64 @@ msgstr ""
 "metadados"
 
 #: data/ui/Export.ui:96
+msgid "Relative to Absolute"
+msgstr "Relativo para absoluto"
+
+#: data/ui/Export.ui:97
+msgid "Replace relative path with absolute for images and links"
+msgstr "Substitui um caminho relativo com o absoluto para imagens e links"
+
+#: data/ui/Export.ui:103
 msgid "Table of Contents"
 msgstr "Tabela de conteúdos"
 
-#: data/ui/Export.ui:102
+#: data/ui/Export.ui:109
 msgid "Number Sections"
 msgstr "Seções de números"
 
-#: data/ui/Export.ui:112 data/ui/Export.ui:115 data/ui/Export.ui:126
-#: data/ui/Export.ui:130
+#: data/ui/Export.ui:119 data/ui/Export.ui:122 data/ui/Export.ui:133
+#: data/ui/Export.ui:137
 msgid "Page Size"
 msgstr "Tamanho da página"
 
-#: data/ui/Export.ui:141
+#: data/ui/Export.ui:148
 msgid "HTML Options"
 msgstr "Opções HTML"
 
-#: data/ui/Export.ui:144
+#: data/ui/Export.ui:151
 msgid "Self-Contained"
 msgstr "Autocontido"
 
-#: data/ui/Export.ui:145
+#: data/ui/Export.ui:152
 msgid "Produces an HTML file with no external dependencies"
 msgstr "Produz um arquivo HTML sem dependências externas"
 
-#: data/ui/Export.ui:154
+#: data/ui/Export.ui:161
 msgid "Syntax Highlighting"
 msgstr "Destaque de sintaxe"
 
-#: data/ui/Export.ui:157
+#: data/ui/Export.ui:164
 msgid "Use Syntax Highlighting"
 msgstr "Usar destaque de sintaxe"
 
-#: data/ui/Export.ui:162
+#: data/ui/Export.ui:169
 msgid "Highlight Style"
 msgstr "Estilo do destaque"
 
-#: data/ui/Export.ui:175
+#: data/ui/Export.ui:182
 msgid "Presentation"
 msgstr "Apresentação"
 
-#: data/ui/Export.ui:178
+#: data/ui/Export.ui:185
 msgid "Incremental Bullets"
 msgstr "Marcadores incrementais"
 
-#: data/ui/Export.ui:179
+#: data/ui/Export.ui:186
 msgid "Show one bullet point after another in a slideshow"
 msgstr "Mostra um marcador após o outro em uma apresentação de slides"
 
 #: data/ui/Headerbar.ui:10 apostrophe/main_window.py:776
-#: apostrophe/main_window.py:794
+#: apostrophe/main_window.py:791
 msgid "New File"
 msgstr "Novo arquivo"
 
@@ -482,7 +480,7 @@ msgstr "Documentação da opção de markdown"
 msgid "Desired level of security when rendering the preview"
 msgstr "Nível de segurança desejado ao renderizar a visualização"
 
-#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_handler.py:205
+#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_handler.py:199
 #: apostrophe/preview_window.py:32
 msgid "Preview"
 msgstr "Pré-visualizar"
@@ -833,30 +831,30 @@ msgstr "O arquivo foi alterado por outro programa"
 msgid "_Discard Changes and Reload"
 msgstr "_Descartar alterações e recarregar"
 
-#: apostrophe/application.py:228
+#: apostrophe/application.py:244
 msgid "Donate"
 msgstr "Doar"
 
-#: apostrophe/application.py:229
+#: apostrophe/application.py:245
 msgid "Translations"
 msgstr "Traduções"
 
-#: apostrophe/export_dialog.py:121 apostrophe/helpers.py:84
+#: apostrophe/export_dialog.py:120 apostrophe/helpers.py:84
 msgid "Close"
 msgstr "Fechar"
 
-#: apostrophe/export_dialog.py:129 apostrophe/export_dialog.py:333
+#: apostrophe/export_dialog.py:128 apostrophe/export_dialog.py:337
 #, python-format
 msgid "Export to %s"
 msgstr "Exportar para %s"
 
-#: apostrophe/export_dialog.py:131 apostrophe/export_dialog.py:329
-#: apostrophe/export_dialog.py:334 apostrophe/main_window.py:420
+#: apostrophe/export_dialog.py:130 apostrophe/export_dialog.py:333
+#: apostrophe/export_dialog.py:338 apostrophe/main_window.py:420
 #: apostrophe/main_window.py:498 apostrophe/main_window.py:591
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: apostrophe/export_dialog.py:155 apostrophe/export_dialog.py:322
+#: apostrophe/export_dialog.py:157 apostrophe/export_dialog.py:326
 #, python-brace-format
 msgid ""
 "An error happened while trying to export:\n"
@@ -867,11 +865,11 @@ msgstr ""
 "\n"
 "{err_msg}"
 
-#: apostrophe/export_dialog.py:235
+#: apostrophe/export_dialog.py:239
 msgid "Export to {}"
 msgstr "Exportar para {}"
 
-#: apostrophe/export_dialog.py:329
+#: apostrophe/export_dialog.py:333
 msgid "Select folder"
 msgstr "Selecionar pasta"
 
@@ -883,31 +881,31 @@ msgstr "Erro"
 msgid "Unsaved documents"
 msgstr "Documentos não salvos"
 
-#: apostrophe/inline_preview.py:292
+#: apostrophe/inline_preview.py:295
 msgid "LaTeX not found"
 msgstr "LaTeX não localizado"
 
-#: apostrophe/inline_preview.py:294
+#: apostrophe/inline_preview.py:297
 msgid "Formula looks incorrect:"
 msgstr "A fórmula parece incorreta:"
 
-#: apostrophe/inline_preview.py:358
+#: apostrophe/inline_preview.py:365
 msgid "No matching footnote found"
 msgstr "Não foi encontrada nota de rodapé correspondente"
 
-#: apostrophe/inline_preview.py:391
+#: apostrophe/inline_preview.py:398
 msgid "noun"
 msgstr "substantivo"
 
-#: apostrophe/inline_preview.py:393
+#: apostrophe/inline_preview.py:400
 msgid "verb"
 msgstr "verbo"
 
-#: apostrophe/inline_preview.py:395
+#: apostrophe/inline_preview.py:402
 msgid "adjective"
 msgstr "adjetivo"
 
-#: apostrophe/inline_preview.py:397
+#: apostrophe/inline_preview.py:404
 msgid "adverb"
 msgstr "advérbio"
 
@@ -1076,7 +1074,7 @@ msgid "link text"
 msgstr "texto do link"
 
 #: apostrophe/text_view_format_inserter.py:429
-#: apostrophe/text_view_format_inserter.py:461
+#: apostrophe/text_view_format_inserter.py:464
 msgid "image caption"
 msgstr "legenda da imagem"
 
@@ -1084,7 +1082,7 @@ msgstr "legenda da imagem"
 msgid "Select an image"
 msgstr "Seleciona uma imagem"
 
-#: apostrophe/text_view_format_inserter.py:550
+#: apostrophe/text_view_format_inserter.py:553
 msgid ""
 "\n"
 "code\n"
@@ -1095,6 +1093,12 @@ msgstr ""
 #: apostrophe/text_view.py:203 apostrophe/text_view.py:205
 msgid "web page"
 msgstr "página web"
+
+#~ msgid "Open file base path"
+#~ msgstr "Abrir caminho base de arquivo"
+
+#~ msgid "Open file paths of the current session"
+#~ msgstr "Caminhos dos arquivos abertos na sessão atual"
 
 #~ msgid "New"
 #~ msgstr "Novo"
