@@ -1,4 +1,4 @@
-import re
+import regex as re
 from multiprocessing import Process, Pipe
 
 from gi.repository import GLib

@@ -17,7 +17,7 @@
 ### END LICENSE
 
 import unittest
-import re
+import regex as re
 
 from apostrophe import markup_regex
 

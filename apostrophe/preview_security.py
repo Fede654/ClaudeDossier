@@ -1,4 +1,4 @@
-import re
+import regex as re
 from enum import IntEnum
 
 from apostrophe.settings import Settings

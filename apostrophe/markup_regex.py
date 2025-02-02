@@ -1,4 +1,4 @@
-import re
+import regex as re
 
 ITALIC_ASTERISK = re.compile(
     r"(?<!\\)\*[^\s\*](?P<text>.*?\S?.*?)(?<!\\)\*")

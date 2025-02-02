@@ -1,6 +1,6 @@
 from contextlib import contextmanager
 from itertools import cycle
-import re
+import regex as re
 import gi
 
 from apostrophe.helpers import user_action
