@@ -2,23 +2,23 @@
 # Copyright (C) 2021 apostrophe's COPYRIGHT HOLDER
 # This file is distributed under the same license as the apostrophe package.
 # SPDX-FileCopyrightText: 2021, 2024 Yaron Shahrabani <sh.yaron@gmail.com>
-# Yosef Or Boczko <yoseforb@gmail.com>, 2022-2024.
+# Yosef Or Boczko <yoseforb@gmail.com>, 2022-2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: apostrophe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2024-10-18 22:19+0000\n"
-"PO-Revision-Date: 2024-10-27 08:12+0200\n"
-"Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
-"Language-Team: Hebrew\n"
+"POT-Creation-Date: 2025-01-30 20:15+0000\n"
+"PO-Revision-Date: 2025-02-24 17:53+0200\n"
+"Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
+"Language-Team: Hebrew <yoseforb@gmail.com>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? "
-"2 : 3);\n"
-"X-Generator: Poedit 3.4.2\n"
+"2 : 3)\n"
+"X-Generator: Gtranslator 47.1\n"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:3
 #: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:4
@@ -77,84 +77,76 @@ msgid "Hide the header and status bars when typing."
 msgstr "הסתרת סרגלי הכותרת והמצב בעת ההקלדה."
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:70
-msgid "Open file base path"
-msgstr "פתיחת נתיב בסיס קבצים"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:71
-msgid "Open file paths of the current session"
-msgstr "לפתוח את נתיבי קובצי ההפעלה הנוכחית"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:77
 msgid "Default statistic"
 msgstr "סטטיסטיקת ברירת מחדל"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:78
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:71
 msgid "Which statistic is shown on the main window."
 msgstr "איזו סטטיסטיקה להציג בחלון הראשי."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:84
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:77
 msgid "Characters per line"
 msgstr "תווים לשורה"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:85
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:78
 msgid "Maximum number of characters per line within the editor."
 msgstr "מספר התווים המרבי לשורה בתוך העורך."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:91
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:84
 #: data/ui/AboutHemingway.ui:6
 msgid "Hemingway Mode"
 msgstr "מצב המינגווי"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:92
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:85
 msgid "Whether the user can delete text or not."
 msgstr "האם המשתמש יוכל למחוק טקסט או לא."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:98
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:91
 msgid "Hemingway Toast Count"
 msgstr "Hemingway Toast Count"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:99
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:92
 msgid "Number of times the Hemingway Toast has been shown"
 msgstr "Number of times the Hemingway Toast has been shown"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:105
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:98
 msgid "Preview mode"
 msgstr "מצב תצוגה מקדימה"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:106
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:99
 msgid "How to display the preview."
 msgstr "איך להציג את התצוגה המקדימה."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:112
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:105
 #: data/ui/Preferences.ui:64
 msgid "Preview Security"
 msgstr "אבטחת תצוגה מקדימה"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:113
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:106
 msgid "Security policy to apply when rendering files."
 msgstr "מדיניות אבטחה שתחול על עיבוד קבצים."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:119
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:112
 msgid "Preview active"
 msgstr "תצוגה מקדימה פעילה"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:120
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:113
 msgid "Whether showing of preview is active when launching a new window."
 msgstr "האם הצגת התצוגה המקדימה פעילה בעת הצגת חלון חדש."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:126
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:119
 msgid "Text size"
 msgstr "גודל הכתב"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:127
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:120
 msgid "Preferred relative size for the text."
 msgstr "גודל יחסי מועדף לטקסט."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:133
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:126
 msgid "Toolbar"
 msgstr "סרגל כלים"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:134
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:127
 msgid "Whether the toolbar is shown or not."
 msgstr "האם להציג או לא להציג את סרגל הכלים."
 
@@ -204,23 +196,23 @@ msgid ""
 msgstr ""
 "ייצוא לכל סוגי הקבצים: PDF,‏ Word/Libreoffice,‏ LaTeX או אפילו מצגות HTML"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:52
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:53
 msgid "Main window"
 msgstr "חלון ראשי"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:56
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:57
 msgid "Main window in dark mode"
 msgstr "חלון ראשי במצב כהה"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:60
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:61
 msgid "Inserting a table with the help of the toolbar"
 msgstr "הכנסת טבלה בעזרת סרגל הכלים"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:64
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:65
 msgid "The preview lets you see a live rendered version of your document"
 msgstr "התצוגה המקדימה מאפשרת לך לראות גרסה חיה של עיבוד המסמך שלך"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:68
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:69
 msgid "The focus mode allow for a more distraction-free experience"
 msgstr "מצב מיקוד מאפשר לך חוויה נטולת הסחות דעת"
 
@@ -261,8 +253,8 @@ msgstr "_סגירה"
 msgid "Formats"
 msgstr "תצורות"
 
-#: data/ui/Export.ui:67 apostrophe/export_dialog.py:126
-#: apostrophe/export_dialog.py:328 apostrophe/export_dialog.py:332
+#: data/ui/Export.ui:67 apostrophe/export_dialog.py:125
+#: apostrophe/export_dialog.py:332 apostrophe/export_dialog.py:336
 msgid "Export"
 msgstr "ייצוא"
 
@@ -283,56 +275,64 @@ msgstr ""
 "חוץ"
 
 #: data/ui/Export.ui:96
+msgid "Relative to Absolute"
+msgstr "יחסי למוחלט"
+
+#: data/ui/Export.ui:97
+msgid "Replace relative path with absolute for images and links"
+msgstr "החלפת נתיבים יחסיים עם נתיבים מוחלטים עבור תמונות וקישורים"
+
+#: data/ui/Export.ui:103
 msgid "Table of Contents"
 msgstr "תוכן העניינים"
 
-#: data/ui/Export.ui:102
+#: data/ui/Export.ui:109
 msgid "Number Sections"
 msgstr "מספור סעיפים"
 
-#: data/ui/Export.ui:112 data/ui/Export.ui:115 data/ui/Export.ui:126
-#: data/ui/Export.ui:130
+#: data/ui/Export.ui:119 data/ui/Export.ui:122 data/ui/Export.ui:133
+#: data/ui/Export.ui:137
 msgid "Page Size"
 msgstr "גודל עמוד"
 
-#: data/ui/Export.ui:141
+#: data/ui/Export.ui:148
 msgid "HTML Options"
 msgstr "אפשרויות HTML"
 
-#: data/ui/Export.ui:144
+#: data/ui/Export.ui:151
 msgid "Self-Contained"
 msgstr "מוכל בעצמו"
 
-#: data/ui/Export.ui:145
+#: data/ui/Export.ui:152
 msgid "Produces an HTML file with no external dependencies"
 msgstr "מייצר קובץ HTML ללא תלויות חיצוניות"
 
-#: data/ui/Export.ui:154
+#: data/ui/Export.ui:161
 msgid "Syntax Highlighting"
 msgstr "הדגשת תחביר"
 
-#: data/ui/Export.ui:157
+#: data/ui/Export.ui:164
 msgid "Use Syntax Highlighting"
 msgstr "שימוש בהדגשת תחביר"
 
-#: data/ui/Export.ui:162
+#: data/ui/Export.ui:169
 msgid "Highlight Style"
 msgstr "סגנון הדגשה"
 
-#: data/ui/Export.ui:175
+#: data/ui/Export.ui:182
 msgid "Presentation"
 msgstr "מצגת"
 
-#: data/ui/Export.ui:178
+#: data/ui/Export.ui:185
 msgid "Incremental Bullets"
 msgstr "תבליטים מתווספים"
 
-#: data/ui/Export.ui:179
+#: data/ui/Export.ui:186
 msgid "Show one bullet point after another in a slideshow"
 msgstr "להציג נקודת תבליט אחת אחרי השנייה במצגת"
 
 #: data/ui/Headerbar.ui:10 apostrophe/main_window.py:776
-#: apostrophe/main_window.py:794
+#: apostrophe/main_window.py:791
 msgid "New File"
 msgstr "קובץ חדש"
 
@@ -448,7 +448,7 @@ msgstr "תיעוד תצורת ה־Markdown"
 msgid "Desired level of security when rendering the preview"
 msgstr "רמת האבטחה הרצויה בעת עיבוד התצוגה המקדימה"
 
-#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_handler.py:205
+#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_handler.py:199
 #: apostrophe/preview_window.py:32
 msgid "Preview"
 msgstr "תצוגה מקדימה"
@@ -809,30 +809,30 @@ msgstr "הקובץ שונה על ידי תכנה אחרת"
 msgid "_Discard Changes and Reload"
 msgstr "_ביטול שינויים וטעינה מחדש"
 
-#: apostrophe/application.py:228
+#: apostrophe/application.py:244
 msgid "Donate"
 msgstr "תרומה"
 
-#: apostrophe/application.py:229
+#: apostrophe/application.py:245
 msgid "Translations"
 msgstr "תרגומים"
 
-#: apostrophe/export_dialog.py:121 apostrophe/helpers.py:84
+#: apostrophe/export_dialog.py:120 apostrophe/helpers.py:84
 msgid "Close"
 msgstr "סגירה"
 
-#: apostrophe/export_dialog.py:129 apostrophe/export_dialog.py:333
+#: apostrophe/export_dialog.py:128 apostrophe/export_dialog.py:337
 #, python-format
 msgid "Export to %s"
 msgstr "ייצוא אל %s"
 
-#: apostrophe/export_dialog.py:131 apostrophe/export_dialog.py:329
-#: apostrophe/export_dialog.py:334 apostrophe/main_window.py:420
+#: apostrophe/export_dialog.py:130 apostrophe/export_dialog.py:333
+#: apostrophe/export_dialog.py:338 apostrophe/main_window.py:420
 #: apostrophe/main_window.py:498 apostrophe/main_window.py:591
 msgid "Cancel"
 msgstr "ביטול"
 
-#: apostrophe/export_dialog.py:155 apostrophe/export_dialog.py:322
+#: apostrophe/export_dialog.py:157 apostrophe/export_dialog.py:326
 #, python-brace-format
 msgid ""
 "An error happened while trying to export:\n"
@@ -843,11 +843,11 @@ msgstr ""
 "‬\n"
 "‏‫{err_msg}"
 
-#: apostrophe/export_dialog.py:235
+#: apostrophe/export_dialog.py:239
 msgid "Export to {}"
 msgstr "ייצוא אל {}"
 
-#: apostrophe/export_dialog.py:329
+#: apostrophe/export_dialog.py:333
 msgid "Select folder"
 msgstr "בחירת תיקייה"
 
@@ -859,31 +859,31 @@ msgstr "שגיאה"
 msgid "Unsaved documents"
 msgstr "מסמכים שלא נשמרו"
 
-#: apostrophe/inline_preview.py:292
+#: apostrophe/inline_preview.py:295
 msgid "LaTeX not found"
 msgstr "LaTeX/לאטך לא נמצא"
 
-#: apostrophe/inline_preview.py:294
+#: apostrophe/inline_preview.py:297
 msgid "Formula looks incorrect:"
 msgstr "הנוסחה נראית שגויה:"
 
-#: apostrophe/inline_preview.py:358
+#: apostrophe/inline_preview.py:365
 msgid "No matching footnote found"
 msgstr "לא נמצאה הערת שוליים מתאימה"
 
-#: apostrophe/inline_preview.py:391
+#: apostrophe/inline_preview.py:398
 msgid "noun"
 msgstr "שם עצם"
 
-#: apostrophe/inline_preview.py:393
+#: apostrophe/inline_preview.py:400
 msgid "verb"
 msgstr "פועל"
 
-#: apostrophe/inline_preview.py:395
+#: apostrophe/inline_preview.py:402
 msgid "adjective"
 msgstr "שם תואר"
 
-#: apostrophe/inline_preview.py:397
+#: apostrophe/inline_preview.py:404
 msgid "adverb"
 msgstr "תואר הפועל"
 
@@ -1058,7 +1058,7 @@ msgid "link text"
 msgstr "טקסט קישור"
 
 #: apostrophe/text_view_format_inserter.py:429
-#: apostrophe/text_view_format_inserter.py:461
+#: apostrophe/text_view_format_inserter.py:464
 msgid "image caption"
 msgstr "כיתוב תמונה"
 
@@ -1066,7 +1066,7 @@ msgstr "כיתוב תמונה"
 msgid "Select an image"
 msgstr "בחירת תמונה"
 
-#: apostrophe/text_view_format_inserter.py:550
+#: apostrophe/text_view_format_inserter.py:553
 msgid ""
 "\n"
 "code\n"
@@ -1077,6 +1077,12 @@ msgstr ""
 #: apostrophe/text_view.py:203 apostrophe/text_view.py:205
 msgid "web page"
 msgstr "דף אינטרנט"
+
+#~ msgid "Open file base path"
+#~ msgstr "פתיחת נתיב בסיס קבצים"
+
+#~ msgid "Open file paths of the current session"
+#~ msgstr "לפתוח את נתיבי קובצי ההפעלה הנוכחית"
 
 #~ msgid "_Find"
 #~ msgstr "_איתור"
