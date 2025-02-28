@@ -1,15 +1,15 @@
 # Hungarian translation for Apostrophe.
-# Copyright (C) 2022, 2023, 2024 Free Software Foundation, Inc.
+# Copyright (C) 2022, 2023, 2024, 2025 Free Software Foundation, Inc.
 # This file is distributed under the same license as the Apostrophe package.
 #
 # Balázs Meskó <mesko.balazs at fsf dot hu>, 2022.
-# Balázs Úr <ur.balazs at fsf dot hu>, 2022, 2023, 2024.
+# Balázs Úr <ur.balazs at fsf dot hu>, 2022, 2023, 2024, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: Apostrophe\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2024-04-17 20:12+0000\n"
-"PO-Revision-Date: 2024-05-19 13:40+0200\n"
+"POT-Creation-Date: 2025-01-30 20:15+0000\n"
+"PO-Revision-Date: 2025-02-28 17:03+0100\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <openscope at fsf dot hu>\n"
 "Language: hu\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:3
 #: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:4
@@ -79,85 +79,76 @@ msgid "Hide the header and status bars when typing."
 msgstr "Fejléc és állapotsorok elrejtése gépelés közben."
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:70
-msgid "Open file base path"
-msgstr "Fájl alapútvonalának megnyitása"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:71
-msgid "Open file paths of the current session"
-msgstr "A jelenlegi munkamenet fájlútvonalainak megnyitása"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:77
 msgid "Default statistic"
 msgstr "Alapértelmezett statisztikák"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:78
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:71
 msgid "Which statistic is shown on the main window."
 msgstr "Mely statisztikák legyenek megjelenítve a főablakban."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:84
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:77
 msgid "Characters per line"
 msgstr "Soronkénti karakterek"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:85
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:78
 msgid "Maximum number of characters per line within the editor."
 msgstr "Legnagyobb soronkénti karakterszám a szerkesztőben."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:91
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:84
 #: data/ui/AboutHemingway.ui:6
 msgid "Hemingway Mode"
 msgstr "Hemingway mód"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:92
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:85
 msgid "Whether the user can delete text or not."
 msgstr "A felhasználó törölhessen-e szöveget vagy sem."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:98
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:91
 msgid "Hemingway Toast Count"
 msgstr "Hemingway-koccintás darabszáma"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:99
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:92
 msgid "Number of times the Hemingway Toast has been shown"
 msgstr "A Hemingway-koccintás megjelenéseinek száma"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:105
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:98
 msgid "Preview mode"
 msgstr "Előnézet módja"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:106
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:99
 msgid "How to display the preview."
 msgstr "Hogyan jelenítse meg az előnézetet."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:112
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:105
 #: data/ui/Preferences.ui:64
-#| msgid "Preview active"
 msgid "Preview Security"
 msgstr "Előnézet biztonsága"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:113
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:106
 msgid "Security policy to apply when rendering files."
 msgstr "A fájlok megjelenítésekor alkalmazandó biztonsági házirend."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:119
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:112
 msgid "Preview active"
 msgstr "Előnézet aktív"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:120
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:113
 msgid "Whether showing of preview is active when launching a new window."
 msgstr "Legyen-e aktív az előnézet megjelenítése egy új ablak indításakor."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:126
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:119
 msgid "Text size"
 msgstr "Szövegméret"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:127
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:120
 msgid "Preferred relative size for the text."
 msgstr "A szöveg előnyben részesített relatív mérete."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:133
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:126
 msgid "Toolbar"
 msgstr "Eszköztár"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:134
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:127
 msgid "Whether the toolbar is shown or not."
 msgstr "Megjelenjen-e az eszköztár vagy sem."
 
@@ -211,25 +202,25 @@ msgstr ""
 "Exportálás mindenféle formátumba: PDF-be, Wordbe/LibreOffice-ba, LaTeX-be "
 "vagy akár HTML diavetítésekbe"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:41
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:53
 msgid "Main window"
 msgstr "Főablak"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:45
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:57
 msgid "Main window in dark mode"
 msgstr "Főablak sötét módban"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:49
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:61
 msgid "Inserting a table with the help of the toolbar"
 msgstr "Táblázat beszúrása az eszköztár segítségével"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:53
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:65
 msgid "The preview lets you see a live rendered version of your document"
 msgstr ""
-"Az előnézetben megtekintheti a dokumentum valós időben megjelenített"
-" változatát."
+"Az előnézetben megtekintheti a dokumentum valós időben megjelenített "
+"változatát."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:57
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:69
 msgid "The focus mode allow for a more distraction-free experience"
 msgstr "A fókusz mód még zavartalanabb élményt tesz lehetővé"
 
@@ -271,8 +262,8 @@ msgstr "_Bezárás"
 msgid "Formats"
 msgstr "Formátumok"
 
-#: data/ui/Export.ui:67 apostrophe/export_dialog.py:126
-#: apostrophe/export_dialog.py:328 apostrophe/export_dialog.py:332
+#: data/ui/Export.ui:67 apostrophe/export_dialog.py:125
+#: apostrophe/export_dialog.py:332 apostrophe/export_dialog.py:336
 msgid "Export"
 msgstr "Exportálás"
 
@@ -293,56 +284,64 @@ msgstr ""
 "metainformációk"
 
 #: data/ui/Export.ui:96
+msgid "Relative to Absolute"
+msgstr "Relatívat abszolúttá"
+
+#: data/ui/Export.ui:97
+msgid "Replace relative path with absolute for images and links"
+msgstr "Képek és hivatkozások relatív útvonalának abszolútra cserélése"
+
+#: data/ui/Export.ui:103
 msgid "Table of Contents"
 msgstr "Tartalomjegyzék"
 
-#: data/ui/Export.ui:102
+#: data/ui/Export.ui:109
 msgid "Number Sections"
 msgstr "Alcímek számozása"
 
-#: data/ui/Export.ui:112 data/ui/Export.ui:115 data/ui/Export.ui:126
-#: data/ui/Export.ui:130
+#: data/ui/Export.ui:119 data/ui/Export.ui:122 data/ui/Export.ui:133
+#: data/ui/Export.ui:137
 msgid "Page Size"
 msgstr "Oldalméret"
 
-#: data/ui/Export.ui:141
+#: data/ui/Export.ui:148
 msgid "HTML Options"
 msgstr "HTML beállításai"
 
-#: data/ui/Export.ui:144
+#: data/ui/Export.ui:151
 msgid "Self-Contained"
 msgstr "Önálló"
 
-#: data/ui/Export.ui:145
+#: data/ui/Export.ui:152
 msgid "Produces an HTML file with no external dependencies"
 msgstr "Külső függőségek nélküli HTML-fájlt állít elő"
 
-#: data/ui/Export.ui:154
+#: data/ui/Export.ui:161
 msgid "Syntax Highlighting"
 msgstr "Szintaxis-kiemelés"
 
-#: data/ui/Export.ui:157
+#: data/ui/Export.ui:164
 msgid "Use Syntax Highlighting"
 msgstr "Szintaxis-kiemelés használata"
 
-#: data/ui/Export.ui:162
+#: data/ui/Export.ui:169
 msgid "Highlight Style"
 msgstr "Kiemelés stílusa"
 
-#: data/ui/Export.ui:175
+#: data/ui/Export.ui:182
 msgid "Presentation"
 msgstr "Bemutató"
 
-#: data/ui/Export.ui:178
+#: data/ui/Export.ui:185
 msgid "Incremental Bullets"
 msgstr "Növekvő listaelemek"
 
-#: data/ui/Export.ui:179
+#: data/ui/Export.ui:186
 msgid "Show one bullet point after another in a slideshow"
 msgstr "Felsorolás elemeinek megjelenítése egymás után a diavetítéskor"
 
-#: data/ui/Headerbar.ui:10 apostrophe/main_window.py:772
-#: apostrophe/main_window.py:790
+#: data/ui/Headerbar.ui:10 apostrophe/main_window.py:776
+#: apostrophe/main_window.py:791
 msgid "New File"
 msgstr "Új fájl"
 
@@ -351,7 +350,6 @@ msgid "_Open"
 msgstr "_Megnyitás"
 
 #: data/ui/Headerbar.ui:19
-#| msgid "Open a Markdown File"
 msgid "Open Markdown File"
 msgstr "Markdown-fájl megnyitása"
 
@@ -360,12 +358,10 @@ msgid "_Save"
 msgstr "_Mentés"
 
 #: data/ui/Headerbar.ui:27
-#| msgid "Save the Markdown File"
 msgid "Save Markdown File"
 msgstr "Markdown-fájl mentése"
 
 #: data/ui/Headerbar.ui:43
-#| msgid "Open the Main Menu"
 msgid "Main Menu"
 msgstr "Főmenü"
 
@@ -413,8 +409,12 @@ msgstr "Speciális _exportálás…"
 msgid "_Copy HTML"
 msgstr "HTML _másolása"
 
+#: data/ui/InlinePreviewPopover.ui:42
+#| msgid "No Results Found"
+msgid "Not Found"
+msgstr "Nem található"
+
 #: data/ui/Preferences.ui:12 data/ui/Preferences.ui:13
-#| msgid "Check Spelling While Typing"
 msgid "Check Spelling"
 msgstr "Helyesírás-ellenőrzés"
 
@@ -460,7 +460,7 @@ msgstr "Markdown-változat dokumentációja"
 msgid "Desired level of security when rendering the preview"
 msgstr "A kívánt biztonsági szint az előnézet megjelenítésekor"
 
-#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_handler.py:205
+#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_handler.py:199
 #: apostrophe/preview_window.py:32
 msgid "Preview"
 msgstr "Előnézet"
@@ -725,24 +725,18 @@ msgid "Use Dark Colors"
 msgstr "Sötét színek használata"
 
 #: data/ui/Toolbar.ui:27
-#| msgctxt "shortcut window"
-#| msgid "Bold"
 msgid "Bold"
 msgstr "Félkövér"
 
 #: data/ui/Toolbar.ui:37
-#| msgctxt "shortcut window"
-#| msgid "Italic"
 msgid "Italic"
 msgstr "Dőlt"
 
 #: data/ui/Toolbar.ui:47
-#| msgid "strikethrough text"
 msgid "Strikethrough"
 msgstr "Áthúzott"
 
 #: data/ui/Toolbar.ui:57
-#| msgid "Header"
 msgid "Heading"
 msgstr "Címsor"
 
@@ -793,11 +787,10 @@ msgid ""
 "Preview where javascript and HTML are disabled."
 msgstr ""
 "A nem megbízható forrásból származó fájlok előnézete veszélyes lehet.\n"
-"Ha bizonytalan a fájl tartalmát illetően, akkor nyissa meg a korlátozott"
-" előnézetben, ahol a JavaScript és a HTML le van tiltva."
+"Ha bizonytalan a fájl tartalmát illetően, akkor nyissa meg a korlátozott "
+"előnézetben, ahol a JavaScript és a HTML le van tiltva."
 
 #: data/ui/Window.ui:77
-#| msgid "Preview"
 msgid "Load Preview"
 msgstr "Előnézet betöltése"
 
@@ -817,30 +810,30 @@ msgstr "A fájlt egy másik program megváltoztatta"
 msgid "_Discard Changes and Reload"
 msgstr "Változtatások _elvetése és újratöltés"
 
-#: apostrophe/application.py:228
+#: apostrophe/application.py:244
 msgid "Donate"
 msgstr "Adományozás"
 
-#: apostrophe/application.py:229
+#: apostrophe/application.py:245
 msgid "Translations"
 msgstr "Fordítások"
 
-#: apostrophe/export_dialog.py:121 apostrophe/helpers.py:84
+#: apostrophe/export_dialog.py:120 apostrophe/helpers.py:84
 msgid "Close"
 msgstr "Bezárás"
 
-#: apostrophe/export_dialog.py:129 apostrophe/export_dialog.py:333
+#: apostrophe/export_dialog.py:128 apostrophe/export_dialog.py:337
 #, python-format
 msgid "Export to %s"
 msgstr "Exportálás ide: %s"
 
-#: apostrophe/export_dialog.py:131 apostrophe/export_dialog.py:329
-#: apostrophe/export_dialog.py:334 apostrophe/main_window.py:416
-#: apostrophe/main_window.py:494 apostrophe/main_window.py:587
+#: apostrophe/export_dialog.py:130 apostrophe/export_dialog.py:333
+#: apostrophe/export_dialog.py:338 apostrophe/main_window.py:420
+#: apostrophe/main_window.py:498 apostrophe/main_window.py:591
 msgid "Cancel"
 msgstr "Mégse"
 
-#: apostrophe/export_dialog.py:155 apostrophe/export_dialog.py:322
+#: apostrophe/export_dialog.py:157 apostrophe/export_dialog.py:326
 #, python-brace-format
 msgid ""
 "An error happened while trying to export:\n"
@@ -851,11 +844,11 @@ msgstr ""
 "\n"
 "{err_msg}"
 
-#: apostrophe/export_dialog.py:235
+#: apostrophe/export_dialog.py:239
 msgid "Export to {}"
 msgstr "Exportálás ide: {}"
 
-#: apostrophe/export_dialog.py:329
+#: apostrophe/export_dialog.py:333
 msgid "Select folder"
 msgstr "Mappa kiválasztása"
 
@@ -867,68 +860,72 @@ msgstr "Hiba"
 msgid "Unsaved documents"
 msgstr "Mentetlen dokumentumok"
 
-#: apostrophe/inline_preview.py:201
+#: apostrophe/inline_preview.py:295
+msgid "LaTeX not found"
+msgstr "LaTeX nem található"
+
+#: apostrophe/inline_preview.py:297
 msgid "Formula looks incorrect:"
 msgstr "A képlet hibásnak tűnik:"
 
-#: apostrophe/inline_preview.py:241
+#: apostrophe/inline_preview.py:365
 msgid "No matching footnote found"
 msgstr "Nem található egyező lábjegyzet"
 
-#: apostrophe/inline_preview.py:261
+#: apostrophe/inline_preview.py:398
 msgid "noun"
 msgstr "főnév"
 
-#: apostrophe/inline_preview.py:263
+#: apostrophe/inline_preview.py:400
 msgid "verb"
 msgstr "ige"
 
-#: apostrophe/inline_preview.py:265
+#: apostrophe/inline_preview.py:402
 msgid "adjective"
 msgstr "melléknév"
 
-#: apostrophe/inline_preview.py:267
+#: apostrophe/inline_preview.py:404
 msgid "adverb"
 msgstr "határozószó"
 
 #. Hemingway Toast
-#: apostrophe/main_window.py:153
+#: apostrophe/main_window.py:157
 msgid "Text can't be deleted while on Hemingway mode"
 msgstr "A szöveg nem törölhető Hemingway módban"
 
-#: apostrophe/main_window.py:156
+#: apostrophe/main_window.py:160
 msgid "Tell me more"
 msgstr "Mutass többet"
 
-#: apostrophe/main_window.py:412
+#: apostrophe/main_window.py:416
 msgid "Save your File"
 msgstr "Fájl mentése"
 
-#: apostrophe/main_window.py:415 apostrophe/main_window.py:589
+#: apostrophe/main_window.py:419 apostrophe/main_window.py:593
 msgid "Save"
 msgstr "Mentés"
 
-#: apostrophe/main_window.py:483
+#: apostrophe/main_window.py:487
 msgid "Markdown Files"
 msgstr "Markdown-fájlok"
 
-#: apostrophe/main_window.py:487
+#: apostrophe/main_window.py:491
 msgid "Plain Text Files"
 msgstr "Egyszerű szöveges fájlok"
 
-#: apostrophe/main_window.py:490
+#: apostrophe/main_window.py:494
 msgid "Open a .md file"
 msgstr "Egy .md fájl megnyitása"
 
-#: apostrophe/main_window.py:493
+#: apostrophe/main_window.py:497
 msgid "Open"
 msgstr "Megnyitás"
 
-#: apostrophe/main_window.py:581
+#: apostrophe/main_window.py:585
 msgid "Save Changes?"
 msgstr "Menti a változtatásokat?"
 
-#: apostrophe/main_window.py:582
+#: apostrophe/main_window.py:586
 #, python-format
 msgid ""
 "“%s” contains unsaved changes. If you don’t save, all your changes will be "
@@ -937,7 +934,7 @@ msgstr ""
 "A(z) „%s” mentetlen változtatásokat tartalmaz. Ha nem menti, akkor minden "
 "változtatás véglegesen elvész."
 
-#: apostrophe/main_window.py:588
+#: apostrophe/main_window.py:592
 msgid "Discard"
 msgstr "Elvetés"
 
@@ -1056,7 +1053,7 @@ msgid "link text"
 msgstr "hivatkozás szövege"
 
 #: apostrophe/text_view_format_inserter.py:429
-#: apostrophe/text_view_format_inserter.py:461
+#: apostrophe/text_view_format_inserter.py:464
 msgid "image caption"
 msgstr "képaláírás"
 
@@ -1064,7 +1061,7 @@ msgstr "képaláírás"
 msgid "Select an image"
 msgstr "Kép kiválasztása"
 
-#: apostrophe/text_view_format_inserter.py:550
+#: apostrophe/text_view_format_inserter.py:553
 msgid ""
 "\n"
 "code\n"
@@ -1072,6 +1069,6 @@ msgstr ""
 "\n"
 "kód\n"
 
-#: apostrophe/text_view.py:179 apostrophe/text_view.py:181
+#: apostrophe/text_view.py:203 apostrophe/text_view.py:205
 msgid "web page"
 msgstr "weboldal"
