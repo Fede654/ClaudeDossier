@@ -1,4 +1,4 @@
-# Jordi Mas i Hernàndez <jmas@softcatala.org>, 2024-2025
+# Jordi Mas i Hernàndez <jmas@softcatala.org>, 2022-2025
 #
 msgid ""
 msgstr ""
@@ -236,7 +236,7 @@ msgstr "Copyright (C) 2022, Manuel G., Wolf V."
 #. Manuel Genovés <manuel.genoves@gmail.com>
 #: data/ui/About.ui.in:17
 msgid "translator-credits"
-msgstr "Jordi Mas i Hernàndez <jmas@softcatala.org>, 2022"
+msgstr "Jordi Mas i Hernàndez <jmas@softcatala.org>, 2022-2025"
 
 #: data/ui/AboutHemingway.ui:7
 msgid ""
@@ -247,7 +247,8 @@ msgid ""
 msgstr ""
 "El mode Hemingway imita l'experiència d'escriure en una màquina d'escriure, no permet suprimir cap text o fer qualsevol tipus d'edició. \n"
 "\n"
-"Només ser capaç d'avançar pot ser frustrant, però pot ser un exercici interessant per a millorar les vostres habilitats d'escriptura, millorar l'atenció o afrontar la tasca que tenu entre mans amb una mentalitat diferent."
+"Només ser capaç d'avançar pot ser frustrant, però pot ser un exercici interessant per a millorar les vostres habilitats d'escriptura, millorar l'atenció o afrontar la tasca que tenu entre mans amb una mentalitat diferent.\n"
+"  "
 
 #: data/ui/AboutHemingway.ui:13
 msgid "_Close"
@@ -783,7 +784,7 @@ msgid ""
 "If you're unsure about the contents of this file, open it in the Restricted Preview where javascript and HTML are disabled."
 msgstr ""
 "Previsualitzar fitxers d'orígens desconeguts pot ser perillós.\n"
-"Si tens dubtes sobre el contingut d'aquest fitxer, obriu-lo en el mode de previsualització restringida, on JavaScript i l'HTML estan deshabilitats"
+"Si tens dubtes sobre el contingut d'aquest fitxer, obriu-lo en el mode de previsualització restringida, on JavaScript i l'HTML estan deshabilitats."
 
 #: data/ui/Window.ui:77
 msgid "Load Preview"
@@ -799,7 +800,7 @@ msgstr "El fitxer ha canviat al disc"
 
 #: data/ui/Window.ui:169
 msgid "The file has been changed by another program"
-msgstr "Un altre programa ha canviat el fitxer."
+msgstr "Un altre programa ha canviat el fitxer"
 
 #: data/ui/Window.ui:177
 msgid "_Discard Changes and Reload"
@@ -926,7 +927,7 @@ msgid ""
 "“%s” contains unsaved changes. If you don’t save, all your changes will be "
 "permanently lost."
 msgstr ""
-"“%s” conté canvis sense desar. Si no deseu tots els canvis, es perdran de "
+"«%s» conté canvis sense desar. Si no deseu tots els canvis, es perdran de "
 "manera permanent."
 
 #: apostrophe/main_window.py:592
