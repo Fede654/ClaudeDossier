@@ -1,4 +1,4 @@
-import re
+import regex as re
 import urllib
 from gettext import gettext as _
 

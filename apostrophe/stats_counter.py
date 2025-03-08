@@ -1,4 +1,4 @@
-import re
+import regex as re
 from multiprocessing import Process, Pipe
 
 from gi.repository import GLib
@@ -28,7 +28,7 @@ class StatsCounter:
 
     # Regexp that matches paragraphs, ie.
     # anything separated by at least 2 newlines.
-    PARAGRAPHS = re.compile(r"[^\n]+(\n{2,}|$)")
+    PARAGRAPHS = re.compile(r"(?:[^\n]+\n?)+(?=\n{2,}|\Z)")
 
     # List of regexp whose matches should be replaced by their "text" group.
     # Order is important.

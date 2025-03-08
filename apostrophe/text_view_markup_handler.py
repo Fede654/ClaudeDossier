@@ -13,7 +13,7 @@
 # with this program.  If not, see <http://www.gnu.org/licenses/>.
 # END LICENSE
 
-import re
+import regex as re
 from multiprocessing import Pipe, Process
 
 import gi
@@ -301,6 +301,10 @@ class MarkupHandler:
             for match in matches:
                 if match_inside_code_blocks(match):
                     continue
+                # check if it's a YAML fronmatter
+                if frontmatter := re.search(markup_regex.FRONTMATTER, text):
+                    if match.start() <= frontmatter.end():
+                        continue
                 result.append(
                     (self.TAG_NAME_BOLD, (), match.start(), match.end()))
 
