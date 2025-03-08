@@ -14,7 +14,7 @@
 # END LICENSE
 
 import os
-import re
+import regex as re
 import socket
 import threading
 from gettext import gettext as _
