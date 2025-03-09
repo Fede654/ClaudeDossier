@@ -80,13 +80,10 @@ class MainWindow(Adw.ApplicationWindow):
         super().__init__(application=Gio.Application.get_default(),
                          title="Apostrophe")
 
+        #TODO: size
+
         # Preferences
         self.settings = Settings.new()
-
-        self.settings.bind("window-width", self, "default-width",
-                    Gio.SettingsBindFlags.DEFAULT)
-        self.settings.bind("window-height", self, "default-height",
-                    Gio.SettingsBindFlags.DEFAULT)
 
         # Connect signals that we can't connect on the UI file
         self.connect("notify::is-fullscreen", self._on_fullscreen)
