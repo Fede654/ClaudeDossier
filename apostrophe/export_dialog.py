@@ -137,6 +137,10 @@ class ExportDialog:
             self.dialog.set_current_name(
                 file.name + '.' + self.formats[self.format]["extension"])
 
+            # / is the base path when the current file has not been saved
+            if file.base_path != "/":
+                self.dialog.set_current_folder(Gio.File.new_for_path(file.base_path))
+
     def export(self, window):
 
         def on_response(dialog, response):
