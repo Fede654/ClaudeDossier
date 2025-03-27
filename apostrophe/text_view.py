@@ -97,6 +97,13 @@ class ApostropheTextView(GtkSource.View):
         self.settings.bind("spellcheck", self.adapter,
                            "enabled", Gio.SettingsBindFlags.DEFAULT)
         
+        # Setting up text size
+        self.settings.bind("bigger-text", self,
+                           "bigger_text", Gio.SettingsBindFlags.GET)
+
+        self.settings.bind("characters-per-line", self,
+                           "line_chars", Gio.SettingsBindFlags.GET)
+        
         # Preview popover
         self.preview_popover = InlinePreview(self)
         action = Gio.SimpleAction.new("open_inline_preview")
@@ -154,6 +161,9 @@ class ApostropheTextView(GtkSource.View):
         theme = Theme.get_current().name
         scheme_manager = GtkSource.StyleSchemeManager.get_default()
         self.buffer.set_style_scheme(scheme_manager.get_scheme(theme))
+
+        # scroller
+        self.scroller = None
 
     def _on_key_pressed(self, controller, key, keycode, state):
         if ((key == Gdk.KEY_Tab or key == Gdk.KEY_KP_Tab or key == Gdk.KEY_ISO_Left_Tab) and state == Gdk.ModifierType.SHIFT_MASK):

@@ -139,16 +139,6 @@ class MainWindow(Adw.ApplicationWindow):
         # preview security handler
         self.preview_security_handler = PreviewSecurityHandler(self)
 
-        # Setting up spellcheck
-        #self.settings.bind("spellcheck", self.textview,
-        #                   "spellcheck", Gio.SettingsBindFlags.GET)
-
-        # Setting up text size
-        self.settings.bind("bigger-text", self.textview,
-                           "bigger_text", Gio.SettingsBindFlags.GET)
-
-        self.settings.bind("characters-per-line", self.textview,
-                           "line_chars", Gio.SettingsBindFlags.GET)
 
         # Search and replace initialization
         self.searchbar.attach(self.textview)
