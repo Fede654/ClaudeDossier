@@ -2,30 +2,31 @@
 # Copyright (C) 2024 apostrophe's COPYRIGHT HOLDER
 # This file is distributed under the same license as the apostrophe package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# ButterflyOfFire <ButterflyOfFire@protonmail.com>, 2024.
+# ButterflyOfFire <butterflyoffire@protonmail.com>, 2024-2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: apostrophe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2024-03-14 13:08+0000\n"
-"PO-Revision-Date: 2024-03-14 14:32+0100\n"
-"Last-Translator: ButterflyOfFire <ButterflyOfFire@protonmail.com>\n"
-"Language-Team: Kabyle <>\n"
+"POT-Creation-Date: 2025-03-09 12:17+0000\n"
+"PO-Revision-Date: 2025-03-27 17:22+0100\n"
+"Last-Translator: ButterflyOfFire <butterflyoffire@protonmail.com>\n"
+"Language-Team: Kabyle\n"
 "Language: kab\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n>1\n"
+"Plural-Forms: nplurals=2; plural=n>1;\n"
 "X-DL-Team: kab\n"
 "X-DL-Module: apostrophe\n"
 "X-DL-Branch: main\n"
 "X-DL-Domain: po\n"
 "X-DL-State: Translating\n"
-"X-Generator: Gtranslator 41.0\n"
+"X-Generator: Gtranslator 48.0\n"
+"X-DL-Lang: kab\n"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:3
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:4
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:4
 msgid "Apostrophe"
 msgstr ""
 
@@ -38,157 +39,185 @@ msgstr ""
 msgid "Apostrophe, an elegant, distraction-free markdown editor"
 msgstr ""
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:29
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:35
 msgid "Color scheme"
 msgstr ""
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:30
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:36
 msgid "Use the color scheme in the application's UI and in the text area."
 msgstr ""
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:36
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:42
 msgid "Check spelling while typing"
 msgstr ""
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:37
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:43
 msgid "Enable or disable spellchecking."
 msgstr ""
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:43
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:49
 msgid "Synchronize editor/preview scrolling"
 msgstr ""
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:44
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:50
 msgid "Keep the editor and preview scroll positions in sync."
 msgstr ""
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:50
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:56
 msgid "Input format"
 msgstr ""
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:51
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:57
 msgid "Input format to use when previewing and exporting using Pandoc."
 msgstr ""
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:57
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:63
 msgid "Autohide Headerbar"
 msgstr ""
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:58
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:64
 msgid "Hide the header and status bars when typing."
 msgstr ""
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:64
-msgid "Open file base path"
-msgstr ""
-
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:65
-msgid "Open file paths of the current session"
-msgstr ""
-
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:71
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:70
 msgid "Default statistic"
 msgstr ""
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:72
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:71
 msgid "Which statistic is shown on the main window."
 msgstr ""
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:78
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:77
 msgid "Characters per line"
 msgstr ""
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:79
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:78
 msgid "Maximum number of characters per line within the editor."
 msgstr ""
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:85
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:84
 #: data/ui/AboutHemingway.ui:6
 msgid "Hemingway Mode"
 msgstr ""
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:86
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:85
 msgid "Whether the user can delete text or not."
 msgstr ""
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:92
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:91
 msgid "Hemingway Toast Count"
 msgstr ""
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:93
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:92
 msgid "Number of times the Hemingway Toast has been shown"
 msgstr ""
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:99
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:98
 msgid "Preview mode"
 msgstr ""
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:100
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:99
 msgid "How to display the preview."
 msgstr ""
 
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:105
+#: data/ui/Preferences.ui:64
+#, fuzzy
+#| msgid "Preview"
+msgid "Preview Security"
+msgstr "Timeẓriwt"
+
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:106
+msgid "Security policy to apply when rendering files."
+msgstr ""
+
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:112
 msgid "Preview active"
 msgstr ""
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:107
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:113
 msgid "Whether showing of preview is active when launching a new window."
 msgstr ""
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:113
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:119
 msgid "Text size"
 msgstr ""
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:114
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:120
 msgid "Preferred relative size for the text."
 msgstr ""
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:120
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:126
 msgid "Toolbar"
 msgstr ""
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:121
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:127
 msgid "Whether the toolbar is shown or not."
 msgstr ""
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:5
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:5
 msgid "Edit Markdown in style"
 msgstr ""
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:14
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:9
+msgid "Manuel Genovés"
+msgstr ""
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:14
 msgid "Focus on your writing with a clean, distraction-free markdown editor."
 msgstr ""
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:15
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:15
 msgid "Features:"
 msgstr ""
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:17
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:17
 msgid "An UI tailored to comfortable writing"
 msgstr ""
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:18
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:18
 msgid "A distraction-free mode"
 msgstr ""
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:19
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:19
 msgid "Dark, light and sepia themes"
 msgstr ""
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:20
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:20
 msgid ""
 "Everything you expect from a text editor, such as spellchecking or document "
 "statistics"
 msgstr ""
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:21
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:21
 msgid "Live preview of what you write"
 msgstr ""
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in:22
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:22
 msgid ""
 "Export to all kind of formats: PDF, Word/Libreoffice, LaTeX, or even HTML "
 "slideshows"
+msgstr ""
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:53
+msgid "Main window"
+msgstr ""
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:57
+msgid "Main window in dark mode"
+msgstr ""
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:61
+msgid "Inserting a table with the help of the toolbar"
+msgstr ""
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:65
+msgid "The preview lets you see a live rendered version of your document"
+msgstr ""
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:69
+msgid "The focus mode allow for a more distraction-free experience"
 msgstr ""
 
 #: data/ui/About.ui.in:9
@@ -220,8 +249,8 @@ msgstr "Mdel (_C)"
 msgid "Formats"
 msgstr ""
 
-#: data/ui/Export.ui:67 apostrophe/export_dialog.py:126
-#: apostrophe/export_dialog.py:328 apostrophe/export_dialog.py:332
+#: data/ui/Export.ui:67 apostrophe/export_dialog.py:125
+#: apostrophe/export_dialog.py:332 apostrophe/export_dialog.py:336
 msgid "Export"
 msgstr "Sifeḍ"
 
@@ -240,64 +269,75 @@ msgid ""
 msgstr ""
 
 #: data/ui/Export.ui:96
+msgid "Relative to Absolute"
+msgstr ""
+
+#: data/ui/Export.ui:97
+msgid "Replace relative path with absolute for images and links"
+msgstr ""
+
+#: data/ui/Export.ui:103
 msgid "Table of Contents"
 msgstr ""
 
-#: data/ui/Export.ui:102
+#: data/ui/Export.ui:109
 msgid "Number Sections"
 msgstr ""
 
-#: data/ui/Export.ui:112 data/ui/Export.ui:115 data/ui/Export.ui:126
-#: data/ui/Export.ui:130
+#: data/ui/Export.ui:119 data/ui/Export.ui:122 data/ui/Export.ui:133
+#: data/ui/Export.ui:137
 msgid "Page Size"
 msgstr "Teɣzi n usebter"
 
-#: data/ui/Export.ui:141
+#: data/ui/Export.ui:148
 msgid "HTML Options"
 msgstr "Tinefrunin HTML"
 
-#: data/ui/Export.ui:144
+#: data/ui/Export.ui:151
 msgid "Self-Contained"
 msgstr ""
 
-#: data/ui/Export.ui:145
+#: data/ui/Export.ui:152
 msgid "Produces an HTML file with no external dependencies"
 msgstr ""
 
-#: data/ui/Export.ui:154
+#: data/ui/Export.ui:161
 msgid "Syntax Highlighting"
 msgstr ""
 
-#: data/ui/Export.ui:157
+#: data/ui/Export.ui:164
 msgid "Use Syntax Highlighting"
 msgstr ""
 
-#: data/ui/Export.ui:162
+#: data/ui/Export.ui:169
 msgid "Highlight Style"
 msgstr ""
 
-#: data/ui/Export.ui:175
+#: data/ui/Export.ui:182
 msgid "Presentation"
 msgstr ""
 
-#: data/ui/Export.ui:178
+#: data/ui/Export.ui:185
 msgid "Incremental Bullets"
 msgstr ""
 
-#: data/ui/Export.ui:179
+#: data/ui/Export.ui:186
 msgid "Show one bullet point after another in a slideshow"
 msgstr ""
 
-#: data/ui/Headerbar.ui:10
-msgid "New"
-msgstr "Amaynut"
+#: data/ui/Headerbar.ui:10 apostrophe/main_window.py:776
+#: apostrophe/main_window.py:791
+msgid "New File"
+msgstr "Afaylu amaynut"
 
 #: data/ui/Headerbar.ui:17
 msgid "_Open"
 msgstr "Ldi (_O)"
 
 #: data/ui/Headerbar.ui:19
-msgid "Open a Markdown File"
+#, fuzzy
+#| msgid "Open a Markdown File"
+msgid "Open Markdown File"
 msgstr "Ldi afaylu Markdown"
 
 #: data/ui/Headerbar.ui:25
@@ -305,102 +345,113 @@ msgid "_Save"
 msgstr "_Sekles"
 
 #: data/ui/Headerbar.ui:27
-msgid "Save the Markdown File"
+#, fuzzy
+#| msgid "Save the Markdown File"
+msgid "Save Markdown File"
 msgstr "Sekles afaylu-nni Markdown"
 
 #: data/ui/Headerbar.ui:43
-msgid "Open the Main Menu"
+#, fuzzy
+#| msgid "Open the Main Menu"
+msgid "Main Menu"
 msgstr "Ldi umuɣ agejdan"
 
 #: data/ui/Headerbar.ui:54
-msgid "_Find"
-msgstr "A_f-d"
-
-#: data/ui/Headerbar.ui:56
 msgid "Search in the File"
 msgstr "Nadi deg ufaylu"
 
-#: data/ui/Headerbar.ui:79
+#: data/ui/Headerbar.ui:77
 msgid "_Hemingway Mode"
 msgstr ""
 
-#: data/ui/Headerbar.ui:83
+#: data/ui/Headerbar.ui:81
 msgid "_Focus Mode"
 msgstr ""
 
-#: data/ui/Headerbar.ui:89
+#: data/ui/Headerbar.ui:87
 msgid "Find and _Replace"
 msgstr ""
 
-#: data/ui/Headerbar.ui:95
+#: data/ui/Headerbar.ui:93
 msgid "_Preferences"
 msgstr "Ismenyafen (_P)"
 
-#: data/ui/Headerbar.ui:101
+#: data/ui/Headerbar.ui:99
 msgid "Open _Tutorial"
 msgstr ""
 
-#: data/ui/Headerbar.ui:106
+#: data/ui/Headerbar.ui:104
 msgid "_Keyboard Shortcuts"
 msgstr "Inegzumen n unasiw (_K)"
 
-#: data/ui/Headerbar.ui:110
+#: data/ui/Headerbar.ui:108
 msgid "_About Apostrophe"
 msgstr "Ɣef Apostrophe"
 
-#: data/ui/Headerbar.ui:121
+#: data/ui/Headerbar.ui:119
 msgid "_Save As..."
 msgstr "_Sekles am..."
 
-#: data/ui/Headerbar.ui:144
+#: data/ui/Headerbar.ui:142
 msgid "Advanced _Export…"
 msgstr ""
 
-#: data/ui/Headerbar.ui:150
+#: data/ui/Headerbar.ui:148
 msgid "_Copy HTML"
 msgstr "Nɣel HTML"
 
-#: data/ui/Preferences.ui:13 data/ui/Preferences.ui:14
-msgid "Check Spelling While Typing"
+#: data/ui/InlinePreviewPopover.ui:42
+#, fuzzy
+#| msgid "No Results Found"
+msgid "Not Found"
+msgstr "Ulac igmaḍ yettwafen"
+
+#: data/ui/Preferences.ui:12 data/ui/Preferences.ui:13
+msgid "Check Spelling"
 msgstr ""
 
-#: data/ui/Preferences.ui:19
+#: data/ui/Preferences.ui:18
 msgid "Auto-Hide Header Bar"
 msgstr ""
 
-#: data/ui/Preferences.ui:20
+#: data/ui/Preferences.ui:19
 msgid "Auto-hide header and status bars while typing"
 msgstr ""
 
-#: data/ui/Preferences.ui:25
+#: data/ui/Preferences.ui:24
 msgid "Large Text"
 msgstr "Aḍris ahrawan"
 
-#: data/ui/Preferences.ui:26
+#: data/ui/Preferences.ui:25
 msgid "Reduce the margins width and increase the text size when possible"
 msgstr ""
 
-#: data/ui/Preferences.ui:32
+#: data/ui/Preferences.ui:31
 msgid "Restore Session"
 msgstr ""
 
-#: data/ui/Preferences.ui:33
+#: data/ui/Preferences.ui:32
 msgid "Return to your previous session when Apostrophe is started"
 msgstr ""
 
-#: data/ui/Preferences.ui:38
+#: data/ui/Preferences.ui:37
 msgid "Input Format"
 msgstr ""
 
-#: data/ui/Preferences.ui:39
+#: data/ui/Preferences.ui:38
 msgid "Flavor of markdown Apostrophe will use"
 msgstr ""
 
-#: data/ui/Preferences.ui:48
+#: data/ui/Preferences.ui:47
 msgid "Markdown Flavor Documentation"
 msgstr ""
 
-#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_window.py:32
+#: data/ui/Preferences.ui:65
+msgid "Desired level of security when rendering the preview"
+msgstr ""
+
+#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_handler.py:199
+#: apostrophe/preview_window.py:32
 msgid "Preview"
 msgstr "Timeẓriwt"
 
@@ -408,11 +459,11 @@ msgstr "Timeẓriwt"
 msgid "Screen Layout"
 msgstr ""
 
-#: data/ui/Recents.ui:41
+#: data/ui/Recents.ui:39
 msgid "No Recent Documents"
 msgstr ""
 
-#: data/ui/Recents.ui:65
+#: data/ui/Recents.ui:63
 msgid "No Results Found"
 msgstr "Ulac igmaḍ yettwafen"
 
@@ -420,20 +471,20 @@ msgstr "Ulac igmaḍ yettwafen"
 msgid "Previous Match"
 msgstr ""
 
-#: data/ui/SearchBar.ui:38
+#: data/ui/SearchBar.ui:39
 msgid "Next Match"
 msgstr ""
 
 #. Translators: This indicates case sensitivity, so it should be the first vowel of the language in lowercase and uppercase
-#: data/ui/SearchBar.ui:53
+#: data/ui/SearchBar.ui:55
 msgid "aA"
 msgstr ""
 
-#: data/ui/SearchBar.ui:56
+#: data/ui/SearchBar.ui:58
 msgid "Case Sensitive"
 msgstr ""
 
-#: data/ui/SearchBar.ui:65
+#: data/ui/SearchBar.ui:66
 msgid "Regular Expression"
 msgstr ""
 
@@ -441,7 +492,7 @@ msgstr ""
 msgid "Replace"
 msgstr "Semselsi"
 
-#: data/ui/SearchBar.ui:119
+#: data/ui/SearchBar.ui:120
 msgid "Replace All"
 msgstr "Semselsi-iten akk"
 
@@ -654,42 +705,123 @@ msgstr ""
 msgid "Use Dark Colors"
 msgstr ""
 
-#: data/ui/Window.ui:104
+#: data/ui/Toolbar.ui:27
+#, fuzzy
+#| msgctxt "shortcut window"
+#| msgid "Bold"
+msgid "Bold"
+msgstr "Azuran"
+
+#: data/ui/Toolbar.ui:37
+#, fuzzy
+#| msgctxt "shortcut window"
+#| msgid "Italic"
+msgid "Italic"
+msgstr "Tira yeknan"
+
+#: data/ui/Toolbar.ui:47
+msgid "Strikethrough"
+msgstr ""
+
+#: data/ui/Toolbar.ui:57
+#, fuzzy
+#| msgid "Header"
+msgid "Heading"
+msgstr "Ixef"
+
+#: data/ui/Toolbar.ui:68
+msgid "Unordered List"
+msgstr ""
+
+#: data/ui/Toolbar.ui:78
+msgid "Ordered List"
+msgstr ""
+
+#: data/ui/Toolbar.ui:88
+msgid "Check List"
+msgstr ""
+
+#: data/ui/Toolbar.ui:98
+msgid "Blockquote"
+msgstr ""
+
+#: data/ui/Toolbar.ui:108
+msgid "Code"
+msgstr ""
+
+#: data/ui/Toolbar.ui:118
+msgid "Link"
+msgstr ""
+
+#: data/ui/Toolbar.ui:128 apostrophe/text_view_format_inserter.py:435
+msgid "Image"
+msgstr "Tugna"
+
+#: data/ui/Toolbar.ui:138
+msgid "Table"
+msgstr ""
+
+#: data/ui/Toolbar.ui:153
+msgid "Show More Controls"
+msgstr ""
+
+#: data/ui/Window.ui:64
+msgid "This file may be insecure"
+msgstr ""
+
+#: data/ui/Window.ui:65
+msgid ""
+"Previewing files from untrusted sources can be dangerous.\n"
+"If you're unsure about the contents of this file, open it in the Restricted "
+"Preview where javascript and HTML are disabled."
+msgstr ""
+
+#: data/ui/Window.ui:77
+#, fuzzy
+#| msgid "Preview"
+msgid "Load Preview"
+msgstr "Timeẓriwt"
+
+#: data/ui/Window.ui:86
+msgid "Load Restricted Preview"
+msgstr ""
+
+#: data/ui/Window.ui:159
 msgid "File Has Changed on Disk"
 msgstr ""
 
-#: data/ui/Window.ui:114
+#: data/ui/Window.ui:169
 msgid "The file has been changed by another program"
 msgstr ""
 
-#: data/ui/Window.ui:122
+#: data/ui/Window.ui:177
 msgid "_Discard Changes and Reload"
 msgstr ""
 
-#: apostrophe/application.py:217
+#: apostrophe/application.py:244
 msgid "Donate"
 msgstr ""
 
-#: apostrophe/application.py:218
+#: apostrophe/application.py:245
 msgid "Translations"
 msgstr "Tisuqilin"
 
-#: apostrophe/export_dialog.py:121 apostrophe/helpers.py:84
+#: apostrophe/export_dialog.py:120 apostrophe/helpers.py:84
 msgid "Close"
 msgstr "Mdel"
 
-#: apostrophe/export_dialog.py:129 apostrophe/export_dialog.py:333
+#: apostrophe/export_dialog.py:128 apostrophe/export_dialog.py:337
 #, python-format
 msgid "Export to %s"
 msgstr "Sifeḍ ɣer %s"
 
-#: apostrophe/export_dialog.py:131 apostrophe/export_dialog.py:329
-#: apostrophe/export_dialog.py:334 apostrophe/main_window.py:396
-#: apostrophe/main_window.py:474 apostrophe/main_window.py:565
+#: apostrophe/export_dialog.py:130 apostrophe/export_dialog.py:333
+#: apostrophe/export_dialog.py:338 apostrophe/main_window.py:420
+#: apostrophe/main_window.py:498 apostrophe/main_window.py:591
 msgid "Cancel"
 msgstr "Sefsex"
 
-#: apostrophe/export_dialog.py:155 apostrophe/export_dialog.py:322
+#: apostrophe/export_dialog.py:157 apostrophe/export_dialog.py:326
 #, python-brace-format
 msgid ""
 "An error happened while trying to export:\n"
@@ -697,11 +829,11 @@ msgid ""
 "{err_msg}"
 msgstr ""
 
-#: apostrophe/export_dialog.py:235
+#: apostrophe/export_dialog.py:239
 msgid "Export to {}"
 msgstr "Sifeḍ ɣer {}"
 
-#: apostrophe/export_dialog.py:329
+#: apostrophe/export_dialog.py:333
 msgid "Select folder"
 msgstr "Fren akaram"
 
@@ -713,81 +845,93 @@ msgstr "Tuccḍa"
 msgid "Unsaved documents"
 msgstr ""
 
-#: apostrophe/inline_preview.py:201
+#: apostrophe/inline_preview.py:303
+msgid "LaTeX not found"
+msgstr ""
+
+#: apostrophe/inline_preview.py:305
 msgid "Formula looks incorrect:"
 msgstr ""
 
-#: apostrophe/inline_preview.py:241
+#: apostrophe/inline_preview.py:373
 msgid "No matching footnote found"
 msgstr ""
 
-#: apostrophe/inline_preview.py:261
+#: apostrophe/inline_preview.py:406
 msgid "noun"
 msgstr ""
 
-#: apostrophe/inline_preview.py:263
+#: apostrophe/inline_preview.py:408
 msgid "verb"
 msgstr "amyag"
 
-#: apostrophe/inline_preview.py:265
+#: apostrophe/inline_preview.py:410
 msgid "adjective"
 msgstr ""
 
-#: apostrophe/inline_preview.py:267
+#: apostrophe/inline_preview.py:412
 msgid "adverb"
 msgstr ""
 
 #. Hemingway Toast
-#: apostrophe/main_window.py:145
+#: apostrophe/main_window.py:157
 msgid "Text can't be deleted while on Hemingway mode"
 msgstr ""
 
-#: apostrophe/main_window.py:148
+#: apostrophe/main_window.py:160
 msgid "Tell me more"
 msgstr ""
 
-#: apostrophe/main_window.py:392
+#: apostrophe/main_window.py:416
 msgid "Save your File"
 msgstr "Sekles ufaylu-inek·inem"
 
-#: apostrophe/main_window.py:395 apostrophe/main_window.py:567
+#: apostrophe/main_window.py:419 apostrophe/main_window.py:593
 msgid "Save"
 msgstr "Kles"
 
-#: apostrophe/main_window.py:463
+#: apostrophe/main_window.py:487
 msgid "Markdown Files"
 msgstr "Ifuyla Markdown"
 
-#: apostrophe/main_window.py:467
+#: apostrophe/main_window.py:491
 msgid "Plain Text Files"
 msgstr ""
 
-#: apostrophe/main_window.py:470
+#: apostrophe/main_window.py:494
 msgid "Open a .md file"
 msgstr ""
 
-#: apostrophe/main_window.py:473
+#: apostrophe/main_window.py:497
 msgid "Open"
 msgstr "Ldi"
 
-#: apostrophe/main_window.py:559
+#: apostrophe/main_window.py:585
 msgid "Save Changes?"
 msgstr "Sekles ibeddilen ?"
 
-#: apostrophe/main_window.py:560
+#: apostrophe/main_window.py:586
 #, python-format
 msgid ""
 "“%s” contains unsaved changes. If you don’t save, all your changes will be "
 "permanently lost."
 msgstr ""
 
-#: apostrophe/main_window.py:566
+#: apostrophe/main_window.py:592
 msgid "Discard"
 msgstr ""
 
-#: apostrophe/main_window.py:727 apostrophe/main_window.py:751
-msgid "New File"
-msgstr "Afaylu amaynut"
+#: apostrophe/preferences_dialog.py:97
+msgid "Always Ask"
+msgstr ""
+
+#: apostrophe/preferences_dialog.py:101
+msgid "Always Use Restricted Preview"
+msgstr ""
+
+#: apostrophe/preferences_dialog.py:105
+msgid "Always Use Unrestricted Preview"
+msgstr ""
 
 #: apostrophe/preview_layout_switcher.py:41
 msgid "Full-Width"
@@ -892,19 +1036,15 @@ msgid "link text"
 msgstr ""
 
 #: apostrophe/text_view_format_inserter.py:429
-#: apostrophe/text_view_format_inserter.py:461
+#: apostrophe/text_view_format_inserter.py:464
 msgid "image caption"
 msgstr ""
-
-#: apostrophe/text_view_format_inserter.py:435
-msgid "Image"
-msgstr "Tugna"
 
 #: apostrophe/text_view_format_inserter.py:441
 msgid "Select an image"
 msgstr ""
 
-#: apostrophe/text_view_format_inserter.py:550
+#: apostrophe/text_view_format_inserter.py:553
 msgid ""
 "\n"
 "code\n"
@@ -912,6 +1052,12 @@ msgstr ""
 "\n"
 "tangalt\n"
 
-#: apostrophe/text_view.py:161 apostrophe/text_view.py:163
+#: apostrophe/text_view.py:203 apostrophe/text_view.py:205
 msgid "web page"
 msgstr "asebter web"
+
+#~ msgid "New"
+#~ msgstr "Amaynut"
+
+#~ msgid "_Find"
+#~ msgstr "A_f-d"
