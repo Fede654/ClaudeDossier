@@ -278,7 +278,7 @@ class ApostropheTextView(GtkSource.View):
 
     @Gtk.Template.Callback()
     def _on_button_pressed_event(self, gesture, n_press, x, y):
-        event = gesture.get_last_event()
+        event = gesture.get_current_event()
         buffer_x, buffer_y = self.window_to_buffer_coords(Gtk.TextWindowType.TEXT, x, y)
         found, iter = self.get_iter_at_location(buffer_x, buffer_y)
         if found and not self.buffer.get_has_selection():
