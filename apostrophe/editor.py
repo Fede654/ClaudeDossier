@@ -27,6 +27,7 @@ gi.require_version('Gtk', '4.0')
 from gi.repository import Adw, GLib, GObject, Gtk
 
 from apostrophe.bottombar import BottomBar, Statsbar, Toolbar
+from apostrophe.text_view_scroller import TextViewScroller
 
 from .settings import Settings
 
@@ -59,6 +60,11 @@ class Editor(Adw.Bin):
 
         self.textview.get_buffer().connect('attempted-hemingway', self.on_attempted_hemingway)
 
+        self.textview.scroller = TextViewScroller(self.textview, self.scrolledwindow)
+        self.scrolledwindow.get_vadjustment().connect("changed",
+                                            self.textview._on_vadjustment_changed)
+        self.scrolledwindow.get_vadjustment().connect("value-changed",
+                                            self.textview._on_vadjustment_changed)
     @Gtk.Template.Callback()
     def reveal_toolbar(self, *_args):
         if self.toolbar_revealer.extra_toolbar_revealed:

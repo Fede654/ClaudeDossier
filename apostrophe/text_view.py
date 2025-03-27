@@ -408,20 +408,3 @@ class ApostropheTextView(GtkSource.View):
     def do_size_allocate(self, width, height, baseline):
         Gtk.TextView.do_size_allocate(self,width, height, baseline)
         self._on_size_allocate()
-
-
-    # TODO: refactor TextViewScroller
-    def do_map(self, *args, **kwargs):
-        Gtk.TextView.do_map(self)
-
-        scrollable = self.get_parent()
-        movable_bin = scrollable.get_parent()
-        if scrollable:
-            movable_bin.set_size_request(self.get_min_width(), 500)
-            self.scroller = TextViewScroller(self, scrollable)
-            scrollable.get_vadjustment().connect("changed",
-                                             self._on_vadjustment_changed)
-            scrollable.get_vadjustment().connect("value-changed",
-                                             self._on_vadjustment_changed)
-        else:
-            self.scroller = None
