@@ -119,7 +119,6 @@ class ApostropheTextView(GtkSource.View):
         peek_menu.append_item(peek_item)
 
         # Context menu
-
         extra_menu = Gio.Menu()
         extra_menu.append_section(None, peek_menu)
         extra_menu.append_section(None, spellchecking_menu)
@@ -164,6 +163,9 @@ class ApostropheTextView(GtkSource.View):
 
         # scroller
         self.scroller = None
+
+        # update font size on next cycle once we have a proper measure
+        GLib.idle_add(self.update_font_size)
 
     def _on_key_pressed(self, controller, key, keycode, state):
         if ((key == Gdk.KEY_Tab or key == Gdk.KEY_KP_Tab or key == Gdk.KEY_ISO_Left_Tab) and state == Gdk.ModifierType.SHIFT_MASK):
