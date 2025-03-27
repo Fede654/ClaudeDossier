@@ -52,8 +52,9 @@ class MainWindow(Adw.ApplicationWindow):
 
     editor = Gtk.Template.Child()
     save_progressbar = Gtk.Template.Child()
-    toolbar_revealer = Gtk.Template.Child()
+    headerbar_revealer = Gtk.Template.Child()
     headerbar = Gtk.Template.Child()
+    headerbar_narrow = Gtk.Template.Child()
     searchbar = Gtk.Template.Child()
     panels = Gtk.Template.Child()
     preview_stack = Gtk.Template.Child()
@@ -61,6 +62,9 @@ class MainWindow(Adw.ApplicationWindow):
     discard_infobar = Gtk.Template.Child()
     preview_spinner = Gtk.Template.Child()
     webview_snapshot = Gtk.Template.Child()
+
+    headerbars_breakpointbin = Gtk.Template.Child()
+    headerbars_breakpoint = Gtk.Template.Child()
 
     subtitle = GObject.Property(type=str)
     is_fullscreen = GObject.Property(type=bool, default=False)
@@ -139,16 +143,11 @@ class MainWindow(Adw.ApplicationWindow):
         # preview security handler
         self.preview_security_handler = PreviewSecurityHandler(self)
 
-        # Setting up spellcheck
-        #self.settings.bind("spellcheck", self.textview,
-        #                   "spellcheck", Gio.SettingsBindFlags.GET)
-
-        # Setting up text size
-        self.settings.bind("bigger-text", self.textview,
-                           "bigger_text", Gio.SettingsBindFlags.GET)
-
-        self.settings.bind("characters-per-line", self.textview,
-                           "line_chars", Gio.SettingsBindFlags.GET)
+        # Headerbars breakpoint bin minimum size
+        self.headerbars_breakpointbin.set_size_request(
+            self.headerbar_narrow.measure(Gtk.Orientation.HORIZONTAL, -1).minimum,
+            self.headerbar_narrow.measure(Gtk.Orientation.VERTICAL, -1).minimum
+            )
 
         # Search and replace initialization
         self.searchbar.attach(self.textview)
@@ -667,17 +666,20 @@ class MainWindow(Adw.ApplicationWindow):
     def reveal_headerbar_bottombar(self, *args):
         self.editor.reveal_bottombar()
 
-        if not self.toolbar_revealer.get_reveal_child():
-            self.toolbar_revealer.set_reveal_child(True)
+        if not self.headerbar_revealer.get_reveal_child():
+            self.headerbar_revealer.set_reveal_child(True)
             self.remove_css_class("no-headerbar")
 
     def hide_headerbar_bottombar(self):
+        if self.headerbars_breakpointbin.get_current_breakpoint() == self.headerbars_breakpoint:
+            return
+
         if self.searchbar.search_mode_enabled or\
            self.discard_infobar.get_revealed():
             return
 
-        if self.toolbar_revealer.get_reveal_child():
-            self.toolbar_revealer.set_reveal_child(False)
+        if self.headerbar_revealer.get_reveal_child():
+            self.headerbar_revealer.set_reveal_child(False)
             self.add_css_class("no-headerbar")
 
         self.editor.hide_bottombar()

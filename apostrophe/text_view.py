@@ -97,6 +97,13 @@ class ApostropheTextView(GtkSource.View):
         self.settings.bind("spellcheck", self.adapter,
                            "enabled", Gio.SettingsBindFlags.DEFAULT)
         
+        # Setting up text size
+        self.settings.bind("bigger-text", self,
+                           "bigger_text", Gio.SettingsBindFlags.GET)
+
+        self.settings.bind("characters-per-line", self,
+                           "line_chars", Gio.SettingsBindFlags.GET)
+        
         # Preview popover
         self.preview_popover = InlinePreview(self)
         action = Gio.SimpleAction.new("open_inline_preview")
@@ -112,7 +119,6 @@ class ApostropheTextView(GtkSource.View):
         peek_menu.append_item(peek_item)
 
         # Context menu
-
         extra_menu = Gio.Menu()
         extra_menu.append_section(None, peek_menu)
         extra_menu.append_section(None, spellchecking_menu)
@@ -154,6 +160,12 @@ class ApostropheTextView(GtkSource.View):
         theme = Theme.get_current().name
         scheme_manager = GtkSource.StyleSchemeManager.get_default()
         self.buffer.set_style_scheme(scheme_manager.get_scheme(theme))
+
+        # scroller
+        self.scroller = None
+
+        # update font size on next cycle once we have a proper measure
+        GLib.idle_add(self.update_font_size)
 
     def _on_key_pressed(self, controller, key, keycode, state):
         if ((key == Gdk.KEY_Tab or key == Gdk.KEY_KP_Tab or key == Gdk.KEY_ISO_Left_Tab) and state == Gdk.ModifierType.SHIFT_MASK):
@@ -239,7 +251,7 @@ class ApostropheTextView(GtkSource.View):
 
     def update_vertical_margin(self, top_margin=0):
         if self.focus_mode:
-            height = self.get_allocation().height + top_margin 
+            height = self.get_height() + top_margin 
 
             self.set_top_margin(height / 2 + top_margin)
             self.set_bottom_margin(height / 2)
@@ -266,7 +278,7 @@ class ApostropheTextView(GtkSource.View):
 
     @Gtk.Template.Callback()
     def _on_button_pressed_event(self, gesture, n_press, x, y):
-        event = gesture.get_last_event()
+        event = gesture.get_current_event()
         buffer_x, buffer_y = self.window_to_buffer_coords(Gtk.TextWindowType.TEXT, x, y)
         found, iter = self.get_iter_at_location(buffer_x, buffer_y)
         if found and not self.buffer.get_has_selection():
@@ -345,8 +357,8 @@ class ApostropheTextView(GtkSource.View):
         self.queue_draw()
 
     @Gtk.Template.Callback()
-    def _update_horizontal_margin(self, *args, **kwargs):
-        width = self.get_allocation().width
+    def update_font_size(self, *args, **kwargs):
+        width = self.get_width()
         # Ensure the appropriate font size is being used
         for font_size in self._get_font_sizes():
             if width >= self.get_min_width(font_size):
@@ -355,16 +367,20 @@ class ApostropheTextView(GtkSource.View):
                     for size_class in filter(lambda style_class: style_class.startswith("size"), self.get_css_classes()):
                         self.remove_css_class(size_class)
                     self.add_css_class("size{}".format(font_size))
+                    self.queue_draw()
+                    self._update_horizontal_margin()
                 break
         else:
             return
 
+    def _update_horizontal_margin(self, *args, **kwargs):
+        width = self.get_width()
+
         # Apply margin with the remaining space to allow for markup
-        line_width = (self.line_chars + 1) *\
-            int(self._get_char_width(self.font_size)) - 1
-        horizontal_margin = (width - line_width) / 2
+        line_width = round((self.line_chars*self._get_char_width(self.font_size)))
+        horizontal_margin = (width - line_width) // 2
         self.set_left_margin(horizontal_margin)
-        self.set_right_margin(horizontal_margin)
+        self.set_right_margin(width - line_width - horizontal_margin)
 
     def _get_font_sizes(self):
         font_sizes_list = [20, 18, 17, 16, 15, 14]
@@ -373,23 +389,25 @@ class ApostropheTextView(GtkSource.View):
 
         return font_sizes_list
 
-    def get_min_width(self, font_size=None):
+    def get_min_width(self, font_size=None, line_chars=None):
         """Returns the minimum width of this text view."""
 
         if font_size is None:
             font_size = self._get_font_sizes()[-1]
-        return (self.line_chars + self._get_pad_chars(font_size) + 1) \
-            * self._get_char_width(font_size) - 1
+
+        if line_chars is None:
+            line_chars = self.line_chars
+
+        return round((line_chars + self._get_pad_chars(font_size)) * self._get_char_width(font_size))
 
     def _get_pad_chars(self, font_size):
         """Returns the amount of character padding for font_size.
-
-        Markup can use up to 7 in normal conditions."""
+        Markup can use up to 7 in normal conditions, so the minimum is 14"""
 
         if self.bigger_text:
-            return 8 * int((1 + (font_size - self._get_font_sizes()[-1])/3))
+            return max(14, 8 * int((1 + (font_size - self._get_font_sizes()[-1])/3)))
         else:
-            return 8 * (1 + font_size - self._get_font_sizes()[-1])
+            return max(14, 8 * (1 + font_size - self._get_font_sizes()[-1]))
 
     @staticmethod
     def _get_char_width(font_size):
@@ -403,25 +421,8 @@ class ApostropheTextView(GtkSource.View):
         settings = Gtk.Settings.get_default()
         scale_factor = settings.props.gtk_xft_dpi / DEFAULT_DPI
 
-        return scale_factor * font_size * 1 / 1.6
+        return scale_factor * font_size * 0.6
 
     def do_size_allocate(self, width, height, baseline):
-        Gtk.TextView.do_size_allocate(self,width, height, baseline)
         self._on_size_allocate()
-
-
-    # TODO: refactor TextViewScroller
-    def do_map(self, *args, **kwargs):
-        Gtk.TextView.do_map(self)
-
-        scrollable = self.get_parent()
-        movable_bin = scrollable.get_parent()
-        if scrollable:
-            movable_bin.set_size_request(self.get_min_width(), 500)
-            self.scroller = TextViewScroller(self, scrollable)
-            scrollable.get_vadjustment().connect("changed",
-                                             self._on_vadjustment_changed)
-            scrollable.get_vadjustment().connect("value-changed",
-                                             self._on_vadjustment_changed)
-        else:
-            self.scroller = None
+        Gtk.TextView.do_size_allocate(self,width, height, baseline)

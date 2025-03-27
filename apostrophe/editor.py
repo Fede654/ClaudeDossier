@@ -27,6 +27,7 @@ gi.require_version('Gtk', '4.0')
 from gi.repository import Adw, GLib, GObject, Gtk
 
 from apostrophe.bottombar import BottomBar, Statsbar, Toolbar
+from apostrophe.text_view_scroller import TextViewScroller
 
 from .settings import Settings
 
@@ -43,6 +44,8 @@ class Editor(Adw.Bin):
     background = Gtk.Template.Child()
     textview = Gtk.Template.Child()
     movablebin = Gtk.Template.Child()
+    sizehandler = Gtk.Template.Child()
+    bottombar = Gtk.Template.Child()
 
     hemingway_attempts = collections.deque(4*[datetime.min], 4)
 
@@ -57,11 +60,24 @@ class Editor(Adw.Bin):
         # Initialize bottombar background
         self.reveal_toolbar()
 
+        self.bottombar.connect("notify::narrow", self.reveal_toolbar)
+
         self.textview.get_buffer().connect('attempted-hemingway', self.on_attempted_hemingway)
+
+        self.textview.scroller = TextViewScroller(self.textview, self.scrolledwindow)
+        self.scrolledwindow.get_vadjustment().connect("changed",
+                                            self.textview._on_vadjustment_changed)
+        self.scrolledwindow.get_vadjustment().connect("value-changed",
+                                            self.textview._on_vadjustment_changed)
+
+        self.sizehandler.set_size_request(360, 200)
+        self.breakpoints = []
+        self.set_breakpoints()
+        self.textview.connect("notify::bigger-text", self.set_breakpoints)
 
     @Gtk.Template.Callback()
     def reveal_toolbar(self, *_args):
-        if self.toolbar_revealer.extra_toolbar_revealed:
+        if self.toolbar_revealer.extra_toolbar_revealed or self.bottombar.narrow:
             self.background.add_css_class('shown')
             self.background.set_can_target(True)
             self.toolbar_revealer.show_extra_controls_button.add_css_class('active')
@@ -82,7 +98,63 @@ class Editor(Adw.Bin):
         if not self.background.get_reveal_child():
             self.background.set_reveal_child(True)
 
+    def set_breakpoints(self, *args, **kwargs):
+        if self.breakpoints:
+            for breakpoint in self.breakpoints:
+                self.sizehandler.remove_breakpoint(breakpoint)
+            self.breakpoints = []
+
+        # dict with all breakpoints and their setters
+        # any setter is applied to smaller breakpoints as well
+        # all breakpoints trigger textview.update_font_size
+        breakpoints = {}
+
+        # breakpoints for font sizes
+        for font_size in self.textview._get_font_sizes():
+            # at this point self.line_chars should still be the default
+            # we rely on that.
+            width = self.textview.get_min_width(font_size)
+            breakpoints.update({width: None})
+            if font_size == self.textview._get_font_sizes()[-1]:
+                breakpoints.update({width: [(self.textview, "line_chars", 26)]})
+
+        # breakpoints for font sizes in narrow mode
+        for font_size in self.textview._get_font_sizes():
+            width = self.textview.get_min_width(font_size, 26)
+            if width > min(breakpoints.keys()):
+                continue
+            breakpoints.update({width: None})
+
+        # breakpoint for the toolbar
+        breakpoints.update({
+            self.bottombar.get_expanded_width(): [
+                (self.bottombar, "narrow", True), 
+                (self.bottombar.toolbars_container, "visible-child", self.bottombar.toolbar_narrow),
+                (self.textview, "line_chars", 26)
+            ]
+        })
+
+        # store in a set all setters so they're applied to smaller breakpoints
+        props_to_apply = set()
+        for width, props in sorted(breakpoints.items(), reverse=True):
+            condition = Adw.BreakpointCondition.new_length(Adw.BreakpointConditionLengthType.MAX_WIDTH, width, Adw.LengthUnit.PX)
+            breakpoint = Adw.Breakpoint.new(condition)
+            breakpoint.connect("apply", self.textview.update_font_size)
+            breakpoint.connect("unapply", self.textview.update_font_size)
+            if props:
+                for prop in props:
+                    props_to_apply.add(prop)
+            if props_to_apply:
+                for prop in props_to_apply:
+                    breakpoint.add_setter(*prop)
+            self.breakpoints.append(breakpoint)
+            self.sizehandler.add_breakpoint(breakpoint)
+
+
     def hide_bottombar(self):
+        if self.bottombar.narrow:
+            return
+
         if self.stats_revealer.get_reveal_child():
             self.stats_revealer.set_reveal_child(False)
             self.stats_revealer.set_halign(Gtk.Align.FILL)

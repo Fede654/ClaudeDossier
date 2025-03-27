@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="adw" version="1.0"/>
+  <template class="BaseHeaderbarNarrow" parent="AdwBin">
+    <child>
+      <object class="AdwHeaderBar" id="headerbar">
+        <child type="start">
+          <object class="GtkToggleButton" id="preview_button">
+            <property name="action-name"></property>
+            <property name="icon-name">view-dual-symbolic</property>
+            <property name="action-name">win.preview</property>
+          </object>
+        </child>
+        <child type="end">
+          <object class="GtkButton" id="exit_fs_button">
+            <property name="action-name">win.fullscreen</property>
+            <property name="visible" bind-source="BaseHeaderbarNarrow" bind-property="is_fullscreen" bind-flags="sync-create"/>
+            <property name="icon-name">view-restore-symbolic</property>
+          </object>
+        </child>
+        <child type="end">
+          <object class="GtkMenuButton" id="menu_button">
+            <property name="menu-model">Main Menu</property>
+            <property name="icon-name">open-menu-symbolic</property>
+            <property name="tooltip-text" translatable="yes">Main Menu</property>
+            <style>
+              <class name="image-button"/>
+            </style>
+          </object>
+        </child>
+        <style>
+          <class name="titlebar"/>
+        </style>
+      </object>
+    </child>
+  </template>
+  <object class="ApostropheOpenPopover" id="open_menu"/>
+
+  <!-- Main Menu-->
+
+  <menu id="Main Menu">
+    <section>
+      <item>
+        <attribute name="custom">themeswitcher</attribute>
+      </item>
+    </section>
+    <section>
+    </section>
+      <item>
+        <attribute name="label" translatable="yes">New File</attribute>
+        <attribute name="action">win.new</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_Open</attribute>
+        <attribute name="action">win.open</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_Save</attribute>
+        <link name="submenu">
+          <section>
+            <item>
+              <attribute name="label" translatable="yes">_Save</attribute>
+              <attribute name="action">win.save</attribute>
+            </item>
+            <item>
+              <attribute name="label" translatable="yes">_Save As...</attribute>
+              <attribute name="action">win.save_as</attribute>
+            </item>
+          </section>
+          <section>
+            <item>
+              <attribute name="label" translatable="no">_PDF</attribute>
+              <attribute name="action">win.export</attribute>
+              <attribute name="target">pdf</attribute>
+            </item>
+            <item>
+              <attribute name="label" translatable="no">_HTML</attribute>
+              <attribute name="action">win.export</attribute>
+              <attribute name="target">html</attribute>
+            </item>
+            <item>
+              <attribute name="label" translatable="no">_ODT</attribute>
+              <attribute name="action">win.export</attribute>
+              <attribute name="target">odt</attribute>
+            </item>
+          </section>
+          <section>
+            <item>
+              <attribute name="label" translatable="yes">Advanced _Export…</attribute>
+              <attribute name="action">win.advanced_export</attribute>
+            </item>
+          </section>
+          <section>
+            <item>
+              <attribute name="label" translatable="yes">_Copy HTML</attribute>
+              <attribute name="action">win.copy_html</attribute>
+            </item>
+          </section>
+        </link>
+      </item>
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">_Hemingway Mode</attribute>
+        <attribute name="action">win.hemingway_mode</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_Focus Mode</attribute>
+        <attribute name="action">win.focus_mode</attribute>
+      </item>
+    </section>
+    <section>
+    <item>
+        <attribute name="label" translatable="yes">Search in the File</attribute>
+        <attribute name="action">win.find</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Find and _Replace</attribute>
+        <attribute name="action">win.find_replace</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">_Preferences</attribute>
+        <attribute name="action">app.preferences</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">Open _Tutorial</attribute>
+        <attribute name="action">win.open_file</attribute>
+        <attribute name="target">resource:///org/gnome/gitlab/somas/Apostrophe/media/apostrophe_markdown.md</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_Keyboard Shortcuts</attribute>
+        <attribute name="action">win.show-help-overlay</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_About Apostrophe</attribute>
+        <attribute name="action">app.about</attribute>
+      </item>
+    </section>
+  </menu>
+
+</interface>

@@ -233,18 +233,26 @@ class ApostrophePanels(Gtk.Widget, Gtk.Orientable):
             self.content_progress+self.panel_progress > 1:
 
             return (
-                round(content.minimum + (self.panels_collapsed_size[self.get_orientation()] - content.minimum)*(2-self.content_progress-self.panel_progress)*same_orientation
-                        + content.minimum*(self.panel_progress + self.content_progress - 1)*same_orientation + separator.minimum, 0),
-                round(content.natural + (self.panels_collapsed_size[self.get_orientation()] - content.natural)*(2-self.content_progress-self.panel_progress)*same_orientation
-                        + content.natural*(self.panel_progress + self.content_progress - 1)*same_orientation + separator.natural, 0),
+                round(content.minimum
+                      + (self.panels_collapsed_size[self.get_orientation()] - content.minimum)*(2-self.content_progress-self.panel_progress)*same_orientation
+                      + content.minimum*(self.panel_progress + self.content_progress - 1)*same_orientation
+                      + separator.minimum, 0),
+                round(content.natural
+                      + (self.panels_collapsed_size[self.get_orientation()] - content.natural)*(2-self.content_progress-self.panel_progress)*same_orientation
+                      + content.natural*(self.panel_progress + self.content_progress - 1)*same_orientation
+                      + separator.natural, 0),
                 content.minimum_baseline,
                 content.natural_baseline)
         else:
-            return (round(content.minimum + content.minimum*(self.panel_progress + self.content_progress - 1)*same_orientation + separator.minimum, 0),
-                    round(content.natural + content.natural*(self.panel_progress +
-                            self.content_progress - 1)*same_orientation + separator.natural, 0),
-                    content.minimum_baseline,
-                    content.natural_baseline)
+            return (
+                round(content.minimum
+                      + content.minimum*(self.panel_progress + self.content_progress - 1)*same_orientation
+                      + separator.minimum*((self.panel_progress + self.content_progress) > 1), 0),
+                round(content.natural
+                      + content.natural*(self.panel_progress + self.content_progress - 1)*same_orientation
+                      + separator.natural*((self.panel_progress + self.content_progress) > 1), 0),
+                content.minimum_baseline,
+                content.natural_baseline)
 
     def do_root(self):
         Gtk.Widget.do_root(self)

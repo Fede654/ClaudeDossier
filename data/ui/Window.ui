@@ -3,12 +3,12 @@
   <requires lib="gtk" version="4.0" />
   <requires lib="adw" version="1.0" />
   <template class="ApostropheWindow" parent="AdwApplicationWindow">
-    <property name="default-width">1000</property>
+    <property name="default-width">360</property>
     <property name="default-height">600</property>
     <style>
       <class name="apostrophe-window" />
     </style>
-    <child>
+    <property name="content">
       <object class="GtkOverlay" id="AppOverlay">
         <property name="name">FullscreenOverlay</property>
         <property name="child">
@@ -108,7 +108,7 @@ If you're unsure about the contents of this file, open it in the Restricted Prev
             <property name="orientation">vertical</property>
             <property name="valign">start</property>
             <child>
-              <object class="GtkRevealer" id="toolbar_revealer">
+              <object class="GtkRevealer" id="headerbar_revealer">
                 <property name="transition-type">crossfade</property>
                 <property name="transition-duration">450</property>
                 <property name="reveal-child">True</property>
@@ -123,11 +123,46 @@ If you're unsure about the contents of this file, open it in the Restricted Prev
                           <class name="top"/>
                         </style>
                         <child>
-                          <object class="BaseHeaderbar" id="headerbar">
-                            <property name="valign">start</property>
-                            <property name="title" bind-source="ApostropheWindow" bind-property="title" />
-                            <property name="subtitle" bind-source="ApostropheWindow" bind-property="subtitle" />
-                            <property name="is-fullscreen" bind-source="ApostropheWindow" bind-property="is-fullscreen" />
+                          <object class="AdwBreakpointBin" id="headerbars_breakpointbin">
+                            <child>
+                              <object class="AdwBreakpoint"  id="headerbars_breakpoint">
+                                <condition>max-width: 500px</condition>
+                                <setter object="headerbar_stack" property="visible-child-name">headerbar_narrow</setter>
+                                <setter object="ApostropheWindow" property="preview-layout">0</setter>
+                              </object>
+                            </child>
+                            <property name="child">
+                              <object class="GtkStack" id="headerbar_stack">
+                                <property name="hhomogeneous">False</property>
+                                <property name="transition-type">crossfade</property>
+                                <child>
+                                  <object class="GtkStackPage">
+                                    <property name="name">headerbar</property>
+                                    <property name="child">
+                                      <object class="BaseHeaderbar" id="headerbar">
+                                        <property name="valign">start</property>
+                                        <property name="title" bind-source="ApostropheWindow" bind-property="title" />
+                                        <property name="subtitle" bind-source="ApostropheWindow" bind-property="subtitle" />
+                                        <property name="is-fullscreen" bind-source="ApostropheWindow" bind-property="is-fullscreen" />
+                                      </object>
+                                    </property>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="GtkStackPage">
+                                    <property name="name">headerbar_narrow</property>
+                                    <property name="child">
+                                      <object class="BaseHeaderbarNarrow" id="headerbar_narrow">
+                                        <property name="valign">start</property>
+                                        <property name="title" bind-source="ApostropheWindow" bind-property="title" />
+                                        <property name="subtitle" bind-source="ApostropheWindow" bind-property="subtitle" />
+                                        <property name="is-fullscreen" bind-source="ApostropheWindow" bind-property="is-fullscreen" />
+                                      </object>
+                                    </property>
+                                  </object>
+                                </child>
+                              </object>
+                            </property>
                           </object>
                         </child>
                         <child>
@@ -193,6 +228,6 @@ If you're unsure about the contents of this file, open it in the Restricted Prev
           </object>
         </child>
       </object>
-    </child>
+    </property>
   </template>
 </interface>

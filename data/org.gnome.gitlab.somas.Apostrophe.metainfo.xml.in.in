@@ -26,12 +26,14 @@
     <color type="primary" scheme_preference="light">#90ded5</color>
     <color type="primary" scheme_preference="dark">#1b786d</color>
   </branding>
-  <requires>
-    <display_length compare="ge">656</display_length>
-  </requires>
   <recommends>
-    <display_length compare="ge">1311</display_length>
+    <control>keyboard</control>
+    <control>pointing</control>
+    <control>touch</control>
   </recommends>
+  <requires>
+    <display_length compare="ge">360</display_length>
+  </requires>
   <supports>
     <control>pointing</control>
     <control>keyboard</control>

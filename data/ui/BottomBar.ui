@@ -9,11 +9,12 @@
       </object>
     </child>
     <child>
-      <object class="AdwBin" id="stats_container">
+      <object class="GtkStack" id="toolbars_container">
+        <property name="hhomogeneous">False</property>
       </object>
     </child>
     <child>
-      <object class="AdwBin" id="toolbar_container">
+      <object class="AdwBin" id="stats_container">
       </object>
     </child>
   </template>

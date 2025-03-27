@@ -18,6 +18,7 @@
     <file compressed="true" preprocess="xml-stripblanks">ui/Editor.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/Export.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/Headerbar.ui</file>
+    <file compressed="true" preprocess="xml-stripblanks">ui/HeaderbarNarrow.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/InlinePreviewPopover.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/Panels.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/Preferences.ui</file>
@@ -32,6 +33,7 @@
     <file compressed="true" preprocess="xml-stripblanks">ui/TexliveWarning.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/TextView.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/Toolbar.ui</file>
+    <file compressed="true" preprocess="xml-stripblanks">ui/ToolbarNarrow.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/ThemeSwitcher.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/Window.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/AboutHemingway.ui</file>
