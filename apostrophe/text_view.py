@@ -249,7 +249,7 @@ class ApostropheTextView(GtkSource.View):
 
     def update_vertical_margin(self, top_margin=0):
         if self.focus_mode:
-            height = self.get_allocation().height + top_margin 
+            height = self.get_height() + top_margin 
 
             self.set_top_margin(height / 2 + top_margin)
             self.set_bottom_margin(height / 2)
@@ -356,7 +356,7 @@ class ApostropheTextView(GtkSource.View):
 
     @Gtk.Template.Callback()
     def _update_horizontal_margin(self, *args, **kwargs):
-        width = self.get_allocation().width
+        width = self.get_width()
         # Ensure the appropriate font size is being used
         for font_size in self._get_font_sizes():
             if width >= self.get_min_width(font_size):
