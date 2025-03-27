@@ -58,4 +58,30 @@ class BaseHeaderbar(Adw.Bin):
 
         self.settings = Settings.new()
 
-        #self.select_preview_layout_row()
+@Gtk.Template(resource_path='/org/gnome/gitlab/somas/Apostrophe/ui/HeaderbarNarrow.ui')
+class BaseHeaderbarNarrow(Adw.Bin):
+
+    __gtype_name__ = "BaseHeaderbarNarrow"
+
+    headerbar = Gtk.Template.Child()
+    menu_button = Gtk.Template.Child()
+    open_menu = Gtk.Template.Child()
+    preview_button = Gtk.Template.Child()
+
+    is_fullscreen = GObject.property(type=bool, default=False)
+    title = GObject.Property(type=str)
+    subtitle = GObject.Property(type=str)
+    preview_layout = GObject.property(type=int)
+
+    def __init__(self, **kwargs):
+
+        super().__init__(**kwargs)
+
+        # TODO - move to ui file, check on start
+        self.bind_property("is-fullscreen", self.headerbar, "show-start-title-buttons", 6)
+        self.bind_property("is-fullscreen", self.headerbar, "show-end-title-buttons", 6)
+
+        popover = self.menu_button.get_popover()
+        popover.add_child(ThemeSwitcher(), "themeswitcher")
+
+        self.settings = Settings.new()

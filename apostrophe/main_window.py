@@ -54,6 +54,7 @@ class MainWindow(Adw.ApplicationWindow):
     save_progressbar = Gtk.Template.Child()
     headerbar_revealer = Gtk.Template.Child()
     headerbar = Gtk.Template.Child()
+    headerbar_narrow = Gtk.Template.Child()
     searchbar = Gtk.Template.Child()
     panels = Gtk.Template.Child()
     preview_stack = Gtk.Template.Child()
@@ -61,6 +62,9 @@ class MainWindow(Adw.ApplicationWindow):
     discard_infobar = Gtk.Template.Child()
     preview_spinner = Gtk.Template.Child()
     webview_snapshot = Gtk.Template.Child()
+
+    headerbars_breakpointbin = Gtk.Template.Child()
+    headerbars_breakpoint = Gtk.Template.Child()
 
     subtitle = GObject.Property(type=str)
     is_fullscreen = GObject.Property(type=bool, default=False)
@@ -139,6 +143,11 @@ class MainWindow(Adw.ApplicationWindow):
         # preview security handler
         self.preview_security_handler = PreviewSecurityHandler(self)
 
+        # Headerbars breakpoint bin minimum size
+        self.headerbars_breakpointbin.set_size_request(
+            self.headerbar_narrow.measure(Gtk.Orientation.HORIZONTAL, -1).minimum,
+            self.headerbar_narrow.measure(Gtk.Orientation.VERTICAL, -1).minimum
+            )
 
         # Search and replace initialization
         self.searchbar.attach(self.textview)
@@ -662,6 +671,9 @@ class MainWindow(Adw.ApplicationWindow):
             self.remove_css_class("no-headerbar")
 
     def hide_headerbar_bottombar(self):
+        if self.headerbars_breakpointbin.get_current_breakpoint() == self.headerbars_breakpoint:
+            return
+
         if self.searchbar.search_mode_enabled or\
            self.discard_infobar.get_revealed():
             return
