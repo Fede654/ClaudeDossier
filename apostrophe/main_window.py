@@ -737,14 +737,6 @@ class MainWindow(Adw.ApplicationWindow):
         self.check_change(callback)
         return True
 
-    @Gtk.Template.Callback()
-    def spinner_map_cb(self, *args):
-        self.preview_spinner.set_spinning(True)
-
-    @Gtk.Template.Callback()
-    def spinner_unmap_cb(self, *args):
-        self.preview_spinner.set_spinning(False)
-
 #@dataclass
 class File(GObject.Object):
     """Class for keeping track of files, their attributes, and their methods"""
