@@ -389,11 +389,15 @@ class ApostropheTextView(GtkSource.View):
 
         return font_sizes_list
 
-    def get_min_width(self, font_size=None):
+    def get_min_width(self, font_size=None, line_chars=None):
         """Returns the minimum width of this text view."""
 
         if font_size is None:
             font_size = self._get_font_sizes()[-1]
+
+        if line_chars is None:
+            line_chars = self.line_chars
+
         return round((line_chars + self._get_pad_chars(font_size)) * self._get_char_width(font_size))
 
     def _get_pad_chars(self, font_size):

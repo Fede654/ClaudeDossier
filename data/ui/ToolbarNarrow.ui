@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0" />
+  <requires lib="adw" version="1.0" />
+  <template class="ToolbarNarrow" parent="GtkRevealer">
+    <property name="valign">end</property>
+    <property name="halign">start</property>
+    <property name="transition-type">crossfade</property>
+    <property name="reveal-child">1</property>
+    <property name="child">
+      <object class="GtkBox">
+        <property name="margin-start">6</property>
+        <property name="spacing">6</property>
+        <child>
+          <object class="GtkButton">
+            <property name="tooltip-text" translatable="yes">Bold</property>
+            <property name="icon-name">format-text-bold-symbolic</property>
+            <property name="action-name">win.insert-bold</property>
+            <style>
+              <class name="flat"/>
+            </style>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton">
+            <property name="tooltip-text" translatable="yes">Italic</property>
+            <property name="icon-name">format-text-italic-symbolic</property>
+            <property name="action-name">win.insert-italic</property>
+            <style>
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton">
+            <property name="tooltip-text" translatable="yes">Strikethrough</property>
+            <property name="icon-name">format-text-strikethrough-symbolic</property>
+            <property name="action-name">win.insert-strikethrough</property>
+            <style>
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton">
+            <property name="tooltip-text" translatable="yes">Heading</property>
+            <property name="icon-name">format-text-heading-symbolic</property>
+            <property name="action-name">win.insert-header</property>
+            <property name='action-target'>-1</property>
+            <style>
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+        <child>
+          <object class="GtkMenuButton">
+            <property name="tooltip-text" translatable="yes">List</property>
+            <property name="icon-name">view-list-bullet-symbolic</property>
+            <property name="popover">list_popover</property>
+            <property name="direction">up</property>
+            <style>
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+        <child>
+          <object class="GtkMenuButton">
+            <property name="tooltip-text" translatable="yes">Insert</property>
+            <property name="icon-name">insert-object-symbolic</property>
+            <property name="popover">insert_popover</property>
+            <property name="direction">up</property>
+            <style>
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+        <child>
+          <object class="GtkMenuButton">
+            <property name="tooltip-text" translatable="yes">Table</property>
+            <property name="icon-name">table-symbolic</property>
+            <property name="popover">insert_table_popover</property>
+            <property name="direction">up</property>
+            <style>
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+      </object>
+    </property>
+  </template>
+  <object class="GtkPopover" id="insert_table_popover">
+    <property name="child">
+      <object class="TableInput">
+        <property name="rows">4</property>
+        <property name="columns">6</property>
+      </object>
+    </property>
+  </object>
+  <object class="GtkPopover" id="list_popover">
+    <property name="margin-bottom">6</property>
+    <property name="has-arrow">False</property>
+    <property name="child">
+      <object class="GtkListBox">
+        <child>
+          <object class="GtkListBoxRow">
+            <property name="action-name">win.insert-listitem</property>
+            <child>
+              <object class="GtkBox">
+                <child>
+                  <object class="GtkImage">
+                    <property name="icon-name">view-list-bullet-symbolic</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="yes">Unordered</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkListBoxRow">
+            <property name="action-name">win.insert-ordered-listitem</property>
+            <child>
+              <object class="GtkBox">
+                <child>
+                  <object class="GtkImage">
+                    <property name="icon-name">view-list-ordered-symbolic</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="yes">Ordered</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkListBoxRow">
+            <property name="action-name">win.insert-checklist-listitem</property>
+            <child>
+              <object class="GtkBox">
+                <child>
+                  <object class="GtkImage">
+                    <property name="icon-name">checkbox-checked-symbolic</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="yes">Checklist</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </property>
+    <style>
+      <class name="menu"/>
+    </style>
+  </object>
+  <object class="GtkPopover" id="insert_popover">
+    <property name="margin-bottom">6</property>
+    <property name="has-arrow">False</property>
+    <property name="child">
+      <object class="GtkListBox">
+        <child>
+          <object class="GtkListBoxRow">
+            <property name="action-name">win.insert-blockquote</property>
+            <child>
+              <object class="GtkBox">
+                <child>
+                  <object class="GtkImage">
+                    <property name="icon-name">quotation-symbolic</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="yes">Blockquote</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkListBoxRow">
+            <property name="action-name">win.insert-codeblock</property>
+            <child>
+              <object class="GtkBox">
+                <child>
+                  <object class="GtkImage">
+                    <property name="icon-name">code-symbolic</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="yes">Code</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkListBoxRow">
+            <property name="action-name">win.insert-link</property>
+            <child>
+              <object class="GtkBox">
+                <child>
+                  <object class="GtkImage">
+                    <property name="icon-name">web-browser-symbolic</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="yes">Link</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkListBoxRow">
+            <property name="action-name">win.insert-image</property>
+            <child>
+              <object class="GtkBox">
+                <child>
+                  <object class="GtkImage">
+                    <property name="icon-name">image-x-generic-symbolic</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="yes">Image</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </property>
+    <style>
+      <class name="menu"/>
+    </style>
+  </object>
+</interface>

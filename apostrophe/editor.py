@@ -45,6 +45,7 @@ class Editor(Adw.Bin):
     textview = Gtk.Template.Child()
     movablebin = Gtk.Template.Child()
     sizehandler = Gtk.Template.Child()
+    bottombar = Gtk.Template.Child()
 
     hemingway_attempts = collections.deque(4*[datetime.min], 4)
 
@@ -58,6 +59,8 @@ class Editor(Adw.Bin):
 
         # Initialize bottombar background
         self.reveal_toolbar()
+
+        self.bottombar.connect("notify::narrow", self.reveal_toolbar)
 
         self.textview.get_buffer().connect('attempted-hemingway', self.on_attempted_hemingway)
 
@@ -74,7 +77,7 @@ class Editor(Adw.Bin):
 
     @Gtk.Template.Callback()
     def reveal_toolbar(self, *_args):
-        if self.toolbar_revealer.extra_toolbar_revealed:
+        if self.toolbar_revealer.extra_toolbar_revealed or self.bottombar.narrow:
             self.background.add_css_class('shown')
             self.background.set_can_target(True)
             self.toolbar_revealer.show_extra_controls_button.add_css_class('active')
@@ -112,6 +115,24 @@ class Editor(Adw.Bin):
             # we rely on that.
             width = self.textview.get_min_width(font_size)
             breakpoints.update({width: None})
+            if font_size == self.textview._get_font_sizes()[-1]:
+                breakpoints.update({width: [(self.textview, "line_chars", 26)]})
+
+        # breakpoints for font sizes in narrow mode
+        for font_size in self.textview._get_font_sizes():
+            width = self.textview.get_min_width(font_size, 26)
+            if width > min(breakpoints.keys()):
+                continue
+            breakpoints.update({width: None})
+
+        # breakpoint for the toolbar
+        breakpoints.update({
+            self.bottombar.get_expanded_width(): [
+                (self.bottombar, "narrow", True), 
+                (self.bottombar.toolbars_container, "visible-child", self.bottombar.toolbar_narrow),
+                (self.textview, "line_chars", 26)
+            ]
+        })
 
         # store in a set all setters so they're applied to smaller breakpoints
         props_to_apply = set()
@@ -131,6 +152,9 @@ class Editor(Adw.Bin):
 
 
     def hide_bottombar(self):
+        if self.bottombar.narrow:
+            return
+
         if self.stats_revealer.get_reveal_child():
             self.stats_revealer.set_reveal_child(False)
             self.stats_revealer.set_halign(Gtk.Align.FILL)

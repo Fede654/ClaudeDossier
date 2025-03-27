@@ -47,6 +47,15 @@
                         </style>
                       </object>
                     </property>
+                    <property name="toolbar_narrow">
+                      <object class="ToolbarNarrow" id="toolbar_narrow_revealer">
+                        <property name="transition-type">crossfade</property>
+                        <property name="reveal-child">1</property>
+                        <style>
+                          <class name="bottombar"/>
+                        </style>
+                      </object>
+                    </property>
                     <property name="stats">
                       <object class="Statsbar" id="stats_revealer">
                         <property name="valign">end</property>
@@ -92,6 +101,7 @@
       <widgets>
         <widget name="background"/>
         <widget name="toolbar_revealer"/>
+        <widget name="toolbar_narrow_revealer"/>
         <widget name="stats_revealer"/>
       </widgets>
     </object>

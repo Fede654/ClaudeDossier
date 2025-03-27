@@ -31,12 +31,15 @@ class BottomBar(Gtk.Widget):
     __gtype_name__ = "ApostropheBottomBar"
 
     toolbar_ = None
+    toolbar_narrow_ = None
     stats_ = None
     background_ = None
 
-    toolbar_container = Gtk.Template.Child()
+    toolbars_container = Gtk.Template.Child()
     stats_container = Gtk.Template.Child()
     background_container = Gtk.Template.Child()
+
+    narrow = GObject.Property(type=bool, default=False)
 
     @GObject.Property(type=Gtk.Widget)
     def toolbar(self):
@@ -44,8 +47,17 @@ class BottomBar(Gtk.Widget):
 
     @toolbar.setter
     def toolbar(self, value):
-        self.toolbar_container.set_child(value)
+        self.toolbars_container.add_named(value, "toolbar")
         self.toolbar_ = value
+
+    @GObject.Property(type=Gtk.Widget)
+    def toolbar_narrow(self):
+        return self.toolbar_narrow_
+
+    @toolbar_narrow.setter
+    def toolbar_narrow(self, value):
+        self.toolbars_container.add_named(value, "toolbar_narrow")
+        self.toolbar_narrow_ = value
 
     @GObject.Property(type=Gtk.Widget)
     def stats(self):
@@ -72,14 +84,18 @@ class BottomBar(Gtk.Widget):
         self.queue_resize()
 
     def do_size_allocate(self, width, height, baseline):
+        toolbar_width = self.toolbars_container.measure(Gtk.Orientation.HORIZONTAL, -1).minimum
+        toolbar_height = self.toolbars_container.measure(Gtk.Orientation.VERTICAL, -1).minimum
 
-        toolbar_width = self.toolbar_container.measure(Gtk.Orientation.HORIZONTAL, -1).minimum
-        toolbar_height = self.toolbar_container.measure(Gtk.Orientation.VERTICAL, -1).minimum
+        stats_wide_width = self.stats.stats_button.measure(Gtk.Orientation.HORIZONTAL, -1).minimum
+
+        if (toolbar_width + stats_wide_width) >= width or self.narrow:
+            self.stats.buttons_stack.set_visible_child(self.stats.stats_button_short)
+        else:
+            self.stats.buttons_stack.set_visible_child(self.stats.stats_button)
 
         stats_width = self.stats_container.measure(Gtk.Orientation.HORIZONTAL, -1).minimum
-        stats_height = self.toolbar_container.measure(Gtk.Orientation.VERTICAL, -1).minimum
-
-        stats_wide_width = self.stats.measure(Gtk.Orientation.HORIZONTAL, -1).minimum
+        stats_height = self.toolbars_container.measure(Gtk.Orientation.VERTICAL, -1).minimum
 
         self.background_container.allocate(width, toolbar_height, baseline)
 
@@ -87,22 +103,18 @@ class BottomBar(Gtk.Widget):
             offset = width - stats_width
             offset_transform = Gsk.Transform().translate(Graphene.Point().init(offset, 0))
 
-            self.toolbar_container.allocate(toolbar_width, toolbar_height, baseline)
-            self.stats_container.allocate(stats_width,stats_height, baseline, offset_transform)
+            self.toolbars_container.allocate(toolbar_width, toolbar_height, baseline)
+            self.stats_container.allocate(stats_width, stats_height, baseline, offset_transform)
         elif self.get_direction() == Gtk.TextDirection.RTL:
             offset = width - toolbar_width
             offset_transform = Gsk.Transform().translate(Graphene.Point().init(offset, 0))
 
-            self.stats_container.allocate(stats_width,stats_height, baseline)
-            self.toolbar_container.allocate(toolbar_width, toolbar_height, baseline, offset_transform)
+            self.stats_container.allocate(stats_width, stats_height, baseline)
+            self.toolbars_container.allocate(toolbar_width, toolbar_height, baseline, offset_transform)
 
-        if toolbar_width + stats_wide_width > width:
-            self.stats.buttons_stack.set_visible_child(self.stats.stats_button_short)
-        else:
-            self.stats.buttons_stack.set_visible_child(self.stats.stats_button)
 
     def do_measure(self, orientation, for_size):
-        toolbar = self.toolbar_container.measure(orientation, -1)
+        toolbar = self.toolbars_container.measure(orientation, -1)
         stats = self.stats.stats_button_short.measure(orientation, -1)
 
         if orientation == Gtk.Orientation.HORIZONTAL:
@@ -123,10 +135,20 @@ class BottomBar(Gtk.Widget):
     def do_contains(self, x, y):
         bottombar_width = self.get_width()
 
-        toolbar_width = self.toolbar_container.get_width()
+        toolbar_width = self.toolbars_container.get_width()
         stats_width = self.stats_container.get_width()
 
-        return y > 0 and ((x < toolbar_width or x > (bottombar_width - stats_width)) or self.toolbar.extra_toolbar_revealed)
+        return y > 0 and (
+            (x < toolbar_width or 
+             x > (bottombar_width - stats_width)) or 
+             (self.toolbar.extra_toolbar_revealed and not self.narrow))
+
+    def get_expanded_width(self):
+        toolbar_size = self.toolbar.toolbar_extra_revealer.get_child().measure(Gtk.Orientation.HORIZONTAL, -1)
+        show_button_size = self.toolbar.show_extra_controls_button.measure(Gtk.Orientation.HORIZONTAL, -1)
+        stats_size = self.stats.stats_button_short.measure(Gtk.Orientation.HORIZONTAL, -1)
+
+        return toolbar_size.minimum + show_button_size.minimum + stats_size.minimum
 
 
 @Gtk.Template(resource_path='/org/gnome/gitlab/somas/Apostrophe/ui/Toolbar.ui')
@@ -135,6 +157,8 @@ class Toolbar(Gtk.Revealer):
     __gtype_name__ = "Toolbar"
 
     show_extra_controls_button = Gtk.Template.Child()
+    toolbar_extra_revealer = Gtk.Template.Child()
+    show_extra_controls_button = Gtk.Template.Child()
 
     extra_toolbar_revealed = GObject.Property(type=bool, default=True)
 
@@ -142,6 +166,14 @@ class Toolbar(Gtk.Revealer):
         super().__init__(**kwargs)
         self.settings = Settings.new()
         self.extra_toolbar_revealed = self.settings.get_boolean("toolbar-active")
+
+@Gtk.Template(resource_path='/org/gnome/gitlab/somas/Apostrophe/ui/ToolbarNarrow.ui')
+class ToolbarNarrow(Gtk.Revealer):
+
+    __gtype_name__ = "ToolbarNarrow"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
 
 @Gtk.Template(resource_path='/org/gnome/gitlab/somas/Apostrophe/ui/Statsbar.ui')
 class Statsbar(Gtk.Revealer):
@@ -154,3 +186,5 @@ class Statsbar(Gtk.Revealer):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        # make the stack report the biggest size while transitioning to not have jumps when allocating
+        self.buttons_stack.bind_property("transition-running", self.buttons_stack, "hhomogeneous")

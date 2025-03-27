@@ -32,6 +32,7 @@
     <file compressed="true" preprocess="xml-stripblanks">ui/TexliveWarning.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/TextView.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/Toolbar.ui</file>
+    <file compressed="true" preprocess="xml-stripblanks">ui/ToolbarNarrow.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/ThemeSwitcher.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/Window.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/AboutHemingway.ui</file>

@@ -3,7 +3,7 @@
   <requires lib="gtk" version="4.0" />
   <requires lib="adw" version="1.0" />
   <template class="ApostropheWindow" parent="AdwApplicationWindow">
-    <property name="default-width">1000</property>
+    <property name="default-width">360</property>
     <property name="default-height">600</property>
     <style>
       <class name="apostrophe-window" />
