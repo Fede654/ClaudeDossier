@@ -108,7 +108,7 @@ If you're unsure about the contents of this file, open it in the Restricted Prev
             <property name="orientation">vertical</property>
             <property name="valign">start</property>
             <child>
-              <object class="GtkRevealer" id="toolbar_revealer">
+              <object class="GtkRevealer" id="headerbar_revealer">
                 <property name="transition-type">crossfade</property>
                 <property name="transition-duration">450</property>
                 <property name="reveal-child">True</property>
