@@ -377,11 +377,10 @@ class ApostropheTextView(GtkSource.View):
         width = self.get_width()
 
         # Apply margin with the remaining space to allow for markup
-        line_width = (self.line_chars + 1) *\
-            int(self._get_char_width(self.font_size)) - 1
-        horizontal_margin = (width - line_width) / 2
+        line_width = round((self.line_chars*self._get_char_width(self.font_size)))
+        horizontal_margin = (width - line_width) // 2
         self.set_left_margin(horizontal_margin)
-        self.set_right_margin(horizontal_margin)
+        self.set_right_margin(width - line_width - horizontal_margin)
 
     def _get_font_sizes(self):
         font_sizes_list = [20, 18, 17, 16, 15, 14]
@@ -395,18 +394,16 @@ class ApostropheTextView(GtkSource.View):
 
         if font_size is None:
             font_size = self._get_font_sizes()[-1]
-        return (self.line_chars + self._get_pad_chars(font_size) + 1) \
-            * self._get_char_width(font_size) - 1
+        return round((line_chars + self._get_pad_chars(font_size)) * self._get_char_width(font_size))
 
     def _get_pad_chars(self, font_size):
         """Returns the amount of character padding for font_size.
-
-        Markup can use up to 7 in normal conditions."""
+        Markup can use up to 7 in normal conditions, so the minimum is 14"""
 
         if self.bigger_text:
-            return 8 * int((1 + (font_size - self._get_font_sizes()[-1])/3))
+            return max(14, 8 * int((1 + (font_size - self._get_font_sizes()[-1])/3)))
         else:
-            return 8 * (1 + font_size - self._get_font_sizes()[-1])
+            return max(14, 8 * (1 + font_size - self._get_font_sizes()[-1]))
 
     @staticmethod
     def _get_char_width(font_size):
@@ -420,7 +417,7 @@ class ApostropheTextView(GtkSource.View):
         settings = Gtk.Settings.get_default()
         scale_factor = settings.props.gtk_xft_dpi / DEFAULT_DPI
 
-        return scale_factor * font_size * 1 / 1.6
+        return scale_factor * font_size * 0.6
 
     def do_size_allocate(self, width, height, baseline):
         self._on_size_allocate()
