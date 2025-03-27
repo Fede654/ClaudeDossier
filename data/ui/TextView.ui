@@ -91,6 +91,6 @@
     </style>
     <signal name="notify::focus-mode" handler="_on_focus_mode_update" />
     <signal name="notify::spellcheck" handler="_on_spellcheck_update" />
-    <signal name="notify::bigger-text" handler="_update_horizontal_margin" />
+    <signal name="notify::bigger-text" handler="update_font_size" />
   </template>
 </interface>

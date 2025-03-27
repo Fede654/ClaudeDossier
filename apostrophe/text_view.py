@@ -355,7 +355,7 @@ class ApostropheTextView(GtkSource.View):
         self.queue_draw()
 
     @Gtk.Template.Callback()
-    def _update_horizontal_margin(self, *args, **kwargs):
+    def update_font_size(self, *args, **kwargs):
         width = self.get_width()
         # Ensure the appropriate font size is being used
         for font_size in self._get_font_sizes():
@@ -365,9 +365,14 @@ class ApostropheTextView(GtkSource.View):
                     for size_class in filter(lambda style_class: style_class.startswith("size"), self.get_css_classes()):
                         self.remove_css_class(size_class)
                     self.add_css_class("size{}".format(font_size))
+                    self.queue_draw()
+                    self._update_horizontal_margin()
                 break
         else:
             return
+
+    def _update_horizontal_margin(self, *args, **kwargs):
+        width = self.get_width()
 
         # Apply margin with the remaining space to allow for markup
         line_width = (self.line_chars + 1) *\
@@ -416,5 +421,5 @@ class ApostropheTextView(GtkSource.View):
         return scale_factor * font_size * 1 / 1.6
 
     def do_size_allocate(self, width, height, baseline):
-        Gtk.TextView.do_size_allocate(self,width, height, baseline)
         self._on_size_allocate()
+        Gtk.TextView.do_size_allocate(self,width, height, baseline)

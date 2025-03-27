@@ -44,6 +44,7 @@ class Editor(Adw.Bin):
     background = Gtk.Template.Child()
     textview = Gtk.Template.Child()
     movablebin = Gtk.Template.Child()
+    sizehandler = Gtk.Template.Child()
 
     hemingway_attempts = collections.deque(4*[datetime.min], 4)
 
@@ -65,6 +66,12 @@ class Editor(Adw.Bin):
                                             self.textview._on_vadjustment_changed)
         self.scrolledwindow.get_vadjustment().connect("value-changed",
                                             self.textview._on_vadjustment_changed)
+
+        self.sizehandler.set_size_request(360, 200)
+        self.breakpoints = []
+        self.set_breakpoints()
+        self.textview.connect("notify::bigger-text", self.set_breakpoints)
+
     @Gtk.Template.Callback()
     def reveal_toolbar(self, *_args):
         if self.toolbar_revealer.extra_toolbar_revealed:
@@ -87,6 +94,41 @@ class Editor(Adw.Bin):
 
         if not self.background.get_reveal_child():
             self.background.set_reveal_child(True)
+
+    def set_breakpoints(self, *args, **kwargs):
+        if self.breakpoints:
+            for breakpoint in self.breakpoints:
+                self.sizehandler.remove_breakpoint(breakpoint)
+            self.breakpoints = []
+
+        # dict with all breakpoints and their setters
+        # any setter is applied to smaller breakpoints as well
+        # all breakpoints trigger textview.update_font_size
+        breakpoints = {}
+
+        # breakpoints for font sizes
+        for font_size in self.textview._get_font_sizes():
+            # at this point self.line_chars should still be the default
+            # we rely on that.
+            width = self.textview.get_min_width(font_size)
+            breakpoints.update({width: None})
+
+        # store in a set all setters so they're applied to smaller breakpoints
+        props_to_apply = set()
+        for width, props in sorted(breakpoints.items(), reverse=True):
+            condition = Adw.BreakpointCondition.new_length(Adw.BreakpointConditionLengthType.MAX_WIDTH, width, Adw.LengthUnit.PX)
+            breakpoint = Adw.Breakpoint.new(condition)
+            breakpoint.connect("apply", self.textview.update_font_size)
+            breakpoint.connect("unapply", self.textview.update_font_size)
+            if props:
+                for prop in props:
+                    props_to_apply.add(prop)
+            if props_to_apply:
+                for prop in props_to_apply:
+                    breakpoint.add_setter(*prop)
+            self.breakpoints.append(breakpoint)
+            self.sizehandler.add_breakpoint(breakpoint)
+
 
     def hide_bottombar(self):
         if self.stats_revealer.get_reveal_child():
