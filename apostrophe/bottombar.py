@@ -21,7 +21,7 @@ import gi
 from apostrophe.stats_handler import StatsHandler
 
 gi.require_version('Gtk', '4.0')
-from gi.repository import Adw, GLib, GObject, Gtk, Gsk, Graphene
+from gi.repository import Adw, GLib, GObject, Gtk, Gsk, Graphene, Gio
 
 from .settings import Settings
 
@@ -165,7 +165,8 @@ class Toolbar(Gtk.Revealer):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.settings = Settings.new()
-        self.extra_toolbar_revealed = self.settings.get_boolean("toolbar-active")
+        self.settings.bind("toolbar-active", self, "extra-toolbar-revealed",
+            Gio.SettingsBindFlags.DEFAULT|Gio.SettingsBindFlags.GET_NO_CHANGES)
 
 @Gtk.Template(resource_path='/org/gnome/gitlab/somas/Apostrophe/ui/ToolbarNarrow.ui')
 class ToolbarNarrow(Gtk.Revealer):

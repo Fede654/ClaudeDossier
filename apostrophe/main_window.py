@@ -29,7 +29,7 @@ from apostrophe import helpers
 from apostrophe.editor import Editor
 from apostrophe.export_dialog import AdvancedExportDialog, ExportDialog
 from apostrophe.headerbars import BaseHeaderbar
-from apostrophe.helpers import App
+from apostrophe.helpers import App, bind_enum
 from apostrophe.panels import ApostrophePanels
 from apostrophe.preview_handler import PreviewHandler
 from apostrophe.preview_security import PreviewSecurity
@@ -84,16 +84,14 @@ class MainWindow(Adw.ApplicationWindow):
         super().__init__(application=Gio.Application.get_default(),
                          title="Apostrophe")
 
-        #TODO: size
-
         # Preferences
         self.settings = Settings.new()
 
         # Connect signals that we can't connect on the UI file
         self.connect("notify::is-fullscreen", self._on_fullscreen)
+
         # Create new, empty file
         # TODO: load last opened file?
-
         self.current = File()
 
         # Setup text editor
@@ -125,9 +123,6 @@ class MainWindow(Adw.ApplicationWindow):
         apply_seasonal_style(self.save_progressbar)
 
         # Setup preview
-
-        self.preview_layout = self.settings.get_enum("preview-mode")
-
         self.preview_handler = PreviewHandler(self, self.textview, self.panels)
 
         # not really necessary but we'll keep a preview_layout property on the window
@@ -280,10 +275,19 @@ class MainWindow(Adw.ApplicationWindow):
         scrollbar.set_margin_top(54)
         scrollbar.set_margin_bottom(48)
 
-
-        self.preview = self.settings.get_boolean("preview-active")
-
-        self.textview.buffer.hemingway_mode = self.settings.get_boolean("hemingway-mode")
+        # Bind gsettings
+        self.settings.bind("window-width", self, "default-width",
+            Gio.SettingsBindFlags.DEFAULT|Gio.SettingsBindFlags.GET_NO_CHANGES)
+        self.settings.bind("window-height", self, "default-height",
+            Gio.SettingsBindFlags.DEFAULT|Gio.SettingsBindFlags.GET_NO_CHANGES)
+        self.settings.bind("is-maximized", self, "maximized",
+            Gio.SettingsBindFlags.DEFAULT|Gio.SettingsBindFlags.GET_NO_CHANGES)
+        self.settings.bind("is-fullscreen", self, "fullscreened",
+            Gio.SettingsBindFlags.DEFAULT|Gio.SettingsBindFlags.GET_NO_CHANGES)
+        bind_enum(self.settings, "preview-mode", self, "preview-layout",
+            Gio.SettingsBindFlags.DEFAULT|Gio.SettingsBindFlags.GET_NO_CHANGES)
+        self.settings.bind("preview-active", self, "preview",
+            Gio.SettingsBindFlags.DEFAULT|Gio.SettingsBindFlags.GET_NO_CHANGES)
 
         self.new_document()
 
@@ -710,13 +714,6 @@ class MainWindow(Adw.ApplicationWindow):
         self.subtitle = subtitle
         self.headerbar.set_tooltip_text(subtitle)
 
-    def save_state(self):
-        self.settings.set_enum("preview-mode", self.preview_layout)
-        self.settings.set_boolean("preview-active", self.preview)
-        self.settings.set_boolean("hemingway-mode", self.textview.buffer.hemingway_mode)
-        self.settings.set_boolean("toolbar-active", self.editor.toolbar_revealer.extra_toolbar_revealed)
-        self.settings.set_boolean("spellcheck", self.textview.adapter.get_enabled())
-
     def do_close_request(self, *args):
         LOGGER.info('close request called')
 
@@ -726,11 +723,6 @@ class MainWindow(Adw.ApplicationWindow):
 
         # called if check_change decides we can throw away the contents of the textview
         def callback(window):
-            # save state if we're the last window group left
-            n_windows = len(window.get_application().get_main_windows())
-
-            if n_windows == 1:
-                window.save_state()
             window.close_anyway = True
             window.do_close_request()
 

@@ -1,14 +1,19 @@
 from contextlib import contextmanager
 from itertools import cycle
-import regex as re
+
 import gi
+import regex as re
 
 from apostrophe.helpers import user_action
+
 gi.require_version('Gtk', '4.0')
 gi.require_version('GtkSource', '5')
 
-from gi.repository import GObject, Gtk, GtkSource, GLib
-from apostrophe.markup_regex import LIST, CHECKLIST, ORDERED_LIST
+from gi.repository import GLib, GObject, Gtk, GtkSource, Gio
+
+from apostrophe.markup_regex import CHECKLIST, LIST, ORDERED_LIST
+from apostrophe.settings import Settings
+
 
 class ApostropheTextBuffer(GtkSource.Buffer):
     __gtype_name__ = "ApostropheTextBuffer"
@@ -25,6 +30,12 @@ class ApostropheTextBuffer(GtkSource.Buffer):
 
     def __init__(self):
         super().__init__()
+
+        self.settings = Settings.new()
+
+        self.settings.bind("hemingway-mode", self, "hemingway-mode",
+            Gio.SettingsBindFlags.DEFAULT|Gio.SettingsBindFlags.GET_NO_CHANGES)
+
         self.connect("paste-done", self._on_clipboard_paste_finished)
 
     @contextmanager
