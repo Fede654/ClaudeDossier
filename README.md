@@ -17,6 +17,10 @@ Also several unofficial builds are available:
 * Nix(OS): [`pkgs.apostrophe`](https://github.com/NixOS/nixpkgs/blob/master/pkgs/applications/editors/apostrophe/default.nix)
 * [Fedora](https://src.fedoraproject.org/rpms/apostrophe): `sudo dnf install apostrophe`
 
+## Code of Conduct
+
+When interacting with the project, the [GNOME Code of Conduct](https://conduct.gnome.org) applies.
+
 ## Translation
 
 If you want to help translating the project, please join us at [Damned Lies](https://l10n.gnome.org/module/apostrophe/).
