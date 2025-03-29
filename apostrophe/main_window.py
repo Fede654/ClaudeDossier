@@ -426,6 +426,10 @@ class MainWindow(Adw.ApplicationWindow):
         self.filechooser.set_modal(True)
         self.filechooser.set_transient_for(self)
 
+        # / is the base path when the current file has not been saved
+        if self.current.base_path != "/":
+            self.filechooser.set_current_folder(Gio.File.new_for_path(self.current.base_path))
+
         title = self.current.title
         if not title.endswith(".md"):
             title += ".md"
