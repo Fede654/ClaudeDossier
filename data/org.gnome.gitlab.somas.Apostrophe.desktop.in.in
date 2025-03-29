@@ -9,4 +9,5 @@ Exec=apostrophe %U
 Icon=@icon@
 Terminal=false
 Type=Application
+StartupNotify=true
 MimeType=text/x-markdown;text/plain;
