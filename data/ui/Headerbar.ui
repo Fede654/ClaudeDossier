@@ -8,7 +8,7 @@
         <child type="start">
           <object class="GtkButton">
             <property name="tooltip-text" translatable="yes">New File</property>
-            <property name="action-name">app.new_window</property>
+            <property name="action-name">app.new-window</property>
             <property name="icon_name">document-new-symbolic</property>
           </object>
         </child>
