@@ -777,3 +777,7 @@ class File(GObject.Object):
         self.title = _("New File")
         self.name = ""
         self.security_level = PreviewSecurity.ASK
+
+    def do_dispose(self):
+        self.gfile = None
+        super().do_dispose()

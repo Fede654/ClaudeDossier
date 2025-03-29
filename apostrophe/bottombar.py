@@ -150,6 +150,13 @@ class BottomBar(Gtk.Widget):
 
         return toolbar_size.minimum + show_button_size.minimum + stats_size.minimum
 
+    def do_dispose(self):
+        self.toolbar = None
+        self.toolbar_narrow = None
+        self.stats = None
+        self.background = None
+
+        Gtk.Widget.do_dispose(self)
 
 @Gtk.Template(resource_path='/org/gnome/gitlab/somas/Apostrophe/ui/Toolbar.ui')
 class Toolbar(Gtk.Revealer):

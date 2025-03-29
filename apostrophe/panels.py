@@ -272,6 +272,12 @@ class ApostrophePanels(Gtk.Widget, Gtk.Orientable):
 
         Gtk.Widget.do_unroot(self)
 
+    def do_dispose(self):
+        self.content_container = None
+        self.panel_container = None
+        self.separator = None
+
+        Gtk.Widget.do_dispose(self)
 
     layouts = {
         PreviewLayout.CLOSED: {
