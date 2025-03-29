@@ -78,7 +78,7 @@ class Application(Adw.Application):
         action.connect("activate", self._set_color_scheme)
         self.add_action(action)
 
-        action = Gio.SimpleAction.new("new_window", None)
+        action = Gio.SimpleAction.new("new-window", None)
         action.connect("activate", self.on_new_window)
         self.add_action(action)
 
@@ -113,7 +113,7 @@ class Application(Adw.Application):
         self.set_accels_for_action("win.find_replace", ["<Ctl>h"])
         self.set_accels_for_action("app.spellcheck", ["F7"])
 
-        self.set_accels_for_action("app.new_window", ["<Ctl>n"])
+        self.set_accels_for_action("app.new-window", ["<Ctl>n"])
         self.set_accels_for_action("app.preferences", ["<Ctl>comma"])
         self.set_accels_for_action("win.open", ["<Ctl>o"])
         self.set_accels_for_action("win.save", ["<Ctl>s"])
