@@ -58,19 +58,21 @@ class ApostropheTextBuffer(GtkSource.Buffer):
             end_sentence.forward_sentence_end()
 
         return (start_sentence, end_sentence)
-
-    def get_current_line_bounds(self):
+    
+    def get_line_bounds(self, iter):
         # backward_line() doesn't seem to work as expected
         # so we just find the end of the line and backward the number of characters
         # that line has
-        cursor_iter = self.get_iter_at_mark(self.get_insert())
-        end_line = cursor_iter.copy()
+        end_line = iter.copy()
         if not end_line.ends_line():
             end_line.forward_to_line_end()
         start_line = end_line.copy()
         start_line.backward_chars(end_line.get_line_offset())
 
         return (start_line, end_line)
+
+    def get_current_line_bounds(self):
+        return self.get_line_bounds(self.get_iter_at_mark(self.get_insert()))
 
     def _indent(self):
         '''Takes over tab insertions.
@@ -120,12 +122,26 @@ class ApostropheTextBuffer(GtkSource.Buffer):
             # Unindent unordered lists
             match = re.fullmatch(LIST, current_sentence)
             if match:
-                symbols = cycle(['+', '*', '-'])
-                for i in range(3):
-                    if next(symbols) == match.group("symbol"):
+                indent = match.group("indent")
+
+                if indent == "":
+                    # nothing to unindent
+                    return
+
+                # iterate over previous lines and match the symbol and indentation
+                # of the first occurence we find that had a smaller indentation
+                # than the current one
+                tmp_start = start_line.copy()
+                for _ in range(50):
+                    tmp_start.backward_char()
+                    tmp_start, tmp_end = self.get_line_bounds(tmp_start)
+                    if tmp_match := re.fullmatch(LIST, self.get_text(tmp_start, tmp_end, True)):
+                        indent = tmp_match.group("indent")
+                        next_symbol = tmp_match.group("symbol")
+                    else:
                         break
-                next_symbol = next(symbols)
-                indent = match.group("indent").removesuffix("\t").removesuffix("    ")
+                    if len(indent) < len(match.group("indent")):
+                        break
 
                 self.delete(start_line, end_line)
                 text = indent + next_symbol + " "
