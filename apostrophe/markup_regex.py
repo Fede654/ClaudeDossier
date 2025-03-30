@@ -137,10 +137,10 @@ LIST = re.compile(
     r"""
     (?:^|\n)                          # assert start of line or newline
     (?P<content>
-        (?P<indent>(?:\t|[ ]{4})*)    # tab or 4 spaces, any number of times
+        (?P<indent>(?:\t|[ ]{2})*)    # tab or 4 spaces, any number of times
         (?P<symbol>(?:[\-*+]))        # the bullet can be - * or +
         [ ](?!\[[xX ]\])              # don't match checklist ([ ]/ [x] / [X])
-        (?:\t|[ ]{4})*                # tab or 4 spaces, any number of times
+        (?:\t|[ ]{2})*                # tab or 4 spaces, any number of times
         (?P<text>
             .+
         )?                            # we don't match multiline text, but it's ok
@@ -151,7 +151,7 @@ CHECKLIST = re.compile(
     r"""
     (?:^|\n)                          # assert start of line or newline
     (?P<content>
-        (?P<indent>(?:\t|[ ]{4})*)    # tab or 4 spaces, any number of times
+        (?P<indent>(?:\t|[ ]{2})*)    # tab or 2 spaces, any number of times
         (?P<symbol>(?:[\-*+]))        # the bullet can be - * or +
         [ ]\[(?P<check>(?:[xX ]))\][ ]# match checklist ([ ]/ [x] / [X])
         (?:\t|[ ]{4})*                # tab or 4 spaces, any number of times
@@ -165,7 +165,7 @@ ORDERED_LIST = re.compile(
     r"""
     (?:^|\n)                          # assert start of line or newline
     (?P<content>
-        (?P<indent>(?>\t|[ ]{4})*)    # tab or 4 spaces, any number of times
+        (?P<indent>(?>\t|[ ]{2})*)    # tab or 4 spaces, any number of times
         (?P<prefix>
             (?:
                 (?P<number>\d+)       # either a digit, any number of times
