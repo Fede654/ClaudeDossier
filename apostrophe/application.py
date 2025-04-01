@@ -148,6 +148,9 @@ class Application(Adw.Application):
                                         window.textview.get_text() == "" and\
                                         not window.did_change, self.get_main_windows()))
         for i, file in enumerate(files):
+            if not file.query_exists(None):
+                continue
+
             c = False
             for window in self.get_main_windows():
                 if not file or not window.current.gfile:
