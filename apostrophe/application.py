@@ -39,6 +39,9 @@ class Application(Adw.Application):
                          flags=Gio.ApplicationFlags.HANDLES_OPEN,
                          **kwargs)
 
+        self.add_main_option("new-window", b"w", GLib.OptionFlags.NONE,
+                             GLib.OptionArg.NONE, "Open a new window", None)
+
         self.add_main_option("verbose", b"v", GLib.OptionFlags.NONE,
                              GLib.OptionArg.NONE, "Verbose output", None)
 
@@ -140,6 +143,12 @@ class Application(Adw.Application):
         self.get_windows()[-1].present()
 
     def do_handle_local_options(self, options):
+        if options.contains("new-window"):
+            self.register()
+            if self.get_property("is-remote"):
+                self.activate_action("new-window")
+                return 0
+
         if options.contains("verbose") or self._application_id \
                 == 'org.gnome.gitlab.somas.Apostrophe.Devel':
             set_up_logging(1)
