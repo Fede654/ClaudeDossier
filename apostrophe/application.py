@@ -137,7 +137,7 @@ class Application(Adw.Application):
 
         self._set_color_scheme()
 
-        self.get_windows()[-1].present()
+        self.get_active_window().present()
 
     def do_handle_local_options(self, options):
         if options.contains("verbose") or self._application_id \
