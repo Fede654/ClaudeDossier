@@ -57,7 +57,7 @@ localedir = get_option('prefix') / get_option('localedir')
 pythondir = py_installation.get_path('purelib')
 datadir = get_option('prefix') / get_option('datadir')
 pkgdatadir = datadir / meson.project_name()
-#bindir = join_paths(get_option('prefix'), get_option('bindir'))
+bindir = get_option('prefix') / get_option('bindir')
 podir = meson.source_root() / 'po'
 
 subdir('data')

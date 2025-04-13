@@ -78,6 +78,18 @@ foreach ui_file: ui_preconfigured_files
   )
 endforeach
 
+# D-Bus service file
+service_conf = configuration_data()
+service_conf.set('app-id', application_id)
+service_conf.set('bindir', bindir)
+configure_file(
+  input: 'org.gnome.gitlab.somas.Apostrophe.service.in',
+  output: '@0@.service'.format(application_id),
+  install: true,
+  install_dir: get_option('datadir') / 'dbus-1' / 'services',
+  configuration: service_conf
+)
+
 message('datadir')
 message(datadir)
 subdir('icons')
