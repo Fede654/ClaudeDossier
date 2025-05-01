@@ -12,6 +12,8 @@
 # You should have received a copy of the GNU General Public License along
 # with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
 
+import logging
+
 import gi
 
 gi.require_version('Gtk', '4.0')
@@ -28,6 +30,7 @@ from apostrophe.main_window import MainWindow
 from apostrophe.settings import Settings
 from apostrophe.theme_switcher import Theme
 
+LOGGER = logging.getLogger('apostrophe')
 
 class Application(Adw.Application):
 
@@ -148,6 +151,10 @@ class Application(Adw.Application):
                                         window.textview.get_text() == "" and\
                                         not window.did_change, self.get_main_windows()))
         for i, file in enumerate(files):
+            if not file.query_exists(None):
+                LOGGER.warning(f"{file.get_path()} doesn't exist")
+                continue
+
             c = False
             for window in self.get_main_windows():
                 if not file or not window.current.gfile:
