@@ -553,18 +553,27 @@ class MainWindow(Adw.ApplicationWindow):
         except GLib.GError as error:
             helpers.show_error(self, str(error.message))
             LOGGER.warning(str(error.message))
+            self.new_document()
             return
 
         try:
             try:
                 self.current.encoding = 'UTF-8'
                 decoded = contents.decode(self.current.encoding)
-            except UnicodeDecodeError:
+            except UnicodeDecodeError as error:
                 self.current.encoding = chardet.detect(contents)['encoding']
+                if not self.current.encoding:
+                    raise error
                 decoded = contents.decode(self.current.encoding)
         except UnicodeDecodeError as error:
-            helpers.show_error(self, str(error.message))
-            LOGGER.warning(str(error.message))
+            helpers.show_error(
+                self,
+                _("Failed to detect encoding for file:\n"
+                "{file}\n\nThe error was:\n{err_msg}")
+                .format(file=gfile.get_path(),
+                        err_msg=str(error).encode().decode("unicode-escape")))
+            LOGGER.warning(str(error))
+            self.new_document()
             return
         else:
             self.textview.set_text(decoded)
