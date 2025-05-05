@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: apostrophe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2025-05-01 16:49+0000\n"
-"PO-Revision-Date: 2025-05-02 12:44+0200\n"
+"POT-Creation-Date: 2025-05-05 19:48+0000\n"
+"PO-Revision-Date: 2025-05-05 22:34+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
@@ -38,6 +38,10 @@ msgstr ""
 msgid "Apostrophe, an elegant, distraction-free markdown editor"
 msgstr ""
 "Apostrof, enostaven, a funkcijsko zmogljiv urejevalnik zapisa markdown."
+
+#: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:18
+msgid "New Window"
+msgstr "Novo okno"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:47
 msgid "Color scheme"
@@ -808,11 +812,11 @@ msgstr "Datoteka je bila spremenjena v drugem programu."
 msgid "_Discard Changes and Reload"
 msgstr "_Opusti spremembe in ponovno naloži"
 
-#: apostrophe/application.py:251
+#: apostrophe/application.py:260
 msgid "Donate"
 msgstr "Donirajte"
 
-#: apostrophe/application.py:252
+#: apostrophe/application.py:261
 msgid "Translations"
 msgstr "Prevodi"
 
