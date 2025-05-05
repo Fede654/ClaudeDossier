@@ -145,7 +145,7 @@ class Application(Adw.Application):
     def do_handle_local_options(self, options):
         if options.contains("new-window"):
             self.register()
-            if self.get_property("is-remote"):
+            if self.get_is_remote():
                 self.activate_action("new-window")
                 return 0
 
