@@ -11,3 +11,8 @@ Terminal=false
 Type=Application
 StartupNotify=true
 MimeType=text/x-markdown;text/plain;
+Actions=new-window;
+
+[Desktop Action new-window]
+Name=New Window
+Exec=apostrophe --new-window
