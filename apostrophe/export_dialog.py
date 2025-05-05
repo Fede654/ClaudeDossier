@@ -345,6 +345,10 @@ class AdvancedExportDialog(Adw.Dialog):
                 self.file.name + '.' +
                 self.formats_list.get_selected_row().item.ext)
 
+        # / is the base path when the current file has not been saved
+        if self.file.base_path != "/":
+            export_dialog.set_current_folder(Gio.File.new_for_path(self.file.base_path))
+
         export_dialog.set_modal(True)
         export_dialog.set_transient_for(self.get_root())
         export_dialog.connect("response", on_response)
