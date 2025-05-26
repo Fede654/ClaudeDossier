@@ -129,6 +129,7 @@ class Application(Adw.Application):
 
         # Inhibitor
         self.inhibitor = Inhibitor()
+        self.restore_snapshots()
 
     def do_activate(self, *args, **kwargs):
 
@@ -191,6 +192,46 @@ class Application(Adw.Application):
 
             window.load_file(file)
             window.present()
+    
+    def restore_snapshots(self):
+        snapshot_dir = Gio.File.new_for_path(GLib.build_filenamev([GLib.get_user_state_dir(),"snapshots"]))
+        snapshotsEnum = snapshot_dir.enumerate_children('standard::name,standard::type', Gio.FileQueryInfoFlags.NONE)
+
+        for i, snapshot_info in enumerate(snapshotsEnum):
+            snapshot = snapshotsEnum.get_child(snapshot_info)
+            if not snapshot.query_exists(None):
+                LOGGER.warning(f"{snapshot.get_path()} doesn't exist")
+                continue
+
+            empty_windows = list(filter(lambda window: 
+                                        window.textview.get_text() == "" and\
+                                        not window.did_change, self.get_main_windows()))
+
+            if i < len(empty_windows):
+                window = empty_windows[i]
+            else:
+                window = MainWindow(self)
+
+                group = Gtk.WindowGroup.new()
+                group.add_window(window)
+
+            window.load_snapshot(snapshot)
+            window.present()
+
+    def delete_snapshot(self, snapshot):
+        self.hold()
+        snapshot.delete_async(
+            GLib.PRIORITY_DEFAULT,
+            None,
+            self._delete_snapshot_finish
+        )
+
+    def _delete_snapshot_finish(self, gfile, result, callback=None):
+        try:
+            gfile.delete_finish(result)
+        except GLib.Error as e:
+            LOGGER.warning(f"Snapshot delete failed: {e}")
+        self.release()
 
     def get_main_windows(self):
         return [window for window in self.get_windows() if isinstance(window, MainWindow)]

@@ -140,6 +140,13 @@
         Whether the toolbar is shown or not.
       </description>
     </key>
+    <key name='autosave-period' type='i'>
+      <default>5</default>
+      <summary>Number of seconds between autosaves</summary>
+      <description>
+        Number of seconds between autosaves
+      </description>
+    </key>
 
   </schema>
 

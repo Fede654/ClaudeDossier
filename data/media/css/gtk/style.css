@@ -258,12 +258,14 @@
   font-variant-numeric: tabular-nums;
   font-weight: bold;
 }
-
 .toolbars.top {
   box-shadow: 0 1px alpha(@headerbar_shade_color, .5),
               0 2px 4px alpha(@headerbar_shade_color, .5);
   background-color: @headerbar_bg_color;
   color: @headerbar_fg_color;
+}
+
+.toolbars.top > windowhandle > box{
   padding-bottom: 3px;
 }
 

@@ -156,6 +156,7 @@ class ApostropheSearchBar(Adw.Bin):
     def replace_all(self, _widget=None, _data=None):
         self.search_context.replace_all(self.replace_entry.get_text(), -1)
 
+    # TODO: Remove
     # Since the searchbar is overlayed to the textview we need to 
     # update its margin when the searchbar appears
     def update_textview_margin(self, paintable):
