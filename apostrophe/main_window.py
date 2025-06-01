@@ -40,6 +40,7 @@ from apostrophe.text_view import ApostropheTextView
 from apostrophe.text_view_format_inserter import FormatInserter
 from apostrophe.preview_security import PreviewSecurityHandler
 from apostrophe.pride import apply_seasonal_style
+from apostrophe.sized_bin import ApostropheSizedBin
 
 LOGGER = logging.getLogger('apostrophe')
 
@@ -76,6 +77,7 @@ class MainWindow(Adw.ApplicationWindow):
     current = GObject.Property(type=GObject.Object, default=None)
     snapshot = GObject.Property(type=Gio.File, default=None)
     snapshot_restored = GObject.Property(type=bool, default=False)
+    topbars_height = GObject.Property(type=int, default=0)
 
     close_anyway = False
     file_monitor = None
@@ -274,9 +276,8 @@ class MainWindow(Adw.ApplicationWindow):
         action.connect_after("activate", FormatInserter().insert_table, self.textview)
         self.add_action(action)
 
-        scrollbar = self.editor.scrolledwindow.get_vscrollbar()
-        scrollbar.set_margin_top(54)
-        scrollbar.set_margin_bottom(48)
+        # update textview's top margin on topbar size changes
+        self.connect("notify::topbars-height", self.update_textview_margin)
 
         # Bind gsettings
         self.settings.bind("window-width", self, "default-width",
@@ -297,6 +298,9 @@ class MainWindow(Adw.ApplicationWindow):
         if self.get_application()._application_id == 'org.gnome.gitlab.somas.Apostrophe.Devel':
             self.add_css_class('devel')
 
+    def update_textview_margin(self, *args, **kwargs):
+        self.textview.update_vertical_margin(self.topbars_height)
+        self.textview.queue_resize()
 
     def on_text_changed(self, *_args):
         """called when the text changes, sets the self.did_change to true and

@@ -42,6 +42,8 @@ class PreviewWebView(WebKit.WebView):
 
     scroll_scale_ = 0
 
+    top_margin_ = 0
+
     @GObject.Property(type=float)
     def scroll_scale(self):
         return self.scroll_scale_
@@ -52,6 +54,18 @@ class PreviewWebView(WebKit.WebView):
             self.scroll_scale_ = value
             self.evaluate_javascript(f"observer.setScrollScale({value})", -1, None, None, None, None)
             self.notify("scroll_scale")
+
+    @GObject.Property(type=float)
+    def top_margin(self):
+        return self.top_margin_
+
+    @top_margin.setter
+    def top_margin(self, value):
+        if value != self.top_margin_:
+            self.top_margin_ = value
+        # sync the default 34px height with textview's
+        self.evaluate_javascript(f'document.documentElement.style.setProperty("--topbars-height", "{34 + value}px");', -1, None, None, None, None)
+        self.notify("top_margin")
 
     def __init__(self):
         super().__init__()

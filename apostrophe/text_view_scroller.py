@@ -1,5 +1,6 @@
-# Copyright (C) 2022, Manuel Genovés <manuel.genoves@gmail.com>
-#               2019, Gonçalo Silva
+# Copyright (C) 2019, Gonçalo Silva
+#               2021, Alice Mikhaylenko 
+#               2025, Manuel Genovés
 # This program is free software: you can redistribute it and/or modify it
 # under the terms of the GNU General Public License version 3, as published
 # by the Free Software Foundation.
@@ -12,6 +13,10 @@
 # You should have received a copy of the GNU General Public License along
 # with this program.  If not, see <http://www.gnu.org/licenses/>.
 # END LICENSE
+
+import gi
+gi.require_version('Gtk', '4.0')
+from gi.repository import Adw, Gtk, GObject
 
 class TextViewScroller:
     def __init__(self, textview, scrolled_window):
@@ -124,3 +129,76 @@ class SmoothScroller:
         pos = self.source_pos + (time * (self.target_pos - self.source_pos))
         widget.get_vadjustment().set_value(pos)
         return True
+
+class ApostropheBorderScrollable(Adw.Bin, Gtk.Scrollable):
+
+    __gtype_name__ = 'ApostropheBorderScrollable'
+
+    top_margin = GObject.Property(type=int, default=0)
+    bottom_margin = GObject.Property(type=int, default=0)
+
+    vadjustment = GObject.Property(type=Gtk.Adjustment, flags = GObject.ParamFlags.READWRITE | GObject.ParamFlags.CONSTRUCT)
+    hadjustment = GObject.Property(type=Gtk.Adjustment, flags = GObject.ParamFlags.READWRITE | GObject.ParamFlags.CONSTRUCT)
+    vscroll_policy = GObject.Property(type=Gtk.ScrollablePolicy, default=Gtk.ScrollablePolicy.MINIMUM)
+    hscroll_policy = GObject.Property(type=Gtk.ScrollablePolicy, default=Gtk.ScrollablePolicy.MINIMUM)
+
+    def __init__(self):
+        super().__init__()
+
+        self._bind_vadjustment = None
+        self._bind_hadjustment = None
+        self._bind_vscroll_policy = None
+        self._bind_hscroll_policy = None
+
+        self.connect('notify::child', self.on_child_notify)
+
+    def on_child_notify(self, *args):
+        self.unbind_properties()
+        child = self.get_child()
+        if isinstance(child, Gtk.Scrollable):
+            self.bind_properties()
+
+    def do_get_css_name(self):
+        return "border-scrollable"
+
+    def do_get_border(self):
+        border = Gtk.Border()
+        child = self.get_child()
+
+        if not isinstance(child, Gtk.Scrollable):
+            return False, border
+
+        border.top += self.top_margin
+        border.bottom += self.bottom_margin
+
+        return True, border
+
+    def bind_properties(self):
+        child = self.get_child()
+        if not child:
+            return
+
+        self._bind_vadjustment = self.bind_property(
+            'vadjustment', child, 'vadjustment', GObject.BindingFlags.SYNC_CREATE
+        )
+        self._bind_hadjustment = self.bind_property(
+            'hadjustment', child, 'hadjustment', GObject.BindingFlags.SYNC_CREATE
+        )
+        self._bind_vscroll_policy = self.bind_property(
+            'vscroll-policy', child, 'vscroll-policy', GObject.BindingFlags.SYNC_CREATE
+        )
+        self._bind_hscroll_policy = self.bind_property(
+            'hscroll-policy', child, 'hscroll-policy', GObject.BindingFlags.SYNC_CREATE
+        )
+
+    def unbind_properties(self):
+        for binding_name in [
+            '_bind_vadjustment',
+            '_bind_hadjustment',
+            '_bind_vscroll_policy',
+            '_bind_hscroll_policy'
+        ]:
+            binding = getattr(self, binding_name)
+            if binding is not None:
+                binding.unbind()
+                setattr(self, binding_name, None)

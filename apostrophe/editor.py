@@ -27,7 +27,7 @@ gi.require_version('Gtk', '4.0')
 from gi.repository import Adw, GLib, GObject, Gtk
 
 from apostrophe.bottombar import BottomBar, Statsbar, Toolbar
-from apostrophe.text_view_scroller import TextViewScroller
+from apostrophe.text_view_scroller import TextViewScroller, ApostropheBorderScrollable
 
 from .settings import Settings
 
@@ -46,6 +46,7 @@ class Editor(Adw.Bin):
     movablebin = Gtk.Template.Child()
     sizehandler = Gtk.Template.Child()
     bottombar = Gtk.Template.Child()
+    top_margin = GObject.Property(type=int, default=0)
 
     hemingway_attempts = collections.deque(4*[datetime.min], 4)
 

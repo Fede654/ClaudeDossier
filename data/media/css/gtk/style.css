@@ -293,6 +293,11 @@
   padding-bottom: 3px;
 }
 
+/* hide oveshoots when the headerbar is not shown */
+.no-headerbar #editor scrolledwindow > overshoot{
+  background-image: none;
+  }
+
 separator.sidebar {
   background: alpha(@sidebar_border_color, 1.5);
 }
