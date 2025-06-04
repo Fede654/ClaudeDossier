@@ -20,8 +20,14 @@
                         <property name="hexpand">1</property>
                         <property name="vexpand">1</property>
                         <child>
-                            <object class="ApostropheTextView" id="textview">
-                            </object>
+                          <object class="ApostropheBorderScrollable">
+                            <property name="top-margin" bind-source="Editor" bind-property="top-margin" />
+                            <property name="bottom-margin">48</property>
+                            <property name="child">
+                              <object class="ApostropheTextView" id="textview">
+                              </object>
+                            </property>
+                          </object>
                         </child>
                       </object>
                     </property>

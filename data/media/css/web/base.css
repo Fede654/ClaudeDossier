@@ -29,6 +29,8 @@
   --kbd-background-color: #fafbfc;
   --kbd-border-color: #c6cbd1;
   --kbd-shadow-color: #959da5;
+
+  --topbars-height: 0px;
 }
 
 * {
@@ -47,8 +49,12 @@ body {
   word-wrap: break-word;
   max-width: 980px;
   margin: auto;
-  margin-top: 60px;
-  padding: 4em;
+  margin-top: var(--topbars-height);
+  padding: 0 4em;
+}
+
+body > :first-child {
+  margin-top: 0 !important;
 }
 
 @media screen and (max-width: 799px) {
@@ -57,7 +63,7 @@ body {
   }
 
   body {
-    padding: 1em;
+    padding: 0 1em;
   }
 }
 

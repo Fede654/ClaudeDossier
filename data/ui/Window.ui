@@ -5,6 +5,7 @@
   <template class="ApostropheWindow" parent="AdwApplicationWindow">
     <property name="default-width">360</property>
     <property name="default-height">600</property>
+    <property name="topbars-height" bind-source="topbars_sized_bin" bind-property="height" />
     <style>
       <class name="apostrophe-window" />
     </style>
@@ -16,6 +17,8 @@
             <property name="hexpand">true</property>
             <property name="content">
               <object class="Editor" id="editor">
+                <property name="name">editor</property>
+                <property name="top-margin" bind-source="ApostropheWindow" bind-property="topbars-height" />
                 <child>
                   <object class="GtkEventControllerFocus">
                     <signal name="leave" handler="reveal_headerbar_bottombar" swapped="no" />
@@ -105,13 +108,15 @@ If you're unsure about the contents of this file, open it in the Restricted Prev
             <property name="orientation">vertical</property>
             <property name="valign">start</property>
             <child>
-              <object class="GtkRevealer" id="headerbar_revealer">
-                <property name="transition-type">crossfade</property>
-                <property name="transition-duration">450</property>
-                <property name="reveal-child">True</property>
-                <property name="overflow">visible</property>
+              <object class="ApostropheSizedBin" id="topbars_sized_bin">
+                <property name="hexpand">1</property>
+                <property name="vexpand">1</property>
                 <property name="child">
-                  <object class="GtkWindowHandle">
+                  <object class="GtkRevealer" id="headerbar_revealer">
+                    <property name="transition-type">crossfade</property>
+                    <property name="transition-duration">450</property>
+                    <property name="reveal-child">True</property>
+                    <property name="overflow">visible</property>
                     <property name="child">
                       <object class="GtkBox">
                         <property name="orientation">vertical</property>
@@ -120,97 +125,112 @@ If you're unsure about the contents of this file, open it in the Restricted Prev
                           <class name="top"/>
                         </style>
                         <child>
-                          <object class="AdwBreakpointBin" id="headerbars_breakpointbin">
-                            <child>
-                              <object class="AdwBreakpoint"  id="headerbars_breakpoint">
-                                <condition>max-width: 500px</condition>
-                                <setter object="headerbar_stack" property="visible-child-name">headerbar_narrow</setter>
-                                <setter object="ApostropheWindow" property="preview-layout">0</setter>
-                              </object>
-                            </child>
+                          <object class="GtkWindowHandle">
                             <property name="child">
-                              <object class="GtkStack" id="headerbar_stack">
-                                <property name="hhomogeneous">False</property>
-                                <property name="transition-type">crossfade</property>
+                              <object class="GtkBox">
+                                <property name="orientation">vertical</property>
                                 <child>
-                                  <object class="GtkStackPage">
-                                    <property name="name">headerbar</property>
+                                  <object class="AdwBreakpointBin" id="headerbars_breakpointbin">
+                                    <child>
+                                      <object class="AdwBreakpoint"  id="headerbars_breakpoint">
+                                        <condition>max-width: 500px</condition>
+                                        <setter object="headerbar_stack" property="visible-child-name">headerbar_narrow</setter>
+                                        <setter object="ApostropheWindow" property="preview-layout">0</setter>
+                                      </object>
+                                    </child>
                                     <property name="child">
-                                      <object class="BaseHeaderbar" id="headerbar">
-                                        <property name="valign">start</property>
-                                        <property name="title" bind-source="ApostropheWindow" bind-property="title" />
-                                        <property name="subtitle" bind-source="ApostropheWindow" bind-property="subtitle" />
-                                        <property name="is-fullscreen" bind-source="ApostropheWindow" bind-property="is-fullscreen" />
+                                      <object class="GtkStack" id="headerbar_stack">
+                                        <property name="hhomogeneous">False</property>
+                                        <property name="transition-type">crossfade</property>
+                                        <child>
+                                          <object class="GtkStackPage">
+                                            <property name="name">headerbar</property>
+                                            <property name="child">
+                                              <object class="BaseHeaderbar" id="headerbar">
+                                                <property name="valign">start</property>
+                                                <property name="title" bind-source="ApostropheWindow" bind-property="title" />
+                                                <property name="subtitle" bind-source="ApostropheWindow" bind-property="subtitle" />
+                                                <property name="is-fullscreen" bind-source="ApostropheWindow" bind-property="is-fullscreen" />
+                                              </object>
+                                            </property>
+                                          </object>
+                                        </child>
+                                        <child>
+                                          <object class="GtkStackPage">
+                                            <property name="name">headerbar_narrow</property>
+                                            <property name="child">
+                                              <object class="BaseHeaderbarNarrow" id="headerbar_narrow">
+                                                <property name="valign">start</property>
+                                                <property name="title" bind-source="ApostropheWindow" bind-property="title" />
+                                                <property name="subtitle" bind-source="ApostropheWindow" bind-property="subtitle" />
+                                                <property name="is-fullscreen" bind-source="ApostropheWindow" bind-property="is-fullscreen" />
+                                              </object>
+                                            </property>
+                                          </object>
+                                        </child>
                                       </object>
                                     </property>
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="GtkStackPage">
-                                    <property name="name">headerbar_narrow</property>
-                                    <property name="child">
-                                      <object class="BaseHeaderbarNarrow" id="headerbar_narrow">
-                                        <property name="valign">start</property>
-                                        <property name="title" bind-source="ApostropheWindow" bind-property="title" />
-                                        <property name="subtitle" bind-source="ApostropheWindow" bind-property="subtitle" />
-                                        <property name="is-fullscreen" bind-source="ApostropheWindow" bind-property="is-fullscreen" />
-                                      </object>
-                                    </property>
-                                  </object>
+                                  <object class="ApostropheSearchBar" id="searchbar"></object>
                                 </child>
                               </object>
                             </property>
                           </object>
                         </child>
                         <child>
-                          <object class="ApostropheSearchBar" id="searchbar"></object>
+                          <object class="AdwBanner" id="recovered_file_banner">
+                            <property name="title" translatable="yes">Apostrophe closed unexpectedly. This file has been recovered from an autosave</property>
+                            <property name="revealed" bind-source="ApostropheWindow" bind-property="snapshot-restored" />
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkInfoBar" id="discard_infobar">
+                            <property name="message-type">warning</property>
+                            <property name="show-close-button">True</property>
+                            <property name="revealed">False</property>
+                            <signal name="response" handler="dismiss_discard_infobar"/>
+                            <child>
+                              <object class="GtkBox">
+                                <property name="orientation">vertical</property>
+                                <child>
+                                  <object class="GtkLabel" id="title">
+                                    <property name="halign">start</property>
+                                    <property name="label" translatable="yes">File Has Changed on Disk</property>
+                                    <property name="wrap">True</property>
+                                    <attributes>
+                                      <attribute name="weight" value="bold"/>
+                                    </attributes>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="GtkLabel" id="subtitle">
+                                    <property name="halign">start</property>
+                                    <property name="label" translatable="yes">The file has been changed by another program</property>
+                                    <property name="wrap">True</property>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                            <child type="action">
+                              <object class="GtkButton" id="discard">
+                                <property name="label" translatable="yes">_Discard Changes and Reload</property>
+                                <property name="use-underline">True</property>
+                                <signal name="clicked" handler="reload_file"/>
+                              </object>
+                            </child>
+                          </object>
                         </child>
                       </object>
                     </property>
+                    <child>
+                      <object class="GtkEventControllerMotion">
+                        <signal name="enter" handler="reveal_headerbar_bottombar" swapped="no" />
+                      </object>
+                    </child>
                   </object>
                 </property>
-                <child>
-                  <object class="GtkEventControllerMotion">
-                    <signal name="enter" handler="reveal_headerbar_bottombar" swapped="no" />
-                  </object>
-                </child>
-              </object>
-            </child>
-            <child>
-              <object class="GtkInfoBar" id="discard_infobar">
-                <property name="message-type">warning</property>
-                <property name="show-close-button">True</property>
-                <property name="revealed">False</property>
-                <signal name="response" handler="dismiss_discard_infobar"/>
-                <child>
-                  <object class="GtkBox">
-                    <property name="orientation">vertical</property>
-                    <child>
-                      <object class="GtkLabel" id="title">
-                        <property name="halign">start</property>
-                        <property name="label" translatable="yes">File Has Changed on Disk</property>
-                        <property name="wrap">True</property>
-                        <attributes>
-                          <attribute name="weight" value="bold"/>
-                        </attributes>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkLabel" id="subtitle">
-                        <property name="halign">start</property>
-                        <property name="label" translatable="yes">The file has been changed by another program</property>
-                        <property name="wrap">True</property>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-                <child type="action">
-                  <object class="GtkButton" id="discard">
-                    <property name="label" translatable="yes">_Discard Changes and Reload</property>
-                    <property name="use-underline">True</property>
-                    <signal name="clicked" handler="reload_file"/>
-                  </object>
-                </child>
               </object>
             </child>
             <child>

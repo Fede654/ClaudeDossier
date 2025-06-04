@@ -20,6 +20,7 @@ from gettext import gettext as _
 
 import gi
 
+from apostrophe.preview_layout_switcher import PreviewLayout
 from apostrophe.preview_security import PreviewSecurity
 from apostrophe.settings import Settings
 
@@ -106,6 +107,9 @@ class PreviewHandler:
                 self.web_view.connect("decide-policy", self.on_click_link)
 
                 self.web_view.connect("context-menu", self.on_right_click)
+
+                # Bind the windows topbar height to the webview's top margin
+                self.window().connect("notify::topbars-height", self._update_preview_top_margin)
 
             # only make a new screenshot if the preview is fully loaded and rendered
             if self.web_view.get_estimated_load_progress() == 1 and not self.loading:
@@ -194,6 +198,8 @@ class PreviewHandler:
             self.shown = True
 
         self.__show(step=Step.RENDER)
+        # update top margin
+        self._update_preview_top_margin()
 
     def on_window_title_changed(self, *args, **kwargs):
         self.panels().panel_window_title = self.window().get_title() + " - " + _("Preview")
@@ -219,3 +225,12 @@ class PreviewHandler:
                                            WebKit.ContextMenuAction.GO_FORWARD,
                                            WebKit.ContextMenuAction.STOP]:
                 context_menu.remove(item)
+
+    def _get_preview_top_margin(self):
+        if self.panels().layout in [PreviewLayout.HALF_WIDTH, PreviewLayout.FULL_WIDTH]:
+            return self.window().topbars_height
+        else:
+            return 0
+
+    def _update_preview_top_margin(self, *args, **kwargs):
+        self.web_view.top_margin = self._get_preview_top_margin()

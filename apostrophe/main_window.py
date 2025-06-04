@@ -40,6 +40,7 @@ from apostrophe.text_view import ApostropheTextView
 from apostrophe.text_view_format_inserter import FormatInserter
 from apostrophe.preview_security import PreviewSecurityHandler
 from apostrophe.pride import apply_seasonal_style
+from apostrophe.sized_bin import ApostropheSizedBin
 
 LOGGER = logging.getLogger('apostrophe')
 
@@ -74,6 +75,9 @@ class MainWindow(Adw.ApplicationWindow):
 
     did_change = GObject.Property(type=bool, default=False)
     current = GObject.Property(type=GObject.Object, default=None)
+    snapshot = GObject.Property(type=Gio.File, default=None)
+    snapshot_restored = GObject.Property(type=bool, default=False)
+    topbars_height = GObject.Property(type=int, default=0)
 
     close_anyway = False
     file_monitor = None
@@ -96,7 +100,8 @@ class MainWindow(Adw.ApplicationWindow):
 
         # Setup text editor
         self.textview = self.editor.textview
-        self.textview.get_buffer().connect('changed', self.on_text_changed)
+        self.text_changed_handler_id = None
+        self.autosave_timer = None
 
         # Setup save progressbar an its animator
         def hide_progressbar(animation, *args):
@@ -271,9 +276,8 @@ class MainWindow(Adw.ApplicationWindow):
         action.connect_after("activate", FormatInserter().insert_table, self.textview)
         self.add_action(action)
 
-        scrollbar = self.editor.scrolledwindow.get_vscrollbar()
-        scrollbar.set_margin_top(54)
-        scrollbar.set_margin_bottom(48)
+        # update textview's top margin on topbar size changes
+        self.connect("notify::topbars-height", self.update_textview_margin)
 
         # Bind gsettings
         self.settings.bind("window-width", self, "default-width",
@@ -294,6 +298,9 @@ class MainWindow(Adw.ApplicationWindow):
         if self.get_application()._application_id == 'org.gnome.gitlab.somas.Apostrophe.Devel':
             self.add_css_class('devel')
 
+    def update_textview_margin(self, *args, **kwargs):
+        self.textview.update_vertical_margin(self.topbars_height)
+        self.textview.queue_resize()
 
     def on_text_changed(self, *_args):
         """called when the text changes, sets the self.did_change to true and
@@ -302,6 +309,13 @@ class MainWindow(Adw.ApplicationWindow):
 
         if self.did_change is False:
             self.did_change = True
+
+            # Autosaving
+            self.autosave_timer = GLib.timeout_add_seconds(self.settings.get_int("autosave-period"), self.autosave_snapshot)
+
+        if self.snapshot_restored is True:
+            self.snapshot_restored = False
+
         self.update_headerbar_title(True, True)
         if self.settings.get_value("autohide-headerbar"):
             self.hide_headerbar_bottombar()
@@ -383,6 +397,10 @@ class MainWindow(Adw.ApplicationWindow):
                     cancellable=None,
                     callback=self._replace_contents_cb,
                     user_data=callback)
+                
+                if self.snapshot_restored:
+                    self.snapshot_restored = False
+
         # if there's no GFile we ask for one:
         else:
             self.save_document_as(callback=callback)
@@ -463,6 +481,10 @@ class MainWindow(Adw.ApplicationWindow):
             recents_manager.add_item(self.current.gfile.get_uri())
             if callback is not None:
                 callback(self)
+
+            # remove the snapshot as everything is secure on disc.
+            # it'll be recreated if the document changes
+            self.delete_snapshot()
         else:
             self.progressbar_fade_out.play()
             self.did_change = True
@@ -525,6 +547,9 @@ class MainWindow(Adw.ApplicationWindow):
         self.current.gfile = file
         self.preview_security_handler.set_file_security_level()
 
+        if self.text_changed_handler_id:
+            self.textview.get_buffer().disconnect(self.text_changed_handler_id)
+
         self.current.gfile.load_contents_async(None,
                                                self._load_contents_cb, None)
         self._set_file_monitor()
@@ -547,7 +572,7 @@ class MainWindow(Adw.ApplicationWindow):
     def _on_file_changed(self, file, other_file, event, *args):
         self.discard_infobar.set_revealed(True)
 
-    def _load_contents_cb(self, gfile, result, user_data=None):
+    def _load_contents_cb(self, gfile, result, snapshot_restored=False):
         try:
             _success, contents, _etag = gfile.load_contents_finish(result)
         except GLib.GError as error:
@@ -577,20 +602,30 @@ class MainWindow(Adw.ApplicationWindow):
             return
         else:
             self.textview.set_text(decoded)
+
             self.preview_security_handler.assert_security_risk(decoded)
             start_iter = self.textview.get_buffer().get_start_iter()
             GLib.idle_add(
                 lambda: self.textview.get_buffer().place_cursor(start_iter))
 
-            ## add file to recents manager once it's fully loaded,
+            # reconnect the text changed handler
+            self.text_changed_handler_id = self.textview.get_buffer().connect('changed', self.on_text_changed)
+
+            # add file to recents manager once it's fully loaded,
             # unless it is an internal resource
-            if not self.current.gfile.get_uri().startswith("resource:"):
+            if self.current.gfile and not self.current.gfile.get_uri().startswith("resource:"):
                 recents_manager = Gtk.RecentManager.get_default()
                 recents_manager.add_item(self.current.gfile.get_uri())
 
             self.update_headerbar_title()
 
-            self.did_change = False
+            # when restoring a snapshot we want to preserve the "did_change" state
+            # because we restored a dirty state, but we need to revert the snapshot_restored
+            # back and show again the headerbar
+            if snapshot_restored:
+                self.textview.get_buffer().emit("changed")
+                self.snapshot_restored = True
+                self.reveal_headerbar_bottombar()
 
     def check_change(self,
                      callback = None):
@@ -634,6 +669,7 @@ class MainWindow(Adw.ApplicationWindow):
         """
         def callback(self):
             self.textview.clear()
+            self.text_changed_handler_id = self.textview.get_buffer().connect('changed', self.on_text_changed)
 
             self.did_change = False
             self.current.gfile = None
@@ -692,7 +728,8 @@ class MainWindow(Adw.ApplicationWindow):
             return
 
         if self.searchbar.search_mode_enabled or\
-           self.discard_infobar.get_revealed():
+           self.discard_infobar.get_revealed() or\
+           self.snapshot_restored:
             return
 
         if self.headerbar_revealer.get_reveal_child():
@@ -741,6 +778,72 @@ class MainWindow(Adw.ApplicationWindow):
 
         self.check_change(callback)
         return True
+
+    def autosave_snapshot(self):
+        try:
+            try:
+                encoded_text = self.textview.get_text()\
+                    .encode(self.current.encoding)
+            except UnicodeEncodeError:
+                encoded_text = self.textview.get_text()\
+                    .encode("UTF-8")
+                self.current.encoding = "UTF-8"
+        except UnicodeEncodeError as error:
+            LOGGER.warning(str(error.reason))
+            return
+        if not encoded_text:
+            return
+        else:
+            if not self.snapshot:
+                import uuid
+                snapshot_dir = GLib.build_filenamev([GLib.get_user_state_dir(), "snapshots"])
+                GLib.mkdir_with_parents(snapshot_dir, 0o750)
+                snapshot_path = GLib.build_filenamev([snapshot_dir, uuid.uuid4().hex])
+                self.snapshot = Gio.File.new_for_path(snapshot_path)
+            self.snapshot.replace_contents_bytes_async(
+                GLib.Bytes.new(encoded_text),
+                etag=None,
+                make_backup=False,
+                flags=Gio.FileCreateFlags.NONE,
+                cancellable=None,
+                callback=self._autosave_finish)
+            return True
+
+    def _autosave_finish(self, gfile, result, callback=None):
+        try:
+            success, _etag = gfile.replace_contents_finish(result)
+        except GLib.GError as error:
+            LOGGER.warning(str(error.message))
+            return
+        if success and self.current.gfile:
+            self.snapshot.set_attribute_string("metadata::original-path", self.current.gfile.get_path(), Gio.FileQueryInfoFlags.NONE)
+        return success
+    
+    def load_snapshot(self, file):
+        """Load a snapshot file contents while setting apostrophe's gfile to the actual user file."""
+        LOGGER.info("trying to load snapshot %s", file.get_uri())
+
+        self.snapshot = file
+        if gfile_path := file.query_info("metadata::original-path", Gio.FileQueryInfoFlags.NONE).get_attribute_string("metadata::original-path"):
+            self.current.gfile = Gio.File.new_for_path(gfile_path)
+
+        self.snapshot_restored = True
+        self.textview.get_buffer().disconnect(self.text_changed_handler_id)
+        self.snapshot.load_contents_async(None, self._load_contents_cb, self.snapshot_restored)
+        self._set_file_monitor()
+
+    def delete_snapshot(self):
+        # delete snapshots in the application in case the deletion outlives the window
+        if self.autosave_timer:
+            GLib.Source.remove(self.autosave_timer)
+            self.autosave_timer = None
+        if self.snapshot:
+            self.get_application().delete_snapshot(self.snapshot)
+            self.snapshot = None
+
+    def do_dispose(self):
+        self.delete_snapshot()
+        super().do_dispose()
 
 #@dataclass
 class File(GObject.Object):

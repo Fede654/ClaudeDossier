@@ -256,7 +256,10 @@ class ApostropheTextView(GtkSource.View):
             self.set_top_margin(height / 2 + top_margin)
             self.set_bottom_margin(height / 2)
         else:
-            self.set_top_margin(80 + top_margin)
+            # we want 80 top margin when only the headerbar is shown, 
+            # top_margin is 46 in that case
+            # sync that value with the webview's one
+            self.set_top_margin(34 + top_margin)
             self.set_bottom_margin(64)
 
     def clear(self):
