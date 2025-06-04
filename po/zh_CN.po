@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apostrophe\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2025-05-01 16:49+0000\n"
+"POT-Creation-Date: 2025-05-05 19:48+0000\n"
 "PO-Revision-Date: 2025-05-02 06:42+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
@@ -31,6 +31,10 @@ msgstr ""
 #: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:6
 msgid "Apostrophe, an elegant, distraction-free markdown editor"
 msgstr "Apostrophe，一个优雅无干扰的 Markdown 编辑器"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:18
+msgid "New Window"
+msgstr "新建窗口"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:47
 msgid "Color scheme"
@@ -787,11 +791,11 @@ msgstr "文件已被另一个程序更改"
 msgid "_Discard Changes and Reload"
 msgstr "放弃修改并重新加载(_D)"
 
-#: apostrophe/application.py:251
+#: apostrophe/application.py:260
 msgid "Donate"
 msgstr "捐助"
 
-#: apostrophe/application.py:252
+#: apostrophe/application.py:261
 msgid "Translations"
 msgstr "翻译"
 
@@ -1128,9 +1132,6 @@ msgstr "网页"
 
 #~ msgid "Save as…"
 #~ msgstr "另存为…"
-
-#~ msgid "New Window"
-#~ msgstr "新建窗口"
 
 #, python-format
 #~ msgid "Save changes to document “%s” before closing?"
