@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: apostrophe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2025-05-01 16:49+0000\n"
-"PO-Revision-Date: 2025-05-01 22:00+0300\n"
+"POT-Creation-Date: 2025-06-04 15:36+0000\n"
+"PO-Revision-Date: 2025-06-06 15:44+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -34,6 +34,10 @@ msgstr ""
 #: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:6
 msgid "Apostrophe, an elegant, distraction-free markdown editor"
 msgstr "«Апостроф» — елегантний ненав'язливий редактор для markdown"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:18
+msgid "New Window"
+msgstr "Нове вікно"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:47
 msgid "Color scheme"
@@ -155,6 +159,11 @@ msgstr "Панель інструментів"
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:139
 msgid "Whether the toolbar is shown or not."
 msgstr "Визначає, чи буде показано панель інструментів."
+
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:145
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:146
+msgid "Number of seconds between autosaves"
+msgstr "Кількість секунд між автозбереженнями"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:5
 msgid "Edit Markdown in style"
@@ -345,8 +354,8 @@ msgstr "Нарощувальні позначки"
 msgid "Show one bullet point after another in a slideshow"
 msgstr "Показувати одну позначку пункту за іншою у показі слайдів"
 
-#: data/ui/Headerbar.ui:10 apostrophe/main_window.py:775
-#: apostrophe/main_window.py:790
+#: data/ui/Headerbar.ui:10 apostrophe/main_window.py:878
+#: apostrophe/main_window.py:893
 msgid "New File"
 msgstr "Новий файл"
 
@@ -463,7 +472,7 @@ msgstr "Документація до варіанта Markdown"
 msgid "Desired level of security when rendering the preview"
 msgstr "Бажаний рівень захисту при обробці зображень попереднього перегляду"
 
-#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_handler.py:199
+#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_handler.py:205
 #: apostrophe/preview_window.py:32
 msgid "Preview"
 msgstr "Перегляд"
@@ -779,11 +788,11 @@ msgstr "Таблиця"
 msgid "Show More Controls"
 msgstr "Показати додаткове керування"
 
-#: data/ui/Window.ui:61
+#: data/ui/Window.ui:64
 msgid "This file may be insecure"
 msgstr "Цей файл може бути небезпечним"
 
-#: data/ui/Window.ui:62
+#: data/ui/Window.ui:65
 msgid ""
 "Previewing files from untrusted sources can be dangerous.\n"
 "If you're unsure about the contents of this file, open it in the Restricted "
@@ -793,31 +802,38 @@ msgstr ""
 "Якщо ви не певні щодо вмісту файла, відкрийте його у режимі обмеженого "
 "перегляду із вимкненими javascript і HTML.                   "
 
-#: data/ui/Window.ui:74
+#: data/ui/Window.ui:77
 msgid "Load Preview"
 msgstr "Завантажити перегляд"
 
-#: data/ui/Window.ui:83
+#: data/ui/Window.ui:86
 msgid "Load Restricted Preview"
 msgstr "Завантажити обмежений перегляд"
 
-#: data/ui/Window.ui:191
+#: data/ui/Window.ui:184
+msgid ""
+"Apostrophe closed unexpectedly. This file has been recovered from an autosave"
+msgstr ""
+"Роботу «Апострофа» було несподівано завершено. Цей файл відновлено з"
+" автоматично збереженого файла"
+
+#: data/ui/Window.ui:200
 msgid "File Has Changed on Disk"
 msgstr "Файл змінено на диску"
 
-#: data/ui/Window.ui:201
+#: data/ui/Window.ui:210
 msgid "The file has been changed by another program"
 msgstr "Сторонньою програмою було внесено зміни до файла"
 
-#: data/ui/Window.ui:209
+#: data/ui/Window.ui:218
 msgid "_Discard Changes and Reload"
 msgstr "Від_кинути зміни і перезавантажити"
 
-#: apostrophe/application.py:251
+#: apostrophe/application.py:301
 msgid "Donate"
 msgstr "Підтримати фінансово"
 
-#: apostrophe/application.py:252
+#: apostrophe/application.py:302
 msgid "Translations"
 msgstr "Переклади"
 
@@ -831,8 +847,8 @@ msgid "Export to %s"
 msgstr "Експортувати в %s"
 
 #: apostrophe/export_dialog.py:130 apostrophe/export_dialog.py:337
-#: apostrophe/export_dialog.py:342 apostrophe/main_window.py:423
-#: apostrophe/main_window.py:505 apostrophe/main_window.py:607
+#: apostrophe/export_dialog.py:342 apostrophe/main_window.py:441
+#: apostrophe/main_window.py:527 apostrophe/main_window.py:642
 msgid "Cancel"
 msgstr "Скасувати"
 
@@ -892,39 +908,39 @@ msgid "adverb"
 msgstr "прислівник"
 
 #. Hemingway Toast
-#: apostrophe/main_window.py:151
+#: apostrophe/main_window.py:156
 msgid "Text can't be deleted while on Hemingway mode"
 msgstr "У режимі Гемінґвея текст не можна вилучати"
 
-#: apostrophe/main_window.py:154
+#: apostrophe/main_window.py:159
 msgid "Tell me more"
 msgstr "Докладніше"
 
-#: apostrophe/main_window.py:419
+#: apostrophe/main_window.py:437
 msgid "Save your File"
 msgstr "Зберегти ваш файл"
 
-#: apostrophe/main_window.py:422 apostrophe/main_window.py:609
+#: apostrophe/main_window.py:440 apostrophe/main_window.py:644
 msgid "Save"
 msgstr "Зберегти"
 
-#: apostrophe/main_window.py:494
+#: apostrophe/main_window.py:516
 msgid "Markdown Files"
 msgstr "Файли Markdown"
 
-#: apostrophe/main_window.py:498
+#: apostrophe/main_window.py:520
 msgid "Plain Text Files"
 msgstr "Звичайні текстові файли"
 
-#: apostrophe/main_window.py:501
+#: apostrophe/main_window.py:523
 msgid "Open a .md file"
 msgstr "Відкрити файл .md"
 
-#: apostrophe/main_window.py:504
+#: apostrophe/main_window.py:526
 msgid "Open"
 msgstr "Відкрити"
 
-#: apostrophe/main_window.py:571
+#: apostrophe/main_window.py:596
 #, python-brace-format
 msgid ""
 "Failed to detect encoding for file:\n"
@@ -939,11 +955,11 @@ msgstr ""
 "Повідомлення про помилку:\n"
 "{err_msg}"
 
-#: apostrophe/main_window.py:601
+#: apostrophe/main_window.py:636
 msgid "Save Changes?"
 msgstr "Зберегти зміни?"
 
-#: apostrophe/main_window.py:602
+#: apostrophe/main_window.py:637
 #, python-format
 msgid ""
 "“%s” contains unsaved changes. If you don’t save, all your changes will be "
@@ -952,7 +968,7 @@ msgstr ""
 "У «%s» є незбережені зміни. Якщо ви їх не збережете, всі зміни будуть "
 "остаточно втрачені."
 
-#: apostrophe/main_window.py:608
+#: apostrophe/main_window.py:643
 msgid "Discard"
 msgstr "Відкинути"
 
@@ -1177,9 +1193,6 @@ msgstr "вебсторінка"
 
 #~ msgid "Save as…"
 #~ msgstr "Зберегти як…"
-
-#~ msgid "New Window"
-#~ msgstr "Нове вікно"
 
 #, python-format
 #~ msgid "Save changes to document “%s” before closing?"
