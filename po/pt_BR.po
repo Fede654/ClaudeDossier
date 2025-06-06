@@ -16,8 +16,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apostrophe\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2025-05-05 19:48+0000\n"
-"PO-Revision-Date: 2025-05-05 20:14-0300\n"
+"POT-Creation-Date: 2025-06-04 15:36+0000\n"
+"PO-Revision-Date: 2025-06-05 18:19-0300\n"
 "Last-Translator: Álvaro Burns <>\n"
 "Language-Team: Brazilian Portuguese <https://br.gnome.org/traducao/>\n"
 "Language: pt_BR\n"
@@ -174,6 +174,11 @@ msgstr "Barra de ferramentas"
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:139
 msgid "Whether the toolbar is shown or not."
 msgstr "Se a barra de ferramentas é mostrada ou não."
+
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:145
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:146
+msgid "Number of seconds between autosaves"
+msgstr "Número de segundos entre salvamentos automáticos"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:5
 msgid "Edit Markdown in style"
@@ -367,8 +372,8 @@ msgstr "Marcadores incrementais"
 msgid "Show one bullet point after another in a slideshow"
 msgstr "Mostra um marcador após o outro em uma apresentação de slides"
 
-#: data/ui/Headerbar.ui:10 apostrophe/main_window.py:775
-#: apostrophe/main_window.py:790
+#: data/ui/Headerbar.ui:10 apostrophe/main_window.py:878
+#: apostrophe/main_window.py:893
 msgid "New File"
 msgstr "Novo arquivo"
 
@@ -487,7 +492,7 @@ msgstr "Documentação da opção de markdown"
 msgid "Desired level of security when rendering the preview"
 msgstr "Nível de segurança desejado ao renderizar a visualização"
 
-#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_handler.py:199
+#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_handler.py:205
 #: apostrophe/preview_window.py:32
 msgid "Preview"
 msgstr "Pré-visualizar"
@@ -804,11 +809,11 @@ msgstr "Tabela"
 msgid "Show More Controls"
 msgstr "Mostrar mais controles"
 
-#: data/ui/Window.ui:61
+#: data/ui/Window.ui:64
 msgid "This file may be insecure"
 msgstr "Este arquivo pode ser inseguro"
 
-#: data/ui/Window.ui:62
+#: data/ui/Window.ui:65
 msgid ""
 "Previewing files from untrusted sources can be dangerous.\n"
 "If you're unsure about the contents of this file, open it in the Restricted "
@@ -818,31 +823,38 @@ msgstr ""
 "Se você não tiver certeza sobre o conteúdo deste arquivo, abra-o na "
 "Visualização Restrita, onde o Javascript e o HTML estão desativados."
 
-#: data/ui/Window.ui:74
+#: data/ui/Window.ui:77
 msgid "Load Preview"
 msgstr "Carregar pré-visualização"
 
-#: data/ui/Window.ui:83
+#: data/ui/Window.ui:86
 msgid "Load Restricted Preview"
 msgstr "Carregar visualização restrita"
 
-#: data/ui/Window.ui:191
+#: data/ui/Window.ui:184
+msgid ""
+"Apostrophe closed unexpectedly. This file has been recovered from an autosave"
+msgstr ""
+"Apostrophe fechou inesperadamente. Este arquivo foi recuperado de um "
+"salvamento automático"
+
+#: data/ui/Window.ui:200
 msgid "File Has Changed on Disk"
 msgstr "O arquivo foi alterado no disco"
 
-#: data/ui/Window.ui:201
+#: data/ui/Window.ui:210
 msgid "The file has been changed by another program"
 msgstr "O arquivo foi alterado por outro programa"
 
-#: data/ui/Window.ui:209
+#: data/ui/Window.ui:218
 msgid "_Discard Changes and Reload"
 msgstr "_Descartar alterações e recarregar"
 
-#: apostrophe/application.py:260
+#: apostrophe/application.py:301
 msgid "Donate"
 msgstr "Doar"
 
-#: apostrophe/application.py:261
+#: apostrophe/application.py:302
 msgid "Translations"
 msgstr "Traduções"
 
@@ -856,8 +868,8 @@ msgid "Export to %s"
 msgstr "Exportar para %s"
 
 #: apostrophe/export_dialog.py:130 apostrophe/export_dialog.py:337
-#: apostrophe/export_dialog.py:342 apostrophe/main_window.py:423
-#: apostrophe/main_window.py:505 apostrophe/main_window.py:607
+#: apostrophe/export_dialog.py:342 apostrophe/main_window.py:441
+#: apostrophe/main_window.py:527 apostrophe/main_window.py:642
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -917,39 +929,39 @@ msgid "adverb"
 msgstr "advérbio"
 
 #. Hemingway Toast
-#: apostrophe/main_window.py:151
+#: apostrophe/main_window.py:156
 msgid "Text can't be deleted while on Hemingway mode"
 msgstr "O texto não pode ser excluído no Modo Hemingway"
 
-#: apostrophe/main_window.py:154
+#: apostrophe/main_window.py:159
 msgid "Tell me more"
 msgstr "Conte-me mais"
 
-#: apostrophe/main_window.py:419
+#: apostrophe/main_window.py:437
 msgid "Save your File"
 msgstr "Salvar seu arquivo"
 
-#: apostrophe/main_window.py:422 apostrophe/main_window.py:609
+#: apostrophe/main_window.py:440 apostrophe/main_window.py:644
 msgid "Save"
 msgstr "Salvar"
 
-#: apostrophe/main_window.py:494
+#: apostrophe/main_window.py:516
 msgid "Markdown Files"
 msgstr "Arquivos Markdown"
 
-#: apostrophe/main_window.py:498
+#: apostrophe/main_window.py:520
 msgid "Plain Text Files"
 msgstr "Arquivos em texto puro"
 
-#: apostrophe/main_window.py:501
+#: apostrophe/main_window.py:523
 msgid "Open a .md file"
 msgstr "Abrir um arquivo .md"
 
-#: apostrophe/main_window.py:504
+#: apostrophe/main_window.py:526
 msgid "Open"
 msgstr "Abrir"
 
-#: apostrophe/main_window.py:571
+#: apostrophe/main_window.py:596
 #, python-brace-format
 msgid ""
 "Failed to detect encoding for file:\n"
@@ -964,11 +976,11 @@ msgstr ""
 "O erro foi:\n"
 "{err_msg}"
 
-#: apostrophe/main_window.py:601
+#: apostrophe/main_window.py:636
 msgid "Save Changes?"
 msgstr "Salvar alterações?"
 
-#: apostrophe/main_window.py:602
+#: apostrophe/main_window.py:637
 #, python-format
 msgid ""
 "“%s” contains unsaved changes. If you don’t save, all your changes will be "
@@ -977,7 +989,7 @@ msgstr ""
 "“%s” contém alterações não salvas. Se você não salvar, todas as suas "
 "alterações serão perdidas permanentemente."
 
-#: apostrophe/main_window.py:608
+#: apostrophe/main_window.py:643
 msgid "Discard"
 msgstr "Descartar"
 
