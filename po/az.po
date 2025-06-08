@@ -1,16 +1,16 @@
 # Azerbaijani translation for apostrophe.
 # Copyright (C) 2025 apostrophe's COPYRIGHT HOLDER
 # This file is distributed under the same license as the apostrophe package.
-# Ramal Rəhimov <jhonaluman@gmail.com>, 2025.
+# Ramal Rəhimov <jhoaluman@gmail.com>, 2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: apostrophe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2025-05-25 00:05+0000\n"
-"PO-Revision-Date: 2025-06-04 00:34+0400\n"
-"Last-Translator: Ramal Rəhimov <jhonaluman@gmail.com>\n"
-"Language-Team: Azerbaijani <az@li.org>\n"
+"POT-Creation-Date: 2025-06-04 15:36+0000\n"
+"PO-Revision-Date: 2025-06-09 00:37+0400\n"
+"Last-Translator: Ramal Rəhimov <jhoaluman@gmail.com>\n"
+"Language-Team: Azerbaijani <contact@azlinux.org>\n"
 "Language: az\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -154,6 +154,11 @@ msgstr "Alətlər paneli"
 msgid "Whether the toolbar is shown or not."
 msgstr "Alətlər panelinin göstərilib-göstərilməməsi."
 
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:145
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:146
+msgid "Number of seconds between autosaves"
+msgstr "Avtomatik saxlamalar arasındakı saniyələrin sayı"
+
 #: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:5
 msgid "Edit Markdown in style"
 msgstr "Markdown-u stil ilə redaktə et"
@@ -242,13 +247,15 @@ msgid ""
 "Only being able to move forward may be frustrating, but can be an "
 "interesting exercise for improving your writing skills, gaining focus or "
 "facing the task on hand with a different mindset.\n"
+"  "
 msgstr ""
-"Hemingway Rejimi, typewriter-da yazma təcrübəsini təqlid edir, mətni silməyə "
-"və ya hər hansı redaktə etməyə imkan vermir. \n"
+"Hemingway Rejimi, yazı maşınında yazma təcrübəsini təqlid edir və mətni "
+"silməyə və ya hər hansı bir redaktə etməyə imkan vermir.\n"
 "\n"
-"Yalnız irəli hərəkət etmək bəzən narahat edici ola bilər, amma yazma "
-"bacarıqlarınızı yaxşılaşdırmaq, fokus əldə etmək və ya əlindəki tapşırığa "
-"fərqli bir nəhəngliklə yanaşmaq üçün maraqlı bir məşq ola bilər.\n"
+"Yalnız irəli getmək məyusedici ola bilər, lakin yazma bacarıqlarınızı "
+"təkmilləşdirmək, diqqəti cəmləşdirmək və ya qarşıdakı vəzifəyə fərqli bir "
+"düşüncə tərzi ilə yanaşmaq üçün maraqlı bir məşq ola bilər.\n"
+"  "
 
 #: data/ui/AboutHemingway.ui:13
 msgid "_Close"
@@ -336,8 +343,8 @@ msgstr "İnkremental Nöqtələr"
 msgid "Show one bullet point after another in a slideshow"
 msgstr "Slayd şousunda nöqtələri bir-bir görərin"
 
-#: data/ui/Headerbar.ui:10 apostrophe/main_window.py:775
-#: apostrophe/main_window.py:790
+#: data/ui/Headerbar.ui:10 apostrophe/main_window.py:878
+#: apostrophe/main_window.py:893
 msgid "New File"
 msgstr "Yeni Fayl"
 
@@ -453,7 +460,7 @@ msgstr "Markdown Növü Sənədləşməsi"
 msgid "Desired level of security when rendering the preview"
 msgstr "Preview render edərkən istənilən təhlükəsizlik səviyyəsi"
 
-#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_handler.py:199
+#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_handler.py:205
 #: apostrophe/preview_window.py:32
 msgid "Preview"
 msgstr "Preview"
@@ -769,11 +776,11 @@ msgstr "Cədvəl"
 msgid "Show More Controls"
 msgstr "Daha Çox Nəzarəti Göstər"
 
-#: data/ui/Window.ui:61
+#: data/ui/Window.ui:64
 msgid "This file may be insecure"
 msgstr "Bu fayl təhlükəsiz ola bilər"
 
-#: data/ui/Window.ui:62
+#: data/ui/Window.ui:65
 msgid ""
 "Previewing files from untrusted sources can be dangerous.\n"
 "If you're unsure about the contents of this file, open it in the Restricted "
@@ -783,31 +790,37 @@ msgstr ""
 "Əgər bu faylın məzmunundan əmin deyilsinizsə, JavaScript və HTML-nin deaktiv "
 "olduğu Məhdud Preview-da açın."
 
-#: data/ui/Window.ui:74
+#: data/ui/Window.ui:77
 msgid "Load Preview"
 msgstr "Preview Yüklə"
 
-#: data/ui/Window.ui:83
+#: data/ui/Window.ui:86
 msgid "Load Restricted Preview"
 msgstr "Məhdud Preview Yüklə"
 
-#: data/ui/Window.ui:191
+#: data/ui/Window.ui:184
+msgid ""
+"Apostrophe closed unexpectedly. This file has been recovered from an autosave"
+msgstr ""
+"Apostrophe gözlənilmədən bağlandı. Bu fayl avtomatik saxlamadan bərpa edildi."
+
+#: data/ui/Window.ui:200
 msgid "File Has Changed on Disk"
 msgstr "Fayl Diskdə Dəyişib"
 
-#: data/ui/Window.ui:201
+#: data/ui/Window.ui:210
 msgid "The file has been changed by another program"
 msgstr "Fayl başqa proqram tərəfindən dəyişdirilib"
 
-#: data/ui/Window.ui:209
+#: data/ui/Window.ui:218
 msgid "_Discard Changes and Reload"
 msgstr "_Dəyişiklikləri Ləğv Et və Yenidən Yüklə"
 
-#: apostrophe/application.py:260
+#: apostrophe/application.py:301
 msgid "Donate"
 msgstr "Təqdim Et"
 
-#: apostrophe/application.py:261
+#: apostrophe/application.py:302
 msgid "Translations"
 msgstr "Tərcümələr"
 
@@ -821,8 +834,8 @@ msgid "Export to %s"
 msgstr "%s-ə Eksport Et"
 
 #: apostrophe/export_dialog.py:130 apostrophe/export_dialog.py:337
-#: apostrophe/export_dialog.py:342 apostrophe/main_window.py:423
-#: apostrophe/main_window.py:505 apostrophe/main_window.py:607
+#: apostrophe/export_dialog.py:342 apostrophe/main_window.py:441
+#: apostrophe/main_window.py:527 apostrophe/main_window.py:642
 msgid "Cancel"
 msgstr "Ləğv Et"
 
@@ -882,39 +895,39 @@ msgid "adverb"
 msgstr "zarf"
 
 #. Hemingway Toast
-#: apostrophe/main_window.py:151
+#: apostrophe/main_window.py:156
 msgid "Text can't be deleted while on Hemingway mode"
 msgstr "Heminqvey rejimində mətn silinə bilməz"
 
-#: apostrophe/main_window.py:154
+#: apostrophe/main_window.py:159
 msgid "Tell me more"
 msgstr "Mənə daha çox danış"
 
-#: apostrophe/main_window.py:419
+#: apostrophe/main_window.py:437
 msgid "Save your File"
 msgstr "Faylınızı Saxlayın"
 
-#: apostrophe/main_window.py:422 apostrophe/main_window.py:609
+#: apostrophe/main_window.py:440 apostrophe/main_window.py:644
 msgid "Save"
 msgstr "Saxla"
 
-#: apostrophe/main_window.py:494
+#: apostrophe/main_window.py:516
 msgid "Markdown Files"
 msgstr "Markdown Faylları"
 
-#: apostrophe/main_window.py:498
+#: apostrophe/main_window.py:520
 msgid "Plain Text Files"
 msgstr "Sadə Mətn Faylları"
 
-#: apostrophe/main_window.py:501
+#: apostrophe/main_window.py:523
 msgid "Open a .md file"
 msgstr ".md faylını aç"
 
-#: apostrophe/main_window.py:504
+#: apostrophe/main_window.py:526
 msgid "Open"
 msgstr "Aç"
 
-#: apostrophe/main_window.py:571
+#: apostrophe/main_window.py:596
 #, python-brace-format
 msgid ""
 "Failed to detect encoding for file:\n"
@@ -929,11 +942,11 @@ msgstr ""
 "Xəta var:\n"
 "{err_msg}"
 
-#: apostrophe/main_window.py:601
+#: apostrophe/main_window.py:636
 msgid "Save Changes?"
 msgstr "Dəyişiklikləri Saxlamaq istəyirsiniz?"
 
-#: apostrophe/main_window.py:602
+#: apostrophe/main_window.py:637
 #, python-format
 msgid ""
 "“%s” contains unsaved changes. If you don’t save, all your changes will be "
@@ -942,7 +955,7 @@ msgstr ""
 "“%s” saxlanılmamış dəyişikliklər ehtiva edir. Əgər saxlamırsınız, bütün "
 "dəyişikliklər daimi olaraq itəcək."
 
-#: apostrophe/main_window.py:608
+#: apostrophe/main_window.py:643
 msgid "Discard"
 msgstr "Ləğv Et"
 
