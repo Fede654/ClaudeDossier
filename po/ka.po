@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: apostrophe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2025-05-01 16:49+0000\n"
-"PO-Revision-Date: 2025-05-02 03:25+0200\n"
+"POT-Creation-Date: 2025-06-04 15:36+0000\n"
+"PO-Revision-Date: 2025-06-08 04:47+0200\n"
 "Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
 "Language-Team: Georgian < >\n"
 "Language: ka\n"
@@ -22,7 +22,7 @@ msgstr ""
 "X-DL-Branch: main\n"
 "X-DL-Domain: po\n"
 "X-DL-State: Translating\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.6\n"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:3
 #: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:4
@@ -37,6 +37,10 @@ msgstr "uberwriter;UberWriter;აპოსტროფი;მარკდაუ�
 #: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:6
 msgid "Apostrophe, an elegant, distraction-free markdown editor"
 msgstr "აპოსტროფი - ელეგანტური, ფოკუსირებული მარკდაუნის რედაქტორი"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:18
+msgid "New Window"
+msgstr "ახალი ფანჯარა"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:47
 msgid "Color scheme"
@@ -151,6 +155,11 @@ msgstr "ხელსაწყოთა ზოლი"
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:139
 msgid "Whether the toolbar is shown or not."
 msgstr "ნაჩვენებია ხელსაწყოების ზოლი, თუ არა."
+
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:145
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:146
+msgid "Number of seconds between autosaves"
+msgstr "შუალედი ავტოშენახვებს შორის წამებში"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:5
 msgid "Edit Markdown in style"
@@ -341,8 +350,8 @@ msgstr "ინკრემენტული ტყვიები"
 msgid "Show one bullet point after another in a slideshow"
 msgstr "ჩვენება ერთი ტყვია მეორის მიყოლებით სლაიდშოუში"
 
-#: data/ui/Headerbar.ui:10 apostrophe/main_window.py:775
-#: apostrophe/main_window.py:790
+#: data/ui/Headerbar.ui:10 apostrophe/main_window.py:878
+#: apostrophe/main_window.py:893
 msgid "New File"
 msgstr "ახალი ფაილი"
 
@@ -459,7 +468,7 @@ msgstr "მარკდაუნის ტიპის დოკუმენტ�
 msgid "Desired level of security when rendering the preview"
 msgstr "მინიატურის რენდერისას სასურველი უსაფრთხოების დონე"
 
-#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_handler.py:199
+#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_handler.py:205
 #: apostrophe/preview_window.py:32
 msgid "Preview"
 msgstr "მინიატურა"
@@ -775,11 +784,11 @@ msgstr "ცხრილი"
 msgid "Show More Controls"
 msgstr "მეტი კონტროლების ჩვენება"
 
-#: data/ui/Window.ui:61
+#: data/ui/Window.ui:64
 msgid "This file may be insecure"
 msgstr "ეს ფაილი, შეიძლება, უსაფრთხო არაა"
 
-#: data/ui/Window.ui:62
+#: data/ui/Window.ui:65
 msgid ""
 "Previewing files from untrusted sources can be dangerous.\n"
 "If you're unsure about the contents of this file, open it in the Restricted "
@@ -789,31 +798,36 @@ msgstr ""
 "თუ დარწმუნებული არ ბრძანდებით, რას შეიძლება ეს ფაილი შეიცავდეს, გახსენით ის "
 "შეზღუდულ მინიატურაში, სადაც Javascript და HTML გამორთულია."
 
-#: data/ui/Window.ui:74
+#: data/ui/Window.ui:77
 msgid "Load Preview"
 msgstr "მინიატურის ჩატვირთვა"
 
-#: data/ui/Window.ui:83
+#: data/ui/Window.ui:86
 msgid "Load Restricted Preview"
 msgstr "შეზღუდული მინიატურის ჩატვირთვა"
 
-#: data/ui/Window.ui:191
+#: data/ui/Window.ui:184
+msgid ""
+"Apostrophe closed unexpectedly. This file has been recovered from an autosave"
+msgstr "Apostrophe მოულოდნელად დაიხურა. ეს ფაილი აღდგენილია ავტოშენახვიდან"
+
+#: data/ui/Window.ui:200
 msgid "File Has Changed on Disk"
 msgstr "დისკზე ფაილი შეიცვალა"
 
-#: data/ui/Window.ui:201
+#: data/ui/Window.ui:210
 msgid "The file has been changed by another program"
 msgstr "ფაილი შეიცვალა სხვა პროგრამის მიერ"
 
-#: data/ui/Window.ui:209
+#: data/ui/Window.ui:218
 msgid "_Discard Changes and Reload"
 msgstr "_ცვლილებების გაუქმება და თავიდან ჩატვირთვა"
 
-#: apostrophe/application.py:251
+#: apostrophe/application.py:301
 msgid "Donate"
 msgstr "შემოწირულობა"
 
-#: apostrophe/application.py:252
+#: apostrophe/application.py:302
 msgid "Translations"
 msgstr "თარგმანები"
 
@@ -827,8 +841,8 @@ msgid "Export to %s"
 msgstr "%s-ში გატანა"
 
 #: apostrophe/export_dialog.py:130 apostrophe/export_dialog.py:337
-#: apostrophe/export_dialog.py:342 apostrophe/main_window.py:423
-#: apostrophe/main_window.py:505 apostrophe/main_window.py:607
+#: apostrophe/export_dialog.py:342 apostrophe/main_window.py:441
+#: apostrophe/main_window.py:527 apostrophe/main_window.py:642
 msgid "Cancel"
 msgstr "გაუქმება"
 
@@ -888,39 +902,39 @@ msgid "adverb"
 msgstr "ზმნიზედა"
 
 #. Hemingway Toast
-#: apostrophe/main_window.py:151
+#: apostrophe/main_window.py:156
 msgid "Text can't be deleted while on Hemingway mode"
 msgstr "ტექსტის წაშლა ჰემინგუეის რეჟიმში შეუძლებელია"
 
-#: apostrophe/main_window.py:154
+#: apostrophe/main_window.py:159
 msgid "Tell me more"
 msgstr "მითხარი მეტი"
 
-#: apostrophe/main_window.py:419
+#: apostrophe/main_window.py:437
 msgid "Save your File"
 msgstr "ფაილის შენახვა"
 
-#: apostrophe/main_window.py:422 apostrophe/main_window.py:609
+#: apostrophe/main_window.py:440 apostrophe/main_window.py:644
 msgid "Save"
 msgstr "შენახვა"
 
-#: apostrophe/main_window.py:494
+#: apostrophe/main_window.py:516
 msgid "Markdown Files"
 msgstr "მარკდაუნის ფაილები"
 
-#: apostrophe/main_window.py:498
+#: apostrophe/main_window.py:520
 msgid "Plain Text Files"
 msgstr "ჩვეულებრივი ტექსტის ფაილები"
 
-#: apostrophe/main_window.py:501
+#: apostrophe/main_window.py:523
 msgid "Open a .md file"
 msgstr ".md ფაილის გახსნა"
 
-#: apostrophe/main_window.py:504
+#: apostrophe/main_window.py:526
 msgid "Open"
 msgstr "გახსნა"
 
-#: apostrophe/main_window.py:571
+#: apostrophe/main_window.py:596
 #, python-brace-format
 msgid ""
 "Failed to detect encoding for file:\n"
@@ -935,11 +949,11 @@ msgstr ""
 "შეცდომა:\n"
 "{err_msg}"
 
-#: apostrophe/main_window.py:601
+#: apostrophe/main_window.py:636
 msgid "Save Changes?"
 msgstr "შევინახო ცვლილებები?"
 
-#: apostrophe/main_window.py:602
+#: apostrophe/main_window.py:637
 #, python-format
 msgid ""
 "“%s” contains unsaved changes. If you don’t save, all your changes will be "
@@ -948,7 +962,7 @@ msgstr ""
 "\"%s\" შეუნახავ ცვლილებებს შეიცავს. თუ არ შეინახავთ, ყველა თქვენი ცვლილება "
 "სამუდამოდ დაიკარგება."
 
-#: apostrophe/main_window.py:608
+#: apostrophe/main_window.py:643
 msgid "Discard"
 msgstr "მოცილება"
 
@@ -1156,9 +1170,6 @@ msgstr "ვებგვერდი"
 
 #~ msgid "Save as…"
 #~ msgstr "შენახვა როგორც..."
-
-#~ msgid "New Window"
-#~ msgstr "ახალი ფანჯარა"
 
 #, python-format
 #~ msgid "Save changes to document “%s” before closing?"
