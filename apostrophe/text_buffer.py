@@ -1,19 +1,20 @@
+import logging
 from contextlib import contextmanager
 from itertools import cycle
 
 import gi
 import regex as re
 
-from apostrophe.helpers import user_action
-
 gi.require_version('Gtk', '4.0')
 gi.require_version('GtkSource', '5')
 
-from gi.repository import GLib, GObject, Gtk, GtkSource, Gio
+from gi.repository import Gio, GLib, GObject, Gtk, GtkSource
 
+from apostrophe.helpers import user_action
 from apostrophe.markup_regex import CHECKLIST, LIST, ORDERED_LIST
 from apostrophe.settings import Settings
 
+LOGGER = logging.getLogger('apostrophe')
 
 class ApostropheTextBuffer(GtkSource.Buffer):
     __gtype_name__ = "ApostropheTextBuffer"
@@ -34,7 +35,7 @@ class ApostropheTextBuffer(GtkSource.Buffer):
         self.settings = Settings.new()
 
         self.settings.bind("hemingway-mode", self, "hemingway-mode",
-            Gio.SettingsBindFlags.DEFAULT|Gio.SettingsBindFlags.GET_NO_CHANGES)
+                           Gio.SettingsBindFlags.DEFAULT | Gio.SettingsBindFlags.GET_NO_CHANGES)
 
         self.connect("paste-done", self._on_clipboard_paste_finished)
 
@@ -58,7 +59,7 @@ class ApostropheTextBuffer(GtkSource.Buffer):
             end_sentence.forward_sentence_end()
 
         return (start_sentence, end_sentence)
-    
+
     def get_line_bounds(self, iter):
         # backward_line() doesn't seem to work as expected
         # so we just find the end of the line and backward the number of characters
@@ -73,6 +74,11 @@ class ApostropheTextBuffer(GtkSource.Buffer):
 
     def get_current_line_bounds(self):
         return self.get_line_bounds(self.get_iter_at_mark(self.get_insert()))
+    
+    def get_previous_line_bounds(self):
+        iter = self.get_iter_at_mark(self.get_insert()).copy()
+        iter.backward_chars(1)
+        return self.get_line_bounds(iter)
 
     def _indent(self):
         '''Takes over tab insertions.
@@ -81,7 +87,7 @@ class ApostropheTextBuffer(GtkSource.Buffer):
         with user_action(self):
             start_line, end_line = self.get_current_line_bounds()
             current_sentence = self.get_text(start_line, end_line, True)
-            text = "\t"
+            text = ""
 
             # Indent unordered lists
             match = re.fullmatch(LIST, current_sentence)
@@ -108,7 +114,6 @@ class ApostropheTextBuffer(GtkSource.Buffer):
 
             position = self.get_iter_at_mark(self.get_insert())
             GtkSource.Buffer.do_insert_text(self, position, text, -1)
-
 
     def _unindent(self, *args):
         with user_action(self):
@@ -158,96 +163,116 @@ class ApostropheTextBuffer(GtkSource.Buffer):
                 end_iter = self.get_end_iter()
 
                 if pen_iter.get_char() == "\t":
-                        self.delete(pen_iter, end_iter)
+                    self.delete(pen_iter, end_iter)
 
     def _autocomplete_lists(self):
         with user_action(self):
-            start_line, end_line = self.get_current_line_bounds()
-            current_sentence = self.get_text(start_line, end_line, True)
+            start_line, end_line = self.get_previous_line_bounds()
+            previous_sentence = self.get_text(start_line, end_line, True)
 
-            text = "\n"
+            # Get current cursor position
+            cursor_mark = self.get_insert()
+            cursor_iter = self.get_iter_at_mark(cursor_mark)
+
+            text_to_insert = ""
+            delete_current_line = False
 
             # ORDERED LISTS
-            match = re.match(ORDERED_LIST, current_sentence)
+            match = re.match(ORDERED_LIST, previous_sentence)
             if match:
                 if match.group("text"):
                     if match.group("number"):
-                        next_prefix = match.group("indent") +\
-                                    str(int(match.group("number")) + 1) +\
-                                    match.group("delimiter") +\
-                                    " "
-                        text += next_prefix
-                # if there's no text when the user hits enter we exit the list mode
+                        next_prefix = (match.group("indent") +
+                                       str(int(match.group("number")) + 1) +
+                                       match.group("delimiter") + " ")
+                        text_to_insert = next_prefix
                 else:
-                    with self._temp_disable_hemingway():
-                        self.delete(start_line, end_line)
-                    position = self.get_iter_at_mark(self.get_insert())
+                    delete_current_line = True
 
             # CHECKLIST
-            match = re.match(CHECKLIST, current_sentence)
-            if match:
+            elif match:= re.match(CHECKLIST, previous_sentence):
                 if match.group("text"):
-                    next_prefix = match.group("indent") + match.group("symbol") + " [ ] "
-                    text += next_prefix
-                # if there's no text when the user hits enter we exit the list mode
+                    next_prefix = match.group(
+                        "indent") + match.group("symbol") + " [ ] "
+                    text_to_insert = next_prefix
                 else:
-                    with self._temp_disable_hemingway():
-                        self.delete(start_line, end_line)
-                    position = self.get_iter_at_mark(self.get_insert())
+                    delete_current_line = True
 
             # UNORDERED LISTS
-            match = re.match(LIST, current_sentence)
-            if match:
+            elif match:= re.match(LIST, previous_sentence):
                 if match.group("text"):
-                    next_prefix = match.group("indent") + match.group("symbol") + " "
-                    text += next_prefix
-                # if there's no text when the user hits enter we exit the list mode
+                    next_prefix = match.group(
+                        "indent") + match.group("symbol") + " "
+                    text_to_insert = next_prefix
                 else:
-                    with self._temp_disable_hemingway():
-                        self.delete(start_line, end_line)
-                    position = self.get_iter_at_mark(self.get_insert())
+                    delete_current_line = True
 
-            position = self.get_iter_at_mark(self.get_insert())
-            GtkSource.Buffer.do_insert_text(self, position, text, -1)
+            # Apply changes
+            if delete_current_line:
+                with self._temp_disable_hemingway():
+                    self.delete(start_line, end_line)
+            elif text_to_insert:
+                self.insert(cursor_iter, text_to_insert)
 
     def do_insert_text(self, position, text, length):
         if self.hemingway_mode and self.get_has_selection():
-            return
+            return False
 
         move_cursor = None
+        modified_text = text
+
         if not self.paste_ongoing:
-            match text:
-                case "\n":
-                    GLib.idle_add(self._autocomplete_lists)
-                    return
-                case "\t":
-                    GLib.idle_add(self._indent)
-                    return
-                case ("(" | "[" | "{" | '"' | "<") as x:
-                    pairs = {
-                        "(" : ")",
-                        "[" : "]",
-                        "{" : "}",
-                        '"' : '"',
-                        "<" : ">"
-                    }
+            if text == "\n":
+                GtkSource.Buffer.do_insert_text(self, position, text, length)
+                GLib.idle_add(self._autocomplete_lists)
+                return
 
-                    # is the next character whitespace?
-                    if self.get_iter_at_mark(self.get_insert()).get_char().isspace() or\
-                    self.get_iter_at_mark(self.get_insert()).is_end():
-                        text += pairs[x]
-                        move_cursor = -1
-                case (")" | "]" | "}" | '"' | ">") as x:
-                    # is already closed?
-                    if self.get_iter_at_mark(self.get_insert()).get_char() == x:
-                        text = ""
-                        move_cursor = 1
+            elif text == "\t":
+                GtkSource.Buffer.do_insert_text(self, position, text, length)
+                GLib.idle_add(self._indent)
+                return
 
-        GtkSource.Buffer.do_insert_text(self, position, text, -1)
+            elif text in "([{\"<":
+                pairs = {
+                    "(": ")",
+                    "[": "]",
+                    "{": "}",
+                    '"': '"',
+                    "<": ">"
+                }
+
+                # is the next character whitespace?
+                next_iter = position.copy()
+                if (next_iter.get_char().isspace() or next_iter.is_end()):
+                    modified_text = text + pairs[text]
+                    move_cursor = -1
+
+            elif text in ")]}\">":
+                # check if the character at cursor matches what we're typing
+                if position.get_char() == text:
+                    # skip insertion, just move cursor
+                    cursor_iter = self.get_iter_at_mark(self.get_insert())
+                    cursor_iter.forward_cursor_positions(1)
+                    self.place_cursor(cursor_iter)
+                    return  # don't insert anything
+
+        GtkSource.Buffer.do_insert_text(self, position, modified_text, -1)
+
+        # Handle cursor movement after insertion
         if move_cursor:
+            GLib.idle_add(lambda: self._move_cursor_relative(move_cursor))
+
+    def _move_cursor_relative(self, offset):
+        try:
             cursor_iter = self.get_iter_at_mark(self.get_insert())
-            cursor_iter.forward_cursor_positions(move_cursor)
+            if offset > 0:
+                cursor_iter.forward_cursor_positions(offset)
+            else:
+                cursor_iter.backward_cursor_positions(abs(offset))
             self.place_cursor(cursor_iter)
+        except Exception as e:
+            LOGGER.warning(f"Cursor positioning error: {e}")
+            pass
 
     def do_delete_range(self, start, end):
         if self.hemingway_mode:
