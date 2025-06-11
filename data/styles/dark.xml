@@ -21,11 +21,12 @@
   <author>Manuel Genovés</author>
 
   <!-- Named Colors -->
-  <color name="view_bg"                     value="#2d2d2d"/>
-  <color name="view_fg"                     value="#eeeeee"/>
+
+  <color name="view-bg"       value="#2b2b2f"/>
+  <color name="view-fg"       value="#eeeeee"/>
 
   <!-- Global Styles -->
-  <style name="bracket-match"              bold="true"/>
-  <style name="text"                       background="view_bg" foreground="view_fg"/>
+  <style name="bracket-match" bold="true"/>
+  <style name="text"          background="view-bg" foreground="view-fg"/>
 
 </style-scheme>

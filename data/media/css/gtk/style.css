@@ -2,8 +2,9 @@
 
 @define-color link_fg_color #b1b1b1;
 
-@define-color preview_bg_color #f5f5f5;
-
+:root {
+  --preview-bg-color: #f5f5f5;
+}
 
 /* Main window and text colors */
 
@@ -39,15 +40,15 @@
 
 .bottombar_background box{
   transition: 250ms ease-out;
-  background-color: alpha(@view_bg_color, 0);
+  background-color: alpha(var(--view_bg_color), 0);
 }
 
 .bottombar_background.shown box{
-  background-color: alpha(@view_bg_color, 0.95);
+  background-color: alpha(var(--view-bg-color), 0.95);
 }
 
 .stats-button {
-  background: @view_bg_color;
+  background: var(--view-bg-color);
 }
 
 .bottombar button {
@@ -122,7 +123,7 @@
     padding: 1px;
     background-clip: content-box;
     border-radius: 9999px;
-    box-shadow: inset 0 0 0 1px @borders;
+    box-shadow: inset 0 0 0 1px var(--border-color);
 }
 .themeswitcher checkbutton.system {
   background: linear-gradient(-45deg, #2d2d2d 49.99%, white 50.01%);
@@ -141,7 +142,7 @@
 .themeswitcher checkbutton.dark:checked,
 .themeswitcher checkbutton.sepia:checked,
 .themeswitcher checkbutton.system:checked {
-  box-shadow: inset 0 0 0 2px @accent_bg_color;
+  box-shadow: inset 0 0 0 2px var(--accent-bg-color);
 }
 
 .themeswitcher checkbutton radio {
@@ -156,8 +157,8 @@
 }
 .themeswitcher checkbutton radio:checked{
   -gtk-icon-source: -gtk-icontheme("object-select-symbolic");
-  background-color: @accent_bg_color;
-  color: @accent_fg_color;
+  background-color: var(--accent-bg-color);
+  color: var(--accent-fg-color);
 }
 
 
@@ -213,7 +214,7 @@
 /* Preview */
 
 .preview-background {
-  background-color: @preview_bg_color;
+  background-color: var(--preview-bg-color);
 }
 
 /* Table insertion toolbar widget */
@@ -250,7 +251,7 @@
 }
 
 .tableinput .hovered {
-  background: alpha(@accent_color, .30);
+  background: alpha(var(--accent-color), .30);
 }
 
 .tableinput label{
@@ -259,18 +260,15 @@
   font-weight: bold;
 }
 .toolbars.top {
-  box-shadow: 0 1px alpha(@headerbar_shade_color, .5),
-              0 2px 4px alpha(@headerbar_shade_color, .5);
-  background-color: @headerbar_bg_color;
-  color: @headerbar_fg_color;
-}
-
-.toolbars.top > windowhandle > box{
+  box-shadow: 0 1px alpha(var(--headerbar-shade-color), .5),
+              0 2px 4px alpha(var(--headerbar-shade-color), .5);
+  background-color: var(--headerbar-bg-color);
+  color: var(--headerbar-fg-color);
   padding-bottom: 3px;
 }
 
 .toolbars.top:backdrop {
-  background-color: @headerbar_backdrop_color;
+  background-color: var(--headerbar-backdrop-color);
   transition: background-color 200ms ease-out;
 }
 
@@ -299,7 +297,7 @@
   }
 
 separator.sidebar {
-  background: alpha(@sidebar_border_color, 1.5);
+  background: alpha(var(--sidebar-border-color), 1.5);
 }
 
 /* Pride flags */

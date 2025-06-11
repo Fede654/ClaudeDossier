@@ -1,27 +1,30 @@
-@define-color window_bg_color #f3ede2;
-@define-color window_fg_color #4F3915;
+:root {
+  --window-bg-color: #f3ede2;
+  --window-fg-color: #4F3915;
 
-@define-color view_bg_color #F9F3E9;
-@define-color view_fg_color @window_fg_color;
+  --view-bg-color: #F9F3E9;
+  --view-fg-color: var(--window-fg-color);
 
-@define-color card_bg_color @view_bg_color;
-@define-color card_fg_color @view_fg_color;
+  --preview-bg-color: #f2ebe0;
 
-@define-color popover_bg_color @view_bg_color;
-@define-color popover_fg_color @view_fg_color;
+  --card-bg-color: var(--view-bg-color);
+  --card-fg-color: var(--view-fg-color);
 
-@define-color headerbar_bg_color @view_bg_color;
-@define-color headerbar_fg_color @view_fg_color;
+  --popover-bg-color: var(--view-bg-color);
+  --popover-fg-color: var(--view-fg-color);
 
-@define-color dialog_bg_color @view_bg_color;
-@define-color dialog_fg_color @view_fg_color;
+  --headerbar-bg-color: var(--view-bg-color);
+  --headerbar-fg-color: var(--view-fg-color);
+  --headerbar-backdrop-color: var(--window-bg-color);
 
-@define-color sidebar_bg_color #e9e2d7;
-@define-color sidebar_backdrop_color #eee7dc;
-@define-color sidebar_fg_color @window_fg_color;
+  --dialog-bg-color: var(--view-bg-color);
+  --dialog-fg-color: var(--view-fg-color);
+
+  --sidebar-bg-color: #e9e2d7;
+  --sidebar-backdrop-color: #eee7dc;
+  --sidebar-fg-color: var(--window-fg-color);
+}
 
 @define-color code_bg_color #dfd7c9;
 
 @define-color link_fg_color #a99c86;
-
-@define-color preview_bg_color #f2ebe0;

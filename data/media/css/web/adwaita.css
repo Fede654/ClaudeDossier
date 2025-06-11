@@ -20,18 +20,18 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --text-color: #eeeeee;
-    --background-color: #282828;
-    --alt-background-color: #3a3a3a;
+    --background-color: #26262A;
+    --alt-background-color: #37373D;
     --link-color: #b5daff;
     --blockquote-text-color: #a8a8a6;
-    --blockquote-border-color: #525252;
-    --header-border-color: #474747;
-    --hr-background-color: #505050;
-    --table-tr-border-color: #696969;
-    --table-td-border-color: #525252;
+    --blockquote-border-color: #4D4D55;
+    --header-border-color: #43434A;
+    --hr-background-color: #4B4B53;
+    --table-tr-border-color: #63636D;
+    --table-td-border-color: #4D4D55;
     --kbd-text-color: #cececc;
-    --kbd-background-color: #3c3c3c;
-    --kbd-border-color: #696969;
-    --kbd-shadow-color: #979797;
+    --kbd-background-color: #3A3A40;
+    --kbd-border-color: #63636D;
+    --kbd-shadow-color: #91919B;
   }
 }
