@@ -264,9 +264,11 @@
               0 2px 4px alpha(var(--headerbar-shade-color), .5);
   background-color: var(--headerbar-bg-color);
   color: var(--headerbar-fg-color);
-  padding-bottom: 3px;
 }
 
+.toolbars.top > windowhandle > box{
+  padding-bottom: 3px;
+}
 .toolbars.top:backdrop {
   background-color: var(--headerbar-backdrop-color);
   transition: background-color 200ms ease-out;
