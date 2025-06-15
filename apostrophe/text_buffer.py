@@ -256,7 +256,7 @@ class ApostropheTextBuffer(GtkSource.Buffer):
                     self.place_cursor(cursor_iter)
                     return  # don't insert anything
 
-        GtkSource.Buffer.do_insert_text(self, position, modified_text, -1)
+        GtkSource.Buffer.do_insert_text(self, position, modified_text, length)
 
         # Handle cursor movement after insertion
         if move_cursor:
