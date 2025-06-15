@@ -172,8 +172,15 @@ class Toolbar(Gtk.Revealer):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.settings = Settings.new()
+        self.connect("notify::extra-toolbar-revealed", self.on_toolbar_reveal)
         self.settings.bind("toolbar-active", self, "extra-toolbar-revealed",
             Gio.SettingsBindFlags.DEFAULT|Gio.SettingsBindFlags.GET_NO_CHANGES)
+
+    def on_toolbar_reveal(self, toolbar, revealed):
+        if self.extra_toolbar_revealed:
+            self.show_extra_controls_button.set_tooltip_text(_("Hide Toolbar"))
+        else:
+            self.show_extra_controls_button.set_tooltip_text(_("Show Toolbar"))
 
 @Gtk.Template(resource_path='/org/gnome/gitlab/somas/Apostrophe/ui/ToolbarNarrow.ui')
 class ToolbarNarrow(Gtk.Revealer):

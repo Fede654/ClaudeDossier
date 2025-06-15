@@ -150,7 +150,6 @@
         </child>
         <child>
           <object class="GtkToggleButton" id="show_extra_controls_button">
-            <property name="tooltip-text" translatable="yes">Show More Controls</property>
             <property name="icon-name">go-next-symbolic</property>
             <property name="active" bind-source="Toolbar" bind-property="extra_toolbar_revealed" bind-flags="bidirectional"/>
             <style>
