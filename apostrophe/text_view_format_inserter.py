@@ -297,7 +297,7 @@ class FormatInserter:
                     delete_end.forward_chars(next_level + 1)
 
                     text_buffer.delete(start, delete_end)
-                    if next_level == 3:
+                    if next_level == level:
                         return
 
                     # cycle between levels 1, 2 and 3. If we reach 0, we remove the heading
