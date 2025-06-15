@@ -174,7 +174,7 @@ ORDERED_LIST = re.compile(
             )
             (?P<delimiter>[.)])       # . or ) as delimiter
         )
-        [ \t]                         # at least a tab or space after the delimiter
+        [ \t]*                        # at least a tab or space after the delimiter
         (?P<text>
             .+
         )?
