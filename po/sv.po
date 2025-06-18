@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apostrophe\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2025-01-30 20:15+0000\n"
-"PO-Revision-Date: 2025-01-30 21:36+0100\n"
+"POT-Creation-Date: 2025-06-15 22:51+0000\n"
+"PO-Revision-Date: 2025-06-18 22:03+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.6\n"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:3
 #: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:4
@@ -27,121 +27,130 @@ msgstr "uberwriter;UberWriter;apostrophe;markdown;redigerare;editor;text;skriv;"
 msgid "Apostrophe, an elegant, distraction-free markdown editor"
 msgstr "Apostrophe, en elegant, distraktionsfri markdown-redigerare"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:35
+#: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:18
+msgid "New Window"
+msgstr "Nytt fönster"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:47
 msgid "Color scheme"
 msgstr "Färgschema"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:36
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:48
 msgid "Use the color scheme in the application's UI and in the text area."
 msgstr "Använd färgschemat i programmets användargränssnitt och i textområdet."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:42
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:54
 msgid "Check spelling while typing"
 msgstr "Kontrollera stavning medan jag skriver"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:43
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:55
 msgid "Enable or disable spellchecking."
 msgstr "Aktivera eller inaktivera stavningskontroll."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:49
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:61
 msgid "Synchronize editor/preview scrolling"
 msgstr "Synkronisera skrollning i redigerare/förhandsgranskning"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:50
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:62
 msgid "Keep the editor and preview scroll positions in sync."
 msgstr "Håll skrollning i förhandsgranskare och redigerare synkroniserad."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:56
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:68
 msgid "Input format"
 msgstr "Indataformat"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:57
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:69
 msgid "Input format to use when previewing and exporting using Pandoc."
 msgstr "Indataformat att använda vid förhandsgranskning och export med Pandoc."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:63
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:75
 msgid "Autohide Headerbar"
 msgstr "Dölj rubrikraden automatiskt"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:64
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:76
 msgid "Hide the header and status bars when typing."
 msgstr "Dölj rubrik- och statusrader vid skrivning."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:70
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:82
 msgid "Default statistic"
 msgstr "Standardstatistik"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:71
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:83
 msgid "Which statistic is shown on the main window."
 msgstr "Vilken statistik som visas i huvudfönstret."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:77
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:89
 msgid "Characters per line"
 msgstr "Tecken per rad"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:78
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:90
 msgid "Maximum number of characters per line within the editor."
 msgstr "Max antal tecken per rad i redigeraren."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:84
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:96
 #: data/ui/AboutHemingway.ui:6
 msgid "Hemingway Mode"
 msgstr "Hemingway-läge"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:85
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:97
 msgid "Whether the user can delete text or not."
 msgstr "Huruvida användaren kan ta bort text eller inte."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:91
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:103
 msgid "Hemingway Toast Count"
 msgstr "Antal Hemingway-meddelanden"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:92
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:104
 msgid "Number of times the Hemingway Toast has been shown"
 msgstr "Antalet gånger Hemingway-meddelandet har visats"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:98
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:110
 msgid "Preview mode"
 msgstr "Förhandsgranskningsläge"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:99
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:111
 msgid "How to display the preview."
 msgstr "Hur förhandsgranskning visas."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:105
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:117
 #: data/ui/Preferences.ui:64
 msgid "Preview Security"
 msgstr "Förhandsgranskningssäkerhet"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:106
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:118
 msgid "Security policy to apply when rendering files."
 msgstr "Säkerhetspolicy att tillämpa vid rendering av filer."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:112
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:124
 msgid "Preview active"
 msgstr "Förhandsgranskning aktiv"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:113
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:125
 msgid "Whether showing of preview is active when launching a new window."
 msgstr ""
 "Huruvida visning av förhandsgranskning är aktiv vid öppnande av ett nytt "
 "fönster."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:119
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:131
 msgid "Text size"
 msgstr "Textstorlek"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:120
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:132
 msgid "Preferred relative size for the text."
 msgstr "Föredragen relativ storlek för texten."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:126
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:138
 msgid "Toolbar"
 msgstr "Verktygsfält"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:127
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:139
 msgid "Whether the toolbar is shown or not."
 msgstr "Huruvida verktygsfältet visas eller inte."
+
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:145
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:146
+msgid "Number of seconds between autosaves"
+msgstr "Antal sekunder mellan automatiska sparningar"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:5
 msgid "Edit Markdown in style"
@@ -193,24 +202,24 @@ msgstr ""
 "Export till alla sorters format: PDF, Word/Libreoffice, LaTeX eller till och "
 "med HTML-bildspel"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:53
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:55
 msgid "Main window"
 msgstr "Huvudfönster"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:57
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:59
 msgid "Main window in dark mode"
 msgstr "Huvudfönstret i mörkt läge"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:61
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:63
 msgid "Inserting a table with the help of the toolbar"
 msgstr "Infoga en tabell med hjälp av verktygsfältet"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:65
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:67
 msgid "The preview lets you see a live rendered version of your document"
 msgstr ""
 "Förhandsgranskningen låter dig direkt se en renderad version av ditt dokument"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:69
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:71
 msgid "The focus mode allow for a more distraction-free experience"
 msgstr "Fokusläget möjliggör en mer störningsfri upplevelse"
 
@@ -253,7 +262,7 @@ msgid "Formats"
 msgstr "Format"
 
 #: data/ui/Export.ui:67 apostrophe/export_dialog.py:125
-#: apostrophe/export_dialog.py:332 apostrophe/export_dialog.py:336
+#: apostrophe/export_dialog.py:336 apostrophe/export_dialog.py:340
 msgid "Export"
 msgstr "Exportera"
 
@@ -330,8 +339,8 @@ msgstr "Stegvisa punkter"
 msgid "Show one bullet point after another in a slideshow"
 msgstr "Visa en punkt efter en annan i ett bildspel"
 
-#: data/ui/Headerbar.ui:10 apostrophe/main_window.py:776
-#: apostrophe/main_window.py:791
+#: data/ui/Headerbar.ui:10 apostrophe/main_window.py:878
+#: apostrophe/main_window.py:893
 msgid "New File"
 msgstr "Ny fil"
 
@@ -447,7 +456,7 @@ msgstr "Dokumentation för markdown-typen"
 msgid "Desired level of security when rendering the preview"
 msgstr "Önskad säkerhetsnivå vid rendering av förhandsgranskningen"
 
-#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_handler.py:199
+#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_handler.py:205
 #: apostrophe/preview_window.py:32
 msgid "Preview"
 msgstr "Förhandsgranska"
@@ -759,10 +768,6 @@ msgstr "Bild"
 msgid "Table"
 msgstr "Tabell"
 
-#: data/ui/Toolbar.ui:153
-msgid "Show More Controls"
-msgstr "Visa fler kontroller"
-
 #: data/ui/Window.ui:64
 msgid "This file may be insecure"
 msgstr "Denna fil kan vara osäker"
@@ -785,23 +790,30 @@ msgstr "Läs in förhandsgranskning"
 msgid "Load Restricted Preview"
 msgstr "Läs in begränsad förhandsgranskning"
 
-#: data/ui/Window.ui:159
+#: data/ui/Window.ui:184
+msgid ""
+"Apostrophe closed unexpectedly. This file has been recovered from an autosave"
+msgstr ""
+"Apostrophe stängdes oväntat. Denna fil har återhämtats från en automatisk "
+"sparning"
+
+#: data/ui/Window.ui:200
 msgid "File Has Changed on Disk"
 msgstr "Filen har ändrats på disk"
 
-#: data/ui/Window.ui:169
+#: data/ui/Window.ui:210
 msgid "The file has been changed by another program"
 msgstr "Filen har ändrats av ett annat program"
 
-#: data/ui/Window.ui:177
+#: data/ui/Window.ui:218
 msgid "_Discard Changes and Reload"
 msgstr "_Förkasta ändringar och läs in på nytt"
 
-#: apostrophe/application.py:244
+#: apostrophe/application.py:301
 msgid "Donate"
 msgstr "Donera"
 
-#: apostrophe/application.py:245
+#: apostrophe/application.py:302
 msgid "Translations"
 msgstr "Översättningar"
 
@@ -809,18 +821,18 @@ msgstr "Översättningar"
 msgid "Close"
 msgstr "Stäng"
 
-#: apostrophe/export_dialog.py:128 apostrophe/export_dialog.py:337
+#: apostrophe/export_dialog.py:128 apostrophe/export_dialog.py:341
 #, python-format
 msgid "Export to %s"
 msgstr "Exportera till %s"
 
-#: apostrophe/export_dialog.py:130 apostrophe/export_dialog.py:333
-#: apostrophe/export_dialog.py:338 apostrophe/main_window.py:420
-#: apostrophe/main_window.py:498 apostrophe/main_window.py:591
+#: apostrophe/export_dialog.py:130 apostrophe/export_dialog.py:337
+#: apostrophe/export_dialog.py:342 apostrophe/main_window.py:441
+#: apostrophe/main_window.py:527 apostrophe/main_window.py:642
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: apostrophe/export_dialog.py:157 apostrophe/export_dialog.py:326
+#: apostrophe/export_dialog.py:161 apostrophe/export_dialog.py:330
 #, python-brace-format
 msgid ""
 "An error happened while trying to export:\n"
@@ -831,11 +843,11 @@ msgstr ""
 "\n"
 "{err_msg}"
 
-#: apostrophe/export_dialog.py:239
+#: apostrophe/export_dialog.py:243
 msgid "Export to {}"
 msgstr "Exportera till {}"
 
-#: apostrophe/export_dialog.py:333
+#: apostrophe/export_dialog.py:337
 msgid "Select folder"
 msgstr "Välj mapp"
 
@@ -847,72 +859,87 @@ msgstr "Fel"
 msgid "Unsaved documents"
 msgstr "Osparade dokument"
 
-#: apostrophe/inline_preview.py:295
+#: apostrophe/inline_preview.py:303
 msgid "LaTeX not found"
 msgstr "LaTeX hittades inte"
 
-#: apostrophe/inline_preview.py:297
+#: apostrophe/inline_preview.py:305
 msgid "Formula looks incorrect:"
 msgstr "Formeln ser felaktig ut:"
 
-#: apostrophe/inline_preview.py:365
+#: apostrophe/inline_preview.py:373
 msgid "No matching footnote found"
 msgstr "Ingen matchande fotnot hittades"
 
-#: apostrophe/inline_preview.py:398
+#: apostrophe/inline_preview.py:406
 msgid "noun"
 msgstr "substantiv"
 
-#: apostrophe/inline_preview.py:400
+#: apostrophe/inline_preview.py:408
 msgid "verb"
 msgstr "verb"
 
-#: apostrophe/inline_preview.py:402
+#: apostrophe/inline_preview.py:410
 msgid "adjective"
 msgstr "adjektiv"
 
-#: apostrophe/inline_preview.py:404
+#: apostrophe/inline_preview.py:412
 msgid "adverb"
 msgstr "adverb"
 
 #. Hemingway Toast
-#: apostrophe/main_window.py:157
+#: apostrophe/main_window.py:156
 msgid "Text can't be deleted while on Hemingway mode"
 msgstr "Text kan inte tas bort i Hemingway-läge"
 
-#: apostrophe/main_window.py:160
+#: apostrophe/main_window.py:159
 msgid "Tell me more"
 msgstr "Berätta mer"
 
-#: apostrophe/main_window.py:416
+#: apostrophe/main_window.py:437
 msgid "Save your File"
 msgstr "Spara din fil"
 
-#: apostrophe/main_window.py:419 apostrophe/main_window.py:593
+#: apostrophe/main_window.py:440 apostrophe/main_window.py:644
 msgid "Save"
 msgstr "Spara"
 
-#: apostrophe/main_window.py:487
+#: apostrophe/main_window.py:516
 msgid "Markdown Files"
 msgstr "Markdown-filer"
 
-#: apostrophe/main_window.py:491
+#: apostrophe/main_window.py:520
 msgid "Plain Text Files"
 msgstr "Oformaterade text-filer"
 
-#: apostrophe/main_window.py:494
+#: apostrophe/main_window.py:523
 msgid "Open a .md file"
 msgstr "Öppna en .md-fil"
 
-#: apostrophe/main_window.py:497
+#: apostrophe/main_window.py:526
 msgid "Open"
 msgstr "Öppna"
 
-#: apostrophe/main_window.py:585
+#: apostrophe/main_window.py:596
+#, python-brace-format
+msgid ""
+"Failed to detect encoding for file:\n"
+"{file}\n"
+"\n"
+"The error was:\n"
+"{err_msg}"
+msgstr ""
+"Kunde inte identifiera kodning för fil:\n"
+"{file}\n"
+"\n"
+"Felet var:\n"
+"{err_msg}"
+
+#: apostrophe/main_window.py:636
 msgid "Save Changes?"
 msgstr "Spara ändringar?"
 
-#: apostrophe/main_window.py:586
+#: apostrophe/main_window.py:637
 #, python-format
 msgid ""
 "“%s” contains unsaved changes. If you don’t save, all your changes will be "
@@ -921,7 +948,7 @@ msgstr ""
 "”%s” innehåller osparade ändringar. Om du inte sparar kommer dina ändringar "
 "förloras permanent."
 
-#: apostrophe/main_window.py:592
+#: apostrophe/main_window.py:643
 msgid "Discard"
 msgstr "Förkasta"
 
@@ -1056,9 +1083,12 @@ msgstr ""
 "\n"
 "kod\n"
 
-#: apostrophe/text_view.py:203 apostrophe/text_view.py:205
+#: apostrophe/text_view.py:215 apostrophe/text_view.py:217
 msgid "web page"
 msgstr "webbplats"
+
+#~ msgid "Show More Controls"
+#~ msgstr "Visa fler kontroller"
 
 #~ msgid "Open file base path"
 #~ msgstr "Öppna filsökväg"
@@ -1129,9 +1159,6 @@ msgstr "webbplats"
 
 #~ msgid "Save as…"
 #~ msgstr "Spara som…"
-
-#~ msgid "New Window"
-#~ msgstr "Nytt fönster"
 
 #, python-format
 #~ msgid "Save changes to document “%s” before closing?"
