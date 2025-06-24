@@ -89,7 +89,7 @@ class ApostropheOpenPopover(Gtk.Popover):
     @Gtk.Template.Callback()
     def on_search_entry_changed_cb(self, search_entry):
         filtered_list = filter(lambda item: item.get_mime_type() == 'text/markdown' and
-                                            search_entry.get_text() in item.get_display_name(),
+                                            search_entry.get_text().casefold() in item.get_display_name().casefold(),
                                self.recents_manager.get_items())
 
         self.model.remove_all()
