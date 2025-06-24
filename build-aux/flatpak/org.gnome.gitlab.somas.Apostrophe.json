@@ -79,11 +79,11 @@
             "buildsystem": "simple",
             "build-commands": [
                 "mkdir -p /app/share/fonts/",
-                "install -D ttf/FiraSans-Regular.ttf /app/share/fonts/",
-                "install -D ttf/FiraMono-Regular.ttf /app/share/fonts/",
-                "install -D ttf/FiraMono-Bold.ttf /app/share/fonts/",
-                "install -D ttf/FiraMono-Medium.ttf /app/share/fonts/",
-                "fc-cache -f -v"
+                "install -D otf/FiraSans-Regular.otf /app/share/fonts/",
+                "install -D otf/FiraMono-Regular.otf /app/share/fonts/",
+                "install -D otf/FiraMono-Bold.otf /app/share/fonts/",
+                "install -D otf/FiraMono-Medium.otf /app/share/fonts/",
+                "fc-cache -frv"
             ],
             "sources": [
                 {
