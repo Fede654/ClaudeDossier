@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: apostrophe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2024-07-29 20:34+0000\n"
-"PO-Revision-Date: 2024-08-06 20:00+0300\n"
+"POT-Creation-Date: 2025-06-25 15:53+0000\n"
+"PO-Revision-Date: 2025-06-25 19:24+0300\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: Finnish <lokalisointi-lista@googlegroups.com>\n"
 "Language: fi\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.6\n"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:3
 #: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:4
@@ -32,129 +32,130 @@ msgstr "uberwriter;UberWriter;apostrophe;markdown;editor;text;write;muokkain;"
 msgid "Apostrophe, an elegant, distraction-free markdown editor"
 msgstr "Apostrophe on tyylikäs ja häiriötekijät minimoiva markdown-muokkain"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:35
+#: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:18
+msgid "New Window"
+msgstr "Uusi ikkuna"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:47
 msgid "Color scheme"
 msgstr "Väriteema"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:36
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:48
 msgid "Use the color scheme in the application's UI and in the text area."
 msgstr "Sovelluksen käyttöliittymässä ja tekstialueella käytettävä väriteema."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:42
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:54
 msgid "Check spelling while typing"
 msgstr "Tarkista oikeinkirjoitus kirjoitettaessa"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:43
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:55
 msgid "Enable or disable spellchecking."
 msgstr "Käytä oikolukua tai poista se käytöstä."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:49
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:61
 msgid "Synchronize editor/preview scrolling"
 msgstr "Synkronoi muokkaimen ja esikatselun vieritys"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:50
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:62
 msgid "Keep the editor and preview scroll positions in sync."
 msgstr "Pidä muokkaimen ja esikatselun vierityksen sijainnit synkronoituna."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:56
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:68
 msgid "Input format"
 msgstr "Syötemuoto"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:57
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:69
 msgid "Input format to use when previewing and exporting using Pandoc."
 msgstr ""
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:63
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:75
 msgid "Autohide Headerbar"
 msgstr "Piilota otsakepalkki automaattisesti"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:64
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:76
 msgid "Hide the header and status bars when typing."
 msgstr "Piilota otsakepalkki ja tilapalkit kirjoituksen aikana."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:70
-msgid "Open file base path"
-msgstr ""
-
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:71
-msgid "Open file paths of the current session"
-msgstr ""
-
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:77
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:82
 msgid "Default statistic"
 msgstr "Oletustilasto"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:78
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:83
 msgid "Which statistic is shown on the main window."
 msgstr "Mikä tilasto näytetään pääikkunassa."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:84
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:89
 msgid "Characters per line"
 msgstr "Merkkejä per rivi"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:85
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:90
 msgid "Maximum number of characters per line within the editor."
 msgstr "Muokkaimessa rivikohtaisten merkkien enimmäismäärä."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:91
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:96
 #: data/ui/AboutHemingway.ui:6
 msgid "Hemingway Mode"
 msgstr "Hemingway-tila"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:92
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:97
 msgid "Whether the user can delete text or not."
 msgstr "Voiko käyttäjä poistaa tekstiä vai ei."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:98
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:103
 #, fuzzy
 #| msgid "Hemingway Mode"
 msgid "Hemingway Toast Count"
 msgstr "Hemingway-tila"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:99
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:104
 msgid "Number of times the Hemingway Toast has been shown"
 msgstr ""
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:105
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:110
 msgid "Preview mode"
 msgstr "Esikatselutila"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:106
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:111
 msgid "How to display the preview."
 msgstr "Miten esikatselu näytetään."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:112
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:117
 #: data/ui/Preferences.ui:64
 msgid "Preview Security"
 msgstr "Esikatselun turvallisuus"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:113
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:118
 msgid "Security policy to apply when rendering files."
 msgstr ""
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:119
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:124
 msgid "Preview active"
 msgstr "Esikatselu aktiivisena"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:120
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:125
 msgid "Whether showing of preview is active when launching a new window."
 msgstr ""
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:126
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:131
 msgid "Text size"
 msgstr "Tekstin koko"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:127
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:132
 msgid "Preferred relative size for the text."
 msgstr ""
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:133
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:138
 msgid "Toolbar"
 msgstr "Työkalupalkki"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:134
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:139
 msgid "Whether the toolbar is shown or not."
 msgstr "Näytetäänkö työkalupalkki vai ei."
+
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:145
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:146
+msgid "Number of seconds between autosaves"
+msgstr "Aika sekunneissa automaattisten tallennusten välillä"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:5
 msgid "Edit Markdown in style"
@@ -207,23 +208,23 @@ msgstr ""
 "Vie eri tiedostomuotoihin: PDF, Word/Libreoffice, LaTeX tai jopa HTML-"
 "diaesitys"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:41
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:55
 msgid "Main window"
 msgstr "Pääikkuna"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:45
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:59
 msgid "Main window in dark mode"
 msgstr "Pääikkuna tummassa tilassa"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:49
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:63
 msgid "Inserting a table with the help of the toolbar"
 msgstr "Taulukon lisääminen työkalupalkin avustuksella"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:53
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:67
 msgid "The preview lets you see a live rendered version of your document"
 msgstr "Esikatselun avulla näet asiakirjan reaaliajassa"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:57
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:71
 msgid "The focus mode allow for a more distraction-free experience"
 msgstr "Keskittymistila tarjoaa mahdollismman häiriöttömän kokemuksen"
 
@@ -263,8 +264,8 @@ msgstr "_Sulje"
 msgid "Formats"
 msgstr "Muodot"
 
-#: data/ui/Export.ui:67 apostrophe/export_dialog.py:126
-#: apostrophe/export_dialog.py:328 apostrophe/export_dialog.py:332
+#: data/ui/Export.ui:67 apostrophe/export_dialog.py:125
+#: apostrophe/export_dialog.py:336 apostrophe/export_dialog.py:340
 msgid "Export"
 msgstr "Vie"
 
@@ -284,56 +285,64 @@ msgstr ""
 "Käytä ylä- ja alatunnistetta sisällyttääksesi tyyliarkkeja ja metatietoa"
 
 #: data/ui/Export.ui:96
+msgid "Relative to Absolute"
+msgstr "Suhteellinen absoluuttiseksi"
+
+#: data/ui/Export.ui:97
+msgid "Replace relative path with absolute for images and links"
+msgstr "Korvaa kuvien ja linkkien suhteelliset polut absoluuttisilla"
+
+#: data/ui/Export.ui:103
 msgid "Table of Contents"
 msgstr "Sisällysluettelo"
 
-#: data/ui/Export.ui:102
+#: data/ui/Export.ui:109
 msgid "Number Sections"
 msgstr "Numeroidut osiot"
 
-#: data/ui/Export.ui:112 data/ui/Export.ui:115 data/ui/Export.ui:126
-#: data/ui/Export.ui:130
+#: data/ui/Export.ui:119 data/ui/Export.ui:122 data/ui/Export.ui:133
+#: data/ui/Export.ui:137
 msgid "Page Size"
 msgstr "Sivun koko"
 
-#: data/ui/Export.ui:141
+#: data/ui/Export.ui:148
 msgid "HTML Options"
 msgstr "HTML-valinnat"
 
-#: data/ui/Export.ui:144
+#: data/ui/Export.ui:151
 msgid "Self-Contained"
 msgstr "Itsenäinen"
 
-#: data/ui/Export.ui:145
+#: data/ui/Export.ui:152
 msgid "Produces an HTML file with no external dependencies"
 msgstr "Tuottaa HTML-tiedoston ilman ulkoisia riippuvuuksia"
 
-#: data/ui/Export.ui:154
+#: data/ui/Export.ui:161
 msgid "Syntax Highlighting"
 msgstr "Syntaksin korostus"
 
-#: data/ui/Export.ui:157
+#: data/ui/Export.ui:164
 msgid "Use Syntax Highlighting"
 msgstr "Käytä syntaksin korostusta"
 
-#: data/ui/Export.ui:162
+#: data/ui/Export.ui:169
 msgid "Highlight Style"
 msgstr "Korostuksen tyyli"
 
-#: data/ui/Export.ui:175
+#: data/ui/Export.ui:182
 msgid "Presentation"
 msgstr "Esitys"
 
-#: data/ui/Export.ui:178
+#: data/ui/Export.ui:185
 msgid "Incremental Bullets"
 msgstr "Inkrementaaliset luettelomerkit"
 
-#: data/ui/Export.ui:179
+#: data/ui/Export.ui:186
 msgid "Show one bullet point after another in a slideshow"
 msgstr "Näytä yksi luettelomerkki toisensa jälkeen diaesityksessä"
 
-#: data/ui/Headerbar.ui:10 apostrophe/main_window.py:776
-#: apostrophe/main_window.py:794
+#: data/ui/Headerbar.ui:10 apostrophe/main_window.py:889
+#: apostrophe/main_window.py:904
 msgid "New File"
 msgstr "Uusi tiedosto"
 
@@ -401,6 +410,10 @@ msgstr "_Edistynyt vienti…"
 msgid "_Copy HTML"
 msgstr "_Kopioi HTML:nä"
 
+#: data/ui/InlinePreviewPopover.ui:42
+msgid "Not Found"
+msgstr "Ei löytynyt"
+
 #: data/ui/Preferences.ui:12 data/ui/Preferences.ui:13
 msgid "Check Spelling"
 msgstr "Tarkista oikeinkirjoitus"
@@ -444,7 +457,7 @@ msgstr "Markdown-murteen dokumentaatio"
 
 #: data/ui/Preferences.ui:65
 msgid "Desired level of security when rendering the preview"
-msgstr ""
+msgstr "Haluttu tietoturvan taso esikatselua muodostaessa"
 
 #: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_handler.py:205
 #: apostrophe/preview_window.py:32
@@ -758,10 +771,6 @@ msgstr "Kuva"
 msgid "Table"
 msgstr "Taulukko"
 
-#: data/ui/Toolbar.ui:153
-msgid "Show More Controls"
-msgstr "Näytä lisää ohjaimia"
-
 #: data/ui/Window.ui:64
 msgid "This file may be insecure"
 msgstr "Tämä tiedosto saattaa olla vaarallinen"
@@ -784,42 +793,49 @@ msgstr "Lataa esikatselu"
 msgid "Load Restricted Preview"
 msgstr "Lataa rajoitettu esikatselu"
 
-#: data/ui/Window.ui:159
+#: data/ui/Window.ui:184
+msgid ""
+"Apostrophe closed unexpectedly. This file has been recovered from an autosave"
+msgstr ""
+"Apostrophe sulkeutui odottamatta. Tämä tiedosto on palautettu "
+"automaattisesta tallennuksesta"
+
+#: data/ui/Window.ui:200
 msgid "File Has Changed on Disk"
 msgstr "Tiedosto on muuttunut levyllä"
 
-#: data/ui/Window.ui:169
+#: data/ui/Window.ui:210
 msgid "The file has been changed by another program"
 msgstr "Tiedostoa on muutettu toisessa ohjelmassa"
 
-#: data/ui/Window.ui:177
+#: data/ui/Window.ui:218
 msgid "_Discard Changes and Reload"
 msgstr "_Hylkää muutokset ja lataa uudelleen"
 
-#: apostrophe/application.py:228
+#: apostrophe/application.py:301
 msgid "Donate"
 msgstr "Lahjoita"
 
-#: apostrophe/application.py:229
+#: apostrophe/application.py:302
 msgid "Translations"
 msgstr "Kielikäännökset"
 
-#: apostrophe/export_dialog.py:121 apostrophe/helpers.py:84
+#: apostrophe/export_dialog.py:120 apostrophe/helpers.py:84
 msgid "Close"
 msgstr "Sulje"
 
-#: apostrophe/export_dialog.py:129 apostrophe/export_dialog.py:333
+#: apostrophe/export_dialog.py:128 apostrophe/export_dialog.py:341
 #, python-format
 msgid "Export to %s"
 msgstr "Vie muotoon %s"
 
-#: apostrophe/export_dialog.py:131 apostrophe/export_dialog.py:329
-#: apostrophe/export_dialog.py:334 apostrophe/main_window.py:420
-#: apostrophe/main_window.py:498 apostrophe/main_window.py:591
+#: apostrophe/export_dialog.py:130 apostrophe/export_dialog.py:337
+#: apostrophe/export_dialog.py:342 apostrophe/main_window.py:444
+#: apostrophe/main_window.py:530 apostrophe/main_window.py:653
 msgid "Cancel"
 msgstr "Peru"
 
-#: apostrophe/export_dialog.py:155 apostrophe/export_dialog.py:322
+#: apostrophe/export_dialog.py:161 apostrophe/export_dialog.py:330
 #, python-brace-format
 msgid ""
 "An error happened while trying to export:\n"
@@ -830,11 +846,11 @@ msgstr ""
 "\n"
 "{err_msg}"
 
-#: apostrophe/export_dialog.py:235
+#: apostrophe/export_dialog.py:243
 msgid "Export to {}"
 msgstr "Vie muotoon {}"
 
-#: apostrophe/export_dialog.py:329
+#: apostrophe/export_dialog.py:337
 msgid "Select folder"
 msgstr "Valitse kansio"
 
@@ -846,68 +862,87 @@ msgstr "Virhe"
 msgid "Unsaved documents"
 msgstr "Tallentamattomia asiakirjoja"
 
-#: apostrophe/inline_preview.py:201
+#: apostrophe/inline_preview.py:303
+msgid "LaTeX not found"
+msgstr "LaTeX:ia ei löytynyt"
+
+#: apostrophe/inline_preview.py:305
 msgid "Formula looks incorrect:"
 msgstr "Kaava vaikuttaa virheelliseltä:"
 
-#: apostrophe/inline_preview.py:241
+#: apostrophe/inline_preview.py:373
 msgid "No matching footnote found"
 msgstr "Vastaavaa alaviitettä ei löydy"
 
-#: apostrophe/inline_preview.py:261
+#: apostrophe/inline_preview.py:406
 msgid "noun"
 msgstr "substantiivi"
 
-#: apostrophe/inline_preview.py:263
+#: apostrophe/inline_preview.py:408
 msgid "verb"
 msgstr "verbi"
 
-#: apostrophe/inline_preview.py:265
+#: apostrophe/inline_preview.py:410
 msgid "adjective"
 msgstr "adjektiivi"
 
-#: apostrophe/inline_preview.py:267
+#: apostrophe/inline_preview.py:412
 msgid "adverb"
 msgstr "adverbi"
 
 #. Hemingway Toast
-#: apostrophe/main_window.py:157
+#: apostrophe/main_window.py:159
 msgid "Text can't be deleted while on Hemingway mode"
 msgstr "Tekstiä ei voi poistaa Hemingway-tilassa"
 
-#: apostrophe/main_window.py:160
+#: apostrophe/main_window.py:162
 msgid "Tell me more"
 msgstr "Kerro lisää"
 
-#: apostrophe/main_window.py:416
+#: apostrophe/main_window.py:440
 msgid "Save your File"
 msgstr "Tallenna tiedostosi"
 
-#: apostrophe/main_window.py:419 apostrophe/main_window.py:593
+#: apostrophe/main_window.py:443 apostrophe/main_window.py:655
 msgid "Save"
 msgstr "Tallenna"
 
-#: apostrophe/main_window.py:487
+#: apostrophe/main_window.py:519
 msgid "Markdown Files"
 msgstr "Markdown-tiedostot"
 
-#: apostrophe/main_window.py:491
+#: apostrophe/main_window.py:523
 msgid "Plain Text Files"
 msgstr "Raakatekstitiedostot"
 
-#: apostrophe/main_window.py:494
+#: apostrophe/main_window.py:526
 msgid "Open a .md file"
 msgstr "Avaa .md-tiedosto"
 
-#: apostrophe/main_window.py:497
+#: apostrophe/main_window.py:529
 msgid "Open"
 msgstr "Avaa"
 
-#: apostrophe/main_window.py:585
+#: apostrophe/main_window.py:607
+#, python-brace-format
+msgid ""
+"Failed to detect encoding for file:\n"
+"{file}\n"
+"\n"
+"The error was:\n"
+"{err_msg}"
+msgstr ""
+"Koodauksen havaitseminen epäonnistui tiedostolle:\n"
+"{file}\n"
+"\n"
+"Virhe oli:\n"
+"{err_msg}"
+
+#: apostrophe/main_window.py:647
 msgid "Save Changes?"
 msgstr "Tallennetaanko muutokset?"
 
-#: apostrophe/main_window.py:586
+#: apostrophe/main_window.py:648
 #, python-format
 msgid ""
 "“%s” contains unsaved changes. If you don’t save, all your changes will be "
@@ -916,7 +951,7 @@ msgstr ""
 "“%s” sisältää tallentamattomia muutoksia. Jos et tallenna, kaikki muutokset "
 "häviävät pysyvästi."
 
-#: apostrophe/main_window.py:592
+#: apostrophe/main_window.py:654
 msgid "Discard"
 msgstr "Hylkää"
 
@@ -1035,7 +1070,7 @@ msgid "link text"
 msgstr "linkin teksti"
 
 #: apostrophe/text_view_format_inserter.py:429
-#: apostrophe/text_view_format_inserter.py:461
+#: apostrophe/text_view_format_inserter.py:464
 msgid "image caption"
 msgstr "kuvateksti"
 
@@ -1043,7 +1078,7 @@ msgstr "kuvateksti"
 msgid "Select an image"
 msgstr "Valitse kuva"
 
-#: apostrophe/text_view_format_inserter.py:550
+#: apostrophe/text_view_format_inserter.py:553
 msgid ""
 "\n"
 "code\n"
@@ -1051,9 +1086,12 @@ msgstr ""
 "\n"
 "koodi\n"
 
-#: apostrophe/text_view.py:185 apostrophe/text_view.py:187
+#: apostrophe/text_view.py:220 apostrophe/text_view.py:222
 msgid "web page"
 msgstr "verkkosivu"
+
+#~ msgid "Show More Controls"
+#~ msgstr "Näytä lisää ohjaimia"
 
 #~ msgid "New"
 #~ msgstr "Uusi"
@@ -1114,9 +1152,6 @@ msgstr "verkkosivu"
 
 #~ msgid "Save as…"
 #~ msgstr "Tallenna nimellä…"
-
-#~ msgid "New Window"
-#~ msgstr "Uusi ikkuna"
 
 #, python-format
 #~ msgid "Save changes to document “%s” before closing?"
