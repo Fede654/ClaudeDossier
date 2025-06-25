@@ -103,6 +103,9 @@ class MainWindow(Adw.ApplicationWindow):
         self.text_changed_handler_id = None
         self.autosave_timer = None
 
+        # save metadata for spellchecking language
+        self.textview.spelling_checker.connect("notify::language", self._on_spellchecking_language_changed)
+
         # Setup save progressbar an its animator
         def hide_progressbar(animation, *args):
             self.save_progressbar.hide()
@@ -550,6 +553,9 @@ class MainWindow(Adw.ApplicationWindow):
         if self.text_changed_handler_id:
             self.textview.get_buffer().disconnect(self.text_changed_handler_id)
 
+        if spelling_language := file.query_info("metadata::spelling-language", Gio.FileQueryInfoFlags.NONE).get_attribute_string("metadata::spelling-language"):
+            self.textview.spelling_checker.set_language(spelling_language)
+
         self.current.gfile.load_contents_async(None,
                                                self._load_contents_cb, None)
         self._set_file_monitor()
@@ -571,6 +577,11 @@ class MainWindow(Adw.ApplicationWindow):
 
     def _on_file_changed(self, file, other_file, event, *args):
         self.discard_infobar.set_revealed(True)
+
+    def _on_spellchecking_language_changed(self, *args, **kwargs):
+        if language:= self.textview.spelling_checker.get_language():
+            if self.current.gfile:
+                self.current.gfile.set_attribute_string("metadata::spelling-language", language, Gio.FileQueryInfoFlags.NONE)
 
     def _load_contents_cb(self, gfile, result, snapshot_restored=False):
         try:

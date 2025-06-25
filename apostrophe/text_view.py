@@ -62,6 +62,10 @@ class ApostropheTextView(GtkSource.View):
     line_chars = GObject.Property(type=int, default=66)
     spellcheck = GObject.Property(type=bool, default=True)
 
+    spelling_adapter = None
+    spelling_checker = None
+    spelling_provider = None
+
     scroller = None
 
     _scroll_scale = 0
@@ -86,15 +90,16 @@ class ApostropheTextView(GtkSource.View):
         self.buffer = self.get_buffer()
 
         # Spell checking
-        checker = Spelling.Checker.get_default()
-        self.adapter = Spelling.TextBufferAdapter.new(self.buffer, checker)
-        spellchecking_menu = self.adapter.get_menu_model()
+        self.spelling_provider = Spelling.Provider.get_default()
+        self.spelling_checker = Spelling.Checker.new(self.spelling_provider, self.spelling_provider.get_default_code())
+        self.spelling_adapter = Spelling.TextBufferAdapter.new(self.buffer, self.spelling_checker)
+        spellchecking_menu = self.spelling_adapter.get_menu_model()
 
-        checker.connect("notify::language", self._on_spelling_language_changed)
+        self.spelling_checker.connect("notify::language", self._on_spelling_language_changed)
 
-        self.insert_action_group('spelling', self.adapter)
+        self.insert_action_group('spelling', self.spelling_adapter)
 
-        self.settings.bind("spellcheck", self.adapter,
+        self.settings.bind("spellcheck", self.spelling_adapter,
                            "enabled", Gio.SettingsBindFlags.DEFAULT)
         
         # Setting up text size
@@ -252,9 +257,11 @@ class ApostropheTextView(GtkSource.View):
     def update_vertical_margin(self, top_margin=0):
         if self.focus_mode:
             height = self.get_height() + top_margin 
-
-            self.set_top_margin(height / 2 + top_margin)
-            self.set_bottom_margin(height / 2)
+            target_margin = height / 2 
+            if self.get_top_margin() != target_margin + top_margin:
+                self.set_top_margin(target_margin + top_margin)
+            if self.get_bottom_margin() != target_margin:
+                self.set_bottom_margin(target_margin)
         else:
             # we want 80 top margin when only the headerbar is shown, 
             # top_margin is 46 in that case
@@ -336,7 +343,7 @@ class ApostropheTextView(GtkSource.View):
 
     @Gtk.Template.Callback()
     def _on_spellcheck_update(self, *args, **kwargs):
-        self.adapter.set_enabled(self.spellcheck and not self.focus_mode)
+        self.spelling_adapter.set_enabled(self.spellcheck and not self.focus_mode)
 
     @Gtk.Template.Callback()
     def _on_text_changed(self, *_):
@@ -350,7 +357,7 @@ class ApostropheTextView(GtkSource.View):
             self.notify("scroll_scale")
 
     def _on_spelling_language_changed(self, _obj, _spec):
-        self.adapter.invalidate_all()
+        self.spelling_adapter.invalidate_all()
 
     def _on_clipboard_paste_started(self, *args, **kwargs):
         self.buffer.paste_ongoing = True
