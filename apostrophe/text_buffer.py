@@ -245,6 +245,7 @@ class ApostropheTextBuffer(GtkSource.Buffer):
                 next_iter = position.copy()
                 if (next_iter.get_char().isspace() or next_iter.is_end()):
                     modified_text = text + pairs[text]
+                    length = len(modified_text)
                     move_cursor = -1
 
             elif text in ")]}\">":
