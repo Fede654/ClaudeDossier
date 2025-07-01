@@ -46,6 +46,6 @@ class ApostropheSizedBin(Adw.Bin):
 
     def do_measure(self, orientation, for_size):
         if not self.get_child():
-            return
+            return (0, 0, -1, -1)
 
         return self.get_child().measure(orientation, for_size)

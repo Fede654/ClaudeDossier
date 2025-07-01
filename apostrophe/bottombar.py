@@ -94,10 +94,13 @@ class BottomBar(Gtk.Widget):
         else:
             self.stats.buttons_stack.set_visible_child(self.stats.stats_button)
 
+        bg_min_w = self.background_container.measure(Gtk.Orientation.HORIZONTAL, -1).minimum
+        bg_min_h = self.background_container.measure(Gtk.Orientation.HORIZONTAL, -1).minimum
+
         stats_width = self.stats_container.measure(Gtk.Orientation.HORIZONTAL, -1).minimum
         stats_height = self.toolbars_container.measure(Gtk.Orientation.VERTICAL, -1).minimum
 
-        self.background_container.allocate(width, toolbar_height, baseline)
+        self.background_container.allocate(max(width, bg_min_w), max(toolbar_height, bg_min_h), baseline)
 
         if self.get_direction() == Gtk.TextDirection.LTR:
             offset = width - stats_width

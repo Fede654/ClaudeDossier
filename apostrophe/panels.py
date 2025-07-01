@@ -165,6 +165,7 @@ class ApostrophePanels(Gtk.Widget, Gtk.Orientable):
 
         container_min_along = self.content_container.measure(orientation, -1).minimum
         separator_along = self.separator.measure(orientation, -1).minimum
+        panel_min_along = self.panel.measure(orientation, -1).minimum
 
         panels_along = self.get_size(orientation)
         panels_across = self.get_size(cross_orientation)

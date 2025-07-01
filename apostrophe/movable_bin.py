@@ -37,10 +37,22 @@ class ApostropheMovableBin(Adw.Bin):
         super().__init__()
         self.set_layout_manager(None)
 
-
     def do_size_allocate(self, width, height, baseline):
         if not self.get_child():
             return
         transform = Gsk.Transform().translate(Graphene.Point().init(-self.offset_x*1, 0))
 
         self.get_child().allocate(width, height, baseline, transform)
+
+    def do_measure(self, orientation, for_size):
+        if not self.get_child():
+            return(0, 0, -1, -1)
+
+        child_size = self.get_child().measure(orientation, for_size)
+
+        return (
+            child_size.minimum,
+            child_size.natural,
+            child_size.minimum_baseline,
+            child_size.natural_baseline
+        )
