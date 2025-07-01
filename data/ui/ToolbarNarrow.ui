@@ -11,6 +11,7 @@
       <object class="GtkBox">
         <property name="margin-start">6</property>
         <property name="spacing">6</property>
+        <property name="valign">center</property>
         <child>
           <object class="GtkButton">
             <property name="tooltip-text" translatable="yes">Bold</property>
