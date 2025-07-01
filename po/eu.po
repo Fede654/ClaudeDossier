@@ -1,14 +1,14 @@
 # Basque translation for apostrophe.
 # Copyright (C) 2019 apostrophe's COPYRIGHT HOLDER
 # This file is distributed under the same license as the apostrophe package.
-# Asier Sarasua Garmendia <asiersarasua@ni.eus>, 2021, 2022, 2023, 2024.
+# Asier Saratsua Garmendia <asiersarasua@ni.eus>, 2021, 2022, 2023, 2024, 2025.
 #
 msgid ""
 msgstr "Project-Id-Version: Apostrophe\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2024-07-29 20:34+0000\n"
-"PO-Revision-Date: 2024-09-14 17:00+0100\n"
-"Last-Translator: Asier Sarasua Garmendia <asiersarasua@ni.eus>\n"
+"POT-Creation-Date: 2025-06-25 15:53+0000\n"
+"PO-Revision-Date: 2025-07-01 17:00+0100\n"
+"Last-Translator: Asier Saratsua Garmendia <asiersarasua@ni.eus>\n"
 "Language-Team: Basque <librezale@librezale.eus>\n"
 "Language: eu\n"
 "MIME-Version: 1.0\n"
@@ -30,127 +30,128 @@ msgstr "uberwriter;UberWriter;apostrophe;markdown;editorea;testua;idatzi;"
 msgid "Apostrophe, an elegant, distraction-free markdown editor"
 msgstr "Apostrophe, markdown editore dotore eta distrakziorik gabea"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:35
+#: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:18
+msgid "New Window"
+msgstr "Leiho berria"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:47
 msgid "Color scheme"
 msgstr "Kolore-eskema"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:36
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:48
 msgid "Use the color scheme in the application's UI and in the text area."
 msgstr "Erabili kolore-eskema aplikazioaren interfazean eta testu-arean."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:42
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:54
 msgid "Check spelling while typing"
 msgstr "Egiaztatu ortografia idaztean"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:43
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:55
 msgid "Enable or disable spellchecking."
 msgstr "Gaitu edo desgaitu ortografiaren egiaztatzea."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:49
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:61
 msgid "Synchronize editor/preview scrolling"
 msgstr "Sinkronizatu editorearen/aurrebistaren korritzea"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:50
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:62
 msgid "Keep the editor and preview scroll positions in sync."
 msgstr "Mantendu editorearen eta aurrebistaren korritze-posizioa sinkronizatuta."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:56
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:68
 msgid "Input format"
 msgstr "Sarrerako formatua"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:57
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:69
 msgid "Input format to use when previewing and exporting using Pandoc."
 msgstr "Pandoc erabiliz aurrebista sortzean eta esportatzean erabiliko den sarrerako formatua."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:63
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:75
 msgid "Autohide Headerbar"
 msgstr "Ezkutatu automatikoki goiburu-barra"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:64
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:76
 msgid "Hide the header and status bars when typing."
 msgstr "Ezkutatu goiburu- eta egoera-barrak idaztean."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:70
-msgid "Open file base path"
-msgstr "Ireki fitxategiaren oinarrizko bide-izena"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:71
-msgid "Open file paths of the current session"
-msgstr "Ireki uneko saioaren fitxategien bide-izenak"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:77
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:82
 msgid "Default statistic"
 msgstr "Estatistika lehenetsia"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:78
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:83
 msgid "Which statistic is shown on the main window."
 msgstr "Zein estatistika erakutsiko den leiho nagusian."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:84
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:89
 msgid "Characters per line"
 msgstr "Karaktereak lerroko"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:85
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:90
 msgid "Maximum number of characters per line within the editor."
 msgstr "Lerroko gehieneko karaktere kopurua editorean."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:91
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:96
 #: data/ui/AboutHemingway.ui:6
 msgid "Hemingway Mode"
 msgstr "Hemingway modua"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:92
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:97
 msgid "Whether the user can delete text or not."
 msgstr "Erabiltzaileak testua ezabatu dezakeen ala ez."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:98
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:103
 msgid "Hemingway Toast Count"
 msgstr "Hemingway topa egiteen zenbaketa"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:99
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:104
 msgid "Number of times the Hemingway Toast has been shown"
 msgstr "Zenbat aldiz erakutsi den Hemingway topa egitea"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:105
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:110
 msgid "Preview mode"
 msgstr "Aurrebista-modua"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:106
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:111
 msgid "How to display the preview."
 msgstr "Nola bistaratu aurrebista."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:112
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:117
 #: data/ui/Preferences.ui:64
 msgid "Preview Security"
 msgstr "Aurrebistaren segurtasuna"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:113
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:118
 msgid "Security policy to apply when rendering files."
 msgstr "Fitxategiak errendatzean aplikatuko den segurtasun-politika"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:119
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:124
 msgid "Preview active"
 msgstr "Aurrebista aktiboa"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:120
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:125
 msgid "Whether showing of preview is active when launching a new window."
 msgstr "Leiho berria abiarazten denean aurrebista erakustea aktibo dagoen ala ez."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:126
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:131
 msgid "Text size"
 msgstr "Testu-tamaina"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:127
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:132
 msgid "Preferred relative size for the text."
 msgstr "Testuaren tamaina erlatibo hobetsia."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:133
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:138
 msgid "Toolbar"
 msgstr "Tresna-barra"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:134
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:139
 msgid "Whether the toolbar is shown or not."
 msgstr "Tresna-barra erakutsiko den ala ez."
+
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:145
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:146
+msgid "Number of seconds between autosaves"
+msgstr "Gordetze automatikoen arteko segundo kopurua"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:5
 msgid "Edit Markdown in style"
@@ -197,23 +198,23 @@ msgid ""
 "slideshows"
 msgstr "Esportatu edozein formatu motatara: PDF, Word/Libreoffice, LaTeX, edo baita HTML diapositiba-aurkezpenak ere"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:41
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:55
 msgid "Main window"
 msgstr "Leiho nagusia"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:45
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:59
 msgid "Main window in dark mode"
 msgstr "Leiho nagusia modu ilunean"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:49
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:63
 msgid "Inserting a table with the help of the toolbar"
 msgstr "Taula bat txertatzea tresna-barraren laguntzarekin"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:53
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:67
 msgid "The preview lets you see a live rendered version of your document"
 msgstr "Aurrebistaren bidez, zure dokumentuaren bertsio errendatu bizi bat ikusi dezakezu"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:57
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:71
 msgid "The focus mode allow for a more distraction-free experience"
 msgstr "Arretari eusteko moduaren bidez distrakzio gutxiagoko esperientzia eduki daiteke"
 
@@ -249,8 +250,8 @@ msgstr "It_xi"
 msgid "Formats"
 msgstr "Formatuak"
 
-#: data/ui/Export.ui:67 apostrophe/export_dialog.py:126
-#: apostrophe/export_dialog.py:328 apostrophe/export_dialog.py:332
+#: data/ui/Export.ui:67 apostrophe/export_dialog.py:125
+#: apostrophe/export_dialog.py:336 apostrophe/export_dialog.py:340
 msgid "Export"
 msgstr "Esportatu"
 
@@ -269,56 +270,64 @@ msgid ""
 msgstr "Erabili goiburua eta  orri-oina estilo-orriak eta meta-informazioa bezalako gauzak gehitzeko"
 
 #: data/ui/Export.ui:96
+msgid "Relative to Absolute"
+msgstr "Erlatibotik absolutura"
+
+#: data/ui/Export.ui:97
+msgid "Replace relative path with absolute for images and links"
+msgstr "Ordeztu bide-izen erlatiboak absolutuekin irudietan eta esteketan"
+
+#: data/ui/Export.ui:103
 msgid "Table of Contents"
 msgstr "Edukien aurkibidea"
 
-#: data/ui/Export.ui:102
+#: data/ui/Export.ui:109
 msgid "Number Sections"
 msgstr "Zenbakitu atalak"
 
-#: data/ui/Export.ui:112 data/ui/Export.ui:115 data/ui/Export.ui:126
-#: data/ui/Export.ui:130
+#: data/ui/Export.ui:119 data/ui/Export.ui:122 data/ui/Export.ui:133
+#: data/ui/Export.ui:137
 msgid "Page Size"
 msgstr "Orrialde-tamaina"
 
-#: data/ui/Export.ui:141
+#: data/ui/Export.ui:148
 msgid "HTML Options"
 msgstr "HTML aukerak"
 
-#: data/ui/Export.ui:144
+#: data/ui/Export.ui:151
 msgid "Self-Contained"
 msgstr "Isolatua"
 
-#: data/ui/Export.ui:145
+#: data/ui/Export.ui:152
 msgid "Produces an HTML file with no external dependencies"
 msgstr "Kanpoko mendekotasunik ez duen HTML fitxategia sortzen du"
 
-#: data/ui/Export.ui:154
+#: data/ui/Export.ui:161
 msgid "Syntax Highlighting"
 msgstr "Sintaxiaren nabarmentzea"
 
-#: data/ui/Export.ui:157
+#: data/ui/Export.ui:164
 msgid "Use Syntax Highlighting"
 msgstr "Erabili sintaxiaren nabarmentzea"
 
-#: data/ui/Export.ui:162
+#: data/ui/Export.ui:169
 msgid "Highlight Style"
 msgstr "Nabarmentze-estiloa"
 
-#: data/ui/Export.ui:175
+#: data/ui/Export.ui:182
 msgid "Presentation"
 msgstr "Aurkezpena"
 
-#: data/ui/Export.ui:178
+#: data/ui/Export.ui:185
 msgid "Incremental Bullets"
 msgstr "Bulet inkrementalak"
 
-#: data/ui/Export.ui:179
+#: data/ui/Export.ui:186
 msgid "Show one bullet point after another in a slideshow"
 msgstr "Erakutsi buleta bat bestearen atzetik diapositiba-aurkezpenetan"
 
-#: data/ui/Headerbar.ui:10 apostrophe/main_window.py:776
-#: apostrophe/main_window.py:794
+#: data/ui/Headerbar.ui:10 apostrophe/main_window.py:889
+#: apostrophe/main_window.py:904
 msgid "New File"
 msgstr "Fitxategi berria"
 
@@ -385,6 +394,10 @@ msgstr "_Esportazio aurreratua…"
 #: data/ui/Headerbar.ui:148
 msgid "_Copy HTML"
 msgstr "_Kopiatu HTMLa"
+
+#: data/ui/InlinePreviewPopover.ui:42
+msgid "Not Found"
+msgstr "Ez aurkitua"
 
 #: data/ui/Preferences.ui:12 data/ui/Preferences.ui:13
 msgid "Check Spelling"
@@ -740,10 +753,6 @@ msgstr "Irudia"
 msgid "Table"
 msgstr "Taula"
 
-#: data/ui/Toolbar.ui:153
-msgid "Show More Controls"
-msgstr "Erakutsi kontrol gehiago"
-
 #: data/ui/Window.ui:64
 msgid "This file may be insecure"
 msgstr "Fitxategia ez segurua izan daiteke"
@@ -764,42 +773,47 @@ msgstr "Kargatu aurrebista"
 msgid "Load Restricted Preview"
 msgstr "Kargatu aurrebista mugatua"
 
-#: data/ui/Window.ui:159
+#: data/ui/Window.ui:184
+msgid ""
+"Apostrophe closed unexpectedly. This file has been recovered from an autosave"
+msgstr "Apostrophe ustekabean itxi da. Fitxategi hau gordetze automatiko batetik berreskuratu da"
+
+#: data/ui/Window.ui:200
 msgid "File Has Changed on Disk"
 msgstr "Fitxategia diskoan aldatu da"
 
-#: data/ui/Window.ui:169
+#: data/ui/Window.ui:210
 msgid "The file has been changed by another program"
 msgstr "Fitxategia beste programa batek aldatu du"
 
-#: data/ui/Window.ui:177
+#: data/ui/Window.ui:218
 msgid "_Discard Changes and Reload"
 msgstr "_Baztertu aldaketak eta birkargatu"
 
-#: apostrophe/application.py:228
+#: apostrophe/application.py:301
 msgid "Donate"
 msgstr "Lagundu diruz"
 
-#: apostrophe/application.py:229
+#: apostrophe/application.py:302
 msgid "Translations"
 msgstr "Itzulpenak"
 
-#: apostrophe/export_dialog.py:121 apostrophe/helpers.py:84
+#: apostrophe/export_dialog.py:120 apostrophe/helpers.py:84
 msgid "Close"
 msgstr "Itxi"
 
-#: apostrophe/export_dialog.py:129 apostrophe/export_dialog.py:333
+#: apostrophe/export_dialog.py:128 apostrophe/export_dialog.py:341
 #, python-format
 msgid "Export to %s"
 msgstr "Esportatu hona: %s"
 
-#: apostrophe/export_dialog.py:131 apostrophe/export_dialog.py:329
-#: apostrophe/export_dialog.py:334 apostrophe/main_window.py:420
-#: apostrophe/main_window.py:498 apostrophe/main_window.py:591
+#: apostrophe/export_dialog.py:130 apostrophe/export_dialog.py:337
+#: apostrophe/export_dialog.py:342 apostrophe/main_window.py:444
+#: apostrophe/main_window.py:530 apostrophe/main_window.py:653
 msgid "Cancel"
 msgstr "Utzi"
 
-#: apostrophe/export_dialog.py:155 apostrophe/export_dialog.py:322
+#: apostrophe/export_dialog.py:161 apostrophe/export_dialog.py:330
 #, python-brace-format
 msgid ""
 "An error happened while trying to export:\n"
@@ -809,11 +823,11 @@ msgstr "Errorea gertatu da esportazioan:\n"
 "\n"
 "{err_msg}"
 
-#: apostrophe/export_dialog.py:235
+#: apostrophe/export_dialog.py:243
 msgid "Export to {}"
 msgstr "Esportatu hone: {}"
 
-#: apostrophe/export_dialog.py:329
+#: apostrophe/export_dialog.py:337
 msgid "Select folder"
 msgstr "Hautatu karpeta"
 
@@ -825,75 +839,93 @@ msgstr "Errorea"
 msgid "Unsaved documents"
 msgstr "Gorde gabeko dokumentuak"
 
-#: apostrophe/inline_preview.py:201
+#: apostrophe/inline_preview.py:303
+msgid "LaTeX not found"
+msgstr "LaTeX ez da aurkitu"
+
+#: apostrophe/inline_preview.py:305
 msgid "Formula looks incorrect:"
 msgstr "Formula okerra dela dirudi:"
 
-#: apostrophe/inline_preview.py:241
+#: apostrophe/inline_preview.py:373
 msgid "No matching footnote found"
 msgstr "Ez da aurkitu bat datorren oin-oharrik"
 
-#: apostrophe/inline_preview.py:261
+#: apostrophe/inline_preview.py:406
 msgid "noun"
 msgstr "izena"
 
-#: apostrophe/inline_preview.py:263
+#: apostrophe/inline_preview.py:408
 msgid "verb"
 msgstr "aditza"
 
-#: apostrophe/inline_preview.py:265
+#: apostrophe/inline_preview.py:410
 msgid "adjective"
 msgstr "adjektiboa"
 
-#: apostrophe/inline_preview.py:267
+#: apostrophe/inline_preview.py:412
 msgid "adverb"
 msgstr "adberbioa"
 
 #. Hemingway Toast
-#: apostrophe/main_window.py:157
+#: apostrophe/main_window.py:159
 msgid "Text can't be deleted while on Hemingway mode"
 msgstr "Testua ezin da aldatu Hemingway moduan"
 
-#: apostrophe/main_window.py:160
+#: apostrophe/main_window.py:162
 msgid "Tell me more"
 msgstr "Zergatik?"
 
-#: apostrophe/main_window.py:416
+#: apostrophe/main_window.py:440
 msgid "Save your File"
 msgstr "Gorde zure fitxategia"
 
-#: apostrophe/main_window.py:419 apostrophe/main_window.py:593
+#: apostrophe/main_window.py:443 apostrophe/main_window.py:655
 msgid "Save"
 msgstr "Gorde"
 
-#: apostrophe/main_window.py:487
+#: apostrophe/main_window.py:519
 msgid "Markdown Files"
 msgstr "Markdown fitxategiak"
 
-#: apostrophe/main_window.py:491
+#: apostrophe/main_window.py:523
 msgid "Plain Text Files"
 msgstr "Testu soileko fitxategiak"
 
-#: apostrophe/main_window.py:494
+#: apostrophe/main_window.py:526
 msgid "Open a .md file"
 msgstr "Ireki .md fitxategia"
 
-#: apostrophe/main_window.py:497
+#: apostrophe/main_window.py:529
 msgid "Open"
 msgstr "Ireki"
 
-#: apostrophe/main_window.py:585
+#: apostrophe/main_window.py:607
+#, python-brace-format
+msgid ""
+"Failed to detect encoding for file:\n"
+"{file}\n"
+"\n"
+"The error was:\n"
+"{err_msg}"
+msgstr "Huts egin du kodeketa detektatzeak honako fitxategian:\n"
+"{file}\n"
+"\n"
+"Errorea honakoa izan da:\n"
+"{err_msg}"
+
+#: apostrophe/main_window.py:647
 msgid "Save Changes?"
 msgstr "Gorde aldaketak?"
 
-#: apostrophe/main_window.py:586
+#: apostrophe/main_window.py:648
 #, python-format
 msgid ""
 "“%s” contains unsaved changes. If you don’t save, all your changes will be "
 "permanently lost."
 msgstr "“%s” dokumentuak gorde gabeko aldaketak ditu. Gordetzen ez baduzu, aldaketa guztiak betiko galduko dira."
 
-#: apostrophe/main_window.py:592
+#: apostrophe/main_window.py:654
 msgid "Discard"
 msgstr "Baztertu"
 
@@ -1012,7 +1044,7 @@ msgid "link text"
 msgstr "esteka-testua"
 
 #: apostrophe/text_view_format_inserter.py:429
-#: apostrophe/text_view_format_inserter.py:461
+#: apostrophe/text_view_format_inserter.py:464
 msgid "image caption"
 msgstr "irudi-epigrafea"
 
@@ -1020,16 +1052,25 @@ msgstr "irudi-epigrafea"
 msgid "Select an image"
 msgstr "Hautatu irudi bat"
 
-#: apostrophe/text_view_format_inserter.py:550
+#: apostrophe/text_view_format_inserter.py:553
 msgid ""
 "\n"
 "code\n"
 msgstr "\n"
 "kodea\n"
 
-#: apostrophe/text_view.py:185 apostrophe/text_view.py:187
+#: apostrophe/text_view.py:220 apostrophe/text_view.py:222
 msgid "web page"
 msgstr "web-orria"
+
+#~ msgid "Open file base path"
+#~ msgstr "Ireki fitxategiaren oinarrizko bide-izena"
+
+#~ msgid "Open file paths of the current session"
+#~ msgstr "Ireki uneko saioaren fitxategien bide-izenak"
+
+#~ msgid "Show More Controls"
+#~ msgstr "Erakutsi kontrol gehiago"
 
 #~ msgid "New"
 #~ msgstr "Berria"
@@ -1094,9 +1135,6 @@ msgstr "web-orria"
 
 #~ msgid "Save as…"
 #~ msgstr "Gorde honela…"
-
-#~ msgid "New Window"
-#~ msgstr "Leiho berria"
 
 #, python-format
 #~ msgid "Save changes to document “%s” before closing?"
