@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
   <gresource prefix="/org/gnome/gitlab/somas/Apostrophe/">
+    <file compressed="true" alias="icons/scalable/actions/external-link-symbolic.svg">media/icons/external-link-symbolic.svg</file>
     <file compressed="true" alias="icons/scalable/actions/preview-layout-full-width-symbolic.svg">media/icons/preview-layout-full-width-symbolic.svg</file>
     <file compressed="true" alias="icons/scalable/actions/preview-layout-half-width-symbolic.svg">media/icons/preview-layout-half-width-symbolic.svg</file>
     <file compressed="true" alias="icons/scalable/actions/preview-layout-windowed-symbolic.svg">media/icons/preview-layout-windowed-symbolic.svg</file>
@@ -15,6 +16,7 @@
     <file compressed="true" alias="style-hc.css">media/css/gtk/style-hc.css</file>
     <file compressed="true" alias="style-sepia.css">media/css/gtk/style-sepia.css</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/BottomBar.ui</file>
+    <file compressed="true" preprocess="xml-stripblanks">ui/DetailedError.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/Editor.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/Export.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/Headerbar.ui</file>

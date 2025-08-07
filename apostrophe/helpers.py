@@ -29,8 +29,8 @@ gi.require_version('Gtk', '4.0')
 from gi.repository import Adw, Gio, Gtk, Gdk, Gsk, GLib  # pylint: disable=E0611
 
 from apostrophe import config
+from apostrophe.detailed_error import DetailedError
 from apostrophe.settings import Settings
-
 
 __apostrophe_data_directory__ = '../data/'
 
@@ -85,6 +85,10 @@ def show_error(parent, message):
     dialog.set_close_response("close")
     dialog.present(parent)
 
+def show_detailed_error(parent: Gtk.Window, description:None|str, message:str):
+    dialog = DetailedError(description, message)
+    dialog.present(parent)
+
 def exist_executable(command):
     """return if a command can be executed in the SO
 
@@ -94,7 +98,6 @@ def exist_executable(command):
     Returns:
         {bool} -- if the given command exists in the system
     """
-
     return shutil.which(command) is not None
 
 

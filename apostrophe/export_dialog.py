@@ -146,12 +146,11 @@ class ExportDialog:
                 try:
                     export(self.text, file, fmt, args)
                 except (NotADirectoryError, RuntimeError) as e:
-                    helpers.show_error(
-                        None,
-                        _("An error happened while trying to export:\n\n"
-                        "{err_msg}")
-                        .format(err_msg=str(e).encode()
-                                .decode("unicode-escape")))
+                    helpers.show_detailed_error(
+                        window,
+                        _("Apostrophe experienced an error while trying to export:"),
+                        str(e)
+                    )
 
         self.dialog.connect("response", on_response)
         self.dialog.show()

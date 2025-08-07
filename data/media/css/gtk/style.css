@@ -302,6 +302,17 @@ separator.sidebar {
   background: alpha(var(--sidebar-border-color), 1.5);
 }
 
+/* Error messages */
+dialog.error-details textview {
+  background: none;
+  color: inherit;
+}
+
+.error-message {
+  padding: 12px;
+  font-size: 0.95em;
+}
+
 /* Pride flags */
 progressbar.flag-pride progress {
   background: linear-gradient(to right,
