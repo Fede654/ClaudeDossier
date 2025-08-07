@@ -18,7 +18,6 @@ class ScrollObserver {
                 }
             }}
             this.scrollChanged();
-            console.log("test")
             window.webkit.messageHandlers.rendered.postMessage("");
         });
 

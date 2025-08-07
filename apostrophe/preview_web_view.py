@@ -64,7 +64,16 @@ class PreviewWebView(WebKit.WebView):
         if value != self.top_margin_:
             self.top_margin_ = value
         # sync the default 34px height with textview's
-        self.evaluate_javascript(f'document.documentElement.style.setProperty("--topbars-height", "{34 + value}px");', -1, None, None, None, None)
+        self.evaluate_javascript(
+            """
+            (function() {
+                let scale = observer.getScroll;
+                document.documentElement.style.setProperty("--topbars-height", "%spx");
+                observer.setScrollScale(scale);
+            })();
+            """ % (34 + value),
+        -1, None, None, None, None
+        )
         self.notify("top_margin")
 
     def __init__(self):

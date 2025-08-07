@@ -147,14 +147,6 @@ class ApostropheTextView(GtkSource.View):
         drop_target.connect('drop', self.on_drop)
         self.add_controller(drop_target)
 
-        # While resizing the TextView, there is unwanted scroll upwards
-        # if a top margin is present.
-        # When a size allocation is detected, this variable will hold
-        # the scroll to re-set until the UI is idle again.
-
-        # TODO: Find a better way to handle unwanted scroll.
-        self.frozen_scroll_scale = None
-
         # When pasting b-trees, we may get more than one insertion. 
         # We want to disable autocompletion until the paste is done
         self.connect("paste-clipboard", self._on_clipboard_paste_started)
@@ -335,10 +327,6 @@ class ApostropheTextView(GtkSource.View):
         self.markup.update_margins_indents()
         self.queue_draw()
 
-        # TODO: Find a better way to handle unwanted scroll on resize.
-        self.frozen_scroll_scale = self.scroll_scale
-        GLib.idle_add(self._unfreeze_scroll_scale)
-
         self.preview_popover.popover.present()
 
     @Gtk.Template.Callback()
@@ -351,9 +339,7 @@ class ApostropheTextView(GtkSource.View):
         self.smooth_scroll_to()
 
     def _on_vadjustment_changed(self, *_):
-        if self.frozen_scroll_scale is not None:
-            self.scroll_scale = self.frozen_scroll_scale
-        elif self.scroller.can_scroll():
+        if self.scroller.can_scroll():
             self.notify("scroll_scale")
 
     def _on_spelling_language_changed(self, _obj, _spec):
@@ -362,9 +348,6 @@ class ApostropheTextView(GtkSource.View):
     def _on_clipboard_paste_started(self, *args, **kwargs):
         self.buffer.paste_ongoing = True
 
-    def _unfreeze_scroll_scale(self):
-        self.frozen_scroll_scale = None
-        self.queue_draw()
 
     @Gtk.Template.Callback()
     def update_font_size(self, *args, **kwargs):

@@ -26,7 +26,7 @@ from apostrophe.settings import Settings
 
 gi.require_version('WebKit', '6.0')
 gi.require_version('Gtk', '4.0')
-from gi.repository import Gtk, WebKit
+from gi.repository import Gtk, WebKit, GObject
 
 from apostrophe import config
 from apostrophe.preview_converter import PreviewConverter
@@ -60,8 +60,6 @@ class PreviewHandler:
 
         self.settings = Settings.new()
         self.scroll_handler_id = None
-        self.web_scroll_handler_id = None
-        self.text_scroll_handler_id = None
 
         self.loading = False
         self.shown = False
@@ -163,6 +161,10 @@ class PreviewHandler:
             self.text_view().get_buffer().disconnect(self.text_changed_handler_id)
             self.text_changed_handler_id = None
 
+        if self.scroll_handler_id:
+            self.scroll_handler_id.unbind()
+            self.scroll_handler_id = None
+
         if self.loading:
             self.loading = False
             self.panels().revealed = False
@@ -192,7 +194,12 @@ class PreviewHandler:
 
         # sync scroll before showing again the preview
         if self.settings.get_boolean("sync-scroll") and not self.scroll_handler_id:
-            self.scroll_handler_id = self.text_view().bind_property("scroll-scale", self.web_view, "scroll-scale", 3)
+            self.scroll_handler_id = self.text_view().bind_property("scroll-scale",
+                self.web_view, "scroll-scale",
+                GObject.BindingFlags.DEFAULT
+                | GObject.BindingFlags.SYNC_CREATE
+                | GObject.BindingFlags.BIDIRECTIONAL,
+            )
         if not self.shown:
             self.load_webview()
             self.shown = True
