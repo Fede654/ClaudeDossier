@@ -2,7 +2,14 @@
     {
       "name": "PDF",
       "ext": "pdf",
-      "to": "pdf"
+      "to": "pdf",
+      "engine": "typst"
+    },
+    {
+      "name": "PDF (LaTeX)",
+      "ext": "pdf",
+      "to": "pdf",
+      "engine": "xelatex"
     },
     {
       "name": "LibreOffice Text Document",
@@ -27,7 +34,8 @@
     {
       "name": "LaTeX Beamer Slideshow (pdf)",
       "ext": "pdf",
-      "to": "beamer"
+      "to": "beamer",
+      "engine": "xelatex"
     },
     {
       "name": "LaTeX Beamer Slideshow (tex)",

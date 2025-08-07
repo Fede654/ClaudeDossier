@@ -96,6 +96,12 @@ install_subdir(
 )
 
 install_subdir(
+	'pandoc_templates',
+	install_dir: pkgdatadir
+)
+
+
+install_subdir(
 	'reference_files',
 	install_dir: pkgdatadir
 )

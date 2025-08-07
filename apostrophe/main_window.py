@@ -88,6 +88,8 @@ class MainWindow(Adw.ApplicationWindow):
         super().__init__(application=Gio.Application.get_default(),
                          title="Apostrophe")
 
+        os.chdir("/")
+
         # Preferences
         self.settings = Settings.new()
 

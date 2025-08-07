@@ -40,11 +40,12 @@ LOGGER = logging.getLogger('apostrophe')
 
 class Format(GObject.Object):
 
-    def __init__(self, name, ext, to, **kwargs):
+    def __init__(self, name, ext, to, engine, **kwargs):
         super().__init__(**kwargs)
         self.name: str = name
         self.ext: str = ext
         self.to: str = to
+        self.engine: None | str = engine
 
     @property
     def has_pages(self):
@@ -68,7 +69,7 @@ class Format(GObject.Object):
 
     @property
     def requires_texlive(self):
-        return self.ext in {"tex", "pdf"}
+        return self.ext in {"tex", "pdf"} and self.engine != "typst"
 
 
 class ExportDialog:
@@ -82,8 +83,9 @@ class ExportDialog:
             "extension": "pdf",
             "to": "pdf",
             "mimetype": "application/pdf",
-            "args": ["--pdf-engine=xelatex",
-                     "--variable=papersize:a4"]
+            "args": ["--pdf-engine=typst",
+                     "--variable=papersize:a4",
+                     "-V", "template=%s" % helpers.get_media_path('/pandoc_templates/typst.typ')]
         },
         "html":
         {
@@ -111,63 +113,48 @@ class ExportDialog:
         self.format = _format
         self.text = text
 
-        self._show_texlive_warning = (self.format == "pdf" and
-                                      not helpers.exist_executable("pdftex"))
+        self.dialog = Gtk.FileChooserNative.new(
+                        _("Export"),
+                        None,
+                        Gtk.FileChooserAction.SAVE,
+                        _("Export to %s") %
+                        self.formats[self.format]["name"],
+                        _("Cancel"))
 
-        if (self._show_texlive_warning):
-            self.dialog = Adw.AlertDialog.new(None, None)
-            self.dialog.set_extra_child(TexliveWarning())
-            self.dialog.add_response("close", _("Close"))
-            self.dialog.set_close_response("close")
+        dialog_filter = Gtk.FileFilter.new()
+        dialog_filter.set_name(self.formats[self.format]["name"])
+        dialog_filter.add_mime_type(self.formats[self.format]["mimetype"])
+        self.dialog.add_filter(dialog_filter)
 
-        else:
-            self.dialog = Gtk.FileChooserNative.new(
-                          _("Export"),
-                          None,
-                          Gtk.FileChooserAction.SAVE,
-                          _("Export to %s") %
-                          self.formats[self.format]["name"],
-                          _("Cancel"))
+        self.dialog.set_current_name(
+            file.name + '.' + self.formats[self.format]["extension"])
 
-            dialog_filter = Gtk.FileFilter.new()
-            dialog_filter.set_name(self.formats[self.format]["name"])
-            dialog_filter.add_mime_type(self.formats[self.format]["mimetype"])
-            self.dialog.add_filter(dialog_filter)
-
-            self.dialog.set_current_name(
-                file.name + '.' + self.formats[self.format]["extension"])
-
-            # / is the base path when the current file has not been saved
-            if file.base_path != "/":
-                self.dialog.set_current_folder(Gio.File.new_for_path(file.base_path))
+        # / is the base path when the current file has not been saved
+        if file.base_path != "/":
+            self.dialog.set_current_folder(Gio.File.new_for_path(file.base_path))
 
     def export(self, window):
-
         def on_response(dialog, response):
-            if not self._show_texlive_warning:
-                file = self.dialog.get_file()
-                fmt = self.formats[self.format]["to"]
-                args = self.formats[self.format]["args"].copy()
+            file = self.dialog.get_file()
+            fmt = self.formats[self.format]["to"]
+            args = self.formats[self.format]["args"].copy()
 
-                args.append("--metadata=base_path:%s" % self.file.base_path)
-                args.append("--lua-filter=%s" % helpers.get_media_path('/lua/relative_to_absolute.lua'))
+            args.append("--metadata=base_path:%s" % self.file.base_path)
+            args.append("--lua-filter=%s" % helpers.get_media_path('/lua/relative_to_absolute.lua'))
 
-                if response == Gtk.ResponseType.ACCEPT:
-                    try:
-                        export(self.text, file, fmt, args)
-                    except (NotADirectoryError, RuntimeError) as e:
-                        helpers.show_error(
-                            None,
-                            _("An error happened while trying to export:\n\n"
-                            "{err_msg}")
-                            .format(err_msg=str(e).encode()
-                                    .decode("unicode-escape")))
+            if response == Gtk.ResponseType.ACCEPT:
+                try:
+                    export(self.text, file, fmt, args)
+                except (NotADirectoryError, RuntimeError) as e:
+                    helpers.show_error(
+                        None,
+                        _("An error happened while trying to export:\n\n"
+                        "{err_msg}")
+                        .format(err_msg=str(e).encode()
+                                .decode("unicode-escape")))
 
         self.dialog.connect("response", on_response)
-        if self._show_texlive_warning:
-            self.dialog.present(window)
-        else:
-            self.dialog.show()
+        self.dialog.show()
 
 
 @Gtk.Template(resource_path='/org/gnome/gitlab/somas/Apostrophe/ui/Export.ui')
@@ -224,7 +211,8 @@ class AdvancedExportDialog(Adw.Dialog):
             for _i, format in enumerate(_formats_list):
                 self.formats.append(Format(format["name"],
                                            format["ext"],
-                                           format["to"]))
+                                           format["to"],
+                                           format.get("engine", None)))
 
         self.formats_list.bind_model(self.formats, self.row_constructor, None)
         self.formats_list.select_row(self.formats_list.get_row_at_index(0))
@@ -256,7 +244,7 @@ class AdvancedExportDialog(Adw.Dialog):
 
     @GObject.Property(type=bool, default=False)
     def show_syntax_options(self):
-        return self.formats_list.get_selected_row().item.has_syntax
+        return self.formats_list.get_selected_row().item.has_syntax and self.formats_list.get_selected_row().item.engine != "typst"
 
     @GObject.Property(type=bool, default=False)
     def show_presentation_options(self):
@@ -358,7 +346,9 @@ class AdvancedExportDialog(Adw.Dialog):
         args = []
 
         if self.formats_list.get_selected_row().item.ext == "pdf":
-            args.append("--pdf-engine=xelatex")
+            args.append(f"--pdf-engine={self.formats_list.get_selected_row().item.engine}")
+            if self.formats_list.get_selected_row().item.engine == "typst":
+                args.extend(['-V', 'template=%s' % helpers.get_media_path('/pandoc_templates/typst.typ')])
 
         if self.sw_standalone.get_active():
             args.append("--standalone")
