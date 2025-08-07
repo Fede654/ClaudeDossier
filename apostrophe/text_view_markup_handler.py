@@ -210,7 +210,7 @@ class MarkupHandler:
                 code_blocks.append((start, end))
 
             # helper functions to test if a range is inside code blocks.
-            inside_code_blocks = lambda start, end: any(True for (s, e) in code_blocks if s < start or end <  e)
+            inside_code_blocks = lambda start, end: any(True for (s, e) in code_blocks if s < start < e or s < end < e)
             match_inside_code_blocks = lambda m: inside_code_blocks(m.start(), m.end())
 
             # Find:
