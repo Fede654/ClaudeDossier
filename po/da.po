@@ -1,7 +1,7 @@
 # Danish translation for apostrophe.
-# Copyright (C) 2022-2024 apostrophe's COPYRIGHT HOLDER
+# Copyright (C) 2022-2025 apostrophe's COPYRIGHT HOLDER
 # This file is distributed under the same license as the apostrophe package.
-# Ask Hjorth Larsen <asklarsen@gmail.com>, 2022-2024.
+# Ask Hjorth Larsen <asklarsen@gmail.com>, 2022-2025.
 #
 # toast --> banner
 #
@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: apostrophe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2024-04-17 20:12+0000\n"
-"PO-Revision-Date: 2024-04-18 14:00+0200\n"
+"POT-Creation-Date: 2025-08-16 14:09+0000\n"
+"PO-Revision-Date: 2025-08-18 18:37+0200\n"
 "Last-Translator: Ask Hjorth Larsen <asklarsen@gmail.com>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "Language: da\n"
@@ -22,144 +22,142 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:3
+#: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:2
 #: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:4
 msgid "Apostrophe"
 msgstr "Apostrophe"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! Do NOT translate "uberwriter" or "apostrophe"! The list MUST also end with a semicolon!
-#: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:5
+#: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:4
 msgid "uberwriter;UberWriter;apostrophe;markdown;editor;text;write;"
-msgstr ""
-"uberwriter;UberWriter;apostrophe;markdown;editor;redigering;tekst;skriv;"
-"skrive;"
+msgstr "uberwriter;UberWriter;apostrophe;markdown;editor;redigering;tekst;skriv;skrive;"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:6
+#: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:5
 msgid "Apostrophe, an elegant, distraction-free markdown editor"
 msgstr "Apostrophe, elegant markdownredigering uden distraktioner"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:35
+#: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:17
+msgid "New Window"
+msgstr "Nyt vindue"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:47
 msgid "Color scheme"
 msgstr "Farveskema"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:36
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:48
 msgid "Use the color scheme in the application's UI and in the text area."
 msgstr "Brug farveskemaet i programmets brugerflade og i tekstområdet."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:42
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:54
 msgid "Check spelling while typing"
 msgstr "Løbende stavekontrol"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:43
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:55
 msgid "Enable or disable spellchecking."
 msgstr "Slå stavekontrol til eller fra."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:49
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:61
 msgid "Synchronize editor/preview scrolling"
 msgstr "Synkronisér rulning ved redigering/forhåndsvisning"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:50
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:62
 msgid "Keep the editor and preview scroll positions in sync."
 msgstr "Behold altid samme rulleposition i redigering og forhåndsvisning."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:56
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:68
 msgid "Input format"
 msgstr "Inputformat"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:57
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:69
 msgid "Input format to use when previewing and exporting using Pandoc."
 msgstr "Inputformat til forhåndsvisning og eksport med Pandoc."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:63
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:75
 msgid "Autohide Headerbar"
 msgstr "Skjul automatisk titellinje"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:64
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:76
 msgid "Hide the header and status bars when typing."
 msgstr "Skjul titel- og statuslinje ved indtastning."
 
-# Ikke sikker.  Det er gschema (konfigurationsstrenge) så ikke særligt synlige, så det er måske ikke kritisk.
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:70
-msgid "Open file base path"
-msgstr "Åbn basissti for filer"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:71
-msgid "Open file paths of the current session"
-msgstr "Åbn filstier for nuværende session"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:77
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:82
 msgid "Default statistic"
 msgstr "Standardstatistik"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:78
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:83
 msgid "Which statistic is shown on the main window."
 msgstr "Hvilken statistik der vises i hovedvinduet."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:84
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:89
 msgid "Characters per line"
 msgstr "Tegn per linje"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:85
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:90
 msgid "Maximum number of characters per line within the editor."
 msgstr "Maksimalt antal tegn per linje i redigering."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:91
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:96
 #: data/ui/AboutHemingway.ui:6
 msgid "Hemingway Mode"
 msgstr "Hemingway-tilstand"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:92
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:97
 msgid "Whether the user can delete text or not."
 msgstr "Om brugeren kan slette tekst."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:98
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:103
 msgid "Hemingway Toast Count"
 msgstr "Hemingway-bannerantal"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:99
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:104
 msgid "Number of times the Hemingway Toast has been shown"
 msgstr "Antal gange Hemingway-banneret er blevet vist"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:105
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:110
 msgid "Preview mode"
 msgstr "Tilstand for forhåndsvisning"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:106
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:111
 msgid "How to display the preview."
 msgstr "Hvordan forhåndsvisningen vises."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:112
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:117
 #: data/ui/Preferences.ui:64
 msgid "Preview Security"
 msgstr "Sikkerhed af forhåndsvisning"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:113
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:118
 msgid "Security policy to apply when rendering files."
 msgstr "Sikkerhedspolitik som skal bruges ved visning af filer."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:119
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:124
 msgid "Preview active"
 msgstr "Forhåndsvisning aktiveret"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:120
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:125
 msgid "Whether showing of preview is active when launching a new window."
 msgstr "Om forhåndsvisning er aktiv, når et nyt vindue vises."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:126
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:131
 msgid "Text size"
 msgstr "Tekststørrelse"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:127
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:132
 msgid "Preferred relative size for the text."
 msgstr "Foretrukken relativ størrelse for teksten."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:133
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:138
 msgid "Toolbar"
 msgstr "Værktøjslinje"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:134
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:139
 msgid "Whether the toolbar is shown or not."
 msgstr "Om værktøjslinjen vises."
+
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:145
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:146
+msgid "Number of seconds between autosaves"
+msgstr "Antal sekunder mellem autogem"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:5
 msgid "Edit Markdown in style"
@@ -213,23 +211,23 @@ msgstr ""
 "Eksportér til alle mulige formater: PDF, Word/Libreoffice, LaTeX eller endda "
 "HTML-præsentationer"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:41
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:55
 msgid "Main window"
 msgstr "Hovedvindue"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:45
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:59
 msgid "Main window in dark mode"
 msgstr "Hovedvindue i mørk tilstand"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:49
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:63
 msgid "Inserting a table with the help of the toolbar"
 msgstr "Indsættelse af tabel ved hjælp af værktøjslinjen"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:53
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:67
 msgid "The preview lets you see a live rendered version of your document"
 msgstr "Forhåndsvisningen lader dig se dit dokument gengivet dynamisk"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:57
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:71
 msgid "The focus mode allow for a more distraction-free experience"
 msgstr "Fokustilstanden giver en brugeroplevelse med færre distraktioner"
 
@@ -274,8 +272,8 @@ msgstr "_Luk"
 msgid "Formats"
 msgstr "Formater"
 
-#: data/ui/Export.ui:67 apostrophe/export_dialog.py:126
-#: apostrophe/export_dialog.py:328 apostrophe/export_dialog.py:332
+#: data/ui/Export.ui:67 apostrophe/export_dialog.py:125
+#: apostrophe/export_dialog.py:336 apostrophe/export_dialog.py:340
 msgid "Export"
 msgstr "Eksportér"
 
@@ -295,57 +293,65 @@ msgstr ""
 "Brug sidehoved og -fod til at inkludere f.eks. stilark og metainformation"
 
 #: data/ui/Export.ui:96
+msgid "Relative to Absolute"
+msgstr "Relativ til absolut"
+
+#: data/ui/Export.ui:97
+msgid "Replace relative path with absolute for images and links"
+msgstr "Erstat relativ sti med absolut for billeder og links"
+
+#: data/ui/Export.ui:103
 msgid "Table of Contents"
 msgstr "Indholdsfortegnelse"
 
-#: data/ui/Export.ui:102
+#: data/ui/Export.ui:109
 msgid "Number Sections"
 msgstr "Nummerér afsnit"
 
-#: data/ui/Export.ui:112 data/ui/Export.ui:115 data/ui/Export.ui:126
-#: data/ui/Export.ui:130
+#: data/ui/Export.ui:119 data/ui/Export.ui:122 data/ui/Export.ui:133
+#: data/ui/Export.ui:137
 msgid "Page Size"
 msgstr "Sidestørrelse"
 
-#: data/ui/Export.ui:141
+#: data/ui/Export.ui:148
 msgid "HTML Options"
 msgstr "HTML-indstillinger"
 
-#: data/ui/Export.ui:144
+#: data/ui/Export.ui:151
 msgid "Self-Contained"
 msgstr "Selvstændig"
 
-#: data/ui/Export.ui:145
+#: data/ui/Export.ui:152
 msgid "Produces an HTML file with no external dependencies"
 msgstr "Danner en HTML-fil uden eksterne afhængigheder"
 
-#: data/ui/Export.ui:154
+#: data/ui/Export.ui:161
 msgid "Syntax Highlighting"
 msgstr "Syntaksfremhævning"
 
-#: data/ui/Export.ui:157
+#: data/ui/Export.ui:164
 msgid "Use Syntax Highlighting"
 msgstr "Brug syntaksfremhævning"
 
-#: data/ui/Export.ui:162
+#: data/ui/Export.ui:169
 msgid "Highlight Style"
 msgstr "Stil for syntaksfremhævning"
 
-#: data/ui/Export.ui:175
+#: data/ui/Export.ui:182
 msgid "Presentation"
 msgstr "Præsentation"
 
 # Næste streng virker som forklaring
-#: data/ui/Export.ui:178
+#: data/ui/Export.ui:185
 msgid "Incremental Bullets"
 msgstr "Et punkt ad gangen"
 
-#: data/ui/Export.ui:179
+#: data/ui/Export.ui:186
 msgid "Show one bullet point after another in a slideshow"
 msgstr "Vis punkter et ad gangen i præsentation"
 
-#: data/ui/Headerbar.ui:10 apostrophe/main_window.py:772
-#: apostrophe/main_window.py:790
+#: data/ui/Headerbar.ui:10 apostrophe/main_window.py:889
+#: apostrophe/main_window.py:904
 msgid "New File"
 msgstr "Ny fil"
 
@@ -412,6 +418,10 @@ msgstr "Avanceret e_ksport …"
 #: data/ui/Headerbar.ui:148
 msgid "_Copy HTML"
 msgstr "_Kopiér HTML"
+
+#: data/ui/InlinePreviewPopover.ui:42
+msgid "Not Found"
+msgstr "Ikke fundet"
 
 #: data/ui/Preferences.ui:12 data/ui/Preferences.ui:13
 msgid "Check Spelling"
@@ -782,10 +792,6 @@ msgstr "Billede"
 msgid "Table"
 msgstr "Tabel"
 
-#: data/ui/Toolbar.ui:153
-msgid "Show More Controls"
-msgstr "Vis flere kontroller"
-
 #: data/ui/Window.ui:64
 msgid "This file may be insecure"
 msgstr "Denne fil er måske usikker"
@@ -797,7 +803,8 @@ msgid ""
 "Preview where javascript and HTML are disabled."
 msgstr ""
 "Forhåndsvisning af filer fra ubetroede kilder kan være farligt.\n"
-"Hvis du ikke kender filens indhold, så åbn den som begrænset forhåndsvisning, hvor javascript og HTML er slået fra."
+"Hvis du ikke kender filens indhold, så åbn den som begrænset "
+"forhåndsvisning, hvor javascript og HTML er slået fra."
 
 #: data/ui/Window.ui:77
 msgid "Load Preview"
@@ -807,42 +814,47 @@ msgstr "Indlæs forhåndsvisning"
 msgid "Load Restricted Preview"
 msgstr "Indlæs begrænset forhåndsvisning"
 
-#: data/ui/Window.ui:159
+#: data/ui/Window.ui:184
+msgid ""
+"Apostrophe closed unexpectedly. This file has been recovered from an autosave"
+msgstr "Apostrophe lukkede uventet. Denne fil er gendannet fra en automatisk gemt kopi"
+
+#: data/ui/Window.ui:200
 msgid "File Has Changed on Disk"
 msgstr "Filen har ændret sig på disken"
 
-#: data/ui/Window.ui:169
+#: data/ui/Window.ui:210
 msgid "The file has been changed by another program"
 msgstr "Filen er blevet ændret af et andet program"
 
-#: data/ui/Window.ui:177
+#: data/ui/Window.ui:218
 msgid "_Discard Changes and Reload"
 msgstr "_Forkast ændringer og genindlæs"
 
-#: apostrophe/application.py:228
+#: apostrophe/application.py:301
 msgid "Donate"
 msgstr "Donér"
 
-#: apostrophe/application.py:229
+#: apostrophe/application.py:302
 msgid "Translations"
 msgstr "Oversættelser"
 
-#: apostrophe/export_dialog.py:121 apostrophe/helpers.py:84
+#: apostrophe/export_dialog.py:120 apostrophe/helpers.py:84
 msgid "Close"
 msgstr "Luk"
 
-#: apostrophe/export_dialog.py:129 apostrophe/export_dialog.py:333
+#: apostrophe/export_dialog.py:128 apostrophe/export_dialog.py:341
 #, python-format
 msgid "Export to %s"
 msgstr "Eksportér til %s"
 
-#: apostrophe/export_dialog.py:131 apostrophe/export_dialog.py:329
-#: apostrophe/export_dialog.py:334 apostrophe/main_window.py:416
-#: apostrophe/main_window.py:494 apostrophe/main_window.py:587
+#: apostrophe/export_dialog.py:130 apostrophe/export_dialog.py:337
+#: apostrophe/export_dialog.py:342 apostrophe/main_window.py:444
+#: apostrophe/main_window.py:530 apostrophe/main_window.py:653
 msgid "Cancel"
 msgstr "Annullér"
 
-#: apostrophe/export_dialog.py:155 apostrophe/export_dialog.py:322
+#: apostrophe/export_dialog.py:161 apostrophe/export_dialog.py:330
 #, python-brace-format
 msgid ""
 "An error happened while trying to export:\n"
@@ -853,11 +865,11 @@ msgstr ""
 "\n"
 "{err_msg}"
 
-#: apostrophe/export_dialog.py:235
+#: apostrophe/export_dialog.py:243
 msgid "Export to {}"
 msgstr "Eksportér til {}"
 
-#: apostrophe/export_dialog.py:329
+#: apostrophe/export_dialog.py:337
 msgid "Select folder"
 msgstr "Vælg mappe"
 
@@ -869,69 +881,88 @@ msgstr "Fejl"
 msgid "Unsaved documents"
 msgstr "Dokumenter som ikke er gemt"
 
-#: apostrophe/inline_preview.py:201
+#: apostrophe/inline_preview.py:303
+msgid "LaTeX not found"
+msgstr "LaTeX ikke fundet"
+
+#: apostrophe/inline_preview.py:305
 msgid "Formula looks incorrect:"
 msgstr "Formlen ser forkert ud:"
 
-#: apostrophe/inline_preview.py:241
+#: apostrophe/inline_preview.py:373
 msgid "No matching footnote found"
 msgstr "Ingen fodnote matcher"
 
-#: apostrophe/inline_preview.py:261
+#: apostrophe/inline_preview.py:406
 msgid "noun"
 msgstr "navneord"
 
-#: apostrophe/inline_preview.py:263
+#: apostrophe/inline_preview.py:408
 msgid "verb"
 msgstr "udsagnsord"
 
-#: apostrophe/inline_preview.py:265
+#: apostrophe/inline_preview.py:410
 msgid "adjective"
 msgstr "tillægsord"
 
 # egentlig kan jeg bedst lide adverbium/verbum/... men mon ikke "dansk" er bedre?
-#: apostrophe/inline_preview.py:267
+#: apostrophe/inline_preview.py:412
 msgid "adverb"
 msgstr "biord"
 
 #. Hemingway Toast
-#: apostrophe/main_window.py:153
+#: apostrophe/main_window.py:159
 msgid "Text can't be deleted while on Hemingway mode"
 msgstr "Teksten kan ikke fjernes i Hemingway-tilstand"
 
-#: apostrophe/main_window.py:156
+#: apostrophe/main_window.py:162
 msgid "Tell me more"
 msgstr "Fortæl mig mere"
 
-#: apostrophe/main_window.py:412
+#: apostrophe/main_window.py:440
 msgid "Save your File"
 msgstr "Gem din fil"
 
-#: apostrophe/main_window.py:415 apostrophe/main_window.py:589
+#: apostrophe/main_window.py:443 apostrophe/main_window.py:655
 msgid "Save"
 msgstr "Gem"
 
-#: apostrophe/main_window.py:483
+#: apostrophe/main_window.py:519
 msgid "Markdown Files"
 msgstr "Markdownfiler"
 
-#: apostrophe/main_window.py:487
+#: apostrophe/main_window.py:523
 msgid "Plain Text Files"
 msgstr "Rene tekstfiler"
 
-#: apostrophe/main_window.py:490
+#: apostrophe/main_window.py:526
 msgid "Open a .md file"
 msgstr "Åbn en .md-fil"
 
-#: apostrophe/main_window.py:493
+#: apostrophe/main_window.py:529
 msgid "Open"
 msgstr "Åbn"
 
-#: apostrophe/main_window.py:581
+#: apostrophe/main_window.py:607
+#, python-brace-format
+msgid ""
+"Failed to detect encoding for file:\n"
+"{file}\n"
+"\n"
+"The error was:\n"
+"{err_msg}"
+msgstr ""
+"Kunne ikke bestemme kodningen for fil:\n"
+"{file}\n"
+"\n"
+"Fejlen var:\n"
+"{err_msg}"
+
+#: apostrophe/main_window.py:647
 msgid "Save Changes?"
 msgstr "Gem ændringer?"
 
-#: apostrophe/main_window.py:582
+#: apostrophe/main_window.py:648
 #, python-format
 msgid ""
 "“%s” contains unsaved changes. If you don’t save, all your changes will be "
@@ -940,7 +971,7 @@ msgstr ""
 "“%s” indeholder ændringer, som ikke er gemt. Hvis du ikke gemmer, vil alle "
 "dine ændringer gå tabt for evigt."
 
-#: apostrophe/main_window.py:588
+#: apostrophe/main_window.py:654
 msgid "Discard"
 msgstr "Forkast"
 
@@ -1074,7 +1105,7 @@ msgid "link text"
 msgstr "linktekst"
 
 #: apostrophe/text_view_format_inserter.py:429
-#: apostrophe/text_view_format_inserter.py:461
+#: apostrophe/text_view_format_inserter.py:464
 msgid "image caption"
 msgstr "billedtekst"
 
@@ -1082,7 +1113,7 @@ msgstr "billedtekst"
 msgid "Select an image"
 msgstr "Vælg et billede"
 
-#: apostrophe/text_view_format_inserter.py:550
+#: apostrophe/text_view_format_inserter.py:553
 msgid ""
 "\n"
 "code\n"
@@ -1090,9 +1121,19 @@ msgstr ""
 "\n"
 "kode\n"
 
-#: apostrophe/text_view.py:179 apostrophe/text_view.py:181
+#: apostrophe/text_view.py:220 apostrophe/text_view.py:222
 msgid "web page"
 msgstr "webside"
+
+# Ikke sikker.  Det er gschema (konfigurationsstrenge) så ikke særligt synlige, så det er måske ikke kritisk.
+#~ msgid "Open file base path"
+#~ msgstr "Åbn basissti for filer"
+
+#~ msgid "Open file paths of the current session"
+#~ msgstr "Åbn filstier for nuværende session"
+
+#~ msgid "Show More Controls"
+#~ msgstr "Vis flere kontroller"
 
 #~ msgid "New"
 #~ msgstr "Ny"
@@ -1157,9 +1198,6 @@ msgstr "webside"
 
 #~ msgid "Save as…"
 #~ msgstr "Gem som …"
-
-#~ msgid "New Window"
-#~ msgstr "Nyt vindue"
 
 #, python-format
 #~ msgid "Save changes to document “%s” before closing?"
