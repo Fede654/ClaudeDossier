@@ -8,16 +8,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apostrophe\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2025-05-05 19:48+0000\n"
-"PO-Revision-Date: 2025-05-14 17:22+0200\n"
-"Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
+"POT-Creation-Date: 2025-06-25 15:53+0000\n"
+"PO-Revision-Date: 2025-06-30 07:24+0200\n"
+"Last-Translator: Meskó Balázs <mesko.balazs@fsf.hu>\n"
 "Language-Team: Hungarian <openscope at fsf dot hu>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.12.3\n"
+"X-Generator: Poedit 3.5\n"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:3
 #: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:4
@@ -35,7 +35,6 @@ msgid "Apostrophe, an elegant, distraction-free markdown editor"
 msgstr "Az Aposztróf egy elegáns, zavartalan Markdown-szerkesztő"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:18
-#| msgid "Windowed"
 msgid "New Window"
 msgstr "Új ablak"
 
@@ -156,6 +155,11 @@ msgstr "Eszköztár"
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:139
 msgid "Whether the toolbar is shown or not."
 msgstr "Megjelenjen-e az eszköztár vagy sem."
+
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:145
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:146
+msgid "Number of seconds between autosaves"
+msgstr "Automatikus mentések közti másodpercek száma"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:5
 msgid "Edit Markdown in style"
@@ -345,8 +349,8 @@ msgstr "Növekvő listaelemek"
 msgid "Show one bullet point after another in a slideshow"
 msgstr "Felsorolás elemeinek megjelenítése egymás után a diavetítéskor"
 
-#: data/ui/Headerbar.ui:10 apostrophe/main_window.py:775
-#: apostrophe/main_window.py:790
+#: data/ui/Headerbar.ui:10 apostrophe/main_window.py:889
+#: apostrophe/main_window.py:904
 msgid "New File"
 msgstr "Új fájl"
 
@@ -464,7 +468,7 @@ msgstr "Markdown-változat dokumentációja"
 msgid "Desired level of security when rendering the preview"
 msgstr "A kívánt biztonsági szint az előnézet megjelenítésekor"
 
-#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_handler.py:199
+#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_handler.py:205
 #: apostrophe/preview_window.py:32
 msgid "Preview"
 msgstr "Előnézet"
@@ -776,15 +780,11 @@ msgstr "Kép"
 msgid "Table"
 msgstr "Táblázat"
 
-#: data/ui/Toolbar.ui:153
-msgid "Show More Controls"
-msgstr "További vezérlők megjelenítése"
-
-#: data/ui/Window.ui:61
+#: data/ui/Window.ui:64
 msgid "This file may be insecure"
 msgstr "Ez a fájl lehet, hogy nem biztonságos"
 
-#: data/ui/Window.ui:62
+#: data/ui/Window.ui:65
 msgid ""
 "Previewing files from untrusted sources can be dangerous.\n"
 "If you're unsure about the contents of this file, open it in the Restricted "
@@ -794,31 +794,38 @@ msgstr ""
 "Ha bizonytalan a fájl tartalmát illetően, akkor nyissa meg a korlátozott "
 "előnézetben, ahol a JavaScript és a HTML le van tiltva."
 
-#: data/ui/Window.ui:74
+#: data/ui/Window.ui:77
 msgid "Load Preview"
 msgstr "Előnézet betöltése"
 
-#: data/ui/Window.ui:83
+#: data/ui/Window.ui:86
 msgid "Load Restricted Preview"
 msgstr "Korlátozott előnézet betöltése"
 
-#: data/ui/Window.ui:191
+#: data/ui/Window.ui:184
+msgid ""
+"Apostrophe closed unexpectedly. This file has been recovered from an autosave"
+msgstr ""
+"Az Aposztróf váratlanul bezárult. A fájl helyre lett állítva egy automatikus "
+"mentésből."
+
+#: data/ui/Window.ui:200
 msgid "File Has Changed on Disk"
 msgstr "A fájl megváltozott a lemezen"
 
-#: data/ui/Window.ui:201
+#: data/ui/Window.ui:210
 msgid "The file has been changed by another program"
 msgstr "A fájlt egy másik program megváltoztatta"
 
-#: data/ui/Window.ui:209
+#: data/ui/Window.ui:218
 msgid "_Discard Changes and Reload"
 msgstr "Változtatások _elvetése és újratöltés"
 
-#: apostrophe/application.py:260
+#: apostrophe/application.py:301
 msgid "Donate"
 msgstr "Adományozás"
 
-#: apostrophe/application.py:261
+#: apostrophe/application.py:302
 msgid "Translations"
 msgstr "Fordítások"
 
@@ -832,8 +839,8 @@ msgid "Export to %s"
 msgstr "Exportálás ide: %s"
 
 #: apostrophe/export_dialog.py:130 apostrophe/export_dialog.py:337
-#: apostrophe/export_dialog.py:342 apostrophe/main_window.py:423
-#: apostrophe/main_window.py:505 apostrophe/main_window.py:607
+#: apostrophe/export_dialog.py:342 apostrophe/main_window.py:444
+#: apostrophe/main_window.py:530 apostrophe/main_window.py:653
 msgid "Cancel"
 msgstr "Mégse"
 
@@ -893,39 +900,39 @@ msgid "adverb"
 msgstr "határozószó"
 
 #. Hemingway Toast
-#: apostrophe/main_window.py:151
+#: apostrophe/main_window.py:159
 msgid "Text can't be deleted while on Hemingway mode"
 msgstr "A szöveg nem törölhető Hemingway módban"
 
-#: apostrophe/main_window.py:154
+#: apostrophe/main_window.py:162
 msgid "Tell me more"
 msgstr "Mutass többet"
 
-#: apostrophe/main_window.py:419
+#: apostrophe/main_window.py:440
 msgid "Save your File"
 msgstr "Fájl mentése"
 
-#: apostrophe/main_window.py:422 apostrophe/main_window.py:609
+#: apostrophe/main_window.py:443 apostrophe/main_window.py:655
 msgid "Save"
 msgstr "Mentés"
 
-#: apostrophe/main_window.py:494
+#: apostrophe/main_window.py:519
 msgid "Markdown Files"
 msgstr "Markdown-fájlok"
 
-#: apostrophe/main_window.py:498
+#: apostrophe/main_window.py:523
 msgid "Plain Text Files"
 msgstr "Egyszerű szöveges fájlok"
 
-#: apostrophe/main_window.py:501
+#: apostrophe/main_window.py:526
 msgid "Open a .md file"
 msgstr "Egy .md fájl megnyitása"
 
-#: apostrophe/main_window.py:504
+#: apostrophe/main_window.py:529
 msgid "Open"
 msgstr "Megnyitás"
 
-#: apostrophe/main_window.py:571
+#: apostrophe/main_window.py:607
 #, python-brace-format
 msgid ""
 "Failed to detect encoding for file:\n"
@@ -940,11 +947,11 @@ msgstr ""
 "A hiba a következő volt:\n"
 "{err_msg}"
 
-#: apostrophe/main_window.py:601
+#: apostrophe/main_window.py:647
 msgid "Save Changes?"
 msgstr "Menti a változtatásokat?"
 
-#: apostrophe/main_window.py:602
+#: apostrophe/main_window.py:648
 #, python-format
 msgid ""
 "“%s” contains unsaved changes. If you don’t save, all your changes will be "
@@ -953,7 +960,7 @@ msgstr ""
 "A(z) „%s” mentetlen változtatásokat tartalmaz. Ha nem menti, akkor minden "
 "változtatás véglegesen elvész."
 
-#: apostrophe/main_window.py:608
+#: apostrophe/main_window.py:654
 msgid "Discard"
 msgstr "Elvetés"
 
@@ -1088,6 +1095,9 @@ msgstr ""
 "\n"
 "kód\n"
 
-#: apostrophe/text_view.py:215 apostrophe/text_view.py:217
+#: apostrophe/text_view.py:220 apostrophe/text_view.py:222
 msgid "web page"
 msgstr "weboldal"
+
+#~ msgid "Show More Controls"
+#~ msgstr "További vezérlők megjelenítése"
