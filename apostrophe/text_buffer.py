@@ -26,7 +26,7 @@ class ApostropheTextBuffer(GtkSource.Buffer):
 
     hemingway_mode = GObject.Property(type=bool, default=False)
     paste_ongoing = GObject.Property(type=bool, default=False)
-    changed_debounced_timeout = GObject.Property(type=int, default=100)
+    changed_debounced_timeout = GObject.Property(type=int, default=10)
     changed_debounced_timeout_id = None
 
     def __init__(self):
