@@ -828,7 +828,7 @@ class MainWindow(Adw.ApplicationWindow):
         except GLib.GError as error:
             LOGGER.warning(str(error.message))
             return
-        if success and self.current.gfile:
+        if success and self.current.gfile and self.current.gfile.get_path():
             self.snapshot.set_attribute_string("metadata::original-path", self.current.gfile.get_path(), Gio.FileQueryInfoFlags.NONE)
         return success
     

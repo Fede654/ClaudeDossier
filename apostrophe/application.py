@@ -195,6 +195,8 @@ class Application(Adw.Application):
     
     def restore_snapshots(self):
         snapshot_dir = Gio.File.new_for_path(GLib.build_filenamev([GLib.get_user_state_dir(),"snapshots"]))
+        if not snapshot_dir.query_exists(None):
+            return
         snapshotsEnum = snapshot_dir.enumerate_children('standard::name,standard::type', Gio.FileQueryInfoFlags.NONE)
 
         for i, snapshot_info in enumerate(snapshotsEnum):
