@@ -82,7 +82,12 @@ class ApostropheOpenPopover(Gtk.Popover):
         recents_list = filter(lambda item: item.get_mime_type() == 'text/markdown',
                               self.recents_manager.get_items())
         for item in recents_list:
-            self.model.append(RecentItem(GLib.markup_escape_text(item.get_display_name()), GLib.markup_escape_text(item.get_uri_display()), item.get_uri()))
+            if item.exists():
+                name = GLib.markup_escape_text(item.get_display_name())
+                path = GLib.markup_escape_text(item.get_uri_display()).removesuffix(f'/{name}')
+                self.model.append(RecentItem(name, path, item.get_uri()))
+            else:
+                self.recents_manager.remove_item(item.get_uri())
 
         self.stack.set_visible_child(self.recent if self.model else self.empty)
 
