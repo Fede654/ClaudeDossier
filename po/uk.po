@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: apostrophe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2025-06-04 15:36+0000\n"
-"PO-Revision-Date: 2025-06-06 15:44+0300\n"
+"POT-Creation-Date: 2025-08-27 15:28+0000\n"
+"PO-Revision-Date: 2025-08-27 20:30+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -19,25 +19,100 @@ msgstr ""
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Lokalize 23.04.3\n"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:3
+#: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:2
 #: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:4
 msgid "Apostrophe"
 msgstr "Апостроф"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! Do NOT translate "uberwriter" or "apostrophe"! The list MUST also end with a semicolon!
-#: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:5
+#: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:4
 msgid "uberwriter;UberWriter;apostrophe;markdown;editor;text;write;"
 msgstr ""
-"uberwriter;UberWriter;apostrophe;markdown;editor;text;write;уберрайтер;"
-"апостроф;маркдаун;розмітка;редактор;текст;писати;"
+"uberwriter;UberWriter;apostrophe;markdown;editor;text;write;уберрайтер;апостр"
+"оф;маркдаун;розмітка;редактор;текст;писати;"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:6
+#: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:5
 msgid "Apostrophe, an elegant, distraction-free markdown editor"
 msgstr "«Апостроф» — елегантний ненав'язливий редактор для markdown"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:18
 msgid "New Window"
 msgstr "Нове вікно"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:5
+msgid "Edit Markdown in style"
+msgstr "Редагувати Markdown у стилі"
+
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:9
+msgid "Manuel Genovés"
+msgstr "Manuel Genovés"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:14
+msgid "Focus on your writing with a clean, distraction-free markdown editor."
+msgstr ""
+"Зосередьтеся на написанні тексту, скориставшись охайним ненав'язливим "
+"редактором markdown."
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:15
+msgid "Features:"
+msgstr "Можливості:"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:17
+msgid "An UI tailored to comfortable writing"
+msgstr "Інтерфейс, який пристосовано до комфортного написання текстів"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:18
+msgid "A distraction-free mode"
+msgstr "Режим зосередженості"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:19
+msgid "Dark, light and sepia themes"
+msgstr "Темна, світла теми та тема у кольорах сепії"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:20
+msgid ""
+"Everything you expect from a text editor, such as spellchecking or document "
+"statistics"
+msgstr ""
+"Усе, що ви могли очікувати від текстового редактора, зокрема перевірка "
+"правопису та показ статистики документа"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:21
+msgid "Live preview of what you write"
+msgstr "Інтерактивний перегляд результатів написання тексту"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:22
+msgid ""
+"Export to all kind of formats: PDF, Word/Libreoffice, LaTeX, or even HTML "
+"slideshows"
+msgstr ""
+"Експорт до усіх типів форматів: PDF, Word/Libreoffice, LaTeX, або навіть "
+"показів слайдів HTML"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:55
+msgid "Main window"
+msgstr "Головне вікно"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:59
+msgid "Main window in dark mode"
+msgstr "Головне вікно у темному режимі"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:63
+msgid "Inserting a table with the help of the toolbar"
+msgstr "Вставлення таблиці із довідкою щодо панелі інструментів"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:67
+msgid "The preview lets you see a live rendered version of your document"
+msgstr ""
+"За допомогою попереднього перегляду ви можете бачити інтерактивну оброблену "
+"версію вашого документа"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:71
+msgid "The focus mode allow for a more distraction-free experience"
+msgstr ""
+"Режим фокусування забезпечує роботу без зайвих елементів, які відволікають "
+"увагу"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:47
 msgid "Color scheme"
@@ -165,81 +240,6 @@ msgstr "Визначає, чи буде показано панель інстр
 msgid "Number of seconds between autosaves"
 msgstr "Кількість секунд між автозбереженнями"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:5
-msgid "Edit Markdown in style"
-msgstr "Редагувати Markdown у стилі"
-
-#. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:9
-msgid "Manuel Genovés"
-msgstr "Manuel Genovés"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:14
-msgid "Focus on your writing with a clean, distraction-free markdown editor."
-msgstr ""
-"Зосередьтеся на написанні тексту, скориставшись охайним ненав'язливим "
-"редактором markdown."
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:15
-msgid "Features:"
-msgstr "Можливості:"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:17
-msgid "An UI tailored to comfortable writing"
-msgstr "Інтерфейс, який пристосовано до комфортного написання текстів"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:18
-msgid "A distraction-free mode"
-msgstr "Режим зосередженості"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:19
-msgid "Dark, light and sepia themes"
-msgstr "Темна, світла теми та тема у кольорах сепії"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:20
-msgid ""
-"Everything you expect from a text editor, such as spellchecking or document "
-"statistics"
-msgstr ""
-"Усе, що ви могли очікувати від текстового редактора, зокрема перевірка "
-"правопису та показ статистики документа"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:21
-msgid "Live preview of what you write"
-msgstr "Інтерактивний перегляд результатів написання тексту"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:22
-msgid ""
-"Export to all kind of formats: PDF, Word/Libreoffice, LaTeX, or even HTML "
-"slideshows"
-msgstr ""
-"Експорт до усіх типів форматів: PDF, Word/Libreoffice, LaTeX, або навіть "
-"показів слайдів HTML"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:55
-msgid "Main window"
-msgstr "Головне вікно"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:59
-msgid "Main window in dark mode"
-msgstr "Головне вікно у темному режимі"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:63
-msgid "Inserting a table with the help of the toolbar"
-msgstr "Вставлення таблиці із довідкою щодо панелі інструментів"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:67
-msgid "The preview lets you see a live rendered version of your document"
-msgstr ""
-"За допомогою попереднього перегляду ви можете бачити інтерактивну оброблену "
-"версію вашого документа"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:71
-msgid "The focus mode allow for a more distraction-free experience"
-msgstr ""
-"Режим фокусування забезпечує роботу без зайвих елементів, які відволікають "
-"увагу"
-
 #: data/ui/About.ui.in:9
 msgid "Copyright (C) 2022, Manuel G., Wolf V."
 msgstr "© Manuel G., Wolf V., 2022"
@@ -276,8 +276,8 @@ msgstr "З_акрити"
 msgid "Formats"
 msgstr "Формати"
 
-#: data/ui/Export.ui:67 apostrophe/export_dialog.py:125
-#: apostrophe/export_dialog.py:336 apostrophe/export_dialog.py:340
+#: data/ui/Export.ui:67 apostrophe/export_dialog.py:117
+#: apostrophe/export_dialog.py:323 apostrophe/export_dialog.py:327
 msgid "Export"
 msgstr "Експортувати"
 
@@ -354,74 +354,75 @@ msgstr "Нарощувальні позначки"
 msgid "Show one bullet point after another in a slideshow"
 msgstr "Показувати одну позначку пункту за іншою у показі слайдів"
 
-#: data/ui/Headerbar.ui:10 apostrophe/main_window.py:878
-#: apostrophe/main_window.py:893
+#: data/ui/HeaderbarNarrow.ui:26 data/ui/Headerbar.ui:43
+msgid "Main Menu"
+msgstr "Головне меню"
+
+#: data/ui/HeaderbarNarrow.ui:51 data/ui/Headerbar.ui:10
+#: apostrophe/main_window.py:891 apostrophe/main_window.py:906
 msgid "New File"
 msgstr "Новий файл"
 
-#: data/ui/Headerbar.ui:17
+#: data/ui/HeaderbarNarrow.ui:55 data/ui/Headerbar.ui:17
 msgid "_Open"
 msgstr "_Відкрити"
+
+#: data/ui/HeaderbarNarrow.ui:59 data/ui/HeaderbarNarrow.ui:63
+#: data/ui/Headerbar.ui:25
+msgid "_Save"
+msgstr "З_берегти"
+
+#: data/ui/HeaderbarNarrow.ui:67 data/ui/Headerbar.ui:119
+msgid "_Save As..."
+msgstr "Зберегти _як…"
+
+#: data/ui/HeaderbarNarrow.ui:90 data/ui/Headerbar.ui:142
+msgid "Advanced _Export…"
+msgstr "Розширене _експортування…"
+
+#: data/ui/HeaderbarNarrow.ui:96 data/ui/Headerbar.ui:148
+msgid "_Copy HTML"
+msgstr "_Копіювати HTML"
+
+#: data/ui/HeaderbarNarrow.ui:104 data/ui/Headerbar.ui:77
+msgid "_Hemingway Mode"
+msgstr "Режим _Гемінґвея"
+
+#: data/ui/HeaderbarNarrow.ui:108 data/ui/Headerbar.ui:81
+msgid "_Focus Mode"
+msgstr "Режим з_осередженості"
+
+#: data/ui/HeaderbarNarrow.ui:114 data/ui/Headerbar.ui:54
+msgid "Search in the File"
+msgstr "Шукати у файлі"
+
+#: data/ui/HeaderbarNarrow.ui:118 data/ui/Headerbar.ui:87
+msgid "Find and _Replace"
+msgstr "Знайти й за_мінити"
+
+#: data/ui/HeaderbarNarrow.ui:124 data/ui/Headerbar.ui:93
+msgid "_Preferences"
+msgstr "_Налаштування"
+
+#: data/ui/HeaderbarNarrow.ui:130 data/ui/Headerbar.ui:99
+msgid "Open _Tutorial"
+msgstr "Відкрити під_ручник"
+
+#: data/ui/HeaderbarNarrow.ui:135 data/ui/Headerbar.ui:104
+msgid "_Keyboard Shortcuts"
+msgstr "_Клавіатурні скорочення"
+
+#: data/ui/HeaderbarNarrow.ui:139 data/ui/Headerbar.ui:108
+msgid "_About Apostrophe"
+msgstr "_Про «Апостроф»"
 
 #: data/ui/Headerbar.ui:19
 msgid "Open Markdown File"
 msgstr "Відкрити файл markdown"
 
-#: data/ui/Headerbar.ui:25
-msgid "_Save"
-msgstr "З_берегти"
-
 #: data/ui/Headerbar.ui:27
 msgid "Save Markdown File"
 msgstr "Зберегти файл Markdown"
-
-#: data/ui/Headerbar.ui:43
-msgid "Main Menu"
-msgstr "Головне меню"
-
-#: data/ui/Headerbar.ui:54
-msgid "Search in the File"
-msgstr "Шукати у файлі"
-
-#: data/ui/Headerbar.ui:77
-msgid "_Hemingway Mode"
-msgstr "Режим _Гемінґвея"
-
-#: data/ui/Headerbar.ui:81
-msgid "_Focus Mode"
-msgstr "Режим з_осередженості"
-
-#: data/ui/Headerbar.ui:87
-msgid "Find and _Replace"
-msgstr "Знайти й за_мінити"
-
-#: data/ui/Headerbar.ui:93
-msgid "_Preferences"
-msgstr "_Налаштування"
-
-#: data/ui/Headerbar.ui:99
-msgid "Open _Tutorial"
-msgstr "Відкрити під_ручник"
-
-#: data/ui/Headerbar.ui:104
-msgid "_Keyboard Shortcuts"
-msgstr "_Клавіатурні скорочення"
-
-#: data/ui/Headerbar.ui:108
-msgid "_About Apostrophe"
-msgstr "_Про «Апостроф»"
-
-#: data/ui/Headerbar.ui:119
-msgid "_Save As..."
-msgstr "Зберегти _як…"
-
-#: data/ui/Headerbar.ui:142
-msgid "Advanced _Export…"
-msgstr "Розширене _експортування…"
-
-#: data/ui/Headerbar.ui:148
-msgid "_Copy HTML"
-msgstr "_Копіювати HTML"
 
 #: data/ui/InlinePreviewPopover.ui:42
 msgid "Not Found"
@@ -472,7 +473,7 @@ msgstr "Документація до варіанта Markdown"
 msgid "Desired level of security when rendering the preview"
 msgstr "Бажаний рівень захисту при обробці зображень попереднього перегляду"
 
-#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_handler.py:205
+#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_handler.py:212
 #: apostrophe/preview_window.py:32
 msgid "Preview"
 msgstr "Перегляд"
@@ -736,21 +737,67 @@ msgstr "Кольори сепії"
 msgid "Use Dark Colors"
 msgstr "Використовувати темні кольори"
 
-#: data/ui/Toolbar.ui:27
+#: data/ui/ToolbarNarrow.ui:17 data/ui/Toolbar.ui:27
 msgid "Bold"
 msgstr "Напівжирний"
 
-#: data/ui/Toolbar.ui:37
+#: data/ui/ToolbarNarrow.ui:27 data/ui/Toolbar.ui:37
 msgid "Italic"
 msgstr "Курсив"
 
-#: data/ui/Toolbar.ui:47
+#: data/ui/ToolbarNarrow.ui:37 data/ui/Toolbar.ui:47
 msgid "Strikethrough"
 msgstr "Перекреслення"
 
-#: data/ui/Toolbar.ui:57
+#: data/ui/ToolbarNarrow.ui:47 data/ui/Toolbar.ui:57
 msgid "Heading"
 msgstr "Заголовок"
+
+#: data/ui/ToolbarNarrow.ui:58
+#| msgctxt "shortcut window"
+#| msgid "List Item"
+msgid "List"
+msgstr "Список"
+
+#: data/ui/ToolbarNarrow.ui:69
+msgid "Insert"
+msgstr "Вставити"
+
+#: data/ui/ToolbarNarrow.ui:80 data/ui/Toolbar.ui:138
+msgid "Table"
+msgstr "Таблиця"
+
+#: data/ui/ToolbarNarrow.ui:117
+#| msgid "Unordered List"
+msgid "Unordered"
+msgstr "Невпорядкований"
+
+#: data/ui/ToolbarNarrow.ui:136
+#| msgid "Ordered List"
+msgid "Ordered"
+msgstr "Впорядкований"
+
+#: data/ui/ToolbarNarrow.ui:155
+#| msgid "Check List"
+msgid "Checklist"
+msgstr "Перелік пунктів"
+
+#: data/ui/ToolbarNarrow.ui:185 data/ui/Toolbar.ui:98
+msgid "Blockquote"
+msgstr "Блок цитування"
+
+#: data/ui/ToolbarNarrow.ui:204 data/ui/Toolbar.ui:108
+msgid "Code"
+msgstr "Код"
+
+#: data/ui/ToolbarNarrow.ui:223 data/ui/Toolbar.ui:118
+msgid "Link"
+msgstr "Посилання"
+
+#: data/ui/ToolbarNarrow.ui:242 data/ui/Toolbar.ui:128
+#: apostrophe/text_view_format_inserter.py:435
+msgid "Image"
+msgstr "Зображення"
 
 #: data/ui/Toolbar.ui:68
 msgid "Unordered List"
@@ -763,30 +810,6 @@ msgstr "Впорядкований список"
 #: data/ui/Toolbar.ui:88
 msgid "Check List"
 msgstr "Перелік пунктів"
-
-#: data/ui/Toolbar.ui:98
-msgid "Blockquote"
-msgstr "Блок цитування"
-
-#: data/ui/Toolbar.ui:108
-msgid "Code"
-msgstr "Код"
-
-#: data/ui/Toolbar.ui:118
-msgid "Link"
-msgstr "Посилання"
-
-#: data/ui/Toolbar.ui:128 apostrophe/text_view_format_inserter.py:435
-msgid "Image"
-msgstr "Зображення"
-
-#: data/ui/Toolbar.ui:138
-msgid "Table"
-msgstr "Таблиця"
-
-#: data/ui/Toolbar.ui:153
-msgid "Show More Controls"
-msgstr "Показати додаткове керування"
 
 #: data/ui/Window.ui:64
 msgid "This file may be insecure"
@@ -802,57 +825,75 @@ msgstr ""
 "Якщо ви не певні щодо вмісту файла, відкрийте його у режимі обмеженого "
 "перегляду із вимкненими javascript і HTML.                   "
 
-#: data/ui/Window.ui:77
+#: data/ui/Window.ui:75
 msgid "Load Preview"
 msgstr "Завантажити перегляд"
 
-#: data/ui/Window.ui:86
+#: data/ui/Window.ui:84
 msgid "Load Restricted Preview"
 msgstr "Завантажити обмежений перегляд"
 
-#: data/ui/Window.ui:184
+#: data/ui/Window.ui:180
 msgid ""
 "Apostrophe closed unexpectedly. This file has been recovered from an autosave"
 msgstr ""
-"Роботу «Апострофа» було несподівано завершено. Цей файл відновлено з"
-" автоматично збереженого файла"
+"Роботу «Апострофа» було несподівано завершено. Цей файл відновлено з "
+"автоматично збереженого файла"
 
-#: data/ui/Window.ui:200
+#: data/ui/Window.ui:196
 msgid "File Has Changed on Disk"
 msgstr "Файл змінено на диску"
 
-#: data/ui/Window.ui:210
+#: data/ui/Window.ui:206
 msgid "The file has been changed by another program"
 msgstr "Сторонньою програмою було внесено зміни до файла"
 
-#: data/ui/Window.ui:218
+#: data/ui/Window.ui:214
 msgid "_Discard Changes and Reload"
 msgstr "Від_кинути зміни і перезавантажити"
 
-#: apostrophe/application.py:301
+#: apostrophe/application.py:303
 msgid "Donate"
 msgstr "Підтримати фінансово"
 
-#: apostrophe/application.py:302
+#: apostrophe/application.py:304
 msgid "Translations"
 msgstr "Переклади"
 
-#: apostrophe/export_dialog.py:120 apostrophe/helpers.py:84
-msgid "Close"
-msgstr "Закрити"
+#: apostrophe/bottombar.py:184
+#| msgid "Toolbar"
+msgid "Hide Toolbar"
+msgstr "Приховати панель інструментів"
 
-#: apostrophe/export_dialog.py:128 apostrophe/export_dialog.py:341
+#: apostrophe/bottombar.py:186
+#| msgid "Toolbar"
+msgid "Show Toolbar"
+msgstr "Показати панель інструментів"
+
+#: apostrophe/export_dialog.py:120 apostrophe/export_dialog.py:328
 #, python-format
 msgid "Export to %s"
 msgstr "Експортувати в %s"
 
-#: apostrophe/export_dialog.py:130 apostrophe/export_dialog.py:337
-#: apostrophe/export_dialog.py:342 apostrophe/main_window.py:441
-#: apostrophe/main_window.py:527 apostrophe/main_window.py:642
+#: apostrophe/export_dialog.py:122 apostrophe/export_dialog.py:324
+#: apostrophe/export_dialog.py:329 apostrophe/main_window.py:446
+#: apostrophe/main_window.py:532 apostrophe/main_window.py:655
 msgid "Cancel"
 msgstr "Скасувати"
 
-#: apostrophe/export_dialog.py:161 apostrophe/export_dialog.py:330
+#: apostrophe/export_dialog.py:151
+#| msgid ""
+#| "An error happened while trying to export:\n"
+#| "\n"
+#| "{err_msg}"
+msgid "Apostrophe experienced an error while trying to export:"
+msgstr "В «Апострофі» сталася помилка під час спроби експортування:"
+
+#: apostrophe/export_dialog.py:230
+msgid "Export to {}"
+msgstr "Експортувати до {}"
+
+#: apostrophe/export_dialog.py:317
 #, python-brace-format
 msgid ""
 "An error happened while trying to export:\n"
@@ -863,17 +904,17 @@ msgstr ""
 "\n"
 "{err_msg}"
 
-#: apostrophe/export_dialog.py:243
-msgid "Export to {}"
-msgstr "Експортувати до {}"
-
-#: apostrophe/export_dialog.py:337
+#: apostrophe/export_dialog.py:324
 msgid "Select folder"
 msgstr "Вибрати теку"
 
 #: apostrophe/helpers.py:83
 msgid "Error"
 msgstr "Помилка"
+
+#: apostrophe/helpers.py:84
+msgid "Close"
+msgstr "Закрити"
 
 #: apostrophe/inhibitor.py:36
 msgid "Unsaved documents"
@@ -908,39 +949,39 @@ msgid "adverb"
 msgstr "прислівник"
 
 #. Hemingway Toast
-#: apostrophe/main_window.py:156
+#: apostrophe/main_window.py:161
 msgid "Text can't be deleted while on Hemingway mode"
 msgstr "У режимі Гемінґвея текст не можна вилучати"
 
-#: apostrophe/main_window.py:159
+#: apostrophe/main_window.py:164
 msgid "Tell me more"
 msgstr "Докладніше"
 
-#: apostrophe/main_window.py:437
+#: apostrophe/main_window.py:442
 msgid "Save your File"
 msgstr "Зберегти ваш файл"
 
-#: apostrophe/main_window.py:440 apostrophe/main_window.py:644
+#: apostrophe/main_window.py:445 apostrophe/main_window.py:657
 msgid "Save"
 msgstr "Зберегти"
 
-#: apostrophe/main_window.py:516
+#: apostrophe/main_window.py:521
 msgid "Markdown Files"
 msgstr "Файли Markdown"
 
-#: apostrophe/main_window.py:520
+#: apostrophe/main_window.py:525
 msgid "Plain Text Files"
 msgstr "Звичайні текстові файли"
 
-#: apostrophe/main_window.py:523
+#: apostrophe/main_window.py:528
 msgid "Open a .md file"
 msgstr "Відкрити файл .md"
 
-#: apostrophe/main_window.py:526
+#: apostrophe/main_window.py:531
 msgid "Open"
 msgstr "Відкрити"
 
-#: apostrophe/main_window.py:596
+#: apostrophe/main_window.py:609
 #, python-brace-format
 msgid ""
 "Failed to detect encoding for file:\n"
@@ -955,11 +996,11 @@ msgstr ""
 "Повідомлення про помилку:\n"
 "{err_msg}"
 
-#: apostrophe/main_window.py:636
+#: apostrophe/main_window.py:649
 msgid "Save Changes?"
 msgstr "Зберегти зміни?"
 
-#: apostrophe/main_window.py:637
+#: apostrophe/main_window.py:650
 #, python-format
 msgid ""
 "“%s” contains unsaved changes. If you don’t save, all your changes will be "
@@ -968,7 +1009,7 @@ msgstr ""
 "У «%s» є незбережені зміни. Якщо ви їх не збережете, всі зміни будуть "
 "остаточно втрачені."
 
-#: apostrophe/main_window.py:643
+#: apostrophe/main_window.py:656
 msgid "Discard"
 msgstr "Відкинути"
 
@@ -1111,9 +1152,12 @@ msgstr ""
 "\n"
 "код\n"
 
-#: apostrophe/text_view.py:215 apostrophe/text_view.py:217
+#: apostrophe/text_view.py:212 apostrophe/text_view.py:214
 msgid "web page"
 msgstr "вебсторінка"
+
+#~ msgid "Show More Controls"
+#~ msgstr "Показати додаткове керування"
 
 #~ msgid "Open file base path"
 #~ msgstr "Базовий шлях для відкриття файлів"
