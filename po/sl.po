@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: apostrophe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2025-06-04 15:36+0000\n"
-"PO-Revision-Date: 2025-06-08 00:52+0200\n"
+"POT-Creation-Date: 2025-08-26 19:29+0000\n"
+"PO-Revision-Date: 2025-08-27 10:02+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
@@ -22,24 +22,24 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Generator: Poedit 2.2.1\n"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:3
+#: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:2
 #: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:4
 msgid "Apostrophe"
 msgstr "Apostrof"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! Do NOT translate "uberwriter" or "apostrophe"! The list MUST also end with a semicolon!
-#: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:5
+#: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:4
 msgid "uberwriter;UberWriter;apostrophe;markdown;editor;text;write;"
 msgstr ""
 "uberwriter;UberWriter;apostrophe;markdown;editor;urejevalnik;apostrof;"
 "opuščaj;oblikovanje;nadurejevalnik;nad-urejevalnik;gedit;notepadqq;notepad++;"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:6
+#: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:5
 msgid "Apostrophe, an elegant, distraction-free markdown editor"
 msgstr ""
 "Apostrof, enostaven, a funkcijsko zmogljiv urejevalnik zapisa markdown."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:18
+#: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:17
 msgid "New Window"
 msgstr "Novo okno"
 
@@ -271,8 +271,8 @@ msgstr "_Zapri"
 msgid "Formats"
 msgstr "Vrste datotek"
 
-#: data/ui/Export.ui:67 apostrophe/export_dialog.py:125
-#: apostrophe/export_dialog.py:336 apostrophe/export_dialog.py:340
+#: data/ui/Export.ui:67 apostrophe/export_dialog.py:117
+#: apostrophe/export_dialog.py:323 apostrophe/export_dialog.py:327
 msgid "Export"
 msgstr "Izvozi"
 
@@ -349,8 +349,8 @@ msgstr "Naraščajoče oznake"
 msgid "Show one bullet point after another in a slideshow"
 msgstr "Pokaže eno vrstično oznako za drugo v predstavitvi"
 
-#: data/ui/Headerbar.ui:10 apostrophe/main_window.py:878
-#: apostrophe/main_window.py:893
+#: data/ui/Headerbar.ui:10 apostrophe/main_window.py:891
+#: apostrophe/main_window.py:906
 msgid "New File"
 msgstr "Nova datoteka"
 
@@ -467,7 +467,7 @@ msgstr "Dokumentacija o različicah zapisa markdown"
 msgid "Desired level of security when rendering the preview"
 msgstr "Želena raven varnosti pri izrisovanju predogleda"
 
-#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_handler.py:205
+#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_handler.py:212
 #: apostrophe/preview_window.py:32
 msgid "Preview"
 msgstr "Predogled"
@@ -779,10 +779,6 @@ msgstr "Slika"
 msgid "Table"
 msgstr "Tabela"
 
-#: data/ui/Toolbar.ui:153
-msgid "Show More Controls"
-msgstr "Pokaži več kontrolnikov"
-
 #: data/ui/Window.ui:64
 msgid "This file may be insecure"
 msgstr "Ta datoteka morda ni varna"
@@ -797,57 +793,61 @@ msgstr ""
 "Če niste prepričani o vsebini te datoteke, jo odprite v omejenem predogledu, "
 "v katerem sta javascript in HTML onemogočena."
 
-#: data/ui/Window.ui:77
+#: data/ui/Window.ui:75
 msgid "Load Preview"
 msgstr "Naloži predogled"
 
-#: data/ui/Window.ui:86
+#: data/ui/Window.ui:84
 msgid "Load Restricted Preview"
 msgstr "Naloži omejeni predogleda"
 
-#: data/ui/Window.ui:184
+#: data/ui/Window.ui:180
 msgid ""
 "Apostrophe closed unexpectedly. This file has been recovered from an autosave"
 msgstr ""
 "Apostrof se je nepričakovano zaprl. Ta datoteka je bila obnovljena iz "
 "samodejnega shranjevanja"
 
-#: data/ui/Window.ui:200
+#: data/ui/Window.ui:196
 msgid "File Has Changed on Disk"
 msgstr "Datoteka je bila na disku spremenjena"
 
-#: data/ui/Window.ui:210
+#: data/ui/Window.ui:206
 msgid "The file has been changed by another program"
 msgstr "Datoteka je bila spremenjena v drugem programu."
 
-#: data/ui/Window.ui:218
+#: data/ui/Window.ui:214
 msgid "_Discard Changes and Reload"
 msgstr "_Opusti spremembe in ponovno naloži"
 
-#: apostrophe/application.py:301
+#: apostrophe/application.py:303
 msgid "Donate"
 msgstr "Donirajte"
 
-#: apostrophe/application.py:302
+#: apostrophe/application.py:304
 msgid "Translations"
 msgstr "Prevodi"
 
-#: apostrophe/export_dialog.py:120 apostrophe/helpers.py:84
-msgid "Close"
-msgstr "Zapri"
-
-#: apostrophe/export_dialog.py:128 apostrophe/export_dialog.py:341
+#: apostrophe/export_dialog.py:120 apostrophe/export_dialog.py:328
 #, python-format
 msgid "Export to %s"
 msgstr "Izvozi v %s"
 
-#: apostrophe/export_dialog.py:130 apostrophe/export_dialog.py:337
-#: apostrophe/export_dialog.py:342 apostrophe/main_window.py:441
-#: apostrophe/main_window.py:527 apostrophe/main_window.py:642
+#: apostrophe/export_dialog.py:122 apostrophe/export_dialog.py:324
+#: apostrophe/export_dialog.py:329 apostrophe/main_window.py:446
+#: apostrophe/main_window.py:532 apostrophe/main_window.py:655
 msgid "Cancel"
 msgstr "Prekliči"
 
-#: apostrophe/export_dialog.py:161 apostrophe/export_dialog.py:330
+#: apostrophe/export_dialog.py:151
+msgid "Apostrophe experienced an error while trying to export:"
+msgstr "Apostrof je pri poskusu izvoza naletel na napako:"
+
+#: apostrophe/export_dialog.py:230
+msgid "Export to {}"
+msgstr "Izvozi v {}"
+
+#: apostrophe/export_dialog.py:317
 #, python-brace-format
 msgid ""
 "An error happened while trying to export:\n"
@@ -858,17 +858,17 @@ msgstr ""
 "\n"
 "{err_msg}"
 
-#: apostrophe/export_dialog.py:243
-msgid "Export to {}"
-msgstr "Izvozi v {}"
-
-#: apostrophe/export_dialog.py:337
+#: apostrophe/export_dialog.py:324
 msgid "Select folder"
 msgstr "Izbor mape"
 
 #: apostrophe/helpers.py:83
 msgid "Error"
 msgstr "Napaka"
+
+#: apostrophe/helpers.py:84
+msgid "Close"
+msgstr "Zapri"
 
 #: apostrophe/inhibitor.py:36
 msgid "Unsaved documents"
@@ -903,39 +903,39 @@ msgid "adverb"
 msgstr "prislov"
 
 #. Hemingway Toast
-#: apostrophe/main_window.py:156
+#: apostrophe/main_window.py:161
 msgid "Text can't be deleted while on Hemingway mode"
 msgstr "Besedila v Hemingwayevem načinu ni mogoče izbrisati"
 
-#: apostrophe/main_window.py:159
+#: apostrophe/main_window.py:164
 msgid "Tell me more"
 msgstr "Več o tem"
 
-#: apostrophe/main_window.py:437
+#: apostrophe/main_window.py:442
 msgid "Save your File"
 msgstr "Shrani datoteko"
 
-#: apostrophe/main_window.py:440 apostrophe/main_window.py:644
+#: apostrophe/main_window.py:445 apostrophe/main_window.py:657
 msgid "Save"
 msgstr "Shrani"
 
-#: apostrophe/main_window.py:516
+#: apostrophe/main_window.py:521
 msgid "Markdown Files"
 msgstr "Oblikovanje Markdown"
 
-#: apostrophe/main_window.py:520
+#: apostrophe/main_window.py:525
 msgid "Plain Text Files"
 msgstr "Besedilne datoteke"
 
-#: apostrophe/main_window.py:523
+#: apostrophe/main_window.py:528
 msgid "Open a .md file"
 msgstr "Odpri datoteko .md"
 
-#: apostrophe/main_window.py:526
+#: apostrophe/main_window.py:531
 msgid "Open"
 msgstr "Odpri"
 
-#: apostrophe/main_window.py:596
+#: apostrophe/main_window.py:609
 #, python-brace-format
 msgid ""
 "Failed to detect encoding for file:\n"
@@ -950,11 +950,11 @@ msgstr ""
 "Javljena napaka:\n"
 "{err_msg}"
 
-#: apostrophe/main_window.py:636
+#: apostrophe/main_window.py:649
 msgid "Save Changes?"
 msgstr "Ali želite shraniti spremembe?"
 
-#: apostrophe/main_window.py:637
+#: apostrophe/main_window.py:650
 #, python-format
 msgid ""
 "“%s” contains unsaved changes. If you don’t save, all your changes will be "
@@ -963,7 +963,7 @@ msgstr ""
 "»%s« vsebuje neshranjene spremembe. Če ne shranite, bodo vse spremembe "
 "trajno izgubljene."
 
-#: apostrophe/main_window.py:643
+#: apostrophe/main_window.py:656
 msgid "Discard"
 msgstr "Zavrzi"
 
@@ -1106,6 +1106,6 @@ msgstr ""
 "\n"
 "koda\n"
 
-#: apostrophe/text_view.py:215 apostrophe/text_view.py:217
+#: apostrophe/text_view.py:212 apostrophe/text_view.py:214
 msgid "web page"
 msgstr "spletna stran"
