@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: apostrophe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2025-08-26 19:29+0000\n"
-"PO-Revision-Date: 2025-08-27 10:02+0200\n"
+"POT-Creation-Date: 2025-08-27 12:12+0000\n"
+"PO-Revision-Date: 2025-08-27 17:22+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
@@ -39,9 +39,78 @@ msgid "Apostrophe, an elegant, distraction-free markdown editor"
 msgstr ""
 "Apostrof, enostaven, a funkcijsko zmogljiv urejevalnik zapisa markdown."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:17
+#: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:18
 msgid "New Window"
 msgstr "Novo okno"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:5
+msgid "Edit Markdown in style"
+msgstr "Uporabi oblikovanje Markdown v slogu"
+
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:9
+msgid "Manuel Genovés"
+msgstr "Manuel Genovés"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:14
+msgid "Focus on your writing with a clean, distraction-free markdown editor."
+msgstr "Osredotočite se na pisanje s enostavnim in preglednim urejevalnikom."
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:15
+msgid "Features:"
+msgstr "Zmožnosti:"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:17
+msgid "An UI tailored to comfortable writing"
+msgstr "Vmesnik, prilagojen udobnemu pisanju"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:18
+msgid "A distraction-free mode"
+msgstr "Način vnašanja brez nepotrebnih motenj"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:19
+msgid "Dark, light and sepia themes"
+msgstr "Temna, svetla in starinska tema"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:20
+msgid ""
+"Everything you expect from a text editor, such as spellchecking or document "
+"statistics"
+msgstr ""
+"Vse, kar pričakujete od urejevalnika besedil, od črkovanja do statistike "
+"dokumenta"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:21
+msgid "Live preview of what you write"
+msgstr "Sprotni predogled vnesenega besedila"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:22
+msgid ""
+"Export to all kind of formats: PDF, Word/Libreoffice, LaTeX, or even HTML "
+"slideshows"
+msgstr ""
+"Izvoz v številne zapise: PDF, Word/Libreoffice, LaTeX, ali celo predstavitve "
+"HTML"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:55
+msgid "Main window"
+msgstr "Glavno okno"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:59
+msgid "Main window in dark mode"
+msgstr "Glavno okno v temnem načinu"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:63
+msgid "Inserting a table with the help of the toolbar"
+msgstr "Vstavljanje tabele s pomočjo orodne vrstice"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:67
+msgid "The preview lets you see a live rendered version of your document"
+msgstr "V predogledu si lahko ogledate upodobljeno različico dokumenta v živo"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:71
+msgid "The focus mode allow for a more distraction-free experience"
+msgstr "Način pozornosti omogoča izkušnjo brez motenj"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:47
 msgid "Color scheme"
@@ -164,75 +233,6 @@ msgstr "Ali naj bo orodna vrstica prikazana ali ne."
 msgid "Number of seconds between autosaves"
 msgstr "Število sekund med samodejnim shranjevanjem"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:5
-msgid "Edit Markdown in style"
-msgstr "Uporabi oblikovanje Markdown v slogu"
-
-#. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:9
-msgid "Manuel Genovés"
-msgstr "Manuel Genovés"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:14
-msgid "Focus on your writing with a clean, distraction-free markdown editor."
-msgstr "Osredotočite se na pisanje s enostavnim in preglednim urejevalnikom."
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:15
-msgid "Features:"
-msgstr "Zmožnosti:"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:17
-msgid "An UI tailored to comfortable writing"
-msgstr "Vmesnik, prilagojen udobnemu pisanju"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:18
-msgid "A distraction-free mode"
-msgstr "Način vnašanja brez nepotrebnih motenj"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:19
-msgid "Dark, light and sepia themes"
-msgstr "Temna, svetla in starinska tema"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:20
-msgid ""
-"Everything you expect from a text editor, such as spellchecking or document "
-"statistics"
-msgstr ""
-"Vse, kar pričakujete od urejevalnika besedil, od črkovanja do statistike "
-"dokumenta"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:21
-msgid "Live preview of what you write"
-msgstr "Sprotni predogled vnesenega besedila"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:22
-msgid ""
-"Export to all kind of formats: PDF, Word/Libreoffice, LaTeX, or even HTML "
-"slideshows"
-msgstr ""
-"Izvoz v številne zapise: PDF, Word/Libreoffice, LaTeX, ali celo predstavitve "
-"HTML"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:55
-msgid "Main window"
-msgstr "Glavno okno"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:59
-msgid "Main window in dark mode"
-msgstr "Glavno okno v temnem načinu"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:63
-msgid "Inserting a table with the help of the toolbar"
-msgstr "Vstavljanje tabele s pomočjo orodne vrstice"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:67
-msgid "The preview lets you see a live rendered version of your document"
-msgstr "V predogledu si lahko ogledate upodobljeno različico dokumenta v živo"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:71
-msgid "The focus mode allow for a more distraction-free experience"
-msgstr "Način pozornosti omogoča izkušnjo brez motenj"
-
 #: data/ui/About.ui.in:9
 msgid "Copyright (C) 2022, Manuel G., Wolf V."
 msgstr "Avtorske pravice (C) 2022, Manuel G., Wolf V."
@@ -349,74 +349,75 @@ msgstr "Naraščajoče oznake"
 msgid "Show one bullet point after another in a slideshow"
 msgstr "Pokaže eno vrstično oznako za drugo v predstavitvi"
 
-#: data/ui/Headerbar.ui:10 apostrophe/main_window.py:891
-#: apostrophe/main_window.py:906
+#: data/ui/HeaderbarNarrow.ui:26 data/ui/Headerbar.ui:43
+msgid "Main Menu"
+msgstr "Glavni meni"
+
+#: data/ui/HeaderbarNarrow.ui:51 data/ui/Headerbar.ui:10
+#: apostrophe/main_window.py:891 apostrophe/main_window.py:906
 msgid "New File"
 msgstr "Nova datoteka"
 
-#: data/ui/Headerbar.ui:17
+#: data/ui/HeaderbarNarrow.ui:55 data/ui/Headerbar.ui:17
 msgid "_Open"
 msgstr "_Odpri "
+
+#: data/ui/HeaderbarNarrow.ui:59 data/ui/HeaderbarNarrow.ui:63
+#: data/ui/Headerbar.ui:25
+msgid "_Save"
+msgstr "_Shrani"
+
+#: data/ui/HeaderbarNarrow.ui:67 data/ui/Headerbar.ui:119
+msgid "_Save As..."
+msgstr "_Shrani kot ..."
+
+#: data/ui/HeaderbarNarrow.ui:90 data/ui/Headerbar.ui:142
+msgid "Advanced _Export…"
+msgstr "Napreden _izvoz …"
+
+#: data/ui/HeaderbarNarrow.ui:96 data/ui/Headerbar.ui:148
+msgid "_Copy HTML"
+msgstr "_Kopiraj HTML"
+
+#: data/ui/HeaderbarNarrow.ui:104 data/ui/Headerbar.ui:77
+msgid "_Hemingway Mode"
+msgstr "_Hemingwayev način"
+
+#: data/ui/HeaderbarNarrow.ui:108 data/ui/Headerbar.ui:81
+msgid "_Focus Mode"
+msgstr "_Način pozornosti"
+
+#: data/ui/HeaderbarNarrow.ui:114 data/ui/Headerbar.ui:54
+msgid "Search in the File"
+msgstr "Išči v datoteki"
+
+#: data/ui/HeaderbarNarrow.ui:118 data/ui/Headerbar.ui:87
+msgid "Find and _Replace"
+msgstr "Najdi in _zamenjaj"
+
+#: data/ui/HeaderbarNarrow.ui:124 data/ui/Headerbar.ui:93
+msgid "_Preferences"
+msgstr "_Možnosti"
+
+#: data/ui/HeaderbarNarrow.ui:130 data/ui/Headerbar.ui:99
+msgid "Open _Tutorial"
+msgstr "Odpri _vadnico"
+
+#: data/ui/HeaderbarNarrow.ui:135 data/ui/Headerbar.ui:104
+msgid "_Keyboard Shortcuts"
+msgstr "_Tipkovne bližnjice"
+
+#: data/ui/HeaderbarNarrow.ui:139 data/ui/Headerbar.ui:108
+msgid "_About Apostrophe"
+msgstr "_O programu"
 
 #: data/ui/Headerbar.ui:19
 msgid "Open Markdown File"
 msgstr "Odpri datoteko Markdown"
 
-#: data/ui/Headerbar.ui:25
-msgid "_Save"
-msgstr "_Shrani"
-
 #: data/ui/Headerbar.ui:27
 msgid "Save Markdown File"
 msgstr "Shrani datoteko Markdown"
-
-#: data/ui/Headerbar.ui:43
-msgid "Main Menu"
-msgstr "Glavni meni"
-
-#: data/ui/Headerbar.ui:54
-msgid "Search in the File"
-msgstr "Išči v datoteki"
-
-#: data/ui/Headerbar.ui:77
-msgid "_Hemingway Mode"
-msgstr "_Hemingwayev način"
-
-#: data/ui/Headerbar.ui:81
-msgid "_Focus Mode"
-msgstr "_Način pozornosti"
-
-#: data/ui/Headerbar.ui:87
-msgid "Find and _Replace"
-msgstr "Najdi in _zamenjaj"
-
-#: data/ui/Headerbar.ui:93
-msgid "_Preferences"
-msgstr "_Možnosti"
-
-#: data/ui/Headerbar.ui:99
-msgid "Open _Tutorial"
-msgstr "Odpri _vadnico"
-
-#: data/ui/Headerbar.ui:104
-msgid "_Keyboard Shortcuts"
-msgstr "_Tipkovne bližnjice"
-
-#: data/ui/Headerbar.ui:108
-msgid "_About Apostrophe"
-msgstr "_O programu"
-
-#: data/ui/Headerbar.ui:119
-msgid "_Save As..."
-msgstr "_Shrani kot ..."
-
-#: data/ui/Headerbar.ui:142
-msgid "Advanced _Export…"
-msgstr "Napreden _izvoz …"
-
-#: data/ui/Headerbar.ui:148
-msgid "_Copy HTML"
-msgstr "_Kopiraj HTML"
 
 #: data/ui/InlinePreviewPopover.ui:42
 msgid "Not Found"
@@ -731,21 +732,62 @@ msgstr "Uporabi učinek sepia"
 msgid "Use Dark Colors"
 msgstr "Uporabi temne barve"
 
-#: data/ui/Toolbar.ui:27
+#: data/ui/ToolbarNarrow.ui:17 data/ui/Toolbar.ui:27
 msgid "Bold"
 msgstr "Krepko"
 
-#: data/ui/Toolbar.ui:37
+#: data/ui/ToolbarNarrow.ui:27 data/ui/Toolbar.ui:37
 msgid "Italic"
 msgstr "Ležeče"
 
-#: data/ui/Toolbar.ui:47
+#: data/ui/ToolbarNarrow.ui:37 data/ui/Toolbar.ui:47
 msgid "Strikethrough"
 msgstr "Prečrtano"
 
-#: data/ui/Toolbar.ui:57
+#: data/ui/ToolbarNarrow.ui:47 data/ui/Toolbar.ui:57
 msgid "Heading"
 msgstr "Naslov"
+
+#: data/ui/ToolbarNarrow.ui:58
+msgid "List"
+msgstr "Seznam"
+
+#: data/ui/ToolbarNarrow.ui:69
+msgid "Insert"
+msgstr "Vstavi"
+
+#: data/ui/ToolbarNarrow.ui:80 data/ui/Toolbar.ui:138
+msgid "Table"
+msgstr "Tabela"
+
+#: data/ui/ToolbarNarrow.ui:117
+msgid "Unordered"
+msgstr "Označen seznam"
+
+#: data/ui/ToolbarNarrow.ui:136
+msgid "Ordered"
+msgstr "Oštevilčen seznam"
+
+#: data/ui/ToolbarNarrow.ui:155
+msgid "Checklist"
+msgstr "Seznam potrditvenih polj"
+
+#: data/ui/ToolbarNarrow.ui:185 data/ui/Toolbar.ui:98
+msgid "Blockquote"
+msgstr "Navedek"
+
+#: data/ui/ToolbarNarrow.ui:204 data/ui/Toolbar.ui:108
+msgid "Code"
+msgstr "Koda"
+
+#: data/ui/ToolbarNarrow.ui:223 data/ui/Toolbar.ui:118
+msgid "Link"
+msgstr "Povezava"
+
+#: data/ui/ToolbarNarrow.ui:242 data/ui/Toolbar.ui:128
+#: apostrophe/text_view_format_inserter.py:435
+msgid "Image"
+msgstr "Slika"
 
 #: data/ui/Toolbar.ui:68
 msgid "Unordered List"
@@ -758,26 +800,6 @@ msgstr "Oštevilčen seznam"
 #: data/ui/Toolbar.ui:88
 msgid "Check List"
 msgstr "Seznam potrditvenih polj"
-
-#: data/ui/Toolbar.ui:98
-msgid "Blockquote"
-msgstr "Navedek"
-
-#: data/ui/Toolbar.ui:108
-msgid "Code"
-msgstr "Koda"
-
-#: data/ui/Toolbar.ui:118
-msgid "Link"
-msgstr "Povezava"
-
-#: data/ui/Toolbar.ui:128 apostrophe/text_view_format_inserter.py:435
-msgid "Image"
-msgstr "Slika"
-
-#: data/ui/Toolbar.ui:138
-msgid "Table"
-msgstr "Tabela"
 
 #: data/ui/Window.ui:64
 msgid "This file may be insecure"
@@ -827,6 +849,14 @@ msgstr "Donirajte"
 #: apostrophe/application.py:304
 msgid "Translations"
 msgstr "Prevodi"
+
+#: apostrophe/bottombar.py:184
+msgid "Hide Toolbar"
+msgstr "Skrij orodno vrstico"
+
+#: apostrophe/bottombar.py:186
+msgid "Show Toolbar"
+msgstr "Pokaži orodno vrstico"
 
 #: apostrophe/export_dialog.py:120 apostrophe/export_dialog.py:328
 #, python-format
