@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: apostrophe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2025-08-27 12:12+0000\n"
-"PO-Revision-Date: 2025-08-27 17:22+0200\n"
+"POT-Creation-Date: 2025-08-28 14:28+0000\n"
+"PO-Revision-Date: 2025-08-28 16:33+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
@@ -266,6 +266,26 @@ msgstr ""
 #: data/ui/AboutHemingway.ui:13
 msgid "_Close"
 msgstr "_Zapri"
+
+#: data/ui/DetailedError.ui:4
+msgid "Error Details"
+msgstr "Podrobnosti o napaki"
+
+#: data/ui/DetailedError.ui:29
+msgid "Apostrophe experienced an error"
+msgstr "Apostrof je naletel na napako"
+
+#: data/ui/DetailedError.ui:40
+msgid "Error Message"
+msgstr "Sporočilo o napaki"
+
+#: data/ui/DetailedError.ui:53
+msgid "Copy Error Message"
+msgstr "Kopiraj sporočilo o napaki"
+
+#: data/ui/DetailedError.ui:94
+msgid "Report _Issue"
+msgstr "Pošlji poroč_ilo o napaki"
 
 #: data/ui/Export.ui:21
 msgid "Formats"
