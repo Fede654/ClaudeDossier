@@ -4,6 +4,7 @@ data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in
 data/org.gnome.gitlab.somas.Apostrophe.gschema.xml
 data/ui/About.ui.in
 data/ui/AboutHemingway.ui
+data/ui/DetailedError.ui
 data/ui/Export.ui
 data/ui/HeaderbarNarrow.ui
 data/ui/Headerbar.ui
