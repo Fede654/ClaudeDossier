@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: apostrophe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2025-08-27 15:28+0000\n"
-"PO-Revision-Date: 2025-08-27 20:30+0300\n"
+"POT-Creation-Date: 2025-08-29 13:52+0000\n"
+"PO-Revision-Date: 2025-08-29 20:51+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -271,6 +271,27 @@ msgstr ""
 #: data/ui/AboutHemingway.ui:13
 msgid "_Close"
 msgstr "З_акрити"
+
+#: data/ui/DetailedError.ui:4
+msgid "Error Details"
+msgstr "Подробиці щодо помилки"
+
+#: data/ui/DetailedError.ui:29
+#| msgid "Apostrophe experienced an error while trying to export:"
+msgid "Apostrophe experienced an error"
+msgstr "В «Апострофі» сталася помилка"
+
+#: data/ui/DetailedError.ui:40
+msgid "Error Message"
+msgstr "Повідомлення про помилку"
+
+#: data/ui/DetailedError.ui:53
+msgid "Copy Error Message"
+msgstr "Копіювати повідомлення про помилку"
+
+#: data/ui/DetailedError.ui:94
+msgid "Report _Issue"
+msgstr "Повідомити про _проблему"
 
 #: data/ui/Export.ui:21
 msgid "Formats"
@@ -754,8 +775,6 @@ msgid "Heading"
 msgstr "Заголовок"
 
 #: data/ui/ToolbarNarrow.ui:58
-#| msgctxt "shortcut window"
-#| msgid "List Item"
 msgid "List"
 msgstr "Список"
 
@@ -768,17 +787,14 @@ msgid "Table"
 msgstr "Таблиця"
 
 #: data/ui/ToolbarNarrow.ui:117
-#| msgid "Unordered List"
 msgid "Unordered"
 msgstr "Невпорядкований"
 
 #: data/ui/ToolbarNarrow.ui:136
-#| msgid "Ordered List"
 msgid "Ordered"
 msgstr "Впорядкований"
 
 #: data/ui/ToolbarNarrow.ui:155
-#| msgid "Check List"
 msgid "Checklist"
 msgstr "Перелік пунктів"
 
@@ -861,12 +877,10 @@ msgid "Translations"
 msgstr "Переклади"
 
 #: apostrophe/bottombar.py:184
-#| msgid "Toolbar"
 msgid "Hide Toolbar"
 msgstr "Приховати панель інструментів"
 
 #: apostrophe/bottombar.py:186
-#| msgid "Toolbar"
 msgid "Show Toolbar"
 msgstr "Показати панель інструментів"
 
@@ -882,10 +896,6 @@ msgid "Cancel"
 msgstr "Скасувати"
 
 #: apostrophe/export_dialog.py:151
-#| msgid ""
-#| "An error happened while trying to export:\n"
-#| "\n"
-#| "{err_msg}"
 msgid "Apostrophe experienced an error while trying to export:"
 msgstr "В «Апострофі» сталася помилка під час спроби експортування:"
 
