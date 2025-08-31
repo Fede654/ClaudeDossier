@@ -57,7 +57,7 @@
     <color type="primary" scheme_preference="dark">#1b786d</color>
   </branding>
   <requires>
-    <display_length compare="ge">1311</display_length>
+    <display_length compare="ge">360</display_length>
   </requires>
   <recommends>
     <internet>always</internet>
@@ -66,6 +66,7 @@
     <control>pointing</control>
     <control>keyboard</control>
     <control>touch</control>
+    <internet>offline-only</internet>
   </supports>
   <releases>
     <release type="stable" version="3.3" date="2025-09-10T00:00:00Z">
