@@ -68,6 +68,48 @@
     <control>touch</control>
   </supports>
   <releases>
+    <release type="stable" version="3.3" date="2025-09-10T00:00:00Z">
+      <description>
+        <p>The Apostrophe developer fully stands with Palestine and condemns the genocide Israel is enacting on its people right now. Any donation the project receives will be diverted to UNRWA</p>
+        <p>This release adds the following features:</p>
+        <ul>
+          <li>Use Typst as the default render engine. LaTeX is no longer needed for exporting PDFs</li>
+          <li>Implemented crash recovery/autosaving functionality</li>
+          <li>Implemented a narrow mode. Apostrophe works now on mobile devices</li>
+          <li>Reimplemented inline previews. Ctrl+click on a word or selecting the "peek" entry in context menus will bring a popover with a preview of images, formulas, web, word definitions and more</li>
+          <li>Implemented new CLI options</li>
+          <li>The recents popover no longer shows deleted items</li>
+          <li>Make search case insensitive in the recents popover</li>
+          <li>Improved error dialog</li>
+          <li>Improved scroll sync between the editor and the preview panel</li>
+          <li>Improved spellchecking: allow different languages in different windows, load system default, persist selected language for each document across restarts</li>
+          <li>Use OTF fonts instead of TTF</li>
+          <li>Improved styles</li>
+          <li>Improved error handling when opening invalid files</li>
+          <li>Improved automatic indents and unindents</li>
+          <li>Persist window state (window size/fullscreen/maximized) across restarts</li>
+          <li>Improved custom widgetry</li>
+          <li>Improved touch handling</li>
+          <li>Improved the inline markdown rendering, better respecting Pandoc's markdown specification.</li>
+        </ul>
+        <p>This release fixes the following bugs:</p>
+        <ul>
+          <li>Fixed several codeblocks markup handling bugs</li>
+          <li>Fixed incorrect tooltip in the expand toolbar button when it's open</li>
+          <li>Fixed IME input</li>
+          <li>Fixed "save as" and "export" dialogs not opening the correct folder by default</li>
+          <li>Fixed a bug where opening already opened files happened in new windows</li>
+          <li>Fixed buggy behaviour with copy-paste buttons when selecting text</li>
+        </ul>
+        <p>This release updates translations.</p>
+        <p>This release includes the following changes:</p>
+        <ul>
+          <li>UI/UX small fixes</li>
+          <li>Ban of LLM and GenAI contributions</li>
+          <li>Updated CoC</li>
+        </ul>
+      </description>
+    </release>
     <release type="stable" version="3.2" date="2024-09-25T00:00:00Z">
       <description>
         <p>This release fixes the following bugs:</p>

@@ -1,3 +1,46 @@
+Version 3.3
+~~~~~~~~~~~~~~~
+Released: 2025-09-10
+
+Notes:
+- The Apostrophe developer fully stands with Palestine and condemns the genocide Israel is enacting on its people right now. Any donation the project receives will be diverted to UNRWA
+
+Features:
+- Use Typst as the default render engine. LaTeX is no longer needed for exporting PDFs
+- Implemented crash recovery/autosaving functionality
+- Implemented a narrow mode. Apostrophe works now on mobile devices
+- Reimplemented inline previews. Ctrl+click on a word or selecting the "peek" entry in context menus will bring a popover with a preview of images, formulas, web, word definitions and more
+- Implemented new CLI options
+- The recents popover no longer shows deleted items
+- Make search case insensitive in the recents popover
+- Improved error dialog
+- Improved scroll sync between the editor and the preview panel
+- Improved spellchecking: allow different languages in different windows, load system default, persist selected language for each document across restarts
+- Use OTF fonts instead of TTF
+- Improved styles
+- Improved error handling when opening invalid files
+- Improved automatic indents and unindents
+- Persist window state (window size/fullscreen/maximized) across restarts
+- Improved custom widgetry
+- Improved touch handling
+- Improved the inline markdown rendering, better respecting Pandoc's markdown specification.
+
+Bugfixes:
+- Fixed several codeblocks markup handling bugs
+- Fixed incorrect tooltip in the expand toolbar button when it's open
+- Fixed IME input
+- Fixed "save as" and "export" dialogs not opening the correct folder by default
+- Fixed a bug where opening already opened files happened in new windows
+- Fixed buggy behaviour with copy-paste buttons when selecting text
+
+Translations:
+- Added Esperanto and Azerbaijani
+
+Misc:
+- UI/UX small fixes
+- Ban of LLM and GenAI contributions
+- Updated CoC
+
 Version 3.2
 ~~~~~~~~~~~~~~~
 Released: 2024-09-25
