@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apostrophe\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2025-06-04 15:36+0000\n"
+"POT-Creation-Date: 2025-08-31 18:30+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Ser82-png <asvmail.as@gmail.com>\n"
 "Language-Team: \n"
@@ -10,23 +10,21 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || "
+"n%100>14) ? 1 : 2);\n"
 "X-Generator: Poedit 3.0.1\n"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:3
+#: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:2
 #: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:4
 msgid "Apostrophe"
 msgstr "Апостроф"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! Do NOT translate "uberwriter" or "apostrophe"! The list MUST also end with a semicolon!
-#: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:5
+#: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:4
 msgid "uberwriter;UberWriter;apostrophe;markdown;editor;text;write;"
-msgstr ""
-"uberwriter;UberWriter;apostrophe;markdown;editor;text;write;апостроф;"
-"маркдаун;редактор;текст;"
+msgstr "uberwriter;UberWriter;apostrophe;markdown;editor;text;write;апостроф;маркдаун;редактор;текст;"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:6
+#: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:5
 msgid "Apostrophe, an elegant, distraction-free markdown editor"
 msgstr "Апостроф - элегантный, не отвлекающий внимание markdown-редактор"
 
@@ -34,14 +32,77 @@ msgstr "Апостроф - элегантный, не отвлекающий в�
 msgid "New Window"
 msgstr "Новое окно"
 
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:5
+msgid "Edit Markdown in style"
+msgstr "Редактировать в стиле Markdown"
+
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:9
+msgid "Manuel Genovés"
+msgstr "Manuel Genovés"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:14
+msgid "Focus on your writing with a clean, distraction-free markdown editor."
+msgstr ""
+"Сосредоточьтесь на написании текста с помощью простого, не отвлекающего внимание markdown редактора."
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:15
+msgid "Features:"
+msgstr "Возможности:"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:17
+msgid "An UI tailored to comfortable writing"
+msgstr "Пользовательский интерфейс, адаптированный для комфортного письма"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:18
+msgid "A distraction-free mode"
+msgstr "Режим, не отвлекающий от работы"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:19
+msgid "Dark, light and sepia themes"
+msgstr "Тёмная, светлая и «сепия» темы"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:20
+msgid "Everything you expect from a text editor, such as spellchecking or document statistics"
+msgstr ""
+"Всё, что вы ожидаете от текстового редактора, например, проверка орфографии или статистика "
+"документов"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:21
+msgid "Live preview of what you write"
+msgstr "Предварительный просмотр написанного в режиме реального времени"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:22
+msgid "Export to all kind of formats: PDF, Word/Libreoffice, LaTeX, or even HTML slideshows"
+msgstr "Экспорт во всевозможные форматы: PDF, Word/Libreoffice, LaTeX или даже слайд-шоу HTML"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:55
+msgid "Main window"
+msgstr "Главное меню"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:59
+msgid "Main window in dark mode"
+msgstr "Главное окно в тёмном стиле"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:63
+msgid "Inserting a table with the help of the toolbar"
+msgstr "Вставка таблицы с помощью панели инструментов"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:67
+msgid "The preview lets you see a live rendered version of your document"
+msgstr "Предварительный просмотр позволяет посмотреть реальный вид документа"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:71
+msgid "The focus mode allow for a more distraction-free experience"
+msgstr "Режим сосредоточения позволяет избавиться от большинства отвлекающих факторов"
+
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:47
 msgid "Color scheme"
 msgstr "Цветовая схема"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:48
 msgid "Use the color scheme in the application's UI and in the text area."
-msgstr ""
-"Используйте цветовую схему в интерфейсе приложения и в текстовой области."
+msgstr "Используйте цветовую схему в интерфейсе приложения и в текстовой области."
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:54
 msgid "Check spelling while typing"
@@ -57,9 +118,7 @@ msgstr "Синхронизировать прокрутку в редактор�
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:62
 msgid "Keep the editor and preview scroll positions in sync."
-msgstr ""
-"Сохранить синхронизацию положения между редактором и предварительным "
-"просмотром."
+msgstr "Сохранить синхронизацию положения между редактором и предварительным просмотром."
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:68
 msgid "Input format"
@@ -68,8 +127,7 @@ msgstr "Формат ввода"
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:69
 msgid "Input format to use when previewing and exporting using Pandoc."
 msgstr ""
-"Входной формат для использования при предварительном просмотре и экспорте с "
-"использованием Pandoc."
+"Входной формат для использования при предварительном просмотре и экспорте с использованием Pandoc."
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:75
 msgid "Autohide Headerbar"
@@ -95,8 +153,7 @@ msgstr "Символов в строке"
 msgid "Maximum number of characters per line within the editor."
 msgstr "Максимальное количество символов в сроке в окне редактора."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:96
-#: data/ui/AboutHemingway.ui:6
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:96 data/ui/AboutHemingway.ui:6
 msgid "Hemingway Mode"
 msgstr "Режим Хемингуэя"
 
@@ -120,8 +177,7 @@ msgstr "Режим предпросмотра"
 msgid "How to display the preview."
 msgstr "Как показывать предпросмотр."
 
-#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:117
-#: data/ui/Preferences.ui:64
+#: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:117 data/ui/Preferences.ui:64
 msgid "Preview Security"
 msgstr "Безопасность просмотра"
 
@@ -135,9 +191,7 @@ msgstr "Активный предпросмотр"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:125
 msgid "Whether showing of preview is active when launching a new window."
-msgstr ""
-"Определяет, будет ли активен предварительный просмотр при запуске нового "
-"окна."
+msgstr "Определяет, будет ли активен предварительный просмотр при запуске нового окна."
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:131
 msgid "Text size"
@@ -160,78 +214,6 @@ msgstr "Определяет, показывать панель инструме
 msgid "Number of seconds between autosaves"
 msgstr "Количество секунд между автосохранениями"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:5
-msgid "Edit Markdown in style"
-msgstr "Редактировать в стиле Markdown"
-
-#. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:9
-msgid "Manuel Genovés"
-msgstr "Manuel Genovés"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:14
-msgid "Focus on your writing with a clean, distraction-free markdown editor."
-msgstr ""
-"Сосредоточьтесь на написании текста с помощью простого, не отвлекающего "
-"внимание markdown редактора."
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:15
-msgid "Features:"
-msgstr "Возможности:"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:17
-msgid "An UI tailored to comfortable writing"
-msgstr "Пользовательский интерфейс, адаптированный для комфортного письма"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:18
-msgid "A distraction-free mode"
-msgstr "Режим, не отвлекающий от работы"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:19
-msgid "Dark, light and sepia themes"
-msgstr "Тёмная, светлая и «сепия» темы"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:20
-msgid ""
-"Everything you expect from a text editor, such as spellchecking or document "
-"statistics"
-msgstr ""
-"Всё, что вы ожидаете от текстового редактора, например, проверка орфографии "
-"или статистика документов"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:21
-msgid "Live preview of what you write"
-msgstr "Предварительный просмотр написанного в режиме реального времени"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:22
-msgid ""
-"Export to all kind of formats: PDF, Word/Libreoffice, LaTeX, or even HTML "
-"slideshows"
-msgstr ""
-"Экспорт во всевозможные форматы: PDF, Word/Libreoffice, LaTeX или даже слайд-"
-"шоу HTML"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:55
-msgid "Main window"
-msgstr "Главное меню"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:59
-msgid "Main window in dark mode"
-msgstr "Главное окно в тёмном стиле"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:63
-msgid "Inserting a table with the help of the toolbar"
-msgstr "Вставка таблицы с помощью панели инструментов"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:67
-msgid "The preview lets you see a live rendered version of your document"
-msgstr "Предварительный просмотр позволяет посмотреть реальный вид документа"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:71
-msgid "The focus mode allow for a more distraction-free experience"
-msgstr ""
-"Режим сосредоточения позволяет избавиться от большинства отвлекающих факторов"
-
 #: data/ui/About.ui.in:9
 msgid "Copyright (C) 2022, Manuel G., Wolf V."
 msgstr "Авторское право (C) 2022, Мануэль Г., Вольф В."
@@ -247,32 +229,50 @@ msgstr ""
 
 #: data/ui/AboutHemingway.ui:7
 msgid ""
-"The Hemingway Mode mimics the experience of writing on a typewriter, not "
-"allowing you to delete any text or doing any kind of editing. \n"
+"The Hemingway Mode mimics the experience of writing on a typewriter, not allowing you to delete any "
+"text or doing any kind of editing. \n"
 "\n"
-"Only being able to move forward may be frustrating, but can be an "
-"interesting exercise for improving your writing skills, gaining focus or "
-"facing the task on hand with a different mindset.\n"
+"Only being able to move forward may be frustrating, but can be an interesting exercise for "
+"improving your writing skills, gaining focus or facing the task on hand with a different mindset.\n"
 "  "
 msgstr ""
-"Режим Хемингуэя имитирует процесс печати на пишущей машинке, не позволяя вам "
-"удалять текст или выполнять какое-либо редактирование. \n"
+"Режим Хемингуэя имитирует процесс печати на пишущей машинке, не позволяя вам удалять текст или "
+"выполнять какое-либо редактирование. \n"
 "\n"
-"Возможность двигаться только вперёд может разочаровать, но это интересное "
-"упражнение для улучшения ваших навыков печати, концентрации внимания или "
-"решения поставленной задачи с другим настроем.\n"
+"Возможность двигаться только вперёд может разочаровать, но это интересное упражнение для улучшения "
+"ваших навыков печати, концентрации внимания или решения поставленной задачи с другим настроем.\n"
 "  "
 
 #: data/ui/AboutHemingway.ui:13
 msgid "_Close"
 msgstr "_Закрыть"
 
+#: data/ui/DetailedError.ui:4
+msgid "Error Details"
+msgstr "Подробности ошибки"
+
+#: data/ui/DetailedError.ui:29
+msgid "Apostrophe experienced an error"
+msgstr "В приложении «Апостроф» обнаружена ошибка"
+
+#: data/ui/DetailedError.ui:40
+msgid "Error Message"
+msgstr "Сообщение об ошибке"
+
+#: data/ui/DetailedError.ui:53
+msgid "Copy Error Message"
+msgstr "Копировать сообщение об ошибке"
+
+#: data/ui/DetailedError.ui:94
+msgid "Report _Issue"
+msgstr "Сообщить о _проблеме"
+
 #: data/ui/Export.ui:21
 msgid "Formats"
 msgstr "Форматы"
 
-#: data/ui/Export.ui:67 apostrophe/export_dialog.py:125
-#: apostrophe/export_dialog.py:336 apostrophe/export_dialog.py:340
+#: data/ui/Export.ui:67 apostrophe/export_dialog.py:117 apostrophe/export_dialog.py:323
+#: apostrophe/export_dialog.py:327
 msgid "Export"
 msgstr "Экспортировать"
 
@@ -285,12 +285,10 @@ msgid "Standalone"
 msgstr "Самодостаточный"
 
 #: data/ui/Export.ui:90
-msgid ""
-"Use a header and footer to include things like stylesheets and meta "
-"information"
+msgid "Use a header and footer to include things like stylesheets and meta information"
 msgstr ""
-"Использовать верхний и нижний колонтитулы для включения таких элементов, как "
-"таблицы стилей и метаданные"
+"Использовать верхний и нижний колонтитулы для включения таких элементов, как таблицы стилей и "
+"метаданные"
 
 #: data/ui/Export.ui:96
 msgid "Relative to Absolute"
@@ -308,8 +306,7 @@ msgstr "Оглавление"
 msgid "Number Sections"
 msgstr "Количество разделов"
 
-#: data/ui/Export.ui:119 data/ui/Export.ui:122 data/ui/Export.ui:133
-#: data/ui/Export.ui:137
+#: data/ui/Export.ui:119 data/ui/Export.ui:122 data/ui/Export.ui:133 data/ui/Export.ui:137
 msgid "Page Size"
 msgstr "Размер страницы"
 
@@ -349,74 +346,74 @@ msgstr "Инкрементные маркеры"
 msgid "Show one bullet point after another in a slideshow"
 msgstr "Показывать элементы маркированного списка один за другим в слайдшоу"
 
-#: data/ui/Headerbar.ui:10 apostrophe/main_window.py:878
-#: apostrophe/main_window.py:893
+#: data/ui/HeaderbarNarrow.ui:26 data/ui/Headerbar.ui:43
+msgid "Main Menu"
+msgstr "Главное меню"
+
+#: data/ui/HeaderbarNarrow.ui:51 data/ui/Headerbar.ui:10 apostrophe/main_window.py:891
+#: apostrophe/main_window.py:906
 msgid "New File"
 msgstr "Новый файл"
 
-#: data/ui/Headerbar.ui:17
+#: data/ui/HeaderbarNarrow.ui:55 data/ui/Headerbar.ui:17
 msgid "_Open"
 msgstr "_Открыть"
+
+#: data/ui/HeaderbarNarrow.ui:59 data/ui/HeaderbarNarrow.ui:63 data/ui/Headerbar.ui:25
+msgid "_Save"
+msgstr "_Сохранить"
+
+#: data/ui/HeaderbarNarrow.ui:67 data/ui/Headerbar.ui:119
+msgid "_Save As..."
+msgstr "Сохранить _как…"
+
+#: data/ui/HeaderbarNarrow.ui:90 data/ui/Headerbar.ui:142
+msgid "Advanced _Export…"
+msgstr "Расширенный _экспорт…"
+
+#: data/ui/HeaderbarNarrow.ui:96 data/ui/Headerbar.ui:148
+msgid "_Copy HTML"
+msgstr "_Скопировать HTML"
+
+#: data/ui/HeaderbarNarrow.ui:104 data/ui/Headerbar.ui:77
+msgid "_Hemingway Mode"
+msgstr "Режим _Хемингуэя"
+
+#: data/ui/HeaderbarNarrow.ui:108 data/ui/Headerbar.ui:81
+msgid "_Focus Mode"
+msgstr "Режим _сосредоточения"
+
+#: data/ui/HeaderbarNarrow.ui:114 data/ui/Headerbar.ui:54
+msgid "Search in the File"
+msgstr "Поиск в файле"
+
+#: data/ui/HeaderbarNarrow.ui:118 data/ui/Headerbar.ui:87
+msgid "Find and _Replace"
+msgstr "Найти и _заменить"
+
+#: data/ui/HeaderbarNarrow.ui:124 data/ui/Headerbar.ui:93
+msgid "_Preferences"
+msgstr "_Параметры"
+
+#: data/ui/HeaderbarNarrow.ui:130 data/ui/Headerbar.ui:99
+msgid "Open _Tutorial"
+msgstr "Открыть _руководство"
+
+#: data/ui/HeaderbarNarrow.ui:135 data/ui/Headerbar.ui:104
+msgid "_Keyboard Shortcuts"
+msgstr "_Комбинации клавиш"
+
+#: data/ui/HeaderbarNarrow.ui:139 data/ui/Headerbar.ui:108
+msgid "_About Apostrophe"
+msgstr "_О приложении «Апостроф»"
 
 #: data/ui/Headerbar.ui:19
 msgid "Open Markdown File"
 msgstr "Открыть файл markdown"
 
-#: data/ui/Headerbar.ui:25
-msgid "_Save"
-msgstr "_Сохранить"
-
 #: data/ui/Headerbar.ui:27
 msgid "Save Markdown File"
 msgstr "Сохранить файл markdown"
-
-#: data/ui/Headerbar.ui:43
-msgid "Main Menu"
-msgstr "Главное меню"
-
-#: data/ui/Headerbar.ui:54
-msgid "Search in the File"
-msgstr "Поиск в файле"
-
-#: data/ui/Headerbar.ui:77
-msgid "_Hemingway Mode"
-msgstr "Режим _Хемингуэя"
-
-#: data/ui/Headerbar.ui:81
-msgid "_Focus Mode"
-msgstr "Режим _сосредоточения"
-
-#: data/ui/Headerbar.ui:87
-msgid "Find and _Replace"
-msgstr "Найти и _заменить"
-
-#: data/ui/Headerbar.ui:93
-msgid "_Preferences"
-msgstr "_Параметры"
-
-#: data/ui/Headerbar.ui:99
-msgid "Open _Tutorial"
-msgstr "Открыть _руководство"
-
-#: data/ui/Headerbar.ui:104
-msgid "_Keyboard Shortcuts"
-msgstr "_Комбинации клавиш"
-
-#: data/ui/Headerbar.ui:108
-msgid "_About Apostrophe"
-msgstr "_О приложении «Апостроф»"
-
-#: data/ui/Headerbar.ui:119
-msgid "_Save As..."
-msgstr "Сохранить _как…"
-
-#: data/ui/Headerbar.ui:142
-msgid "Advanced _Export…"
-msgstr "Расширенный _экспорт…"
-
-#: data/ui/Headerbar.ui:148
-msgid "_Copy HTML"
-msgstr "_Скопировать HTML"
 
 #: data/ui/InlinePreviewPopover.ui:42
 msgid "Not Found"
@@ -464,10 +461,9 @@ msgstr "Документация по варианту разметки"
 
 #: data/ui/Preferences.ui:65
 msgid "Desired level of security when rendering the preview"
-msgstr ""
-"Желаемый уровень безопасности при визуализации предварительного просмотра"
+msgstr "Желаемый уровень безопасности при визуализации предварительного просмотра"
 
-#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_handler.py:205
+#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_handler.py:212
 #: apostrophe/preview_window.py:32
 msgid "Preview"
 msgstr "Предварительный просмотр"
@@ -731,21 +727,61 @@ msgstr "Использовать цвета «Сепия»"
 msgid "Use Dark Colors"
 msgstr "Использовать тёмные цвета"
 
-#: data/ui/Toolbar.ui:27
+#: data/ui/ToolbarNarrow.ui:17 data/ui/Toolbar.ui:27
 msgid "Bold"
 msgstr "Жирный"
 
-#: data/ui/Toolbar.ui:37
+#: data/ui/ToolbarNarrow.ui:27 data/ui/Toolbar.ui:37
 msgid "Italic"
 msgstr "Курсив"
 
-#: data/ui/Toolbar.ui:47
+#: data/ui/ToolbarNarrow.ui:37 data/ui/Toolbar.ui:47
 msgid "Strikethrough"
 msgstr "Зачёркнутый"
 
-#: data/ui/Toolbar.ui:57
+#: data/ui/ToolbarNarrow.ui:47 data/ui/Toolbar.ui:57
 msgid "Heading"
 msgstr "Заголовок"
+
+#: data/ui/ToolbarNarrow.ui:58
+msgid "List"
+msgstr "Список"
+
+#: data/ui/ToolbarNarrow.ui:69
+msgid "Insert"
+msgstr "Вставить"
+
+#: data/ui/ToolbarNarrow.ui:80 data/ui/Toolbar.ui:138
+msgid "Table"
+msgstr "Таблица"
+
+#: data/ui/ToolbarNarrow.ui:117
+msgid "Unordered"
+msgstr "Неупорядоченный"
+
+#: data/ui/ToolbarNarrow.ui:136
+msgid "Ordered"
+msgstr "Упорядоченный"
+
+#: data/ui/ToolbarNarrow.ui:155
+msgid "Checklist"
+msgstr "Чек-боксы"
+
+#: data/ui/ToolbarNarrow.ui:185 data/ui/Toolbar.ui:98
+msgid "Blockquote"
+msgstr "Блок цитирования"
+
+#: data/ui/ToolbarNarrow.ui:204 data/ui/Toolbar.ui:108
+msgid "Code"
+msgstr "Код"
+
+#: data/ui/ToolbarNarrow.ui:223 data/ui/Toolbar.ui:118
+msgid "Link"
+msgstr "Ссылка"
+
+#: data/ui/ToolbarNarrow.ui:242 data/ui/Toolbar.ui:128 apostrophe/text_view_format_inserter.py:435
+msgid "Image"
+msgstr "Изображение"
 
 #: data/ui/Toolbar.ui:68
 msgid "Unordered List"
@@ -757,31 +793,7 @@ msgstr "Упорядоченный список"
 
 #: data/ui/Toolbar.ui:88
 msgid "Check List"
-msgstr "Список с пометками"
-
-#: data/ui/Toolbar.ui:98
-msgid "Blockquote"
-msgstr "Блок цитирования"
-
-#: data/ui/Toolbar.ui:108
-msgid "Code"
-msgstr "Код"
-
-#: data/ui/Toolbar.ui:118
-msgid "Link"
-msgstr "Ссылка"
-
-#: data/ui/Toolbar.ui:128 apostrophe/text_view_format_inserter.py:435
-msgid "Image"
-msgstr "Изображение"
-
-#: data/ui/Toolbar.ui:138
-msgid "Table"
-msgstr "Таблица"
-
-#: data/ui/Toolbar.ui:153
-msgid "Show More Controls"
-msgstr "Показать больше элементов управления"
+msgstr "Список с чек-боксами"
 
 #: data/ui/Window.ui:64
 msgid "This file may be insecure"
@@ -790,64 +802,74 @@ msgstr "Этот файл может быть небезопасным"
 #: data/ui/Window.ui:65
 msgid ""
 "Previewing files from untrusted sources can be dangerous.\n"
-"If you're unsure about the contents of this file, open it in the Restricted "
-"Preview where javascript and HTML are disabled."
+"If you're unsure about the contents of this file, open it in the Restricted Preview where "
+"javascript and HTML are disabled."
 msgstr ""
 "Просмотр файлов из ненадежных источников может быть опасен.\n"
-"Если вы не уверены в содержимом этого файла, откройте его в режиме "
-"ограниченного просмотра, где javascript и HTML отключены."
+"Если вы не уверены в содержимом этого файла, откройте его в режиме ограниченного просмотра, где "
+"javascript и HTML отключены."
 
-#: data/ui/Window.ui:77
+#: data/ui/Window.ui:75
 msgid "Load Preview"
 msgstr "Загрузить просмотр"
 
-#: data/ui/Window.ui:86
+#: data/ui/Window.ui:84
 msgid "Load Restricted Preview"
 msgstr "Загрузить просмотр в ограниченном варианте"
 
-#: data/ui/Window.ui:184
-msgid ""
-"Apostrophe closed unexpectedly. This file has been recovered from an autosave"
+#: data/ui/Window.ui:180
+msgid "Apostrophe closed unexpectedly. This file has been recovered from an autosave"
 msgstr ""
-"Приложение «Apostrophe» неожиданно закрылось. Этот файл был восстановлен из "
-"автоматически сохранённого"
+"Приложение «Apostrophe» неожиданно закрылось. Этот файл был восстановлен из автоматически "
+"сохранённого"
 
-#: data/ui/Window.ui:200
+#: data/ui/Window.ui:196
 msgid "File Has Changed on Disk"
 msgstr "Файл на диске был изменён"
 
-#: data/ui/Window.ui:210
+#: data/ui/Window.ui:206
 msgid "The file has been changed by another program"
 msgstr "Этот файл был изменен другой программой"
 
-#: data/ui/Window.ui:218
+#: data/ui/Window.ui:214
 msgid "_Discard Changes and Reload"
 msgstr "_Отказаться от изменений и перезагрузить"
 
-#: apostrophe/application.py:301
+#: apostrophe/application.py:303
 msgid "Donate"
 msgstr "Пожертвовать"
 
-#: apostrophe/application.py:302
+#: apostrophe/application.py:304
 msgid "Translations"
 msgstr "Переводы"
 
-#: apostrophe/export_dialog.py:120 apostrophe/helpers.py:84
-msgid "Close"
-msgstr "Закрыть"
+#: apostrophe/bottombar.py:184
+msgid "Hide Toolbar"
+msgstr "Скрыть панель инструментов"
 
-#: apostrophe/export_dialog.py:128 apostrophe/export_dialog.py:341
+#: apostrophe/bottombar.py:186
+msgid "Show Toolbar"
+msgstr "Показать панель инструментов"
+
+#: apostrophe/export_dialog.py:120 apostrophe/export_dialog.py:328
 #, python-format
 msgid "Export to %s"
 msgstr "Экспортировать в %s"
 
-#: apostrophe/export_dialog.py:130 apostrophe/export_dialog.py:337
-#: apostrophe/export_dialog.py:342 apostrophe/main_window.py:441
-#: apostrophe/main_window.py:527 apostrophe/main_window.py:642
+#: apostrophe/export_dialog.py:122 apostrophe/export_dialog.py:324 apostrophe/export_dialog.py:329
+#: apostrophe/main_window.py:446 apostrophe/main_window.py:532 apostrophe/main_window.py:655
 msgid "Cancel"
 msgstr "Отменить"
 
-#: apostrophe/export_dialog.py:161 apostrophe/export_dialog.py:330
+#: apostrophe/export_dialog.py:151
+msgid "Apostrophe experienced an error while trying to export:"
+msgstr "При попытке экспортировать в приложении «Апостроф» произошла ошибка:"
+
+#: apostrophe/export_dialog.py:230
+msgid "Export to {}"
+msgstr "Экспортировать в {}"
+
+#: apostrophe/export_dialog.py:317
 #, python-brace-format
 msgid ""
 "An error happened while trying to export:\n"
@@ -858,17 +880,17 @@ msgstr ""
 "\n"
 "{err_msg}"
 
-#: apostrophe/export_dialog.py:243
-msgid "Export to {}"
-msgstr "Экспортировать в {}"
-
-#: apostrophe/export_dialog.py:337
+#: apostrophe/export_dialog.py:324
 msgid "Select folder"
 msgstr "Выберите папку"
 
 #: apostrophe/helpers.py:83
 msgid "Error"
 msgstr "Ошибка"
+
+#: apostrophe/helpers.py:84
+msgid "Close"
+msgstr "Закрыть"
 
 #: apostrophe/inhibitor.py:36
 msgid "Unsaved documents"
@@ -903,39 +925,39 @@ msgid "adverb"
 msgstr "наречие"
 
 #. Hemingway Toast
-#: apostrophe/main_window.py:156
+#: apostrophe/main_window.py:161
 msgid "Text can't be deleted while on Hemingway mode"
 msgstr "Нельзя удалять текст в режиме Хемингуэя"
 
-#: apostrophe/main_window.py:159
+#: apostrophe/main_window.py:164
 msgid "Tell me more"
 msgstr "Подробнее"
 
-#: apostrophe/main_window.py:437
+#: apostrophe/main_window.py:442
 msgid "Save your File"
 msgstr "Сохранить ваш файл"
 
-#: apostrophe/main_window.py:440 apostrophe/main_window.py:644
+#: apostrophe/main_window.py:445 apostrophe/main_window.py:657
 msgid "Save"
 msgstr "Сохранить"
 
-#: apostrophe/main_window.py:516
+#: apostrophe/main_window.py:521
 msgid "Markdown Files"
 msgstr "Файлы Markdown"
 
-#: apostrophe/main_window.py:520
+#: apostrophe/main_window.py:525
 msgid "Plain Text Files"
 msgstr "Обычные текстовые файлы"
 
-#: apostrophe/main_window.py:523
+#: apostrophe/main_window.py:528
 msgid "Open a .md file"
 msgstr "Открыть .md файл"
 
-#: apostrophe/main_window.py:526
+#: apostrophe/main_window.py:531
 msgid "Open"
 msgstr "Открыть"
 
-#: apostrophe/main_window.py:596
+#: apostrophe/main_window.py:609
 #, python-brace-format
 msgid ""
 "Failed to detect encoding for file:\n"
@@ -950,20 +972,17 @@ msgstr ""
 "Произошла ошибка:\n"
 "{err_msg}"
 
-#: apostrophe/main_window.py:636
+#: apostrophe/main_window.py:649
 msgid "Save Changes?"
 msgstr "Сохранить изменения?"
 
-#: apostrophe/main_window.py:637
+#: apostrophe/main_window.py:650
 #, python-format
-msgid ""
-"“%s” contains unsaved changes. If you don’t save, all your changes will be "
-"permanently lost."
+msgid "“%s” contains unsaved changes. If you don’t save, all your changes will be permanently lost."
 msgstr ""
-"«%s» содержит несохраненные изменения. Если не сохранить изменения, они "
-"будут безвозвратно утеряны."
+"«%s» содержит несохраненные изменения. Если не сохранить изменения, они будут безвозвратно утеряны."
 
-#: apostrophe/main_window.py:643
+#: apostrophe/main_window.py:656
 msgid "Discard"
 msgstr "Не сохранять"
 
@@ -1059,8 +1078,7 @@ msgstr "жирный текст"
 msgid "strikethrough text"
 msgstr "зачёркнутый текст"
 
-#: apostrophe/text_view_format_inserter.py:49
-#: apostrophe/text_view_format_inserter.py:117
+#: apostrophe/text_view_format_inserter.py:49 apostrophe/text_view_format_inserter.py:117
 #: apostrophe/text_view_format_inserter.py:187
 msgid "Item"
 msgstr "Пункт"
@@ -1085,8 +1103,7 @@ msgstr "https://www.example.com"
 msgid "link text"
 msgstr "текст ссылки"
 
-#: apostrophe/text_view_format_inserter.py:429
-#: apostrophe/text_view_format_inserter.py:464
+#: apostrophe/text_view_format_inserter.py:429 apostrophe/text_view_format_inserter.py:464
 msgid "image caption"
 msgstr "подпись к изображению"
 
@@ -1102,9 +1119,12 @@ msgstr ""
 "\n"
 "код\n"
 
-#: apostrophe/text_view.py:215 apostrophe/text_view.py:217
+#: apostrophe/text_view.py:212 apostrophe/text_view.py:214
 msgid "web page"
 msgstr "веб-страница"
+
+#~ msgid "Show More Controls"
+#~ msgstr "Показать больше элементов управления"
 
 #~ msgid "Open file base path"
 #~ msgstr "Базовый путь для открытия файла"
@@ -1217,24 +1237,19 @@ msgstr "веб-страница"
 #~ msgstr "(.*)"
 
 #~ msgid ""
-#~ "Apostrophe is a GTK based distraction free Markdown editor, originally "
-#~ "created by Wolf Vollprecht and maintained by Manuel Genovés. It uses "
-#~ "pandoc as backend for markdown parsing and offers a very clean and sleek "
-#~ "user interface."
+#~ "Apostrophe is a GTK based distraction free Markdown editor, originally created by Wolf "
+#~ "Vollprecht and maintained by Manuel Genovés. It uses pandoc as backend for markdown parsing and "
+#~ "offers a very clean and sleek user interface."
 #~ msgstr ""
-#~ "Апостроф - это редактор Маркдаун без отвлекающих факторов на основе GTK, "
-#~ "изначально созданный Вольфом Фольпрехтом и поддерживаемый Мануэлем "
-#~ "Женовесом. Он использует Pandoc в качестве бэкэнда для разбора уценок и "
-#~ "предлагает чистый, элегантный пользовательский интерфейс."
+#~ "Апостроф - это редактор Маркдаун без отвлекающих факторов на основе GTK, изначально созданный "
+#~ "Вольфом Фольпрехтом и поддерживаемый Мануэлем Женовесом. Он использует Pandoc в качестве бэкэнда "
+#~ "для разбора уценок и предлагает чистый, элегантный пользовательский интерфейс."
 
 #~ msgid "You can install the recommended TexLive extension with the command:"
-#~ msgstr ""
-#~ "Вы можете установить рекомендованное расширение TexLive с помощью команды:"
+#~ msgstr "Вы можете установить рекомендованное расширение TexLive с помощью команды:"
 
-#~ msgid ""
-#~ "flatpak install flathub org.gnome.gitlab.somas.Apostrophe.Plugin.TexLive"
-#~ msgstr ""
-#~ "flatpak install flathub org.gnome.gitlab.somas.Apostrophe.Plugin.TexLive"
+#~ msgid "flatpak install flathub org.gnome.gitlab.somas.Apostrophe.Plugin.TexLive"
+#~ msgstr "flatpak install flathub org.gnome.gitlab.somas.Apostrophe.Plugin.TexLive"
 
 #~ msgid "or from Gnome-Software"
 #~ msgstr "или с Gnome-Software"
