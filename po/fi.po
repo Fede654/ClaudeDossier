@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: apostrophe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2025-06-25 15:53+0000\n"
-"PO-Revision-Date: 2025-06-25 19:24+0300\n"
+"POT-Creation-Date: 2025-09-04 16:53+0000\n"
+"PO-Revision-Date: 2025-09-07 16:33+0300\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: Finnish <lokalisointi-lista@googlegroups.com>\n"
 "Language: fi\n"
@@ -16,25 +16,96 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.7\n"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:3
+#: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:2
 #: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:4
 msgid "Apostrophe"
 msgstr "Apostrophe"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! Do NOT translate "uberwriter" or "apostrophe"! The list MUST also end with a semicolon!
-#: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:5
+#: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:4
 msgid "uberwriter;UberWriter;apostrophe;markdown;editor;text;write;"
 msgstr "uberwriter;UberWriter;apostrophe;markdown;editor;text;write;muokkain;"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:6
+#: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:5
 msgid "Apostrophe, an elegant, distraction-free markdown editor"
 msgstr "Apostrophe on tyylikäs ja häiriötekijät minimoiva markdown-muokkain"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:18
 msgid "New Window"
 msgstr "Uusi ikkuna"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:5
+msgid "Edit Markdown in style"
+msgstr "Muokkaa Markdownia tyylillä"
+
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:9
+msgid "Manuel Genovés"
+msgstr "Manuel Genovés"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:14
+msgid "Focus on your writing with a clean, distraction-free markdown editor."
+msgstr ""
+"Keskity kirjoittamiseen selkeällä, häiriötekijät minimoivalla markdown-"
+"muokkaimella."
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:15
+msgid "Features:"
+msgstr "Ominaisuudet:"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:17
+msgid "An UI tailored to comfortable writing"
+msgstr "Kirjoitusta varten suunniteltu käyttöliittymä"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:18
+msgid "A distraction-free mode"
+msgstr "Häiriötön tila"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:19
+msgid "Dark, light and sepia themes"
+msgstr "Eri väriteemoja: tumma, vaalea ja seepia"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:20
+msgid ""
+"Everything you expect from a text editor, such as spellchecking or document "
+"statistics"
+msgstr ""
+"Kaikki mitä tekstimuokkaimelta voi odottaa, kuten oikoluku ja asiakirjan "
+"tilastot"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:21
+msgid "Live preview of what you write"
+msgstr "Reaaliaikainen esikatselu"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:22
+msgid ""
+"Export to all kind of formats: PDF, Word/Libreoffice, LaTeX, or even HTML "
+"slideshows"
+msgstr ""
+"Vie eri tiedostomuotoihin: PDF, Word/Libreoffice, LaTeX tai jopa HTML-"
+"diaesitys"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:55
+msgid "Main window"
+msgstr "Pääikkuna"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:59
+msgid "Main window in dark mode"
+msgstr "Pääikkuna tummassa tilassa"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:63
+msgid "Inserting a table with the help of the toolbar"
+msgstr "Taulukon lisääminen työkalupalkin avustuksella"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:67
+msgid "The preview lets you see a live rendered version of your document"
+msgstr "Esikatselun avulla näet asiakirjan reaaliajassa"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:71
+msgid "The focus mode allow for a more distraction-free experience"
+msgstr "Keskittymistila tarjoaa mahdollismman häiriöttömän kokemuksen"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:47
 msgid "Color scheme"
@@ -157,77 +228,6 @@ msgstr "Näytetäänkö työkalupalkki vai ei."
 msgid "Number of seconds between autosaves"
 msgstr "Aika sekunneissa automaattisten tallennusten välillä"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:5
-msgid "Edit Markdown in style"
-msgstr "Muokkaa Markdownia tyylillä"
-
-#. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:9
-msgid "Manuel Genovés"
-msgstr "Manuel Genovés"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:14
-msgid "Focus on your writing with a clean, distraction-free markdown editor."
-msgstr ""
-"Keskity kirjoittamiseen selkeällä, häiriötekijät minimoivalla markdown-"
-"muokkaimella."
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:15
-msgid "Features:"
-msgstr "Ominaisuudet:"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:17
-msgid "An UI tailored to comfortable writing"
-msgstr "Kirjoitusta varten suunniteltu käyttöliittymä"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:18
-msgid "A distraction-free mode"
-msgstr "Häiriötön tila"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:19
-msgid "Dark, light and sepia themes"
-msgstr "Eri väriteemoja: tumma, vaalea ja seepia"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:20
-msgid ""
-"Everything you expect from a text editor, such as spellchecking or document "
-"statistics"
-msgstr ""
-"Kaikki mitä tekstimuokkaimelta voi odottaa, kuten oikoluku ja asiakirjan "
-"tilastot"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:21
-msgid "Live preview of what you write"
-msgstr "Reaaliaikainen esikatselu"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:22
-msgid ""
-"Export to all kind of formats: PDF, Word/Libreoffice, LaTeX, or even HTML "
-"slideshows"
-msgstr ""
-"Vie eri tiedostomuotoihin: PDF, Word/Libreoffice, LaTeX tai jopa HTML-"
-"diaesitys"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:55
-msgid "Main window"
-msgstr "Pääikkuna"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:59
-msgid "Main window in dark mode"
-msgstr "Pääikkuna tummassa tilassa"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:63
-msgid "Inserting a table with the help of the toolbar"
-msgstr "Taulukon lisääminen työkalupalkin avustuksella"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:67
-msgid "The preview lets you see a live rendered version of your document"
-msgstr "Esikatselun avulla näet asiakirjan reaaliajassa"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:71
-msgid "The focus mode allow for a more distraction-free experience"
-msgstr "Keskittymistila tarjoaa mahdollismman häiriöttömän kokemuksen"
-
 #: data/ui/About.ui.in:9
 msgid "Copyright (C) 2022, Manuel G., Wolf V."
 msgstr "Tekijänoikeus (C) 2022, Manuel G., Wolf V."
@@ -260,12 +260,32 @@ msgstr ""
 msgid "_Close"
 msgstr "_Sulje"
 
+#: data/ui/DetailedError.ui:4
+msgid "Error Details"
+msgstr "Virheen tiedot"
+
+#: data/ui/DetailedError.ui:29
+msgid "Apostrophe experienced an error"
+msgstr "Apostrophe kohtasi virheen"
+
+#: data/ui/DetailedError.ui:40
+msgid "Error Message"
+msgstr "Virheviesti"
+
+#: data/ui/DetailedError.ui:53
+msgid "Copy Error Message"
+msgstr "Kopioi virheviesti"
+
+#: data/ui/DetailedError.ui:94
+msgid "Report _Issue"
+msgstr "_Ilmoita ongelmasta"
+
 #: data/ui/Export.ui:21
 msgid "Formats"
 msgstr "Muodot"
 
-#: data/ui/Export.ui:67 apostrophe/export_dialog.py:125
-#: apostrophe/export_dialog.py:336 apostrophe/export_dialog.py:340
+#: data/ui/Export.ui:67 apostrophe/export_dialog.py:117
+#: apostrophe/export_dialog.py:323 apostrophe/export_dialog.py:327
 msgid "Export"
 msgstr "Vie"
 
@@ -341,74 +361,75 @@ msgstr "Inkrementaaliset luettelomerkit"
 msgid "Show one bullet point after another in a slideshow"
 msgstr "Näytä yksi luettelomerkki toisensa jälkeen diaesityksessä"
 
-#: data/ui/Headerbar.ui:10 apostrophe/main_window.py:889
-#: apostrophe/main_window.py:904
+#: data/ui/HeaderbarNarrow.ui:26 data/ui/Headerbar.ui:43
+msgid "Main Menu"
+msgstr "Päävalikko"
+
+#: data/ui/HeaderbarNarrow.ui:51 data/ui/Headerbar.ui:10
+#: apostrophe/main_window.py:891 apostrophe/main_window.py:906
 msgid "New File"
 msgstr "Uusi tiedosto"
 
-#: data/ui/Headerbar.ui:17
+#: data/ui/HeaderbarNarrow.ui:55 data/ui/Headerbar.ui:17
 msgid "_Open"
 msgstr "_Avaa"
+
+#: data/ui/HeaderbarNarrow.ui:59 data/ui/HeaderbarNarrow.ui:63
+#: data/ui/Headerbar.ui:25
+msgid "_Save"
+msgstr "_Tallenna"
+
+#: data/ui/HeaderbarNarrow.ui:67 data/ui/Headerbar.ui:119
+msgid "_Save As..."
+msgstr "_Tallenna nimellä..."
+
+#: data/ui/HeaderbarNarrow.ui:90 data/ui/Headerbar.ui:142
+msgid "Advanced _Export…"
+msgstr "_Edistynyt vienti…"
+
+#: data/ui/HeaderbarNarrow.ui:96 data/ui/Headerbar.ui:148
+msgid "_Copy HTML"
+msgstr "_Kopioi HTML:nä"
+
+#: data/ui/HeaderbarNarrow.ui:104 data/ui/Headerbar.ui:77
+msgid "_Hemingway Mode"
+msgstr "_Hemingway-tila"
+
+#: data/ui/HeaderbarNarrow.ui:108 data/ui/Headerbar.ui:81
+msgid "_Focus Mode"
+msgstr "_Keskittymistila"
+
+#: data/ui/HeaderbarNarrow.ui:114 data/ui/Headerbar.ui:54
+msgid "Search in the File"
+msgstr "Etsi tiedostosta"
+
+#: data/ui/HeaderbarNarrow.ui:118 data/ui/Headerbar.ui:87
+msgid "Find and _Replace"
+msgstr "Etsi ja _korvaa"
+
+#: data/ui/HeaderbarNarrow.ui:124 data/ui/Headerbar.ui:93
+msgid "_Preferences"
+msgstr "_Asetukset"
+
+#: data/ui/HeaderbarNarrow.ui:130 data/ui/Headerbar.ui:99
+msgid "Open _Tutorial"
+msgstr "Avaa _opas"
+
+#: data/ui/HeaderbarNarrow.ui:135 data/ui/Headerbar.ui:104
+msgid "_Keyboard Shortcuts"
+msgstr "_Pikanäppäimet"
+
+#: data/ui/HeaderbarNarrow.ui:139 data/ui/Headerbar.ui:108
+msgid "_About Apostrophe"
+msgstr "_Tietoja - Apostrophe"
 
 #: data/ui/Headerbar.ui:19
 msgid "Open Markdown File"
 msgstr "Avaa Markdown-tiedosto"
 
-#: data/ui/Headerbar.ui:25
-msgid "_Save"
-msgstr "_Tallenna"
-
 #: data/ui/Headerbar.ui:27
 msgid "Save Markdown File"
 msgstr "Tallenna Markdown-tiedosto"
-
-#: data/ui/Headerbar.ui:43
-msgid "Main Menu"
-msgstr "Päävalikko"
-
-#: data/ui/Headerbar.ui:54
-msgid "Search in the File"
-msgstr "Etsi tiedostosta"
-
-#: data/ui/Headerbar.ui:77
-msgid "_Hemingway Mode"
-msgstr "_Hemingway-tila"
-
-#: data/ui/Headerbar.ui:81
-msgid "_Focus Mode"
-msgstr "_Keskittymistila"
-
-#: data/ui/Headerbar.ui:87
-msgid "Find and _Replace"
-msgstr "Etsi ja _korvaa"
-
-#: data/ui/Headerbar.ui:93
-msgid "_Preferences"
-msgstr "_Asetukset"
-
-#: data/ui/Headerbar.ui:99
-msgid "Open _Tutorial"
-msgstr "Avaa _opas"
-
-#: data/ui/Headerbar.ui:104
-msgid "_Keyboard Shortcuts"
-msgstr "_Pikanäppäimet"
-
-#: data/ui/Headerbar.ui:108
-msgid "_About Apostrophe"
-msgstr "_Tietoja - Apostrophe"
-
-#: data/ui/Headerbar.ui:119
-msgid "_Save As..."
-msgstr "_Tallenna nimellä..."
-
-#: data/ui/Headerbar.ui:142
-msgid "Advanced _Export…"
-msgstr "_Edistynyt vienti…"
-
-#: data/ui/Headerbar.ui:148
-msgid "_Copy HTML"
-msgstr "_Kopioi HTML:nä"
 
 #: data/ui/InlinePreviewPopover.ui:42
 msgid "Not Found"
@@ -459,7 +480,7 @@ msgstr "Markdown-murteen dokumentaatio"
 msgid "Desired level of security when rendering the preview"
 msgstr "Haluttu tietoturvan taso esikatselua muodostaessa"
 
-#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_handler.py:205
+#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_handler.py:212
 #: apostrophe/preview_window.py:32
 msgid "Preview"
 msgstr "Esikatselu"
@@ -723,21 +744,62 @@ msgstr "Käytä seepiavärejä"
 msgid "Use Dark Colors"
 msgstr "Käytä tummia värejä"
 
-#: data/ui/Toolbar.ui:27
+#: data/ui/ToolbarNarrow.ui:17 data/ui/Toolbar.ui:27
 msgid "Bold"
 msgstr "Lihavoitu"
 
-#: data/ui/Toolbar.ui:37
+#: data/ui/ToolbarNarrow.ui:27 data/ui/Toolbar.ui:37
 msgid "Italic"
 msgstr "Kursivoitu"
 
-#: data/ui/Toolbar.ui:47
+#: data/ui/ToolbarNarrow.ui:37 data/ui/Toolbar.ui:47
 msgid "Strikethrough"
 msgstr "Yliviivattu"
 
-#: data/ui/Toolbar.ui:57
+#: data/ui/ToolbarNarrow.ui:47 data/ui/Toolbar.ui:57
 msgid "Heading"
 msgstr "Otsake"
+
+#: data/ui/ToolbarNarrow.ui:58
+msgid "List"
+msgstr "Luettelo"
+
+#: data/ui/ToolbarNarrow.ui:69
+msgid "Insert"
+msgstr "Lisää"
+
+#: data/ui/ToolbarNarrow.ui:80 data/ui/Toolbar.ui:138
+msgid "Table"
+msgstr "Taulukko"
+
+#: data/ui/ToolbarNarrow.ui:117
+msgid "Unordered"
+msgstr "Järjestämätön"
+
+#: data/ui/ToolbarNarrow.ui:136
+msgid "Ordered"
+msgstr "Järjestetty"
+
+#: data/ui/ToolbarNarrow.ui:155
+msgid "Checklist"
+msgstr "Tarkistuslista"
+
+#: data/ui/ToolbarNarrow.ui:185 data/ui/Toolbar.ui:98
+msgid "Blockquote"
+msgstr "Lainaus"
+
+#: data/ui/ToolbarNarrow.ui:204 data/ui/Toolbar.ui:108
+msgid "Code"
+msgstr "Koodi"
+
+#: data/ui/ToolbarNarrow.ui:223 data/ui/Toolbar.ui:118
+msgid "Link"
+msgstr "Linkki"
+
+#: data/ui/ToolbarNarrow.ui:242 data/ui/Toolbar.ui:128
+#: apostrophe/text_view_format_inserter.py:435
+msgid "Image"
+msgstr "Kuva"
 
 #: data/ui/Toolbar.ui:68
 msgid "Unordered List"
@@ -750,26 +812,6 @@ msgstr "Järjestetty luettelo"
 #: data/ui/Toolbar.ui:88
 msgid "Check List"
 msgstr "Tarkistuslista"
-
-#: data/ui/Toolbar.ui:98
-msgid "Blockquote"
-msgstr "Lainaus"
-
-#: data/ui/Toolbar.ui:108
-msgid "Code"
-msgstr "Koodi"
-
-#: data/ui/Toolbar.ui:118
-msgid "Link"
-msgstr "Linkki"
-
-#: data/ui/Toolbar.ui:128 apostrophe/text_view_format_inserter.py:435
-msgid "Image"
-msgstr "Kuva"
-
-#: data/ui/Toolbar.ui:138
-msgid "Table"
-msgstr "Taulukko"
 
 #: data/ui/Window.ui:64
 msgid "This file may be insecure"
@@ -785,57 +827,73 @@ msgstr ""
 "Jos olet epävarma tiedoston sisällöstä, avaa se rajoitetussa esikatselussa, "
 "jossa JavaScript ja HTML ovat pois käytöstä."
 
-#: data/ui/Window.ui:77
+#: data/ui/Window.ui:75
 msgid "Load Preview"
 msgstr "Lataa esikatselu"
 
-#: data/ui/Window.ui:86
+#: data/ui/Window.ui:84
 msgid "Load Restricted Preview"
 msgstr "Lataa rajoitettu esikatselu"
 
-#: data/ui/Window.ui:184
+#: data/ui/Window.ui:180
 msgid ""
 "Apostrophe closed unexpectedly. This file has been recovered from an autosave"
 msgstr ""
 "Apostrophe sulkeutui odottamatta. Tämä tiedosto on palautettu "
 "automaattisesta tallennuksesta"
 
-#: data/ui/Window.ui:200
+#: data/ui/Window.ui:196
 msgid "File Has Changed on Disk"
 msgstr "Tiedosto on muuttunut levyllä"
 
-#: data/ui/Window.ui:210
+#: data/ui/Window.ui:206
 msgid "The file has been changed by another program"
 msgstr "Tiedostoa on muutettu toisessa ohjelmassa"
 
-#: data/ui/Window.ui:218
+#: data/ui/Window.ui:214
 msgid "_Discard Changes and Reload"
 msgstr "_Hylkää muutokset ja lataa uudelleen"
 
-#: apostrophe/application.py:301
+#: apostrophe/application.py:303
 msgid "Donate"
 msgstr "Lahjoita"
 
-#: apostrophe/application.py:302
+#: apostrophe/application.py:304
 msgid "Translations"
 msgstr "Kielikäännökset"
 
-#: apostrophe/export_dialog.py:120 apostrophe/helpers.py:84
-msgid "Close"
-msgstr "Sulje"
+#: apostrophe/bottombar.py:184
+msgid "Hide Toolbar"
+msgstr "Piilota työkalupalkki"
 
-#: apostrophe/export_dialog.py:128 apostrophe/export_dialog.py:341
+#: apostrophe/bottombar.py:186
+msgid "Show Toolbar"
+msgstr "Näytä työkalupalkki"
+
+#: apostrophe/export_dialog.py:120 apostrophe/export_dialog.py:328
 #, python-format
 msgid "Export to %s"
 msgstr "Vie muotoon %s"
 
-#: apostrophe/export_dialog.py:130 apostrophe/export_dialog.py:337
-#: apostrophe/export_dialog.py:342 apostrophe/main_window.py:444
-#: apostrophe/main_window.py:530 apostrophe/main_window.py:653
+#: apostrophe/export_dialog.py:122 apostrophe/export_dialog.py:324
+#: apostrophe/export_dialog.py:329 apostrophe/main_window.py:446
+#: apostrophe/main_window.py:532 apostrophe/main_window.py:655
 msgid "Cancel"
 msgstr "Peru"
 
-#: apostrophe/export_dialog.py:161 apostrophe/export_dialog.py:330
+#: apostrophe/export_dialog.py:151
+#| msgid ""
+#| "An error happened while trying to export:\n"
+#| "\n"
+#| "{err_msg}"
+msgid "Apostrophe experienced an error while trying to export:"
+msgstr "Apostrophe kohtasi virheen vientiä yrittäessä:"
+
+#: apostrophe/export_dialog.py:230
+msgid "Export to {}"
+msgstr "Vie muotoon {}"
+
+#: apostrophe/export_dialog.py:317
 #, python-brace-format
 msgid ""
 "An error happened while trying to export:\n"
@@ -846,17 +904,17 @@ msgstr ""
 "\n"
 "{err_msg}"
 
-#: apostrophe/export_dialog.py:243
-msgid "Export to {}"
-msgstr "Vie muotoon {}"
-
-#: apostrophe/export_dialog.py:337
+#: apostrophe/export_dialog.py:324
 msgid "Select folder"
 msgstr "Valitse kansio"
 
 #: apostrophe/helpers.py:83
 msgid "Error"
 msgstr "Virhe"
+
+#: apostrophe/helpers.py:84
+msgid "Close"
+msgstr "Sulje"
 
 #: apostrophe/inhibitor.py:36
 msgid "Unsaved documents"
@@ -891,39 +949,39 @@ msgid "adverb"
 msgstr "adverbi"
 
 #. Hemingway Toast
-#: apostrophe/main_window.py:159
+#: apostrophe/main_window.py:161
 msgid "Text can't be deleted while on Hemingway mode"
 msgstr "Tekstiä ei voi poistaa Hemingway-tilassa"
 
-#: apostrophe/main_window.py:162
+#: apostrophe/main_window.py:164
 msgid "Tell me more"
 msgstr "Kerro lisää"
 
-#: apostrophe/main_window.py:440
+#: apostrophe/main_window.py:442
 msgid "Save your File"
 msgstr "Tallenna tiedostosi"
 
-#: apostrophe/main_window.py:443 apostrophe/main_window.py:655
+#: apostrophe/main_window.py:445 apostrophe/main_window.py:657
 msgid "Save"
 msgstr "Tallenna"
 
-#: apostrophe/main_window.py:519
+#: apostrophe/main_window.py:521
 msgid "Markdown Files"
 msgstr "Markdown-tiedostot"
 
-#: apostrophe/main_window.py:523
+#: apostrophe/main_window.py:525
 msgid "Plain Text Files"
 msgstr "Raakatekstitiedostot"
 
-#: apostrophe/main_window.py:526
+#: apostrophe/main_window.py:528
 msgid "Open a .md file"
 msgstr "Avaa .md-tiedosto"
 
-#: apostrophe/main_window.py:529
+#: apostrophe/main_window.py:531
 msgid "Open"
 msgstr "Avaa"
 
-#: apostrophe/main_window.py:607
+#: apostrophe/main_window.py:609
 #, python-brace-format
 msgid ""
 "Failed to detect encoding for file:\n"
@@ -938,11 +996,11 @@ msgstr ""
 "Virhe oli:\n"
 "{err_msg}"
 
-#: apostrophe/main_window.py:647
+#: apostrophe/main_window.py:649
 msgid "Save Changes?"
 msgstr "Tallennetaanko muutokset?"
 
-#: apostrophe/main_window.py:648
+#: apostrophe/main_window.py:650
 #, python-format
 msgid ""
 "“%s” contains unsaved changes. If you don’t save, all your changes will be "
@@ -951,7 +1009,7 @@ msgstr ""
 "“%s” sisältää tallentamattomia muutoksia. Jos et tallenna, kaikki muutokset "
 "häviävät pysyvästi."
 
-#: apostrophe/main_window.py:654
+#: apostrophe/main_window.py:656
 msgid "Discard"
 msgstr "Hylkää"
 
@@ -1086,7 +1144,7 @@ msgstr ""
 "\n"
 "koodi\n"
 
-#: apostrophe/text_view.py:220 apostrophe/text_view.py:222
+#: apostrophe/text_view.py:212 apostrophe/text_view.py:214
 msgid "web page"
 msgstr "verkkosivu"
 
