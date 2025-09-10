@@ -3,7 +3,7 @@
     "runtime": "org.gnome.gitlab.somas.Apostrophe",
     "branch": "stable",
     "runtime-version": "stable",
-    "sdk": "org.gnome.Sdk//3.38",
+    "sdk": "org.gnome.Sdk//48",
     "build-extension": true,
     "separate-locales": false,
     "appstream-compose": false,
@@ -11,25 +11,10 @@
     "build-options" : {
         "prepend-path": "/app/extensions/TexLive",
         "env": {
-            "PATH": "/app/extensions/TexLive/bin:/app/extensions/TexLive/2018/bin/x86_64-linux:/app/bin:/usr/bin"
+            "PATH": "/app/extensions/TexLive/bin:/app/extensions/TexLive/bin/x86_64-linux:/app/bin:/usr/bin"
         }
     },
-    "cleanup": ["/bin/wget"],
     "modules": [
-        {
-            "name": "wget",
-            "builddir": true,
-            "build-options": {
-                "prefix": "/app/extensions/TexLive"
-            },
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://ftp.gnu.org/gnu/wget/wget-1.19.4.tar.gz",
-                    "sha256": "93fb96b0f48a20ff5be0d9d9d3c4a986b469cb853131f9d5fe4cc9cecbc8b5b5"
-                }
-            ]
-        },
         {
             "name": "p7zip",
             "no-autogen": true,
@@ -61,7 +46,7 @@
                 {
                     "type":"file",
                     "url": "http://mirrors.ctan.org/systems/texlive/Images/texlive.iso",
-                    "sha512": "7c94bbcff5318e540dc0b03010896185d8985bcc2c2ac11906e831ec583fd574bf9720fce5efc29470c80bafe12f42ddaa392b96c460a27eda94f93c12e7b57d"
+                    "sha512": "1fd9a2234d086f50c832ab3ac8b83477bbc39b1138a3c4a2351244c1fd4b8bea6d1ac81d4a5b0cba95f2e82c00f0d9df5b33189eb222e4bae5dae1523ef0da0e"
                 },
                 {
                     "type": "file",
