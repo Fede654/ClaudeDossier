@@ -211,9 +211,16 @@ If you're unsure about the contents of this file, open it in the Restricted Prev
                             </child>
                             <child type="action">
                               <object class="GtkButton" id="discard">
-                                <property name="label" translatable="yes">_Discard Changes and Reload</property>
                                 <property name="use-underline">True</property>
                                 <signal name="clicked" handler="reload_file"/>
+                                <child>
+                                  <object class="GtkLabel">
+                                  <property name="label" translatable="yes">_Discard Changes and Reload</property>
+                                    <property name="use-underline">True</property>
+                                    <property name="wrap">True</property>
+                                    <property name="wrap-mode">word-char</property>
+                                  </object>
+                                </child>
                               </object>
                             </child>
                           </object>
