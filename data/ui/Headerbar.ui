@@ -16,6 +16,7 @@
           <object class="GtkMenuButton">
             <property name="label" translatable="yes">_Open</property>
             <property name="use-underline">True</property>
+            <property name="can-shrink">True</property>
             <property name="tooltip-text" translatable="yes">Open Markdown File</property>
             <property name="popover">open_menu</property>
           </object>
@@ -24,6 +25,7 @@
           <object class="AdwSplitButton">
             <property name="label" translatable="yes">_Save</property>
             <property name="use-underline">True</property>
+            <property name="can-shrink">True</property>
             <property name="tooltip-text" translatable="yes">Save Markdown File</property>
             <property name="action-name">win.save</property>
             <property name="menu-model">export_menu</property>
