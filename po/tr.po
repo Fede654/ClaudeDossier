@@ -1,5 +1,5 @@
 # Turkish translation for Apostrophe.
-# Copyright (C) 2022-2024 Apostrophe's COPYRIGHT HOLDER
+# Copyright (C) 2022-2025 Apostrophe's COPYRIGHT HOLDER
 # This file is distributed under the same license as the Apostrophe package.
 #
 # Çağatay Yiğit Şahin <cyigitsahin@outlook.com>
@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2025-08-28 14:33+0000\n"
-"PO-Revision-Date: 2025-08-29 13:35+0300\n"
+"POT-Creation-Date: 2025-09-14 19:55+0000\n"
+"PO-Revision-Date: 2025-09-20 10:49+0300\n"
 "Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
 "Language-Team: Türkçe <takim@gnome.org.tr>\n"
 "Language: tr\n"
@@ -369,7 +369,7 @@ msgstr "Artımlı Madde İmleri"
 msgid "Show one bullet point after another in a slideshow"
 msgstr "Slayt gösterisinde madde imlerini birbiri ardına göster"
 
-#: data/ui/HeaderbarNarrow.ui:26 data/ui/Headerbar.ui:43
+#: data/ui/HeaderbarNarrow.ui:26 data/ui/Headerbar.ui:45
 msgid "Main Menu"
 msgstr "Ana Menü"
 
@@ -383,59 +383,59 @@ msgid "_Open"
 msgstr "_Aç"
 
 #: data/ui/HeaderbarNarrow.ui:59 data/ui/HeaderbarNarrow.ui:63
-#: data/ui/Headerbar.ui:25
+#: data/ui/Headerbar.ui:26
 msgid "_Save"
 msgstr "_Kaydet"
 
-#: data/ui/HeaderbarNarrow.ui:67 data/ui/Headerbar.ui:119
+#: data/ui/HeaderbarNarrow.ui:67 data/ui/Headerbar.ui:121
 msgid "_Save As..."
 msgstr "Farklı _Kaydet…"
 
-#: data/ui/HeaderbarNarrow.ui:90 data/ui/Headerbar.ui:142
+#: data/ui/HeaderbarNarrow.ui:90 data/ui/Headerbar.ui:144
 msgid "Advanced _Export…"
 msgstr "Gelişmiş _Dışa Aktarma…"
 
-#: data/ui/HeaderbarNarrow.ui:96 data/ui/Headerbar.ui:148
+#: data/ui/HeaderbarNarrow.ui:96 data/ui/Headerbar.ui:150
 msgid "_Copy HTML"
 msgstr "HTML’yi _Kopyala"
 
-#: data/ui/HeaderbarNarrow.ui:104 data/ui/Headerbar.ui:77
+#: data/ui/HeaderbarNarrow.ui:104 data/ui/Headerbar.ui:79
 msgid "_Hemingway Mode"
 msgstr "_Hemingway Kipi"
 
-#: data/ui/HeaderbarNarrow.ui:108 data/ui/Headerbar.ui:81
+#: data/ui/HeaderbarNarrow.ui:108 data/ui/Headerbar.ui:83
 msgid "_Focus Mode"
 msgstr "_Odaklanma Kipi"
 
-#: data/ui/HeaderbarNarrow.ui:114 data/ui/Headerbar.ui:54
+#: data/ui/HeaderbarNarrow.ui:114 data/ui/Headerbar.ui:56
 msgid "Search in the File"
 msgstr "Dosyada Ara"
 
-#: data/ui/HeaderbarNarrow.ui:118 data/ui/Headerbar.ui:87
+#: data/ui/HeaderbarNarrow.ui:118 data/ui/Headerbar.ui:89
 msgid "Find and _Replace"
 msgstr "Bul ve _Değiştir"
 
-#: data/ui/HeaderbarNarrow.ui:124 data/ui/Headerbar.ui:93
+#: data/ui/HeaderbarNarrow.ui:124 data/ui/Headerbar.ui:95
 msgid "_Preferences"
 msgstr "_Tercihler"
 
-#: data/ui/HeaderbarNarrow.ui:130 data/ui/Headerbar.ui:99
+#: data/ui/HeaderbarNarrow.ui:130 data/ui/Headerbar.ui:101
 msgid "Open _Tutorial"
 msgstr "_Eğitimi Aç"
 
-#: data/ui/HeaderbarNarrow.ui:135 data/ui/Headerbar.ui:104
+#: data/ui/HeaderbarNarrow.ui:135 data/ui/Headerbar.ui:106
 msgid "_Keyboard Shortcuts"
 msgstr "Klavye _Kısayolları"
 
-#: data/ui/HeaderbarNarrow.ui:139 data/ui/Headerbar.ui:108
+#: data/ui/HeaderbarNarrow.ui:139 data/ui/Headerbar.ui:110
 msgid "_About Apostrophe"
 msgstr "Apostrophe _Hakkında"
 
-#: data/ui/Headerbar.ui:19
+#: data/ui/Headerbar.ui:20
 msgid "Open Markdown File"
 msgstr "Markdown Dosyası Aç"
 
-#: data/ui/Headerbar.ui:27
+#: data/ui/Headerbar.ui:29
 msgid "Save Markdown File"
 msgstr "Markdown Dosyasını Kaydet"
 
@@ -859,7 +859,7 @@ msgstr "Dosya Diskte Değiştirildi"
 msgid "The file has been changed by another program"
 msgstr "Dosya başka bir programca değiştirildi"
 
-#: data/ui/Window.ui:214
+#: data/ui/Window.ui:218
 msgid "_Discard Changes and Reload"
 msgstr "Değişiklikleri _Gözden Çıkar ve Yeniden Yükle"
 
@@ -1018,7 +1018,7 @@ msgstr ""
 
 #: apostrophe/main_window.py:656
 msgid "Discard"
-msgstr "_Gözden Çıkar"
+msgstr "Gözden Çıkar"
 
 #: apostrophe/preferences_dialog.py:97
 msgid "Always Ask"
@@ -1150,12 +1150,3 @@ msgstr ""
 #: apostrophe/text_view.py:212 apostrophe/text_view.py:214
 msgid "web page"
 msgstr "web sayfası"
-
-#~ msgid "Show More Controls"
-#~ msgstr "Daha Çok Denetim Göster"
-
-#~ msgid "Open file base path"
-#~ msgstr "Dosya temel yolunu aç"
-
-#~ msgid "Open file paths of the current session"
-#~ msgstr "Geçerli oturumun dosya yollarını aç"
