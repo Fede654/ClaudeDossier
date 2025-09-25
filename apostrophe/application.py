@@ -133,15 +133,17 @@ class Application(Adw.Application):
 
     def do_activate(self, *args, **kwargs):
 
-        if not self.get_windows():
+        win = self.get_active_window()
+        if not win:
             self.settings.connect("changed", self.on_settings_changed)
+            win = MainWindow(self)
 
             group = Gtk.WindowGroup.new()
-            group.add_window(MainWindow(self))
+            group.add_window(win)
 
         self._set_color_scheme()
 
-        self.get_active_window().present()
+        win.present()
 
     def do_handle_local_options(self, options):
         if options.contains("new-window"):
