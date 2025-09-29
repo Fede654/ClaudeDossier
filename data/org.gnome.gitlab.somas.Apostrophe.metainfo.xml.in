@@ -69,6 +69,17 @@
     <internet>offline-only</internet>
   </supports>
   <releases>
+    <release type="stable" version="3.4" date="2025-09-30T00:00:00Z">
+      <description>
+        <p>The Apostrophe developer fully stands with Palestine and condemns the genocide Israel is enacting on its people right now. Any donation the project receives will be diverted to UNRWA</p>
+        <p>This release fixes the following bugs:</p>
+        <ul>
+          <li>Fixed some layout issues in certain locales at narrow sizes</li>
+          <li>Fixed an issue where closing and opening Apostrophe with a windowed preview active wouldn't open the editing window the second time</li>
+          <li>Updated some dependencies to fix some long-standing issues with GtkTextView</li>
+        </ul>
+      </description>
+    </release>
     <release type="stable" version="3.3" date="2025-09-10T00:00:00Z">
       <description>
         <p>The Apostrophe developer fully stands with Palestine and condemns the genocide Israel is enacting on its people right now. Any donation the project receives will be diverted to UNRWA</p>

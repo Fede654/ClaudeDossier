@@ -1,3 +1,15 @@
+Version 3.4
+~~~~~~~~~~~~~~~
+Released: 2025-09-30
+
+Notes:
+- The Apostrophe developer fully stands with Palestine and condemns the genocide Israel is enacting on its people right now. Any donation the project receives will be diverted to UNRWA
+
+Bugfixes:
+- Fixed some layout issues in certain locales at narrow sizes
+- Fixed an issue where closing and opening Apostrophe with a windowed preview active wouldn't open the editing window the second time
+- Updated some dependencies to fix some long-standing issues with GtkTextView
+
 Version 3.3
 ~~~~~~~~~~~~~~~
 Released: 2025-09-10
