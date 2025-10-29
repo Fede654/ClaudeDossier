@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Apostrophe\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/apostrophe/issues\n"
-"POT-Creation-Date: 2025-06-25 15:53+0000\n"
-"PO-Revision-Date: 2025-07-01 18:57+0200\n"
+"POT-Creation-Date: 2025-10-25 12:01+0000\n"
+"PO-Revision-Date: 2025-10-27 13:10+0100\n"
 "Last-Translator: Jordi Mas i Hernàndez <jmas@softcatala.org>\n"
 "Language-Team: Catalan <info@softcatala.org>\n"
 "Language: ca\n"
@@ -18,25 +18,99 @@ msgstr ""
 "X-DL-Lang: ca\n"
 "X-DL-Module: apostrophe\n"
 "X-DL-State: Translating\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.6\n"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:3
+#: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:2
 #: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:4
 msgid "Apostrophe"
 msgstr "Apostrophe"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! Do NOT translate "uberwriter" or "apostrophe"! The list MUST also end with a semicolon!
-#: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:5
+#: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:4
 msgid "uberwriter;UberWriter;apostrophe;markdown;editor;text;write;"
 msgstr "uberwriter;UberWriter;apostrophe;markdown;editor;text;escriu;"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:6
+#: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:5
 msgid "Apostrophe, an elegant, distraction-free markdown editor"
 msgstr "Apostrophe, un editor de markdown elegant i sense distraccions"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.desktop.in.in:18
 msgid "New Window"
 msgstr "Finestra nova"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:5
+msgid "Edit Markdown in style"
+msgstr "Edita el Markdown amb l'estil"
+
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:9
+msgid "Manuel Genovés"
+msgstr "Manuel Genovés"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:14
+msgid "Focus on your writing with a clean, distraction-free markdown editor."
+msgstr ""
+"Centreu-vos en l'escriptura amb un editor net i lliure de distraccions."
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:15
+msgid "Features:"
+msgstr "Característiques:"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:17
+msgid "An UI tailored to comfortable writing"
+msgstr "Una interfície d'usuari creada per a una escriptura còmoda"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:18
+msgid "A distraction-free mode"
+msgstr "Un editor sense distraccions"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:19
+msgid "Dark, light and sepia themes"
+msgstr "Temes foscos, clars i sèpia"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:20
+msgid ""
+"Everything you expect from a text editor, such as spellchecking or document "
+"statistics"
+msgstr ""
+"Tot el que espereu d'un editor de text, com ara verificació ortogràfica o "
+"estadístiques del document"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:21
+msgid "Live preview of what you write"
+msgstr "Vista prèvia en viu d'allò que escriviu"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:22
+msgid ""
+"Export to all kind of formats: PDF, Word/Libreoffice, LaTeX, or even HTML "
+"slideshows"
+msgstr ""
+"Exporta a tots els tipus de formats: PDF, Word/Libreoffice, LaTeX, o fins i "
+"tot presentacions HTML"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:55
+msgid "Main window"
+msgstr "Finestra principal"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:59
+msgid "Main window in dark mode"
+msgstr "Finestra principal en el tema fosc"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:63
+msgid "Inserting a table with the help of the toolbar"
+msgstr "Inserció d'una taula en l'ajuda de la barra d'eines"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:67
+msgid "The preview lets you see a live rendered version of your document"
+msgstr ""
+"La vista prèvia permet veure una versió renderitzada del document en temps "
+"real"
+
+#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:71
+msgid "The focus mode allow for a more distraction-free experience"
+msgstr ""
+"El mode de concentració permet una experiència d'escriptura sense "
+"distraccions"
 
 #: data/org.gnome.gitlab.somas.Apostrophe.gschema.xml:47
 msgid "Color scheme"
@@ -161,80 +235,6 @@ msgstr "Si la barra d'eines es mostra o no."
 msgid "Number of seconds between autosaves"
 msgstr "Nombre de segons entre desades automàtiques"
 
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:5
-msgid "Edit Markdown in style"
-msgstr "Edita el Markdown amb l'estil"
-
-#. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:9
-msgid "Manuel Genovés"
-msgstr "Manuel Genovés"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:14
-msgid "Focus on your writing with a clean, distraction-free markdown editor."
-msgstr ""
-"Centreu-vos en l'escriptura amb un editor net i lliure de distraccions."
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:15
-msgid "Features:"
-msgstr "Característiques:"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:17
-msgid "An UI tailored to comfortable writing"
-msgstr "Una interfície d'usuari creada per a una escriptura còmoda"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:18
-msgid "A distraction-free mode"
-msgstr "Un editor sense distraccions"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:19
-msgid "Dark, light and sepia themes"
-msgstr "Temes foscos, clars i sèpia"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:20
-msgid ""
-"Everything you expect from a text editor, such as spellchecking or document "
-"statistics"
-msgstr ""
-"Tot el que espereu d'un editor de text, com ara verificació ortogràfica o "
-"estadístiques del document"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:21
-msgid "Live preview of what you write"
-msgstr "Vista prèvia en viu d'allò que escriviu"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:22
-msgid ""
-"Export to all kind of formats: PDF, Word/Libreoffice, LaTeX, or even HTML "
-"slideshows"
-msgstr ""
-"Exporta a tots els tipus de formats: PDF, Word/Libreoffice, LaTeX, o fins i "
-"tot presentacions HTML"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:55
-msgid "Main window"
-msgstr "Finestra principal"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:59
-msgid "Main window in dark mode"
-msgstr "Finestra principal en el tema fosc"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:63
-msgid "Inserting a table with the help of the toolbar"
-msgstr "Inserció d'una taula en l'ajuda de la barra d'eines"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:67
-msgid "The preview lets you see a live rendered version of your document"
-msgstr ""
-"La vista prèvia permet veure una versió renderitzada del document en temps "
-"real"
-
-#: data/org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in.in:71
-msgid "The focus mode allow for a more distraction-free experience"
-msgstr ""
-"El mode de concentració permet una experiència d'escriptura sense "
-"distraccions"
-
 #: data/ui/About.ui.in:9
 msgid "Copyright (C) 2022, Manuel G., Wolf V."
 msgstr "Copyright (C) 2022, Manuel G., Wolf V."
@@ -270,12 +270,32 @@ msgstr ""
 msgid "_Close"
 msgstr "_Tanca"
 
+#: data/ui/DetailedError.ui:4
+msgid "Error Details"
+msgstr "Detalls de l'error"
+
+#: data/ui/DetailedError.ui:29
+msgid "Apostrophe experienced an error"
+msgstr "Apostrophe ha experimentat un error"
+
+#: data/ui/DetailedError.ui:40
+msgid "Error Message"
+msgstr "Missatge d'error"
+
+#: data/ui/DetailedError.ui:53
+msgid "Copy Error Message"
+msgstr "Copia el missatge d'error"
+
+#: data/ui/DetailedError.ui:94
+msgid "Report _Issue"
+msgstr "_Informa d'un error"
+
 #: data/ui/Export.ui:21
 msgid "Formats"
 msgstr "Formats"
 
-#: data/ui/Export.ui:67 apostrophe/export_dialog.py:125
-#: apostrophe/export_dialog.py:336 apostrophe/export_dialog.py:340
+#: data/ui/Export.ui:67 apostrophe/export_dialog.py:117
+#: apostrophe/export_dialog.py:323 apostrophe/export_dialog.py:327
 msgid "Export"
 msgstr "Exporta"
 
@@ -353,74 +373,75 @@ msgstr "Pics incrementals"
 msgid "Show one bullet point after another in a slideshow"
 msgstr "Mostra un pic rere l'altre en una presentació"
 
-#: data/ui/Headerbar.ui:10 apostrophe/main_window.py:889
-#: apostrophe/main_window.py:904
-msgid "New File"
-msgstr "Fitxer nou"
-
-#: data/ui/Headerbar.ui:17
-msgid "_Open"
-msgstr "_Obre"
-
-#: data/ui/Headerbar.ui:19
-msgid "Open Markdown File"
-msgstr "Obre fitxer Markdown"
-
-#: data/ui/Headerbar.ui:25
-msgid "_Save"
-msgstr "De_sa"
-
-#: data/ui/Headerbar.ui:27
-msgid "Save Markdown File"
-msgstr "Desa fitxer Markdown"
-
-#: data/ui/Headerbar.ui:43
+#: data/ui/HeaderbarNarrow.ui:26 data/ui/Headerbar.ui:45
 msgid "Main Menu"
 msgstr "Menú principal"
 
-#: data/ui/Headerbar.ui:54
-msgid "Search in the File"
-msgstr "Cerca al fitxer"
+#: data/ui/HeaderbarNarrow.ui:51 data/ui/Headerbar.ui:10
+#: apostrophe/main_window.py:891 apostrophe/main_window.py:906
+msgid "New File"
+msgstr "Fitxer nou"
 
-#: data/ui/Headerbar.ui:77
-msgid "_Hemingway Mode"
-msgstr "Mode _hemingway"
+#: data/ui/HeaderbarNarrow.ui:55 data/ui/Headerbar.ui:17
+msgid "_Open"
+msgstr "_Obre"
 
-#: data/ui/Headerbar.ui:81
-msgid "_Focus Mode"
-msgstr "Mode de _concentració"
+#: data/ui/HeaderbarNarrow.ui:59 data/ui/HeaderbarNarrow.ui:63
+#: data/ui/Headerbar.ui:26
+msgid "_Save"
+msgstr "De_sa"
 
-#: data/ui/Headerbar.ui:87
-msgid "Find and _Replace"
-msgstr "Troba i _reemplaça"
-
-#: data/ui/Headerbar.ui:93
-msgid "_Preferences"
-msgstr "_Preferències"
-
-#: data/ui/Headerbar.ui:99
-msgid "Open _Tutorial"
-msgstr "Obre el _tutorial"
-
-#: data/ui/Headerbar.ui:104
-msgid "_Keyboard Shortcuts"
-msgstr "_Dreceres del teclat"
-
-#: data/ui/Headerbar.ui:108
-msgid "_About Apostrophe"
-msgstr "Qu_ant a l'Apostrophe"
-
-#: data/ui/Headerbar.ui:119
+#: data/ui/HeaderbarNarrow.ui:67 data/ui/Headerbar.ui:121
 msgid "_Save As..."
 msgstr "Anomena i de_sa..."
 
-#: data/ui/Headerbar.ui:142
+#: data/ui/HeaderbarNarrow.ui:90 data/ui/Headerbar.ui:144
 msgid "Advanced _Export…"
 msgstr "_Exportació avançada…"
 
-#: data/ui/Headerbar.ui:148
+#: data/ui/HeaderbarNarrow.ui:96 data/ui/Headerbar.ui:150
 msgid "_Copy HTML"
 msgstr "_Copia HTML"
+
+#: data/ui/HeaderbarNarrow.ui:104 data/ui/Headerbar.ui:79
+msgid "_Hemingway Mode"
+msgstr "Mode _hemingway"
+
+#: data/ui/HeaderbarNarrow.ui:108 data/ui/Headerbar.ui:83
+msgid "_Focus Mode"
+msgstr "Mode de _concentració"
+
+#: data/ui/HeaderbarNarrow.ui:114 data/ui/Headerbar.ui:56
+msgid "Search in the File"
+msgstr "Cerca al fitxer"
+
+#: data/ui/HeaderbarNarrow.ui:118 data/ui/Headerbar.ui:89
+msgid "Find and _Replace"
+msgstr "Troba i _reemplaça"
+
+#: data/ui/HeaderbarNarrow.ui:124 data/ui/Headerbar.ui:95
+msgid "_Preferences"
+msgstr "_Preferències"
+
+#: data/ui/HeaderbarNarrow.ui:130 data/ui/Headerbar.ui:101
+msgid "Open _Tutorial"
+msgstr "Obre el _tutorial"
+
+#: data/ui/HeaderbarNarrow.ui:135 data/ui/Headerbar.ui:106
+msgid "_Keyboard Shortcuts"
+msgstr "_Dreceres del teclat"
+
+#: data/ui/HeaderbarNarrow.ui:139 data/ui/Headerbar.ui:110
+msgid "_About Apostrophe"
+msgstr "Qu_ant a l'Apostrophe"
+
+#: data/ui/Headerbar.ui:20
+msgid "Open Markdown File"
+msgstr "Obre fitxer Markdown"
+
+#: data/ui/Headerbar.ui:29
+msgid "Save Markdown File"
+msgstr "Desa fitxer Markdown"
 
 #: data/ui/InlinePreviewPopover.ui:42
 msgid "Not Found"
@@ -472,7 +493,7 @@ msgstr "Documentació del tipus de marcatge Markdown"
 msgid "Desired level of security when rendering the preview"
 msgstr "Nivell de seguretat desitjat per la previsualització"
 
-#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_handler.py:205
+#: data/ui/PreviewLayoutSwitcher.ui:7 apostrophe/preview_handler.py:212
 #: apostrophe/preview_window.py:32
 msgid "Preview"
 msgstr "Previsualització"
@@ -736,21 +757,62 @@ msgstr "Usa colors sèpia"
 msgid "Use Dark Colors"
 msgstr "Usa colors foscos"
 
-#: data/ui/Toolbar.ui:27
+#: data/ui/ToolbarNarrow.ui:17 data/ui/Toolbar.ui:27
 msgid "Bold"
 msgstr "Negreta"
 
-#: data/ui/Toolbar.ui:37
+#: data/ui/ToolbarNarrow.ui:27 data/ui/Toolbar.ui:37
 msgid "Italic"
 msgstr "Cursiva"
 
-#: data/ui/Toolbar.ui:47
+#: data/ui/ToolbarNarrow.ui:37 data/ui/Toolbar.ui:47
 msgid "Strikethrough"
 msgstr "Barrat"
 
-#: data/ui/Toolbar.ui:57
+#: data/ui/ToolbarNarrow.ui:47 data/ui/Toolbar.ui:57
 msgid "Heading"
 msgstr "Capçalera"
+
+#: data/ui/ToolbarNarrow.ui:58
+msgid "List"
+msgstr "Llista"
+
+#: data/ui/ToolbarNarrow.ui:69
+msgid "Insert"
+msgstr "Insereix"
+
+#: data/ui/ToolbarNarrow.ui:80 data/ui/Toolbar.ui:138
+msgid "Table"
+msgstr "Tabla"
+
+#: data/ui/ToolbarNarrow.ui:117
+msgid "Unordered"
+msgstr "Sense ordenar"
+
+#: data/ui/ToolbarNarrow.ui:136
+msgid "Ordered"
+msgstr "Ordenada"
+
+#: data/ui/ToolbarNarrow.ui:155
+msgid "Checklist"
+msgstr "Llista de comprovació"
+
+#: data/ui/ToolbarNarrow.ui:185 data/ui/Toolbar.ui:98
+msgid "Blockquote"
+msgstr "Cita"
+
+#: data/ui/ToolbarNarrow.ui:204 data/ui/Toolbar.ui:108
+msgid "Code"
+msgstr "Codi"
+
+#: data/ui/ToolbarNarrow.ui:223 data/ui/Toolbar.ui:118
+msgid "Link"
+msgstr "Enllaç"
+
+#: data/ui/ToolbarNarrow.ui:242 data/ui/Toolbar.ui:128
+#: apostrophe/text_view_format_inserter.py:435
+msgid "Image"
+msgstr "Imatge"
 
 #: data/ui/Toolbar.ui:68
 msgid "Unordered List"
@@ -763,26 +825,6 @@ msgstr "Llista ordenada"
 #: data/ui/Toolbar.ui:88
 msgid "Check List"
 msgstr "Llista de comprovació"
-
-#: data/ui/Toolbar.ui:98
-msgid "Blockquote"
-msgstr "Cita"
-
-#: data/ui/Toolbar.ui:108
-msgid "Code"
-msgstr "Codi"
-
-#: data/ui/Toolbar.ui:118
-msgid "Link"
-msgstr "Enllaç"
-
-#: data/ui/Toolbar.ui:128 apostrophe/text_view_format_inserter.py:435
-msgid "Image"
-msgstr "Imatge"
-
-#: data/ui/Toolbar.ui:138
-msgid "Table"
-msgstr "Tabla"
 
 #: data/ui/Window.ui:64
 msgid "This file may be insecure"
@@ -798,26 +840,26 @@ msgstr ""
 "Si tens dubtes sobre el contingut d'aquest fitxer, obriu-lo en el mode de "
 "previsualització restringida, on JavaScript i l'HTML estan deshabilitats."
 
-#: data/ui/Window.ui:77
+#: data/ui/Window.ui:75
 msgid "Load Preview"
 msgstr "Carrega previsualització"
 
-#: data/ui/Window.ui:86
+#: data/ui/Window.ui:84
 msgid "Load Restricted Preview"
 msgstr "Carrega previsualització restringida"
 
-#: data/ui/Window.ui:184
+#: data/ui/Window.ui:180
 msgid ""
 "Apostrophe closed unexpectedly. This file has been recovered from an autosave"
 msgstr ""
 "Apostrophe s'ha tancat inesperadament. Aquest fitxer s'ha recuperat d'una "
 "desada automàtica"
 
-#: data/ui/Window.ui:200
+#: data/ui/Window.ui:196
 msgid "File Has Changed on Disk"
 msgstr "El fitxer ha canviat al disc"
 
-#: data/ui/Window.ui:210
+#: data/ui/Window.ui:206
 msgid "The file has been changed by another program"
 msgstr "Un altre programa ha canviat el fitxer"
 
@@ -825,30 +867,42 @@ msgstr "Un altre programa ha canviat el fitxer"
 msgid "_Discard Changes and Reload"
 msgstr "_Descarta els canvis i torna a carregar"
 
-#: apostrophe/application.py:301
+#: apostrophe/application.py:305
 msgid "Donate"
 msgstr "Donacions"
 
-#: apostrophe/application.py:302
+#: apostrophe/application.py:306
 msgid "Translations"
 msgstr "Traduccions"
 
-#: apostrophe/export_dialog.py:120 apostrophe/helpers.py:84
-msgid "Close"
-msgstr "Tanca"
+#: apostrophe/bottombar.py:184
+msgid "Hide Toolbar"
+msgstr "Amaga la barra d'eines"
 
-#: apostrophe/export_dialog.py:128 apostrophe/export_dialog.py:341
+#: apostrophe/bottombar.py:186
+msgid "Show Toolbar"
+msgstr "Mostra la barra d'eines"
+
+#: apostrophe/export_dialog.py:120 apostrophe/export_dialog.py:328
 #, python-format
 msgid "Export to %s"
 msgstr "Exporta a %s"
 
-#: apostrophe/export_dialog.py:130 apostrophe/export_dialog.py:337
-#: apostrophe/export_dialog.py:342 apostrophe/main_window.py:444
-#: apostrophe/main_window.py:530 apostrophe/main_window.py:653
+#: apostrophe/export_dialog.py:122 apostrophe/export_dialog.py:324
+#: apostrophe/export_dialog.py:329 apostrophe/main_window.py:446
+#: apostrophe/main_window.py:532 apostrophe/main_window.py:655
 msgid "Cancel"
 msgstr "Cancel·la"
 
-#: apostrophe/export_dialog.py:161 apostrophe/export_dialog.py:330
+#: apostrophe/export_dialog.py:151
+msgid "Apostrophe experienced an error while trying to export:"
+msgstr "Apostrophe ha experimentat un error en intentar exportar:"
+
+#: apostrophe/export_dialog.py:230
+msgid "Export to {}"
+msgstr "Exporta a {}"
+
+#: apostrophe/export_dialog.py:317
 #, python-brace-format
 msgid ""
 "An error happened while trying to export:\n"
@@ -859,17 +913,17 @@ msgstr ""
 "\n"
 "{err_msg}"
 
-#: apostrophe/export_dialog.py:243
-msgid "Export to {}"
-msgstr "Exporta a {}"
-
-#: apostrophe/export_dialog.py:337
+#: apostrophe/export_dialog.py:324
 msgid "Select folder"
 msgstr "Selecciona la carpeta"
 
 #: apostrophe/helpers.py:83
 msgid "Error"
 msgstr "Error"
+
+#: apostrophe/helpers.py:84
+msgid "Close"
+msgstr "Tanca"
 
 #: apostrophe/inhibitor.py:36
 msgid "Unsaved documents"
@@ -904,39 +958,39 @@ msgid "adverb"
 msgstr "adverbi"
 
 #. Hemingway Toast
-#: apostrophe/main_window.py:159
+#: apostrophe/main_window.py:161
 msgid "Text can't be deleted while on Hemingway mode"
 msgstr "No es pot suprimir el text en mode Hemingway"
 
-#: apostrophe/main_window.py:162
+#: apostrophe/main_window.py:164
 msgid "Tell me more"
 msgstr "Digues-me més"
 
-#: apostrophe/main_window.py:440
+#: apostrophe/main_window.py:442
 msgid "Save your File"
 msgstr "Deseu el vostre fitxer"
 
-#: apostrophe/main_window.py:443 apostrophe/main_window.py:655
+#: apostrophe/main_window.py:445 apostrophe/main_window.py:657
 msgid "Save"
 msgstr "Desa"
 
-#: apostrophe/main_window.py:519
+#: apostrophe/main_window.py:521
 msgid "Markdown Files"
 msgstr "Fitxers Markdown"
 
-#: apostrophe/main_window.py:523
+#: apostrophe/main_window.py:525
 msgid "Plain Text Files"
 msgstr "Fitxers de text simple"
 
-#: apostrophe/main_window.py:526
+#: apostrophe/main_window.py:528
 msgid "Open a .md file"
 msgstr "Obre un fitxer .md"
 
-#: apostrophe/main_window.py:529
+#: apostrophe/main_window.py:531
 msgid "Open"
 msgstr "Obre"
 
-#: apostrophe/main_window.py:607
+#: apostrophe/main_window.py:609
 #, python-brace-format
 msgid ""
 "Failed to detect encoding for file:\n"
@@ -951,11 +1005,11 @@ msgstr ""
 "L'error és:\n"
 "{err_msg}"
 
-#: apostrophe/main_window.py:647
+#: apostrophe/main_window.py:649
 msgid "Save Changes?"
 msgstr "Voleu desar els canvis?"
 
-#: apostrophe/main_window.py:648
+#: apostrophe/main_window.py:650
 #, python-format
 msgid ""
 "“%s” contains unsaved changes. If you don’t save, all your changes will be "
@@ -964,7 +1018,7 @@ msgstr ""
 "«%s» conté canvis sense desar. Si no deseu tots els canvis, es perdran de "
 "manera permanent."
 
-#: apostrophe/main_window.py:654
+#: apostrophe/main_window.py:656
 msgid "Discard"
 msgstr "Descarta"
 
@@ -1046,7 +1100,7 @@ msgstr "{:d}:{:02d}:{:02d} temps de lectura"
 
 #: apostrophe/text_view_format_inserter.py:24
 msgid "italic text"
-msgstr "Text en cursiva"
+msgstr "text en cursiva"
 
 #: apostrophe/text_view_format_inserter.py:29
 msgid "bold text"
@@ -1099,9 +1153,9 @@ msgstr ""
 "\n"
 "codi\n"
 
-#: apostrophe/text_view.py:220 apostrophe/text_view.py:222
+#: apostrophe/text_view.py:212 apostrophe/text_view.py:214
 msgid "web page"
-msgstr "Pàgina web"
+msgstr "pàgina web"
 
 #~ msgid "Show More Controls"
 #~ msgstr "Mostrar més controls"
