@@ -792,7 +792,7 @@ msgstr "Λίστα"
 
 #: data/ui/ToolbarNarrow.ui:69
 msgid "Insert"
-msgstr ""
+msgstr "Εισαγωγή"
 
 #: data/ui/ToolbarNarrow.ui:80 data/ui/Toolbar.ui:138
 msgid "Table"
