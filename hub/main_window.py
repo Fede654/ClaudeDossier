@@ -69,6 +69,7 @@ class MainWindow(Adw.ApplicationWindow):
         self._tree_view.set_tree(self._tree_root)
         self._tree_view.connect('project-selected', self._on_project_selected)
         self._tree_view.connect('session-selected', self._on_session_selected)
+        self._tree_view.connect('refresh-requested', self._on_refresh_requested)
         self.split_view.set_sidebar(self._tree_view)
 
         # Show welcome by default
@@ -82,3 +83,16 @@ class MainWindow(Adw.ApplicationWindow):
     def _on_session_selected(self, _, session):
         self._session_page.load(session)
         self.content_stack.set_visible_child_name('session')
+
+    def _on_refresh_requested(self, _):
+        import traceback
+        try:
+            from hub.data.session_scanner import SessionScanner
+            from hub.data.tree_builder import TreeBuilder
+            from hub.ui.welcome_page import update_welcome_stats
+            self._projects = SessionScanner().scan()
+            self._tree_root = TreeBuilder().build(self._projects)
+            self._tree_view.set_tree(self._tree_root)
+            update_welcome_stats(self._welcome, self._projects)
+        except Exception:
+            traceback.print_exc()

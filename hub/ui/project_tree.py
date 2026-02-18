@@ -29,6 +29,7 @@ class ProjectTreeView(Gtk.Box):
     __gsignals__ = {
         'project-selected': (GObject.SignalFlags.RUN_FIRST, None, (object,)),
         'session-selected': (GObject.SignalFlags.RUN_FIRST, None, (object,)),
+        'refresh-requested': (GObject.SignalFlags.RUN_FIRST, None, ()),
     }
 
     def __init__(self):
@@ -40,13 +41,24 @@ class ProjectTreeView(Gtk.Box):
         self._list_view = None
         self._selection = None
 
-        # Search bar
+        # Search bar + refresh button
+        top = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
         self._search_bar = Gtk.SearchBar()
+        self._search_bar.set_hexpand(True)
         self._search_entry = Gtk.SearchEntry()
         self._search_entry.connect('search-changed', self._on_search)
         self._search_bar.set_child(self._search_entry)
         self._search_bar.set_search_mode(True)
-        self.append(self._search_bar)
+        top.append(self._search_bar)
+
+        refresh_btn = Gtk.Button()
+        refresh_btn.set_icon_name('view-refresh-symbolic')
+        refresh_btn.add_css_class('flat')
+        refresh_btn.set_tooltip_text('Rescan folders')
+        refresh_btn.connect('clicked', lambda _: self.emit('refresh-requested'))
+        top.append(refresh_btn)
+
+        self.append(top)
 
         # Scrolled window placeholder (filled by set_tree)
         self._scroll = Gtk.ScrolledWindow()
@@ -55,9 +67,7 @@ class ProjectTreeView(Gtk.Box):
 
     def set_tree(self, root: DirNode) -> None:
         self._root_node = root
-        if self._all_projects is None:
-            # Collect all projects from tree on first call
-            self._all_projects = self._collect_projects(root)
+        self._all_projects = self._collect_projects(root)
         self._build_list(root)
 
     def set_tree_root(self, root: DirNode) -> None:
