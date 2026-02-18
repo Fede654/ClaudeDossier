@@ -8,7 +8,7 @@ import threading
 import gi
 gi.require_version('Gtk', '4.0')
 gi.require_version('Adw', '1')
-from gi.repository import Adw, GLib, Gtk, Pango
+from gi.repository import Adw, GLib, GObject, Gtk, Pango
 
 from hub.data.session_parser import MessageType, SessionParser
 from hub.data.session_scanner import SessionInfo
@@ -69,6 +69,9 @@ def _md_to_pango(text: str) -> str:
 
 class SessionPage(Gtk.Box):
     __gtype_name__ = 'SessionPage'
+    __gsignals__ = {
+        'session-deleted': (GObject.SignalFlags.RUN_FIRST, None, ()),
+    }
 
     def __init__(self):
         super().__init__(orientation=Gtk.Orientation.VERTICAL)
@@ -293,6 +296,7 @@ class SessionPage(Gtk.Box):
         try:
             f.trash(None)
             self._toast('Session moved to Trash')
+            self.emit('session-deleted')
         except Exception as e:
             self._toast(f'Error: {e}')
 

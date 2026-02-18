@@ -56,6 +56,7 @@ class MainWindow(Adw.ApplicationWindow):
         # Session page
         from hub.ui.session_viewer import SessionPage
         self._session_page = SessionPage()
+        self._session_page.connect('session-deleted', self._on_refresh_requested)
         self.content_stack.add_named(self._session_page, 'session')
 
         # Project page
