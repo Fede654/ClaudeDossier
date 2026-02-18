@@ -154,7 +154,7 @@ class SessionPage(Gtk.Box):
         self._export_btn.connect('clicked', self._export)
         ab.pack_end(self._export_btn)
 
-        self._copy_btn = Gtk.Button(label='Copy Resume Command')
+        self._copy_btn = Gtk.Button(label='Resume')
         self._copy_btn.add_css_class('suggested-action')
         self._copy_btn.connect('clicked', self._copy_resume)
         ab.pack_end(self._copy_btn)
@@ -305,25 +305,36 @@ class SessionPage(Gtk.Box):
         if not self._current:
             return
         cmd = f"claude --resume {self._current.session_id}"
-        # GTK4: set via ContentProvider
+        import subprocess
+
+        # Try to launch in a terminal directly
+        terminals = [
+            ['gnome-terminal', '--', 'bash', '-c', f'{cmd}; exec bash'],
+            ['kitty', '--', 'bash', '-c', f'{cmd}; exec bash'],
+            ['alacritty', '-e', 'bash', '-c', f'{cmd}; exec bash'],
+            ['xterm', '-e', 'bash', '-c', f'{cmd}; exec bash'],
+        ]
+        for args in terminals:
+            try:
+                subprocess.Popen(args)
+                self._toast(f'Resuming session in terminal…')
+                return
+            except FileNotFoundError:
+                continue
+
+        # No terminal found — fall back to copying the command
         try:
             from gi.repository import Gdk, GObject
             provider = Gdk.ContentProvider.new_for_value(GObject.Value(str, cmd))
             self.get_display().get_clipboard().set_content(provider)
-            self._toast(f'Copied: {cmd}')
-            return
         except Exception:
-            pass
-        # Fallback: wl-copy (Wayland) then xclip (X11)
-        import subprocess
-        for args in (['wl-copy'], ['xclip', '-selection', 'clipboard']):
-            try:
-                subprocess.run(args, input=cmd.encode(), check=True, capture_output=True)
-                self._toast(f'Copied: {cmd}')
-                return
-            except (FileNotFoundError, subprocess.CalledProcessError):
-                continue
-        self._toast('Could not copy — clipboard unavailable')
+            for args in (['wl-copy'], ['xclip', '-selection', 'clipboard']):
+                try:
+                    subprocess.run(args, input=cmd.encode(), check=True, capture_output=True)
+                    break
+                except (FileNotFoundError, subprocess.CalledProcessError):
+                    continue
+        self._toast(f'No terminal found — copied: {cmd}')
 
     def _delete(self, _):
         if not self._current:
