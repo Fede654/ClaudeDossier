@@ -257,12 +257,18 @@ class SessionPage(Gtk.Box):
             self._chat.append(row)
 
         if scroll_bottom:
-            GLib.idle_add(self._scroll_to_bottom)
+            GLib.idle_add(self._scroll_to_bottom, priority=GLib.PRIORITY_LOW)
         return GLib.SOURCE_REMOVE
 
     def _scroll_to_bottom(self):
         adj = self._scroll_window.get_vadjustment()
-        adj.set_value(adj.get_upper() - adj.get_page_size())
+        upper = adj.get_upper()
+        page = adj.get_page_size()
+        if upper > page:
+            adj.set_value(upper - page)
+        else:
+            # Layout not settled yet — retry once more
+            GLib.timeout_add(80, self._scroll_to_bottom)
         return GLib.SOURCE_REMOVE
 
     def _clear_chat(self):
