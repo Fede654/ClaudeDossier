@@ -8,7 +8,7 @@ import threading
 import gi
 gi.require_version('Gtk', '4.0')
 gi.require_version('Adw', '1')
-from gi.repository import Adw, GLib, Gtk
+from gi.repository import Adw, GLib, Gtk, Pango
 
 from hub.data.session_parser import MessageType, SessionParser
 from hub.data.session_scanner import SessionInfo
@@ -83,6 +83,8 @@ class SessionPage(Gtk.Box):
         self._meta.set_margin_start(12)
         self._meta.set_margin_top(8)
         self._meta.set_margin_bottom(4)
+        self._meta.set_hexpand(True)
+        self._meta.set_ellipsize(Pango.EllipsizeMode.END)
         self.append(self._meta)
         self.append(Gtk.Separator())
 
@@ -168,7 +170,7 @@ class SessionPage(Gtk.Box):
         self._current = session
 
         self._meta.set_text(
-            f"ID: {session.session_id[:8]}…  ·  Branch: {session.git_branch}  ·  "
+            f"ID: {session.session_id}  ·  Branch: {session.git_branch}  ·  "
             f"Messages: {session.message_count}  ·  {session.modified.strftime('%Y-%m-%d %H:%M')}"
         )
         self._clear_chat()
