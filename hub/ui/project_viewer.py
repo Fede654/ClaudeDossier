@@ -26,12 +26,25 @@ def _claude_chain(project_path: str) -> list[tuple[str, bool]]:
     return chain
 
 
+def _dir_label(path_str: str) -> str:
+    """Short human-readable label for a CLAUDE.md path — shows parent dir."""
+    home = Path.home()
+    parent = Path(path_str).parent
+    if parent == home:
+        return '~'
+    try:
+        return '~/' + str(parent.relative_to(home))
+    except ValueError:
+        return str(parent)
+
+
 class ProjectPage(Adw.PreferencesPage):
     __gtype_name__ = 'ProjectPage'
 
     def __init__(self):
         super().__init__()
         self._project = None
+        self._text_view = None  # created dynamically for the project entry
         self._build()
 
     def _build(self):
@@ -44,27 +57,9 @@ class ProjectPage(Adw.PreferencesPage):
             meta.add(row)
         self.add(meta)
 
+        # Chain: global → project; last entry is editable
         self._chain_group = Adw.PreferencesGroup(title='CLAUDE.md Inheritance')
         self.add(self._chain_group)
-
-        editor_group = Adw.PreferencesGroup(title='Project CLAUDE.md')
-        save_btn = Gtk.Button(label='Save')
-        save_btn.add_css_class('suggested-action')
-        save_btn.set_valign(Gtk.Align.CENTER)
-        save_btn.connect('clicked', self._save)
-        editor_group.set_header_suffix(save_btn)
-        self._text_view = Gtk.TextView()
-        self._text_view.set_monospace(True)
-        self._text_view.set_wrap_mode(Gtk.WrapMode.WORD_CHAR)
-        self._text_view.set_top_margin(8)
-        self._text_view.set_left_margin(8)
-        sw = Gtk.ScrolledWindow()
-        sw.set_min_content_height(480)
-        sw.set_max_content_height(1280)
-        sw.set_propagate_natural_height(True)
-        sw.set_child(self._text_view)
-        editor_group.add(sw)
-        self.add(editor_group)
 
         eff_group = Adw.PreferencesGroup(title='Effective CLAUDE.md')
         eff_group.set_description('Resolved content in load order — global → project')
@@ -78,6 +73,7 @@ class ProjectPage(Adw.PreferencesPage):
 
     def load(self, project: ProjectInfo) -> None:
         self._project = project
+        self._text_view = None
         self._path_row.set_subtitle(project.original_path)
         self._disk_row.set_subtitle('Exists' if project.exists_on_disk else 'Not found on disk')
         self._sessions_row.set_subtitle(str(len(project.sessions)))
@@ -86,40 +82,58 @@ class ProjectPage(Adw.PreferencesPage):
             la.strftime('%Y-%m-%d %H:%M') if la.year > 1 else '—'
         )
 
-        # Rebuild chain rows — remove old rows first
+        # Clear old chain rows
         child = self._chain_group.get_first_child()
         while child:
             next_c = child.get_next_sibling()
-            if isinstance(child, Adw.ActionRow):
+            if isinstance(child, (Adw.ActionRow, Adw.ExpanderRow)):
                 self._chain_group.remove(child)
             child = next_c
 
-        home = Path.home()
-        for path_str, exists in _claude_chain(project.original_path):
-            parent = Path(path_str).parent
-            if parent == home:
-                dir_label = '~'
-            else:
-                try:
-                    dir_label = '~/' + str(parent.relative_to(home))
-                except ValueError:
-                    dir_label = str(parent)
-            row = Adw.ActionRow(title=dir_label)
-            row.add_suffix(Gtk.Image.new_from_icon_name(
-                'object-select-symbolic' if exists else 'action-unavailable-symbolic'
-            ))
-            self._chain_group.add(row)
-
-        # Load project CLAUDE.md into editor
         proj_md = Path(project.original_path) / 'CLAUDE.md'
-        self._text_view.get_buffer().set_text(
-            proj_md.read_text() if proj_md.exists() else ''
-        )
+        # Reverse: global first, project last
+        chain = list(reversed(_claude_chain(project.original_path)))
+
+        for path_str, exists in chain:
+            label = _dir_label(path_str)
+            icon_name = 'object-select-symbolic' if exists else 'action-unavailable-symbolic'
+
+            if Path(path_str) == proj_md:
+                # Project entry — inline editor, always expanded
+                row = Adw.ExpanderRow(title=label)
+                row.set_expanded(True)
+                row.add_suffix(Gtk.Image.new_from_icon_name(icon_name))
+                save_btn = Gtk.Button(label='Save')
+                save_btn.add_css_class('suggested-action')
+                save_btn.set_valign(Gtk.Align.CENTER)
+                save_btn.connect('clicked', self._save)
+                row.add_suffix(save_btn)
+
+                self._text_view = Gtk.TextView()
+                self._text_view.set_monospace(True)
+                self._text_view.set_wrap_mode(Gtk.WrapMode.WORD_CHAR)
+                self._text_view.set_top_margin(8)
+                self._text_view.set_left_margin(8)
+                self._text_view.set_right_margin(8)
+                self._text_view.set_bottom_margin(8)
+                self._text_view.get_buffer().set_text(
+                    proj_md.read_text() if proj_md.exists() else ''
+                )
+                sw = Gtk.ScrolledWindow()
+                sw.set_min_content_height(480)
+                sw.set_max_content_height(1280)
+                sw.set_propagate_natural_height(True)
+                sw.set_child(self._text_view)
+                row.add_row(sw)
+            else:
+                row = Adw.ActionRow(title=label)
+                row.add_suffix(Gtk.Image.new_from_icon_name(icon_name))
+
+            self._chain_group.add(row)
 
         self._rebuild_effective(project.original_path)
 
     def _rebuild_effective(self, project_path: str) -> None:
-        # Clear previous blocks
         child = self._effective_box.get_first_child()
         while child:
             nxt = child.get_next_sibling()
@@ -127,7 +141,6 @@ class ProjectPage(Adw.PreferencesPage):
             child = nxt
 
         chain = _claude_chain(project_path)
-        # Reverse to global → project order, keep only existing files
         existing = [(p, exists) for p, exists in reversed(chain) if exists]
 
         if not existing:
@@ -143,7 +156,6 @@ class ProjectPage(Adw.PreferencesPage):
 
         for path_str, _ in existing:
             p = Path(path_str)
-            # Human-readable block label
             if p == home / '.claude' / 'CLAUDE.md':
                 role = 'Global  ·  ~/.claude/CLAUDE.md'
             elif p.parent == proj:
@@ -197,7 +209,7 @@ class ProjectPage(Adw.PreferencesPage):
             self._effective_box.append(block)
 
     def _save(self, _):
-        if not self._project:
+        if not self._project or not self._text_view:
             return
         buf = self._text_view.get_buffer()
         text = buf.get_text(buf.get_start_iter(), buf.get_end_iter(), True)
