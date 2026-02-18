@@ -253,12 +253,6 @@ class SessionPage(Gtk.Box):
 
             self._chat.append(row)
 
-        GLib.idle_add(self._scroll_to_bottom)
-        return GLib.SOURCE_REMOVE
-
-    def _scroll_to_bottom(self):
-        adj = self._scroll_window.get_vadjustment()
-        adj.set_value(adj.get_upper() - adj.get_page_size())
         return GLib.SOURCE_REMOVE
 
     def _clear_chat(self):
