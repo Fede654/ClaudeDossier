@@ -1,19 +1,11 @@
 [Desktop Entry]
 Name=Claude Session Hub
-# Translators: Search terms to find this application. Do NOT translate or localize the semicolons! Do NOT translate "uberwriter" or "apostrophe"! The list MUST also end with a semicolon!
-Keywords=uberwriter;UberWriter;apostrophe;markdown;editor;text;write;
-Comment=Apostrophe, an elegant, distraction-free markdown editor
-Categories=GNOME;GTK;Office;
+Comment=Browse and manage Claude Code session history
+Keywords=claude;ai;sessions;history;terminal;
+Categories=Utility;Development;
 Exec=hub %U
-# Translators: Do NOT translate or transliterate this text (this is an icon file name)!
 Icon=@icon@
 Terminal=false
 Type=Application
 StartupNotify=true
 DBusActivatable=true
-MimeType=text/x-markdown;text/plain;
-Actions=new-window;
-
-[Desktop Action new-window]
-Name=New Window
-Exec=hub --new-window

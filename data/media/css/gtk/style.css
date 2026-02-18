@@ -426,3 +426,18 @@ progressbar.flag-pan progress {
       #ffd800,
       #21b1ff);
 }
+
+/* Claude Session Hub — chat message bubbles */
+.user-msg {
+  background-color: alpha(@accent_bg_color, 0.12);
+  border-radius: 8px;
+  padding: 8px 10px;
+  margin-bottom: 2px;
+}
+
+.assistant-msg {
+  background-color: alpha(@card_bg_color, 0.7);
+  border-radius: 8px;
+  padding: 8px 10px;
+  margin-bottom: 2px;
+}

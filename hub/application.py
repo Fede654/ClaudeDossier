@@ -24,6 +24,14 @@ class Application(Adw.Application):
     def do_startup(self):
         Adw.Application.do_startup(self)
 
+        # Load application CSS (includes chat bubble styles)
+        css_provider = Gtk.CssProvider()
+        css_provider.load_from_resource('/io/fede/ClaudeSessionHub/style.css')
+        Gtk.StyleContext.add_provider_for_display(
+            Gdk.Display.get_default(), css_provider,
+            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+        )
+
         # Set icons
         Gtk.IconTheme.get_for_display(
             Gdk.Display.get_default()).add_resource_path(
