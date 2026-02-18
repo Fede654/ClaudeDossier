@@ -119,8 +119,8 @@ install_subdir(
 )
 
 resources = gnome.compile_resources(
-  meson.project_name(),
-  meson.project_name() + '.gresource.xml',
+  'io.fede.ClaudeSessionHub',
+  'io.fede.ClaudeSessionHub.gresource.xml',
   gresource_bundle: true,
   install:true,
   install_dir: pkgdatadir,

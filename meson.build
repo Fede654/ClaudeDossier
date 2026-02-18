@@ -44,7 +44,6 @@ application_id = 'io.fede.ClaudeSessionHub@0@'.format(profile)
 
 dependency('glib-2.0')
 dependency('gobject-2.0')
-dependency('gobject-introspection-1.0')
 dependency('gtk4', version: '>= 4.0.0')
 dependency('libadwaita-1')
 
