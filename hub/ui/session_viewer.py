@@ -17,11 +17,14 @@ _COMPRESS_MAX_LINES = 12
 _TRUNCATE_LINE_WIDTH = 120
 
 
-def _truncate_long_lines(text: str) -> str:
-    """Cut lines exceeding _TRUNCATE_LINE_WIDTH chars, appending …"""
+def _wrap_long_lines(text: str) -> str:
+    """Fold lines exceeding _TRUNCATE_LINE_WIDTH chars into multiple lines."""
     out = []
     for line in text.split('\n'):
-        out.append(line[:_TRUNCATE_LINE_WIDTH] + '…' if len(line) > _TRUNCATE_LINE_WIDTH else line)
+        while len(line) > _TRUNCATE_LINE_WIDTH:
+            out.append(line[:_TRUNCATE_LINE_WIDTH])
+            line = line[_TRUNCATE_LINE_WIDTH:]
+        out.append(line)
     return '\n'.join(out)
 
 
@@ -102,9 +105,10 @@ class SessionPage(Gtk.Box):
 
         self._progress_row = Adw.SwitchRow(title='Show progress events')
         self._escape_nl_row = Adw.SwitchRow(
-            title='Truncate long lines',
-            subtitle=f'Cut lines exceeding {_TRUNCATE_LINE_WIDTH} characters',
+            title='Wrap long lines',
+            subtitle=f'Fold lines exceeding {_TRUNCATE_LINE_WIDTH} characters',
         )
+        self._escape_nl_row.set_active(True)  # on by default
         self._compress_row = Adw.SwitchRow(
             title='Compress large blocks',
             subtitle=f'Collapse messages over {_COMPRESS_MAX_LINES} lines',
@@ -215,7 +219,7 @@ class SessionPage(Gtk.Box):
             lines = msg.text.split('\n')
             compressed = compress and len(lines) > _COMPRESS_MAX_LINES
             raw = '\n'.join(lines[:_COMPRESS_MAX_LINES]) if compressed else msg.text
-            display_text = _truncate_long_lines(raw) if truncate else raw
+            display_text = _wrap_long_lines(raw) if truncate else raw
 
             try:
                 body.set_markup(_md_to_pango(display_text))
@@ -232,7 +236,7 @@ class SessionPage(Gtk.Box):
                 expand_btn.set_halign(Gtk.Align.START)
 
                 def _expand(btn, _body=body, _full=msg.text, _trunc=truncate, _row=row):
-                    full = _truncate_long_lines(_full) if _trunc else _full
+                    full = _wrap_long_lines(_full) if _trunc else _full
                     try:
                         _body.set_markup(_md_to_pango(full))
                     except Exception:
