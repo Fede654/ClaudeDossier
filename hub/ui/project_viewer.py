@@ -86,49 +86,16 @@ class ProjectPage(Adw.PreferencesPage):
         child = self._chain_group.get_first_child()
         while child:
             next_c = child.get_next_sibling()
-            if isinstance(child, (Adw.ActionRow, Adw.ExpanderRow)):
+            if isinstance(child, Adw.ActionRow):
                 self._chain_group.remove(child)
             child = next_c
 
-        proj_md = Path(project.original_path) / 'CLAUDE.md'
-        # Reverse: global first, project last
-        chain = list(reversed(_claude_chain(project.original_path)))
-
-        for path_str, exists in chain:
-            label = _dir_label(path_str)
-            icon_name = 'object-select-symbolic' if exists else 'action-unavailable-symbolic'
-
-            if Path(path_str) == proj_md:
-                # Project entry — inline editor, always expanded
-                row = Adw.ExpanderRow(title=label)
-                row.set_expanded(True)
-                row.add_suffix(Gtk.Image.new_from_icon_name(icon_name))
-                save_btn = Gtk.Button(label='Save')
-                save_btn.add_css_class('suggested-action')
-                save_btn.set_valign(Gtk.Align.CENTER)
-                save_btn.connect('clicked', self._save)
-                row.add_suffix(save_btn)
-
-                self._text_view = Gtk.TextView()
-                self._text_view.set_monospace(True)
-                self._text_view.set_wrap_mode(Gtk.WrapMode.WORD_CHAR)
-                self._text_view.set_top_margin(8)
-                self._text_view.set_left_margin(8)
-                self._text_view.set_right_margin(8)
-                self._text_view.set_bottom_margin(8)
-                self._text_view.get_buffer().set_text(
-                    proj_md.read_text() if proj_md.exists() else ''
-                )
-                sw = Gtk.ScrolledWindow()
-                sw.set_min_content_height(480)
-                sw.set_max_content_height(1280)
-                sw.set_propagate_natural_height(True)
-                sw.set_child(self._text_view)
-                row.add_row(sw)
-            else:
-                row = Adw.ActionRow(title=label)
-                row.add_suffix(Gtk.Image.new_from_icon_name(icon_name))
-
+        # Reverse: global first, project last — all plain read-only rows
+        for path_str, exists in reversed(_claude_chain(project.original_path)):
+            row = Adw.ActionRow(title=_dir_label(path_str))
+            row.add_suffix(Gtk.Image.new_from_icon_name(
+                'object-select-symbolic' if exists else 'action-unavailable-symbolic'
+            ))
             self._chain_group.add(row)
 
         self._rebuild_effective(project.original_path)
@@ -154,11 +121,14 @@ class ProjectPage(Adw.PreferencesPage):
         home = Path.home()
         proj = Path(project_path)
 
-        for path_str, _ in existing:
+        for idx, (path_str, _) in enumerate(existing):
             p = Path(path_str)
+            is_project = (p.parent == proj)
+            is_last = (idx == len(existing) - 1)
+
             if p == home / '.claude' / 'CLAUDE.md':
                 role = 'Global  ·  ~/.claude/CLAUDE.md'
-            elif p.parent == proj:
+            elif is_project:
                 rel = '~/' + str(p.relative_to(home)) if p.is_relative_to(home) else path_str
                 role = f'Project  ·  {rel}'
             else:
@@ -177,27 +147,43 @@ class ProjectPage(Adw.PreferencesPage):
             block.add_css_class('card')
             block.set_margin_bottom(2)
 
-            hdr = Gtk.Label(label=role, xalign=0)
+            # Header row: role label + (Save button if editable)
+            hdr_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
+            hdr_box.set_margin_start(10)
+            hdr_box.set_margin_top(8)
+            hdr_box.set_margin_end(10)
+            hdr_box.set_margin_bottom(6)
+
+            hdr = Gtk.Label(label=role, xalign=0, hexpand=True)
             hdr.add_css_class('caption')
             hdr.add_css_class('heading')
-            hdr.set_margin_start(10)
-            hdr.set_margin_top(8)
-            hdr.set_margin_end(10)
-            hdr.set_margin_bottom(6)
-            block.append(hdr)
+            hdr_box.append(hdr)
 
+            if is_last:
+                save_btn = Gtk.Button(label='Save')
+                save_btn.add_css_class('suggested-action')
+                save_btn.set_valign(Gtk.Align.CENTER)
+                save_btn.connect('clicked', self._save)
+                hdr_box.append(save_btn)
+
+            block.append(hdr_box)
             block.append(Gtk.Separator())
 
             tv = Gtk.TextView()
             tv.set_monospace(True)
-            tv.set_editable(False)
-            tv.set_cursor_visible(False)
             tv.set_wrap_mode(Gtk.WrapMode.WORD_CHAR)
             tv.set_top_margin(8)
             tv.set_bottom_margin(8)
             tv.set_left_margin(10)
             tv.set_right_margin(10)
             tv.get_buffer().set_text(content)
+
+            if is_last:
+                # Project block is editable; keep reference for _save()
+                self._text_view = tv
+            else:
+                tv.set_editable(False)
+                tv.set_cursor_visible(False)
 
             sw = Gtk.ScrolledWindow()
             sw.set_min_content_height(480)
