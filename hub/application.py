@@ -1,0 +1,320 @@
+# Copyright (C) 2022, Manuel Genovés <manuel.genoves@gmail.com>
+#               2019, Wolf Vollprecht <w.vollprecht@gmail.com>
+# This program is free software: you can redistribute it and/or modify it
+# under the terms of the GNU General Public License version 3, as published
+# by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranties of
+# MERCHANTABILITY, SATISFACTORY QUALITY, or FITNESS FOR A PARTICULAR
+# PURPOSE.  See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along
+# with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
+
+import logging
+
+import gi
+
+gi.require_version('Gtk', '4.0')
+gi.require_version('GtkSource', '5')
+gi.require_version('Adw', '1')
+from gettext import gettext as _
+
+from gi.repository import Adw, Gdk, Gio, GLib, Gtk, GtkSource
+
+from hub.helpers import get_debug_info, set_up_logging, get_media_path
+from hub.preferences_dialog import ApostrophePreferencesDialog
+from hub.inhibitor import Inhibitor
+from hub.main_window import MainWindow
+from hub.settings import Settings
+from hub.theme_switcher import Theme
+
+LOGGER = logging.getLogger('hub')
+
+class Application(Adw.Application):
+
+    def __init__(self, application_id, *args, **kwargs):
+        super().__init__(*args, application_id=application_id,
+                         flags=Gio.ApplicationFlags.HANDLES_OPEN,
+                         **kwargs)
+
+        self.add_main_option("new-window", b"w", GLib.OptionFlags.NONE,
+                             GLib.OptionArg.NONE, "Open a new window", None)
+
+        self.add_main_option("verbose", b"v", GLib.OptionFlags.NONE,
+                             GLib.OptionArg.NONE, "Verbose output", None)
+
+        self.set_resource_base_path("/io/fede/ClaudeSessionHub")
+        # gtk_settings = Gtk.Settings.get_default()
+
+        self.settings = Settings.new()
+        self.inhibitor = None
+        self._application_id = application_id
+
+    def do_startup(self):
+        Adw.Application.do_startup(self)
+
+        # Set css theme
+        css_sepia_provider_file = Gio.File.new_for_uri(
+            "resource:///io/fede/ClaudeSessionHub/style-sepia.css")
+        self.sepia_style_provider = Gtk.CssProvider()
+        self.sepia_style_provider.load_from_file(css_sepia_provider_file)
+
+        # Style manager
+        style_manager = Adw.StyleManager.get_default()
+        style_manager.connect("notify::dark", self._set_color_scheme)
+        style_manager.connect("notify::high-contrast", self._set_color_scheme)
+
+        # Editor styles
+        scheme_manager = GtkSource.StyleSchemeManager.get_default()
+        scheme_manager.prepend_search_path(get_media_path("/styles"))
+
+        # Set icons
+        Gtk.IconTheme.get_for_display(
+            Gdk.Display.get_default()).add_resource_path(
+            "/io/fede/ClaudeSessionHub/icons"
+        )
+
+
+        color_scheme = self.settings.get_string("color-scheme")
+        action = Gio.SimpleAction.new_stateful(
+                 "color_scheme", GLib.VariantType.new("s"),
+                 GLib.Variant.new_string(color_scheme))
+        action.connect("activate", self._set_color_scheme)
+        self.add_action(action)
+
+        action = Gio.SimpleAction.new("new-window", None)
+        action.connect("activate", self.on_new_window)
+        self.add_action(action)
+
+        action = Gio.SimpleAction.new("preferences", None)
+        action.connect("activate", self.on_preferences)
+        self.add_action(action)
+
+        action = Gio.SimpleAction.new("about", None)
+        action.connect("activate", self.on_about)
+        self.add_action(action)
+
+        action = Gio.SimpleAction.new("quit", None)
+        action.connect("activate", self.on_quit)
+        self.add_action(action)
+
+        # Stats Menu
+
+        stat_default = self.settings.get_string("stat-default")
+        action = Gio.SimpleAction.new_stateful(
+                 "stat_default", GLib.VariantType.new("s"),
+                 GLib.Variant.new_string(stat_default))
+        action.connect("activate", self.on_stat_default)
+        self.add_action(action)
+
+        # Shortcuts
+
+        self.set_accels_for_action("win.focus_mode", ["<Ctl>d"])
+        self.set_accels_for_action("win.hemingway_mode", ["<Ctl>t"])
+        self.set_accels_for_action("win.preview", ["<Ctl>p"])
+        self.set_accels_for_action("win.fullscreen", ["F11"])
+        self.set_accels_for_action("win.find", ["<Ctl>f"])
+        self.set_accels_for_action("win.find_replace", ["<Ctl>h"])
+        self.set_accels_for_action("app.spellcheck", ["F7"])
+
+        self.set_accels_for_action("app.new-window", ["<Ctl>n"])
+        self.set_accels_for_action("app.preferences", ["<Ctl>comma"])
+        self.set_accels_for_action("win.open", ["<Ctl>o"])
+        self.set_accels_for_action("win.save", ["<Ctl>s"])
+        self.set_accels_for_action("win.save_as", ["<Ctl><shift>s"])
+        self.set_accels_for_action("app.quit", ["<Ctl>q"])
+        self.set_accels_for_action("win.close", ["<Ctl>w"])
+
+        # Inhibitor
+        self.inhibitor = Inhibitor()
+        self.restore_snapshots()
+
+    def do_activate(self, *args, **kwargs):
+
+        win = self.get_active_window()
+        if not win:
+            self.settings.connect("changed", self.on_settings_changed)
+            win = MainWindow(self)
+
+            group = Gtk.WindowGroup.new()
+            group.add_window(win)
+
+        self._set_color_scheme()
+
+        win.present()
+
+    def do_handle_local_options(self, options):
+        if options.contains("new-window"):
+            self.register()
+            if self.get_is_remote():
+                self.activate_action("new-window")
+                return 0
+
+        if options.contains("verbose") or self._application_id \
+                == 'io.fede.ClaudeSessionHub.Devel':
+            set_up_logging(1)
+        return -1
+
+    def do_open(self, files, _n_files, _hint):
+        self.activate()
+        empty_windows = list(filter(lambda window: 
+                                        window.textview.get_text() == "" and\
+                                        not window.did_change, self.get_main_windows()))
+        for i, file in enumerate(files):
+            if not file.query_exists(None):
+                LOGGER.warning(f"{file.get_path()} doesn't exist")
+                continue
+
+            c = False
+            for window in self.get_main_windows():
+                if not file or not window.current.gfile:
+                    continue
+                file_id = file.query_info(Gio.FILE_ATTRIBUTE_ID_FILE, 
+                                          Gio.FileQueryInfoFlags.NONE,
+                                          None).get_attribute_as_string(Gio.FILE_ATTRIBUTE_ID_FILE)
+                window_file_id = window.current.gfile.query_info(
+                    Gio.FILE_ATTRIBUTE_ID_FILE,
+                    Gio.FileQueryInfoFlags.NONE,
+                    None).get_attribute_as_string(Gio.FILE_ATTRIBUTE_ID_FILE)
+                if file_id == window_file_id:
+                    GLib.idle_add(window.present)
+                    c = True
+            if c:
+                continue
+
+            if i < len(empty_windows):
+                window = empty_windows[i]
+            else:
+                window = MainWindow(self)
+
+                group = Gtk.WindowGroup.new()
+                group.add_window(window)
+
+            window.load_file(file)
+            window.present()
+    
+    def restore_snapshots(self):
+        snapshot_dir = Gio.File.new_for_path(GLib.build_filenamev([GLib.get_user_state_dir(),"snapshots"]))
+        if not snapshot_dir.query_exists(None):
+            return
+        snapshotsEnum = snapshot_dir.enumerate_children('standard::name,standard::type', Gio.FileQueryInfoFlags.NONE)
+
+        for i, snapshot_info in enumerate(snapshotsEnum):
+            snapshot = snapshotsEnum.get_child(snapshot_info)
+            if not snapshot.query_exists(None):
+                LOGGER.warning(f"{snapshot.get_path()} doesn't exist")
+                continue
+
+            empty_windows = list(filter(lambda window: 
+                                        window.textview.get_text() == "" and\
+                                        not window.did_change, self.get_main_windows()))
+
+            if i < len(empty_windows):
+                window = empty_windows[i]
+            else:
+                window = MainWindow(self)
+
+                group = Gtk.WindowGroup.new()
+                group.add_window(window)
+
+            window.load_snapshot(snapshot)
+            window.present()
+
+    def delete_snapshot(self, snapshot):
+        self.hold()
+        snapshot.delete_async(
+            GLib.PRIORITY_DEFAULT,
+            None,
+            self._delete_snapshot_finish
+        )
+
+    def _delete_snapshot_finish(self, gfile, result, callback=None):
+        try:
+            gfile.delete_finish(result)
+        except GLib.Error as e:
+            LOGGER.warning(f"Snapshot delete failed: {e}")
+        self.release()
+
+    def get_main_windows(self):
+        return [window for window in self.get_windows() if isinstance(window, MainWindow)]
+
+    def _set_color_scheme(self, *args, **kwargs):
+        theme = Theme.get_current().name
+        sepia = theme == "sepia"
+
+        if not self.get_windows():
+            return
+
+        if sepia:
+            Gtk.StyleContext.add_provider_for_display(
+                Gdk.Display.get_default(), self.sepia_style_provider,
+                Gtk.STYLE_PROVIDER_PRIORITY_USER)
+        else:
+            Gtk.StyleContext.remove_provider_for_display(
+                Gdk.Display.get_default(), self.sepia_style_provider
+            )
+
+        for window in self.get_main_windows():
+            # refresh markup colors
+            window.textview.markup.on_style_updated()
+
+            # refresh sourceview styles
+            scheme_manager = GtkSource.StyleSchemeManager.get_default()
+            window.textview.buffer.set_style_scheme(scheme_manager.get_scheme(theme))
+
+    def on_settings_changed(self, settings, key):
+        # TODO: change this ffs
+        if not self.get_windows():
+            return
+        match key:
+            case "color-scheme":
+                self._set_color_scheme()
+                for window in self.get_main_windows():
+                    window.reload_preview()
+            case "input-format":
+                for window in self.get_main_windows():
+                    window.reload_preview()
+            case "sync-scroll":
+                for window in self.get_main_windows():
+                    window.reload_preview(reshow=True)
+            case "stat-default":
+                for window in self.get_main_windows():
+                    window.editor.update_default_stat()
+
+    def on_new_window(self, _action, _value):
+        window = MainWindow(self)
+        self._set_color_scheme()
+        window.present()
+        group = Gtk.WindowGroup.new()
+        group.add_window(window)
+
+    def on_preferences(self, _action, _value):
+        preferences_dialog = ApostrophePreferencesDialog()
+        preferences_dialog.present(self.get_active_window())
+
+    def on_about(self, _action, _param):
+        # TODO: what about non-csd
+        builder = Gtk.Builder()
+        builder.add_from_resource(
+            "/io/fede/ClaudeSessionHub/About.ui")
+        about_dialog = builder.get_object("AboutDialog")
+
+        about_dialog.set_debug_info(get_debug_info())
+        about_dialog.add_link(_("Donate"), "https://paypal.me/manuelgenoves")
+        about_dialog.add_link(_("Translations"), "https://l10n.gnome.org/module/apostrophe/")
+
+        about_dialog.present(self.get_active_window())
+
+    def on_quit(self, _action, _param):
+        quit = True
+        for window in self.get_windows():
+            if window.do_close_request():
+                quit = False
+        if quit:
+            self.quit()
+
+    def on_stat_default(self, action, value):
+        action.set_state(value)
+        self.settings.set_string("stat-default", value.get_string())

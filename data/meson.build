@@ -3,7 +3,7 @@ desktop_conf = configuration_data()
 desktop_conf.set('icon', application_id)
 desktop_file = i18n.merge_file(
   input: configure_file(
-    input: 'org.gnome.gitlab.somas.Apostrophe.desktop.in.in',
+    input: 'io.fede.ClaudeSessionHub.desktop.in.in',
     output: '@BASENAME@',
     configuration: desktop_conf
   ),
@@ -30,7 +30,7 @@ appdata_conf.set('app-id', application_id)
 appdata_conf.set('gettext-package', gettext_package)
 
 metainfo_configured = configure_file(
-    input: 'org.gnome.gitlab.somas.Apostrophe.metainfo.xml.in',
+    input: 'io.fede.ClaudeSessionHub.metainfo.xml.in',
     output: 'configured' + '@BASENAME@',
     configuration: appdata_conf
 )
@@ -56,7 +56,7 @@ endif
 
 # Gschema
 install_data(
-	'org.gnome.gitlab.somas.Apostrophe.gschema.xml',
+	'io.fede.ClaudeSessionHub.gschema.xml',
 	install_dir:  get_option('datadir') / 'glib-2.0' / 'schemas',
 	rename: '@0@.gschema.xml'.format(application_id)
 )
@@ -83,7 +83,7 @@ service_conf = configuration_data()
 service_conf.set('app-id', application_id)
 service_conf.set('bindir', bindir)
 configure_file(
-  input: 'org.gnome.gitlab.somas.Apostrophe.service.in',
+  input: 'io.fede.ClaudeSessionHub.service.in',
   output: '@0@.service'.format(application_id),
   install: true,
   install_dir: get_option('datadir') / 'dbus-1' / 'services',

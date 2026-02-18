@@ -129,7 +129,7 @@
       <item>
         <attribute name="label" translatable="yes">Open _Tutorial</attribute>
         <attribute name="action">win.open_file</attribute>
-        <attribute name="target">resource:///org/gnome/gitlab/somas/Apostrophe/media/apostrophe_markdown.md</attribute>
+        <attribute name="target">resource:///io/fede/ClaudeSessionHub/media/apostrophe_markdown.md</attribute>
       </item>
       <item>
         <attribute name="label" translatable="yes">_Keyboard Shortcuts</attribute>

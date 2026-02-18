@@ -3,7 +3,7 @@
   <requires lib="gtk" version="4.0"/>
   <requires lib="adw" version="1.0"/>
   <object class="AdwAboutDialog" id="AboutDialog">
-    <property name="application_name">Apostrophe</property>
+    <property name="application_name">Claude Session Hub</property>
     <property name="application_icon">@app-id@</property>
     <property name="version">@version@</property>
     <property name="copyright" translatable="yes">Copyright (C) 2022, Manuel G., Wolf V.</property>
@@ -18,8 +18,8 @@ Vova Kolobok </property>
     <property name="artists">Tobias Bernard &lt;hi@tobiasbernard.com&gt;</property>
     <property name="designers">Tobias Bernard &lt;hi@tobiasbernard.com&gt;
 Manuel Genovés &lt;manuel.genoves@gmail.com&gt;</property>
-    <property name="issue_url">https://gitlab.gnome.org/World/apostrophe/-/issues</property>
-    <property name="debug-info-filename">apostrophe-debug-info.txt</property>
+    <property name="issue_url">https://github.com/fede/claude-session-hub/issues</property>
+    <property name="debug-info-filename">claude-session-hub-debug-info.txt</property>
     <property name="license_type">gpl-3-0</property>
     
   </object>

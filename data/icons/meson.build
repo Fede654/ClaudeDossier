@@ -4,7 +4,7 @@ install_data(
 )
 
 install_data(
-	'org.gnome.gitlab.somas.Apostrophe-symbolic.svg',
+	'io.fede.ClaudeSessionHub-symbolic.svg',
 	install_dir: datadir / 'icons' / 'hicolor' / 'symbolic' / 'apps',
 	rename: '@0@-symbolic.svg'.format(application_id)
 )
