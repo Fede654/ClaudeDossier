@@ -120,7 +120,9 @@ class SessionPage(Gtk.Box):
         )
         self._compress_row.set_active(True)  # on by default
 
-        for srow in (self._progress_row, self._escape_nl_row, self._compress_row):
+        self._scroll_bottom_row = Adw.SwitchRow(title='Scroll to bottom on open')
+
+        for srow in (self._progress_row, self._escape_nl_row, self._compress_row, self._scroll_bottom_row):
             listbox.append(srow)
             srow.connect('notify::active', lambda *_: self._reload())
 
@@ -186,12 +188,13 @@ class SessionPage(Gtk.Box):
         include_progress = self._progress_row.get_active()
         truncate = self._escape_nl_row.get_active()
         compress = self._compress_row.get_active()
+        scroll_bottom = self._scroll_bottom_row.get_active()
 
         def _parse():
             parser = SessionParser(include_progress=include_progress)
             messages = parser.parse(session.jsonl_path)
             if not cancel.is_set():
-                GLib.idle_add(self._render, messages, cancel, truncate, compress)
+                GLib.idle_add(self._render, messages, cancel, truncate, compress, scroll_bottom)
 
         threading.Thread(target=_parse, daemon=True).start()
 
@@ -199,7 +202,7 @@ class SessionPage(Gtk.Box):
         if self._current:
             self.load(self._current)
 
-    def _render(self, messages, cancel, truncate=False, compress=True):
+    def _render(self, messages, cancel, truncate=False, compress=True, scroll_bottom=False):
         if cancel.is_set():
             return GLib.SOURCE_REMOVE
         self._clear_chat()
@@ -253,6 +256,13 @@ class SessionPage(Gtk.Box):
 
             self._chat.append(row)
 
+        if scroll_bottom:
+            GLib.idle_add(self._scroll_to_bottom)
+        return GLib.SOURCE_REMOVE
+
+    def _scroll_to_bottom(self):
+        adj = self._scroll_window.get_vadjustment()
+        adj.set_value(adj.get_upper() - adj.get_page_size())
         return GLib.SOURCE_REMOVE
 
     def _clear_chat(self):
