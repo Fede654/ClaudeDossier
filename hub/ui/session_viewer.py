@@ -14,9 +14,18 @@ from hub.data.session_parser import MessageType, SessionParser
 from hub.data.session_scanner import SessionInfo
 
 _COMPRESS_MAX_LINES = 12
+_TRUNCATE_LINE_WIDTH = 120
 
 
-def _md_to_pango(text: str, escape_newlines: bool = False) -> str:
+def _truncate_long_lines(text: str) -> str:
+    """Cut lines exceeding _TRUNCATE_LINE_WIDTH chars, appending …"""
+    out = []
+    for line in text.split('\n'):
+        out.append(line[:_TRUNCATE_LINE_WIDTH] + '…' if len(line) > _TRUNCATE_LINE_WIDTH else line)
+    return '\n'.join(out)
+
+
+def _md_to_pango(text: str) -> str:
     """Convert common markdown to Pango markup for GtkLabel.set_markup().
 
     Strategy: stash fenced code blocks first (so their content is never
@@ -51,10 +60,6 @@ def _md_to_pango(text: str, escape_newlines: bool = False) -> str:
     # 7. Restore code blocks (\x00 is not touched by html.escape)
     for i, block in enumerate(blocks):
         text = text.replace(f'\x00B{i}\x00', block)
-
-    # 8. Newline escaping — append ↵ marker before each line break
-    if escape_newlines:
-        text = text.replace('\n', '<span alpha="50%" size="small"> ↵</span>\n')
 
     return text
 
@@ -97,8 +102,8 @@ class SessionPage(Gtk.Box):
 
         self._progress_row = Adw.SwitchRow(title='Show progress events')
         self._escape_nl_row = Adw.SwitchRow(
-            title='Escape newlines',
-            subtitle='Mark line endings with ↵',
+            title='Truncate long lines',
+            subtitle=f'Cut lines exceeding {_TRUNCATE_LINE_WIDTH} characters',
         )
         self._compress_row = Adw.SwitchRow(
             title='Compress large blocks',
@@ -170,14 +175,14 @@ class SessionPage(Gtk.Box):
         # Capture settings on the main thread before spawning worker
         cancel = self._cancel_flag
         include_progress = self._progress_row.get_active()
-        escape_nl = self._escape_nl_row.get_active()
+        truncate = self._escape_nl_row.get_active()
         compress = self._compress_row.get_active()
 
         def _parse():
             parser = SessionParser(include_progress=include_progress)
             messages = parser.parse(session.jsonl_path)
             if not cancel.is_set():
-                GLib.idle_add(self._render, messages, cancel, escape_nl, compress)
+                GLib.idle_add(self._render, messages, cancel, truncate, compress)
 
         threading.Thread(target=_parse, daemon=True).start()
 
@@ -185,7 +190,7 @@ class SessionPage(Gtk.Box):
         if self._current:
             self.load(self._current)
 
-    def _render(self, messages, cancel, escape_nl=False, compress=True):
+    def _render(self, messages, cancel, truncate=False, compress=True):
         if cancel.is_set():
             return GLib.SOURCE_REMOVE
         self._clear_chat()
@@ -209,10 +214,11 @@ class SessionPage(Gtk.Box):
 
             lines = msg.text.split('\n')
             compressed = compress and len(lines) > _COMPRESS_MAX_LINES
-            display_text = '\n'.join(lines[:_COMPRESS_MAX_LINES]) if compressed else msg.text
+            raw = '\n'.join(lines[:_COMPRESS_MAX_LINES]) if compressed else msg.text
+            display_text = _truncate_long_lines(raw) if truncate else raw
 
             try:
-                body.set_markup(_md_to_pango(display_text, escape_nl))
+                body.set_markup(_md_to_pango(display_text))
             except Exception:
                 body.set_text(display_text)
 
@@ -225,11 +231,12 @@ class SessionPage(Gtk.Box):
                 expand_btn.add_css_class('flat')
                 expand_btn.set_halign(Gtk.Align.START)
 
-                def _expand(btn, _body=body, _text=msg.text, _escape=escape_nl, _row=row):
+                def _expand(btn, _body=body, _full=msg.text, _trunc=truncate, _row=row):
+                    full = _truncate_long_lines(_full) if _trunc else _full
                     try:
-                        _body.set_markup(_md_to_pango(_text, _escape))
+                        _body.set_markup(_md_to_pango(full))
                     except Exception:
-                        _body.set_text(_text)
+                        _body.set_text(full)
                     _row.remove(btn)
 
                 expand_btn.connect('clicked', _expand)
