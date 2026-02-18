@@ -145,19 +145,19 @@ class SessionPage(Gtk.Box):
 
         # Action bar
         ab = Gtk.ActionBar()
-        self._copy_btn = Gtk.Button(label='Copy Resume Command')
-        self._copy_btn.add_css_class('suggested-action')
-        self._copy_btn.connect('clicked', self._copy_resume)
-        ab.pack_start(self._copy_btn)
+        self._delete_btn = Gtk.Button(label='Delete')
+        self._delete_btn.add_css_class('destructive-action')
+        self._delete_btn.connect('clicked', self._delete)
+        ab.pack_start(self._delete_btn)
 
         self._export_btn = Gtk.Button(label='Export MD')
         self._export_btn.connect('clicked', self._export)
         ab.pack_end(self._export_btn)
 
-        self._delete_btn = Gtk.Button(label='Delete')
-        self._delete_btn.add_css_class('destructive-action')
-        self._delete_btn.connect('clicked', self._delete)
-        ab.pack_end(self._delete_btn)
+        self._copy_btn = Gtk.Button(label='Copy Resume Command')
+        self._copy_btn.add_css_class('suggested-action')
+        self._copy_btn.connect('clicked', self._copy_resume)
+        ab.pack_end(self._copy_btn)
 
         self.append(ab)
 
