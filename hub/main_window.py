@@ -25,17 +25,28 @@ class MainWindow(Adw.ApplicationWindow):
         GLib.idle_add(self._load_data)
 
     def _load_data(self):
-        from hub.data.session_scanner import SessionScanner
-        from hub.data.tree_builder import TreeBuilder
-        scanner = SessionScanner()
-        self._projects = scanner.scan()
-        builder = TreeBuilder()
-        self._tree_root = builder.build(self._projects)
-        print(f"Loaded {len(self._projects)} projects")
-        self._setup_ui()
+        import traceback
+        try:
+            from hub.data.session_scanner import SessionScanner
+            from hub.data.tree_builder import TreeBuilder
+            scanner = SessionScanner()
+            self._projects = scanner.scan()
+            builder = TreeBuilder()
+            self._tree_root = builder.build(self._projects)
+            print(f"Loaded {len(self._projects)} projects")
+            self._setup_ui()
+        except Exception:
+            traceback.print_exc()
         return GLib.SOURCE_REMOVE
 
     def _setup_ui(self):
+        import traceback
+        try:
+            self._setup_ui_inner()
+        except Exception:
+            traceback.print_exc()
+
+    def _setup_ui_inner(self):
         # Welcome page
         from hub.ui.welcome_page import make_welcome_page, update_welcome_stats
         self._welcome = make_welcome_page()
@@ -62,6 +73,7 @@ class MainWindow(Adw.ApplicationWindow):
 
         # Show welcome by default
         self.content_stack.set_visible_child_name('welcome')
+        print("_setup_ui_inner complete")
 
     def _on_project_selected(self, _, project):
         self._project_page.load(project)

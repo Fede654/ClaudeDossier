@@ -60,8 +60,9 @@ class ProjectPage(Adw.PreferencesPage):
         self._editor_expander.add_row(sw)
         save_btn = Gtk.Button(label='Save')
         save_btn.add_css_class('suggested-action')
+        save_btn.set_valign(Gtk.Align.CENTER)
         save_btn.connect('clicked', self._save)
-        self._editor_expander.add_action_widget(save_btn)
+        self._editor_expander.add_suffix(save_btn)
         editor_group.add(self._editor_expander)
         self.add(editor_group)
 

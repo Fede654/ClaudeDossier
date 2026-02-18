@@ -33,16 +33,6 @@
             </property>
             <property name="content">
               <object class="GtkStack" id="content_stack">
-                <child>
-                  <object class="GtkStackPage">
-                    <property name="name">welcome</property>
-                    <property name="child">
-                      <object class="GtkLabel">
-                        <property name="label" translatable="yes">Select a project or session</property>
-                      </object>
-                    </property>
-                  </object>
-                </child>
               </object>
             </property>
           </object>
