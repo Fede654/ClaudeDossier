@@ -98,7 +98,7 @@ class ProjectPage(Adw.PreferencesPage):
             row = Adw.ActionRow(title=Path(path_str).name)
             row.set_subtitle(path_str)
             row.add_suffix(Gtk.Image.new_from_icon_name(
-                'emblem-ok-symbolic' if exists else 'dialog-question-symbolic'
+                'object-select-symbolic' if exists else 'action-unavailable-symbolic'
             ))
             self._chain_group.add(row)
 
