@@ -166,9 +166,17 @@ class SessionPage(Gtk.Box):
         self._cancel_flag = threading.Event()
         self._current = session
 
-        self._meta.set_text(
-            f"ID: {session.session_id}  ·  Branch: {session.git_branch}  ·  "
-            f"Messages: {session.message_count}  ·  {session.modified.strftime('%Y-%m-%d %H:%M')}"
+        sid = _html.escape(session.session_id[:8])
+        branch = _html.escape(session.git_branch or '—')
+        date = session.modified.strftime('%Y-%m-%d %H:%M')
+        self._meta.set_markup(
+            f'<span weight="bold">{sid}…</span>'
+            f'<span alpha="50%">  ·  </span>'
+            f'<span>⎇  {branch}</span>'
+            f'<span alpha="50%">  ·  </span>'
+            f'<span>{session.message_count} msgs</span>'
+            f'<span alpha="50%">  ·  </span>'
+            f'<span alpha="70%">{date}</span>'
         )
         self._clear_chat()
         spinner = Gtk.Spinner()
@@ -199,25 +207,45 @@ class SessionPage(Gtk.Box):
             return GLib.SOURCE_REMOVE
         self._clear_chat()
         for msg in messages:
-            row = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=4)
-            row.set_margin_bottom(2)
+            # Outer row: horizontal, holds spacer + bubble (user) or bubble alone (others)
+            outer = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
+            outer.set_margin_bottom(4)
+
+            # Bubble: vertical box with role label + body
+            bubble = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=4)
+
             role = Gtk.Label(xalign=0)
             role.add_css_class('caption')
+
             body = Gtk.Label(xalign=0, wrap=True, selectable=True)
-            body.set_hexpand(True)
             body.set_wrap_mode(Gtk.WrapMode.WORD_CHAR)
 
             if msg.type == MessageType.USER:
                 role.set_text('You')
+                role.set_xalign(1.0)
                 role.add_css_class('msg-role-you')
-                row.add_css_class('user-msg')
+                bubble.add_css_class('user-msg')
+                # Push bubble to the right with a flexible spacer
+                spacer = Gtk.Box()
+                spacer.set_hexpand(True)
+                outer.append(spacer)
+                outer.append(bubble)
+                # Constrain width so bubble doesn't stretch full-width
+                body.set_max_width_chars(70)
+                body.set_hexpand(False)
             elif msg.type == MessageType.ASSISTANT:
                 role.set_text('Claude')
                 role.add_css_class('msg-role-claude')
-                row.add_css_class('assistant-msg')
+                bubble.add_css_class('assistant-msg')
+                outer.append(bubble)
+                bubble.set_hexpand(True)
+                body.set_hexpand(True)
             else:
                 role.set_text('System')
                 role.add_css_class('dim-label')
+                outer.append(bubble)
+                bubble.set_hexpand(True)
+                body.set_hexpand(True)
 
             lines = msg.text.split('\n')
             compressed = compress and len(lines) > _COMPRESS_MAX_LINES
@@ -229,8 +257,8 @@ class SessionPage(Gtk.Box):
             except Exception:
                 body.set_text(display_text)
 
-            row.append(role)
-            row.append(body)
+            bubble.append(role)
+            bubble.append(body)
 
             if compressed:
                 remaining = len(lines) - _COMPRESS_MAX_LINES
@@ -238,18 +266,18 @@ class SessionPage(Gtk.Box):
                 expand_btn.add_css_class('flat')
                 expand_btn.set_halign(Gtk.Align.START)
 
-                def _expand(btn, _body=body, _full=msg.text, _trunc=truncate, _row=row):
+                def _expand(btn, _body=body, _full=msg.text, _trunc=truncate, _bubble=bubble):
                     full = _wrap_long_lines(_full) if _trunc else _full
                     try:
                         _body.set_markup(_md_to_pango(full))
                     except Exception:
                         _body.set_text(full)
-                    _row.remove(btn)
+                    _bubble.remove(btn)
 
                 expand_btn.connect('clicked', _expand)
-                row.append(expand_btn)
+                bubble.append(expand_btn)
 
-            self._chat.append(row)
+            self._chat.append(outer)
 
         if scroll_bottom:
             GLib.idle_add(self._scroll_to_bottom, priority=GLib.PRIORITY_LOW)
