@@ -8,13 +8,15 @@ import threading
 import gi
 gi.require_version('Gtk', '4.0')
 gi.require_version('Adw', '1')
-from gi.repository import Adw, GLib, GObject, Gtk
+from gi.repository import Adw, GLib, Gtk
 
 from hub.data.session_parser import MessageType, SessionParser
 from hub.data.session_scanner import SessionInfo
 
+_COMPRESS_MAX_LINES = 12
 
-def _md_to_pango(text: str) -> str:
+
+def _md_to_pango(text: str, escape_newlines: bool = False) -> str:
     """Convert common markdown to Pango markup for GtkLabel.set_markup().
 
     Strategy: stash fenced code blocks first (so their content is never
@@ -50,6 +52,10 @@ def _md_to_pango(text: str) -> str:
     for i, block in enumerate(blocks):
         text = text.replace(f'\x00B{i}\x00', block)
 
+    # 8. Newline escaping — append ↵ marker before each line break
+    if escape_newlines:
+        text = text.replace('\n', '<span alpha="50%" size="small"> ↵</span>\n')
+
     return text
 
 
@@ -72,13 +78,50 @@ class SessionPage(Gtk.Box):
         self.append(self._meta)
         self.append(Gtk.Separator())
 
-        # Toggle bar
+        # Settings bar — gear button opens popover with view options
         tbar = Gtk.Box(spacing=6)
         tbar.set_margin_start(12)
-        tbar.set_margin_top(4)
-        self._progress_toggle = Gtk.CheckButton(label='Show progress events')
-        self._progress_toggle.connect('toggled', lambda _: self._reload())
-        tbar.append(self._progress_toggle)
+        tbar.set_margin_end(8)
+        tbar.set_margin_top(2)
+        tbar.set_margin_bottom(2)
+
+        # Build settings popover with boxed-list
+        popover = Gtk.Popover()
+        listbox = Gtk.ListBox()
+        listbox.add_css_class('boxed-list')
+        listbox.set_selection_mode(Gtk.SelectionMode.NONE)
+        listbox.set_margin_top(8)
+        listbox.set_margin_bottom(8)
+        listbox.set_margin_start(8)
+        listbox.set_margin_end(8)
+
+        self._progress_row = Adw.SwitchRow(title='Show progress events')
+        self._escape_nl_row = Adw.SwitchRow(
+            title='Escape newlines',
+            subtitle='Mark line endings with ↵',
+        )
+        self._compress_row = Adw.SwitchRow(
+            title='Compress large blocks',
+            subtitle=f'Collapse messages over {_COMPRESS_MAX_LINES} lines',
+        )
+        self._compress_row.set_active(True)  # on by default
+
+        for srow in (self._progress_row, self._escape_nl_row, self._compress_row):
+            listbox.append(srow)
+            srow.connect('notify::active', lambda *_: self._reload())
+
+        popover.set_child(listbox)
+
+        spacer = Gtk.Label(hexpand=True)
+        tbar.append(spacer)
+
+        settings_btn = Gtk.MenuButton()
+        settings_btn.set_icon_name('preferences-system-symbolic')
+        settings_btn.add_css_class('flat')
+        settings_btn.set_tooltip_text('View options')
+        settings_btn.set_popover(popover)
+        tbar.append(settings_btn)
+
         self.append(tbar)
 
         # Chat area
@@ -124,14 +167,17 @@ class SessionPage(Gtk.Box):
         spinner.start()
         self._chat.append(spinner)
 
+        # Capture settings on the main thread before spawning worker
         cancel = self._cancel_flag
+        include_progress = self._progress_row.get_active()
+        escape_nl = self._escape_nl_row.get_active()
+        compress = self._compress_row.get_active()
 
         def _parse():
-            include = self._progress_toggle.get_active()
-            parser = SessionParser(include_progress=include)
+            parser = SessionParser(include_progress=include_progress)
             messages = parser.parse(session.jsonl_path)
             if not cancel.is_set():
-                GLib.idle_add(self._render, messages, cancel)
+                GLib.idle_add(self._render, messages, cancel, escape_nl, compress)
 
         threading.Thread(target=_parse, daemon=True).start()
 
@@ -139,7 +185,7 @@ class SessionPage(Gtk.Box):
         if self._current:
             self.load(self._current)
 
-    def _render(self, messages, cancel):
+    def _render(self, messages, cancel, escape_nl=False, compress=True):
         if cancel.is_set():
             return GLib.SOURCE_REMOVE
         self._clear_chat()
@@ -151,6 +197,7 @@ class SessionPage(Gtk.Box):
             body = Gtk.Label(xalign=0, wrap=True, selectable=True)
             body.set_hexpand(True)
             body.set_wrap_mode(Gtk.WrapMode.WORD_CHAR)
+
             if msg.type == MessageType.USER:
                 role.set_text('You')
                 row.add_css_class('user-msg')
@@ -159,13 +206,37 @@ class SessionPage(Gtk.Box):
                 row.add_css_class('assistant-msg')
             else:
                 role.set_text('System')
+
+            lines = msg.text.split('\n')
+            compressed = compress and len(lines) > _COMPRESS_MAX_LINES
+            display_text = '\n'.join(lines[:_COMPRESS_MAX_LINES]) if compressed else msg.text
+
             try:
-                body.set_markup(_md_to_pango(msg.text))
+                body.set_markup(_md_to_pango(display_text, escape_nl))
             except Exception:
-                body.set_text(msg.text)
+                body.set_text(display_text)
+
             row.append(role)
             row.append(body)
+
+            if compressed:
+                remaining = len(lines) - _COMPRESS_MAX_LINES
+                expand_btn = Gtk.Button(label=f'▼  Show {remaining} more lines')
+                expand_btn.add_css_class('flat')
+                expand_btn.set_halign(Gtk.Align.START)
+
+                def _expand(btn, _body=body, _text=msg.text, _escape=escape_nl, _row=row):
+                    try:
+                        _body.set_markup(_md_to_pango(_text, _escape))
+                    except Exception:
+                        _body.set_text(_text)
+                    _row.remove(btn)
+
+                expand_btn.connect('clicked', _expand)
+                row.append(expand_btn)
+
             self._chat.append(row)
+
         GLib.idle_add(self._scroll_to_bottom)
         return GLib.SOURCE_REMOVE
 
