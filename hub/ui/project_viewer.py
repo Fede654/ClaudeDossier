@@ -66,6 +66,16 @@ class ProjectPage(Adw.PreferencesPage):
         editor_group.add(self._editor_expander)
         self.add(editor_group)
 
+        eff_group = Adw.PreferencesGroup(title='Effective CLAUDE.md')
+        eff_group.set_description('Resolved content in load order — global → project')
+        self._effective_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
+        self._effective_box.set_margin_top(4)
+        self._effective_box.set_margin_bottom(8)
+        self._effective_box.set_margin_start(6)
+        self._effective_box.set_margin_end(6)
+        eff_group.add(self._effective_box)
+        self.add(eff_group)
+
     def load(self, project: ProjectInfo) -> None:
         self._project = project
         self._path_row.set_subtitle(project.original_path)
@@ -97,6 +107,86 @@ class ProjectPage(Adw.PreferencesPage):
         self._text_view.get_buffer().set_text(
             proj_md.read_text() if proj_md.exists() else ''
         )
+
+        self._rebuild_effective(project.original_path)
+
+    def _rebuild_effective(self, project_path: str) -> None:
+        # Clear previous blocks
+        child = self._effective_box.get_first_child()
+        while child:
+            nxt = child.get_next_sibling()
+            self._effective_box.remove(child)
+            child = nxt
+
+        chain = _claude_chain(project_path)
+        # Reverse to global → project order, keep only existing files
+        existing = [(p, exists) for p, exists in reversed(chain) if exists]
+
+        if not existing:
+            lbl = Gtk.Label(label='No CLAUDE.md files found in chain', xalign=0)
+            lbl.add_css_class('dim-label')
+            lbl.set_margin_start(8)
+            lbl.set_margin_top(8)
+            self._effective_box.append(lbl)
+            return
+
+        home = Path.home()
+        proj = Path(project_path)
+
+        for path_str, _ in existing:
+            p = Path(path_str)
+            # Human-readable block label
+            if p == home / '.claude' / 'CLAUDE.md':
+                role = 'Global  ·  ~/.claude/CLAUDE.md'
+            elif p.parent == proj:
+                rel = '~/' + str(p.relative_to(home)) if p.is_relative_to(home) else path_str
+                role = f'Project  ·  {rel}'
+            else:
+                try:
+                    rel = '~/' + str(p.relative_to(home))
+                except ValueError:
+                    rel = path_str
+                role = rel
+
+            try:
+                content = p.read_text()
+            except OSError:
+                content = '(unreadable)'
+
+            block = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
+            block.add_css_class('card')
+            block.set_margin_bottom(2)
+
+            hdr = Gtk.Label(label=role, xalign=0)
+            hdr.add_css_class('caption')
+            hdr.add_css_class('heading')
+            hdr.set_margin_start(10)
+            hdr.set_margin_top(8)
+            hdr.set_margin_end(10)
+            hdr.set_margin_bottom(6)
+            block.append(hdr)
+
+            block.append(Gtk.Separator())
+
+            tv = Gtk.TextView()
+            tv.set_monospace(True)
+            tv.set_editable(False)
+            tv.set_cursor_visible(False)
+            tv.set_wrap_mode(Gtk.WrapMode.WORD_CHAR)
+            tv.set_top_margin(8)
+            tv.set_bottom_margin(8)
+            tv.set_left_margin(10)
+            tv.set_right_margin(10)
+            tv.get_buffer().set_text(content)
+
+            sw = Gtk.ScrolledWindow()
+            sw.set_min_content_height(40)
+            sw.set_max_content_height(260)
+            sw.set_propagate_natural_height(True)
+            sw.set_child(tv)
+            block.append(sw)
+
+            self._effective_box.append(block)
 
     def _save(self, _):
         if not self._project:
