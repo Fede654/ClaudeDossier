@@ -80,23 +80,18 @@ class SessionPage(Gtk.Box):
         self._build_ui()
 
     def _build_ui(self):
-        # Metadata bar
-        self._meta = Gtk.Label(xalign=0)
-        self._meta.add_css_class('caption')
-        self._meta.set_margin_start(12)
-        self._meta.set_margin_top(8)
-        self._meta.set_margin_bottom(4)
-        self._meta.set_hexpand(True)
-        self._meta.set_ellipsize(Pango.EllipsizeMode.END)
-        self.append(self._meta)
-        self.append(Gtk.Separator())
-
-        # Settings bar — gear button opens popover with view options
+        # Single combined header: metadata label + settings button
         tbar = Gtk.Box(spacing=6)
         tbar.set_margin_start(12)
         tbar.set_margin_end(8)
-        tbar.set_margin_top(2)
-        tbar.set_margin_bottom(2)
+        tbar.set_margin_top(6)
+        tbar.set_margin_bottom(6)
+
+        self._meta = Gtk.Label(xalign=0)
+        self._meta.add_css_class('caption')
+        self._meta.set_hexpand(True)
+        self._meta.set_ellipsize(Pango.EllipsizeMode.END)
+        tbar.append(self._meta)
 
         # Build settings popover with boxed-list
         popover = Gtk.Popover()
@@ -127,9 +122,6 @@ class SessionPage(Gtk.Box):
             srow.connect('notify::active', lambda *_: self._reload())
 
         popover.set_child(listbox)
-
-        spacer = Gtk.Label(hexpand=True)
-        tbar.append(spacer)
 
         settings_btn = Gtk.MenuButton()
         settings_btn.set_icon_name('preferences-system-symbolic')
