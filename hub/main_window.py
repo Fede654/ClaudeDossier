@@ -18,6 +18,7 @@ class MainWindow(Adw.ApplicationWindow):
         super().__init__(**kwargs)
         self._projects = []
         self._tree_root = None
+        self._tree_view = None
         GLib.idle_add(self._load_data)
 
     def _load_data(self):
@@ -32,8 +33,12 @@ class MainWindow(Adw.ApplicationWindow):
         return GLib.SOURCE_REMOVE
 
     def _setup_ui(self):
-        """Wire up UI components after data is loaded (expanded in Phases 4–6)."""
-        pass
+        from hub.ui.project_tree import ProjectTreeView
+        self._tree_view = ProjectTreeView()
+        self._tree_view.set_tree(self._tree_root)
+        self._tree_view.connect('project-selected', self._on_project_selected)
+        self._tree_view.connect('session-selected', self._on_session_selected)
+        self.split_view.set_sidebar(self._tree_view)
 
     def _on_project_selected(self, _, project):
         print(f"Project: {project.original_path}")
