@@ -1,6 +1,8 @@
 """Session chat viewer page — async JSONL loading via thread + GLib.idle_add."""
 from __future__ import annotations
 
+import html as _html
+import re
 import threading
 
 import gi
@@ -10,6 +12,45 @@ from gi.repository import Adw, GLib, GObject, Gtk
 
 from hub.data.session_parser import MessageType, SessionParser
 from hub.data.session_scanner import SessionInfo
+
+
+def _md_to_pango(text: str) -> str:
+    """Convert common markdown to Pango markup for GtkLabel.set_markup().
+
+    Strategy: stash fenced code blocks first (so their content is never
+    HTML-escaped or touched by the inline regexes), then escape the rest,
+    then apply inline rules, then restore blocks.
+    """
+    blocks: list[str] = []
+
+    def _stash(m: re.Match) -> str:
+        code = m.group(1).rstrip('\n')
+        blocks.append(f'<tt><small>{_html.escape(code)}</small></tt>')
+        return f'\x00B{len(blocks) - 1}\x00'
+
+    # 1. Extract fenced code blocks (``` ... ```)
+    text = re.sub(r'```[^\n]*\n(.*?)```', _stash, text, flags=re.DOTALL)
+
+    # 2. HTML-escape remainder so < > & don't break Pango
+    text = _html.escape(text)
+
+    # 3. Inline code — group(1) is already escaped, use as-is inside <tt>
+    text = re.sub(r'`([^`\n]+)`', lambda m: f'<tt>{m.group(1)}</tt>', text)
+
+    # 4. Bold (before italic so *** is handled as bold wrapping italic)
+    text = re.sub(r'\*\*(.+?)\*\*', r'<b>\1</b>', text)
+
+    # 5. Italic (single * not adjacent to another *)
+    text = re.sub(r'(?<!\*)\*(?!\*)(.+?)(?<!\*)\*(?!\*)', r'<i>\1</i>', text)
+
+    # 6. ATX headings → bold
+    text = re.sub(r'^#{1,3} (.+)$', r'<b>\1</b>', text, flags=re.MULTILINE)
+
+    # 7. Restore code blocks (\x00 is not touched by html.escape)
+    for i, block in enumerate(blocks):
+        text = text.replace(f'\x00B{i}\x00', block)
+
+    return text
 
 
 class SessionPage(Gtk.Box):
@@ -41,15 +82,15 @@ class SessionPage(Gtk.Box):
         self.append(tbar)
 
         # Chat area
-        sw = Gtk.ScrolledWindow()
-        sw.set_vexpand(True)
+        self._scroll_window = Gtk.ScrolledWindow()
+        self._scroll_window.set_vexpand(True)
         self._chat = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
         self._chat.set_margin_start(12)
         self._chat.set_margin_end(12)
         self._chat.set_margin_top(8)
         self._chat.set_margin_bottom(8)
-        sw.set_child(self._chat)
-        self.append(sw)
+        self._scroll_window.set_child(self._chat)
+        self.append(self._scroll_window)
 
         # Action bar
         ab = Gtk.ActionBar()
@@ -118,10 +159,19 @@ class SessionPage(Gtk.Box):
                 row.add_css_class('assistant-msg')
             else:
                 role.set_text('System')
-            body.set_text(msg.text)
+            try:
+                body.set_markup(_md_to_pango(msg.text))
+            except Exception:
+                body.set_text(msg.text)
             row.append(role)
             row.append(body)
             self._chat.append(row)
+        GLib.idle_add(self._scroll_to_bottom)
+        return GLib.SOURCE_REMOVE
+
+    def _scroll_to_bottom(self):
+        adj = self._scroll_window.get_vadjustment()
+        adj.set_value(adj.get_upper() - adj.get_page_size())
         return GLib.SOURCE_REMOVE
 
     def _clear_chat(self):

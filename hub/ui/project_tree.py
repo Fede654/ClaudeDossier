@@ -124,7 +124,7 @@ class ProjectTreeView(Gtk.Box):
         label = icon.get_next_sibling()
 
         if isinstance(node, SessionLeaf):
-            icon.set_from_icon_name('document-symbolic')
+            icon.set_from_icon_name('text-x-generic-symbolic')
             label.set_text(node.name)
         elif node.project is not None:
             icon.set_from_icon_name('folder-symbolic')
