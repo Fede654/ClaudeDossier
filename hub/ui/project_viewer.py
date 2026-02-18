@@ -94,9 +94,17 @@ class ProjectPage(Adw.PreferencesPage):
                 self._chain_group.remove(child)
             child = next_c
 
+        home = Path.home()
         for path_str, exists in _claude_chain(project.original_path):
-            row = Adw.ActionRow(title=Path(path_str).name)
-            row.set_subtitle(path_str)
+            parent = Path(path_str).parent
+            if parent == home:
+                dir_label = '~'
+            else:
+                try:
+                    dir_label = '~/' + str(parent.relative_to(home))
+                except ValueError:
+                    dir_label = str(parent)
+            row = Adw.ActionRow(title=dir_label)
             row.add_suffix(Gtk.Image.new_from_icon_name(
                 'object-select-symbolic' if exists else 'action-unavailable-symbolic'
             ))
