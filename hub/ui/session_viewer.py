@@ -135,11 +135,11 @@ class SessionPage(Gtk.Box):
         # Chat area
         self._scroll_window = Gtk.ScrolledWindow()
         self._scroll_window.set_vexpand(True)
-        self._chat = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
-        self._chat.set_margin_start(12)
-        self._chat.set_margin_end(12)
-        self._chat.set_margin_top(8)
-        self._chat.set_margin_bottom(8)
+        self._chat = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=2)
+        self._chat.set_margin_start(16)
+        self._chat.set_margin_end(16)
+        self._chat.set_margin_top(12)
+        self._chat.set_margin_bottom(12)
         self._scroll_window.set_child(self._chat)
         self.append(self._scroll_window)
 
@@ -199,8 +199,8 @@ class SessionPage(Gtk.Box):
             return GLib.SOURCE_REMOVE
         self._clear_chat()
         for msg in messages:
-            row = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=2)
-            row.set_margin_bottom(4)
+            row = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=4)
+            row.set_margin_bottom(2)
             role = Gtk.Label(xalign=0)
             role.add_css_class('caption')
             body = Gtk.Label(xalign=0, wrap=True, selectable=True)
@@ -209,12 +209,15 @@ class SessionPage(Gtk.Box):
 
             if msg.type == MessageType.USER:
                 role.set_text('You')
+                role.add_css_class('msg-role-you')
                 row.add_css_class('user-msg')
             elif msg.type == MessageType.ASSISTANT:
                 role.set_text('Claude')
+                role.add_css_class('msg-role-claude')
                 row.add_css_class('assistant-msg')
             else:
                 role.set_text('System')
+                role.add_css_class('dim-label')
 
             lines = msg.text.split('\n')
             compressed = compress and len(lines) > _COMPRESS_MAX_LINES

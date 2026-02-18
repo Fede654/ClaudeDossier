@@ -429,15 +429,26 @@ progressbar.flag-pan progress {
 
 /* Claude Session Hub — chat message bubbles */
 .user-msg {
-  background-color: alpha(@accent_bg_color, 0.12);
-  border-radius: 8px;
-  padding: 8px 10px;
-  margin-bottom: 2px;
+  background-color: alpha(@accent_bg_color, 0.10);
+  border-left: 3px solid alpha(@accent_color, 0.45);
+  border-radius: 0 8px 8px 0;
+  padding: 8px 14px 8px 12px;
+  margin-bottom: 10px;
 }
 
 .assistant-msg {
-  background-color: alpha(@card_bg_color, 0.7);
+  background-color: alpha(@card_bg_color, 0.55);
   border-radius: 8px;
-  padding: 8px 10px;
-  margin-bottom: 2px;
+  border: 1px solid alpha(@card_shade_color, 0.18);
+  padding: 8px 14px;
+  margin-bottom: 10px;
+}
+
+.msg-role-you {
+  color: @accent_color;
+  font-weight: 600;
+}
+
+.msg-role-claude {
+  opacity: 0.55;
 }
