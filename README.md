@@ -2,7 +2,7 @@
 
 A native GTK4 / Adwaita desktop app for browsing, searching, and resuming your [Claude Code](https://claude.ai/code) session history.
 
-![](screenshots/main.png)
+![](screenshots/demo.gif)
 
 ## About
 
