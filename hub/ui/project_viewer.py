@@ -156,8 +156,9 @@ class ProjectPage(Adw.PreferencesPage):
                 tv.set_cursor_visible(False)
 
             sw = Gtk.ScrolledWindow()
-            sw.set_min_content_height(120)
-            sw.set_max_content_height(400)
+            sw.set_min_content_height(480)
+            sw.set_max_content_height(1280)
+            sw.set_propagate_natural_height(True)
             sw.set_child(tv)
             block.append(sw)
 
