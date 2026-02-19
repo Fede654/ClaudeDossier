@@ -311,6 +311,7 @@ class ProjectTreeView(Gtk.Box):
             self._on_search(None)
 
     def _on_search(self, _entry=None):
+        import dataclasses
         query = self._search_entry.get_text().strip()
         self._current_query = query.lower()
         if not query:
@@ -319,20 +320,26 @@ class ProjectTreeView(Gtk.Box):
         if self._all_projects is None:
             return
 
+        q = query.lower()
+        filtered = []
+
         if self._search_index and self._search_index.is_ready:
             matching_sids = set(self._search_index.search(query))
-            filtered = [
-                p for p in self._all_projects
-                if query.lower() in p.original_path.lower()
-                or any(s.session_id in matching_sids for s in p.sessions)
-            ]
+            for p in self._all_projects:
+                if q in p.original_path.lower():
+                    filtered.append(p)  # path match — show all sessions
+                else:
+                    hits = [s for s in p.sessions if s.session_id in matching_sids]
+                    if hits:
+                        filtered.append(dataclasses.replace(p, sessions=hits))
         else:
-            q = query.lower()
-            filtered = [
-                p for p in self._all_projects
-                if q in p.original_path.lower()
-                or any(q in s.first_prompt.lower() for s in p.sessions)
-            ]
+            for p in self._all_projects:
+                if q in p.original_path.lower():
+                    filtered.append(p)
+                else:
+                    hits = [s for s in p.sessions if q in s.first_prompt.lower()]
+                    if hits:
+                        filtered.append(dataclasses.replace(p, sessions=hits))
 
         filtered_root = TreeBuilder().build(filtered)
         self.set_tree_root(filtered_root)
