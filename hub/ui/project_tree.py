@@ -108,6 +108,8 @@ class ProjectTreeView(Gtk.Box):
 
         self._list_view = Gtk.ListView.new(self._selection, factory)
         self._list_view.add_css_class('navigation-sidebar')
+        self._list_view.set_single_click_activate(True)
+        self._list_view.connect('activate', self._on_activate)
 
         self._scroll.set_child(self._list_view)
         GLib.idle_add(self._auto_expand_containers)
@@ -213,14 +215,20 @@ class ProjectTreeView(Gtk.Box):
         if isinstance(node, SessionLeaf):
             self.emit('session-selected', node.session)
         elif isinstance(node, DirNode) and node.project is not None:
-            new_state = not item.get_expanded()
-            def _toggle(row=item, s=new_state):
-                row.set_expanded(s)
+            self.emit('project-selected', node.project)
+
+    def _on_activate(self, _list_view, position):
+        model = self._selection.get_model()
+        row = model.get_item(position)
+        node = row.get_item().node
+        if isinstance(node, DirNode) and node.project is not None:
+            new_state = not row.get_expanded()
+            def _toggle(r=row, s=new_state):
+                r.set_expanded(s)
                 if s:
-                    self._collapse_siblings(row)
+                    self._collapse_siblings(r)
                 return GLib.SOURCE_REMOVE
             GLib.idle_add(_toggle)
-            self.emit('project-selected', node.project)
 
     def _on_search(self, entry):
         query = entry.get_text().lower().strip()
