@@ -187,14 +187,22 @@ class SessionPage(Gtk.Box):
 
         # Chat area
         self._scroll_window = Gtk.ScrolledWindow()
-        self._scroll_window.set_vexpand(True)
         self._chat = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=2)
         self._chat.set_margin_start(16)
         self._chat.set_margin_end(16)
         self._chat.set_margin_top(12)
         self._chat.set_margin_bottom(12)
         self._scroll_window.set_child(self._chat)
-        self.append(self._scroll_window)
+
+        # Error page — shown instead of chat when the JSONL cannot be read
+        self._error_page = Adw.StatusPage()
+
+        self._view_stack = Gtk.Stack()
+        self._view_stack.set_vexpand(True)
+        self._view_stack.set_transition_type(Gtk.StackTransitionType.CROSSFADE)
+        self._view_stack.add_named(self._scroll_window, 'chat')
+        self._view_stack.add_named(self._error_page, 'error')
+        self.append(self._view_stack)
 
         # Action bar
         ab = Gtk.ActionBar()
@@ -237,6 +245,7 @@ class SessionPage(Gtk.Box):
             f'<span alpha="50%">  ·  </span>'
             f'<span alpha="70%">{date}</span>'
         )
+        self._view_stack.set_visible_child_name('chat')
         self._clear_chat()
         spinner = Gtk.Spinner()
         spinner.start()
@@ -251,8 +260,13 @@ class SessionPage(Gtk.Box):
         saved_scroll = self._scroll_positions.get(session.session_id)
 
         def _parse():
-            parser = SessionParser(include_progress=include_progress)
-            messages = parser.parse(session.jsonl_path)
+            try:
+                parser = SessionParser(include_progress=include_progress)
+                messages = parser.parse(session.jsonl_path)
+            except OSError as e:
+                if not cancel.is_set():
+                    GLib.idle_add(self._render_error, e, cancel)
+                return
             if not cancel.is_set():
                 GLib.idle_add(self._render, messages, cancel, truncate, compress, scroll_bottom, saved_scroll)
 
@@ -262,9 +276,24 @@ class SessionPage(Gtk.Box):
         if self._current:
             self.load(self._current)
 
+    def _render_error(self, exc: OSError, cancel) -> int:
+        if cancel.is_set():
+            return GLib.SOURCE_REMOVE
+        self._clear_chat()
+        if isinstance(exc, FileNotFoundError):
+            self._error_page.set_icon_name('document-open-recent-symbolic')
+            self._error_page.set_title('Session File Not Found')
+        else:
+            self._error_page.set_icon_name('dialog-error-symbolic')
+            self._error_page.set_title('Cannot Load Session')
+        self._error_page.set_description(str(exc))
+        self._view_stack.set_visible_child_name('error')
+        return GLib.SOURCE_REMOVE
+
     def _render(self, messages, cancel, truncate=False, compress=True, scroll_bottom=False, saved_scroll=None):
         if cancel.is_set():
             return GLib.SOURCE_REMOVE
+        self._view_stack.set_visible_child_name('chat')
         self._clear_chat()
         for msg in messages:
             # Outer row: horizontal, holds spacer + bubble (user) or bubble alone (others)

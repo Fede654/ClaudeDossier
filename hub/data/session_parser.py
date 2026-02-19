@@ -63,7 +63,7 @@ class SessionParser:
             lines = path.read_text(encoding="utf-8").splitlines()
         except OSError as e:
             logger.warning("Cannot read %s: %s", path, e)
-            return results
+            raise
         for line in lines:
             line = line.strip()
             if not line:
