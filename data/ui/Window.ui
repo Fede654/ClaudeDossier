@@ -7,30 +7,26 @@
     <property name="default-height">750</property>
     <property name="title" translatable="yes">Claude Session Hub</property>
     <property name="content">
-      <object class="AdwToolbarView">
-        <child type="top">
-          <object class="AdwHeaderBar" id="header_bar">
-            <child type="end">
-              <object class="GtkMenuButton" id="menu_button">
-                <property name="icon-name">open-menu-symbolic</property>
+      <object class="AdwOverlaySplitView" id="split_view">
+        <property name="sidebar-width-fraction">0.28</property>
+        <property name="min-sidebar-width">220</property>
+        <property name="max-sidebar-width">400</property>
+        <property name="sidebar">
+          <object class="GtkBox" id="sidebar_placeholder">
+            <property name="orientation">vertical</property>
+          </object>
+        </property>
+        <property name="content">
+          <object class="AdwToolbarView">
+            <child type="top">
+              <object class="AdwHeaderBar" id="header_bar">
+                <child type="end">
+                  <object class="GtkMenuButton" id="menu_button">
+                    <property name="icon-name">open-menu-symbolic</property>
+                  </object>
+                </child>
               </object>
             </child>
-          </object>
-        </child>
-        <property name="content">
-          <object class="AdwOverlaySplitView" id="split_view">
-            <property name="sidebar-width-fraction">0.28</property>
-            <property name="min-sidebar-width">220</property>
-            <property name="max-sidebar-width">400</property>
-            <property name="sidebar">
-              <object class="GtkScrolledWindow">
-                <property name="child">
-                  <object class="GtkLabel" id="sidebar_placeholder">
-                    <property name="label" translatable="yes">Loading sessions…</property>
-                  </object>
-                </property>
-              </object>
-            </property>
             <property name="content">
               <object class="GtkStack" id="content_stack">
               </object>

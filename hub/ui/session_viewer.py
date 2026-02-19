@@ -85,8 +85,8 @@ class SessionPage(Gtk.Box):
         tbar = Gtk.Box(spacing=6)
         tbar.set_margin_start(12)
         tbar.set_margin_end(8)
-        tbar.set_margin_top(6)
-        tbar.set_margin_bottom(6)
+        tbar.set_margin_top(4)
+        tbar.set_margin_bottom(4)
 
         self._meta = Gtk.Label(xalign=0)
         self._meta.add_css_class('caption')

@@ -4,7 +4,7 @@ from __future__ import annotations
 import gi
 gi.require_version('Gtk', '4.0')
 gi.require_version('Adw', '1')
-from gi.repository import GLib, Gio, GObject, Gtk
+from gi.repository import Adw, GLib, Gio, GObject, Gtk
 
 from hub.data.tree_builder import DirNode, SessionLeaf, TreeBuilder
 
@@ -43,24 +43,27 @@ class ProjectTreeView(Gtk.Box):
         self._committed_node = None   # last node the user actually clicked
         self._restore_timer = None    # GLib source id for hover-restore
 
-        # Search bar + refresh button
-        top = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
-        self._search_bar = Gtk.SearchBar()
-        self._search_bar.set_hexpand(True)
+        # Sidebar header bar — aligns with the content-pane AdwHeaderBar
+        sidebar_header = Adw.HeaderBar()
+        sidebar_header.set_decoration_layout('')  # no window controls on sidebar side
+
         self._search_entry = Gtk.SearchEntry()
+        self._search_entry.set_hexpand(True)
         self._search_entry.connect('search-changed', self._on_search)
-        self._search_bar.set_child(self._search_entry)
-        self._search_bar.set_search_mode(True)
-        top.append(self._search_bar)
+        sidebar_header.set_title_widget(self._search_entry)
 
         refresh_btn = Gtk.Button()
         refresh_btn.set_icon_name('view-refresh-symbolic')
         refresh_btn.add_css_class('flat')
         refresh_btn.set_tooltip_text('Rescan folders')
         refresh_btn.connect('clicked', lambda _: self.emit('refresh-requested'))
-        top.append(refresh_btn)
+        sidebar_header.pack_end(refresh_btn)
 
-        self.append(top)
+        # Keep a SearchBar wrapper so key-capture still works
+        self._search_bar = Gtk.SearchBar()
+        self._search_bar.set_key_capture_widget(self._search_entry)
+
+        self.append(sidebar_header)
 
         # Scrolled window placeholder (filled by set_tree)
         self._scroll = Gtk.ScrolledWindow()
@@ -281,8 +284,8 @@ class ProjectTreeView(Gtk.Box):
         elif isinstance(target_node, DirNode) and target_node.project is not None:
             self.emit('project-selected', target_node.project)
 
-    def _on_search(self, entry):
-        query = entry.get_text().lower().strip()
+    def _on_search(self, _entry):
+        query = self._search_entry.get_text().lower().strip()
         self._current_query = query
         if not query:
             self.set_tree_root(self._root_node)
