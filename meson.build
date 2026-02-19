@@ -84,7 +84,7 @@ conf.set('APP_ID', application_id)
 
 configure_file(
   input: 'hub.in',
-  output: 'hub',
+  output: 'dossier',
   configuration: conf,
   install_dir: get_option('bindir')
 )
@@ -112,7 +112,7 @@ local_config.set('LOCAL_BUILD', 'True')
 
 configure_file(
   input: 'hub.in',
-  output: 'local-hub',
+  output: 'local-dossier',
   configuration: local_config
 )
 

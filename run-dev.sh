@@ -20,4 +20,4 @@ export GSETTINGS_SCHEMA_DIR="$BUILD_DIR/data"
 export PYTHONPATH="$SCRIPT_DIR:${PYTHONPATH:-}"
 
 source "$SCRIPT_DIR/.venv/bin/activate"
-exec python3 "$BUILD_DIR/local-hub" "$@"
+exec python3 "$BUILD_DIR/local-dossier" "$@"
