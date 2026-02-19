@@ -44,6 +44,35 @@ source .venv/bin/activate
 ./run-dev.sh
 ```
 
+## Building and installing
+
+Requires `meson` and `ninja`:
+
+```bash
+# Debian / Ubuntu
+sudo apt install meson ninja-build
+# Fedora
+sudo dnf install meson ninja-build
+# Arch
+sudo pacman -S meson ninja
+```
+
+Then build and install system-wide:
+
+```bash
+meson setup builddir --prefix=/usr/local
+meson compile -C builddir
+sudo meson install -C builddir
+```
+
+The `dossier` command will be available on your PATH and the app will appear in your application grid.
+
+To uninstall:
+
+```bash
+sudo ninja -C builddir uninstall
+```
+
 ## Running tests
 
 ```bash
