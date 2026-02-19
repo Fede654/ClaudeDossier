@@ -44,11 +44,13 @@ class SearchIndex:
         self._db_path = Path(db_path or DB_PATH)
         self._db_path.parent.mkdir(parents=True, exist_ok=True)
         self._ready = threading.Event()
+        self._building = threading.Lock()
         self._init_db()
 
     def _connect(self) -> sqlite3.Connection:
         conn = sqlite3.connect(str(self._db_path), timeout=10)
         conn.execute("PRAGMA journal_mode=WAL")
+        conn.execute("PRAGMA busy_timeout=5000")
         conn.execute("PRAGMA synchronous=NORMAL")
         return conn
 
@@ -79,6 +81,9 @@ class SearchIndex:
         on_progress: Callable[[int, int], None] | None = None,
         on_ready: Callable[[], None] | None = None,
     ) -> None:
+        if not self._building.acquire(blocking=False):
+            logger.debug("Index build already running, skipping")
+            return
         t = threading.Thread(
             target=self._build,
             args=(sessions, on_progress, on_ready),
@@ -87,7 +92,17 @@ class SearchIndex:
         t.start()
 
     def _build(self, sessions, on_progress, on_ready) -> None:
-        # Sort smallest files first so results become available quickly
+        try:
+            self._build_inner(sessions, on_progress)
+        except Exception as e:
+            logger.exception("Index build error: %s", e)
+        finally:
+            self._building.release()
+        self._ready.set()
+        if on_ready:
+            on_ready()
+
+    def _build_inner(self, sessions, on_progress) -> None:
         def _size(s):
             try:
                 return s.jsonl_path.stat().st_size
@@ -96,12 +111,26 @@ class SearchIndex:
 
         sessions = sorted(sessions, key=_size)
         total = len(sessions)
+        live_sids = {s.session_id for s in sessions}
         conn = self._connect()
         try:
             indexed = {
                 row[0]: row[1]
                 for row in conn.execute("SELECT session_id, mtime FROM indexed_files")
             }
+
+            # Prune rows for sessions no longer on disk
+            stale = [sid for sid in indexed if sid not in live_sids]
+            if stale:
+                for sid in stale:
+                    old = conn.execute(
+                        "SELECT fts_rowid FROM indexed_files WHERE session_id=?", (sid,)
+                    ).fetchone()
+                    if old:
+                        conn.execute("DELETE FROM sessions_fts WHERE rowid=?", (old[0],))
+                    conn.execute("DELETE FROM indexed_files WHERE session_id=?", (sid,))
+                conn.commit()
+
             done = 0
             for session in sessions:
                 try:
@@ -119,7 +148,7 @@ class SearchIndex:
 
                 text = _extract_text(session.jsonl_path)
 
-                # Remove stale FTS row
+                conn.execute("BEGIN IMMEDIATE")
                 old = conn.execute(
                     "SELECT fts_rowid FROM indexed_files WHERE session_id=?", (sid,)
                 ).fetchone()
@@ -137,17 +166,12 @@ class SearchIndex:
                     " VALUES(?,?,?,?)",
                     (sid, mtime, session.project_path, fts_rowid),
                 )
-                conn.commit()
+                conn.execute("COMMIT")
                 done += 1
                 if on_progress and (done % 10 == 0 or done == total):
                     on_progress(done, total)
-        except Exception as e:
-            logger.exception("Index build error: %s", e)
         finally:
             conn.close()
-        self._ready.set()
-        if on_ready:
-            on_ready()
 
     def search(self, query: str) -> list[str]:
         """Return session_ids matching query using FTS5 prefix search."""

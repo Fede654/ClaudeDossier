@@ -36,6 +36,7 @@ def _make_session(tmp_path: Path, sid: str, messages: list[tuple[str, str]]) -> 
 
 
 def _build_sync(index: SearchIndex, sessions) -> None:
+    index._building.acquire()   # mirrors what build_async() does
     index._build(sessions, on_progress=None, on_ready=None)
 
 
