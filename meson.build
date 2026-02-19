@@ -65,7 +65,7 @@ subdir('po')
 
 install_subdir(
   'hub',
-  install_dir: py_installation.get_install_dir()
+  install_dir: pythondir
 )
 
 # System installation
@@ -93,7 +93,7 @@ configure_file(
   input: 'config.py.in',
   output: 'config.py',
   configuration: conf,
-  install_dir: py_installation.get_install_dir() / 'hub'
+  install_dir: pythondir / 'hub'
 )
 
 # Local installation
