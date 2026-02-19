@@ -250,35 +250,36 @@ class ProjectTreeView(Gtk.Box):
             GLib.idle_add(_toggle)
 
     def _on_row_hover(self, node_cell):
-        node = node_cell[0]
-        if node is None:
-            return
-        # Cancel any pending restore (we're still hovering)
+        # Cancel pending restore — still hovering; single_click_activate handles preview
         if self._restore_timer is not None:
             GLib.source_remove(self._restore_timer)
             self._restore_timer = None
-        # Preview this node in the content area
-        if isinstance(node, SessionLeaf):
-            self.emit('session-selected', node.session)
-        elif isinstance(node, DirNode) and node.project is not None:
-            self.emit('project-selected', node.project)
 
     def _on_row_leave(self):
-        # Small delay so enter on next row can cancel before we restore
         if self._restore_timer is not None:
             GLib.source_remove(self._restore_timer)
         self._restore_timer = GLib.timeout_add(120, self._restore_committed)
 
     def _restore_committed(self):
         self._restore_timer = None
-        node = self._committed_node
-        if node is None:
+        if self._committed_node is None:
             return GLib.SOURCE_REMOVE
-        if isinstance(node, SessionLeaf):
-            self.emit('session-selected', node.session)
-        elif isinstance(node, DirNode) and node.project is not None:
-            self.emit('project-selected', node.project)
+        # Restoring the selection triggers selection-changed → content + scroll restore
+        self._reselect_node(self._committed_node)
         return GLib.SOURCE_REMOVE
+
+    def _reselect_node(self, target_node):
+        """Find target_node in the flat model and set it as the selected item."""
+        model = self._selection.get_model()
+        for i in range(model.get_n_items()):
+            if model.get_item(i).get_item().node is target_node:
+                self._selection.set_selected(i)
+                return
+        # Node not visible (parent collapsed): emit directly as fallback
+        if isinstance(target_node, SessionLeaf):
+            self.emit('session-selected', target_node.session)
+        elif isinstance(target_node, DirNode) and target_node.project is not None:
+            self.emit('project-selected', target_node.project)
 
     def _on_search(self, entry):
         query = entry.get_text().lower().strip()
