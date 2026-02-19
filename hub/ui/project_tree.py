@@ -164,7 +164,8 @@ class ProjectTreeView(Gtk.Box):
         if isinstance(node, SessionLeaf):
             self.emit('session-selected', node.session)
         elif isinstance(node, DirNode) and node.project is not None:
-            item.set_expanded(not item.get_expanded())
+            new_state = not item.get_expanded()
+            GLib.idle_add(lambda row=item, s=new_state: row.set_expanded(s) or GLib.SOURCE_REMOVE)
             self.emit('project-selected', node.project)
 
     def _on_search(self, entry):
