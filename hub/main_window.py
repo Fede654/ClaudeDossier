@@ -34,7 +34,6 @@ class MainWindow(Adw.ApplicationWindow):
             self._projects = scanner.scan()
             builder = TreeBuilder()
             self._tree_root = builder.build(self._projects)
-            print(f"Loaded {len(self._projects)} projects")
             self._setup_ui()
         except Exception:
             traceback.print_exc()
@@ -89,7 +88,6 @@ class MainWindow(Adw.ApplicationWindow):
 
         # Show welcome by default
         self.content_stack.set_visible_child_name('welcome')
-        print("_setup_ui_inner complete")
 
     def _on_project_selected(self, _, project):
         self._project_page.load(project)
