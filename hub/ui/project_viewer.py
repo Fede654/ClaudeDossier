@@ -26,17 +26,6 @@ def _claude_chain(project_path: str) -> list[tuple[str, bool]]:
     return chain
 
 
-def _dir_label(path_str: str) -> str:
-    """Short human-readable label for a CLAUDE.md path — shows parent dir."""
-    home = Path.home()
-    parent = Path(path_str).parent
-    if parent == home:
-        return '~'
-    try:
-        return '~/' + str(parent.relative_to(home))
-    except ValueError:
-        return str(parent)
-
 
 class ProjectPage(Adw.PreferencesPage):
     __gtype_name__ = 'ProjectPage'
@@ -57,12 +46,8 @@ class ProjectPage(Adw.PreferencesPage):
             meta.add(row)
         self.add(meta)
 
-        # Chain: global → project; last entry is editable
-        self._chain_group = Adw.PreferencesGroup(title='CLAUDE.md Inheritance')
-        self.add(self._chain_group)
-
-        eff_group = Adw.PreferencesGroup(title='Effective CLAUDE.md')
-        eff_group.set_description('Resolved content in load order — global → project')
+        eff_group = Adw.PreferencesGroup(title='CLAUDE.md Chain')
+        eff_group.set_description('Load order: global → project (only present files shown)')
         self._effective_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
         self._effective_box.set_margin_top(4)
         self._effective_box.set_margin_bottom(8)
@@ -81,22 +66,6 @@ class ProjectPage(Adw.PreferencesPage):
         self._active_row.set_subtitle(
             la.strftime('%Y-%m-%d %H:%M') if la.year > 1 else '—'
         )
-
-        # Clear old chain rows
-        child = self._chain_group.get_first_child()
-        while child:
-            next_c = child.get_next_sibling()
-            if isinstance(child, Adw.ActionRow):
-                self._chain_group.remove(child)
-            child = next_c
-
-        # Reverse: global first, project last — all plain read-only rows
-        for path_str, exists in reversed(_claude_chain(project.original_path)):
-            row = Adw.ActionRow(title=_dir_label(path_str))
-            row.add_suffix(Gtk.Image.new_from_icon_name(
-                'object-select-symbolic' if exists else 'action-unavailable-symbolic'
-            ))
-            self._chain_group.add(row)
 
         self._rebuild_effective(project.original_path)
 
@@ -186,9 +155,8 @@ class ProjectPage(Adw.PreferencesPage):
                 tv.set_cursor_visible(False)
 
             sw = Gtk.ScrolledWindow()
-            sw.set_min_content_height(480)
-            sw.set_max_content_height(1280)
-            sw.set_propagate_natural_height(True)
+            sw.set_min_content_height(120)
+            sw.set_max_content_height(400)
             sw.set_child(tv)
             block.append(sw)
 
