@@ -429,13 +429,16 @@ progressbar.flag-pan progress {
 
 /* Claude Dossier — chat message bubbles */
 
-/* User — right-aligned, accent-tinted, pinched top-right corner */
+/* User — right-aligned, subtle accent tint, pinched top-right corner */
 .user-msg {
-  background-color: alpha(@accent_bg_color, 0.88);
+  background-color: alpha(@accent_bg_color, 0.12);
+  border: 1px solid alpha(@accent_bg_color, 0.30);
   border-radius: 18px 4px 18px 18px;
   padding: 10px 16px 10px 14px;
   margin-bottom: 6px;
   margin-left: 48px;
+  box-shadow: 0 1px 3px alpha(@shade_color, 0.5),
+              0 1px 2px alpha(@shade_color, 0.3);
 }
 
 /* Claude — left-aligned card, full width, pinched top-left corner */
@@ -446,6 +449,8 @@ progressbar.flag-pan progress {
   padding: 10px 14px 10px 16px;
   margin-bottom: 6px;
   margin-right: 48px;
+  box-shadow: 0 1px 3px alpha(@shade_color, 0.5),
+              0 1px 2px alpha(@shade_color, 0.3);
 }
 
 .msg-role-you {
