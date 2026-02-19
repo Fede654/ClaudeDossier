@@ -31,38 +31,48 @@ def _wrap_long_lines(text: str) -> str:
 def _md_to_pango(text: str) -> str:
     """Convert common markdown to Pango markup for GtkLabel.set_markup().
 
-    Strategy: stash fenced code blocks first (so their content is never
-    HTML-escaped or touched by the inline regexes), then escape the rest,
-    then apply inline rules, then restore blocks.
+    Strategy:
+      1. Stash fenced code blocks (``` ... ```) — never escaped or inline-processed.
+      2. HTML-escape the remainder.
+      3. Stash inline code spans (`...`) — must be stashed BEFORE bold/italic so
+         that * characters inside backtick spans don't trigger the italic regex.
+      4. Apply bold / italic / heading rules.
+      5. Restore all stashed spans in reverse stash order.
     """
-    blocks: list[str] = []
+    stash: list[str] = []
 
-    def _stash(m: re.Match) -> str:
+    def _stash_block(m: re.Match) -> str:
         code = m.group(1).rstrip('\n')
-        blocks.append(f'<tt><small>{_html.escape(code)}</small></tt>')
-        return f'\x00B{len(blocks) - 1}\x00'
+        stash.append(f'<tt><small>{_html.escape(code)}</small></tt>')
+        return f'\x00S{len(stash) - 1}\x00'
+
+    def _stash_inline(m: re.Match) -> str:
+        # m.group(1) is already HTML-escaped at this point
+        stash.append(f'<tt>{m.group(1)}</tt>')
+        return f'\x00S{len(stash) - 1}\x00'
 
     # 1. Extract fenced code blocks (``` ... ```)
-    text = re.sub(r'```[^\n]*\n(.*?)```', _stash, text, flags=re.DOTALL)
+    text = re.sub(r'```[^\n]*\n(.*?)```', _stash_block, text, flags=re.DOTALL)
 
     # 2. HTML-escape remainder so < > & don't break Pango
     text = _html.escape(text)
 
-    # 3. Inline code — group(1) is already escaped, use as-is inside <tt>
-    text = re.sub(r'`([^`\n]+)`', lambda m: f'<tt>{m.group(1)}</tt>', text)
+    # 3. Stash inline code spans BEFORE applying bold/italic to avoid
+    #    the italic regex matching * characters inside <tt> spans.
+    text = re.sub(r'`([^`\n]+)`', _stash_inline, text)
 
-    # 4. Bold (before italic so *** is handled as bold wrapping italic)
+    # 4a. Bold (before italic so *** is handled as bold wrapping italic)
     text = re.sub(r'\*\*(.+?)\*\*', r'<b>\1</b>', text)
 
-    # 5. Italic (single * not adjacent to another *)
+    # 4b. Italic (single * not adjacent to another *)
     text = re.sub(r'(?<!\*)\*(?!\*)(.+?)(?<!\*)\*(?!\*)', r'<i>\1</i>', text)
 
-    # 6. ATX headings → bold
+    # 4c. ATX headings → bold
     text = re.sub(r'^#{1,3} (.+)$', r'<b>\1</b>', text, flags=re.MULTILINE)
 
-    # 7. Restore code blocks (\x00 is not touched by html.escape)
-    for i, block in enumerate(blocks):
-        text = text.replace(f'\x00B{i}\x00', block)
+    # 5. Restore all stashed spans (\x00 bytes are untouched by html.escape)
+    for i, span in enumerate(stash):
+        text = text.replace(f'\x00S{i}\x00', span)
 
     return text
 
