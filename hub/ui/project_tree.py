@@ -65,6 +65,18 @@ class ProjectTreeView(Gtk.Box):
 
         self.append(sidebar_header)
 
+        # Index progress indicator
+        self._index_label = Gtk.Label()
+        self._index_label.add_css_class('caption')
+        self._index_label.add_css_class('dim-label')
+        self._index_label.set_margin_start(12)
+        self._index_label.set_margin_top(2)
+        self._index_label.set_margin_bottom(2)
+        self._index_label.set_halign(Gtk.Align.START)
+        self._index_label.set_visible(False)
+        self.append(self._index_label)
+        self._search_index = None
+
         # Scrolled window placeholder (filled by set_tree)
         self._scroll = Gtk.ScrolledWindow()
         self._scroll.set_vexpand(True)
@@ -284,18 +296,43 @@ class ProjectTreeView(Gtk.Box):
         elif isinstance(target_node, DirNode) and target_node.project is not None:
             self.emit('project-selected', target_node.project)
 
-    def _on_search(self, _entry):
-        query = self._search_entry.get_text().lower().strip()
-        self._current_query = query
+    def set_search_index(self, index) -> None:
+        self._search_index = index
+
+    def update_index_progress(self, done: int, total: int) -> None:
+        if done < total:
+            self._index_label.set_text(f'Indexing {done} / {total}…')
+            self._index_label.set_visible(True)
+
+    def on_index_ready(self) -> None:
+        self._index_label.set_visible(False)
+        # Re-run search with FTS5 if query is active
+        if self._search_entry.get_text().strip():
+            self._on_search(None)
+
+    def _on_search(self, _entry=None):
+        query = self._search_entry.get_text().strip()
+        self._current_query = query.lower()
         if not query:
             self.set_tree_root(self._root_node)
             return
         if self._all_projects is None:
             return
-        filtered = [
-            p for p in self._all_projects
-            if query in p.original_path.lower()
-            or any(query in s.first_prompt.lower() for s in p.sessions)
-        ]
+
+        if self._search_index and self._search_index.is_ready:
+            matching_sids = set(self._search_index.search(query))
+            filtered = [
+                p for p in self._all_projects
+                if query.lower() in p.original_path.lower()
+                or any(s.session_id in matching_sids for s in p.sessions)
+            ]
+        else:
+            q = query.lower()
+            filtered = [
+                p for p in self._all_projects
+                if q in p.original_path.lower()
+                or any(q in s.first_prompt.lower() for s in p.sessions)
+            ]
+
         filtered_root = TreeBuilder().build(filtered)
         self.set_tree_root(filtered_root)

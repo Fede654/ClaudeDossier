@@ -22,6 +22,7 @@ class MainWindow(Adw.ApplicationWindow):
         self._welcome = None
         self._session_page = None
         self._project_page = None
+        self._search_index = None
         GLib.idle_add(self._load_data)
 
     def _load_data(self):
@@ -72,6 +73,19 @@ class MainWindow(Adw.ApplicationWindow):
         self._tree_view.connect('session-selected', self._on_session_selected)
         self._tree_view.connect('refresh-requested', self._on_refresh_requested)
         self.split_view.set_sidebar(self._tree_view)
+
+        # Start FTS5 index build in background
+        from hub.data.search_index import SearchIndex
+        all_sessions = [s for p in self._projects for s in p.sessions]
+        self._search_index = SearchIndex()
+        self._search_index.build_async(
+            all_sessions,
+            on_progress=lambda done, total: GLib.idle_add(
+                self._tree_view.update_index_progress, done, total
+            ),
+            on_ready=lambda: GLib.idle_add(self._tree_view.on_index_ready),
+        )
+        self._tree_view.set_search_index(self._search_index)
 
         # Show welcome by default
         self.content_stack.set_visible_child_name('welcome')
