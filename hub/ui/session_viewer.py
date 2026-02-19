@@ -304,7 +304,10 @@ class SessionPage(Gtk.Box):
     def _copy_resume(self, _):
         if not self._current:
             return
-        cmd = f"claude --resume {self._current.session_id}"
+        import shlex
+        project_dir = shlex.quote(self._current.project_path)
+        sid = self._current.session_id
+        cmd = f"cd {project_dir} && claude --resume {sid}"
         import subprocess
 
         # Try to launch in a terminal directly
@@ -334,7 +337,8 @@ class SessionPage(Gtk.Box):
                     break
                 except (FileNotFoundError, subprocess.CalledProcessError):
                     continue
-        self._toast(f'No terminal found — copied: {cmd}')
+        plain_cmd = f"claude --resume {sid}"
+        self._toast(f'No terminal found — copied: {plain_cmd}')
 
     def _delete(self, _):
         if not self._current:
