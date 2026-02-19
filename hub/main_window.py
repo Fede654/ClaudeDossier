@@ -9,10 +9,14 @@ from gi.repository import Adw, GLib, Gtk
 class MainWindow(Adw.ApplicationWindow):
     __gtype_name__ = 'MainWindow'
 
+    toast_overlay = Gtk.Template.Child()
     split_view = Gtk.Template.Child()
     content_stack = Gtk.Template.Child()
     header_bar = Gtk.Template.Child()
     menu_button = Gtk.Template.Child()
+
+    def add_toast(self, toast):
+        self.toast_overlay.add_toast(toast)
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)

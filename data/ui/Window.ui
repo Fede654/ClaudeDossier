@@ -7,6 +7,8 @@
     <property name="default-height">750</property>
     <property name="title" translatable="yes">Claude Dossier</property>
     <property name="content">
+      <object class="AdwToastOverlay" id="toast_overlay">
+        <property name="child">
       <object class="AdwOverlaySplitView" id="split_view">
         <property name="sidebar-width-fraction">0.28</property>
         <property name="min-sidebar-width">220</property>
@@ -32,6 +34,8 @@
               </object>
             </property>
           </object>
+        </property>
+      </object>
         </property>
       </object>
     </property>
