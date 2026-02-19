@@ -292,25 +292,24 @@ class SessionPage(Gtk.Box):
             GLib.idle_add(self._scroll_to_bottom, priority=GLib.PRIORITY_LOW)
         return GLib.SOURCE_REMOVE
 
-    def _restore_scroll(self, value):
+    def _restore_scroll(self, value, _retries=5):
         adj = self._scroll_window.get_vadjustment()
         upper = adj.get_upper()
         page = adj.get_page_size()
         if upper > page:
             adj.set_value(min(value, upper - page))
-        else:
-            GLib.timeout_add(80, lambda v=value: self._restore_scroll(v))
+        elif _retries > 0:
+            GLib.timeout_add(80, lambda v=value, r=_retries - 1: self._restore_scroll(v, r))
         return GLib.SOURCE_REMOVE
 
-    def _scroll_to_bottom(self):
+    def _scroll_to_bottom(self, _retries=5):
         adj = self._scroll_window.get_vadjustment()
         upper = adj.get_upper()
         page = adj.get_page_size()
         if upper > page:
             adj.set_value(upper - page)
-        else:
-            # Layout not settled yet — retry once more
-            GLib.timeout_add(80, self._scroll_to_bottom)
+        elif _retries > 0:
+            GLib.timeout_add(80, lambda r=_retries - 1: self._scroll_to_bottom(r))
         return GLib.SOURCE_REMOVE
 
     def _clear_chat(self):
@@ -406,8 +405,8 @@ class SessionPage(Gtk.Box):
                 md.encode(), None, False,
                 Gio.FileCreateFlags.REPLACE_DESTINATION, None
             )
-        except Exception:
-            pass
+        except Exception as e:
+            self._toast(f'Export failed: {e}')
 
     def _toast(self, msg: str):
         win = self.get_root()
