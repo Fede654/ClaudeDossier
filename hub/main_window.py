@@ -36,8 +36,7 @@ class MainWindow(Adw.ApplicationWindow):
             from hub.data.tree_builder import TreeBuilder
             scanner = SessionScanner()
             self._projects = scanner.scan()
-            builder = TreeBuilder()
-            self._tree_root = builder.build(self._projects)
+            self._tree_root = TreeBuilder().build(self._projects)
             self._setup_ui()
         except Exception:
             traceback.print_exc()
