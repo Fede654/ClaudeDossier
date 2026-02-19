@@ -4,7 +4,7 @@ from __future__ import annotations
 import gi
 gi.require_version('Gtk', '4.0')
 gi.require_version('Adw', '1')
-from gi.repository import Gio, GObject, Gtk
+from gi.repository import GLib, Gio, GObject, Gtk
 
 from hub.data.tree_builder import DirNode, SessionLeaf, TreeBuilder
 
@@ -110,6 +110,19 @@ class ProjectTreeView(Gtk.Box):
         self._list_view.add_css_class('navigation-sidebar')
 
         self._scroll.set_child(self._list_view)
+        GLib.idle_add(self._auto_expand_containers)
+
+    def _auto_expand_containers(self):
+        """Expand all pure container nodes (no project) so e.g. REPOS/ opens by default."""
+        model = self._selection.get_model()  # TreeListModel
+        i = 0
+        while i < model.get_n_items():
+            row = model.get_item(i)
+            node = row.get_item().node
+            if isinstance(node, DirNode) and node.project is None:
+                row.set_expanded(True)
+            i += 1
+        return GLib.SOURCE_REMOVE
 
     def _setup_row(self, factory, item):
         expander = Gtk.TreeExpander()
