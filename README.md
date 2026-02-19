@@ -19,27 +19,36 @@ Claude Dossier reads the session history written by Claude Code into `~/.claude/
 - View and edit the `CLAUDE.md` inheritance chain for each project
 - Keyboard-friendly, no Electron
 
+## Requirements
+
+- Python 3.10+
+- GTK 4 and libadwaita 1.4+ (system libraries)
+- PyGObject — the Python GTK bindings (`python3-gi`)
+
+PyGObject must come from your system package manager, not pip.
+
+| Distro | Command |
+|--------|---------|
+| Debian / Ubuntu | `sudo apt install python3-gi gir1.2-gtk-4.0 gir1.2-adw-1` |
+| Fedora | `sudo dnf install python3-gobject gtk4 libadwaita` |
+| Arch | `sudo pacman -S python-gobject gtk4 libadwaita` |
+| macOS (Homebrew) | `brew install pygobject3 gtk4 libadwaita` |
+
 ## Running from source
 
 ```bash
 git clone https://github.com/Fede654/ClaudeDossier.git
 cd ClaudeDossier
-python3 -m venv .venv --system-site-packages
+python3 -m venv .venv --system-site-packages  # gives the venv access to system GTK bindings
 source .venv/bin/activate
-pip install pytest
 ./run-dev.sh
-```
-
-**Dependencies** (system packages on Debian/Ubuntu):
-
-```
-python3-gi gir1.2-gtk-4.0 gir1.2-adw-1 gir1.2-glib-2.0
 ```
 
 ## Running tests
 
 ```bash
 source .venv/bin/activate
+pip install pytest
 GSETTINGS_BACKEND=memory pytest tests/ -v
 ```
 
