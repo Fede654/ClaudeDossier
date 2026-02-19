@@ -15,6 +15,8 @@ from hub.data.session_scanner import SessionInfo
 
 _COMPRESS_MAX_LINES = 12
 _TRUNCATE_LINE_WIDTH = 120
+_ITALIC_RE = re.compile(r'(?<!\*)\*(?!\*)(.+?)(?<!\*)\*(?!\*)')
+_BOLD_SPLIT_RE = re.compile(r'(<b>.*?</b>)')
 
 
 def _wrap_long_lines(text: str) -> str:
@@ -64,8 +66,19 @@ def _md_to_pango(text: str) -> str:
     # 4a. Bold (before italic so *** is handled as bold wrapping italic)
     text = re.sub(r'\*\*(.+?)\*\*', r'<b>\1</b>', text)
 
-    # 4b. Italic (single * not adjacent to another *)
-    text = re.sub(r'(?<!\*)\*(?!\*)(.+?)(?<!\*)\*(?!\*)', r'<i>\1</i>', text)
+    # 4b. Italic — run separately on each segment so italic spans cannot cross
+    #     <b>...</b> boundaries (which would produce invalid Pango nesting).
+    def _apply_italic(seg: str) -> str:
+        return _ITALIC_RE.sub(r'<i>\1</i>', seg)
+
+    # Split into alternating [outside, <b>inside</b>, outside, ...] parts
+    parts = _BOLD_SPLIT_RE.split(text)
+    text = ''.join(
+        # For bold spans: apply italic to the inner content only
+        f'<b>{_apply_italic(p[3:-4])}</b>' if p.startswith('<b>') and p.endswith('</b>')
+        else _apply_italic(p)
+        for p in parts
+    )
 
     # 4c. ATX headings → bold
     text = re.sub(r'^#{1,3} (.+)$', r'<b>\1</b>', text, flags=re.MULTILINE)
@@ -75,6 +88,24 @@ def _md_to_pango(text: str) -> str:
         text = text.replace(f'\x00S{i}\x00', span)
 
     return text
+
+
+def _set_markup(label: Gtk.Label, raw: str) -> None:
+    """Render raw text as Pango markup on label, falling back to plain text.
+
+    GtkLabel.set_markup() prints a GLib warning (not a Python exception) when
+    markup is malformed.  We validate first with Pango.parse_markup so that
+    invalid markup silently degrades to plain text instead of spamming stderr.
+    """
+    markup = _md_to_pango(raw)
+    try:
+        ok, _, _, _ = Pango.parse_markup(markup, -1, '\x00')
+    except Exception:
+        ok = False
+    if ok:
+        label.set_markup(markup)
+    else:
+        label.set_text(raw)
 
 
 class SessionPage(Gtk.Box):
@@ -269,10 +300,7 @@ class SessionPage(Gtk.Box):
             raw = '\n'.join(lines[:_COMPRESS_MAX_LINES]) if compressed else msg.text
             display_text = _wrap_long_lines(raw) if truncate else raw
 
-            try:
-                body.set_markup(_md_to_pango(display_text))
-            except Exception:
-                body.set_text(display_text)
+            _set_markup(body, display_text)
 
             bubble.append(role)
             bubble.append(body)
@@ -285,10 +313,7 @@ class SessionPage(Gtk.Box):
 
                 def _expand(btn, _body=body, _full=msg.text, _trunc=truncate, _bubble=bubble):
                     full = _wrap_long_lines(_full) if _trunc else _full
-                    try:
-                        _body.set_markup(_md_to_pango(full))
-                    except Exception:
-                        _body.set_text(full)
+                    _set_markup(_body, full)
                     _bubble.remove(btn)
 
                 expand_btn.connect('clicked', _expand)
