@@ -476,4 +476,7 @@ class SessionPage(Gtk.Box):
     def _toast(self, msg: str):
         win = self.get_root()
         if hasattr(win, 'add_toast'):
-            win.add_toast(Adw.Toast.new(msg))
+            toast = Adw.Toast.new(msg)
+            toast.set_timeout(0)
+            win.add_toast(toast)
+            GLib.timeout_add(1500, toast.dismiss)

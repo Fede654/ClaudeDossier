@@ -5,7 +5,7 @@ from pathlib import Path
 import gi
 gi.require_version('Gtk', '4.0')
 gi.require_version('Adw', '1')
-from gi.repository import Adw, Gtk
+from gi.repository import Adw, GLib, Gtk
 
 from hub.data.session_scanner import ProjectInfo
 
@@ -172,10 +172,14 @@ class ProjectPage(Adw.PreferencesPage):
         target = Path(self._project.original_path) / 'CLAUDE.md'
         try:
             target.write_text(text)
-            win = self.get_root()
-            if hasattr(win, 'add_toast'):
-                win.add_toast(Adw.Toast.new(f'Saved {target.name}'))
+            self._toast(f'Saved {target.name}')
         except Exception as e:
-            win = self.get_root()
-            if hasattr(win, 'add_toast'):
-                win.add_toast(Adw.Toast.new(f'Error: {e}'))
+            self._toast(f'Error: {e}')
+
+    def _toast(self, msg: str) -> None:
+        win = self.get_root()
+        if hasattr(win, 'add_toast'):
+            toast = Adw.Toast.new(msg)
+            toast.set_timeout(0)
+            win.add_toast(toast)
+            GLib.timeout_add(1500, toast.dismiss)
