@@ -150,14 +150,14 @@ class SessionPage(Gtk.Box):
         self._delete_btn.connect('clicked', self._delete)
         ab.pack_start(self._delete_btn)
 
-        self._export_btn = Gtk.Button(label='Export MD')
-        self._export_btn.connect('clicked', self._export)
-        ab.pack_end(self._export_btn)
-
-        self._copy_btn = Gtk.Button(label='Resume')
+        self._copy_btn = Gtk.Button(label='Resume Conversation')
         self._copy_btn.add_css_class('suggested-action')
         self._copy_btn.connect('clicked', self._copy_resume)
         ab.pack_end(self._copy_btn)
+
+        self._export_btn = Gtk.Button(label='Export MD')
+        self._export_btn.connect('clicked', self._export)
+        ab.pack_end(self._export_btn)
 
         self.append(ab)
 
