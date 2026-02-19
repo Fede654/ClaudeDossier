@@ -90,7 +90,10 @@ def _read_jsonl_metadata(jsonl_path: Path, original_path: str) -> SessionInfo | 
     except OSError as exc:
         logger.warning("Cannot read %s: %s", jsonl_path, exc)
         return None
-    fallback = datetime.fromtimestamp(jsonl_path.stat().st_mtime, tz=timezone.utc)
+    try:
+        fallback = datetime.fromtimestamp(jsonl_path.stat().st_mtime, tz=timezone.utc)
+    except OSError:
+        fallback = datetime.now(tz=timezone.utc)
     return SessionInfo(
         session_id=session_id,
         first_prompt=first_prompt[:200],
