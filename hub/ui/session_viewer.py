@@ -77,6 +77,7 @@ class SessionPage(Gtk.Box):
         super().__init__(orientation=Gtk.Orientation.VERTICAL)
         self._current = None
         self._cancel_flag = threading.Event()
+        self._scroll_positions: dict[str, float] = {}
         self._build_ui()
 
     def _build_ui(self):
@@ -162,6 +163,11 @@ class SessionPage(Gtk.Box):
         self.append(ab)
 
     def load(self, session: SessionInfo) -> None:
+        # Persist scroll position of the session we're leaving
+        if self._current is not None:
+            adj = self._scroll_window.get_vadjustment()
+            self._scroll_positions[self._current.session_id] = adj.get_value()
+
         self._cancel_flag.set()
         self._cancel_flag = threading.Event()
         self._current = session
@@ -189,12 +195,13 @@ class SessionPage(Gtk.Box):
         truncate = self._escape_nl_row.get_active()
         compress = self._compress_row.get_active()
         scroll_bottom = self._scroll_bottom_row.get_active()
+        saved_scroll = self._scroll_positions.get(session.session_id)
 
         def _parse():
             parser = SessionParser(include_progress=include_progress)
             messages = parser.parse(session.jsonl_path)
             if not cancel.is_set():
-                GLib.idle_add(self._render, messages, cancel, truncate, compress, scroll_bottom)
+                GLib.idle_add(self._render, messages, cancel, truncate, compress, scroll_bottom, saved_scroll)
 
         threading.Thread(target=_parse, daemon=True).start()
 
@@ -202,7 +209,7 @@ class SessionPage(Gtk.Box):
         if self._current:
             self.load(self._current)
 
-    def _render(self, messages, cancel, truncate=False, compress=True, scroll_bottom=False):
+    def _render(self, messages, cancel, truncate=False, compress=True, scroll_bottom=False, saved_scroll=None):
         if cancel.is_set():
             return GLib.SOURCE_REMOVE
         self._clear_chat()
@@ -279,8 +286,20 @@ class SessionPage(Gtk.Box):
 
             self._chat.append(outer)
 
-        if scroll_bottom:
+        if saved_scroll is not None:
+            GLib.idle_add(lambda v=saved_scroll: self._restore_scroll(v), priority=GLib.PRIORITY_LOW)
+        elif scroll_bottom:
             GLib.idle_add(self._scroll_to_bottom, priority=GLib.PRIORITY_LOW)
+        return GLib.SOURCE_REMOVE
+
+    def _restore_scroll(self, value):
+        adj = self._scroll_window.get_vadjustment()
+        upper = adj.get_upper()
+        page = adj.get_page_size()
+        if upper > page:
+            adj.set_value(min(value, upper - page))
+        else:
+            GLib.timeout_add(80, lambda v=value: self._restore_scroll(v))
         return GLib.SOURCE_REMOVE
 
     def _scroll_to_bottom(self):
