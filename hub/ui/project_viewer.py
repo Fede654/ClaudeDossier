@@ -39,10 +39,9 @@ class ProjectPage(Adw.PreferencesPage):
     def _build(self):
         meta = Adw.PreferencesGroup(title='Project')
         self._path_row = Adw.ActionRow(title='Path')
-        self._disk_row = Adw.ActionRow(title='Directory on disk')
         self._sessions_row = Adw.ActionRow(title='Sessions')
         self._active_row = Adw.ActionRow(title='Last active')
-        for row in (self._path_row, self._disk_row, self._sessions_row, self._active_row):
+        for row in (self._path_row, self._sessions_row, self._active_row):
             meta.add(row)
         self.add(meta)
 
@@ -59,8 +58,10 @@ class ProjectPage(Adw.PreferencesPage):
     def load(self, project: ProjectInfo) -> None:
         self._project = project
         self._text_view = None
-        self._path_row.set_subtitle(project.original_path)
-        self._disk_row.set_subtitle('Exists' if project.exists_on_disk else 'Not found on disk')
+        path_sub = project.original_path
+        if not project.exists_on_disk:
+            path_sub += '  ⚠ directory not found'
+        self._path_row.set_subtitle(path_sub)
         self._sessions_row.set_subtitle(str(len(project.sessions)))
         la = project.last_active
         self._active_row.set_subtitle(
