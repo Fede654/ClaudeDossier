@@ -122,12 +122,23 @@ class SessionPage(Gtk.Box):
         self._build_ui()
 
     def _build_ui(self):
-        # Single combined header: metadata label + settings button
+        # Single combined header: session-id button + metadata label + settings button
         tbar = Gtk.Box(spacing=6)
         tbar.set_margin_start(12)
         tbar.set_margin_end(8)
         tbar.set_margin_top(4)
         tbar.set_margin_bottom(4)
+
+        # Clickable session-ID chip — copies full ID to clipboard
+        self._sid_btn = Gtk.Button()
+        self._sid_btn.add_css_class('flat')
+        self._sid_btn.add_css_class('caption')
+        self._sid_btn.set_tooltip_text('Click to copy session ID')
+        self._sid_btn.connect('clicked', self._copy_session_id)
+        self._sid_label = Gtk.Label()
+        self._sid_label.add_css_class('caption')
+        self._sid_btn.set_child(self._sid_label)
+        tbar.append(self._sid_btn)
 
         self._meta = Gtk.Label(xalign=0)
         self._meta.add_css_class('caption')
@@ -213,12 +224,13 @@ class SessionPage(Gtk.Box):
         self._cancel_flag = threading.Event()
         self._current = session
 
-        sid = _html.escape(session.session_id[:8])
         branch = _html.escape(session.git_branch or '—')
         date = session.modified.strftime('%Y-%m-%d %H:%M')
+        self._sid_label.set_markup(
+            f'<span weight="bold">{_html.escape(session.session_id[:8])}…</span>'
+        )
         self._meta.set_markup(
-            f'<span weight="bold">{sid}…</span>'
-            f'<span alpha="50%">  ·  </span>'
+            f'<span alpha="50%">·  </span>'
             f'<span>⎇  {branch}</span>'
             f'<span alpha="50%">  ·  </span>'
             f'<span>{session.message_count} msgs</span>'
@@ -353,6 +365,24 @@ class SessionPage(Gtk.Box):
             next_child = child.get_next_sibling()
             self._chat.remove(child)
             child = next_child
+
+    def _copy_session_id(self, _):
+        if not self._current:
+            return
+        sid = self._current.session_id
+        try:
+            from gi.repository import Gdk, GObject as GO
+            provider = Gdk.ContentProvider.new_for_value(GO.Value(str, sid))
+            self.get_display().get_clipboard().set_content(provider)
+        except Exception:
+            import subprocess
+            for args in (['wl-copy'], ['xclip', '-selection', 'clipboard']):
+                try:
+                    subprocess.run(args, input=sid.encode(), check=True, capture_output=True)
+                    break
+                except (FileNotFoundError, subprocess.CalledProcessError):
+                    continue
+        self._toast(f'Copied: {sid[:8]}…')
 
     def _copy_resume(self, _):
         if not self._current:
