@@ -40,6 +40,8 @@ class ProjectTreeView(Gtk.Box):
         self._current_query = ""
         self._list_view = None
         self._selection = None
+        self._committed_node = None   # last node the user actually clicked
+        self._restore_timer = None    # GLib source id for hover-restore
 
         # Search bar + refresh button
         top = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
@@ -184,6 +186,15 @@ class ProjectTreeView(Gtk.Box):
         box.append(icon)
         box.append(label)
         expander.set_child(box)
+
+        # Mutable cell updated by _bind_row so the motion handler sees current node
+        node_cell = [None]
+        expander._node_cell = node_cell
+        motion = Gtk.EventControllerMotion()
+        motion.connect('enter', lambda _c, _x, _y, nc=node_cell: self._on_row_hover(nc))
+        motion.connect('leave', lambda _c: self._on_row_leave())
+        expander.add_controller(motion)
+
         item.set_child(expander)
 
     def _bind_row(self, factory, item):
@@ -193,6 +204,7 @@ class ProjectTreeView(Gtk.Box):
 
         node_obj = tree_row.get_item()
         node = node_obj.node
+        expander._node_cell[0] = node  # keep motion handler in sync
         box = expander.get_child()
         icon = box.get_first_child()
         label = icon.get_next_sibling()
@@ -218,9 +230,16 @@ class ProjectTreeView(Gtk.Box):
             self.emit('project-selected', node.project)
 
     def _on_activate(self, _list_view, position):
+        # Cancel any pending hover-restore — user committed this selection
+        if self._restore_timer is not None:
+            GLib.source_remove(self._restore_timer)
+            self._restore_timer = None
+
         model = self._selection.get_model()
         row = model.get_item(position)
         node = row.get_item().node
+        self._committed_node = node  # anchor for hover-restore
+
         if isinstance(node, DirNode) and node.project is not None:
             new_state = not row.get_expanded()
             def _toggle(r=row, s=new_state):
@@ -229,6 +248,37 @@ class ProjectTreeView(Gtk.Box):
                     self._collapse_siblings(r)
                 return GLib.SOURCE_REMOVE
             GLib.idle_add(_toggle)
+
+    def _on_row_hover(self, node_cell):
+        node = node_cell[0]
+        if node is None:
+            return
+        # Cancel any pending restore (we're still hovering)
+        if self._restore_timer is not None:
+            GLib.source_remove(self._restore_timer)
+            self._restore_timer = None
+        # Preview this node in the content area
+        if isinstance(node, SessionLeaf):
+            self.emit('session-selected', node.session)
+        elif isinstance(node, DirNode) and node.project is not None:
+            self.emit('project-selected', node.project)
+
+    def _on_row_leave(self):
+        # Small delay so enter on next row can cancel before we restore
+        if self._restore_timer is not None:
+            GLib.source_remove(self._restore_timer)
+        self._restore_timer = GLib.timeout_add(120, self._restore_committed)
+
+    def _restore_committed(self):
+        self._restore_timer = None
+        node = self._committed_node
+        if node is None:
+            return GLib.SOURCE_REMOVE
+        if isinstance(node, SessionLeaf):
+            self.emit('session-selected', node.session)
+        elif isinstance(node, DirNode) and node.project is not None:
+            self.emit('project-selected', node.project)
+        return GLib.SOURCE_REMOVE
 
     def _on_search(self, entry):
         query = entry.get_text().lower().strip()
