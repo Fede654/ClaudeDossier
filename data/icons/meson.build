@@ -4,7 +4,7 @@ install_data(
 )
 
 install_data(
-	'io.fede.ClaudeSessionHub-symbolic.svg',
+	'io.fede.ClaudeDossier-symbolic.svg',
 	install_dir: datadir / 'icons' / 'hicolor' / 'symbolic' / 'apps',
 	rename: '@0@-symbolic.svg'.format(application_id)
 )

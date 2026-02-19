@@ -5,7 +5,7 @@ gi.require_version('Adw', '1')
 from gi.repository import Adw, GLib, Gtk
 
 
-@Gtk.Template(resource_path='/io/fede/ClaudeSessionHub/ui/Window.ui')
+@Gtk.Template(resource_path='/io/fede/ClaudeDossier/ui/Window.ui')
 class MainWindow(Adw.ApplicationWindow):
     __gtype_name__ = 'MainWindow'
 

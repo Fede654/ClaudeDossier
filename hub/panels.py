@@ -1,4 +1,4 @@
-"""Stub: original panels removed — replaced by claude-session-hub."""
+"""Stub: original panels removed — replaced by claude-dossier."""
 
 
 class ApostrophePanels:

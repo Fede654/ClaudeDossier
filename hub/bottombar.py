@@ -26,7 +26,7 @@ from gi.repository import Adw, GLib, GObject, Gtk, Gsk, Graphene, Gio
 from .settings import Settings
 
 
-@Gtk.Template(resource_path='/io/fede/ClaudeSessionHub/ui/BottomBar.ui')
+@Gtk.Template(resource_path='/io/fede/ClaudeDossier/ui/BottomBar.ui')
 class BottomBar(Gtk.Widget):
     __gtype_name__ = "ApostropheBottomBar"
 
@@ -161,7 +161,7 @@ class BottomBar(Gtk.Widget):
 
         Gtk.Widget.do_dispose(self)
 
-@Gtk.Template(resource_path='/io/fede/ClaudeSessionHub/ui/Toolbar.ui')
+@Gtk.Template(resource_path='/io/fede/ClaudeDossier/ui/Toolbar.ui')
 class Toolbar(Gtk.Revealer):
 
     __gtype_name__ = "Toolbar"
@@ -185,7 +185,7 @@ class Toolbar(Gtk.Revealer):
         else:
             self.show_extra_controls_button.set_tooltip_text(_("Show Toolbar"))
 
-@Gtk.Template(resource_path='/io/fede/ClaudeSessionHub/ui/ToolbarNarrow.ui')
+@Gtk.Template(resource_path='/io/fede/ClaudeDossier/ui/ToolbarNarrow.ui')
 class ToolbarNarrow(Gtk.Revealer):
 
     __gtype_name__ = "ToolbarNarrow"
@@ -193,7 +193,7 @@ class ToolbarNarrow(Gtk.Revealer):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-@Gtk.Template(resource_path='/io/fede/ClaudeSessionHub/ui/Statsbar.ui')
+@Gtk.Template(resource_path='/io/fede/ClaudeDossier/ui/Statsbar.ui')
 class Statsbar(Gtk.Revealer):
 
     __gtype_name__ = "Statsbar"

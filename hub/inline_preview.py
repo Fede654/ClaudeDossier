@@ -197,7 +197,7 @@ class FixedWidthContainer(Adw.Bin):
 
         return (min, natural, min_baseline, nat_baseline)
 
-@Gtk.Template(resource_path='/io/fede/ClaudeSessionHub/ui/InlinePreviewPopover.ui')
+@Gtk.Template(resource_path='/io/fede/ClaudeDossier/ui/InlinePreviewPopover.ui')
 class InlinePreviewPopover(Gtk.Popover):
     __gtype_name__ = "InlinePreviewPopover"
 

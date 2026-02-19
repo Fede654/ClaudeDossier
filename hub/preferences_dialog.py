@@ -58,7 +58,7 @@ class SecurityFormat(GObject.Object):
         self.id: int = id
         self.name: str = name
 
-@Gtk.Template(resource_path='/io/fede/ClaudeSessionHub/ui/Preferences.ui')
+@Gtk.Template(resource_path='/io/fede/ClaudeDossier/ui/Preferences.ui')
 class ApostrophePreferencesDialog(Adw.PreferencesDialog):
 
     __gtype_name__ = "ApostrophePreferencesDialog"

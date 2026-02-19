@@ -1,4 +1,4 @@
-"""Stub: original Editor removed — replaced by claude-session-hub."""
+"""Stub: original Editor removed — replaced by claude-dossier."""
 
 
 class Editor:

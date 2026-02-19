@@ -1,4 +1,4 @@
-"""Stub: original headerbars removed — replaced by claude-session-hub."""
+"""Stub: original headerbars removed — replaced by claude-dossier."""
 
 
 class BaseHeaderbar:

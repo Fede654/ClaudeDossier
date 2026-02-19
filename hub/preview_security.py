@@ -1,4 +1,4 @@
-"""Stub: original PreviewSecurity removed — replaced by claude-session-hub."""
+"""Stub: original PreviewSecurity removed — replaced by claude-dossier."""
 
 
 class PreviewSecurity:

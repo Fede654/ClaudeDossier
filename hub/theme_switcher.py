@@ -54,7 +54,7 @@ defaultThemes = [
 
 
 
-@Gtk.Template(resource_path='/io/fede/ClaudeSessionHub/ui/ThemeSwitcher.ui')
+@Gtk.Template(resource_path='/io/fede/ClaudeDossier/ui/ThemeSwitcher.ui')
 class ThemeSwitcher(Gtk.Box):
     __gtype_name__ = "ThemeSwitcher"
 

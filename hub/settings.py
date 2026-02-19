@@ -33,6 +33,6 @@ class Settings(Gio.Settings):
         """
             Return a new Settings object
         """
-        settings = Gio.Settings.new("io.fede.ClaudeSessionHub")
+        settings = Gio.Settings.new("io.fede.ClaudeDossier")
         settings.__class__ = Settings
         return settings

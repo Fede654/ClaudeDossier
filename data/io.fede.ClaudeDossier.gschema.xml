@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
-  <schema id="io.fede.ClaudeSessionHub" path="/io/fede/ClaudeSessionHub/">
+  <schema id="io.fede.ClaudeDossier" path="/io/fede/ClaudeDossier/">
     <key name="scan-root" type="s">
       <default>''</default>
       <summary>Root directory to scan for Claude sessions (empty = home dir)</summary>

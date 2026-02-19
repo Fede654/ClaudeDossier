@@ -11,7 +11,7 @@ def make_welcome_page() -> Adw.StatusPage:
     """Create an Adw.StatusPage welcome widget (StatusPage is final, not subclassable)."""
     page = Adw.StatusPage()
     page.set_icon_name('document-open-recent-symbolic')
-    page.set_title('Claude Session Hub')
+    page.set_title('Claude Dossier')
     page.set_description('Loading…')
     return page
 

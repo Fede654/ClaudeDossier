@@ -38,7 +38,7 @@ else
   name_suffix = ''
   version_suffix = ''
 endif
-application_id = 'io.fede.ClaudeSessionHub@0@'.format(profile)
+application_id = 'io.fede.ClaudeDossier@0@'.format(profile)
 
 # Dependencies
 
@@ -71,7 +71,7 @@ install_subdir(
 # System installation
 
 conf = configuration_data()
-conf.set('PACKAGE_URL', 'https://github.com/fede/claude-session-hub')
+conf.set('PACKAGE_URL', 'https://github.com/fede/claude-dossier')
 conf.set('DATA_DIR', datadir)
 conf.set('PKGDATA_DIR', pkgdatadir)
 conf.set('LOCALE_DIR', join_paths(datadir, 'locale'))
@@ -101,7 +101,7 @@ configure_file(
 local_config = configuration_data()
 local_config.set('DATA_DIR', join_paths(meson.build_root(), 'data'))
 local_config.set('PKGDATA_DIR', join_paths(meson.build_root(), 'data'))
-local_config.set('PACKAGE_URL', 'https://github.com/fede/claude-session-hub')
+local_config.set('PACKAGE_URL', 'https://github.com/fede/claude-dossier')
 local_config.set('LOCALE_DIR', join_paths(datadir, 'locale'))
 local_config.set('PYTHON_DIR', meson.source_root())
 local_config.set('PROFILE', profile)

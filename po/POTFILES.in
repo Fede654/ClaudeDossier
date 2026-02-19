@@ -1,7 +1,7 @@
 # List of source files containing translatable strings.
-data/io.fede.ClaudeSessionHub.desktop.in.in
-data/io.fede.ClaudeSessionHub.metainfo.xml.in.in
-data/io.fede.ClaudeSessionHub.gschema.xml
+data/io.fede.ClaudeDossier.desktop.in.in
+data/io.fede.ClaudeDossier.metainfo.xml.in.in
+data/io.fede.ClaudeDossier.gschema.xml
 data/ui/About.ui.in
 data/ui/AboutHemingway.ui
 data/ui/DetailedError.ui

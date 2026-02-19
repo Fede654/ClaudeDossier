@@ -55,7 +55,7 @@ def run_application():
 
 def main():
     resource = Gio.resource_load(
-        os.path.join(pkgdatadir, 'io.fede.ClaudeSessionHub.gresource'))
+        os.path.join(pkgdatadir, 'io.fede.ClaudeDossier.gresource'))
     Gio.Resource._register(resource)
 
     return run_application()

@@ -1,4 +1,4 @@
-"""Stub: original SearchAndReplace removed — replaced by claude-session-hub."""
+"""Stub: original SearchAndReplace removed — replaced by claude-dossier."""
 
 
 class ApostropheSearchBar:

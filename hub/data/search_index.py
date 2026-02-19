@@ -9,7 +9,7 @@ from pathlib import Path
 from typing import Callable
 
 logger = logging.getLogger(__name__)
-DB_PATH = Path.home() / ".cache" / "claude-session-hub" / "search.db"
+DB_PATH = Path.home() / ".cache" / "claude-dossier" / "search.db"
 
 
 def _extract_text(jsonl_path: Path) -> str:

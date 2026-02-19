@@ -33,7 +33,7 @@ class RecentItem(GObject.Object):
         self.path: str = path
         self.uri: str = uri
 
-@Gtk.Template(resource_path='/io/fede/ClaudeSessionHub/ui/Recents.ui')
+@Gtk.Template(resource_path='/io/fede/ClaudeDossier/ui/Recents.ui')
 class ApostropheOpenPopover(Gtk.Popover):
 
     __gtype_name__ = "ApostropheOpenPopover"

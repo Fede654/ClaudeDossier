@@ -20,7 +20,7 @@ from gi.repository import Adw, Gio, Gtk
 from gettext import gettext as _
 
 
-@Gtk.Template(resource_path='/io/fede/ClaudeSessionHub/ui/PreviewWindow.ui')
+@Gtk.Template(resource_path='/io/fede/ClaudeDossier/ui/PreviewWindow.ui')
 class PreviewWindow(Adw.ApplicationWindow):
 
     __gtype_name__ = "ApostrophePreviewWindow"

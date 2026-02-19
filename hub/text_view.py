@@ -1,4 +1,4 @@
-"""Stub: original ApostropheTextView removed — replaced by claude-session-hub."""
+"""Stub: original ApostropheTextView removed — replaced by claude-dossier."""
 
 
 class ApostropheTextView:

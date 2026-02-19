@@ -61,7 +61,7 @@ class PreviewLayout(IntEnum):
             raise ValueError("Unknown preview mode")
 
 
-@Gtk.Template(resource_path='/io/fede/ClaudeSessionHub/ui/PreviewLayoutSwitcherItem.ui')
+@Gtk.Template(resource_path='/io/fede/ClaudeDossier/ui/PreviewLayoutSwitcherItem.ui')
 class PreviewLayoutSwitcherItem(Gtk.ListBoxRow):
     __gtype_name__ = "PreviewLayoutSwitcherItem"
 
@@ -82,7 +82,7 @@ class PreviewLayoutSwitcherItem(Gtk.ListBoxRow):
         self.checkmark.props.opacity = 1 if self.selected else 0
 
 
-@Gtk.Template(resource_path='/io/fede/ClaudeSessionHub/ui/PreviewLayoutSwitcher.ui')
+@Gtk.Template(resource_path='/io/fede/ClaudeDossier/ui/PreviewLayoutSwitcher.ui')
 class PreviewLayoutSwitcher(Gtk.Box):
     __gtype_name__ = "PreviewLayoutSwitcher"
 

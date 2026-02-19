@@ -1,4 +1,4 @@
-"""Stub: original ExportDialog removed — replaced by claude-session-hub."""
+"""Stub: original ExportDialog removed — replaced by claude-dossier."""
 
 
 class ExportDialog:

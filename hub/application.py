@@ -1,4 +1,4 @@
-"""Claude Session Hub — GTK4/Adwaita application."""
+"""Claude Dossier — GTK4/Adwaita application."""
 import logging
 
 import gi
@@ -19,14 +19,14 @@ class Application(Adw.Application):
         super().__init__(*args, application_id=application_id,
                          flags=Gio.ApplicationFlags.FLAGS_NONE,
                          **kwargs)
-        self.set_resource_base_path("/io/fede/ClaudeSessionHub")
+        self.set_resource_base_path("/io/fede/ClaudeDossier")
 
     def do_startup(self):
         Adw.Application.do_startup(self)
 
         # Load application CSS (includes chat bubble styles)
         css_provider = Gtk.CssProvider()
-        css_provider.load_from_resource('/io/fede/ClaudeSessionHub/style.css')
+        css_provider.load_from_resource('/io/fede/ClaudeDossier/style.css')
         Gtk.StyleContext.add_provider_for_display(
             Gdk.Display.get_default(), css_provider,
             Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
@@ -35,7 +35,7 @@ class Application(Adw.Application):
         # Set icons
         Gtk.IconTheme.get_for_display(
             Gdk.Display.get_default()).add_resource_path(
-            "/io/fede/ClaudeSessionHub/icons"
+            "/io/fede/ClaudeDossier/icons"
         )
 
         action = Gio.SimpleAction.new("quit", None)

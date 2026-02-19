@@ -21,7 +21,7 @@ gi.require_version('Gtk', '4.0')
 from gi.repository import Adw, Gio, GLib, GObject, Gtk
 
 
-@Gtk.Template(resource_path='/io/fede/ClaudeSessionHub/ui/TableInput.ui')
+@Gtk.Template(resource_path='/io/fede/ClaudeDossier/ui/TableInput.ui')
 class TableInput(Gtk.Overlay):
 
     __gtype_name__ = "TableInput"
