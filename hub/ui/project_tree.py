@@ -124,6 +124,55 @@ class ProjectTreeView(Gtk.Box):
             i += 1
         return GLib.SOURCE_REMOVE
 
+    def _collapse_siblings(self, expanding_row):
+        """Accordion: collapse other expanded project folders at the same depth/parent."""
+        model = self._selection.get_model()
+        target_depth = expanding_row.get_depth()
+        expanding_node = expanding_row.get_item().node
+
+        # Locate expanding_row's position to find its parent
+        n = model.get_n_items()
+        expanding_pos = None
+        for i in range(n):
+            if model.get_item(i).get_item().node is expanding_node:
+                expanding_pos = i
+                break
+        if expanding_pos is None:
+            return
+
+        # Parent = nearest ancestor at depth-1 before this row
+        parent_node = None
+        if target_depth > 0:
+            for i in range(expanding_pos - 1, -1, -1):
+                row = model.get_item(i)
+                if row.get_depth() == target_depth - 1:
+                    parent_node = row.get_item().node
+                    break
+
+        # Collect all expanded siblings (same depth, same parent, not self)
+        to_collapse = []
+        for i in range(model.get_n_items()):
+            row = model.get_item(i)
+            if row.get_depth() != target_depth:
+                continue
+            if row.get_item().node is expanding_node:
+                continue
+            if not row.get_expanded():
+                continue
+            # Find this row's parent
+            rp_node = None
+            if target_depth > 0:
+                for j in range(i - 1, -1, -1):
+                    r = model.get_item(j)
+                    if r.get_depth() == target_depth - 1:
+                        rp_node = r.get_item().node
+                        break
+            if rp_node is parent_node:
+                to_collapse.append(row)
+
+        for row in to_collapse:
+            row.set_expanded(False)
+
     def _setup_row(self, factory, item):
         expander = Gtk.TreeExpander()
         box = Gtk.Box(spacing=6)
@@ -165,7 +214,12 @@ class ProjectTreeView(Gtk.Box):
             self.emit('session-selected', node.session)
         elif isinstance(node, DirNode) and node.project is not None:
             new_state = not item.get_expanded()
-            GLib.idle_add(lambda row=item, s=new_state: row.set_expanded(s) or GLib.SOURCE_REMOVE)
+            def _toggle(row=item, s=new_state):
+                row.set_expanded(s)
+                if s:
+                    self._collapse_siblings(row)
+                return GLib.SOURCE_REMOVE
+            GLib.idle_add(_toggle)
             self.emit('project-selected', node.project)
 
     def _on_search(self, entry):
