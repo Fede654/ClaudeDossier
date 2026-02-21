@@ -8,6 +8,10 @@ BUILD_DIR="$SCRIPT_DIR/builddir"
 if [ ! -f "$BUILD_DIR/data/io.fede.ClaudeDossier.gresource" ]; then
     echo "Building resource bundle first..."
     source "$SCRIPT_DIR/.venv/bin/activate"
+    if ! command -v meson >/dev/null 2>&1; then
+        echo "Installing missing dependencies (meson, ninja)..."
+        pip install meson ninja
+    fi
     meson setup "$BUILD_DIR" --wipe > /dev/null 2>&1 || true
     meson compile -C "$BUILD_DIR" > /dev/null 2>&1
 fi
