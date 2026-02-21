@@ -45,7 +45,7 @@ class ProjectInfo:
         return Path(self.original_path).exists()
 
 
-def _read_jsonl_metadata(jsonl_path: Path, original_path: str) -> SessionInfo | None:
+def _read_jsonl_metadata(jsonl_path: Path, provided_path: str) -> tuple[SessionInfo | None, str]:
     """Extract SessionInfo by scanning a JSONL file directly (no index entry)."""
     session_id = jsonl_path.stem
     first_prompt = ""
@@ -54,6 +54,7 @@ def _read_jsonl_metadata(jsonl_path: Path, original_path: str) -> SessionInfo | 
     first_ts: datetime | None = None
     last_ts: datetime | None = None
     message_count = 0
+    cwd = provided_path
     try:
         with jsonl_path.open() as fh:
             for line in fh:
@@ -74,6 +75,8 @@ def _read_jsonl_metadata(jsonl_path: Path, original_path: str) -> SessionInfo | 
                     git_branch = obj.get("gitBranch", "")
                 if obj.get("isSidechain"):
                     is_sidechain = True
+                if not cwd:
+                    cwd = obj.get("cwd", cwd)
                 msg_type = obj.get("type", "")
                 if msg_type in ("user", "assistant"):
                     message_count += 1
@@ -89,7 +92,7 @@ def _read_jsonl_metadata(jsonl_path: Path, original_path: str) -> SessionInfo | 
                             first_prompt = str(content)
     except OSError as exc:
         logger.warning("Cannot read %s: %s", jsonl_path, exc)
-        return None
+        return None, cwd
     try:
         fallback = datetime.fromtimestamp(jsonl_path.stat().st_mtime, tz=timezone.utc)
     except OSError:
@@ -101,10 +104,10 @@ def _read_jsonl_metadata(jsonl_path: Path, original_path: str) -> SessionInfo | 
         created=first_ts or fallback,
         modified=last_ts or fallback,
         git_branch=git_branch,
-        project_path=original_path,
+        project_path=cwd,
         is_sidechain=is_sidechain,
         jsonl_path=jsonl_path,
-    )
+    ), cwd
 
 
 class SessionScanner:
@@ -119,37 +122,45 @@ class SessionScanner:
         for proj_dir in sorted(self.projects_root.iterdir()):
             if not proj_dir.is_dir():
                 continue
+            project = None
+            indexed_ids: set[str] = set()
             idx = proj_dir / "sessions-index.json"
-            if not idx.exists():
-                continue
+            if idx.exists():
+                try:
+                    data = json.loads(idx.read_text())
+                    original_path = data.get("originalPath", "")
+                    if original_path:
+                        project = ProjectInfo(original_path=original_path, project_dir=proj_dir)
+                        for e in data.get("entries", []):
+                            sid = e["sessionId"]
+                            indexed_ids.add(sid)
+                            project.sessions.append(SessionInfo(
+                                session_id=sid,
+                                first_prompt=e.get("firstPrompt", ""),
+                                message_count=e.get("messageCount", 0),
+                                created=_parse_iso(e["created"]),
+                                modified=_parse_iso(e["modified"]),
+                                git_branch=e.get("gitBranch", ""),
+                                project_path=e.get("projectPath", original_path),
+                                is_sidechain=e.get("isSidechain", False),
+                                jsonl_path=proj_dir / f"{sid}.jsonl",
+                            ))
+                except Exception as exc:
+                    logger.warning("Skipping index in %s: %s", proj_dir, exc)
+
             try:
-                data = json.loads(idx.read_text())
-                original_path = data.get("originalPath", "")
-                if not original_path:
-                    continue
-                project = ProjectInfo(original_path=original_path, project_dir=proj_dir)
-                indexed_ids: set[str] = set()
-                for e in data.get("entries", []):
-                    sid = e["sessionId"]
-                    indexed_ids.add(sid)
-                    project.sessions.append(SessionInfo(
-                        session_id=sid,
-                        first_prompt=e.get("firstPrompt", ""),
-                        message_count=e.get("messageCount", 0),
-                        created=_parse_iso(e["created"]),
-                        modified=_parse_iso(e["modified"]),
-                        git_branch=e.get("gitBranch", ""),
-                        project_path=e.get("projectPath", original_path),
-                        is_sidechain=e.get("isSidechain", False),
-                        jsonl_path=proj_dir / f"{sid}.jsonl",
-                    ))
-                # Pick up any .jsonl files not listed in the index
-                for jsonl in proj_dir.glob("*.jsonl"):
+                # Pick up any .jsonl files recursively not listed in the index
+                for jsonl in proj_dir.rglob("*.jsonl"):
                     if jsonl.stem not in indexed_ids:
-                        info = _read_jsonl_metadata(jsonl, original_path)
+                        current_path = project.original_path if project else ""
+                        info, discovered_cwd = _read_jsonl_metadata(jsonl, current_path)
                         if info:
+                            if not project:
+                                project = ProjectInfo(original_path=discovered_cwd or str(proj_dir), project_dir=proj_dir)
                             project.sessions.append(info)
-                results.append(project)
             except Exception as exc:
-                logger.warning("Skipping %s: %s", proj_dir, exc)
+                logger.warning("Error scanning jsonl in %s: %s", proj_dir, exc)
+
+            if project:
+                results.append(project)
         return results
