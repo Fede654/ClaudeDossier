@@ -35,6 +35,10 @@ class ApostrophePreferencesDialog(Adw.PreferencesDialog):
     enable_claude_row = Gtk.Template.Child()
     enable_codex_row = Gtk.Template.Child()
     enable_antigravity_row = Gtk.Template.Child()
+    show_progress_row = Gtk.Template.Child()
+    wrap_lines_row = Gtk.Template.Child()
+    compress_blocks_row = Gtk.Template.Child()
+    scroll_bottom_row = Gtk.Template.Child()
 
     settings = Settings.new()
 
@@ -53,5 +57,25 @@ class ApostrophePreferencesDialog(Adw.PreferencesDialog):
 
         self.settings.bind("enable-antigravity",
                            self.enable_antigravity_row,
+                           "active",
+                           Gio.SettingsBindFlags.DEFAULT)
+
+        self.settings.bind("show-progress",
+                           self.show_progress_row,
+                           "active",
+                           Gio.SettingsBindFlags.DEFAULT)
+
+        self.settings.bind("wrap-lines",
+                           self.wrap_lines_row,
+                           "active",
+                           Gio.SettingsBindFlags.DEFAULT)
+
+        self.settings.bind("compress-blocks",
+                           self.compress_blocks_row,
+                           "active",
+                           Gio.SettingsBindFlags.DEFAULT)
+
+        self.settings.bind("scroll-bottom",
+                           self.scroll_bottom_row,
                            "active",
                            Gio.SettingsBindFlags.DEFAULT)

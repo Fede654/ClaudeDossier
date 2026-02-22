@@ -12,6 +12,7 @@ from gi.repository import Adw, GLib, GObject, Gtk, Pango
 
 from hub.data.session_parser import MessageType, SessionParser
 from hub.data.session_scanner import SessionInfo
+from hub.settings import Settings
 
 _COMPRESS_MAX_LINES = 12
 _TRUNCATE_LINE_WIDTH = 120
@@ -146,44 +147,6 @@ class SessionPage(Gtk.Box):
         self._meta.set_ellipsize(Pango.EllipsizeMode.END)
         tbar.append(self._meta)
 
-        # Build settings popover with boxed-list
-        popover = Gtk.Popover()
-        listbox = Gtk.ListBox()
-        listbox.add_css_class('boxed-list')
-        listbox.set_selection_mode(Gtk.SelectionMode.NONE)
-        listbox.set_margin_top(8)
-        listbox.set_margin_bottom(8)
-        listbox.set_margin_start(8)
-        listbox.set_margin_end(8)
-
-        self._progress_row = Adw.SwitchRow(title='Show progress events')
-        self._escape_nl_row = Adw.SwitchRow(
-            title='Wrap long lines',
-            subtitle=f'Fold lines exceeding {_TRUNCATE_LINE_WIDTH} characters',
-        )
-        self._escape_nl_row.set_active(True)  # on by default
-        self._compress_row = Adw.SwitchRow(
-            title='Compress large blocks',
-            subtitle=f'Collapse messages over {_COMPRESS_MAX_LINES} lines',
-        )
-        self._compress_row.set_active(True)  # on by default
-
-        self._scroll_bottom_row = Adw.SwitchRow(title='Scroll to bottom on open')
-        self._scroll_bottom_row.set_active(True)
-
-        for srow in (self._progress_row, self._escape_nl_row, self._compress_row, self._scroll_bottom_row):
-            listbox.append(srow)
-            srow.connect('notify::active', lambda *_: self._reload())
-
-        popover.set_child(listbox)
-
-        settings_btn = Gtk.MenuButton()
-        settings_btn.set_icon_name('preferences-system-symbolic')
-        settings_btn.add_css_class('flat')
-        settings_btn.set_tooltip_text('View options')
-        settings_btn.set_popover(popover)
-        tbar.append(settings_btn)
-
         self.append(tbar)
 
         # Chat area
@@ -194,6 +157,12 @@ class SessionPage(Gtk.Box):
         self._chat.set_margin_top(12)
         self._chat.set_margin_bottom(12)
         self._scroll_window.set_child(self._chat)
+
+        self.settings = Settings.new()
+        self.settings.connect('changed::show-progress', lambda *_: self._reload())
+        self.settings.connect('changed::wrap-lines', lambda *_: self._reload())
+        self.settings.connect('changed::compress-blocks', lambda *_: self._reload())
+        self.settings.connect('changed::scroll-bottom', lambda *_: self._reload())
 
         # Error page — shown instead of chat when the JSONL cannot be read
         self._error_page = Adw.StatusPage()
@@ -254,10 +223,10 @@ class SessionPage(Gtk.Box):
 
         # Capture settings on the main thread before spawning worker
         cancel = self._cancel_flag
-        include_progress = self._progress_row.get_active()
-        truncate = self._escape_nl_row.get_active()
-        compress = self._compress_row.get_active()
-        scroll_bottom = self._scroll_bottom_row.get_active()
+        include_progress = self.settings.get_boolean('show-progress')
+        truncate = self.settings.get_boolean('wrap-lines')
+        compress = self.settings.get_boolean('compress-blocks')
+        scroll_bottom = self.settings.get_boolean('scroll-bottom')
         saved_scroll = self._scroll_positions.get(session.session_id)
 
         def _parse():

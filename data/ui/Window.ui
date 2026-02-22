@@ -23,8 +23,10 @@
             <child type="top">
               <object class="AdwHeaderBar" id="header_bar">
                 <child type="end">
-                  <object class="GtkMenuButton" id="menu_button">
-                    <property name="icon-name">open-menu-symbolic</property>
+                  <object class="GtkButton" id="preferences_button">
+                    <property name="icon-name">preferences-system-symbolic</property>
+                    <property name="action-name">app.preferences</property>
+                    <property name="tooltip-text" translatable="yes">Preferences</property>
                   </object>
                 </child>
               </object>

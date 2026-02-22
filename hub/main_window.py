@@ -13,7 +13,7 @@ class MainWindow(Adw.ApplicationWindow):
     split_view = Gtk.Template.Child()
     content_stack = Gtk.Template.Child()
     header_bar = Gtk.Template.Child()
-    menu_button = Gtk.Template.Child()
+    preferences_button = Gtk.Template.Child()
 
     def add_toast(self, toast):
         self.toast_overlay.add_toast(toast)
@@ -104,11 +104,7 @@ class MainWindow(Adw.ApplicationWindow):
         )
         self._tree_view.set_search_index(self._search_index)
 
-        # App menu
-        from gi.repository import Gio
-        menu = Gio.Menu()
-        menu.append("Preferences", "app.preferences")
-        self.menu_button.set_menu_model(menu)
+
 
         # Show welcome by default
         self.content_stack.set_visible_child_name('welcome')

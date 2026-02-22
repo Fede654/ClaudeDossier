@@ -27,6 +27,33 @@
             </child>
           </object>
         </child>
+        <child>
+          <object class="AdwPreferencesGroup">
+            <property name="title" translatable="yes">Chat Behavior</property>
+            <child>
+              <object class="AdwSwitchRow" id="show_progress_row">
+                <property name="title" translatable="yes">Show progress events</property>
+              </object>
+            </child>
+            <child>
+              <object class="AdwSwitchRow" id="wrap_lines_row">
+                <property name="title" translatable="yes">Wrap long lines</property>
+                <property name="subtitle" translatable="yes">Fold lines exceeding 120 characters</property>
+              </object>
+            </child>
+            <child>
+              <object class="AdwSwitchRow" id="compress_blocks_row">
+                <property name="title" translatable="yes">Compress large blocks</property>
+                <property name="subtitle" translatable="yes">Collapse messages over 12 lines</property>
+              </object>
+            </child>
+            <child>
+              <object class="AdwSwitchRow" id="scroll_bottom_row">
+                <property name="title" translatable="yes">Scroll to bottom on open</property>
+              </object>
+            </child>
+          </object>
+        </child>
       </object>
     </child>
   </template>
