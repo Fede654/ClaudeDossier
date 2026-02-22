@@ -43,6 +43,12 @@ class Application(Adw.Application):
         self.add_action(action)
         self.set_accels_for_action("app.quit", ["<Ctrl>q"])
 
+        # Add Preferences action
+        pref_action = Gio.SimpleAction.new("preferences", None)
+        pref_action.connect("activate", self.on_preferences)
+        self.add_action(pref_action)
+        self.set_accels_for_action("app.preferences", ["<Ctrl>comma"])
+
     def do_activate(self, *args, **kwargs):
         win = self.get_active_window()
         if not win:
@@ -56,3 +62,9 @@ class Application(Adw.Application):
 
     def on_quit(self, _action, _param):
         self.quit()
+
+    def on_preferences(self, _action, _param):
+        from hub.preferences_dialog import ApostrophePreferencesDialog
+        win = self.get_active_window()
+        dialog = ApostrophePreferencesDialog()
+        dialog.present(win)
