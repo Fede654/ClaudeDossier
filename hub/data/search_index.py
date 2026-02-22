@@ -12,31 +12,17 @@ logger = logging.getLogger(__name__)
 DB_PATH = Path.home() / ".cache" / "claude-dossier" / "search.db"
 
 
-def _extract_text(jsonl_path: Path) -> str:
-    """Extract user/assistant message text from a JSONL file."""
-    parts = []
+from hub.data.session_parser import SessionParser
+
+def _extract_text(session) -> str:
+    """Extract user/assistant message text from a session file using the generalized parser."""
     try:
-        with jsonl_path.open(errors='replace') as fh:
-            for line in fh:
-                try:
-                    obj = json.loads(line)
-                except json.JSONDecodeError:
-                    continue
-                if obj.get('type') not in ('user', 'assistant'):
-                    continue
-                content = obj.get('message', {}).get('content', '')
-                if isinstance(content, str):
-                    if content:
-                        parts.append(content)
-                elif isinstance(content, list):
-                    for block in content:
-                        if block.get('type') == 'text':
-                            text = block.get('text', '')
-                            if text:
-                                parts.append(text)
-    except OSError as e:
-        logger.warning("Cannot read %s: %s", jsonl_path, e)
-    return '\n'.join(parts)
+        parser = SessionParser(agent_source=getattr(session, 'agent_source', 'claude'))
+        msgs = parser.parse(session.jsonl_path)
+        return '\n'.join(m.text for m in msgs if m.text)
+    except Exception as e:
+        logger.warning("Cannot extract text from %s: %s", session.jsonl_path, e)
+        return ""
 
 
 class SearchIndex:
@@ -146,7 +132,7 @@ class SearchIndex:
                         on_progress(done, total)
                     continue
 
-                text = _extract_text(session.jsonl_path)
+                text = _extract_text(session)
 
                 conn.execute("BEGIN IMMEDIATE")
                 old = conn.execute(

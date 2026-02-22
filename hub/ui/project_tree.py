@@ -225,7 +225,13 @@ class ProjectTreeView(Gtk.Box):
         label = icon.get_next_sibling()
 
         if isinstance(node, SessionLeaf):
-            icon.set_from_icon_name('text-x-generic-symbolic')
+            agent = getattr(node.session, 'agent_source', 'claude')
+            if agent == "codex":
+                icon.set_from_icon_name('utilities-terminal-symbolic')
+            elif agent == "antigravity":
+                icon.set_from_icon_name('weather-clear-symbolic')
+            else:
+                icon.set_from_icon_name('text-x-generic-symbolic')
             label.set_text(node.name)
         elif node.project is not None:
             icon.set_from_icon_name('folder-symbolic')

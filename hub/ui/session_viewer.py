@@ -261,7 +261,7 @@ class SessionPage(Gtk.Box):
 
         def _parse():
             try:
-                parser = SessionParser(include_progress=include_progress)
+                parser = SessionParser(agent_source=session.agent_source, include_progress=include_progress)
                 messages = parser.parse(session.jsonl_path)
             except OSError as e:
                 if not cancel.is_set():
@@ -323,7 +323,13 @@ class SessionPage(Gtk.Box):
                 body.set_max_width_chars(70)
                 body.set_hexpand(False)
             elif msg.type == MessageType.ASSISTANT:
-                role.set_text('Claude')
+                agent_name = "Claude"
+                if self._current:
+                    if self._current.agent_source == "codex":
+                        agent_name = "Codex"
+                    elif self._current.agent_source == "antigravity":
+                        agent_name = "Anti-Gravity"
+                role.set_text(agent_name)
                 role.add_css_class('msg-role-claude')
                 bubble.add_css_class('assistant-msg')
                 outer.append(bubble)
@@ -419,7 +425,12 @@ class SessionPage(Gtk.Box):
         import shlex
         project_dir = shlex.quote(self._current.project_path)
         sid = self._current.session_id
-        cmd = f"cd {project_dir} && claude --resume {sid}"
+        app_cmd = "claude"
+        if self._current.agent_source == "codex":
+            app_cmd = "codex"
+        elif self._current.agent_source == "antigravity":
+            app_cmd = "antigravity"
+        cmd = f"cd {project_dir} && {app_cmd} --resume {sid}"
         import subprocess
 
         # Try to launch in a terminal directly
@@ -449,7 +460,7 @@ class SessionPage(Gtk.Box):
                     break
                 except (FileNotFoundError, subprocess.CalledProcessError):
                     continue
-        plain_cmd = f"claude --resume {sid}"
+        plain_cmd = f"{app_cmd} --resume {sid}"
         self._toast(f'No terminal found — copied: {plain_cmd}')
 
     def _delete(self, _):
@@ -480,7 +491,7 @@ class SessionPage(Gtk.Box):
     def _export(self, _):
         if not self._current:
             return
-        parser = SessionParser()
+        parser = SessionParser(agent_source=self._current.agent_source)
         msgs = parser.parse(self._current.jsonl_path)
         lines = [f"# Session {self._current.session_id}\n\n"]
         for m in msgs:

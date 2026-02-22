@@ -26,6 +26,7 @@ class SessionInfo:
     project_path: str
     is_sidechain: bool
     jsonl_path: Path
+    agent_source: str = "claude"
 
 
 @dataclass
@@ -46,7 +47,6 @@ class ProjectInfo:
 
 
 def _read_jsonl_metadata(jsonl_path: Path, original_path: str) -> SessionInfo | None:
-    """Extract SessionInfo by scanning a JSONL file directly (no index entry)."""
     session_id = jsonl_path.stem
     first_prompt = ""
     git_branch = ""
@@ -104,16 +104,16 @@ def _read_jsonl_metadata(jsonl_path: Path, original_path: str) -> SessionInfo | 
         project_path=original_path,
         is_sidechain=is_sidechain,
         jsonl_path=jsonl_path,
+        agent_source="claude",
     )
 
 
-class SessionScanner:
+class ClaudeScanner:
     def __init__(self, projects_root: Path | None = None):
         self.projects_root = projects_root or DEFAULT_PROJECTS_ROOT
 
     def scan(self) -> list[ProjectInfo]:
         if not self.projects_root.exists():
-            logger.warning("Projects root not found: %s", self.projects_root)
             return []
         results = []
         for proj_dir in sorted(self.projects_root.iterdir()):
@@ -142,8 +142,8 @@ class SessionScanner:
                         project_path=e.get("projectPath", original_path),
                         is_sidechain=e.get("isSidechain", False),
                         jsonl_path=proj_dir / f"{sid}.jsonl",
+                        agent_source="claude",
                     ))
-                # Pick up any .jsonl files not listed in the index
                 for jsonl in proj_dir.glob("*.jsonl"):
                     if jsonl.stem not in indexed_ids:
                         info = _read_jsonl_metadata(jsonl, original_path)
@@ -153,3 +153,143 @@ class SessionScanner:
             except Exception as exc:
                 logger.warning("Skipping %s: %s", proj_dir, exc)
         return results
+
+class CodexScanner:
+    def __init__(self, codex_root: Path | None = None):
+        self.codex_root = codex_root or Path.home() / ".codex" / "sessions"
+
+    def scan(self) -> list[ProjectInfo]:
+        import re
+        if not self.codex_root.exists():
+            return []
+        
+        project_map: dict[str, ProjectInfo] = {}
+
+        for jsonl in self.codex_root.rglob("*.jsonl"):
+            cwd = str(self.codex_root)
+            first_prompt = ""
+            msg_count = 0
+            first_ts = None
+            last_ts = None
+
+            try:
+                with jsonl.open() as fh:
+                    for line in fh:
+                        if not line.strip(): continue
+                        try:
+                            obj = json.loads(line)
+                        except: continue
+                        
+                        ts_str = obj.get("timestamp") or obj.get("ts")
+                        if ts_str:
+                            try:
+                                if isinstance(ts_str, (int, float)):
+                                    ts = datetime.fromtimestamp(ts_str, tz=timezone.utc)
+                                else:
+                                    ts = _parse_iso(ts_str)
+                                if first_ts is None: first_ts = ts
+                                last_ts = ts
+                            except ValueError: pass
+
+                        if "text" in obj and isinstance(obj.get("text"), str):
+                            msg_count += 1
+                            if obj.get("role") == "user" or not first_prompt:
+                                first_prompt = obj["text"]
+                        
+                        payload = obj.get("payload", {})
+                        if payload and payload.get("type") == "message":
+                            role = payload.get("role")
+                            contents = payload.get("content", [])
+                            if role in ("user", "assistant"):
+                                msg_count += 1
+                                for c in contents:
+                                    if c.get("type") in ("input_text", "text"):
+                                        t = c.get("text", "")
+                                        if "<cwd>" in t:
+                                            m = re.search(r"<cwd>(.*?)</cwd>", t)
+                                            if m: cwd = m.group(1).strip()
+                                        
+                                        if role == "user" and not first_prompt and not t.startswith("<permissions") and not t.startswith("<environment"):
+                                            first_prompt = t
+
+            except OSError:
+                continue
+
+            if not first_prompt:
+                first_prompt = f"Codex Session {jsonl.stem}"
+
+            try:
+                fallback = datetime.fromtimestamp(jsonl.stat().st_mtime, tz=timezone.utc)
+            except OSError:
+                fallback = datetime.now(tz=timezone.utc)
+
+            info = SessionInfo(
+                session_id=jsonl.stem,
+                first_prompt=first_prompt[:200],
+                message_count=msg_count,
+                created=first_ts or fallback,
+                modified=last_ts or fallback,
+                git_branch="",
+                project_path=cwd,
+                is_sidechain=False,
+                jsonl_path=jsonl,
+                agent_source="codex"
+            )
+
+            if cwd not in project_map:
+                project_map[cwd] = ProjectInfo(original_path=cwd, project_dir=Path(cwd))
+            project_map[cwd].sessions.append(info)
+            
+        return list(project_map.values())
+
+
+class AntiGravityScanner:
+    def __init__(self, root: Path | None = None):
+        self.root = root or Path.home() / ".gemini" / "antigravity" / "conversations"
+
+    def scan(self) -> list[ProjectInfo]:
+        if not self.root.exists():
+            return []
+        
+        project = ProjectInfo(original_path=str(self.root), project_dir=self.root)
+        
+        for pbfile in self.root.glob("*.pb"):
+            try:
+                fallback = datetime.fromtimestamp(pbfile.stat().st_mtime, tz=timezone.utc)
+            except OSError:
+                fallback = datetime.now(tz=timezone.utc)
+
+            # We will read actual messages in parser. For now, just generate a generic info.
+            info = SessionInfo(
+                session_id=pbfile.stem,
+                first_prompt=f"Anti-Gravity Session {pbfile.stem}",
+                message_count=1,  # Placeholder, parser will read exact
+                created=fallback,
+                modified=fallback,
+                git_branch="",
+                project_path=str(self.root),
+                is_sidechain=False,
+                jsonl_path=pbfile,
+                agent_source="antigravity"
+            )
+            project.sessions.append(info)
+            
+        return [project] if project.sessions else []
+
+
+class SessionScanner:
+    def __init__(self, projects_root: Path | None = None, codex_root: Path | None = None, antigravity_root: Path | None = None):
+        self.claude = ClaudeScanner(projects_root)
+        if projects_root is not None and codex_root is None:
+            codex_root = projects_root / ".codex_fake"
+        if projects_root is not None and antigravity_root is None:
+            antigravity_root = projects_root / ".ag_fake"
+        self.codex = CodexScanner(codex_root)
+        self.antigravity = AntiGravityScanner(antigravity_root)
+
+    def scan(self) -> list[ProjectInfo]:
+        projects = []
+        projects.extend(self.claude.scan())
+        projects.extend(self.codex.scan())
+        projects.extend(self.antigravity.scan())
+        return projects
