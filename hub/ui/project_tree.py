@@ -234,18 +234,17 @@ class ProjectTreeView(Gtk.Box):
                 icon.set_from_icon_name('text-x-generic-symbolic')
             label.set_text(node.name)
         elif node.project is not None:
-            agent = getattr(node.project.sessions[0], 'agent_source', 'claude') if node.project.sessions else 'claude'
-            if agent == "codex":
-                icon.set_from_icon_name('folder-symbolic')
-                label.set_text(f"{node.name} (Codex)  ({node.session_count})")
-            elif agent == "antigravity":
-                icon.set_from_icon_name('folder-remote-symbolic')
-                label.set_text(f"{node.name} (Anti-Gravity)  ({node.session_count})")
-            else:
-                icon.set_from_icon_name('folder-symbolic')
-                label.set_text(f"{node.name}  ({node.session_count})")
+            icon.set_from_icon_name('folder-symbolic')
+            label.set_text(f"{node.name}  ({node.session_count})")
         else:
-            icon.set_from_icon_name('folder-open-symbolic')
+            if node.full_path == "agent_tree://Claude":
+                icon.set_from_icon_name('text-x-generic-symbolic')
+            elif node.full_path == "agent_tree://Codex":
+                icon.set_from_icon_name('utilities-terminal-symbolic')
+            elif node.full_path == "agent_tree://Anti-Gravity":
+                icon.set_from_icon_name('weather-clear-symbolic')
+            else:
+                icon.set_from_icon_name('folder-open-symbolic')
             label.set_text(f"{node.name}  ({node.session_count})")
 
     def _on_selection_changed(self, selection, _pos, _n):

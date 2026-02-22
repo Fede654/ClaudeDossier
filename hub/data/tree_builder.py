@@ -69,30 +69,29 @@ class TreeBuilder:
         return root
 
     def _insert(self, root: DirNode, proj: ProjectInfo) -> None:
+        agent = proj.sessions[0].agent_source if proj.sessions else "claude"
+        agent_name = "Anti-Gravity" if agent == "antigravity" else agent.capitalize()
+
         path = proj.original_path
         if path.startswith(self.base + "/"):
             rel = path[len(self.base) + 1:]
         else:
             rel = path.lstrip("/")
-        parts = rel.split("/")
+            
+        parts = [agent_name] + rel.split("/")
         node = root
         for i, part in enumerate(parts):
-            full = self.base + "/" + "/".join(parts[:i + 1])
-            is_last = (i == len(parts) - 1)
-            match = None
-            for c in node.children:
-                if isinstance(c, DirNode) and c.full_path == full:
-                    # If this is the project leaf and it already has a project,
-                    # don't merge (we want separate folders per agent).
-                    if is_last and c.project is not None:
-                        continue
-                    match = c
-                    break
+            full = "agent_tree://" + "/".join(parts[:i + 1])
+            match = next((c for c in node.children if isinstance(c, DirNode) and c.full_path == full), None)
             if match is None:
                 match = DirNode(name=part, full_path=full)
                 node.children.append(match)
             node = match
-        node.project = proj
+            
+        if node.project is None:
+            node.project = proj
+        else:
+            node.project.sessions.extend(proj.sessions)
 
     def _sort(self, node: DirNode) -> None:
         node.children.sort(key=lambda c: c.last_active, reverse=True)
@@ -104,6 +103,8 @@ class TreeBuilder:
         for child in node.children:
             if isinstance(child, DirNode):
                 self._compact(child)
+        if node.full_path == self.base:
+            return
         changed = True
         while changed:
             changed = False

@@ -25,8 +25,10 @@ def test_builds_hierarchy_from_original_path():
     ]
     root = TreeBuilder(base="/home/user").build(projects)
     assert len(root.children) == 1
-    assert root.children[0].name == "repos"
-    assert len(root.children[0].children) == 2
+    assert root.children[0].name == "Claude"
+    assert len(root.children[0].children) == 1
+    assert root.children[0].children[0].name == "repos"
+    assert len(root.children[0].children[0].children) == 2
 
 
 def test_sorts_by_last_active_descending():
@@ -36,25 +38,27 @@ def test_sorts_by_last_active_descending():
         _proj("/home/user/new", [_sess("s2", 10)]),
     ]
     root = TreeBuilder(base="/home/user").build(projects)
-    assert root.children[0].name == "new"
-    assert root.children[1].name == "old"
+    assert root.children[0].name == "Claude"
+    assert root.children[0].children[0].name == "new"
+    assert root.children[0].children[1].name == "old"
 
 
 def test_compact_collapses_single_child_intermediates():
     from hub.data.tree_builder import TreeBuilder
     projects = [_proj("/home/user/a/b/c/proj", [_sess("s1", 1)])]
     root = TreeBuilder(base="/home/user", compact=True).build(projects)
-    # a → b → c should compact to a single node
-    assert len(root.children) == 1
-    assert "/" in root.children[0].name  # "a/b/c"
+    agent_node = root.children[0]
+    assert len(agent_node.children) == 1
+    assert "/" in agent_node.children[0].name  # "a/b/c"
 
 
 def test_compact_false_shows_full_depth():
     from hub.data.tree_builder import TreeBuilder
     projects = [_proj("/home/user/a/b/proj", [_sess("s1", 1)])]
     root = TreeBuilder(base="/home/user", compact=False).build(projects)
-    assert root.children[0].name == "a"
-    assert root.children[0].children[0].name == "b"
+    agent_node = root.children[0]
+    assert agent_node.children[0].name == "a"
+    assert agent_node.children[0].children[0].name == "b"
 
 
 def test_session_count_propagates_up():
@@ -64,5 +68,6 @@ def test_session_count_propagates_up():
         _proj("/u/repos/proj-b", [_sess("s3", 3)]),
     ]
     root = TreeBuilder(base="/u").build(projects)
-    repos = root.children[0]
+    agent_node = root.children[0]
+    repos = agent_node.children[0]
     assert repos.session_count == 3
