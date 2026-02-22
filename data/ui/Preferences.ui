@@ -26,6 +26,24 @@
               </object>
             </child>
             <child>
+              <object class="AdwSwitchRow" id="enable_claude_row">
+                <property name="title" translatable="yes">Claude Scanner</property>
+                <property name="subtitle" translatable="yes">Load local Claude Desktop sessions</property>
+              </object>
+            </child>
+            <child>
+              <object class="AdwSwitchRow" id="enable_codex_row">
+                <property name="title" translatable="yes">Codex Scanner</property>
+                <property name="subtitle" translatable="yes">Load Codex CLI sessions</property>
+              </object>
+            </child>
+            <child>
+              <object class="AdwSwitchRow" id="enable_antigravity_row">
+                <property name="title" translatable="yes">Anti-Gravity Scanner</property>
+                <property name="subtitle" translatable="yes">Load Anti-Gravity (Gemini) sessions</property>
+              </object>
+            </child>
+            <child>
               <object class="AdwSwitchRow" id="session_restore_row">
                 <property name="visible">False</property>
                 <property name="title" translatable="yes">Restore Session</property>

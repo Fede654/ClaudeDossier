@@ -169,6 +169,7 @@ class SessionPage(Gtk.Box):
         self._compress_row.set_active(True)  # on by default
 
         self._scroll_bottom_row = Adw.SwitchRow(title='Scroll to bottom on open')
+        self._scroll_bottom_row.set_active(True)
 
         for srow in (self._progress_row, self._escape_nl_row, self._compress_row, self._scroll_bottom_row):
             listbox.append(srow)

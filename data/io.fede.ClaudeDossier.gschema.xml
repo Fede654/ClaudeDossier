@@ -21,5 +21,17 @@
       <default>false</default>
       <summary>Include .claude/CLAUDE.md from ancestor directories</summary>
     </key>
+    <key name="enable-claude" type="b">
+      <default>true</default>
+      <summary>Enable scanning Claude sessions</summary>
+    </key>
+    <key name="enable-codex" type="b">
+      <default>true</default>
+      <summary>Enable scanning Codex sessions</summary>
+    </key>
+    <key name="enable-antigravity" type="b">
+      <default>true</default>
+      <summary>Enable scanning Anti-Gravity sessions</summary>
+    </key>
   </schema>
 </schemalist>

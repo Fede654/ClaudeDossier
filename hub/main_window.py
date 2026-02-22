@@ -32,10 +32,25 @@ class MainWindow(Adw.ApplicationWindow):
     def _load_data(self):
         import traceback
         try:
+            from hub.settings import Settings
+            settings = Settings.new()
+            enable_claude = settings.get_boolean("enable-claude")
+            enable_codex = settings.get_boolean("enable-codex")
+            enable_ag = settings.get_boolean("enable-antigravity")
+
             from hub.data.session_scanner import SessionScanner
             from hub.data.tree_builder import TreeBuilder
             scanner = SessionScanner()
-            self._projects = scanner.scan()
+            
+            projects = []
+            if enable_claude:
+                projects.extend(scanner.claude.scan())
+            if enable_codex:
+                projects.extend(scanner.codex.scan())
+            if enable_ag:
+                projects.extend(scanner.antigravity.scan())
+            self._projects = projects
+            
             self._tree_root = TreeBuilder().build(self._projects)
             self._setup_ui()
         except Exception:
@@ -103,10 +118,26 @@ class MainWindow(Adw.ApplicationWindow):
     def _on_refresh_requested(self, _):
         import traceback
         try:
+            from hub.settings import Settings
+            settings = Settings.new()
+            enable_claude = settings.get_boolean("enable-claude")
+            enable_codex = settings.get_boolean("enable-codex")
+            enable_ag = settings.get_boolean("enable-antigravity")
+
             from hub.data.session_scanner import SessionScanner
             from hub.data.tree_builder import TreeBuilder
             from hub.ui.welcome_page import update_welcome_stats
-            self._projects = SessionScanner().scan()
+            
+            scanner = SessionScanner()
+            projects = []
+            if enable_claude:
+                projects.extend(scanner.claude.scan())
+            if enable_codex:
+                projects.extend(scanner.codex.scan())
+            if enable_ag:
+                projects.extend(scanner.antigravity.scan())
+            self._projects = projects
+            
             self._tree_root = TreeBuilder().build(self._projects)
             self._tree_view.set_tree(self._tree_root)
             update_welcome_stats(self._welcome, self._projects)
