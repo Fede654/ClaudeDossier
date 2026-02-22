@@ -296,6 +296,19 @@ class ProjectTreeView(Gtk.Box):
         elif isinstance(target_node, DirNode) and target_node.project is not None:
             self.emit('project-selected', target_node.project)
 
+    def expand_all(self) -> int:
+        """Expand every DirNode in the current model (used for demo/screenshot mode)."""
+        if self._selection is None:
+            return GLib.SOURCE_REMOVE
+        model = self._selection.get_model()
+        i = 0
+        while i < model.get_n_items():
+            row = model.get_item(i)
+            if isinstance(row.get_item().node, DirNode):
+                row.set_expanded(True)
+            i += 1
+        return GLib.SOURCE_REMOVE
+
     def set_search_index(self, index) -> None:
         self._search_index = index
 
