@@ -8,24 +8,6 @@
         <child>
           <object class="AdwPreferencesGroup">
             <child>
-              <object class="AdwSwitchRow" id="spellcheck_row">
-                <property name="tooltip-text" translatable="yes">Check Spelling</property>
-                <property name="title" translatable="yes">Check Spelling</property>
-              </object>
-            </child>
-            <child>
-              <object class="AdwSwitchRow" id="autohide_headerbar_row">
-                <property name="title" translatable="yes">Auto-Hide Header Bar</property>
-                <property name="subtitle" translatable="yes">Auto-hide header and status bars while typing</property>
-              </object>
-            </child>
-            <child>
-              <object class="AdwSwitchRow" id="bigger_text_row">
-                <property name="title" translatable="yes">Large Text</property>
-                <property name="subtitle" translatable="yes">Reduce the margins width and increase the text size when possible</property>
-              </object>
-            </child>
-            <child>
               <object class="AdwSwitchRow" id="enable_claude_row">
                 <property name="title" translatable="yes">Claude Scanner</property>
                 <property name="subtitle" translatable="yes">Load local Claude Desktop sessions</property>
@@ -41,13 +23,6 @@
               <object class="AdwSwitchRow" id="enable_antigravity_row">
                 <property name="title" translatable="yes">Anti-Gravity Scanner</property>
                 <property name="subtitle" translatable="yes">Load Anti-Gravity (Gemini) sessions</property>
-              </object>
-            </child>
-            <child>
-              <object class="AdwSwitchRow" id="session_restore_row">
-                <property name="visible">False</property>
-                <property name="title" translatable="yes">Restore Session</property>
-                <property name="subtitle" translatable="yes">Return to your previous session when Apostrophe is started</property>
               </object>
             </child>
           </object>

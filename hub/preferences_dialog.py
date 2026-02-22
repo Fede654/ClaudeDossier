@@ -32,9 +32,6 @@ class ApostrophePreferencesDialog(Adw.PreferencesDialog):
 
     __gtype_name__ = "ApostrophePreferencesDialog"
 
-    autohide_headerbar_row = Gtk.Template.Child()
-    spellcheck_row = Gtk.Template.Child()
-    bigger_text_row = Gtk.Template.Child()
     enable_claude_row = Gtk.Template.Child()
     enable_codex_row = Gtk.Template.Child()
     enable_antigravity_row = Gtk.Template.Child()
@@ -43,21 +40,6 @@ class ApostrophePreferencesDialog(Adw.PreferencesDialog):
 
     def __init__(self):
         super().__init__()
-
-        self.settings.bind("autohide-headerbar",
-                           self.autohide_headerbar_row,
-                           "active",
-                           Gio.SettingsBindFlags.DEFAULT)
-
-        self.settings.bind("spellcheck",
-                           self.spellcheck_row,
-                           "active",
-                           Gio.SettingsBindFlags.DEFAULT)
-
-        self.settings.bind("bigger-text",
-                           self.bigger_text_row,
-                           "active",
-                           Gio.SettingsBindFlags.DEFAULT)
 
         self.settings.bind("enable-claude",
                            self.enable_claude_row,
