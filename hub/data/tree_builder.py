@@ -78,15 +78,21 @@ class TreeBuilder:
         node = root
         for i, part in enumerate(parts):
             full = self.base + "/" + "/".join(parts[:i + 1])
-            match = next((c for c in node.children if isinstance(c, DirNode) and c.full_path == full), None)
+            is_last = (i == len(parts) - 1)
+            match = None
+            for c in node.children:
+                if isinstance(c, DirNode) and c.full_path == full:
+                    # If this is the project leaf and it already has a project,
+                    # don't merge (we want separate folders per agent).
+                    if is_last and c.project is not None:
+                        continue
+                    match = c
+                    break
             if match is None:
                 match = DirNode(name=part, full_path=full)
                 node.children.append(match)
             node = match
-        if node.project is None:
-            node.project = proj
-        else:
-            node.project.sessions.extend(proj.sessions)
+        node.project = proj
 
     def _sort(self, node: DirNode) -> None:
         node.children.sort(key=lambda c: c.last_active, reverse=True)
