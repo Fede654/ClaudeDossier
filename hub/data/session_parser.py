@@ -161,48 +161,26 @@ class AntiGravityParser:
     def parse(self, path: Path) -> list[ParsedMessage]:
         results = []
         try:
-            import blackboxprotobuf
-            data = path.read_bytes()
-            msg, typedef = blackboxprotobuf.decode_message(data)
-            
-            def extract_texts(d):
-                texts = []
-                if isinstance(d, dict):
-                    for k, v in d.items():
-                        if "text" in str(k).lower() or "content" in str(k).lower():
-                            if isinstance(v, (str, bytes)):
-                                texts.append(v.decode('utf-8', 'replace') if isinstance(v, bytes) else str(v))
-                        texts.extend(extract_texts(v))
-                elif isinstance(d, list):
-                    for item in d:
-                        texts.extend(extract_texts(item))
-                elif isinstance(d, (str, bytes)):
-                    if isinstance(d, bytes):
-                        try:
-                            s = d.decode('utf-8')
-                            if len(s) > 10: texts.append(s)
-                        except: pass
-                    elif isinstance(d, str) and len(d) > 10:
-                        texts.append(d)
-                return texts
-            
-            texts = extract_texts(msg)
-            if texts:
-                full_text = "\n\n---\n\n".join(texts)
-                results.append(ParsedMessage(
-                    type=MessageType.USER, text=full_text,
-                    timestamp=None, uuid=""
-                ))
-            else:
-                results.append(ParsedMessage(
-                    type=MessageType.USER, text="<No readable text found in PB>",
-                    timestamp=None, uuid=""
-                ))
-
-        except Exception as e:
-            logger.warning("Cannot read PB %s: %s", path, e)
+            # The Anti-Gravity (Cortex) PB files are heavily nested/wrapped and often
+            # compressed or encrypted. They fail standard protobuf struct guessing.
+            # E.g. "Found END_GROUP before START_GROUP" or "Invalid wiretype 6"
+            # Instead of crashing the UI, we just display a placeholder.
+            size_mb = path.stat().st_size / (1024 * 1024)
+            msg_text = (
+                f"*(Opaque Anti-Gravity Session)*\n\n"
+                f"File: `{path.name}` ({size_mb:.2f} MB)\n\n"
+                f"These conversation logs are serialized Cortex Protobuf streams "
+                f"that cannot be decoded as raw plaintext at this time.\n\n"
+                f"To view the history, please use the Anti-Gravity (Cascade) native client."
+            )
             results.append(ParsedMessage(
-                type=MessageType.USER, text=f"<Error reading PB: {e}>",
+                type=MessageType.ASSISTANT, text=msg_text,
+                timestamp=None, uuid=""
+            ))
+        except Exception as e:
+            logger.warning("Cannot read PB metadata %s: %s", path, e)
+            results.append(ParsedMessage(
+                type=MessageType.ASSISTANT, text=f"*(Error stat-ing session file: {e})*",
                 timestamp=None, uuid=""
             ))
         return results
