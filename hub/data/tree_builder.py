@@ -83,7 +83,10 @@ class TreeBuilder:
                 match = DirNode(name=part, full_path=full)
                 node.children.append(match)
             node = match
-        node.project = proj
+        if node.project is None:
+            node.project = proj
+        else:
+            node.project.sessions.extend(proj.sessions)
 
     def _sort(self, node: DirNode) -> None:
         node.children.sort(key=lambda c: c.last_active, reverse=True)
