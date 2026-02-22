@@ -50,43 +50,6 @@
                 <property name="subtitle" translatable="yes">Return to your previous session when Apostrophe is started</property>
               </object>
             </child>
-            <child>
-              <object class="AdwComboRow" id="input_format_comborow">
-                <property name="title" translatable="yes">Input Format</property>
-                <property name="subtitle" translatable="yes">Flavor of markdown Apostrophe will use</property>
-                <property name="expression">
-                  <lookup name="name" type="InputFormat"/>
-                </property>
-                <signal name="notify::selected" handler="on_input_format"/>
-                <child>
-                  <object class="GtkButton">
-                    <property name="valign">center</property>
-                    <property name="icon_name">dialog-information-symbolic</property>
-                    <property name="tooltip-text" translatable="yes">Markdown Flavor Documentation</property>
-                    <signal name="clicked" handler="on_input_format_help"/>
-                    <style>
-                      <class name="flat"/>
-                      <class name="circular"/>
-                    </style>
-                  </object>
-                </child>
-              </object>
-            </child>
-          </object>
-        </child>
-        <child>
-          <object class="AdwPreferencesGroup">
-            <property name="visible">False</property>
-            <child>
-              <object class="AdwComboRow" id="preview_security_comborow">
-                <property name="title" translatable="yes">Preview Security</property>
-                <property name="subtitle" translatable="yes">Desired level of security when rendering the preview</property>
-                <property name="expression">
-                  <lookup name="name" type="SecurityFormat"/>
-                </property>
-                <signal name="notify::selected" handler="on_security"/>
-              </object>
-            </child>
           </object>
         </child>
       </object>
