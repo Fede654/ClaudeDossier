@@ -161,87 +161,86 @@ class CodexScanner:
 
     def scan(self) -> list[ProjectInfo]:
         import re
-        if not self.codex_root.exists():
-            return []
-        
         project_map: dict[str, ProjectInfo] = {}
 
-        for jsonl in self.codex_root.rglob("*.jsonl"):
-            cwd = str(self.codex_root)
-            first_prompt = ""
-            msg_count = 0
-            first_ts = None
-            last_ts = None
+        # --- JSONL scan ---
+        if self.codex_root.exists():
+            for jsonl in self.codex_root.rglob("*.jsonl"):
+                cwd = str(self.codex_root)
+                first_prompt = ""
+                msg_count = 0
+                first_ts = None
+                last_ts = None
 
-            try:
-                with jsonl.open() as fh:
-                    for line in fh:
-                        if not line.strip(): continue
-                        try:
-                            obj = json.loads(line)
-                        except: continue
-                        
-                        ts_str = obj.get("timestamp") or obj.get("ts")
-                        if ts_str:
+                try:
+                    with jsonl.open() as fh:
+                        for line in fh:
+                            if not line.strip(): continue
                             try:
-                                if isinstance(ts_str, (int, float)):
-                                    ts = datetime.fromtimestamp(ts_str, tz=timezone.utc)
-                                else:
-                                    ts = _parse_iso(ts_str)
-                                if first_ts is None: first_ts = ts
-                                last_ts = ts
-                            except ValueError: pass
+                                obj = json.loads(line)
+                            except: continue
 
-                        if "text" in obj and isinstance(obj.get("text"), str):
-                            msg_count += 1
-                            if obj.get("role") == "user" or not first_prompt:
-                                first_prompt = obj["text"]
-                        
-                        payload = obj.get("payload", {})
-                        if payload and payload.get("type") == "message":
-                            role = payload.get("role")
-                            contents = payload.get("content", [])
-                            if role in ("user", "assistant"):
+                            ts_str = obj.get("timestamp") or obj.get("ts")
+                            if ts_str:
+                                try:
+                                    if isinstance(ts_str, (int, float)):
+                                        ts = datetime.fromtimestamp(ts_str, tz=timezone.utc)
+                                    else:
+                                        ts = _parse_iso(ts_str)
+                                    if first_ts is None: first_ts = ts
+                                    last_ts = ts
+                                except ValueError: pass
+
+                            if "text" in obj and isinstance(obj.get("text"), str):
                                 msg_count += 1
-                                for c in contents:
-                                    if c.get("type") in ("input_text", "text"):
-                                        t = c.get("text", "")
-                                        if "<cwd>" in t:
-                                            m = re.search(r"<cwd>(.*?)</cwd>", t)
-                                            if m: cwd = m.group(1).strip()
-                                        
-                                        if role == "user" and not first_prompt and not t.startswith("<permissions") and not t.startswith("<environment"):
-                                            first_prompt = t
+                                if obj.get("role") == "user" or not first_prompt:
+                                    first_prompt = obj["text"]
 
-            except OSError:
-                continue
+                            payload = obj.get("payload", {})
+                            if payload and payload.get("type") == "message":
+                                role = payload.get("role")
+                                contents = payload.get("content", [])
+                                if role in ("user", "assistant"):
+                                    msg_count += 1
+                                    for c in contents:
+                                        if c.get("type") in ("input_text", "text"):
+                                            t = c.get("text", "")
+                                            if "<cwd>" in t:
+                                                m = re.search(r"<cwd>(.*?)</cwd>", t)
+                                                if m: cwd = m.group(1).strip()
 
-            if not first_prompt:
-                first_prompt = f"Codex Session {jsonl.stem}"
+                                            if role == "user" and not first_prompt and not t.startswith("<permissions") and not t.startswith("<environment"):
+                                                first_prompt = t
 
-            try:
-                fallback = datetime.fromtimestamp(jsonl.stat().st_mtime, tz=timezone.utc)
-            except OSError:
-                fallback = datetime.now(tz=timezone.utc)
+                except OSError:
+                    continue
 
-            info = SessionInfo(
-                session_id=jsonl.stem,
-                first_prompt=first_prompt[:200],
-                message_count=msg_count,
-                created=first_ts or fallback,
-                modified=last_ts or fallback,
-                git_branch="",
-                project_path=cwd,
-                is_sidechain=False,
-                jsonl_path=jsonl,
-                agent_source="codex"
-            )
+                if not first_prompt:
+                    first_prompt = f"Codex Session {jsonl.stem}"
 
-            if cwd not in project_map:
-                project_map[cwd] = ProjectInfo(original_path=cwd, project_dir=Path(cwd))
-            project_map[cwd].sessions.append(info)
+                try:
+                    fallback = datetime.fromtimestamp(jsonl.stat().st_mtime, tz=timezone.utc)
+                except OSError:
+                    fallback = datetime.now(tz=timezone.utc)
 
-        # --- SQLite enrichment ---
+                info = SessionInfo(
+                    session_id=jsonl.stem,
+                    first_prompt=first_prompt[:200],
+                    message_count=msg_count,
+                    created=first_ts or fallback,
+                    modified=last_ts or fallback,
+                    git_branch="",
+                    project_path=cwd,
+                    is_sidechain=False,
+                    jsonl_path=jsonl,
+                    agent_source="codex"
+                )
+
+                if cwd not in project_map:
+                    project_map[cwd] = ProjectInfo(original_path=cwd, project_dir=Path(cwd))
+                project_map[cwd].sessions.append(info)
+
+        # --- SQLite enrichment (runs even if codex_root doesn't exist) ---
         from hub.data.codex_sqlite import load_codex_threads
         seen_ids = {s.session_id for p in project_map.values() for s in p.sessions}
 
@@ -256,25 +255,24 @@ class CodexScanner:
                                 s.first_prompt = thread.get("title") or thread.get("first_user_message") or s.first_prompt
                             if not s.git_branch:
                                 s.git_branch = thread.get("git_branch") or ""
-                continue
-
-            # New thread not in JSONL — create session from SQLite
-            cwd = thread["cwd"]
-            info = SessionInfo(
-                session_id=tid,
-                first_prompt=(thread.get("first_user_message") or thread.get("title") or f"Codex Thread {tid}")[:200],
-                message_count=0,
-                created=datetime.fromtimestamp(thread["created_at"], tz=timezone.utc),
-                modified=datetime.fromtimestamp(thread["updated_at"], tz=timezone.utc),
-                git_branch=thread.get("git_branch") or "",
-                project_path=cwd,
-                is_sidechain=False,
-                jsonl_path=Path(thread.get("rollout_path") or ""),
-                agent_source="codex",
-            )
-            if cwd not in project_map:
-                project_map[cwd] = ProjectInfo(original_path=cwd, project_dir=Path(cwd))
-            project_map[cwd].sessions.append(info)
+            else:
+                # New thread not in JSONL — create session from SQLite
+                cwd = thread["cwd"]
+                info = SessionInfo(
+                    session_id=tid,
+                    first_prompt=(thread.get("first_user_message") or thread.get("title") or f"Codex Thread {tid}")[:200],
+                    message_count=0,
+                    created=datetime.fromtimestamp(thread["created_at"], tz=timezone.utc),
+                    modified=datetime.fromtimestamp(thread["updated_at"], tz=timezone.utc),
+                    git_branch=thread.get("git_branch") or "",
+                    project_path=cwd,
+                    is_sidechain=False,
+                    jsonl_path=Path(thread.get("rollout_path") or ""),
+                    agent_source="codex",
+                )
+                if cwd not in project_map:
+                    project_map[cwd] = ProjectInfo(original_path=cwd, project_dir=Path(cwd))
+                project_map[cwd].sessions.append(info)
 
         return list(project_map.values())
 
@@ -321,6 +319,8 @@ class SessionScanner:
             codex_root = projects_root / ".codex_fake"
         if projects_root is not None and antigravity_root is None:
             antigravity_root = projects_root / ".ag_fake"
+        if projects_root is not None and codex_sqlite_path is None:
+            codex_sqlite_path = projects_root / ".codex_sqlite_fake"
         self.codex = CodexScanner(codex_root, sqlite_path=codex_sqlite_path)
         self.antigravity = AntiGravityScanner(antigravity_root)
 
