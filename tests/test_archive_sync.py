@@ -1,5 +1,7 @@
 import json
 import hashlib
+import sqlite3
+import threading
 from pathlib import Path
 
 
@@ -109,3 +111,81 @@ def test_sync_respects_extensions_filter(tmp_path):
     sync_text_files(source, archive, extensions={".jsonl"})
     assert (archive / "good.jsonl").exists()
     assert not (archive / "skip.pb").exists()
+
+
+def test_sqlite_backup(tmp_path):
+    from hub.data.archive_sync import backup_sqlite
+    src = tmp_path / "source.sqlite"
+    conn = sqlite3.connect(str(src))
+    conn.execute("CREATE TABLE t (id INTEGER PRIMARY KEY, val TEXT)")
+    conn.execute("INSERT INTO t VALUES (1, 'hello')")
+    conn.commit()
+    conn.close()
+
+    dst = tmp_path / "snapshot.sqlite"
+    result = backup_sqlite(src, dst)
+    assert result is True
+    assert dst.exists()
+
+    conn = sqlite3.connect(str(dst))
+    assert conn.execute("PRAGMA integrity_check").fetchone()[0] == "ok"
+    assert conn.execute("SELECT val FROM t WHERE id=1").fetchone()[0] == "hello"
+    conn.close()
+
+
+def test_sqlite_backup_skips_unchanged(tmp_path):
+    from hub.data.archive_sync import backup_sqlite
+    src = tmp_path / "source.sqlite"
+    conn = sqlite3.connect(str(src))
+    conn.execute("CREATE TABLE t (id INTEGER)")
+    conn.commit()
+    conn.close()
+
+    dst = tmp_path / "snapshot.sqlite"
+    backup_sqlite(src, dst)
+
+    result = backup_sqlite(src, dst, last_mtime=src.stat().st_mtime)
+    assert result is False
+
+
+def test_sqlite_backup_missing_source(tmp_path):
+    from hub.data.archive_sync import backup_sqlite
+    result = backup_sqlite(tmp_path / "nonexistent.sqlite", tmp_path / "dst.sqlite")
+    assert result is False
+
+
+def test_sync_log_written(tmp_path):
+    from hub.data.archive_sync import sync_all
+    source_root = tmp_path / "sources"
+    archive_root = tmp_path / "dossier"
+    claude_src = source_root / "claude"
+    claude_src.mkdir(parents=True)
+    (claude_src / "test.jsonl").write_text('{"ok":true}\n')
+
+    sync_all(
+        archive_root=archive_root,
+        claude_source=claude_src,
+        codex_sessions_source=source_root / "codex_fake",
+        codex_sqlite_source=source_root / "codex_fake.sqlite",
+        ag_brain_source=source_root / "ag_fake",
+        ag_vscdb_source=source_root / "ag_fake.vscdb",
+    )
+
+    log_path = archive_root / "sync.log"
+    assert log_path.exists()
+    entries = [json.loads(line) for line in log_path.read_text().splitlines() if line.strip()]
+    assert len(entries) >= 1
+    assert entries[0]["action"] == "copy"
+
+
+def test_flock_prevents_concurrent_sync(tmp_path):
+    from hub.data.archive_sync import acquire_sync_lock, release_sync_lock
+    lock_path = tmp_path / ".sync.lock"
+
+    lock_fd = acquire_sync_lock(lock_path)
+    assert lock_fd is not None
+
+    lock_fd2 = acquire_sync_lock(lock_path, blocking=False)
+    assert lock_fd2 is None
+
+    release_sync_lock(lock_fd)
