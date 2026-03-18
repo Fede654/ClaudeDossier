@@ -155,8 +155,9 @@ class ClaudeScanner:
         return results
 
 class CodexScanner:
-    def __init__(self, codex_root: Path | None = None):
+    def __init__(self, codex_root: Path | None = None, sqlite_path: Path | None = None):
         self.codex_root = codex_root or Path.home() / ".codex" / "sessions"
+        self.sqlite_path = sqlite_path or Path.home() / ".codex" / "state_5.sqlite"
 
     def scan(self) -> list[ProjectInfo]:
         import re
@@ -239,7 +240,42 @@ class CodexScanner:
             if cwd not in project_map:
                 project_map[cwd] = ProjectInfo(original_path=cwd, project_dir=Path(cwd))
             project_map[cwd].sessions.append(info)
-            
+
+        # --- SQLite enrichment ---
+        from hub.data.codex_sqlite import load_codex_threads
+        seen_ids = {s.session_id for p in project_map.values() for s in p.sessions}
+
+        for thread in load_codex_threads(self.sqlite_path):
+            tid = thread["id"]
+            if tid in seen_ids:
+                # Enrich existing session with SQLite metadata
+                for proj in project_map.values():
+                    for s in proj.sessions:
+                        if s.session_id == tid:
+                            if not s.first_prompt or s.first_prompt.startswith("Codex Session"):
+                                s.first_prompt = thread.get("title") or thread.get("first_user_message") or s.first_prompt
+                            if not s.git_branch:
+                                s.git_branch = thread.get("git_branch") or ""
+                continue
+
+            # New thread not in JSONL — create session from SQLite
+            cwd = thread["cwd"]
+            info = SessionInfo(
+                session_id=tid,
+                first_prompt=(thread.get("first_user_message") or thread.get("title") or f"Codex Thread {tid}")[:200],
+                message_count=0,
+                created=datetime.fromtimestamp(thread["created_at"], tz=timezone.utc),
+                modified=datetime.fromtimestamp(thread["updated_at"], tz=timezone.utc),
+                git_branch=thread.get("git_branch") or "",
+                project_path=cwd,
+                is_sidechain=False,
+                jsonl_path=Path(thread.get("rollout_path") or ""),
+                agent_source="codex",
+            )
+            if cwd not in project_map:
+                project_map[cwd] = ProjectInfo(original_path=cwd, project_dir=Path(cwd))
+            project_map[cwd].sessions.append(info)
+
         return list(project_map.values())
 
 
@@ -278,13 +314,14 @@ class AntiGravityScanner:
 
 
 class SessionScanner:
-    def __init__(self, projects_root: Path | None = None, codex_root: Path | None = None, antigravity_root: Path | None = None):
+    def __init__(self, projects_root: Path | None = None, codex_root: Path | None = None,
+                 antigravity_root: Path | None = None, codex_sqlite_path: Path | None = None):
         self.claude = ClaudeScanner(projects_root)
         if projects_root is not None and codex_root is None:
             codex_root = projects_root / ".codex_fake"
         if projects_root is not None and antigravity_root is None:
             antigravity_root = projects_root / ".ag_fake"
-        self.codex = CodexScanner(codex_root)
+        self.codex = CodexScanner(codex_root, sqlite_path=codex_sqlite_path)
         self.antigravity = AntiGravityScanner(antigravity_root)
 
     def scan(self) -> list[ProjectInfo]:
