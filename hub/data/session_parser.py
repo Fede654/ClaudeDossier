@@ -154,33 +154,78 @@ class CodexParser:
 
 
 class AntiGravityParser:
+    """Parse Anti-Gravity conversation turns from the Electron SQLite state DB.
+
+    The encrypted `.pb` files cannot be decoded directly (AES-GCM with Electron-managed keys).
+    Instead we read the plaintext summaries stored by the UI in `state.vscdb` under the key
+    ``antigravityUnifiedStateSync.trajectorySummaries``.  The conversation UUID is derived from
+    the `.pb` filename (which equals the conversation ID).
+    """
+
+    _cache: dict | None = None  # class-level cache so we read vscdb once per process
+
     def __init__(self, include_progress: bool = False, include_snapshots: bool = False):
         self.include_progress = include_progress
         self.include_snapshots = include_snapshots
 
+    @classmethod
+    def _trajectories(cls) -> dict:
+        if cls._cache is None:
+            try:
+                from hub.data.antigravity_vscdb import load_trajectories
+                cls._cache = load_trajectories()
+            except Exception as e:
+                logger.warning("antigravity_vscdb load failed: %s", e)
+                cls._cache = {}
+        return cls._cache
+
     def parse(self, path: Path) -> list[ParsedMessage]:
         results = []
+        conv_id = path.stem  # filename without .pb extension = conversation UUID
+
         try:
-            # The Anti-Gravity (Cortex) PB files are heavily nested/wrapped and often
-            # compressed or encrypted. They fail standard protobuf struct guessing.
-            # E.g. "Found END_GROUP before START_GROUP" or "Invalid wiretype 6"
-            # Instead of crashing the UI, we just display a placeholder.
-            size_mb = path.stat().st_size / (1024 * 1024)
-            msg_text = (
-                f"*(Opaque Anti-Gravity Session)*\n\n"
-                f"File: `{path.name}` ({size_mb:.2f} MB)\n\n"
-                f"These conversation logs are serialized Cortex Protobuf streams "
-                f"that cannot be decoded as raw plaintext at this time.\n\n"
-                f"To view the history, please use the Anti-Gravity (Cascade) native client."
-            )
-            results.append(ParsedMessage(
-                type=MessageType.ASSISTANT, text=msg_text,
-                timestamp=None, uuid=""
-            ))
+            trajectories = self._trajectories()
+            info = trajectories.get(conv_id)
+
+            if info:
+                title = info.get("title") or "Untitled"
+                turns = info.get("turns") or []
+                if turns:
+                    # Emit a header entry then each turn
+                    results.append(ParsedMessage(
+                        type=MessageType.USER,
+                        text=f"*Anti-Gravity session — **{title}***",
+                        timestamp=None, uuid=conv_id,
+                    ))
+                    for turn_text in turns:
+                        if turn_text.strip():
+                            results.append(ParsedMessage(
+                                type=MessageType.ASSISTANT,
+                                text=turn_text,
+                                timestamp=None, uuid=conv_id,
+                            ))
+                else:
+                    results.append(ParsedMessage(
+                        type=MessageType.ASSISTANT,
+                        text=f"*(Anti-Gravity session «{title}» — no turn summaries cached yet)*",
+                        timestamp=None, uuid=conv_id,
+                    ))
+            else:
+                size_mb = path.stat().st_size / (1024 * 1024)
+                results.append(ParsedMessage(
+                    type=MessageType.ASSISTANT,
+                    text=(
+                        f"*(Opaque Anti-Gravity Session)*\n\n"
+                        f"File: `{path.name}` ({size_mb:.2f} MB)\n\n"
+                        f"No cached summary found in `state.vscdb` for this conversation yet.\n"
+                        f"Open the session in the Anti-Gravity editor to populate the cache."
+                    ),
+                    timestamp=None, uuid=conv_id,
+                ))
         except Exception as e:
-            logger.warning("Cannot read PB metadata %s: %s", path, e)
+            logger.warning("AntiGravityParser error for %s: %s", path, e)
             results.append(ParsedMessage(
-                type=MessageType.ASSISTANT, text=f"*(Error stat-ing session file: {e})*",
+                type=MessageType.ASSISTANT, text=f"*(Error parsing session: {e})*",
                 timestamp=None, uuid=""
             ))
         return results
