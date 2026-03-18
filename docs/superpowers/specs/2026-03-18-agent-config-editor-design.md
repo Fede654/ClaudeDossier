@@ -6,7 +6,7 @@ ClaudeDossier has a CLAUDE.md viewer/editor for one agent. But users work with t
 
 ## Current State
 
-The existing `ProjectPage` (`hub/ui/project_viewer.py`) shows:
+The existing `ProjectPage` (`hub/ui/project_viewer.py`, 186 lines) shows:
 - Project metadata (path, session count, last active)
 - CLAUDE.md inheritance chain (global → ancestors → project), with the project-level file editable
 
@@ -21,31 +21,36 @@ The existing `ProjectPage` (`hub/ui/project_viewer.py`) shows:
 
 ## Design
 
-### Tabbed Agent View
+### Navigation: Adw.ViewStack + ViewSwitcherBar
 
-Expand `ProjectPage` into a tabbed layout with one tab per agent that has data for the current project. Tabs only appear when the agent has relevant files.
+Use `Adw.ViewStack` with an `Adw.ViewSwitcherBar` (in content area, not headerbar) for agent tabs. NOT `Gtk.Notebook` — ViewStack is the Adwaita-idiomatic pattern for page switching.
+
+`ProjectPage` becomes a thin orchestrator: metadata group at the top (always visible), ViewStack below with per-agent pages. Each agent page is its own widget file (~80-120 lines each).
 
 **Tab visibility rules:**
 - **Claude** tab: Always shown (every project is a potential Claude project)
 - **Codex** tab: Shown if project has Codex sessions, an `AGENTS.md`, or a trust entry in `config.toml`
 - **Anti-Gravity** tab: Shown if project has AG sessions or brain data
 
-### Claude Tab
+**Empty states**: When a tab is visible but has no content yet, show `Adw.StatusPage` with a primary action ("Create project memory", "Create AGENTS.md", etc.).
+
+### Claude Tab (`hub/ui/claude_tab.py`)
 
 **Instructions section** (existing, refactored):
 - Same CLAUDE.md chain as today: cards from global → project, project-level editable with Save
-- No functional change — just moved into a tab
+- Lower `min_content_height` to ~200-240 (from 480) so memory section is visible below
+- Let the page scroll, not individual cards
 
 **Memory section** (new):
 - `Adw.PreferencesGroup` titled "Memory"
 - Lists memory files from `~/.claude/projects/<encoded-path>/memory/`
-- Each memory shown as an `Adw.ExpanderRow`:
+- Each memory shown as an `Adw.ActionRow`:
   - Title: memory `name` from frontmatter
   - Subtitle: `description` from frontmatter + type badge (`user`, `feedback`, `project`, `reference`)
-  - Expanded: `Gtk.TextView` with the memory content (below frontmatter), editable
-  - Save button per memory
-- "New Memory" action row at the bottom → creates file with frontmatter template, adds to MEMORY.md
-- "Delete" button per memory → removes file + MEMORY.md entry (with confirmation)
+  - Row expand shows a short read-only preview (first ~3 lines of content)
+  - "Edit" button → opens `Adw.Dialog` with `Gtk.TextView` (monospace, markdown), Save/Discard buttons
+- "New Memory" action row → dialog collecting Name, Type (dropdown: project/user/feedback/reference), Description → creates file with frontmatter, adds to MEMORY.md
+- "Delete" button per memory → confirmation dialog explaining Claude Code may recreate related notes → removes file + MEMORY.md entry
 
 **Memory frontmatter format** (existing convention):
 ```yaml
@@ -58,32 +63,46 @@ type: project
 Content here...
 ```
 
-### Codex Tab
+### Codex Tab (`hub/ui/codex_tab.py`)
 
 **Config section** (read-only):
 - Show the project's trust level from `config.toml` (if present)
 - Show model and approval policy
-- Subtitle: "Edit at ~/.codex/config.toml" (not editable in-app — TOML editing is fragile)
+- Subtitle: "Edit at ~/.codex/config.toml"
 
 **Instructions section**:
 - `$PROJECT/AGENTS.md` — editable card with Save (same pattern as CLAUDE.md)
-- If file doesn't exist: "No AGENTS.md found" + "Create" button → creates with template
+- If file doesn't exist: `Adw.StatusPage` with "Create AGENTS.md" button
 
 **Memory section**:
 - List files from `~/.codex/memories/` (if any exist)
-- Same ExpanderRow pattern as Claude memory
+- Same ActionRow + dialog pattern as Claude memory
 - If empty: "No Codex memories" dimmed label
 
-### Anti-Gravity Tab
+### Anti-Gravity Tab (`hub/ui/antigravity_tab.py`)
 
 **Instructions section**:
-- `~/.gemini/GEMINI.md` — editable card with Save (global, affects all AG sessions)
-- Note: "This is a global file — changes affect all Anti-Gravity sessions"
+- `~/.gemini/GEMINI.md` — editable card with Save
+- **Persistent `Adw.Banner`** warning: "This is a global file — changes affect all Anti-Gravity sessions"
+- First save shows a confirmation dialog; persist "Don't warn again" in GSettings
 
 **Brain artifacts section** (read-only):
 - List brain conversations that overlap with this project (matched by session data)
 - Each shown as a collapsible card: task.md, implementation_plan.md, walkthrough.md
 - Read-only — these are AI outputs, not user instructions
+
+## File Safety
+
+All file writes use atomic operations (temp file + `os.replace`).
+
+**Memory editing safety** (Claude Code may also edit these files concurrently):
+- On write, check `expected_mtime` — if file mtime changed since last read, show "File changed externally" banner with Reload/Overwrite actions
+- Watch memory directory with `Gio.FileMonitor` — toast on save, banner on external change
+- MEMORY.md index: auto-regenerate from directory listing only when index matches known template format; otherwise provide explicit "Rebuild Index" action
+
+**Global file safety** (GEMINI.md, config.toml):
+- Before any write to a global file, create a timestamped `.bak` in the same directory
+- On error, restore from backup and show error toast
 
 ## New Files
 
@@ -112,7 +131,7 @@ def discover_agent_configs(project_path: str, project_sessions: list) -> list[Ag
 
 ### `hub/data/memory_reader.py`
 
-Reads and writes Claude memory files with YAML frontmatter.
+Reads and writes Claude memory files with YAML frontmatter. All writes are atomic.
 
 ```python
 @dataclass
@@ -122,53 +141,59 @@ class MemoryEntry:
     description: str
     type: str          # user, feedback, project, reference
     content: str       # Everything below the frontmatter
+    mtime: float       # For expected_mtime safety checks
 
 def read_memory_dir(memory_dir: Path) -> list[MemoryEntry]
-def write_memory(entry: MemoryEntry) -> None
-def create_memory(memory_dir: Path, name: str, type: str, content: str) -> MemoryEntry
+def write_memory(entry: MemoryEntry, expected_mtime: float | None = None) -> None
+def create_memory(memory_dir: Path, name: str, type: str, description: str, content: str) -> MemoryEntry
 def delete_memory(entry: MemoryEntry) -> None  # removes file + updates MEMORY.md
+def rebuild_memory_index(memory_dir: Path) -> None  # regenerate MEMORY.md from directory
 ```
 
 ### `hub/ui/memory_editor.py`
 
-GTK widget for displaying and editing memory entries. Used inside the Claude and Codex tabs.
+GTK widget for displaying and editing memory entries. List + edit dialog pattern.
 
 ```python
 class MemoryEditor(Adw.PreferencesGroup):
-    """List of memory entries with expand-to-edit UX."""
+    """List of memory entries with preview rows and edit/new/delete actions."""
     def __init__(self, memory_dir: Path)
     def refresh(self)
+    # Signals: 'memory-changed' (emitted after save/create/delete)
 ```
+
+### `hub/ui/claude_tab.py`, `hub/ui/codex_tab.py`, `hub/ui/antigravity_tab.py`
+
+Per-agent page widgets (~80-120 lines each). Each is an `Adw.PreferencesPage`.
 
 ### Modified: `hub/ui/project_viewer.py`
 
-Refactored from single CLAUDE.md view to tabbed multi-agent view.
-
-- `ProjectPage` gains an `Adw.ViewStack` (or `Gtk.Notebook`) for agent tabs
-- Existing CLAUDE.md chain code moves into the Claude tab builder
-- New tab builders for Codex and Anti-Gravity
-- `load(project)` now calls `discover_agent_configs()` and builds tabs dynamically
+Becomes thin orchestrator (~60-80 lines):
+- Project metadata group (unchanged)
+- `Adw.ViewStack` + `Adw.ViewSwitcherBar`
+- `load(project)` calls `discover_agent_configs()` and creates/shows/hides tabs
 
 ## Scope
 
 **In scope:**
 - `hub/data/agent_config.py` — agent config discovery
-- `hub/data/memory_reader.py` — memory CRUD with frontmatter
-- `hub/ui/memory_editor.py` — memory list/edit widget
-- `hub/ui/project_viewer.py` — refactor to tabbed multi-agent view
-- Claude tab: instructions chain + memory editor
-- Codex tab: read-only config + AGENTS.md editor
-- Anti-Gravity tab: GEMINI.md editor + read-only brain artifacts
+- `hub/data/memory_reader.py` — memory CRUD with frontmatter + atomic writes + mtime safety
+- `hub/ui/memory_editor.py` — memory list/edit widget with Adw.Dialog
+- `hub/ui/claude_tab.py` — instructions chain + memory editor
+- `hub/ui/codex_tab.py` — read-only config + AGENTS.md editor + empty state
+- `hub/ui/antigravity_tab.py` — GEMINI.md editor with banner + read-only brain
+- `hub/ui/project_viewer.py` — refactor to Adw.ViewStack orchestrator
 
 **Deferred:**
-- config.toml in-app editing (show read-only)
-- Creating AGENTS.md/GEMINI.md from scratch (show "Create" button, wire later)
+- config.toml in-app editing (show read-only for v1)
 - Memory frontmatter schema validation
 - Diff view between global and project instructions
 - Memory search/filter
+- Gio.FileMonitor for external changes (add after core CRUD works)
+- "Don't warn again" GSettings key for GEMINI.md save confirmation
 
 ## Testing Strategy
 
-1. **Unit tests for `memory_reader.py`**: Read/write/create/delete memory files with frontmatter, MEMORY.md index updates
-2. **Unit tests for `agent_config.py`**: Discovery logic with various project states (has Claude only, has all three, has none)
+1. **Unit tests for `memory_reader.py`**: Read/write/create/delete memory files with frontmatter, MEMORY.md index updates, mtime safety check, atomic write verification
+2. **Unit tests for `agent_config.py`**: Discovery logic with various project states (Claude only, all three, none)
 3. **Manual UI test**: Open project page, verify tabs appear correctly, edit memory, save, verify file on disk
