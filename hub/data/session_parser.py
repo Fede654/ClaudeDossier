@@ -4,7 +4,7 @@ from __future__ import annotations
 import json
 import logging
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import datetime, timezone
 from enum import Enum, auto
 from pathlib import Path
 
@@ -39,7 +39,27 @@ def _text(content) -> str:
     if isinstance(content, str):
         return content
     if isinstance(content, list):
-        return "".join(b.get("text", "") for b in content if isinstance(b, dict))
+        parts = []
+        for b in content:
+            if not isinstance(b, dict):
+                continue
+            btype = b.get("type", "")
+            if btype == "text":
+                parts.append(b.get("text", ""))
+            elif btype == "thinking":
+                parts.append(f"*thinking:* {b.get('thinking', '')}")
+            elif btype == "tool_use":
+                name = b.get("name", "unknown")
+                inp = json.dumps(b.get("input", {}), indent=2)
+                parts.append(f"**{name}**\n```json\n{inp}\n```")
+            elif btype == "tool_result":
+                rc = b.get("content", "")
+                if isinstance(rc, list):
+                    rc = "\n".join(
+                        x.get("text", "") for x in rc if isinstance(x, dict)
+                    )
+                parts.append(f"```\n{rc}\n```")
+        return "\n\n".join(p for p in parts if p)
     return str(content)
 
 

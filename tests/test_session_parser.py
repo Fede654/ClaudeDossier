@@ -69,3 +69,42 @@ def test_skips_malformed_lines(tmp_path):
     result = SessionParser().parse(f)
     assert len(result) == 1
     assert result[0].text == "good"
+
+
+def test_content_includes_tool_use(tmp_path):
+    from hub.data.session_parser import SessionParser
+    msg = {"type": "assistant", "uuid": "a1",
+           "timestamp": "2026-01-01T10:00:00.000Z",
+           "message": {"role": "assistant", "content": [
+               {"type": "text", "text": "Let me read that file."},
+               {"type": "tool_use", "id": "toolu_123", "name": "Read",
+                "input": {"file_path": "/tmp/foo.py"}},
+           ]}}
+    result = SessionParser().parse(_jsonl(tmp_path, [msg]))
+    assert "Read" in result[0].text
+    assert "/tmp/foo.py" in result[0].text
+
+
+def test_content_includes_tool_result(tmp_path):
+    from hub.data.session_parser import SessionParser
+    msg = {"type": "assistant", "uuid": "a1",
+           "timestamp": "2026-01-01T10:00:00.000Z",
+           "message": {"role": "assistant", "content": [
+               {"type": "tool_result", "tool_use_id": "toolu_123",
+                "content": "file contents here"},
+           ]}}
+    result = SessionParser().parse(_jsonl(tmp_path, [msg]))
+    assert "file contents here" in result[0].text
+
+
+def test_content_includes_thinking(tmp_path):
+    from hub.data.session_parser import SessionParser
+    msg = {"type": "assistant", "uuid": "a1",
+           "timestamp": "2026-01-01T10:00:00.000Z",
+           "message": {"role": "assistant", "content": [
+               {"type": "thinking", "thinking": "I need to consider the edge cases..."},
+               {"type": "text", "text": "Here is my answer."},
+           ]}}
+    result = SessionParser(include_progress=True).parse(_jsonl(tmp_path, [msg]))
+    assert "I need to consider" in result[0].text
+    assert "Here is my answer" in result[0].text
