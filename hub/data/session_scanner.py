@@ -27,6 +27,14 @@ class SessionInfo:
     is_sidechain: bool
     jsonl_path: Path
     agent_source: str = "claude"
+    source_path: Path | None = None
+    archive_path: Path | None = None
+
+    @property
+    def is_mirror_only(self) -> bool:
+        """True if this session only exists in the archive, not the source."""
+        return (self.archive_path is not None
+                and (self.source_path is None or not self.source_path.exists()))
 
 
 @dataclass
@@ -109,8 +117,22 @@ def _read_jsonl_metadata(jsonl_path: Path, original_path: str) -> SessionInfo | 
 
 
 class ClaudeScanner:
-    def __init__(self, projects_root: Path | None = None):
+    def __init__(self, projects_root: Path | None = None, archive_projects_root: Path | None = None):
         self.projects_root = projects_root or DEFAULT_PROJECTS_ROOT
+        self.archive_root = archive_projects_root
+
+    def _resolve_archive(self, info: SessionInfo) -> None:
+        """Mutates info in-place: sets source_path and optionally archive_path/jsonl_path."""
+        info.source_path = info.jsonl_path
+        if self.archive_root:
+            try:
+                rel = info.jsonl_path.relative_to(self.projects_root)
+                archive_file = self.archive_root / rel
+                if archive_file.exists():
+                    info.archive_path = archive_file
+                    info.jsonl_path = archive_file
+            except ValueError:
+                pass  # path not relative to projects_root
 
     def scan(self) -> list[ProjectInfo]:
         if not self.projects_root.exists():
@@ -132,7 +154,7 @@ class ClaudeScanner:
                 for e in data.get("entries", []):
                     sid = e["sessionId"]
                     indexed_ids.add(sid)
-                    project.sessions.append(SessionInfo(
+                    info = SessionInfo(
                         session_id=sid,
                         first_prompt=e.get("firstPrompt", ""),
                         message_count=e.get("messageCount", 0),
@@ -143,11 +165,14 @@ class ClaudeScanner:
                         is_sidechain=e.get("isSidechain", False),
                         jsonl_path=proj_dir / f"{sid}.jsonl",
                         agent_source="claude",
-                    ))
+                    )
+                    self._resolve_archive(info)
+                    project.sessions.append(info)
                 for jsonl in proj_dir.glob("*.jsonl"):
                     if jsonl.stem not in indexed_ids:
                         info = _read_jsonl_metadata(jsonl, original_path)
                         if info:
+                            self._resolve_archive(info)
                             project.sessions.append(info)
                 results.append(project)
             except Exception as exc:
@@ -155,9 +180,11 @@ class ClaudeScanner:
         return results
 
 class CodexScanner:
-    def __init__(self, codex_root: Path | None = None, sqlite_path: Path | None = None):
+    def __init__(self, codex_root: Path | None = None, sqlite_path: Path | None = None,
+                 archive_sessions_root: Path | None = None):
         self.codex_root = codex_root or Path.home() / ".codex" / "sessions"
         self.sqlite_path = sqlite_path or Path.home() / ".codex" / "state_5.sqlite"
+        self.archive_root = archive_sessions_root
 
     def scan(self) -> list[ProjectInfo]:
         import re
@@ -235,6 +262,17 @@ class CodexScanner:
                     jsonl_path=jsonl,
                     agent_source="codex"
                 )
+                # Archive resolution for JSONL sessions
+                info.source_path = jsonl
+                if self.archive_root:
+                    try:
+                        rel = jsonl.relative_to(self.codex_root)
+                        archive_file = self.archive_root / rel
+                        if archive_file.exists():
+                            info.archive_path = archive_file
+                            info.jsonl_path = archive_file
+                    except ValueError:
+                        pass
 
                 if cwd not in project_map:
                     project_map[cwd] = ProjectInfo(original_path=cwd, project_dir=Path(cwd))
@@ -278,9 +316,11 @@ class CodexScanner:
 
 
 class AntiGravityScanner:
-    def __init__(self, root: Path | None = None, brain_root: Path | None = None):
+    def __init__(self, root: Path | None = None, brain_root: Path | None = None,
+                 archive_brain_root: Path | None = None):
         self.root = root or Path.home() / ".gemini" / "antigravity" / "conversations"
         self.brain_root = brain_root or Path.home() / ".gemini" / "antigravity" / "brain"
+        self.archive_brain_root = archive_brain_root
 
     def scan(self) -> list[ProjectInfo]:
         project = ProjectInfo(original_path=str(self.root), project_dir=self.root)
@@ -302,7 +342,8 @@ class AntiGravityScanner:
                     project_path=str(self.root),
                     is_sidechain=False,
                     jsonl_path=pbfile,
-                    agent_source="antigravity"
+                    agent_source="antigravity",
+                    source_path=pbfile,
                 )
                 project.sessions.append(info)
 
@@ -329,7 +370,14 @@ class AntiGravityScanner:
                 is_sidechain=False,
                 jsonl_path=brain_dir,  # points to brain dir; parser detects via is_dir()
                 agent_source="antigravity",
+                source_path=brain_dir,
             )
+            # Archive resolution for brain sessions
+            if self.archive_brain_root:
+                archive_brain_dir = self.archive_brain_root / conv_id
+                if archive_brain_dir.exists():
+                    info.archive_path = archive_brain_dir
+                    info.jsonl_path = archive_brain_dir
             project.sessions.append(info)
 
         return [project] if project.sessions else []
@@ -338,8 +386,18 @@ class AntiGravityScanner:
 class SessionScanner:
     def __init__(self, projects_root: Path | None = None, codex_root: Path | None = None,
                  antigravity_root: Path | None = None, codex_sqlite_path: Path | None = None,
-                 antigravity_brain_root: Path | None = None):
-        self.claude = ClaudeScanner(projects_root)
+                 antigravity_brain_root: Path | None = None,
+                 archive_root: Path | None = None):
+        # Determine effective archive root.
+        # When projects_root is set (test mode), do not auto-derive archive_root.
+        ar = archive_root
+        if ar is None and projects_root is None:
+            ar = Path.home() / ".local" / "share" / "claude-dossier"
+
+        self.claude = ClaudeScanner(
+            projects_root,
+            archive_projects_root=(ar / "archive" / "claude" / "projects") if ar else None,
+        )
         if projects_root is not None and codex_root is None:
             codex_root = projects_root / ".codex_fake"
         if projects_root is not None and antigravity_root is None:
@@ -348,8 +406,16 @@ class SessionScanner:
             codex_sqlite_path = projects_root / ".codex_sqlite_fake"
         if projects_root is not None and antigravity_brain_root is None:
             antigravity_brain_root = projects_root / ".ag_brain_fake"
-        self.codex = CodexScanner(codex_root, sqlite_path=codex_sqlite_path)
-        self.antigravity = AntiGravityScanner(antigravity_root, brain_root=antigravity_brain_root)
+        self.codex = CodexScanner(
+            codex_root,
+            sqlite_path=codex_sqlite_path,
+            archive_sessions_root=(ar / "archive" / "codex" / "sessions") if ar else None,
+        )
+        self.antigravity = AntiGravityScanner(
+            antigravity_root,
+            brain_root=antigravity_brain_root,
+            archive_brain_root=(ar / "archive" / "antigravity" / "brain") if ar else None,
+        )
 
     def scan(self) -> list[ProjectInfo]:
         projects = []
