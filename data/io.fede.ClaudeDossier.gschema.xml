@@ -17,11 +17,7 @@
       <default>''</default>
       <summary>Custom terminal command (empty = auto-detect)</summary>
     </key>
-    <key name="experimental-ancestor-claude-dir" type="b">
-      <default>false</default>
-      <summary>Include .claude/CLAUDE.md from ancestor directories</summary>
-    </key>
-    <key name="enable-claude" type="b">
+<key name="enable-claude" type="b">
       <default>true</default>
       <summary>Enable scanning Claude sessions</summary>
     </key>

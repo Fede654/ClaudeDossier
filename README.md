@@ -19,6 +19,11 @@ Claude Dossier reads the session history written by Claude Code into `~/.claude/
 - View and edit the `CLAUDE.md` inheritance chain for each project
 - Keyboard-friendly, no Electron
 
+## Developer Documentation
+
+See [docs/DATA_FORMATS.md](docs/DATA_FORMATS.md) for detailed schema documentation,
+known bugs, and data preservation guidance for each supported format.
+
 ## Requirements
 
 - Python 3.10+
