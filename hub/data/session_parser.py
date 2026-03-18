@@ -199,7 +199,7 @@ class AntiGravityParser:
                 cls._cache = {}
         return cls._cache
 
-    def parse(self, path: Path) -> list[ParsedMessage]:
+    def parse(self, path: Path, archive_brain_root: Path | None = None) -> list[ParsedMessage]:
         results = []
         conv_id = path.name if path.is_dir() else path.stem
 
@@ -270,10 +270,21 @@ class AntiGravityParser:
                 timestamp=None, uuid=""
             ))
 
-        # Also check brain/ for this conversation (may have both .pb and brain/)
+        # Check brain/ for this conversation (may have both .pb and brain/)
         from hub.data.antigravity_brain import load_brain
-        brain_dir = Path.home() / ".gemini" / "antigravity" / "brain" / conv_id
-        if brain_dir.is_dir():
+        brain_dir = None
+        # Check archive brain path first
+        if archive_brain_root:
+            candidate = archive_brain_root / conv_id
+            if candidate.is_dir():
+                brain_dir = candidate
+        # Fall back to source brain path
+        if brain_dir is None:
+            candidate = Path.home() / ".gemini" / "antigravity" / "brain" / conv_id
+            if candidate.is_dir():
+                brain_dir = candidate
+
+        if brain_dir:
             brain = load_brain(brain_dir)
             for key, label in [("task", "Task"), ("implementation_plan", "Plan"), ("walkthrough", "Walkthrough")]:
                 text = brain.get(key, "")
@@ -288,8 +299,10 @@ class AntiGravityParser:
 
 
 class SessionParser:
-    def __init__(self, agent_source: str = "claude", include_progress: bool = False, include_snapshots: bool = False):
+    def __init__(self, agent_source: str = "claude", include_progress: bool = False,
+                 include_snapshots: bool = False, archive_brain_root: Path | None = None):
         self.agent_source = agent_source
+        self.archive_brain_root = archive_brain_root
         if agent_source == "codex":
             self.delegate = CodexParser(include_progress, include_snapshots)
         elif agent_source == "antigravity":
@@ -298,4 +311,6 @@ class SessionParser:
             self.delegate = ClaudeParser(include_progress, include_snapshots)
 
     def parse(self, path: Path) -> list[ParsedMessage]:
+        if self.agent_source == "antigravity":
+            return self.delegate.parse(path, archive_brain_root=self.archive_brain_root)
         return self.delegate.parse(path)

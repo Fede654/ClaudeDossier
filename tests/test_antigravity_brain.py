@@ -51,6 +51,26 @@ def test_lists_brain_conversations(tmp_path):
     assert set(convs) == {"conv-1", "conv-2"}
 
 
+def test_parser_uses_archive_brain_path(tmp_path):
+    """AntiGravityParser checks archive brain path before hardcoded source."""
+    from hub.data.session_parser import AntiGravityParser
+
+    # Create a fake .pb file
+    pb = tmp_path / "conv-123.pb"
+    pb.write_bytes(b"\x00" * 10)
+
+    # Create brain content in an archive-like location
+    brain = tmp_path / "brain" / "conv-123"
+    brain.mkdir(parents=True)
+    (brain / "task.md").write_text("# Archived task\nThis is from the archive.")
+
+    parser = AntiGravityParser()
+    msgs = parser.parse(pb, archive_brain_root=tmp_path / "brain")
+
+    brain_msgs = [m for m in msgs if "Archived task" in m.text]
+    assert len(brain_msgs) == 1
+
+
 def test_scanner_includes_brain_sessions(tmp_path):
     from hub.data.session_scanner import AntiGravityScanner
 
