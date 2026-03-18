@@ -278,42 +278,67 @@ class CodexScanner:
 
 
 class AntiGravityScanner:
-    def __init__(self, root: Path | None = None):
+    def __init__(self, root: Path | None = None, brain_root: Path | None = None):
         self.root = root or Path.home() / ".gemini" / "antigravity" / "conversations"
+        self.brain_root = brain_root or Path.home() / ".gemini" / "antigravity" / "brain"
 
     def scan(self) -> list[ProjectInfo]:
-        if not self.root.exists():
-            return []
-        
         project = ProjectInfo(original_path=str(self.root), project_dir=self.root)
-        
-        for pbfile in self.root.glob("*.pb"):
+
+        # --- .pb file scan ---
+        if self.root.exists():
+            for pbfile in self.root.glob("*.pb"):
+                try:
+                    fallback = datetime.fromtimestamp(pbfile.stat().st_mtime, tz=timezone.utc)
+                except OSError:
+                    fallback = datetime.now(tz=timezone.utc)
+                info = SessionInfo(
+                    session_id=pbfile.stem,
+                    first_prompt=f"Anti-Gravity Session {pbfile.stem}",
+                    message_count=1,
+                    created=fallback,
+                    modified=fallback,
+                    git_branch="",
+                    project_path=str(self.root),
+                    is_sidechain=False,
+                    jsonl_path=pbfile,
+                    agent_source="antigravity"
+                )
+                project.sessions.append(info)
+
+        # --- brain/ directory scan ---
+        from hub.data.antigravity_brain import list_brain_conversations
+        seen_ids = {s.session_id for s in project.sessions}
+
+        for conv_id in list_brain_conversations(self.brain_root):
+            if conv_id in seen_ids:
+                continue
             try:
-                fallback = datetime.fromtimestamp(pbfile.stat().st_mtime, tz=timezone.utc)
+                brain_dir = self.brain_root / conv_id
+                fallback = datetime.fromtimestamp(brain_dir.stat().st_mtime, tz=timezone.utc)
             except OSError:
                 fallback = datetime.now(tz=timezone.utc)
-
-            # We will read actual messages in parser. For now, just generate a generic info.
             info = SessionInfo(
-                session_id=pbfile.stem,
-                first_prompt=f"Anti-Gravity Session {pbfile.stem}",
-                message_count=1,  # Placeholder, parser will read exact
+                session_id=conv_id,
+                first_prompt=f"Anti-Gravity Brain: {conv_id}",
+                message_count=1,
                 created=fallback,
                 modified=fallback,
                 git_branch="",
                 project_path=str(self.root),
                 is_sidechain=False,
-                jsonl_path=pbfile,
-                agent_source="antigravity"
+                jsonl_path=brain_dir,  # points to brain dir; parser detects via is_dir()
+                agent_source="antigravity",
             )
             project.sessions.append(info)
-            
+
         return [project] if project.sessions else []
 
 
 class SessionScanner:
     def __init__(self, projects_root: Path | None = None, codex_root: Path | None = None,
-                 antigravity_root: Path | None = None, codex_sqlite_path: Path | None = None):
+                 antigravity_root: Path | None = None, codex_sqlite_path: Path | None = None,
+                 antigravity_brain_root: Path | None = None):
         self.claude = ClaudeScanner(projects_root)
         if projects_root is not None and codex_root is None:
             codex_root = projects_root / ".codex_fake"
@@ -321,8 +346,10 @@ class SessionScanner:
             antigravity_root = projects_root / ".ag_fake"
         if projects_root is not None and codex_sqlite_path is None:
             codex_sqlite_path = projects_root / ".codex_sqlite_fake"
+        if projects_root is not None and antigravity_brain_root is None:
+            antigravity_brain_root = projects_root / ".ag_brain_fake"
         self.codex = CodexScanner(codex_root, sqlite_path=codex_sqlite_path)
-        self.antigravity = AntiGravityScanner(antigravity_root)
+        self.antigravity = AntiGravityScanner(antigravity_root, brain_root=antigravity_brain_root)
 
     def scan(self) -> list[ProjectInfo]:
         projects = []

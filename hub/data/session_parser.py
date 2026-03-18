@@ -203,6 +203,27 @@ class AntiGravityParser:
         results = []
         conv_id = path.stem  # filename without .pb extension = conversation UUID
 
+        # Brain-only session: path IS the brain directory
+        if path.is_dir():
+            from hub.data.antigravity_brain import load_brain
+            brain = load_brain(path)
+            has_brain = any(brain.get(k, "").strip() for k in ("task", "implementation_plan", "walkthrough"))
+            if has_brain:
+                results.append(ParsedMessage(
+                    type=MessageType.USER,
+                    text=f"*Anti-Gravity Brain — {conv_id}*",
+                    timestamp=None, uuid=conv_id,
+                ))
+                for key, label in [("task", "Task"), ("implementation_plan", "Plan"), ("walkthrough", "Walkthrough")]:
+                    text = brain.get(key, "")
+                    if text.strip():
+                        results.append(ParsedMessage(
+                            type=MessageType.ASSISTANT,
+                            text=f"**{label}**\n\n{text}",
+                            timestamp=None, uuid=conv_id,
+                        ))
+            return results
+
         try:
             trajectories = self._trajectories()
             info = trajectories.get(conv_id)
@@ -248,6 +269,21 @@ class AntiGravityParser:
                 type=MessageType.ASSISTANT, text=f"*(Error parsing session: {e})*",
                 timestamp=None, uuid=""
             ))
+
+        # Also check brain/ for this conversation (may have both .pb and brain/)
+        from hub.data.antigravity_brain import load_brain
+        brain_dir = Path.home() / ".gemini" / "antigravity" / "brain" / conv_id
+        if brain_dir.is_dir():
+            brain = load_brain(brain_dir)
+            for key, label in [("task", "Task"), ("implementation_plan", "Plan"), ("walkthrough", "Walkthrough")]:
+                text = brain.get(key, "")
+                if text.strip():
+                    results.append(ParsedMessage(
+                        type=MessageType.ASSISTANT,
+                        text=f"**{label}**\n\n{text}",
+                        timestamp=None, uuid=conv_id,
+                    ))
+
         return results
 
 class SessionParser:
