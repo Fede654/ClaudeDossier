@@ -31,6 +31,38 @@ class MainWindow(Adw.ApplicationWindow):
 
     def _load_data(self):
         import traceback
+        import threading
+        try:
+            from hub.data.archive_sync import (
+                sync_all, acquire_sync_lock, release_sync_lock, DEFAULT_ARCHIVE_ROOT,
+            )
+
+            lock_path = DEFAULT_ARCHIVE_ROOT / ".sync.lock"
+            lock_fd = acquire_sync_lock(lock_path, blocking=False)
+
+            if lock_fd is not None:
+                # We got the lock — sync in background, then scan
+                def do_sync():
+                    try:
+                        sync_all()
+                    except Exception:
+                        traceback.print_exc()
+                    finally:
+                        release_sync_lock(lock_fd)
+                        GLib.idle_add(self._scan_and_setup)
+
+                threading.Thread(target=do_sync, daemon=True).start()
+            else:
+                # Lock busy (another window syncing) — scan existing archive
+                self._scan_and_setup()
+        except Exception:
+            traceback.print_exc()
+            # Fallback: scan without sync
+            self._scan_and_setup()
+        return GLib.SOURCE_REMOVE
+
+    def _scan_and_setup(self):
+        import traceback
         try:
             from hub.settings import Settings
             settings = Settings.new()
@@ -41,7 +73,7 @@ class MainWindow(Adw.ApplicationWindow):
             from hub.data.session_scanner import SessionScanner
             from hub.data.tree_builder import TreeBuilder
             scanner = SessionScanner()
-            
+
             projects = []
             if enable_claude:
                 projects.extend(scanner.claude.scan())
@@ -50,12 +82,11 @@ class MainWindow(Adw.ApplicationWindow):
             if enable_ag:
                 projects.extend(scanner.antigravity.scan())
             self._projects = projects
-            
+
             self._tree_root = TreeBuilder().build(self._projects)
             self._setup_ui()
         except Exception:
             traceback.print_exc()
-        return GLib.SOURCE_REMOVE
 
     def _setup_ui(self):
         import traceback
@@ -119,6 +150,34 @@ class MainWindow(Adw.ApplicationWindow):
 
     def _on_refresh_requested(self, _):
         import traceback
+        import threading
+        try:
+            from hub.data.archive_sync import (
+                sync_all, acquire_sync_lock, release_sync_lock, DEFAULT_ARCHIVE_ROOT,
+            )
+
+            lock_path = DEFAULT_ARCHIVE_ROOT / ".sync.lock"
+            lock_fd = acquire_sync_lock(lock_path, blocking=False)
+
+            if lock_fd is not None:
+                def do_refresh_sync():
+                    try:
+                        sync_all()
+                    except Exception:
+                        traceback.print_exc()
+                    finally:
+                        release_sync_lock(lock_fd)
+                        GLib.idle_add(self._rescan)
+
+                threading.Thread(target=do_refresh_sync, daemon=True).start()
+            else:
+                self._rescan()
+        except Exception:
+            traceback.print_exc()
+            self._rescan()
+
+    def _rescan(self):
+        import traceback
         try:
             from hub.settings import Settings
             settings = Settings.new()
@@ -129,7 +188,7 @@ class MainWindow(Adw.ApplicationWindow):
             from hub.data.session_scanner import SessionScanner
             from hub.data.tree_builder import TreeBuilder
             from hub.ui.welcome_page import update_welcome_stats
-            
+
             scanner = SessionScanner()
             projects = []
             if enable_claude:
@@ -139,7 +198,7 @@ class MainWindow(Adw.ApplicationWindow):
             if enable_ag:
                 projects.extend(scanner.antigravity.scan())
             self._projects = projects
-            
+
             self._tree_root = TreeBuilder().build(self._projects)
             self._tree_view.set_tree(self._tree_root)
             update_welcome_stats(self._welcome, self._projects)
