@@ -53,9 +53,9 @@ Sync runs on **startup** and on **manual refresh** (user-triggered). It runs in 
 
 Acquire `flock` on `~/.local/share/claude-dossier/.sync.lock` before any I/O. If another sync is running (another app window, or startup overlapping with refresh), wait with backoff or skip with a warning. No concurrent syncs.
 
-#### 2. Text File Sync (JSONL, Markdown, JSON)
+#### 2. Text File Sync (JSONL, Markdown, JSON, sessions-index.json)
 
-For each source directory, walk all files. For each file:
+For each source directory, walk all text files (`.jsonl`, `.json`, `.md`). This explicitly includes `sessions-index.json` (Claude metadata: titles, branches, prompt previews — not present in JSONL itself). For each file:
 
 **New file** (exists in source, not in mirror): Copy to mirror using atomic temp+rename.
 
@@ -65,9 +65,11 @@ For each source directory, walk all files. For each file:
 
 **Source file gone** (deleted/rotated away): Mirror keeps it. No action. These are "mirror-only" sessions.
 
-**Tail-safe copy**: Always copy up to the last complete newline (`\n`). If the last byte isn't `\n`, truncate to the previous one. This prevents capturing partial JSON lines from in-progress writes.
+**Tail-safe copy**: Always copy up to the last complete newline (`\n`). If the last byte isn't `\n`, truncate to the previous one. This prevents capturing partial JSON lines from in-progress writes. Note: if a writer is mid-line, the truncation may discard content that only appears on the next sync. **Session content is eventually consistent, not immediately consistent.**
 
 **Atomic writes**: All copies go to a temp file in the same directory, then `os.rename()` (atomic on Linux).
+
+**Hashing**: All content hashes use SHA-256. The `sha256_4k` field in sync.log is SHA-256 of the first 4096 bytes.
 
 #### 3. SQLite Snapshots
 
@@ -77,7 +79,7 @@ For each SQLite source (`~/.codex/state_5.sqlite`, `~/.config/Antigravity/User/g
 2. Use `sqlite3.backup()` API (handles WAL/journal correctly, safe against concurrent writers).
 3. Write to temp file, verify with `PRAGMA integrity_check`, then atomic rename to final path.
 
-This avoids the 12.7GB raw copy problem — `sqlite3.backup()` is incremental when possible, and mtime gating means it only runs when the source actually changed.
+**Important**: `sqlite3.backup()` copies the entire database in a single call by default — it is NOT incremental across calls. For a 12.7GB file, the first backup will take minutes. The mtime gate ensures this only happens when the source actually changed, not on every sync. Expect the first-ever sync to be slow; subsequent syncs skip unless Codex has written new data.
 
 #### 4. Sync Log
 
@@ -100,13 +102,32 @@ Add two fields to the `SessionInfo` dataclass:
 @dataclass
 class SessionInfo:
     # ... existing fields ...
-    source_path: Path | None = None    # Original location (provenance)
-    archive_path: Path | None = None   # Mirror location (read from this)
+    jsonl_path: Path              # Best-available path (archive or source) — parsers read this
+    source_path: Path | None = None    # Original location (provenance, shown in UI)
+    archive_path: Path | None = None   # Mirror location (set by archive layer)
 ```
 
-- `source_path`: Where the file actually lives on the source platform. Shown in UI for provenance.
-- `archive_path`: Where the mirrored copy lives. Parsers and search index read from this.
-- `jsonl_path`: Becomes an alias for `archive_path` (backward compatibility). Falls back to `source_path` if archive doesn't exist.
+**Path resolution is done at scan time, not at access time.** There is no dynamic alias or `@property`. The scanner sets `jsonl_path` to the best-available path when constructing each `SessionInfo`:
+
+```python
+# In each scanner, after constructing SessionInfo:
+if archive_file.exists():
+    info.archive_path = archive_file
+    info.jsonl_path = archive_file     # parsers read from archive
+else:
+    info.jsonl_path = source_file      # fallback to source
+info.source_path = source_file         # always set for provenance
+```
+
+This means:
+- `jsonl_path` remains a plain `Path` field — no property magic, no dataclass hacks
+- All existing code (`parser.parse(session.jsonl_path)`, `search_index`, UI) works unchanged
+- `source_path` is available for UI display ("where this session came from")
+- `archive_path` is available for sync logic ("where the mirror copy is")
+
+**Special cases:**
+- **SQLite-only Codex sessions** (no JSONL file): `source_path = None`, `archive_path = None`, `jsonl_path = Path("")` (empty, as currently). These sessions surface metadata from SQLite only — no file to parse.
+- **Brain-only Anti-Gravity sessions**: `jsonl_path` points to the brain directory (archive copy). The `path.is_dir()` check in `AntiGravityParser` works the same way.
 
 #### Scanner Path Resolution
 
@@ -124,7 +145,17 @@ Each sub-scanner reads from `archive_root/archive/<agent>/...` if it exists, oth
 
 #### Parser Changes
 
-None. Parsers receive a `Path` and read it. They don't care whether it points to source or mirror. The only change is which path they receive.
+Parsers receive a `Path` via `jsonl_path` and read it. They don't care whether it points to source or mirror — with one exception:
+
+**Required fix — AntiGravityParser hardcoded brain path**: At `session_parser.py:275`, the parser independently constructs a brain directory path:
+```python
+brain_dir = Path.home() / ".gemini" / "antigravity" / "brain" / conv_id
+```
+This bypasses the archive. Fix: look for brain content relative to the archive first. The parser should check the archive brain path (derivable from `jsonl_path`'s parent structure) before falling back to the hardcoded source path.
+
+#### Search Index Consideration
+
+`search_index.py` uses `session.jsonl_path.stat().st_mtime` for mtime gating. When `jsonl_path` points to an archive file, the mtime reflects the sync timestamp, not the source write time. This means sessions may be re-indexed after each sync even if content didn't change. Mitigation: the search index already checks content via FTS rowcount — re-indexing an unchanged file is a no-op in practice. If this becomes a performance issue, add a content hash check to the index.
 
 ### UI Integration
 
@@ -148,16 +179,9 @@ Same as startup sync, triggered by the refresh button/signal.
 
 Sessions that exist in the archive but not in the source get a visual indicator (e.g., dimmed icon or "(archived)" suffix). The "Resume" action is disabled for these — the source session no longer exists.
 
-#### Archive Status
+#### First-Run UX
 
-Add to preferences or status bar:
-- Archive size (du of archive/ + snapshots/)
-- Last sync time
-- Session counts: source-live vs mirror-only
-
-#### Purge
-
-Context menu on a session: "Remove from archive". Deletes the mirror file and the sync.log entry. This is the only way to remove data from the archive — it never happens automatically.
+On first launch (no archive exists yet), sync must complete before scanners have anything to read. The UI shows a progress indicator during this initial sync. On subsequent launches, the existing archive is populated instantly while sync runs in the background to pick up changes.
 
 ### Error Handling
 
@@ -183,9 +207,11 @@ Context menu on a session: "Remove from archive". Deletes the mirror file and th
 
 **In scope (this spec):**
 - `hub/data/archive_sync.py` — sync engine
-- `SessionInfo` field additions
-- Scanner path resolution
-- Startup/refresh sync integration
+- `SessionInfo` field additions (`source_path`, `archive_path`)
+- Scanner path resolution (scanner-time assignment of `jsonl_path`)
+- `AntiGravityParser` brain path fix (use archive path, not hardcoded source)
+- Startup/refresh sync integration (background thread + progress)
+- Mirror-only session detection
 - Sync log
 
 **Deferred:**
