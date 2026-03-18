@@ -142,13 +142,20 @@ class ClaudeScanner:
             if not proj_dir.is_dir():
                 continue
             idx = proj_dir / "sessions-index.json"
-            if not idx.exists():
-                continue
+            original_path = ""
+            data = {}
+            has_valid_index = False
+            if idx.exists():
+                try:
+                    data = json.loads(idx.read_text())
+                    original_path = data.get("originalPath", "")
+                    has_valid_index = bool(original_path)
+                except Exception:
+                    pass
+            if not original_path:
+                # Derive original path from directory name (url-decoded)
+                original_path = "/" + proj_dir.name.lstrip("-").replace("-", "/")
             try:
-                data = json.loads(idx.read_text())
-                original_path = data.get("originalPath", "")
-                if not original_path:
-                    continue
                 project = ProjectInfo(original_path=original_path, project_dir=proj_dir)
                 indexed_ids: set[str] = set()
                 for e in data.get("entries", []):
@@ -174,7 +181,8 @@ class ClaudeScanner:
                         if info:
                             self._resolve_archive(info)
                             project.sessions.append(info)
-                results.append(project)
+                if project.sessions or has_valid_index:
+                    results.append(project)
             except Exception as exc:
                 logger.warning("Skipping %s: %s", proj_dir, exc)
         return results
