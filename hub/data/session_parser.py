@@ -201,7 +201,7 @@ class AntiGravityParser:
 
     def parse(self, path: Path) -> list[ParsedMessage]:
         results = []
-        conv_id = path.stem  # filename without .pb extension = conversation UUID
+        conv_id = path.name if path.is_dir() else path.stem
 
         # Brain-only session: path IS the brain directory
         if path.is_dir():
@@ -285,6 +285,7 @@ class AntiGravityParser:
                     ))
 
         return results
+
 
 class SessionParser:
     def __init__(self, agent_source: str = "claude", include_progress: bool = False, include_snapshots: bool = False):
