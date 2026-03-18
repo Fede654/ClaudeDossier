@@ -441,10 +441,10 @@ Expected: FAIL
 
 - [ ] **Step 3: Implement SQLite backup, flock, sync log, and sync_all**
 
-Add to `hub/data/archive_sync.py`:
+**Add the following functions to the existing `hub/data/archive_sync.py`** (the file created in Task 1). Add `import sqlite3` to the imports at the top of the file alongside the existing `import fcntl`, `import hashlib`, etc.
 
 ```python
-import sqlite3
+import sqlite3  # add to existing imports at top of file
 
 
 def backup_sqlite(src: Path, dst: Path, last_mtime: float | None = None) -> bool:
@@ -513,6 +513,23 @@ def _write_sync_log(log_path: Path, actions: list[dict]) -> None:
             f.write(json.dumps(a) + "\n")
 
 
+def _read_last_sqlite_mtimes(log_path: Path) -> dict[str, float]:
+    """Read last recorded source_mtime for each sqlite_backup action from sync.log."""
+    mtimes: dict[str, float] = {}
+    if not log_path.exists():
+        return mtimes
+    try:
+        for line in log_path.read_text().splitlines():
+            if not line.strip():
+                continue
+            entry = json.loads(line)
+            if entry.get("action") == "sqlite_backup" and entry.get("source_mtime"):
+                mtimes[entry["source"]] = entry["source_mtime"]
+    except Exception:
+        pass  # corrupt log — re-backup everything
+    return mtimes
+
+
 # Source path configuration
 _CLAUDE_SOURCE = Path.home() / ".claude" / "projects"
 _CODEX_SESSIONS_SOURCE = Path.home() / ".codex" / "sessions"
@@ -550,13 +567,19 @@ def sync_all(
             on_progress(len(all_actions), -1)
 
     # SQLite snapshots
+    # SQLite snapshots — retrieve last_mtime from sync.log to avoid re-backup on every restart
+    last_mtimes = _read_last_sqlite_mtimes(root / "sync.log")
+
     sqlite_sources = [
         (codex_sqlite_source or _CODEX_SQLITE_SOURCE, snapshots / "codex_state_5.sqlite"),
         (ag_vscdb_source or _AG_VSCDB_SOURCE, snapshots / "antigravity_state.vscdb"),
     ]
     for src, dst in sqlite_sources:
-        if backup_sqlite(src, dst):
-            all_actions.append({"ts": now, "action": "sqlite_backup", "source": str(src), "dest": str(dst)})
+        last_mt = last_mtimes.get(str(src))
+        if backup_sqlite(src, dst, last_mtime=last_mt):
+            # Record source mtime so next restart can skip if unchanged
+            src_mt = src.stat().st_mtime if src.exists() else None
+            all_actions.append({"ts": now, "action": "sqlite_backup", "source": str(src), "dest": str(dst), "source_mtime": src_mt})
         else:
             all_actions.append({"ts": now, "action": "skip", "source": str(src), "reason": "unchanged_or_missing"})
 
@@ -703,6 +726,19 @@ if self.archive_root:
         info.jsonl_path = archive_file
 ```
 
+- [ ] **Step 4b: Add mirror-only detection**
+
+Sessions where `source_path` doesn't exist but `archive_path` does are "mirror-only" — the source was deleted. Add a property or flag to `SessionInfo`:
+
+```python
+@property
+def is_mirror_only(self) -> bool:
+    """True if this session only exists in the archive, not the source."""
+    return self.archive_path is not None and (self.source_path is None or not self.source_path.exists())
+```
+
+Note: This is a `@property`, not a stored field — it evaluates at access time since source files may appear/disappear between scans.
+
 - [ ] **Step 5: Update CodexScanner and AntiGravityScanner similarly**
 
 Apply the same pattern: accept an archive path parameter, resolve `jsonl_path` to archive when available. For `AntiGravityScanner`, brain directories in archive map to `archive/antigravity/brain/{conv_id}/`.
@@ -808,7 +844,28 @@ def parse(self, path: Path, archive_brain_root: Path | None = None) -> list[Pars
                 ))
 ```
 
-Also update `SessionParser.parse()` to pass through `archive_brain_root` for antigravity sessions.
+**Also update `SessionParser` to pass through `archive_brain_root`:**
+
+```python
+class SessionParser:
+    def __init__(self, agent_source: str = "claude", include_progress: bool = False,
+                 include_snapshots: bool = False, archive_brain_root: Path | None = None):
+        self.agent_source = agent_source
+        self.archive_brain_root = archive_brain_root
+        if agent_source == "codex":
+            self.delegate = CodexParser(include_progress, include_snapshots)
+        elif agent_source == "antigravity":
+            self.delegate = AntiGravityParser(include_progress, include_snapshots)
+        else:
+            self.delegate = ClaudeParser(include_progress, include_snapshots)
+
+    def parse(self, path: Path) -> list[ParsedMessage]:
+        if self.agent_source == "antigravity":
+            return self.delegate.parse(path, archive_brain_root=self.archive_brain_root)
+        return self.delegate.parse(path)
+```
+
+The callers that create `SessionParser` (search_index.py, session_viewer.py) need to pass `archive_brain_root` when constructing for antigravity sessions. Since the archive root is available from the `SessionScanner`, the simplest approach is to store it on the `SessionInfo` or derive it from `archive_path`.
 
 - [ ] **Step 4: Run all tests**
 
@@ -849,12 +906,12 @@ def _load_data(self):
             # We got the lock — sync in background, then scan
             def do_sync():
                 try:
-                    sync_all(on_progress=lambda done, total: None)
+                    sync_all(on_progress=lambda done, total: None)  # TODO: wire progress toast
                 except Exception:
                     traceback.print_exc()
                 finally:
                     release_sync_lock(lock_fd)
-                GLib.idle_add(self._scan_and_setup)
+                    GLib.idle_add(self._scan_and_setup)  # MUST be in finally — UI populates even if sync fails
 
             threading.Thread(target=do_sync, daemon=True).start()
         else:
