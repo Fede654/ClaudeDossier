@@ -277,7 +277,7 @@ class SessionPage(Gtk.Box):
             role.add_css_class('caption')
 
             body = Gtk.Label(xalign=0, wrap=True, selectable=True)
-            body.set_wrap_mode(Gtk.WrapMode.WORD_CHAR)
+            body.set_wrap_mode(Pango.WrapMode.WORD_CHAR)
 
             if msg.type == MessageType.USER:
                 role.set_text('You')
